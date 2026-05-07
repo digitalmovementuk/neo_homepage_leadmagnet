@@ -60,7 +60,7 @@ Method (apply rigorously, do not invent numbers):
 
 You MUST call the submit_analysis tool with the structured result. Never reply in plain text.`
 
-const ANALYSIS_TOOL_INPUT_SCHEMA = {
+const ANALYSIS_TOOL_INPUT_SCHEMA: Anthropic.Tool.InputSchema = {
   type: 'object',
   properties: {
     inferredIndustry: { type: 'string' },
@@ -164,7 +164,7 @@ const ANALYSIS_TOOL_INPUT_SCHEMA = {
     'blockers',
     'calculation',
   ],
-} as const
+}
 
 interface PromptInput {
   domain: string
