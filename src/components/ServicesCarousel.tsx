@@ -307,7 +307,7 @@ function ServiceVideo({ file }: { file: string }) {
       loop
       muted
       playsInline
-      preload="metadata"
+      preload="auto"
       // @ts-expect-error fetchpriority is missing from React types
       fetchpriority="low"
       // object-cover fills both axes; the extra scale crops the brand padding

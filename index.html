@@ -57,6 +57,12 @@
       content="Wir bauen Websites, die ranken, überzeugen und Anfragen bringen. SEO, Google Ads, Social Media und Webentwicklung aus einer Hand."
     />
 
+    <!-- Hero video — start fetching as early as possible so the LCP element
+         is on screen immediately after first paint. -->
+    <link rel="preload" as="video" type="video/mp4" href="/video/hero.mp4" fetchpriority="high" />
+
+    <!-- Fonts. Preconnect lets the browser open TLS to gstatic before the
+         CSS arrives that requests the actual woff2 files. -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

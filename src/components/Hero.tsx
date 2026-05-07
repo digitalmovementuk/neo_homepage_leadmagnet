@@ -103,10 +103,9 @@ export function Hero() {
           muted
           playsInline
           preload="auto"
-          poster={`${import.meta.env.BASE_URL}brand/og-cover.jpg`}
           // @ts-expect-error fetchpriority is missing from React types
           fetchpriority="high"
-          className="absolute inset-0 h-full w-full object-cover scale-105"
+          className="absolute inset-0 h-full w-full object-cover scale-105 bg-black"
           src={`${import.meta.env.BASE_URL}video/hero.mp4#t=0.1`}
           {...({
             "webkit-playsinline": "true",

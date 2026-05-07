@@ -1,9 +1,13 @@
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X } from "lucide-react";
+import { Loader2, X } from "lucide-react";
 import { useSeoModal } from "../lib/seoModal";
 import { getLenis } from "../lib/useLenis";
-import SeoAnalyser from "../seo/SeoAnalyser";
+
+// Lazy: the SEO wizard (~30KB gzipped — currencies, countries, all step
+// pages, all bilingual copy) only ships when the user actually opens the
+// modal. Keeps the homepage's initial JS lean.
+const SeoAnalyser = lazy(() => import("../seo/SeoAnalyser"));
 
 /**
  * Full-viewport modal that hosts the SEO Potential Analyser. Triggered from
@@ -55,13 +59,13 @@ export function SeoAnalyserModal() {
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             role="dialog"
             aria-modal="true"
-            aria-label="Kostenloser SEO-Check"
+            aria-label="SEO Potential Analyser"
             className="fixed inset-2 sm:inset-4 md:inset-6 lg:inset-8 z-[90] overflow-hidden rounded-[20px] sm:rounded-[28px] border border-white/40 bg-surface-1 shadow-[0_30px_80px_-30px_rgba(15,8,32,0.55)]"
           >
             <button
               type="button"
               onClick={closeSeo}
-              aria-label="Schließen"
+              aria-label="Close"
               className="absolute top-4 right-4 z-[5] grid h-10 w-10 place-items-center rounded-full bg-ink/[0.06] hover:bg-ink/[0.12] text-ink/75 hover:text-ink transition"
             >
               <X size={18} strokeWidth={2.4} />
@@ -71,7 +75,15 @@ export function SeoAnalyserModal() {
               data-lenis-prevent
               className="h-full w-full overflow-y-auto overscroll-contain"
             >
-              <SeoAnalyser />
+              <Suspense
+                fallback={
+                  <div className="grid h-full w-full place-items-center bg-surface-1">
+                    <Loader2 size={20} className="animate-spin text-[#FF7A45]" />
+                  </div>
+                }
+              >
+                <SeoAnalyser />
+              </Suspense>
             </div>
           </motion.div>
         </>

@@ -435,7 +435,7 @@ function CaseVideo({ file, poster }: { file: string; poster?: string }) {
       loop
       muted
       playsInline
-      preload="metadata"
+      preload="auto"
       poster={poster}
       // @ts-expect-error fetchpriority is missing from React types
       fetchpriority="low"
