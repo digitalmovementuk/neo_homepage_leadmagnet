@@ -42,7 +42,7 @@ async function fetchOne(
       signal: controller.signal,
     })
     if (!res.ok) return null
-    const data: RawPageSpeedResponse = await res.json()
+    const data = (await res.json()) as RawPageSpeedResponse
     const lr = data.lighthouseResult
     if (!lr) return null
     const lcp = lr.audits?.['largest-contentful-paint']?.numericValue ?? 0
