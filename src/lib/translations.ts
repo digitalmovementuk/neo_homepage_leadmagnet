@@ -1527,14 +1527,14 @@ const en: Translations = {
     links: [
       { label: "What we do", href: "#services" },
       { label: "Case studies", href: "#cases" },
-      { label: "Numbers", href: "#metrics" },
+      { label: "Results", href: "#metrics" },
       { label: "Contact", href: "#contact" },
     ],
-    cta: "Free consultation",
+    cta: "Free intro call",
     menuOpen: "Open menu",
     menuClose: "Close menu",
     languageLabel: "Language",
-    languages: { de: "German", en: "English" },
+    languages: { de: "Deutsch", en: "English" },
   },
 
   hero: {

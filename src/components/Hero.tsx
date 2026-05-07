@@ -180,27 +180,10 @@ export function Hero() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.55 }}
-                className="mt-4 sm:mt-6 md:mt-7 max-w-[36ch] md:max-w-none text-[13.5px] sm:text-[15px] lg:text-[16px] text-white/65 leading-relaxed md:whitespace-nowrap"
+                className="mt-4 sm:mt-5 md:mt-6 max-w-[36ch] md:max-w-none text-[13.5px] sm:text-[15px] lg:text-[16px] text-white/65 leading-relaxed md:whitespace-nowrap"
               >
                 {t.hero.sub}
               </motion.p>
-
-              {/* Service tags — desktop only (Apple S11 chip row) */}
-              <motion.ul
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.7 }}
-                className="hidden md:flex mt-7 flex-wrap justify-center md:justify-start gap-2"
-              >
-                {t.hero.services.map((s) => (
-                  <li
-                    key={s}
-                    className="border border-white/20 bg-white/5 backdrop-blur-sm px-3 py-1.5 text-[10.5px] sm:text-[11px] font-semibold uppercase tracking-[0.14em] text-white/80"
-                  >
-                    {s}
-                  </li>
-                ))}
-              </motion.ul>
 
               {/* Mobile-only CTAs — primary SEO check (orange) + secondary contact (blue) */}
               <motion.div
