@@ -79,6 +79,23 @@ function extractExcerpt(html: string): string {
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
+  try {
+    return await handleRequest(req, res)
+  } catch (err) {
+    const detail = err instanceof Error ? `${err.name}: ${err.message}` : String(err)
+    console.error('seo-analyse top-level error', detail, err)
+    if (!res.headersSent) {
+      res.status(500).json({
+        ok: false,
+        error: `Server error: ${detail}`,
+        code: 'server_error',
+      } satisfies AnalyseResponse)
+    }
+    return
+  }
+}
+
+async function handleRequest(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') {
     res.status(405).json({ ok: false, error: 'Method not allowed', code: 'server_error' } satisfies AnalyseResponse)
     return
