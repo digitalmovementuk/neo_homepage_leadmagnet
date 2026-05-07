@@ -62,7 +62,10 @@ export function SeoAnalyserModal() {
               <X size={18} strokeWidth={2.4} />
             </button>
 
-            <div className="h-full w-full overflow-y-auto overscroll-contain">
+            <div
+              data-lenis-prevent
+              className="h-full w-full overflow-y-auto overscroll-contain"
+            >
               <SeoAnalyser />
             </div>
           </motion.div>
