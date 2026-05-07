@@ -3,6 +3,13 @@ import Lenis from "lenis";
 
 const NAV_OFFSET = 72; // matches md+ nav height; mobile nav is 64 — close enough.
 
+// Module-level handle so other components (notably the SEO analyser modal)
+// can stop/start the page-wide smooth scroll while a full-screen overlay is
+// open — otherwise Lenis intercepts wheel events on `window` and the user
+// can only scroll the modal by grabbing the native scrollbar.
+let lenisInstance: Lenis | null = null;
+export const getLenis = (): Lenis | null => lenisInstance;
+
 export function useLenis() {
   useEffect(() => {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -15,6 +22,8 @@ export function useLenis() {
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
     });
+
+    lenisInstance = lenis;
 
     let raf = 0;
     const tick = (time: number) => {
@@ -63,6 +72,7 @@ export function useLenis() {
     return () => {
       cancelAnimationFrame(raf);
       lenis.destroy();
+      lenisInstance = null;
       document.removeEventListener("click", onAnchorClick);
       window.removeEventListener("hashchange", onHashChange);
     };

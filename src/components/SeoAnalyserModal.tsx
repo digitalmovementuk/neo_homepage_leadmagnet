@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import { useSeoModal } from "../lib/seoModal";
+import { getLenis } from "../lib/useLenis";
 import SeoAnalyser from "../seo/SeoAnalyser";
 
 /**
@@ -12,17 +13,21 @@ import SeoAnalyser from "../seo/SeoAnalyser";
 export function SeoAnalyserModal() {
   const { open, closeSeo } = useSeoModal();
 
-  // Body scroll lock + Esc-to-close while open.
+  // Body scroll lock + Esc-to-close + stop Lenis while open. Lenis is the
+  // page-wide smooth-scroll engine; if it stays running, wheel events on
+  // the modal content scroll the homepage behind it instead of the modal.
   useEffect(() => {
     if (!open) return;
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    getLenis()?.stop();
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") closeSeo();
     };
     document.addEventListener("keydown", onKey);
     return () => {
       document.body.style.overflow = prev;
+      getLenis()?.start();
       document.removeEventListener("keydown", onKey);
     };
   }, [open, closeSeo]);
