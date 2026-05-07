@@ -45,7 +45,7 @@ export function SummaryPage({ result, sending, captureError, onBack, onSubmit, o
       className="relative flex h-full w-full flex-col bg-surface-1"
     >
       {/* Header — right padding leaves room for the modal's X close button */}
-      <header className="flex flex-wrap items-center justify-between gap-3 border-b border-ink/[0.06] px-5 py-3.5 pr-14 sm:px-8 sm:pr-20">
+      <header className="flex min-h-[58px] flex-wrap items-center justify-between gap-3 border-b border-ink/[0.06] px-4 py-3 pr-16 sm:px-8 sm:pr-20">
         <div className="flex min-w-0 items-center gap-2">
           <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#FF7A45]/15 text-[#FF7A45]">
             <TrendingUp size={14} strokeWidth={2.4} />
@@ -67,7 +67,7 @@ export function SummaryPage({ result, sending, captureError, onBack, onSubmit, o
 
       {/* Main 2-col */}
       <div className="flex-1 min-h-0 overflow-y-auto" data-lenis-prevent>
-        <div className="mx-auto w-full max-w-[1080px] px-5 py-7 sm:px-8 sm:py-9">
+        <div className="mx-auto w-full max-w-[1120px] px-5 py-5 sm:px-8 sm:py-7 lg:py-8">
           <div className="text-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-ink/10 bg-white px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-ink-muted shadow-ring">
               <Sparkles size={13} strokeWidth={2.4} className="text-[#FF7A45]" />
@@ -76,7 +76,7 @@ export function SummaryPage({ result, sending, captureError, onBack, onSubmit, o
             <h2
               className="mt-4 text-ink"
               style={{
-                fontSize: 'clamp(28px, 4vw, 46px)',
+                fontSize: 'clamp(26px, 4vw, 46px)',
                 lineHeight: 1.05,
                 fontWeight: 700,
                 letterSpacing: '-0.02em',
@@ -89,11 +89,11 @@ export function SummaryPage({ result, sending, captureError, onBack, onSubmit, o
             </p>
           </div>
 
-          <div className="mt-8 grid grid-cols-1 gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.92fr)] lg:gap-6">
+          <div className="mt-5 grid grid-cols-1 gap-4 lg:mt-7 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.92fr)] lg:gap-6">
             {/* LEFT — Key takeaways */}
-            <div className="space-y-3">
+            <div className="contents lg:block lg:space-y-3">
               {/* Headline opportunity card */}
-              <div className="rounded-card-lg border border-ink/[0.06] bg-white p-5 shadow-card sm:p-6">
+              <div className="order-1 rounded-[24px] border border-ink/[0.07] bg-white p-5 shadow-card sm:p-6">
                 <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-ink-muted">
                   {c.summary.takeaways.opportunity}
                 </p>
@@ -113,14 +113,14 @@ export function SummaryPage({ result, sending, captureError, onBack, onSubmit, o
               </div>
 
               {/* Top wins */}
-              <div className="rounded-card-lg border border-ink/[0.06] bg-white p-5 shadow-card">
+              <div className="order-3 rounded-[24px] border border-ink/[0.07] bg-white p-5 shadow-card">
                 <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-ink-muted">
                   {c.summary.takeaways.topWins}
                 </p>
                 <ul className="mt-3 space-y-2">
                   {topWins.map((k) => (
                     <li key={k.keyword} className="flex items-baseline justify-between gap-3">
-                      <span className="truncate text-[14px] font-semibold text-ink">{k.keyword}</span>
+                      <span className="min-w-0 truncate text-[14px] font-semibold text-ink">{k.keyword}</span>
                       <span className="shrink-0 text-[13px] font-bold text-[#FF7A45]">
                         +{formatMoney(k.estMonthlyValue, result.currency, lang)}/{c.curve.perMonth}
                       </span>
@@ -130,16 +130,16 @@ export function SummaryPage({ result, sending, captureError, onBack, onSubmit, o
               </div>
 
               {/* Top blocker + 90-day */}
-              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+              <div className="order-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
                 {topBlocker && (
-                  <div className="rounded-card-lg border border-ink/[0.06] bg-white p-5 shadow-card">
+                  <div className="rounded-[24px] border border-ink/[0.07] bg-white p-5 shadow-card">
                     <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-ink-muted">
                       {c.summary.takeaways.topBlocker}
                     </p>
                     <p className="mt-2 text-[13.5px] font-semibold text-ink">{topBlocker.title}</p>
                   </div>
                 )}
-                <div className="rounded-card-lg border border-ink/[0.06] bg-white p-5 shadow-card">
+                <div className="rounded-[24px] border border-ink/[0.07] bg-white p-5 shadow-card">
                   <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-ink-muted">
                     {c.summary.takeaways.timeline}
                   </p>
@@ -153,7 +153,7 @@ export function SummaryPage({ result, sending, captureError, onBack, onSubmit, o
             {/* RIGHT — Contact form */}
             <form
               onSubmit={handle}
-              className="flex flex-col gap-3 rounded-card-lg border border-[#FF7A45]/20 bg-white p-5 shadow-card sm:p-6"
+              className="order-2 flex flex-col gap-3 rounded-[24px] border border-[#FF7A45]/20 bg-white p-5 shadow-card sm:p-6 lg:sticky lg:top-0 lg:order-none"
             >
               <div>
                 <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#FF7A45]">
@@ -201,7 +201,7 @@ export function SummaryPage({ result, sending, captureError, onBack, onSubmit, o
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder={c.summary.phonePlaceholder}
-                  className="flex-1 rounded-full border border-ink/15 bg-white px-4 py-3 text-[14.5px] text-ink placeholder:text-ink-faint outline-none transition focus:border-ink/45 focus:ring-2 focus:ring-[#FF7A45]/15"
+                  className="min-w-0 flex-1 rounded-full border border-ink/15 bg-white px-4 py-3 text-[14.5px] text-ink placeholder:text-ink-faint outline-none transition focus:border-ink/45 focus:ring-2 focus:ring-[#FF7A45]/15"
                 />
               </div>
 
@@ -303,7 +303,7 @@ function CountryDialPicker({
   }, [open])
 
   return (
-    <div ref={wrapRef} className="relative">
+    <div ref={wrapRef} className="relative shrink-0">
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}

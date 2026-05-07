@@ -30,7 +30,7 @@ export function SentStep({ result, onReset }: Props) {
         }}
       />
 
-      <div className="relative w-full max-w-[640px]">
+      <div className="relative w-full max-w-[680px]">
         <motion.span
           initial={{ scale: 0, rotate: -90 }}
           animate={{ scale: 1, rotate: 0 }}
@@ -55,7 +55,7 @@ export function SentStep({ result, onReset }: Props) {
           {c.sent.body(formatMoney(result.monthlyOpportunity, result.currency, lang))}
         </p>
 
-        <div className="mx-auto mt-7 max-w-[440px] rounded-card-lg border border-ink/[0.06] bg-white p-5 text-left shadow-card">
+        <div className="mx-auto mt-7 max-w-[480px] rounded-[24px] border border-ink/[0.07] bg-white p-5 text-left shadow-card sm:p-6">
           <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#FF7A45]">
             {c.sent.nextSteps.title}
           </p>

@@ -48,45 +48,67 @@ export function RankingsPage({ result, onBack, onNext }: Props) {
       onBack={onBack}
       onNext={onNext}
     >
-      <ul className="space-y-2.5">
-        {result.keywords.map((k, idx) => (
-          <motion.li
-            key={k.keyword}
-            initial={{ opacity: 0, x: -8 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.4, delay: idx * 0.04 }}
-            className="rounded-card border border-ink/[0.06] bg-white p-4 shadow-ring sm:p-5"
-          >
-            <div className="flex flex-wrap items-baseline justify-between gap-2">
-              <span className="text-[15px] font-semibold text-ink">{k.keyword}</span>
-              <span className="text-[12px] font-medium text-ink-muted">
-                {k.monthlySearches.toLocaleString(lang === 'de' ? 'de-DE' : 'en-GB')} {c.rankings.searchesPerMo}
-                {' · '}
-                <span className="font-bold text-[#FF7A45]">
-                  {k.estMonthlyValue > 0 ? `+${formatMoney(k.estMonthlyValue, result.currency, lang)}/${c.curve.perMonth}` : '—'}
+      <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_280px] lg:items-start">
+        <ul className="space-y-3">
+          {result.keywords.map((k, idx) => (
+            <motion.li
+              key={k.keyword}
+              initial={{ opacity: 0, x: -8 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.4, delay: idx * 0.04 }}
+              className="rounded-[22px] border border-ink/[0.07] bg-white p-4 shadow-ring sm:p-5"
+            >
+              <div className="flex flex-wrap items-baseline justify-between gap-2">
+                <span className="min-w-0 text-[15px] font-semibold text-ink sm:text-[16px]">{k.keyword}</span>
+                <span className="text-[12px] font-medium text-ink-muted sm:text-[12.5px]">
+                  {k.monthlySearches.toLocaleString(lang === 'de' ? 'de-DE' : 'en-GB')} {c.rankings.searchesPerMo}
+                  {' · '}
+                  <span className="font-bold text-[#FF7A45]">
+                    {k.estMonthlyValue > 0 ? `+${formatMoney(k.estMonthlyValue, result.currency, lang)}/${c.curve.perMonth}` : '—'}
+                  </span>
                 </span>
-              </span>
-            </div>
-            <div className="mt-3 flex items-center gap-3">
-              <div className="h-2 flex-1 overflow-hidden rounded-full bg-ink/[0.05]">
-                <motion.div
-                  className="h-full rounded-full"
-                  style={{ backgroundColor: RANK_COLOUR[k.currentRankBand] }}
-                  initial={{ width: 0 }}
-                  animate={{ width: rankWidth(k.currentRankBand) }}
-                  transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.1 + idx * 0.04 }}
-                />
               </div>
-              <span
-                className="rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-[0.08em]"
-                style={{ backgroundColor: `${RANK_COLOUR[k.currentRankBand]}1f`, color: RANK_COLOUR[k.currentRankBand] }}
-              >
-                {c.rankings.bands[k.currentRankBand]}
-              </span>
-            </div>
-          </motion.li>
-        ))}
-      </ul>
+              <div className="mt-4 grid gap-3 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center">
+                <div className="h-2.5 overflow-hidden rounded-full bg-ink/[0.05]">
+                  <motion.div
+                    className="h-full rounded-full"
+                    style={{ backgroundColor: RANK_COLOUR[k.currentRankBand] }}
+                    initial={{ width: 0 }}
+                    animate={{ width: rankWidth(k.currentRankBand) }}
+                    transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.1 + idx * 0.04 }}
+                  />
+                </div>
+                <span
+                  className="w-fit rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-[0.08em]"
+                  style={{ backgroundColor: `${RANK_COLOUR[k.currentRankBand]}1f`, color: RANK_COLOUR[k.currentRankBand] }}
+                >
+                  {c.rankings.bands[k.currentRankBand]}
+                </span>
+              </div>
+            </motion.li>
+          ))}
+        </ul>
+
+        <aside className="rounded-[24px] border border-[#FF7A45]/15 bg-[#fff7f2] p-5 shadow-ring lg:sticky lg:top-0">
+          <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#FF7A45]">
+            {c.summary.takeaways.opportunity}
+          </p>
+          <p className="mt-2 text-[34px] font-bold leading-none tracking-[-0.03em] text-ink">
+            {formatMoney(result.monthlyOpportunity, result.currency, lang)}
+          </p>
+          <p className="mt-2 text-[12.5px] leading-[1.5] text-ink-soft">{c.reveal.metricSuffix}</p>
+          <div className="mt-5 grid grid-cols-2 gap-2">
+            {result.keywords.slice(0, 2).map((k) => (
+              <div key={k.keyword} className="rounded-2xl border border-white/70 bg-white/75 p-3">
+                <p className="truncate text-[11px] font-semibold text-ink-muted">{k.keyword}</p>
+                <p className="mt-1 text-[13px] font-bold text-[#FF7A45]">
+                  +{formatMoney(k.estMonthlyValue, result.currency, lang)}/{c.curve.perMonth}
+                </p>
+              </div>
+            ))}
+          </div>
+        </aside>
+      </div>
     </PageShell>
   )
 }
@@ -128,7 +150,7 @@ export function PageShell({
       className="relative flex h-full w-full flex-col bg-surface-1"
     >
       {/* Header — right padding leaves room for the modal's X close button */}
-      <header className="flex flex-wrap items-center justify-between gap-3 border-b border-ink/[0.06] px-5 py-3.5 pr-14 sm:px-8 sm:pr-20">
+      <header className="flex min-h-[58px] flex-wrap items-center justify-between gap-3 border-b border-ink/[0.06] px-4 py-3 pr-16 sm:px-8 sm:pr-20">
         <div className="flex min-w-0 items-center gap-2">
           <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#FF7A45]/15 text-[#FF7A45]">
             <TrendingUp size={14} strokeWidth={2.4} />
@@ -151,8 +173,8 @@ export function PageShell({
       </header>
 
       {/* Page content */}
-      <div className="flex-1 min-h-0 overflow-y-auto" data-lenis-prevent>
-        <div className="mx-auto w-full max-w-[920px] px-5 py-8 sm:px-8">
+      <div className="min-h-0 flex-1 overflow-y-auto" data-lenis-prevent>
+        <div className="mx-auto w-full max-w-[1120px] px-5 py-7 sm:px-8 sm:py-8 lg:py-9">
           <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#FF7A45]">{eyebrow}</p>
           <h2
             className="mt-2 text-ink"
@@ -165,7 +187,7 @@ export function PageShell({
           >
             {headline}
           </h2>
-          <p className="mt-2 max-w-[640px] text-[14.5px] leading-[1.55] text-ink-soft">{sub}</p>
+          <p className="mt-2 max-w-[680px] text-[14.5px] leading-[1.55] text-ink-soft">{sub}</p>
           <div className="mt-6">{children}</div>
         </div>
       </div>

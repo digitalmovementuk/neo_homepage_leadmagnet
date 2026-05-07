@@ -61,7 +61,7 @@ export function InputStep({ initial, onAnalyse, error }: Props) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0, y: -16 }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      className="relative flex h-full w-full flex-col items-center overflow-y-auto px-5 pb-8 pt-14 sm:px-8 sm:pt-10 sm:pb-10"
+      className="relative flex h-full w-full flex-col items-center overflow-y-auto px-4 pb-7 pt-8 sm:px-8 sm:pb-10 sm:pt-10"
       data-lenis-prevent
     >
       <div
@@ -76,10 +76,10 @@ export function InputStep({ initial, onAnalyse, error }: Props) {
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className="relative w-full max-w-[760px]"
+        className="relative w-full max-w-[840px]"
       >
         {/* Top row: language pills (left) + currency picker (right) */}
-        <div className="flex flex-wrap items-center justify-between gap-3">
+        <div className="flex flex-wrap items-center justify-center gap-3 sm:justify-between">
           <div
             role="group"
             aria-label={c.langPicker.label}
@@ -97,7 +97,7 @@ export function InputStep({ initial, onAnalyse, error }: Props) {
         </div>
 
         {/* Eyebrow + Title */}
-        <div className="mt-7 text-center">
+        <div className="mx-auto mt-7 max-w-[760px] text-center">
           <span className="inline-flex items-center gap-2 rounded-full border border-ink/10 bg-white px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-ink-muted shadow-ring">
             <Sparkles size={13} strokeWidth={2.4} className="text-[#FF7A45]" />
             {c.input.eyebrow}
@@ -106,7 +106,7 @@ export function InputStep({ initial, onAnalyse, error }: Props) {
           <h1
             className="mt-5 text-ink"
             style={{
-              fontSize: 'clamp(32px, 5vw, 64px)',
+              fontSize: 'clamp(34px, 5vw, 64px)',
               lineHeight: 1.0,
               fontWeight: 700,
               letterSpacing: '-0.022em',
@@ -121,7 +121,7 @@ export function InputStep({ initial, onAnalyse, error }: Props) {
         </div>
 
         {/* Form */}
-        <form onSubmit={handle} className="mt-7">
+        <form onSubmit={handle} className="mx-auto mt-7 max-w-[760px]">
           {/* Domain */}
           <label className="block">
             <span className="mb-1.5 block text-[11px] font-bold uppercase tracking-[0.12em] text-ink-muted">
@@ -143,7 +143,7 @@ export function InputStep({ initial, onAnalyse, error }: Props) {
           </label>
 
           {/* Refine section */}
-          <div className="mt-5 rounded-card-lg border border-ink/[0.06] bg-surface-2 p-4 sm:p-5">
+          <div className="mt-5 rounded-[24px] border border-ink/[0.06] bg-surface-2 p-4 shadow-ring sm:p-5">
             <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#FF7A45]">
               {c.input.refineHeading}
             </p>

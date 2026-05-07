@@ -39,21 +39,28 @@ export function AnalysingStep({ domain }: Props) {
         }}
       />
 
-      <div className="relative w-full max-w-[680px]">
-        <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#FF7A45]">
-          {c.analysing.eyebrow}
-        </p>
-        <h2
-          className="mt-3 break-words text-ink"
-          style={{
-            fontSize: 'clamp(28px, 4.4vw, 48px)',
-            lineHeight: 1.05,
-            fontWeight: 700,
-            letterSpacing: '-0.018em',
-          }}
-        >
-          {domain}
-        </h2>
+      <div className="relative w-full max-w-[720px] rounded-[28px] border border-ink/[0.06] bg-white/90 p-6 shadow-card backdrop-blur sm:p-8">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+          <div className="min-w-0">
+            <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#FF7A45]">
+              {c.analysing.eyebrow}
+            </p>
+            <h2
+              className="mt-3 break-words text-ink"
+              style={{
+                fontSize: 'clamp(28px, 4.4vw, 48px)',
+                lineHeight: 1.05,
+                fontWeight: 700,
+                letterSpacing: '-0.018em',
+              }}
+            >
+              {domain}
+            </h2>
+          </div>
+          <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-[#FF7A45]/15 text-[#FF7A45]">
+            <Loader2 size={20} className="animate-spin" />
+          </span>
+        </div>
 
         <ul className="mt-8 space-y-2.5">
           {lines.map((line, idx) => {
