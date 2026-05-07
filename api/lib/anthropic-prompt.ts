@@ -60,8 +60,8 @@ Method (apply rigorously, do not invent numbers):
 
 You MUST call the submit_analysis tool with the structured result. Never reply in plain text.`
 
-const ANALYSIS_TOOL_INPUT_SCHEMA: Anthropic.Tool.InputSchema = {
-  type: 'object',
+const ANALYSIS_TOOL_INPUT_SCHEMA = {
+  type: 'object' as const,
   properties: {
     inferredIndustry: { type: 'string' },
     inferredLocation: { type: 'string' },
@@ -217,7 +217,7 @@ export async function runAnthropicAnalysis(input: PromptInput): Promise<LLMOutpu
         name: 'submit_analysis',
         description:
           'Submit the structured SEO opportunity analysis. Call this exactly once with the full result.',
-        input_schema: ANALYSIS_TOOL_INPUT_SCHEMA,
+        input_schema: ANALYSIS_TOOL_INPUT_SCHEMA as unknown as Anthropic.Tool.InputSchema,
       },
     ],
     tool_choice: { type: 'tool', name: 'submit_analysis' },
