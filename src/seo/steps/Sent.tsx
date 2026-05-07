@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion'
 import { CheckCircle2, RotateCcw } from 'lucide-react'
+import { useLang } from '../../lib/i18n'
+import { COPY, intGbp } from '../lib/copy'
 import type { AnalysisResult } from '../lib/types'
 
 interface Props {
@@ -7,17 +9,16 @@ interface Props {
   onReset: () => void
 }
 
-const formatGbp = (n: number) =>
-  new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP', maximumFractionDigits: 0 }).format(n)
-
 export function SentStep({ result, onReset }: Props) {
+  const { lang } = useLang()
+  const c = COPY[lang]
   return (
     <motion.section
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      className="relative flex min-h-full w-full flex-col items-center justify-center px-5 py-16 text-center sm:px-8 sm:py-20"
+      className="relative flex h-full w-full flex-col items-center justify-center px-5 py-10 text-center sm:px-8 sm:py-14"
     >
       <div
         aria-hidden
@@ -42,21 +43,19 @@ export function SentStep({ result, onReset }: Props) {
             letterSpacing: '-0.022em',
           }}
         >
-          Roadmap unterwegs.
+          {c.sent.headline}
         </h2>
         <p className="mx-auto mt-4 max-w-[480px] text-[15px] leading-[1.55] text-ink-soft sm:text-[16px]">
-          Wir stellen Ihren detaillierten 90-Tage-Plan zusammen, um{' '}
-          <span className="font-semibold text-ink">{formatGbp(result.monthlyOpportunityGbp)}/Monat</span>{' '}
-          für {result.domain} zu erschließen. Werktags innerhalb 24 Stunden in Ihrem Posteingang.
+          {c.sent.body(intGbp(result.monthlyOpportunityGbp), result.domain)}
         </p>
 
         <button
           type="button"
           onClick={onReset}
-          className="mt-10 inline-flex items-center gap-2 rounded-full border border-ink/10 bg-white px-5 py-3 text-[13px] font-semibold text-ink transition-colors hover:bg-ink/[0.04]"
+          className="mt-8 inline-flex items-center gap-2 rounded-full border border-ink/10 bg-white px-5 py-3 text-[13px] font-semibold text-ink transition-colors hover:bg-ink/[0.04]"
         >
           <RotateCcw size={14} strokeWidth={2.4} />
-          Weitere Domain analysieren
+          {c.sent.reset}
         </button>
       </div>
     </motion.section>

@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react'
 import { AnimatePresence } from 'framer-motion'
+import { useLang } from '../lib/i18n'
 import type { AnalyseResponse, AnalysisResult } from './lib/types'
+import { COPY, intGbp } from './lib/copy'
 import { InputStep } from './steps/Input'
 import { AnalysingStep } from './steps/Analysing'
 import { ResultsStep } from './steps/Results'
@@ -11,6 +13,9 @@ type Step = 'input' | 'analysing' | 'results' | 'sent'
 const FORM_ENDPOINT = 'https://formsubmit.co/ajax/info@neotheagency.com'
 
 export default function SeoAnalyser() {
+  const { lang } = useLang()
+  const c = COPY[lang]
+
   const [step, setStep] = useState<Step>('input')
   const [domain, setDomain] = useState('')
   const [result, setResult] = useState<AnalysisResult | null>(null)
@@ -47,9 +52,7 @@ export default function SeoAnalyser() {
       }, wait)
     } catch (err) {
       console.error(err)
-      setAnalysisError(
-        "Couldn't reach the analysis engine. Check your connection and try again.",
-      )
+      setAnalysisError(c.errors.network)
       setStep('input')
     }
   }
@@ -78,6 +81,8 @@ export default function SeoAnalyser() {
       )
       .join('\n')
 
+    const gbp = intGbp(result.monthlyOpportunityGbp)
+
     try {
       const res = await fetch(FORM_ENDPOINT, {
         method: 'POST',
@@ -88,20 +93,26 @@ export default function SeoAnalyser() {
           domain: result.domain,
           industry: result.inferredIndustry,
           location: result.inferredLocation,
-          monthlyOpportunityGbp: `£${result.monthlyOpportunityGbp.toLocaleString('en-GB')}`,
+          monthlyOpportunityGbp: gbp,
           topBlockers: blockerLines,
           keywords: keywordLines,
-          _subject: `SEO Analyser — ${name || email} — ${result.domain} — £${result.monthlyOpportunityGbp.toLocaleString('en-GB')}/mo opportunity`,
+          _subject: c.emailSubject(name, email, result.domain, gbp),
           _template: 'table',
           _captcha: 'false',
-          _autoresponse: `Hi ${name},\n\nThanks for running Neo's SEO Potential Analyser on ${result.domain}.\n\nHeadline: we estimate around £${result.monthlyOpportunityGbp.toLocaleString('en-GB')}/month in untapped organic-search opportunity, given your inferred industry (${result.inferredIndustry}) and location (${result.inferredLocation}).\n\nA member of the team will be in touch within one working day with the detailed 90-day roadmap.\n\n— Neo The Agency`,
+          _autoresponse: c.emailAutoresponse(
+            name,
+            result.domain,
+            gbp,
+            result.inferredIndustry,
+            result.inferredLocation,
+          ),
         }),
       })
       if (!res.ok) throw new Error(`Form gateway returned ${res.status}`)
       setStep('sent')
     } catch (err) {
       console.error(err)
-      setCaptureError("Sorry — couldn't send. Please try again or email us directly.")
+      setCaptureError(c.errors.captureSend)
     } finally {
       setCaptureSending(false)
     }
@@ -116,18 +127,14 @@ export default function SeoAnalyser() {
   }
 
   useEffect(() => {
-    document.title =
-      step === 'input'
-        ? 'SEO Potential Analyser — Neo'
-        : step === 'analysing'
-          ? `Analysing ${domain}…`
-          : result
-            ? `${result.domain} — £${result.monthlyOpportunityGbp.toLocaleString('en-GB')}/mo opportunity`
-            : 'SEO Potential Analyser — Neo'
-  }, [step, domain, result])
+    if (step === 'input') document.title = c.documentTitleIdle
+    else if (step === 'analysing') document.title = c.documentTitleAnalysing(domain)
+    else if (result) document.title = c.documentTitleResults(result.domain, intGbp(result.monthlyOpportunityGbp))
+    else document.title = c.documentTitleIdle
+  }, [step, domain, result, c])
 
   return (
-    <div className="relative min-h-full w-full overflow-x-hidden bg-surface-1 text-ink">
+    <div className="relative h-full w-full overflow-hidden bg-surface-1 text-ink">
       <AnimatePresence mode="wait">
         {step === 'input' && (
           <InputStep

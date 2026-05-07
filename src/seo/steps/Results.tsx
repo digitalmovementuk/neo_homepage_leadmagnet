@@ -1,7 +1,9 @@
-import { useEffect, useRef, useState, type FormEvent } from 'react'
+import { useEffect, useState, type FormEvent } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { ArrowRight, Loader2, RotateCcw, TrendingUp } from 'lucide-react'
+import { useLang } from '../../lib/i18n'
 import type { AnalysisResult, KeywordRow } from '../lib/types'
+import { COPY, intGbp } from '../lib/copy'
 
 interface Props {
   result: AnalysisResult
@@ -9,14 +11,6 @@ interface Props {
   sending: boolean
   captureError: string | null
   onReset: () => void
-}
-
-const RANK_LABEL: Record<KeywordRow['currentRankBand'], string> = {
-  top3: 'Top 3',
-  page1: 'Seite 1',
-  'page2-3': 'Seite 2–3',
-  page4plus: 'Seite 4+',
-  unranked: 'Unranked',
 }
 
 const RANK_COLOUR: Record<KeywordRow['currentRankBand'], string> = {
@@ -27,43 +21,168 @@ const RANK_COLOUR: Record<KeywordRow['currentRankBand'], string> = {
   unranked: '#8A8791',
 }
 
-const formatGbp = (n: number) =>
-  new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP', maximumFractionDigits: 0 }).format(n)
-
+/**
+ * Dashboard layout — the full results, capture form and reset all live in
+ * the modal viewport at once. No vertical scroll on desktop ≥ md sizes;
+ * mobile stacks vertically and may scroll a little but still feels like a
+ * single screen.
+ *
+ *   ┌─────────────────────────────────────────────────────────────┐
+ *   │ HEADER · domain · industry · location          [Reset]      │
+ *   ├──────────────────────────────┬──────────────────────────────┤
+ *   │                              │                              │
+ *   │   £8,400 / month             │  Top keywords (compact list) │
+ *   │   90-day projection (mini)   │  Top blockers (compact list) │
+ *   │                              │                              │
+ *   ├──────────────────────────────┴──────────────────────────────┤
+ *   │ CAPTURE · [Name] [Email]   [Send me the roadmap →]          │
+ *   └─────────────────────────────────────────────────────────────┘
+ */
 export function ResultsStep({ result, onSubmit, sending, captureError, onReset }: Props) {
+  const { lang } = useLang()
+  const c = COPY[lang]
+  const headlineGbp = intGbp(result.monthlyOpportunityGbp)
+
   return (
     <motion.section
-      initial={{ opacity: 0, y: 18 }}
+      initial={{ opacity: 0, y: 14 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className="relative w-full"
+      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+      className="relative flex h-full w-full flex-col bg-surface-1"
     >
-      <Reveal result={result} />
-      <Breakdown result={result} />
-      <Capture
-        result={result}
-        onSubmit={onSubmit}
-        sending={sending}
-        captureError={captureError}
+      {/* Subtle radial glow behind the headline */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 mx-auto h-[420px] max-w-[1180px]"
+        style={{
+          background:
+            'radial-gradient(ellipse at 50% 0%, rgba(255,122,69,0.18), transparent 65%)',
+        }}
       />
-      <div className="mx-auto flex w-full max-w-[1180px] justify-center px-5 pb-16 sm:px-8">
+
+      {/* HEADER */}
+      <header className="relative z-[1] flex flex-wrap items-center justify-between gap-3 border-b border-ink/[0.06] px-5 py-4 sm:px-8">
+        <div className="flex items-center gap-2 min-w-0">
+          <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#FF7A45]/15 text-[#FF7A45]">
+            <TrendingUp size={14} strokeWidth={2.4} />
+          </span>
+          <span className="truncate text-[13px] font-semibold text-ink">
+            {result.domain}
+          </span>
+          <span className="hidden sm:inline text-[12px] text-ink-muted">·</span>
+          <span className="hidden sm:inline truncate text-[12px] text-ink-muted">
+            {result.inferredIndustry}
+          </span>
+          <span className="hidden md:inline text-[12px] text-ink-muted">·</span>
+          <span className="hidden md:inline truncate text-[12px] text-ink-muted">
+            {result.inferredLocation}
+          </span>
+        </div>
         <button
           type="button"
           onClick={onReset}
-          className="inline-flex items-center gap-2 text-[13px] font-semibold text-ink-muted transition-colors hover:text-ink"
+          className="inline-flex items-center gap-1.5 rounded-full border border-ink/10 bg-white px-3 py-1.5 text-[12px] font-semibold text-ink-soft transition-colors hover:bg-ink/[0.04] hover:text-ink"
         >
-          <RotateCcw size={14} strokeWidth={2.4} />
-          Weitere Domain analysieren
+          <RotateCcw size={12} strokeWidth={2.4} />
+          <span className="hidden sm:inline">{c.reset}</span>
         </button>
+      </header>
+
+      {/* MAIN GRID */}
+      <div className="relative z-[1] grid flex-1 min-h-0 grid-cols-1 gap-4 p-5 sm:p-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] lg:gap-6">
+        {/* LEFT — counter + curve */}
+        <div className="flex flex-col gap-4 min-h-0">
+          <Counter result={result} lang={lang} />
+          <CurvePanel
+            current={result.current.estMonthlyTrafficValueGbp}
+            projected={result.projected.estMonthlyTrafficValueGbp}
+            timelineDays={result.projected.timelineDays}
+            lang={lang}
+          />
+        </div>
+
+        {/* RIGHT — top keywords + top blockers */}
+        <div className="grid grid-cols-1 gap-4 min-h-0 sm:grid-cols-2 lg:grid-cols-1 lg:gap-4">
+          <KeywordsPanel result={result} lang={lang} />
+          <BlockersPanel result={result} lang={lang} />
+        </div>
       </div>
+
+      {/* CAPTURE FOOTER — inline form */}
+      <footer className="relative z-[1] border-t border-ink/[0.06] bg-surface-2 px-5 py-4 sm:px-8 sm:py-5">
+        <form
+          onSubmit={onSubmit}
+          className="grid grid-cols-1 gap-3 sm:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)_auto] sm:items-center"
+        >
+          <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-3">
+            <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#FF7A45]">
+              {c.capture.eyebrow}
+            </span>
+            <span className="text-[13px] font-semibold text-ink">
+              {c.capture.headline.replace(/\?$/, '')} → {headlineGbp}/{c.curve.perMonth}
+            </span>
+          </div>
+          <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+            <input
+              name="name"
+              required
+              placeholder={c.capture.namePlaceholder}
+              className="w-full rounded-full border border-ink/15 bg-white px-4 py-2.5 text-[14px] text-ink placeholder:text-ink-faint outline-none transition focus:border-ink/55 focus:ring-2 focus:ring-ink/10"
+            />
+            <input
+              name="email"
+              type="email"
+              required
+              placeholder={c.capture.emailPlaceholder}
+              className="w-full rounded-full border border-ink/15 bg-white px-4 py-2.5 text-[14px] text-ink placeholder:text-ink-faint outline-none transition focus:border-ink/55 focus:ring-2 focus:ring-ink/10"
+            />
+          </div>
+          <button
+            type="submit"
+            disabled={sending}
+            className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#FF7A45] px-6 py-3 text-[14px] font-semibold text-white transition-all duration-200 hover:bg-[#F15F2B] hover:shadow-pop disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+          >
+            {sending ? (
+              <>
+                <Loader2 size={15} className="animate-spin" />
+                {c.capture.submitting}
+              </>
+            ) : (
+              <>
+                {c.capture.submit}
+                <ArrowRight size={15} strokeWidth={2.4} />
+              </>
+            )}
+          </button>
+          <input
+            type="text"
+            name="_honey"
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+            className="absolute left-[-9999px] h-0 w-0 opacity-0"
+          />
+        </form>
+        {captureError ? (
+          <p
+            role="alert"
+            className="mt-2 text-[12px] text-red-700"
+          >
+            {captureError}
+          </p>
+        ) : (
+          <p className="mt-2 text-[11px] text-ink-faint">{c.capture.note}</p>
+        )}
+      </footer>
     </motion.section>
   )
 }
 
-/* --------------------------------- REVEAL --------------------------------- */
+/* --------------------------------- COUNTER -------------------------------- */
 
-function Reveal({ result }: { result: AnalysisResult }) {
+function Counter({ result, lang }: { result: AnalysisResult; lang: 'de' | 'en' }) {
+  const c = COPY[lang]
   const reduce = useReducedMotion()
   const [display, setDisplay] = useState(reduce ? result.monthlyOpportunityGbp : 0)
   const [showMaths, setShowMaths] = useState(false)
@@ -74,7 +193,7 @@ function Reveal({ result }: { result: AnalysisResult }) {
       return
     }
     const start = performance.now()
-    const duration = 1800
+    const duration = 1600
     const target = result.monthlyOpportunityGbp
     let raf = 0
     const tick = (now: number) => {
@@ -88,110 +207,77 @@ function Reveal({ result }: { result: AnalysisResult }) {
   }, [result.monthlyOpportunityGbp, reduce])
 
   return (
-    <div className="relative overflow-hidden">
+    <div className="rounded-card-lg border border-ink/[0.06] bg-white p-5 shadow-card sm:p-6">
+      <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-ink-muted">
+        {c.reveal.metricLabel}
+      </p>
       <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 mx-auto h-[640px] max-w-[1180px]"
+        className="mt-2 text-ink"
         style={{
-          background:
-            'radial-gradient(ellipse at 50% 0%, rgba(255,122,69,0.22), transparent 65%)',
+          fontSize: 'clamp(48px, 7.5vw, 96px)',
+          lineHeight: 0.95,
+          fontWeight: 700,
+          letterSpacing: '-0.035em',
+          fontFeatureSettings: '"tnum" 1, "lnum" 1',
         }}
-      />
-      <div className="relative mx-auto flex w-full max-w-[1080px] flex-col items-center px-5 py-14 text-center sm:px-8 sm:py-20">
-        <span className="inline-flex items-center gap-2 rounded-full border border-ink/10 bg-white px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-ink-muted shadow-ring">
-          <TrendingUp size={13} strokeWidth={2.4} className="text-[#FF7A45]" />
-          {result.domain} · {result.inferredIndustry} · {result.inferredLocation}
-        </span>
-
-        <p className="mt-8 text-[13px] uppercase tracking-[0.16em] text-ink-muted">
-          Geschätzter ungenutzter Umsatz pro Monat
-        </p>
-
-        <div
-          className="mt-3 text-ink"
-          style={{
-            fontSize: 'clamp(64px, 13vw, 180px)',
-            lineHeight: 0.96,
-            fontWeight: 700,
-            letterSpacing: '-0.04em',
-            fontFeatureSettings: '"tnum" 1, "lnum" 1',
-          }}
-        >
-          {formatGbp(display)}
-        </div>
-        <p className="mt-2 text-[15px] text-ink-soft">/ Monat aus organischer Suche</p>
-
-        <button
-          type="button"
-          onClick={() => setShowMaths((v) => !v)}
-          className="mt-6 text-[12px] uppercase tracking-[0.14em] font-bold text-[#FF7A45] transition-colors hover:text-[#F15F2B]"
-        >
-          {showMaths ? 'Schließen' : 'So haben wir gerechnet'}
-        </button>
-
-        {showMaths && (
-          <motion.div
-            initial={{ opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.35 }}
-            className="mt-5 max-w-[700px] rounded-2xl border border-ink/[0.06] bg-surface-2 p-6 text-left text-[13px] leading-[1.6] text-ink-soft"
-          >
-            <p>
-              Summe über alle Keywords aus: <em>monatliches Suchvolumen × CTR an Zielposition × Branchen-Conversion-Rate × Branchen-AOV</em>, abzüglich aktuell geschätztem Wert auf aktueller Position.
-            </p>
-            <ul className="mt-3 space-y-1.5">
-              <li>
-                · CTR-Kurve: <span className="text-ink font-medium">{result.calculation.ctrCurveSource}</span>
-              </li>
-              <li>
-                · Conversion-Rate (Branche):{' '}
-                <span className="text-ink font-medium">
-                  {(result.calculation.industryConversionRate * 100).toFixed(1)}%
-                </span>
-              </li>
-              <li>
-                · AOV (Branche):{' '}
-                <span className="text-ink font-medium">{formatGbp(result.calculation.industryAovGbp)}</span>
-              </li>
-            </ul>
-            <p className="mt-3 text-ink-muted">{result.calculation.notes}</p>
-          </motion.div>
-        )}
-
-        <div className="mt-12 w-full max-w-[860px]">
-          <NinetyDayCurve
-            currentValue={result.current.estMonthlyTrafficValueGbp}
-            projectedValue={result.projected.estMonthlyTrafficValueGbp}
-            timelineDays={result.projected.timelineDays}
-          />
-        </div>
+      >
+        {intGbp(display)}
       </div>
+      <p className="mt-1 text-[13px] text-ink-soft">{c.reveal.metricSuffix}</p>
+
+      <button
+        type="button"
+        onClick={() => setShowMaths((v) => !v)}
+        className="mt-3 text-[11px] uppercase tracking-[0.14em] font-bold text-[#FF7A45] transition-colors hover:text-[#F15F2B]"
+      >
+        {showMaths ? c.reveal.hideMaths : c.reveal.showMaths}
+      </button>
+
+      {showMaths && (
+        <motion.div
+          initial={{ opacity: 0, y: 4 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3 }}
+          className="mt-3 rounded-2xl border border-ink/[0.06] bg-surface-2 p-4 text-left text-[12px] leading-[1.5] text-ink-soft"
+        >
+          <p>{c.reveal.mathsIntro}</p>
+          <ul className="mt-2 space-y-1">
+            <li>· {c.reveal.mathsCtr}: <span className="text-ink font-semibold">{result.calculation.ctrCurveSource}</span></li>
+            <li>· {c.reveal.mathsConv}: <span className="text-ink font-semibold">{(result.calculation.industryConversionRate * 100).toFixed(1)}%</span></li>
+            <li>· {c.reveal.mathsAov}: <span className="text-ink font-semibold">{intGbp(result.calculation.industryAovGbp)}</span></li>
+          </ul>
+          <p className="mt-2 text-ink-muted">{result.calculation.notes}</p>
+        </motion.div>
+      )}
     </div>
   )
 }
 
 /* ----------------------------- 90-DAY CURVE ------------------------------- */
 
-function NinetyDayCurve({
-  currentValue,
-  projectedValue,
+function CurvePanel({
+  current,
+  projected,
   timelineDays,
+  lang,
 }: {
-  currentValue: number
-  projectedValue: number
+  current: number
+  projected: number
   timelineDays: number
+  lang: 'de' | 'en'
 }) {
+  const c = COPY[lang]
   const reduce = useReducedMotion()
-  const w = 860
-  const h = 240
-  const padX = 64
-  const padY = 36
+  const w = 600
+  const h = 160
+  const padX = 56
+  const padY = 24
 
-  const range = Math.max(projectedValue - currentValue, 1)
+  const range = Math.max(projected - current, 1)
   const yFor = (v: number) => {
     const minY = padY
     const maxY = h - padY
-    const t = (v - currentValue) / range
+    const t = (v - current) / range
     return maxY - t * (maxY - minY)
   }
   const xFor = (day: number) => padX + (day / timelineDays) * (w - padX * 2)
@@ -202,36 +288,36 @@ function NinetyDayCurve({
     const day = (i / samples) * timelineDays
     const t = i / samples
     const eased = 1 - Math.pow(1 - t, 1.7)
-    const v = currentValue + eased * range
+    const v = current + eased * range
     pts.push([xFor(day), yFor(v)])
   }
   const pathD = pts.map(([x, y], i) => `${i === 0 ? 'M' : 'L'}${x.toFixed(1)},${y.toFixed(1)}`).join(' ')
   const areaD = `${pathD} L${xFor(timelineDays).toFixed(1)},${(h - padY).toFixed(1)} L${xFor(0).toFixed(1)},${(h - padY).toFixed(1)} Z`
 
   return (
-    <div className="rounded-card-lg border border-ink/[0.06] bg-white p-5 shadow-card sm:p-7">
+    <div className="flex-1 min-h-0 rounded-card-lg border border-ink/[0.06] bg-white p-4 shadow-card sm:p-5">
       <div className="flex items-baseline justify-between">
-        <p className="text-[12px] font-bold uppercase tracking-[0.14em] text-ink-muted">
-          90-Tage-Projektion
+        <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-ink-muted">
+          {c.curve.title}
         </p>
-        <p className="text-[12px] text-ink-muted">Heute → Tag {timelineDays}</p>
+        <p className="text-[11px] text-ink-faint">{c.curve.range(timelineDays)}</p>
       </div>
-      <svg viewBox={`0 0 ${w} ${h}`} className="mt-4 w-full" role="img" aria-label="90-Tage-Projektion">
+      <svg viewBox={`0 0 ${w} ${h}`} className="mt-2 w-full" role="img" aria-label={c.curve.aria}>
         <defs>
           <linearGradient id="curve-fill" x1="0" x2="0" y1="0" y2="1">
-            <stop offset="0%" stopColor="#FF7A45" stopOpacity="0.35" />
+            <stop offset="0%" stopColor="#FF7A45" stopOpacity="0.30" />
             <stop offset="100%" stopColor="#FF7A45" stopOpacity="0" />
           </linearGradient>
         </defs>
 
-        {[0, 0.25, 0.5, 0.75, 1].map((p, i) => (
+        {[0, 0.5, 1].map((p, i) => (
           <line
             key={i}
             x1={padX}
             x2={w - padX}
             y1={padY + p * (h - padY * 2)}
             y2={padY + p * (h - padY * 2)}
-            stroke="rgba(38,39,47,0.08)"
+            stroke="rgba(38,39,47,0.06)"
             strokeDasharray="3 5"
           />
         ))}
@@ -241,7 +327,7 @@ function NinetyDayCurve({
           fill="url(#curve-fill)"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: reduce ? 0 : 1.4, delay: reduce ? 0 : 0.6 }}
+          transition={{ duration: reduce ? 0 : 1.2, delay: reduce ? 0 : 0.5 }}
         />
         <motion.path
           d={pathD}
@@ -251,37 +337,37 @@ function NinetyDayCurve({
           strokeLinecap="round"
           initial={{ pathLength: reduce ? 1 : 0 }}
           animate={{ pathLength: 1 }}
-          transition={{ duration: reduce ? 0 : 1.6, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: reduce ? 0 : 1.4, ease: [0.22, 1, 0.36, 1] }}
         />
 
-        <circle cx={xFor(0)} cy={yFor(currentValue)} r={5} fill="#26272F" />
+        <circle cx={xFor(0)} cy={yFor(current)} r={4} fill="#26272F" />
         <text
           x={xFor(0) - 8}
-          y={yFor(currentValue) + 22}
+          y={yFor(current) + 4}
           textAnchor="end"
           fill="#66636D"
-          fontSize="11"
+          fontSize="10"
           fontWeight="500"
         >
-          Heute · {formatGbp(currentValue)}/Mo
+          {c.curve.todayPrefix}
         </text>
 
         <motion.g
           initial={{ opacity: reduce ? 1 : 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.4, delay: reduce ? 0 : 1.7 }}
+          transition={{ duration: 0.4, delay: reduce ? 0 : 1.5 }}
         >
-          <circle cx={xFor(timelineDays)} cy={yFor(projectedValue)} r={6} fill="#FF7A45" />
-          <circle cx={xFor(timelineDays)} cy={yFor(projectedValue)} r={12} fill="#FF7A45" fillOpacity="0.25" />
+          <circle cx={xFor(timelineDays)} cy={yFor(projected)} r={5} fill="#FF7A45" />
+          <circle cx={xFor(timelineDays)} cy={yFor(projected)} r={10} fill="#FF7A45" fillOpacity="0.25" />
           <text
             x={xFor(timelineDays) - 8}
-            y={yFor(projectedValue) - 14}
+            y={yFor(projected) - 10}
             textAnchor="end"
             fill="#26272F"
-            fontSize="13"
+            fontSize="11"
             fontWeight="700"
           >
-            Tag {timelineDays} · {formatGbp(projectedValue)}/Mo
+            {c.curve.daySuffix} {timelineDays} · {intGbp(projected)}/{c.curve.perMonth}
           </text>
         </motion.g>
       </svg>
@@ -289,330 +375,87 @@ function NinetyDayCurve({
   )
 }
 
-/* -------------------------------- BREAKDOWN ------------------------------- */
+/* ---------------------------- KEYWORDS PANEL ----------------------------- */
 
-type Tab = 'rankings' | 'money' | 'blockers'
-
-function Breakdown({ result }: { result: AnalysisResult }) {
-  const [tab, setTab] = useState<Tab>('rankings')
-
+function KeywordsPanel({ result, lang }: { result: AnalysisResult; lang: 'de' | 'en' }) {
+  const c = COPY[lang]
+  const top = result.keywords.slice(0, 5)
   return (
-    <div className="relative bg-surface-2 py-14 sm:py-20">
-      <div className="mx-auto w-full max-w-[1080px] px-5 sm:px-8">
-        <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#FF7A45]">
-          Die Aufschlüsselung
-        </p>
-        <h3
-          className="mt-2 max-w-[640px] text-ink"
-          style={{
-            fontSize: 'clamp(28px, 3.4vw, 44px)',
-            lineHeight: 1.05,
-            fontWeight: 700,
-            letterSpacing: '-0.018em',
-          }}
-        >
-          Warum diese Zahl nicht erfunden ist.
-        </h3>
-
-        <div className="mt-7 inline-flex flex-wrap gap-1.5 rounded-full border border-ink/10 bg-white p-1 shadow-ring">
-          <TabButton id="rankings" current={tab} onClick={setTab}>
-            Aktuelle Rankings
-          </TabButton>
-          <TabButton id="money" current={tab} onClick={setTab}>
-            Geld auf dem Tisch
-          </TabButton>
-          <TabButton id="blockers" current={tab} onClick={setTab}>
-            Was Sie blockiert
-          </TabButton>
-        </div>
-
-        <div className="mt-7">
-          {tab === 'rankings' && <RankingsView result={result} />}
-          {tab === 'money' && <MoneyView result={result} />}
-          {tab === 'blockers' && <BlockersView result={result} />}
-        </div>
-      </div>
-    </div>
-  )
-}
-
-function TabButton({
-  id,
-  current,
-  onClick,
-  children,
-}: {
-  id: Tab
-  current: Tab
-  onClick: (t: Tab) => void
-  children: React.ReactNode
-}) {
-  const active = id === current
-  return (
-    <button
-      type="button"
-      onClick={() => onClick(id)}
-      className={`rounded-full px-4 py-2 text-[13px] font-semibold transition-colors ${
-        active ? 'bg-[#FF7A45] text-white' : 'text-ink hover:bg-ink/[0.04]'
-      }`}
-    >
-      {children}
-    </button>
-  )
-}
-
-function RankingsView({ result }: { result: AnalysisResult }) {
-  return (
-    <ul className="space-y-3">
-      {result.keywords.map((k, idx) => (
-        <motion.li
-          key={k.keyword}
-          initial={{ opacity: 0, x: -8 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.4, delay: idx * 0.05 }}
-          className="rounded-card border border-ink/[0.06] bg-white p-4 shadow-ring sm:p-5"
-        >
-          <div className="flex flex-wrap items-baseline justify-between gap-2">
-            <span className="text-[15px] font-semibold text-ink">{k.keyword}</span>
-            <span className="text-[12px] font-medium text-ink-muted">
-              {k.monthlySearches.toLocaleString('de-DE')} Suchen/Mo
+    <div className="rounded-card-lg border border-ink/[0.06] bg-white p-4 shadow-card sm:p-5 min-h-0 flex flex-col">
+      <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-ink-muted">
+        {c.breakdown.tabs.rankings}
+      </p>
+      <ul className="mt-3 space-y-2 flex-1 min-h-0 overflow-y-auto" data-lenis-prevent>
+        {top.map((k, idx) => (
+          <motion.li
+            key={k.keyword}
+            initial={{ opacity: 0, x: -6 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.3, delay: idx * 0.04 }}
+            className="flex items-center gap-3"
+          >
+            <span className="flex-1 min-w-0">
+              <span className="block truncate text-[13px] font-semibold text-ink">{k.keyword}</span>
+              <span className="text-[11px] text-ink-muted">
+                {k.monthlySearches.toLocaleString(lang === 'de' ? 'de-DE' : 'en-GB')} {c.rankings.searchesPerMo}
+                {' · '}
+                <span className="font-semibold text-[#FF7A45]">
+                  {k.estMonthlyValueGbp > 0 ? `+${intGbp(k.estMonthlyValueGbp)}` : '—'}
+                </span>
+              </span>
             </span>
-          </div>
-          <div className="mt-3 flex items-center gap-3">
-            <div className="h-2 flex-1 overflow-hidden rounded-full bg-ink/[0.05]">
-              <motion.div
-                className="h-full rounded-full"
-                style={{ backgroundColor: RANK_COLOUR[k.currentRankBand] }}
-                initial={{ width: 0 }}
-                animate={{ width: rankWidth(k.currentRankBand) }}
-                transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.1 + idx * 0.05 }}
-              />
-            </div>
             <span
-              className="rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-[0.08em]"
+              className="rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.06em]"
               style={{
                 backgroundColor: `${RANK_COLOUR[k.currentRankBand]}1f`,
                 color: RANK_COLOUR[k.currentRankBand],
               }}
             >
-              {RANK_LABEL[k.currentRankBand]}
+              {c.rankings.bands[k.currentRankBand]}
             </span>
-          </div>
-        </motion.li>
-      ))}
-    </ul>
-  )
-}
-
-function rankWidth(band: KeywordRow['currentRankBand']) {
-  switch (band) {
-    case 'top3':
-      return '100%'
-    case 'page1':
-      return '78%'
-    case 'page2-3':
-      return '38%'
-    case 'page4plus':
-      return '12%'
-    case 'unranked':
-      return '4%'
-  }
-}
-
-function MoneyView({ result }: { result: AnalysisResult }) {
-  return (
-    <div className="overflow-hidden rounded-card border border-ink/[0.06] bg-white shadow-ring">
-      <div className="overflow-x-auto">
-        <table className="min-w-[680px] w-full text-left text-[13px]">
-          <thead>
-            <tr className="border-b border-ink/[0.06] bg-surface-2 text-[11px] uppercase tracking-[0.1em] text-ink-muted">
-              <th className="px-5 py-3 font-bold">Keyword</th>
-              <th className="px-5 py-3 text-right font-bold">Suchen/Mo</th>
-              <th className="px-5 py-3 text-right font-bold">Jetzt</th>
-              <th className="px-5 py-3 text-right font-bold">Wenn Seite 1</th>
-              <th className="px-5 py-3 text-right font-bold">£/Mo</th>
-            </tr>
-          </thead>
-          <tbody>
-            {result.keywords.map((k) => (
-              <tr key={k.keyword} className="border-b border-ink/[0.04] last:border-b-0">
-                <td className="px-5 py-3.5 text-ink">{k.keyword}</td>
-                <td className="px-5 py-3.5 text-right tabular-nums text-ink-muted">
-                  {k.monthlySearches.toLocaleString('de-DE')}
-                </td>
-                <td className="px-5 py-3.5 text-right tabular-nums text-ink-muted">
-                  {k.estCurrentClicks} Klicks
-                </td>
-                <td className="px-5 py-3.5 text-right tabular-nums text-ink-muted">
-                  {k.estPage1Clicks} Klicks
-                </td>
-                <td className="px-5 py-3.5 text-right tabular-nums font-bold text-[#FF7A45]">
-                  {formatGbp(k.estMonthlyValueGbp)}
-                </td>
-              </tr>
-            ))}
-            <tr className="bg-[#FF7A45]/[0.08]">
-              <td colSpan={4} className="px-5 py-3.5 text-right font-bold text-ink">
-                Gesamtopportunity pro Monat
-              </td>
-              <td className="px-5 py-3.5 text-right tabular-nums text-[15px] font-bold text-[#FF7A45]">
-                {formatGbp(result.monthlyOpportunityGbp)}
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+          </motion.li>
+        ))}
+      </ul>
     </div>
   )
 }
 
-function BlockersView({ result }: { result: AnalysisResult }) {
-  const impactStyle = {
-    high: { bg: '#fef2f2', text: '#b91c1c', label: 'Hoher Impact' },
-    medium: { bg: '#fff7ed', text: '#c2410c', label: 'Mittlerer Impact' },
-    low: { bg: '#f0f9ff', text: '#0369a1', label: 'Niedriger Impact' },
+/* ---------------------------- BLOCKERS PANEL ----------------------------- */
+
+function BlockersPanel({ result, lang }: { result: AnalysisResult; lang: 'de' | 'en' }) {
+  const c = COPY[lang]
+  const impactColour = {
+    high: '#ef4444',
+    medium: '#f59e0b',
+    low: '#0369a1',
   } as const
+  const top = result.blockers.slice(0, 3)
   return (
-    <ul className="space-y-3">
-      {result.blockers.map((b, idx) => {
-        const s = impactStyle[b.impact]
-        return (
+    <div className="rounded-card-lg border border-ink/[0.06] bg-white p-4 shadow-card sm:p-5 min-h-0 flex flex-col">
+      <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-ink-muted">
+        {c.breakdown.tabs.blockers}
+      </p>
+      <ul className="mt-3 space-y-2.5 flex-1 min-h-0 overflow-y-auto" data-lenis-prevent>
+        {top.map((b, idx) => (
           <motion.li
             key={b.title}
-            initial={{ opacity: 0, x: -8 }}
+            initial={{ opacity: 0, x: -6 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.4, delay: idx * 0.05 }}
-            className="rounded-card border border-ink/[0.06] bg-white p-5 shadow-ring"
+            transition={{ duration: 0.3, delay: idx * 0.04 }}
+            className="flex gap-3"
           >
-            <div className="flex flex-wrap items-center justify-between gap-2">
-              <span className="text-[15px] font-semibold text-ink">{b.title}</span>
-              <span
-                className="rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-[0.08em]"
-                style={{ backgroundColor: s.bg, color: s.text }}
-              >
-                {s.label}
-              </span>
-            </div>
-            <p className="mt-2 text-[13.5px] leading-[1.55] text-ink-soft">{b.detail}</p>
+            <span
+              className="mt-1 h-2 w-2 shrink-0 rounded-full"
+              style={{ backgroundColor: impactColour[b.impact] }}
+              aria-label={c.blockers.impacts[b.impact]}
+            />
+            <span className="flex-1 min-w-0">
+              <span className="block text-[13px] font-semibold text-ink">{b.title}</span>
+              <span className="block text-[11.5px] text-ink-muted leading-[1.5]">{b.detail}</span>
+            </span>
           </motion.li>
-        )
-      })}
-    </ul>
-  )
-}
-
-/* --------------------------------- CAPTURE -------------------------------- */
-
-function Capture({
-  result,
-  onSubmit,
-  sending,
-  captureError,
-}: {
-  result: AnalysisResult
-  onSubmit: (e: FormEvent<HTMLFormElement>) => void
-  sending: boolean
-  captureError: string | null
-}) {
-  const formRef = useRef<HTMLDivElement>(null)
-
-  return (
-    <div className="relative bg-white py-16 sm:py-20" ref={formRef} id="capture">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 mx-auto h-[420px] max-w-[1180px]"
-        style={{
-          background:
-            'radial-gradient(ellipse at 50% 0%, rgba(255,122,69,0.18), transparent 65%)',
-        }}
-      />
-      <div className="relative mx-auto w-full max-w-[680px] px-5 text-center sm:px-8">
-        <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#FF7A45]">
-          Die 90-Tage-Roadmap
-        </p>
-        <h3
-          className="mt-3 text-ink"
-          style={{
-            fontSize: 'clamp(28px, 3.6vw, 44px)',
-            lineHeight: 1.05,
-            fontWeight: 700,
-            letterSpacing: '-0.018em',
-          }}
-        >
-          Möchten Sie die volle Roadmap?
-        </h3>
-        <p className="mx-auto mt-4 max-w-[480px] text-[15px] leading-[1.55] text-ink-soft">
-          Der detaillierte Plan, um diese {formatGbp(result.monthlyOpportunityGbp)}/Monat zu erschließen — Keyword für Keyword, Blocker für Blocker, in 90 Tagen.
-        </p>
-
-        <form
-          onSubmit={onSubmit}
-          className="mx-auto mt-8 w-full max-w-[460px] rounded-card-lg border border-ink/10 bg-surface-2 p-6 text-left shadow-card"
-        >
-          <label className="block">
-            <span className="mb-2 block text-[11px] font-bold uppercase tracking-[0.1em] text-ink-muted">
-              Name
-            </span>
-            <input
-              name="name"
-              required
-              placeholder="Ihr vollständiger Name"
-              className="w-full rounded-2xl border border-ink/15 bg-white px-4 py-3 text-[15px] text-ink placeholder:text-ink-faint outline-none transition focus:border-ink/55 focus:ring-2 focus:ring-ink/10"
-            />
-          </label>
-          <label className="mt-4 block">
-            <span className="mb-2 block text-[11px] font-bold uppercase tracking-[0.1em] text-ink-muted">
-              E-Mail
-            </span>
-            <input
-              name="email"
-              type="email"
-              required
-              placeholder="ihre@firma.com"
-              className="w-full rounded-2xl border border-ink/15 bg-white px-4 py-3 text-[15px] text-ink placeholder:text-ink-faint outline-none transition focus:border-ink/55 focus:ring-2 focus:ring-ink/10"
-            />
-          </label>
-
-          <input
-            type="text"
-            name="_honey"
-            tabIndex={-1}
-            autoComplete="off"
-            aria-hidden="true"
-            className="absolute left-[-9999px] h-0 w-0 opacity-0"
-          />
-
-          {captureError && (
-            <div
-              role="alert"
-              className="mt-4 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-[13px] text-red-700"
-            >
-              {captureError}
-            </div>
-          )}
-
-          <button
-            type="submit"
-            disabled={sending}
-            className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#FF7A45] px-6 py-3.5 text-[15px] font-semibold text-white transition-all duration-200 hover:bg-[#F15F2B] hover:shadow-pop disabled:cursor-not-allowed disabled:opacity-60"
-          >
-            {sending ? (
-              <>
-                <Loader2 size={16} className="animate-spin" />
-                Wird gesendet…
-              </>
-            ) : (
-              <>
-                Roadmap an mich senden
-                <ArrowRight size={16} strokeWidth={2.4} />
-              </>
-            )}
-          </button>
-          <p className="mt-3 text-center text-[11px] text-ink-faint">
-            Kein Spam. Wir senden die Roadmap einmal und hören nur auf Wunsch wieder.
-          </p>
-        </form>
-      </div>
+        ))}
+      </ul>
     </div>
   )
 }

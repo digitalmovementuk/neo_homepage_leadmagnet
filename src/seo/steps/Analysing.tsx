@@ -1,35 +1,26 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Check, Loader2 } from 'lucide-react'
+import { useLang } from '../../lib/i18n'
+import { COPY } from '../lib/copy'
 
 interface Props {
   domain: string
 }
 
-const LINES = [
-  'Homepage wird gelesen…',
-  'Branche und Standort werden erkannt…',
-  'Google PageSpeed läuft (Mobile & Desktop)…',
-  'Core Web Vitals werden gemessen — LCP, CLS, INP…',
-  'Meta-Tags, Headings, Schema-Markup werden geprüft…',
-  'Hochintent-Keywords werden zugeordnet…',
-  'Monatliche Suchvolumen werden geschätzt…',
-  'Click-Through-Raten je Position werden berechnet…',
-  'Branchen-Conversion-Raten und AOV werden gekreuzt…',
-  '90-Tage-Projektion wird modelliert…',
-  'Opportunity-Zahl wird zusammengesetzt…',
-] as const
-
 export function AnalysingStep({ domain }: Props) {
+  const { lang } = useLang()
+  const c = COPY[lang]
+  const lines = c.analysing.lines
   const [activeIdx, setActiveIdx] = useState(0)
 
   useEffect(() => {
     const stepDelay = 1100
     const id = window.setInterval(() => {
-      setActiveIdx((i) => (i < LINES.length - 1 ? i + 1 : i))
+      setActiveIdx((i) => (i < lines.length - 1 ? i + 1 : i))
     }, stepDelay)
     return () => window.clearInterval(id)
-  }, [])
+  }, [lines.length])
 
   return (
     <motion.section
@@ -37,7 +28,7 @@ export function AnalysingStep({ domain }: Props) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0, y: -12 }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      className="relative flex min-h-full w-full flex-col items-center justify-center px-5 py-16 sm:px-8 sm:py-20"
+      className="relative flex h-full w-full flex-col items-center justify-center px-5 py-10 sm:px-8 sm:py-14"
     >
       <div
         aria-hidden
@@ -50,7 +41,7 @@ export function AnalysingStep({ domain }: Props) {
 
       <div className="relative w-full max-w-[680px]">
         <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#FF7A45]">
-          Analyse läuft
+          {c.analysing.eyebrow}
         </p>
         <h2
           className="mt-3 break-words text-ink"
@@ -64,20 +55,17 @@ export function AnalysingStep({ domain }: Props) {
           {domain}
         </h2>
 
-        <ul className="mt-10 space-y-3">
-          {LINES.map((line, idx) => {
+        <ul className="mt-8 space-y-2.5">
+          {lines.map((line, idx) => {
             const state: 'done' | 'active' | 'pending' =
               idx < activeIdx ? 'done' : idx === activeIdx ? 'active' : 'pending'
             return (
               <motion.li
                 key={line}
                 initial={{ opacity: 0, x: -8 }}
-                animate={{
-                  opacity: state === 'pending' ? 0.4 : 1,
-                  x: 0,
-                }}
+                animate={{ opacity: state === 'pending' ? 0.4 : 1, x: 0 }}
                 transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1], delay: idx * 0.06 }}
-                className="flex items-center gap-3 text-[15px]"
+                className="flex items-center gap-3 text-[14px]"
               >
                 <span
                   className={`grid h-7 w-7 shrink-0 place-items-center rounded-full transition-colors duration-300 ${
