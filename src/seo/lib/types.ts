@@ -6,7 +6,8 @@ export interface KeywordRow {
   currentRankBand: RankBand
   estCurrentClicks: number
   estPage1Clicks: number
-  estMonthlyValueGbp: number
+  /** Money on the table, in the result's currency. */
+  estMonthlyValue: number
   intent: 'transactional' | 'commercial' | 'informational' | 'navigational'
 }
 
@@ -22,8 +23,8 @@ export interface Blocker {
 }
 
 export interface Calculation {
-  industryConversionRate: number
-  industryAovGbp: number
+  conversionRateUsed: number
+  aovUsed: number
   ctrCurveSource: string
   notes: string
 }
@@ -38,15 +39,18 @@ export interface PageSpeedSummary {
 
 export interface AnalysisResult {
   domain: string
+  /** ISO 4217 code echoed from the request (EUR, GBP, USD, …). */
+  currency: string
   inferredIndustry: string
   inferredLocation: string
-  monthlyOpportunityGbp: number
+  /** Total monthly revenue opportunity, in `currency`. */
+  monthlyOpportunity: number
   current: {
-    estMonthlyTrafficValueGbp: number
+    estMonthlyTrafficValue: number
     estMonthlyClicks: number
   }
   projected: {
-    estMonthlyTrafficValueGbp: number
+    estMonthlyTrafficValue: number
     estMonthlyClicks: number
     timelineDays: number
   }
@@ -63,6 +67,14 @@ export interface AnalysisResult {
 
 export interface AnalyseRequest {
   domain: string
+  /** ISO 4217 currency code, e.g. "EUR". */
+  currency: string
+  /** Visitor → customer conversion rate as a fraction (0.03 = 3%). */
+  conversionRate: number
+  /** Average order/sale/lead value in `currency`. */
+  aov: number
+  /** Optional free-text industry hint (e.g. "dentist", "B2B SaaS"). */
+  industryHint?: string
 }
 
 export type AnalyseResponse =

@@ -2,31 +2,46 @@ import { useEffect, useRef, useState, type FormEvent } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import { useLang } from '../lib/i18n'
 import type { AnalyseResponse, AnalysisResult } from './lib/types'
-import { COPY, intGbp } from './lib/copy'
-import { InputStep } from './steps/Input'
+import { COPY } from './lib/copy'
+import { formatMoney } from './lib/currencies'
+import { InputStep, type InputPayload } from './steps/Input'
 import { AnalysingStep } from './steps/Analysing'
-import { ResultsStep } from './steps/Results'
+import { RankingsPage } from './steps/Rankings'
+import { MoneyPage } from './steps/Money'
+import { BlockersPage } from './steps/Blockers'
+import { SummaryPage } from './steps/Summary'
 import { SentStep } from './steps/Sent'
 
-type Step = 'input' | 'analysing' | 'results' | 'sent'
+type Step = 'input' | 'analysing' | 'rankings' | 'money' | 'blockers' | 'summary' | 'sent'
 
 const FORM_ENDPOINT = 'https://formsubmit.co/ajax/info@neotheagency.com'
+
+const DEFAULT_INPUT: InputPayload = {
+  domain: '',
+  currency: 'EUR',
+  aov: 100,
+  conversionRate: 0.03,
+  industryHint: '',
+}
 
 export default function SeoAnalyser() {
   const { lang } = useLang()
   const c = COPY[lang]
 
   const [step, setStep] = useState<Step>('input')
-  const [domain, setDomain] = useState('')
+  const [payload, setPayload] = useState<InputPayload>(() => ({
+    ...DEFAULT_INPUT,
+    currency: lang === 'de' ? 'EUR' : 'GBP',
+  }))
   const [result, setResult] = useState<AnalysisResult | null>(null)
   const [analysisError, setAnalysisError] = useState<string | null>(null)
   const [captureSending, setCaptureSending] = useState(false)
   const [captureError, setCaptureError] = useState<string | null>(null)
   const requestStartRef = useRef<number>(0)
 
-  const handleAnalyse = async (rawDomain: string) => {
+  const handleAnalyse = async (p: InputPayload) => {
     setAnalysisError(null)
-    setDomain(rawDomain)
+    setPayload(p)
     setStep('analysing')
     requestStartRef.current = Date.now()
 
@@ -34,7 +49,7 @@ export default function SeoAnalyser() {
       const res = await fetch('/api/seo-analyse', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ domain: rawDomain }),
+        body: JSON.stringify(p),
       })
       const data = (await res.json()) as AnalyseResponse
       if (!data.ok) {
@@ -48,7 +63,7 @@ export default function SeoAnalyser() {
       const wait = Math.max(0, minDuration - elapsed)
       setTimeout(() => {
         setResult(data.result)
-        setStep('results')
+        setStep('rankings')
       }, wait)
     } catch (err) {
       console.error(err)
@@ -57,7 +72,7 @@ export default function SeoAnalyser() {
     }
   }
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>, phoneFull: string) => {
     e.preventDefault()
     if (!result) return
     const form = e.currentTarget
@@ -77,11 +92,11 @@ export default function SeoAnalyser() {
     const keywordLines = result.keywords
       .map(
         (k) =>
-          `· ${k.keyword} (${k.monthlySearches}/mo, currently ${k.currentRankBand}, est £${k.estMonthlyValueGbp}/mo)`,
+          `· ${k.keyword} (${k.monthlySearches}/mo, ${k.currentRankBand}, est ${formatMoney(k.estMonthlyValue, result.currency, lang)}/mo)`,
       )
       .join('\n')
 
-    const gbp = intGbp(result.monthlyOpportunityGbp)
+    const gbp = formatMoney(result.monthlyOpportunity, result.currency, lang)
 
     try {
       const res = await fetch(FORM_ENDPOINT, {
@@ -90,10 +105,14 @@ export default function SeoAnalyser() {
         body: JSON.stringify({
           name,
           email,
+          phone: phoneFull,
           domain: result.domain,
           industry: result.inferredIndustry,
           location: result.inferredLocation,
-          monthlyOpportunityGbp: gbp,
+          currency: result.currency,
+          aovUsed: payload.aov,
+          conversionRateUsed: `${(payload.conversionRate * 100).toFixed(1)}%`,
+          monthlyOpportunity: gbp,
           topBlockers: blockerLines,
           keywords: keywordLines,
           _subject: c.emailSubject(name, email, result.domain, gbp),
@@ -120,7 +139,6 @@ export default function SeoAnalyser() {
 
   const handleReset = () => {
     setStep('input')
-    setDomain('')
     setResult(null)
     setAnalysisError(null)
     setCaptureError(null)
@@ -128,36 +146,55 @@ export default function SeoAnalyser() {
 
   useEffect(() => {
     if (step === 'input') document.title = c.documentTitleIdle
-    else if (step === 'analysing') document.title = c.documentTitleAnalysing(domain)
-    else if (result) document.title = c.documentTitleResults(result.domain, intGbp(result.monthlyOpportunityGbp))
+    else if (step === 'analysing') document.title = c.documentTitleAnalysing(payload.domain)
+    else if (result)
+      document.title = c.documentTitleResults(result.domain, formatMoney(result.monthlyOpportunity, result.currency, lang))
     else document.title = c.documentTitleIdle
-  }, [step, domain, result, c])
+  }, [step, payload.domain, result, c, lang])
 
   return (
     <div className="relative h-full w-full overflow-hidden bg-surface-1 text-ink">
       <AnimatePresence mode="wait">
         {step === 'input' && (
-          <InputStep
-            key="input"
-            initialDomain={domain}
-            onAnalyse={handleAnalyse}
-            error={analysisError}
+          <InputStep key="input" initial={payload} onAnalyse={handleAnalyse} error={analysisError} />
+        )}
+        {step === 'analysing' && <AnalysingStep key="analysing" domain={payload.domain} />}
+        {step === 'rankings' && result && (
+          <RankingsPage
+            key="rankings"
+            result={result}
+            onBack={() => setStep('input')}
+            onNext={() => setStep('money')}
           />
         )}
-        {step === 'analysing' && <AnalysingStep key="analysing" domain={domain} />}
-        {step === 'results' && result && (
-          <ResultsStep
-            key="results"
+        {step === 'money' && result && (
+          <MoneyPage
+            key="money"
             result={result}
-            onSubmit={handleSubmit}
+            onBack={() => setStep('rankings')}
+            onNext={() => setStep('blockers')}
+          />
+        )}
+        {step === 'blockers' && result && (
+          <BlockersPage
+            key="blockers"
+            result={result}
+            onBack={() => setStep('money')}
+            onNext={() => setStep('summary')}
+          />
+        )}
+        {step === 'summary' && result && (
+          <SummaryPage
+            key="summary"
+            result={result}
             sending={captureSending}
             captureError={captureError}
+            onBack={() => setStep('blockers')}
+            onSubmit={handleSubmit}
             onReset={handleReset}
           />
         )}
-        {step === 'sent' && result && (
-          <SentStep key="sent" result={result} onReset={handleReset} />
-        )}
+        {step === 'sent' && result && <SentStep key="sent" result={result} onReset={handleReset} />}
       </AnimatePresence>
     </div>
   )

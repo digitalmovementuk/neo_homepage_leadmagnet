@@ -11,7 +11,8 @@ interface KeywordRow {
   currentRankBand: RankBand
   estCurrentClicks: number
   estPage1Clicks: number
-  estMonthlyValueGbp: number
+  /** In the request's `currency`. */
+  estMonthlyValue: number
   intent: 'transactional' | 'commercial' | 'informational' | 'navigational'
 }
 
@@ -27,8 +28,8 @@ interface Blocker {
 }
 
 interface Calculation {
-  industryConversionRate: number
-  industryAovGbp: number
+  conversionRateUsed: number
+  aovUsed: number
   ctrCurveSource: string
   notes: string
 }
@@ -43,11 +44,12 @@ interface PageSpeedSummary {
 
 interface AnalysisResult {
   domain: string
+  currency: string
   inferredIndustry: string
   inferredLocation: string
-  monthlyOpportunityGbp: number
-  current: { estMonthlyTrafficValueGbp: number; estMonthlyClicks: number }
-  projected: { estMonthlyTrafficValueGbp: number; estMonthlyClicks: number; timelineDays: number }
+  monthlyOpportunity: number
+  current: { estMonthlyTrafficValue: number; estMonthlyClicks: number }
+  projected: { estMonthlyTrafficValue: number; estMonthlyClicks: number; timelineDays: number }
   keywords: KeywordRow[]
   competitors: CompetitorRow[]
   blockers: Blocker[]
@@ -70,6 +72,10 @@ const FETCH_TIMEOUT_MS = 6_000
 const MAX_HTML_BYTES = 8_192
 const RATE_LIMIT_PER_DAY = 8
 const PAGESPEED_ENDPOINT = 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed'
+
+const ALLOWED_CURRENCIES = new Set([
+  'EUR', 'GBP', 'USD', 'CHF', 'CAD', 'AUD', 'JPY', 'CNY', 'HKD', 'SGD',
+])
 
 const ipBuckets = new Map<string, { count: number; resetAt: number }>()
 
@@ -113,7 +119,7 @@ async function fetchHomepage(domain: string): Promise<string | null> {
         redirect: 'follow',
         headers: {
           'user-agent':
-            'Mozilla/5.0 (compatible; CunosSEOBot/1.0; +https://cunos.co.uk/seo-analyse)',
+            'Mozilla/5.0 (compatible; NeoSEOBot/1.0; +https://neohomepageleadmagnet.vercel.app/seo-analyse)',
           accept: 'text/html,application/xhtml+xml',
         },
       })
@@ -222,15 +228,15 @@ async function runPageSpeed(
 
 /* ========================== ANTHROPIC =========================== */
 
-const SYSTEM_PROMPT = `You are an SEO opportunity estimator for small-to-medium businesses. Given a domain's homepage HTML and PageSpeed signals, you produce a defensible, conservative estimate of the monthly revenue the business is leaving on the table from organic search.
+const SYSTEM_PROMPT = `You are an SEO opportunity estimator for small-to-medium businesses. Given a domain's homepage HTML, PageSpeed signals, and the business's own AOV + conversion rate, you produce a defensible estimate of the monthly revenue the business is leaving on the table from organic search.
 
 Method (apply rigorously, do not invent numbers):
 
-1. Infer industry and primary location from the homepage content (language, currency, addresses, schema, copy).
+1. Infer industry and primary location from the homepage content (language, currency, addresses, schema, copy). If the user supplied an industry hint, use that hint to anchor the inferred industry — combine it with what the homepage shows.
 
-2. Generate 8–10 plausible high-intent keywords a real customer would type to find this business. Mix transactional ("pizza lieferung köln"), commercial ("zahnarzt köln innenstadt"), and 1–2 informational. Use the inferred location and the local language. Keyword phrases must read like real searches, not marketing slogans.
+2. Generate 8–10 plausible high-intent keywords a real customer would type to find this business. Mix transactional (e.g. "pizza lieferung köln"), commercial (e.g. "zahnarzt köln innenstadt"), and 1–2 informational. Use the inferred location and the local language. Keyword phrases must read like real searches, not marketing slogans.
 
-3. Estimate monthlySearches conservatively from local market priors. For a German city like Cologne (~1M people), a generic transactional keyword in a normal vertical sees 200–2,000 monthly searches; a hyper-niche one sees 50–300. UK and US numbers scale up. Do NOT hallucinate huge volumes.
+3. Estimate monthlySearches conservatively from local market priors. For a city of ~1M people, a generic transactional keyword in a normal vertical sees 200–2,000 monthly searches; a hyper-niche one sees 50–300. Bigger cities and English-speaking markets scale up. Do NOT hallucinate huge volumes.
 
 4. Estimate currentRankBand from on-page signals + PageSpeed. Heuristic:
    - Strong on-page (title contains target term, meta present, h1 clear, schema, mobile perf >70): "page1" or "top3"
@@ -239,45 +245,42 @@ Method (apply rigorously, do not invent numbers):
    - Brand-new domain, very thin content, or no relevant on-page signal at all: "unranked"
 
 5. CTR by position (Backlinko 2024 averages — use these EXACTLY):
-   - top3: 0.27 average
-   - page1 (positions 4–10 average): 0.06
-   - page2-3: 0.012
-   - page4plus: 0.004
+   - top3:     0.27 average
+   - page1:    0.06 average (positions 4–10)
+   - page2-3:  0.012
+   - page4plus:0.004
    - unranked: 0
 
-6. Industry conversion rates and AOV (use these lookup values, pick the closest match):
-   - Restaurant / takeaway: convRate 0.04, AOV £35
-   - Café / coffee: convRate 0.05, AOV £15
-   - Dentist / clinic / aesthetic medicine: convRate 0.06, AOV £180 (first visit)
-   - Hairdresser / barber / nails / beauty: convRate 0.08, AOV £55
-   - Local trades (plumber, electrician, locksmith): convRate 0.10, AOV £180
-   - Lawyer / accountant / consultant: convRate 0.04, AOV £600
-   - Auto repair / garage: convRate 0.07, AOV £220
-   - Gym / fitness / yoga studio: convRate 0.05, AOV £45 (first month)
-   - Hotel / B&B / vacation rental: convRate 0.03, AOV £160
-   - Local retail / boutique / shop: convRate 0.02, AOV £55
-   - Real estate / estate agent: convRate 0.03, AOV £2000 (deal value × likelihood)
-   - B2B SaaS / software: convRate 0.02, AOV £1200 (first-year value)
-   - E-commerce: convRate 0.025, AOV £55
-   - Default fallback: convRate 0.03, AOV £80
+6. The user has provided their actual business numbers — DO NOT use industry defaults:
+   - Currency:        provided as ISO code in the user message
+   - AOV (per sale):  provided as a number in that currency
+   - Conversion rate: provided as a fraction (e.g. 0.03 = 3%)
+   ALL money values you output MUST be in the user's currency, using their AOV and conversion rate verbatim.
 
-7. estCurrentClicks = monthlySearches × CTR_at_currentRankBand
-   estPage1Clicks = monthlySearches × 0.06 (page1 average) for keywords currently below page1; for those already top3, projected = same as current.
-   estMonthlyValueGbp = (estPage1Clicks − estCurrentClicks) × convRate × AOV, rounded to nearest £
-   monthlyOpportunityGbp = SUM of estMonthlyValueGbp across all keywords. Round to nearest £100. Cap at £25,000/month — beyond that the number stops being credible for an SMB and you should explain the cap in calculation.notes.
+7. estCurrentClicks  = round(monthlySearches × CTR_at_currentRankBand)
+   estPage1Clicks    = round(monthlySearches × 0.06) for keywords currently below page1; for keywords already top3, projected = same as current.
+   estMonthlyValue   = round((estPage1Clicks − estCurrentClicks) × conversionRate × AOV)
+   monthlyOpportunity = SUM of estMonthlyValue across all keywords.
+   Round monthlyOpportunity to a sensible whole number in the user's currency. Cap at 250 × AOV per month — beyond that the number stops being credible for an SMB; if you cap, explain why in calculation.notes.
 
-8. Blockers — name 3–5 SPECIFIC issues, each tied to evidence:
+8. current.estMonthlyTrafficValue   = SUM(monthlySearches × CTR_at_currentRankBand × conversionRate × AOV) across keywords (rounded).
+   current.estMonthlyClicks         = SUM(estCurrentClicks).
+   projected.estMonthlyTrafficValue = SUM(monthlySearches × 0.06 × conversionRate × AOV) — assume page1 average for all keywords (rounded).
+   projected.estMonthlyClicks       = SUM(estPage1Clicks).
+   projected.timelineDays           = 90.
+
+9. Blockers — name 3–5 SPECIFIC issues, each tied to evidence:
    - On-page: cite missing/short meta description, generic title tag, missing h1, no schema markup, no language tag
    - Performance: cite specific Core Web Vitals failures (LCP > 2500ms, CLS > 0.1, mobile perf < 50)
    - Local: cite missing GMB link, no NAP, no local schema
    - Authority: cite thin content, no internal linking signals
    Each blocker must reference observable evidence — never generic advice like "improve SEO".
 
-9. Competitors — list 3 plausible local competitors by inferred-from-context name. Mark these as ESTIMATED in calculation.notes.
+10. Competitors — list 2–3 plausible local competitors by inferred-from-context name. Mark these as ESTIMATED in calculation.notes.
 
-10. timelineDays: 90.
-
-11. calculation.notes MUST disclose: "Rankings and search volumes in this v1 are estimated from on-page signals and industry priors, not measured against live SERPs." Be transparent.
+11. calculation.conversionRateUsed = the user-provided conversion rate.
+    calculation.aovUsed            = the user-provided AOV.
+    calculation.notes MUST disclose: "Rankings and search volumes are estimated from on-page signals and industry priors, not measured against live SERPs. AOV and conversion rate are user-provided." Be transparent.
 
 You MUST call the submit_analysis tool with the structured result. Never reply in plain text.`
 
@@ -286,23 +289,23 @@ const ANALYSIS_TOOL_INPUT_SCHEMA = {
   properties: {
     inferredIndustry: { type: 'string' },
     inferredLocation: { type: 'string' },
-    monthlyOpportunityGbp: { type: 'integer' },
+    monthlyOpportunity: { type: 'integer' },
     current: {
       type: 'object',
       properties: {
-        estMonthlyTrafficValueGbp: { type: 'integer' },
+        estMonthlyTrafficValue: { type: 'integer' },
         estMonthlyClicks: { type: 'integer' },
       },
-      required: ['estMonthlyTrafficValueGbp', 'estMonthlyClicks'],
+      required: ['estMonthlyTrafficValue', 'estMonthlyClicks'],
     },
     projected: {
       type: 'object',
       properties: {
-        estMonthlyTrafficValueGbp: { type: 'integer' },
+        estMonthlyTrafficValue: { type: 'integer' },
         estMonthlyClicks: { type: 'integer' },
         timelineDays: { type: 'integer' },
       },
-      required: ['estMonthlyTrafficValueGbp', 'estMonthlyClicks', 'timelineDays'],
+      required: ['estMonthlyTrafficValue', 'estMonthlyClicks', 'timelineDays'],
     },
     keywords: {
       type: 'array',
@@ -319,7 +322,7 @@ const ANALYSIS_TOOL_INPUT_SCHEMA = {
           },
           estCurrentClicks: { type: 'integer' },
           estPage1Clicks: { type: 'integer' },
-          estMonthlyValueGbp: { type: 'integer' },
+          estMonthlyValue: { type: 'integer' },
           intent: {
             type: 'string',
             enum: ['transactional', 'commercial', 'informational', 'navigational'],
@@ -331,7 +334,7 @@ const ANALYSIS_TOOL_INPUT_SCHEMA = {
           'currentRankBand',
           'estCurrentClicks',
           'estPage1Clicks',
-          'estMonthlyValueGbp',
+          'estMonthlyValue',
           'intent',
         ],
       },
@@ -366,18 +369,18 @@ const ANALYSIS_TOOL_INPUT_SCHEMA = {
     calculation: {
       type: 'object',
       properties: {
-        industryConversionRate: { type: 'number' },
-        industryAovGbp: { type: 'integer' },
+        conversionRateUsed: { type: 'number' },
+        aovUsed: { type: 'number' },
         ctrCurveSource: { type: 'string' },
         notes: { type: 'string' },
       },
-      required: ['industryConversionRate', 'industryAovGbp', 'ctrCurveSource', 'notes'],
+      required: ['conversionRateUsed', 'aovUsed', 'ctrCurveSource', 'notes'],
     },
   },
   required: [
     'inferredIndustry',
     'inferredLocation',
-    'monthlyOpportunityGbp',
+    'monthlyOpportunity',
     'current',
     'projected',
     'keywords',
@@ -389,6 +392,10 @@ const ANALYSIS_TOOL_INPUT_SCHEMA = {
 
 interface AnthropicInput {
   domain: string
+  currency: string
+  aov: number
+  conversionRate: number
+  industryHint: string
   homepageExcerpt: string
   pageSpeed: { mobile: PageSpeedSummary; desktop: PageSpeedSummary } | null
 }
@@ -403,7 +410,17 @@ function userMessage(input: AnthropicInput): string {
 - INP (ms): ${input.pageSpeed.mobile.inpMs ?? 'n/a'} / ${input.pageSpeed.desktop.inpMs ?? 'n/a'}`
     : 'PageSpeed: unavailable (treat performance as unknown — do not assume good or bad).'
 
+  const hint = input.industryHint
+    ? `User-supplied industry hint: "${input.industryHint}" (use this to anchor your inference).`
+    : 'No industry hint supplied — infer from the homepage.'
+
   return `Domain: ${input.domain}
+
+User-provided business numbers (use these verbatim, do NOT use industry defaults):
+- Currency:        ${input.currency} (ISO 4217)
+- AOV per sale:    ${input.aov} ${input.currency}
+- Conversion rate: ${input.conversionRate} (${(input.conversionRate * 100).toFixed(2)}%)
+- ${hint}
 
 ${psSummary}
 
@@ -412,10 +429,10 @@ Homepage HTML excerpt (first ~8KB after stripping scripts/styles):
 ${input.homepageExcerpt}
 """
 
-Now call the submit_analysis tool with the JSON analysis.`
+Now call the submit_analysis tool with the JSON analysis. All money values must be integers in ${input.currency}.`
 }
 
-type LLMOutput = Omit<AnalysisResult, 'domain' | 'pageSpeed' | 'generatedAt'>
+type LLMOutput = Omit<AnalysisResult, 'domain' | 'currency' | 'pageSpeed' | 'generatedAt'>
 
 async function runAnthropicAnalysis(input: AnthropicInput): Promise<LLMOutput> {
   const apiKey = process.env.ANTHROPIC_API_KEY
@@ -489,9 +506,15 @@ async function handleRequest(req: VercelRequest, res: VercelResponse) {
     return
   }
 
-  const body = (req.body ?? {}) as { domain?: unknown }
-  const domainRaw = typeof body.domain === 'string' ? body.domain : ''
-  const domain = normaliseDomain(domainRaw)
+  const body = (req.body ?? {}) as {
+    domain?: unknown
+    currency?: unknown
+    aov?: unknown
+    conversionRate?: unknown
+    industryHint?: unknown
+  }
+
+  const domain = normaliseDomain(typeof body.domain === 'string' ? body.domain : '')
   if (!domain) {
     res.status(400).json({
       ok: false,
@@ -501,8 +524,23 @@ async function handleRequest(req: VercelRequest, res: VercelResponse) {
     return
   }
 
-  const homepageUrl = `https://${domain}/`
+  const currencyRaw = typeof body.currency === 'string' ? body.currency.toUpperCase() : 'EUR'
+  const currency = ALLOWED_CURRENCIES.has(currencyRaw) ? currencyRaw : 'EUR'
 
+  const aov = Number(body.aov)
+  const conversionRate = Number(body.conversionRate)
+  if (!isFinite(aov) || aov <= 0 || !isFinite(conversionRate) || conversionRate <= 0 || conversionRate > 1) {
+    res.status(400).json({
+      ok: false,
+      error: 'Invalid business numbers — AOV must be a positive number, conversion rate between 0 and 1.',
+      code: 'invalid_domain',
+    } satisfies AnalyseResponse)
+    return
+  }
+
+  const industryHint = typeof body.industryHint === 'string' ? body.industryHint.trim().slice(0, 120) : ''
+
+  const homepageUrl = `https://${domain}/`
   const [html, pageSpeed] = await Promise.all([fetchHomepage(domain), runPageSpeed(homepageUrl)])
 
   if (!html) {
@@ -518,7 +556,15 @@ async function handleRequest(req: VercelRequest, res: VercelResponse) {
 
   let llm: Awaited<ReturnType<typeof runAnthropicAnalysis>>
   try {
-    llm = await runAnthropicAnalysis({ domain, homepageExcerpt: excerpt, pageSpeed })
+    llm = await runAnthropicAnalysis({
+      domain,
+      currency,
+      aov,
+      conversionRate,
+      industryHint,
+      homepageExcerpt: excerpt,
+      pageSpeed,
+    })
   } catch (err) {
     const detail = err instanceof Error ? `${err.name}: ${err.message}` : String(err)
     console.error('LLM analysis failed', detail, err)
@@ -534,6 +580,7 @@ async function handleRequest(req: VercelRequest, res: VercelResponse) {
     ok: true,
     result: {
       domain,
+      currency,
       ...llm,
       pageSpeed,
       generatedAt: new Date().toISOString(),

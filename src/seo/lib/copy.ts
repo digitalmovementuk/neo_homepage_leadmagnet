@@ -23,6 +23,10 @@ export type SeoCopy = {
     en: string;
   };
 
+  currencyPicker: {
+    label: string;
+  };
+
   input: {
     eyebrow: string;
     title: string;
@@ -31,6 +35,17 @@ export type SeoCopy = {
     submit: string;
     footnote: string;
     domainAria: string;
+    /** Section heading above the optional business questions. */
+    refineHeading: string;
+    refineSub: string;
+    domainLabel: string;
+    aovLabel: string;
+    aovHint: string;
+    conversionRateLabel: string;
+    conversionRateHint: string;
+    industryHintLabel: string;
+    industryHintPlaceholder: string;
+    industryHintHelp: string;
   };
 
   analysing: {
@@ -84,6 +99,40 @@ export type SeoCopy = {
     impacts: { high: string; medium: string; low: string };
   };
 
+  nav: {
+    back: string;
+    next: string;
+    finish: string;
+    pageOf: (n: number, total: number) => string;
+  };
+
+  pageRankings: { eyebrow: string; headline: string; sub: string };
+  pageMoney: { eyebrow: string; headline: string; sub: string };
+  pageBlockers: { eyebrow: string; headline: string; sub: string };
+
+  summary: {
+    eyebrow: string;
+    headline: string;
+    sub: string;
+    takeaways: {
+      opportunity: string;
+      topWins: string;
+      topBlocker: string;
+      timeline: string;
+      timelineBody: (days: number, gbp: string) => string;
+    };
+    contactHeadline: string;
+    contactSub: string;
+    trust: string[];
+    namePlaceholder: string;
+    emailPlaceholder: string;
+    phonePlaceholder: string;
+    phoneCountryAria: string;
+    submit: string;
+    submitting: string;
+    note: string;
+  };
+
   capture: {
     eyebrow: string;
     headline: string;
@@ -98,8 +147,9 @@ export type SeoCopy = {
   };
 
   sent: {
-    headline: string;
-    body: (gbp: string, domain: string) => string;
+    headline: (domain: string) => string;
+    body: (gbp: string) => string;
+    nextSteps: { title: string; items: string[] };
     reset: string;
   };
 
@@ -108,13 +158,6 @@ export type SeoCopy = {
   emailSubject: (name: string, email: string, domain: string, gbp: string) => string;
   emailAutoresponse: (name: string, domain: string, gbp: string, industry: string, location: string) => string;
 };
-
-const intGbp = (n: number) =>
-  new Intl.NumberFormat("en-GB", {
-    style: "currency",
-    currency: "GBP",
-    maximumFractionDigits: 0,
-  }).format(n);
 
 export const COPY: Record<Lang, SeoCopy> = {
   de: {
@@ -135,15 +178,30 @@ export const COPY: Record<Lang, SeoCopy> = {
       en: "English",
     },
 
+    currencyPicker: {
+      label: "Währung",
+    },
+
     input: {
       eyebrow: "SEO Potential Analyser",
       title: "Wo lebt Ihre Website?",
-      sub: "Eine Domain. Neunzig Sekunden. Die Summe, die Sie aus organischer Suche aktuell liegen lassen.",
+      sub: "Eine Domain. Drei kurze Angaben zu Ihrem Geschäft. Wir errechnen, wie viel Umsatz aus organischer Suche aktuell liegen bleibt.",
       placeholder: "meinrestaurant-koeln.de",
       submit: "Analysieren",
       footnote:
-        "Echte PageSpeed-Signale · Branchenübliche CTR-Mathematik · 8 freie Analysen/Tag",
+        "Echte PageSpeed-Signale · Ihre Zahlen statt Branchenschätzwerte · 8 freie Analysen/Tag",
       domainAria: "Website-Domain",
+      refineHeading: "Ihre Geschäftszahlen",
+      refineSub:
+        "Je genauer Sie diese Felder ausfüllen, desto präziser ist die Schätzung. Vorbelegungen sind branchenübliche Mittelwerte.",
+      domainLabel: "Website",
+      aovLabel: "Durchschnittlicher Umsatz pro Verkauf",
+      aovHint: "Was bringt Ihnen ein neuer Kunde im Schnitt ein?",
+      conversionRateLabel: "Conversion-Rate (Besucher → Kunde)",
+      conversionRateHint: "Wie viele Website-Besucher kaufen oder werden Lead?",
+      industryHintLabel: "Branche / Geschäftstyp",
+      industryHintPlaceholder: "z. B. Zahnarztpraxis, Restaurant, B2B-SaaS",
+      industryHintHelp: "Optional — leer lassen heißt automatisch erkennen",
     },
 
     analysing: {
@@ -224,6 +282,58 @@ export const COPY: Record<Lang, SeoCopy> = {
       },
     },
 
+    nav: {
+      back: "Zurück",
+      next: "Weiter",
+      finish: "Zur Zusammenfassung",
+      pageOf: (n, total) => `Schritt ${n} von ${total}`,
+    },
+
+    pageRankings: {
+      eyebrow: "Aktuelle Rankings",
+      headline: "So sichtbar sind Sie heute.",
+      sub: "Wo Ihre Kunden bei Google bereits suchen — und wo Sie aktuell auftauchen oder eben nicht.",
+    },
+    pageMoney: {
+      eyebrow: "Geld auf dem Tisch",
+      headline: "Was jede Position pro Monat wert ist.",
+      sub: "Klick-Volumen heute vs. auf Seite 1, multipliziert mit Ihren echten Geschäftszahlen.",
+    },
+    pageBlockers: {
+      eyebrow: "Was Sie blockiert",
+      headline: "Drei bis fünf Dinge, die zwischen Ihnen und Seite 1 stehen.",
+      sub: "Konkret und beobachtbar — keine generischen SEO-Phrasen.",
+    },
+
+    summary: {
+      eyebrow: "Zusammenfassung",
+      headline: "Bereit, dieses Potenzial zu erschließen?",
+      sub: "Die wichtigsten Erkenntnisse aus Ihrer Analyse — plus ein direkter Draht zu Neo, wenn Sie die 90-Tage-Roadmap wollen.",
+      takeaways: {
+        opportunity: "Monatliche Opportunity",
+        topWins: "Größte Hebel",
+        topBlocker: "Wichtigster Blocker",
+        timeline: "90-Tage-Pfad",
+        timelineBody: (days, gbp) =>
+          `In ${days} Tagen von heute auf ${gbp}/Monat aus organischer Suche.`,
+      },
+      contactHeadline: "Sprechen Sie mit Neo.",
+      contactSub:
+        "Werktags innerhalb 24 Stunden zurück mit Ihrer detaillierten Roadmap.",
+      trust: [
+        "Antwort werktags innerhalb 24 Stunden",
+        "Unverbindliches Strategiegespräch",
+        "Keine Verpflichtung, kein Spam",
+      ],
+      namePlaceholder: "Ihr vollständiger Name",
+      emailPlaceholder: "ihre@firma.com",
+      phonePlaceholder: "Telefon",
+      phoneCountryAria: "Ländervorwahl",
+      submit: "Roadmap an mich senden",
+      submitting: "Wird gesendet…",
+      note: "Kein Spam. Wir senden die Roadmap einmal und hören nur auf Wunsch wieder.",
+    },
+
     capture: {
       eyebrow: "Die 90-Tage-Roadmap",
       headline: "Möchten Sie die volle Roadmap?",
@@ -239,9 +349,17 @@ export const COPY: Record<Lang, SeoCopy> = {
     },
 
     sent: {
-      headline: "Roadmap unterwegs.",
-      body: (gbp, domain) =>
-        `Wir stellen Ihren detaillierten 90-Tage-Plan zusammen, um ${gbp}/Monat für ${domain} zu erschließen. Werktags innerhalb 24 Stunden in Ihrem Posteingang.`,
+      headline: (domain) => `Ihre Roadmap für ${domain} ist auf dem Weg.`,
+      body: (gbp) =>
+        `Wir bauen Ihren detaillierten 90-Tage-Plan, um ${gbp}/Monat aus organischer Suche zu erschließen.`,
+      nextSteps: {
+        title: "Was als Nächstes passiert",
+        items: [
+          "Bestätigung per E-Mail — sofort in Ihrem Posteingang.",
+          "Detaillierte Roadmap als PDF — werktags innerhalb 24 Stunden.",
+          "Optional ein 30-Minuten-Strategiegespräch mit Neo, wenn Sie wollen.",
+        ],
+      },
       reset: "Weitere Domain analysieren",
     },
 
@@ -270,15 +388,30 @@ export const COPY: Record<Lang, SeoCopy> = {
       en: "English",
     },
 
+    currencyPicker: {
+      label: "Currency",
+    },
+
     input: {
       eyebrow: "SEO Potential Analyser",
       title: "Where's your website?",
-      sub: "One domain. Ninety seconds. The number on the table from search you're not capturing.",
+      sub: "One domain, three quick facts about your business. We work out the revenue you're leaving on the table from organic search.",
       placeholder: "yourbusiness.co.uk",
       submit: "Analyse",
       footnote:
-        "Real PageSpeed signals · Industry-standard CTR maths · 8 free runs/day per visitor",
+        "Real PageSpeed signals · Your numbers, not industry guesses · 8 free runs/day per visitor",
       domainAria: "Website domain",
+      refineHeading: "Your business numbers",
+      refineSub:
+        "The more accurate these are, the sharper the estimate. Defaults are sensible industry midpoints.",
+      domainLabel: "Website",
+      aovLabel: "Average revenue per sale",
+      aovHint: "What does a new customer typically bring you?",
+      conversionRateLabel: "Conversion rate (visitor → customer)",
+      conversionRateHint: "How many of your visitors buy or become a lead?",
+      industryHintLabel: "Industry / business type",
+      industryHintPlaceholder: "e.g. dentist, restaurant, B2B SaaS",
+      industryHintHelp: "Optional — leave blank to auto-detect",
     },
 
     analysing: {
@@ -359,6 +492,58 @@ export const COPY: Record<Lang, SeoCopy> = {
       },
     },
 
+    nav: {
+      back: "Back",
+      next: "Next",
+      finish: "Go to summary",
+      pageOf: (n, total) => `Step ${n} of ${total}`,
+    },
+
+    pageRankings: {
+      eyebrow: "Where you rank now",
+      headline: "How visible you are today.",
+      sub: "What your customers already search for on Google — and where you're showing up, if at all.",
+    },
+    pageMoney: {
+      eyebrow: "Money on the table",
+      headline: "What each position is worth per month.",
+      sub: "Click volume now vs. on Page 1, multiplied by your real business numbers.",
+    },
+    pageBlockers: {
+      eyebrow: "What's blocking you",
+      headline: "Three to five things sitting between you and Page 1.",
+      sub: "Specific and observable — no generic SEO platitudes.",
+    },
+
+    summary: {
+      eyebrow: "Summary",
+      headline: "Ready to capture this opportunity?",
+      sub: "The key takeaways from your analysis — plus a direct line to Neo if you want the full 90-day roadmap.",
+      takeaways: {
+        opportunity: "Monthly opportunity",
+        topWins: "Biggest wins",
+        topBlocker: "Most critical blocker",
+        timeline: "90-day path",
+        timelineBody: (days, gbp) =>
+          `From today to ${gbp}/month in organic-search revenue, in ${days} days.`,
+      },
+      contactHeadline: "Talk to Neo.",
+      contactSub:
+        "Within one working day with your detailed roadmap.",
+      trust: [
+        "Reply within one working day",
+        "No-obligation strategy chat",
+        "No commitment, no spam",
+      ],
+      namePlaceholder: "Your full name",
+      emailPlaceholder: "you@company.com",
+      phonePlaceholder: "Phone",
+      phoneCountryAria: "Country prefix",
+      submit: "Send me the roadmap",
+      submitting: "Sending…",
+      note: "No spam. We send the roadmap once and only follow up if you ask.",
+    },
+
     capture: {
       eyebrow: "The 90-day roadmap",
       headline: "Want the full roadmap?",
@@ -374,9 +559,17 @@ export const COPY: Record<Lang, SeoCopy> = {
     },
 
     sent: {
-      headline: "Roadmap on the way.",
-      body: (gbp, domain) =>
-        `We're putting together your detailed 90-day plan to capture ${gbp}/month for ${domain}. Expect it in your inbox within one working day.`,
+      headline: (domain) => `Your roadmap for ${domain} is on the way.`,
+      body: (gbp) =>
+        `We're putting together your detailed 90-day plan to capture ${gbp}/month from organic search.`,
+      nextSteps: {
+        title: "What happens next",
+        items: [
+          "Confirmation email — already in your inbox.",
+          "Detailed roadmap PDF — within one working day.",
+          "Optional 30-min strategy call with Neo, if you want it.",
+        ],
+      },
       reset: "Analyse another site",
     },
 
@@ -388,5 +581,3 @@ export const COPY: Record<Lang, SeoCopy> = {
       `Hi ${name},\n\nThanks for running Neo's SEO Potential Analyser on ${domain}.\n\nHeadline: we estimate around ${gbp}/month in untapped organic-search opportunity, given your inferred industry (${industry}) and location (${location}).\n\nA member of the team will be in touch within one working day with the detailed 90-day roadmap.\n\n— Neo The Agency`,
   },
 };
-
-export { intGbp };
