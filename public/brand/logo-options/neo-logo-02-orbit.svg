@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="720" viewBox="0 0 1600 720" role="img" aria-labelledby="title desc">
+  <title id="title">NEO Logo 02 - Orbit</title>
+  <desc id="desc">A balanced NEO lockup with the O treated as a growth orbit.</desc>
+  <defs>
+    
+  </defs>
+  
+      
+  <g transform="translate(138 124) scale(1.45) skewX(-5)">
+    <polygon points="0,280 58,280 88,0 30,0" fill="#26272F"/>
+    <polygon points="170,280 228,280 258,0 200,0" fill="#26272F"/>
+    <polygon points="61,0 125,0 199,280 135,280" fill="#26272F"/>
+
+    <polygon points="320,0 585,0 572,68 383,68 374,112 542,112 530,178 362,178 354,212 548,212 535,280 290,280" fill="#26272F"/>
+
+    <circle cx="715" cy="140" r="112" fill="none" stroke="#26272F" stroke-width="58"/>
+    
+  </g>
+      <ellipse cx="1108" cy="327" rx="178" ry="108" transform="rotate(-17 1108 327)" fill="none" stroke="#0037D8" stroke-width="18"/>
+      <circle cx="1243" cy="272" r="18" fill="#FF7A45"/>
+      <text x="148" y="605" fill="#0037D8" font-family="Geist, Helvetica Neue, Arial, sans-serif" font-size="44" font-weight="800" letter-spacing="11">THE AGENCY</text>
+      <text x="746" y="605" fill="#66636D" font-family="Geist, Helvetica Neue, Arial, sans-serif" font-size="32" font-weight="650" letter-spacing="1">PERFORMANCE MARKETING</text>
+      
+</svg>

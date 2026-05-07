@@ -1,14 +1,14 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
 
-const repoName = 'cunos_TempHonepage_LeadMagenet'
-
+// Deployed on Vercel — base path stays "/" so /api/* serverless functions
+// resolve correctly. Dev port 5190 to match the existing local workflow.
 export default defineConfig({
   plugins: [react()],
-  // GitHub Pages serves the site at /<repo>/ — env var lets local dev keep '/'
-  base: process.env.GITHUB_ACTIONS ? `/${repoName}/` : '/',
+  base: "/",
   server: {
     port: 5190,
+    host: true,
     strictPort: false,
   },
-})
+});

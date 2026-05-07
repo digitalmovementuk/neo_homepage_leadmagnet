@@ -8,7 +8,7 @@ import { SentStep } from './steps/Sent'
 
 type Step = 'input' | 'analysing' | 'results' | 'sent'
 
-const FORM_ENDPOINT = 'https://formsubmit.co/ajax/enting@cunos.co.uk'
+const FORM_ENDPOINT = 'https://formsubmit.co/ajax/info@neotheagency.com'
 
 export default function SeoAnalyser() {
   const [step, setStep] = useState<Step>('input')
@@ -94,7 +94,7 @@ export default function SeoAnalyser() {
           _subject: `SEO Analyser — ${name || email} — ${result.domain} — £${result.monthlyOpportunityGbp.toLocaleString('en-GB')}/mo opportunity`,
           _template: 'table',
           _captcha: 'false',
-          _autoresponse: `Hi ${name},\n\nThanks for running the SEO Potential Analyser on ${result.domain}.\n\nHeadline: we estimate around £${result.monthlyOpportunityGbp.toLocaleString('en-GB')}/month in untapped organic-search opportunity, given your inferred industry (${result.inferredIndustry}) and location (${result.inferredLocation}).\n\nA member of the team will be in touch within one working day with the detailed 90-day roadmap.\n\n— Cunos`,
+          _autoresponse: `Hi ${name},\n\nThanks for running Neo's SEO Potential Analyser on ${result.domain}.\n\nHeadline: we estimate around £${result.monthlyOpportunityGbp.toLocaleString('en-GB')}/month in untapped organic-search opportunity, given your inferred industry (${result.inferredIndustry}) and location (${result.inferredLocation}).\n\nA member of the team will be in touch within one working day with the detailed 90-day roadmap.\n\n— Neo The Agency`,
         }),
       })
       if (!res.ok) throw new Error(`Form gateway returned ${res.status}`)
@@ -118,16 +118,16 @@ export default function SeoAnalyser() {
   useEffect(() => {
     document.title =
       step === 'input'
-        ? 'SEO Potential Analyser — Cunos'
+        ? 'SEO Potential Analyser — Neo'
         : step === 'analysing'
           ? `Analysing ${domain}…`
           : result
             ? `${result.domain} — £${result.monthlyOpportunityGbp.toLocaleString('en-GB')}/mo opportunity`
-            : 'SEO Potential Analyser — Cunos'
+            : 'SEO Potential Analyser — Neo'
   }, [step, domain, result])
 
   return (
-    <main className="relative min-h-screen w-full overflow-x-hidden bg-black text-ink">
+    <div className="relative min-h-full w-full overflow-x-hidden bg-surface-1 text-ink">
       <AnimatePresence mode="wait">
         {step === 'input' && (
           <InputStep
@@ -152,6 +152,6 @@ export default function SeoAnalyser() {
           <SentStep key="sent" result={result} onReset={handleReset} />
         )}
       </AnimatePresence>
-    </main>
+    </div>
   )
 }

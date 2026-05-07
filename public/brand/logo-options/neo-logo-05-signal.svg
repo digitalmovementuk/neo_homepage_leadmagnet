@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="720" viewBox="0 0 1600 720" role="img" aria-labelledby="title desc">
+  <title id="title">NEO Logo 05 - Signal</title>
+  <desc id="desc">A wordmark with rising bars for search visibility and demand growth.</desc>
+  <defs>
+    
+  </defs>
+  
+      
+  <g transform="translate(116 122) scale(1.42) skewX(-7)">
+    <polygon points="0,280 58,280 88,0 30,0" fill="#0026A3"/>
+    <polygon points="170,280 228,280 258,0 200,0" fill="#0026A3"/>
+    <polygon points="61,0 125,0 199,280 135,280" fill="#0026A3"/>
+
+    <polygon points="320,0 585,0 572,68 383,68 374,112 542,112 530,178 362,178 354,212 548,212 535,280 290,280" fill="#0026A3"/>
+
+    <circle cx="715" cy="140" r="112" fill="none" stroke="#0026A3" stroke-width="58"/>
+    
+  </g>
+      <g transform="translate(1192 238)">
+        <rect x="0" y="138" width="42" height="102" rx="20" fill="#FF7A45"/>
+        <rect x="70" y="92" width="42" height="148" rx="20" fill="#FF7A45"/>
+        <rect x="140" y="38" width="42" height="202" rx="20" fill="#FF7A45"/>
+        <path d="M-4 70 C50 24 110 24 188 0" fill="none" stroke="#26272F" stroke-width="16" stroke-linecap="round"/>
+      </g>
+      <text x="134" y="604" fill="#26272F" font-family="Geist, Helvetica Neue, Arial, sans-serif" font-size="42" font-weight="800" letter-spacing="11">THE AGENCY</text>
+      <text x="686" y="604" fill="#66636D" font-family="Geist, Helvetica Neue, Arial, sans-serif" font-size="32" font-weight="650">RANK. CONVERT. SCALE.</text>
+      
+</svg>

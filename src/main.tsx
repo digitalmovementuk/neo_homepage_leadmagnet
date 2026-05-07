@@ -1,10 +1,19 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import App from "./App";
+import { LanguageProvider } from "./lib/i18n";
+import { LeadModalProvider } from "./lib/leadModal";
+import { SeoModalProvider } from "./lib/seoModal";
+import "./index.css";
 
-createRoot(document.getElementById('root')!).render(
+createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <App />
+    <LanguageProvider>
+      <LeadModalProvider>
+        <SeoModalProvider>
+          <App />
+        </SeoModalProvider>
+      </LeadModalProvider>
+    </LanguageProvider>
   </StrictMode>,
-)
+);

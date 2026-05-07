@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="720" viewBox="0 0 1600 720" role="img" aria-labelledby="title desc">
+  <title id="title">NEO Logo 06 - Framed</title>
+  <desc id="desc">A sharp framed wordmark inspired by interface windows and campaign dashboards.</desc>
+  <defs>
+    
+  </defs>
+  
+      <path d="M128 160 V96 H336" fill="none" stroke="#0037D8" stroke-width="20" stroke-linecap="square"/>
+      <path d="M1472 160 V96 H1264" fill="none" stroke="#0037D8" stroke-width="20" stroke-linecap="square"/>
+      <path d="M128 560 V624 H336" fill="none" stroke="#0037D8" stroke-width="20" stroke-linecap="square"/>
+      <path d="M1472 560 V624 H1264" fill="none" stroke="#0037D8" stroke-width="20" stroke-linecap="square"/>
+      <text x="190" y="416" fill="#26272F" font-family="Geist, Helvetica Neue, Arial, sans-serif" font-size="294" font-weight="950" font-style="italic" letter-spacing="-18">NEO</text>
+      <rect x="836" y="222" width="42" height="42" rx="21" fill="#FF7A45"/>
+      <text x="928" y="318" fill="#0037D8" font-family="Geist, Helvetica Neue, Arial, sans-serif" font-size="84" font-weight="900" letter-spacing="5">THE</text>
+      <text x="928" y="430" fill="#0037D8" font-family="Geist, Helvetica Neue, Arial, sans-serif" font-size="84" font-weight="900" letter-spacing="5">AGENCY</text>
+      
+</svg>

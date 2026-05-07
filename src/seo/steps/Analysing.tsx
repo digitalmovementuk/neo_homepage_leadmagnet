@@ -7,17 +7,17 @@ interface Props {
 }
 
 const LINES = [
-  'Reading your homepage…',
-  'Inferring industry and primary location…',
-  'Running Google PageSpeed (mobile & desktop)…',
-  'Measuring Core Web Vitals — LCP, CLS, INP…',
-  'Auditing meta tags, headings, schema markup…',
-  'Mapping high-intent search keywords…',
-  'Estimating monthly search volumes…',
-  'Calculating click-through rates by position…',
-  'Crossing with industry conversion rates and AOV…',
-  'Modelling 90-day projection curve…',
-  'Compiling the opportunity number…',
+  'Homepage wird gelesen…',
+  'Branche und Standort werden erkannt…',
+  'Google PageSpeed läuft (Mobile & Desktop)…',
+  'Core Web Vitals werden gemessen — LCP, CLS, INP…',
+  'Meta-Tags, Headings, Schema-Markup werden geprüft…',
+  'Hochintent-Keywords werden zugeordnet…',
+  'Monatliche Suchvolumen werden geschätzt…',
+  'Click-Through-Raten je Position werden berechnet…',
+  'Branchen-Conversion-Raten und AOV werden gekreuzt…',
+  '90-Tage-Projektion wird modelliert…',
+  'Opportunity-Zahl wird zusammengesetzt…',
 ] as const
 
 export function AnalysingStep({ domain }: Props) {
@@ -37,28 +37,28 @@ export function AnalysingStep({ domain }: Props) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0, y: -12 }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      className="relative flex min-h-screen w-full flex-col items-center justify-center px-5 py-20 sm:px-8"
+      className="relative flex min-h-full w-full flex-col items-center justify-center px-5 py-16 sm:px-8 sm:py-20"
     >
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 mx-auto h-[640px] max-w-[1180px]"
+        className="pointer-events-none absolute inset-x-0 top-0 mx-auto h-[520px] max-w-[1180px]"
         style={{
           background:
-            'radial-gradient(ellipse at 50% 0%, rgba(0,113,227,0.18), transparent 65%)',
+            'radial-gradient(ellipse at 50% 0%, rgba(255,122,69,0.16), transparent 70%)',
         }}
       />
 
       <div className="relative w-full max-w-[680px]">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#9fd0ff]">
-          Analysing
+        <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#FF7A45]">
+          Analyse läuft
         </p>
         <h2
           className="mt-3 break-words text-ink"
           style={{
             fontSize: 'clamp(28px, 4.4vw, 48px)',
             lineHeight: 1.05,
-            fontWeight: 300,
-            letterSpacing: '-0.02em',
+            fontWeight: 700,
+            letterSpacing: '-0.018em',
           }}
         >
           {domain}
@@ -73,7 +73,7 @@ export function AnalysingStep({ domain }: Props) {
                 key={line}
                 initial={{ opacity: 0, x: -8 }}
                 animate={{
-                  opacity: state === 'pending' ? 0.3 : 1,
+                  opacity: state === 'pending' ? 0.4 : 1,
                   x: 0,
                 }}
                 transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1], delay: idx * 0.06 }}
@@ -82,14 +82,14 @@ export function AnalysingStep({ domain }: Props) {
                 <span
                   className={`grid h-7 w-7 shrink-0 place-items-center rounded-full transition-colors duration-300 ${
                     state === 'done'
-                      ? 'bg-[#0071E3]/20 text-[#5cb3ff]'
+                      ? 'bg-[#FF7A45]/15 text-[#FF7A45]'
                       : state === 'active'
-                        ? 'bg-white/10 text-[#9fd0ff]'
-                        : 'bg-white/[0.04] text-ink/30'
+                        ? 'bg-ink/[0.06] text-ink'
+                        : 'bg-ink/[0.04] text-ink-faint'
                   }`}
                 >
                   {state === 'done' ? (
-                    <Check size={14} strokeWidth={2.4} />
+                    <Check size={14} strokeWidth={2.6} />
                   ) : state === 'active' ? (
                     <Loader2 size={14} className="animate-spin" />
                   ) : (
@@ -99,10 +99,10 @@ export function AnalysingStep({ domain }: Props) {
                 <span
                   className={
                     state === 'done'
-                      ? 'text-ink/82'
+                      ? 'text-ink-soft'
                       : state === 'active'
-                        ? 'text-ink'
-                        : 'text-ink/40'
+                        ? 'text-ink font-semibold'
+                        : 'text-ink-faint'
                   }
                 >
                   {line}

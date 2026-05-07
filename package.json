@@ -1,34 +1,32 @@
 {
-  "name": "cunos-consulting-v9",
+  "name": "neo-homepage-leadmagnet",
   "private": true,
   "version": "0.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "preview": "vite preview",
-    "deploy": "tsc -b && vite build --base=/cunos_TempHonepage_LeadMagenet/ && gh-pages -d dist -t --nojekyll -m Deploy"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.95.0",
-    "@fontsource/inter": "^5.2.8",
-    "@fontsource/space-grotesk": "^5.2.10",
     "@vercel/node": "^5.7.15",
-    "framer-motion": "^12.38.0",
-    "lucide-react": "^0.473.0",
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4"
+    "framer-motion": "^12.0.0",
+    "lenis": "^1.1.20",
+    "lucide-react": "^0.460.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^6.30.3"
   },
   "devDependencies": {
-    "@types/node": "^25.6.0",
-    "@types/react": "^19.2.14",
-    "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^6.0.1",
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.4.20",
-    "gh-pages": "^6.3.0",
-    "postcss": "^8.5.10",
+    "postcss": "^8.4.49",
     "tailwindcss": "^3.4.17",
-    "typescript": "~5.6.3",
-    "vite": "^8.0.4"
+    "typescript": "^5.7.2",
+    "vite": "^6.0.5"
   }
 }

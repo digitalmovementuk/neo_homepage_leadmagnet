@@ -1,57 +1,234 @@
-@import '@fontsource/inter/300.css';
-@import '@fontsource/inter/400.css';
-@import '@fontsource/inter/500.css';
-@import '@fontsource/inter/600.css';
-@import '@fontsource/inter/700.css';
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-html {
-  scroll-behavior: smooth;
-  background: #000;
+/* v3_apple — original design system for Digital Movement UK.
+   Two surfaces alternate down the page:
+     light: #fbfbfd
+     dark:  #1B0E2E (DM plum) */
+
+@layer base {
+  :root {
+    /* NEO palette — clean white canvas, ink-graphite text, vivid orange accent.
+       Light theme uses only white tones (no warmer sand). */
+    --surface-light: #ffffff;
+    --surface-light-2: #f5f5f7;
+    --surface-dark: #26272f;
+    --surface-deep: #1a1b22;
+
+    --ink: #26272f;
+    --ink-soft: #4a4d59;
+    --ink-muted: #66636d;
+    --ink-faint: #8a8791;
+
+    --accent: #ff7a45;
+    --grad-brand: linear-gradient(
+      135deg,
+      #ffb07a 0%,
+      #ff7a45 50%,
+      #f15f2b 100%
+    );
+    --grad-cta: linear-gradient(90deg, #ff7a45 0%, #f15f2b 100%);
+
+    --container-max: 1280px;
+    --gutter: clamp(20px, 4vw, 56px);
+  }
+
+  html {
+    text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: auto;
+  }
+
+  body {
+    margin: 0;
+    /* Match neotheagency.com — Geist Sans is Vercel's typeface, the same
+       primary font the live NEO site uses (with Helvetica Neue fallback). */
+    font-family: "Geist", "Helvetica Neue", Helvetica, Arial, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--surface-light);
+    color: var(--ink);
+    overflow-x: hidden;
+    letter-spacing: -0.003em;
+  }
+
+  ::selection {
+    background: rgba(236, 23, 141, 0.20);
+    color: var(--ink);
+  }
+
+  input, textarea, select, button { font: inherit; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
 }
 
-html, body, #root {
-  min-height: 100%;
-  background: #000;
-  color: #f4eefb;
+@layer components {
+  .surface-light  { background: var(--surface-light);   color: var(--ink); }
+  .surface-light-2 { background: var(--surface-light-2); color: var(--ink); }
+  .surface-dark  { background: var(--surface-dark);    color: #fff; }
+  .surface-deep  { background: var(--surface-deep);    color: rgba(255,255,255,0.85); }
+
+  .container-v3 {
+    width: 100%;
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+  .container-narrow {
+    width: 100%;
+    max-width: 980px;
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+
+  .section-y       { padding-block: clamp(72px, 11vw, 160px); }
+  .section-y-tight { padding-block: clamp(56px, 8vw, 112px); }
+
+  .eyebrow {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+  .balance { text-wrap: balance; }
+  .pretty  { text-wrap: pretty; }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 26px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    transition: transform .25s cubic-bezier(.22,1,.36,1), background-color .25s, color .25s, box-shadow .25s, border-color .25s;
+    will-change: transform;
+    cursor: pointer;
+  }
+  .btn:active { transform: translateY(1px); }
+
+  .btn-primary { background: var(--ink); color: #fff; }
+  .btn-primary:hover { background: #2a1a44; transform: translateY(-1px); }
+
+  .btn-on-dark { background: #fff; color: var(--ink); }
+  .btn-on-dark:hover { background: rgba(255,255,255,0.92); transform: translateY(-1px); }
+
+  .btn-ghost-on-dark {
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.40);
+  }
+  .btn-ghost-on-dark:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.65);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid rgba(27,14,46,0.30);
+  }
+  .btn-ghost:hover {
+    background: rgba(27,14,46,0.04);
+    border-color: rgba(27,14,46,0.55);
+  }
+
+  .link-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+    color: var(--accent);
+    transition: gap .25s cubic-bezier(.22,1,.36,1);
+  }
+  .link-arrow:hover { gap: 10px; }
+  .link-arrow-on-dark {
+    color: #fff;
+  }
+
+  /* Sticky nav backdrops — translucent + blur. Two flavours that swap by
+     scroll position so the bar is always legible against whatever is
+     behind it.
+     `transform: translate3d(0,0,0)` promotes the bar to its own GPU layer
+     so the backdrop-filter recomposite when the surface flips at section
+     boundaries doesn't flicker into the page paint. */
+  .nav-glass-light,
+  .nav-glass-dark {
+    backdrop-filter: saturate(180%) blur(18px);
+    -webkit-backdrop-filter: saturate(180%) blur(18px);
+    transform: translate3d(0, 0, 0);
+    will-change: background-color, border-color;
+  }
+  .nav-glass-light {
+    background: rgba(251,251,253,0.72);
+    border-bottom: 1px solid rgba(27,14,46,0.06);
+  }
+  .nav-glass-dark {
+    background: rgba(27,14,46,0.52);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  /* Horizontal snap-scroll carousels. */
+  .snap-x {
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .snap-x::-webkit-scrollbar { display: none; }
+  .snap-card {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .text-grad-brand {
+    background: var(--grad-brand);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  /* Subtle film grain — used sparingly on large flat fills to add tooth. */
+  .grain {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.6' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.045 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    background-size: 160px 160px;
+    mix-blend-mode: overlay;
+    opacity: 0.55;
+  }
 }
 
-body {
-  font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
+.skip-link {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 9999;
+  background: var(--ink);
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  transform: translateY(calc(-100% - 24px));
+  transition: transform 0.2s ease;
+}
+  .skip-link:focus { transform: translateY(0); }
+
+section[id] {
+  scroll-margin-top: 104px;
 }
 
-::selection {
-  background: rgba(0, 113, 227, 0.55);
-  color: #ffffff;
-}
-
-:focus-visible {
-  outline: 2px solid rgba(41, 151, 255, 0.85);
-  outline-offset: 2px;
-  border-radius: 6px;
-}
-
-input:focus-visible,
-textarea:focus-visible,
-button:focus-visible {
-  outline: none;
-}
-
-/* Subtle ambient noise on dark sections (CSS-only, no asset) */
-.grain::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.035;
-  mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.85'/></svg>");
+@media (max-width: 767px) {
+  section[id] {
+    scroll-margin-top: 76px;
+  }
 }

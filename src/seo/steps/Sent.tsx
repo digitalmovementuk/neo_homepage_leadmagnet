@@ -17,46 +17,46 @@ export function SentStep({ result, onReset }: Props) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      className="relative flex min-h-screen w-full flex-col items-center justify-center px-5 py-20 text-center sm:px-8"
+      className="relative flex min-h-full w-full flex-col items-center justify-center px-5 py-16 text-center sm:px-8 sm:py-20"
     >
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 mx-auto h-[640px] max-w-[1180px]"
+        className="pointer-events-none absolute inset-x-0 top-0 mx-auto h-[520px] max-w-[1180px]"
         style={{
           background:
-            'radial-gradient(ellipse at 50% 0%, rgba(34,197,94,0.16), transparent 65%)',
+            'radial-gradient(ellipse at 50% 0%, rgba(255,122,69,0.16), transparent 70%)',
         }}
       />
 
       <div className="relative w-full max-w-[640px]">
-        <span className="grid h-16 w-16 mx-auto place-items-center rounded-full border border-emerald-400/30 bg-emerald-400/10 text-emerald-300">
-          <CheckCircle2 size={28} strokeWidth={1.6} />
+        <span className="grid h-16 w-16 mx-auto place-items-center rounded-full bg-[#FF7A45]/15 text-[#FF7A45]">
+          <CheckCircle2 size={28} strokeWidth={2} />
         </span>
 
         <h2
           className="mt-7 text-ink"
           style={{
-            fontSize: 'clamp(32px, 4.4vw, 52px)',
+            fontSize: 'clamp(32px, 4.6vw, 56px)',
             lineHeight: 1.05,
-            fontWeight: 300,
-            letterSpacing: '-0.02em',
+            fontWeight: 700,
+            letterSpacing: '-0.022em',
           }}
         >
-          Roadmap on the way.
+          Roadmap unterwegs.
         </h2>
-        <p className="mx-auto mt-4 max-w-[480px] text-[15px] leading-[1.55] text-ink/64 sm:text-[16px]">
-          We're putting together your detailed 90-day plan to capture{' '}
-          <span className="text-ink/90">{formatGbp(result.monthlyOpportunityGbp)}/month</span>{' '}
-          for {result.domain}. Expect it in your inbox within one working day.
+        <p className="mx-auto mt-4 max-w-[480px] text-[15px] leading-[1.55] text-ink-soft sm:text-[16px]">
+          Wir stellen Ihren detaillierten 90-Tage-Plan zusammen, um{' '}
+          <span className="font-semibold text-ink">{formatGbp(result.monthlyOpportunityGbp)}/Monat</span>{' '}
+          für {result.domain} zu erschließen. Werktags innerhalb 24 Stunden in Ihrem Posteingang.
         </p>
 
         <button
           type="button"
           onClick={onReset}
-          className="mt-10 inline-flex items-center gap-2 rounded-pill border border-white/15 bg-white/[0.04] px-5 py-3 text-[13px] font-medium text-ink transition-colors hover:bg-white/[0.08]"
+          className="mt-10 inline-flex items-center gap-2 rounded-full border border-ink/10 bg-white px-5 py-3 text-[13px] font-semibold text-ink transition-colors hover:bg-ink/[0.04]"
         >
-          <RotateCcw size={14} />
-          Analyse another site
+          <RotateCcw size={14} strokeWidth={2.4} />
+          Weitere Domain analysieren
         </button>
       </div>
     </motion.section>
