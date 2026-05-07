@@ -61,7 +61,7 @@ export function InputStep({ initial, onAnalyse, error }: Props) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0, y: -16 }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      className="relative flex h-full w-full flex-col items-center overflow-y-auto px-5 py-8 sm:px-8 sm:py-10"
+      className="relative flex h-full w-full flex-col items-center overflow-y-auto px-5 pb-8 pt-14 sm:px-8 sm:pt-10 sm:pb-10"
       data-lenis-prevent
     >
       <div
