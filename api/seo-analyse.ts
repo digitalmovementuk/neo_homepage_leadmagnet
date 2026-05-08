@@ -1,5 +1,4 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
-import Anthropic from '@anthropic-ai/sdk'
 
 /* ============================== TYPES ============================== */
 
@@ -8,12 +7,13 @@ type RankBand = 'top3' | 'page1' | 'page2-3' | 'page4plus' | 'unranked'
 interface KeywordRow {
   keyword: string
   monthlySearches: number
-  /** Estimated SEO keyword difficulty 0–100 (Ahrefs/Moz convention). */
+  /** Semrush Keyword Difficulty Index 0–100. */
   keywordDifficulty: number
   currentRankBand: RankBand
+  /** Live Semrush position (1–100), or null if not in top 100. */
+  currentPosition: number | null
   estCurrentClicks: number
   estPage1Clicks: number
-  /** In the request's `currency`. */
   estMonthlyValue: number
   intent: 'transactional' | 'commercial' | 'informational' | 'navigational'
 }
@@ -36,14 +36,6 @@ interface Calculation {
   notes: string
 }
 
-interface PageSpeedSummary {
-  performance: number
-  seo: number
-  lcpMs: number
-  cls: number
-  inpMs: number | null
-}
-
 interface AnalysisResult {
   domain: string | null
   currency: string
@@ -56,8 +48,10 @@ interface AnalysisResult {
   competitors: CompetitorRow[]
   blockers: Blocker[]
   calculation: Calculation
-  pageSpeed: { mobile: PageSpeedSummary; desktop: PageSpeedSummary } | null
+  /** Semrush-based audit — no Lighthouse signals. Always null. */
+  pageSpeed: null
   generatedAt: string
+  source: 'semrush'
 }
 
 type AnalyseResponse =
@@ -65,19 +59,55 @@ type AnalyseResponse =
   | {
       ok: false
       error: string
-      code: 'invalid_domain' | 'fetch_failed' | 'llm_failed' | 'rate_limited' | 'server_error'
+      code: 'invalid_domain' | 'fetch_failed' | 'rate_limited' | 'server_error' | 'no_data'
     }
 
 /* =========================== CONFIG ============================ */
 
-const FETCH_TIMEOUT_MS = 6_000
-const MAX_HTML_BYTES = 8_192
+const SEMRUSH_ENDPOINT = 'https://api.semrush.com/'
+const SEMRUSH_TIMEOUT_MS = 12_000
+const KEYWORDS_LIMIT = 10
+const COMPETITORS_LIMIT = 5
 const RATE_LIMIT_PER_DAY = 8
-const PAGESPEED_ENDPOINT = 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed'
+const PROJECTION_TIMELINE_DAYS = 90
 
 const ALLOWED_CURRENCIES = new Set([
   'EUR', 'GBP', 'USD', 'CHF', 'CAD', 'AUD', 'JPY', 'CNY', 'HKD', 'SGD',
 ])
+
+/** ISO 4217 → preferred Semrush database (regional ranking index). */
+const CURRENCY_TO_DB: Record<string, string> = {
+  EUR: 'de',
+  GBP: 'uk',
+  USD: 'us',
+  CHF: 'ch',
+  CAD: 'ca',
+  AUD: 'au',
+  JPY: 'jp',
+  CNY: 'us',
+  HKD: 'hk',
+  SGD: 'sg',
+}
+
+/** Database → human-readable location label, used for inferredLocation. */
+const DB_TO_LOCATION: Record<string, string> = {
+  us: 'United States', uk: 'United Kingdom', de: 'Germany', ch: 'Switzerland',
+  fr: 'France', es: 'Spain', it: 'Italy', nl: 'Netherlands', be: 'Belgium',
+  at: 'Austria', dk: 'Denmark', fi: 'Finland', no: 'Norway', se: 'Sweden',
+  pl: 'Poland', tr: 'Turkey', ie: 'Ireland', jp: 'Japan', hk: 'Hong Kong',
+  sg: 'Singapore', au: 'Australia', ca: 'Canada', nz: 'New Zealand',
+  br: 'Brazil', mx: 'Mexico', ar: 'Argentina', il: 'Israel', in: 'India',
+}
+
+/** CTR curve by exact organic position. Backlinko 2024 empirical averages. */
+const CTR_BY_POSITION: Record<number, number> = {
+  1: 0.275, 2: 0.155, 3: 0.106,
+  4: 0.072, 5: 0.052, 6: 0.039, 7: 0.030, 8: 0.022, 9: 0.018, 10: 0.015,
+}
+const CTR_PAGE_2_3 = 0.012
+const CTR_PAGE_4_5 = 0.005
+const CTR_BEYOND_50 = 0.002
+const CTR_PAGE_1_AVERAGE = 0.06
 
 const ipBuckets = new Map<string, { count: number; resetAt: number }>()
 
@@ -105,415 +135,329 @@ function rateLimited(ip: string): boolean {
 function normaliseDomain(input: string): string | null {
   let s = input.trim().toLowerCase()
   if (!s) return null
-  s = s.replace(/^https?:\/\//, '').replace(/\/.*$/, '')
+  s = s.replace(/^https?:\/\//, '').replace(/\/.*$/, '').replace(/^www\./, '')
   if (!/^[a-z0-9.-]+\.[a-z]{2,}$/.test(s)) return null
   return s
 }
 
-async function fetchHomepage(domain: string): Promise<string | null> {
-  const tryUrls = [`https://${domain}/`, `https://www.${domain}/`, `http://${domain}/`]
-  for (const url of tryUrls) {
-    const controller = new AbortController()
-    const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS)
-    try {
-      const res = await fetch(url, {
-        signal: controller.signal,
-        redirect: 'follow',
-        headers: {
-          'user-agent':
-            'Mozilla/5.0 (compatible; NeoSEOBot/1.0; +https://neohomepageleadmagnet.vercel.app/seo-analyse)',
-          accept: 'text/html,application/xhtml+xml',
-        },
-      })
-      if (!res.ok) continue
-      const html = await res.text()
-      return html
-    } catch {
-      continue
-    } finally {
-      clearTimeout(timer)
-    }
-  }
-  return null
+function ctrForPosition(position: number | null): number {
+  if (position == null || position < 1) return 0
+  if (position <= 10) return CTR_BY_POSITION[position] ?? 0
+  if (position <= 30) return CTR_PAGE_2_3
+  if (position <= 50) return CTR_PAGE_4_5
+  if (position <= 100) return CTR_BEYOND_50
+  return 0
 }
 
-function extractExcerpt(html: string): string {
-  const stripped = html
-    .replace(/<script[\s\S]*?<\/script>/gi, '')
-    .replace(/<style[\s\S]*?<\/style>/gi, '')
-    .replace(/<noscript[\s\S]*?<\/noscript>/gi, '')
-    .replace(/<!--[\s\S]*?-->/g, '')
-  if (stripped.length <= MAX_HTML_BYTES) return stripped
-  const head = stripped.indexOf('</head>')
-  const headPart = head > -1 ? stripped.slice(0, Math.min(head + 7, MAX_HTML_BYTES / 2)) : ''
-  const remaining = MAX_HTML_BYTES - headPart.length
-  const bodyStart = stripped.indexOf('<body')
-  const bodyPart =
-    bodyStart > -1
-      ? stripped.slice(bodyStart, bodyStart + remaining)
-      : stripped.slice(0, remaining)
-  return headPart + bodyPart
+function rankBandForPosition(position: number | null): RankBand {
+  if (position == null || position < 1) return 'unranked'
+  if (position <= 3) return 'top3'
+  if (position <= 10) return 'page1'
+  if (position <= 30) return 'page2-3'
+  return 'page4plus'
 }
 
-/* ========================== PAGESPEED ============================ */
-
-interface AuditValue {
-  numericValue?: number
-  score?: number | null
+function intentFromCode(code: string | undefined): KeywordRow['intent'] {
+  // Semrush intent codes: 0=informational, 1=navigational, 2=commercial, 3=transactional.
+  // Multiple codes may be comma-separated — use the strongest commercial signal.
+  if (!code) return 'commercial'
+  const codes = code.split(',').map((c) => c.trim())
+  if (codes.includes('3')) return 'transactional'
+  if (codes.includes('2')) return 'commercial'
+  if (codes.includes('1')) return 'navigational'
+  if (codes.includes('0')) return 'informational'
+  return 'commercial'
 }
 
-interface RawPageSpeedResponse {
-  lighthouseResult?: {
-    categories?: {
-      performance?: { score?: number | null }
-      seo?: { score?: number | null }
-    }
-    audits?: {
-      'largest-contentful-paint'?: AuditValue
-      'cumulative-layout-shift'?: AuditValue
-      'interaction-to-next-paint'?: AuditValue
-      'experimental-interaction-to-next-paint'?: AuditValue
-    }
-  }
+/** Parse Semrush CSV (semicolon-separated, first row = headers). */
+function parseSemrushCsv(body: string): Record<string, string>[] {
+  const trimmed = body.trim()
+  if (!trimmed) return []
+  if (trimmed.startsWith('ERROR')) return []
+  const lines = trimmed.split('\n')
+  if (lines.length < 2) return []
+  const headers = lines[0]!.split(';')
+  return lines.slice(1).map((line) => {
+    const cells = line.split(';')
+    const row: Record<string, string> = {}
+    headers.forEach((h, i) => { row[h] = cells[i] ?? '' })
+    return row
+  })
 }
 
-async function fetchOnePageSpeed(
-  url: string,
-  strategy: 'mobile' | 'desktop',
-  timeoutMs: number,
-): Promise<PageSpeedSummary | null> {
-  const params = new URLSearchParams({ url, strategy, category: 'performance' })
-  params.append('category', 'seo')
-  if (process.env.PAGESPEED_API_KEY) params.set('key', process.env.PAGESPEED_API_KEY)
-
+async function semrush(params: Record<string, string>): Promise<Record<string, string>[]> {
+  const apiKey = process.env.SEMRUSH_API_KEY
+  if (!apiKey) throw new Error('SEMRUSH_API_KEY not set')
+  const qs = new URLSearchParams({ ...params, key: apiKey })
   const controller = new AbortController()
-  const timer = setTimeout(() => controller.abort(), timeoutMs)
+  const timer = setTimeout(() => controller.abort(), SEMRUSH_TIMEOUT_MS)
   try {
-    const res = await fetch(`${PAGESPEED_ENDPOINT}?${params.toString()}`, {
+    const res = await fetch(`${SEMRUSH_ENDPOINT}?${qs.toString()}`, {
       signal: controller.signal,
     })
-    if (!res.ok) return null
-    const data = (await res.json()) as RawPageSpeedResponse
-    const lr = data.lighthouseResult
-    if (!lr) return null
-    const lcp = lr.audits?.['largest-contentful-paint']?.numericValue ?? 0
-    const cls = lr.audits?.['cumulative-layout-shift']?.numericValue ?? 0
-    const inp =
-      lr.audits?.['interaction-to-next-paint']?.numericValue ??
-      lr.audits?.['experimental-interaction-to-next-paint']?.numericValue ??
-      null
-    return {
-      performance: Math.round((lr.categories?.performance?.score ?? 0) * 100),
-      seo: Math.round((lr.categories?.seo?.score ?? 0) * 100),
-      lcpMs: Math.round(lcp),
-      cls: Math.round(cls * 1000) / 1000,
-      inpMs: inp == null ? null : Math.round(inp),
+    if (!res.ok) {
+      const text = await res.text().catch(() => '')
+      throw new Error(`Semrush HTTP ${res.status}: ${text.slice(0, 200)}`)
     }
-  } catch {
-    return null
+    const body = await res.text()
+    return parseSemrushCsv(body)
   } finally {
     clearTimeout(timer)
   }
 }
 
-async function runPageSpeed(
-  url: string,
-): Promise<{ mobile: PageSpeedSummary; desktop: PageSpeedSummary } | null> {
-  const [mobile, desktop] = await Promise.all([
-    fetchOnePageSpeed(url, 'mobile', 18_000),
-    fetchOnePageSpeed(url, 'desktop', 18_000),
-  ])
-  if (!mobile && !desktop) return null
-  const fallback: PageSpeedSummary = { performance: 0, seo: 0, lcpMs: 0, cls: 0, inpMs: null }
-  return { mobile: mobile ?? fallback, desktop: desktop ?? fallback }
+function asInt(s: string | undefined): number {
+  if (!s) return 0
+  const n = parseInt(s, 10)
+  return isFinite(n) ? n : 0
 }
 
-/* ========================== ANTHROPIC =========================== */
-
-const SYSTEM_PROMPT = `You are an SEO opportunity estimator for small-to-medium businesses. Given a domain's homepage HTML (when available), PageSpeed signals (when available), the business's own AOV + conversion rate, and an industry/offering hint, you produce a defensible estimate of the monthly revenue the business is leaving on the table from organic search.
-
-Two analysis modes — work out which one applies from the user message:
-
-  MODE A — full audit (domain + homepage HTML provided): use the homepage as primary signal, follow the heuristics in step 4 to estimate currentRankBand from on-page evidence.
-  MODE B — pre-launch / domain-less (no homepage HTML): rely entirely on the industry hint + top-service hint. Treat all keywords as "unranked" (the business has no live discovery surface). Make the analysis as specific to the user's stated industry and offering as possible — keywords, competitors, blockers must reflect THAT industry and THAT service, not generic SMB advice. inferredLocation can be "not specified" if no language/locale signal exists; default to the language used in the user message and currency for a sensible region guess.
-
-Method (apply rigorously, do not invent numbers):
-
-1. Infer industry and primary location:
-   - MODE A: from the homepage content (language, currency, addresses, schema, copy). If the user supplied an industry hint, anchor on it and combine with what the homepage shows.
-   - MODE B: from the industry hint + top-service hint VERBATIM. The hint IS the industry — make every keyword, competitor and blocker domain-specific to it.
-
-2. Generate 8–10 plausible high-intent keywords a real customer would type to find this business. Mix transactional (e.g. "pizza lieferung köln"), commercial (e.g. "zahnarzt köln innenstadt"), and 1–2 informational. Use the inferred location and the local language. Keyword phrases must read like real searches, not marketing slogans.
-
-3. Estimate monthlySearches conservatively from local market priors. For a city of ~1M people, a generic transactional keyword in a normal vertical sees 200–2,000 monthly searches; a hyper-niche one sees 50–300. Bigger cities and English-speaking markets scale up. Do NOT hallucinate huge volumes.
-
-4. Estimate currentRankBand:
-   - MODE A: derive from on-page signals + PageSpeed:
-     - Strong on-page (title contains target term, meta present, h1 clear, schema, mobile perf >70): "page1" or "top3"
-     - OK on-page but weak perf or thin content: "page2-3"
-     - Missing meta description, generic title, no schema, weak perf: "page4plus"
-     - Brand-new domain, very thin content, or no relevant on-page signal at all: "unranked"
-   - MODE B: ALL keywords are "unranked" (no live discovery surface). estCurrentClicks = 0 across the board, current.estMonthlyTrafficValue = 0, current.estMonthlyClicks = 0.
-
-4b. Estimate keywordDifficulty (0–100, Ahrefs/Moz convention) using these priors:
-   - Hyper-local long-tail (4+ words, includes city/neighbourhood + niche service): 10–25
-   - Local commercial (city + service): 25–45
-   - Mid-tail commercial (service + qualifier, no location): 35–60
-   - Generic informational ("how does X work"): 20–45
-   - Head-term commercial without location ("zahnarzt", "restaurant"): 60–85
-   - National brand-category head ("crm software"): 70–95
-   Higher search volume + broader intent generally raise difficulty; tight long-tail intent lowers it. Round to nearest 5.
-
-5. CTR by position (Backlinko 2024 averages — use these EXACTLY):
-   - top3:     0.27 average
-   - page1:    0.06 average (positions 4–10)
-   - page2-3:  0.012
-   - page4plus:0.004
-   - unranked: 0
-
-6. The user has provided their actual business numbers — DO NOT use industry defaults:
-   - Currency:        provided as ISO code in the user message
-   - AOV (per sale):  provided as a number in that currency
-   - Conversion rate: provided as a fraction (e.g. 0.03 = 3%)
-   ALL money values you output MUST be in the user's currency, using their AOV and conversion rate verbatim.
-
-7. estCurrentClicks  = round(monthlySearches × CTR_at_currentRankBand)
-   estPage1Clicks    = round(monthlySearches × 0.06) for keywords currently below page1; for keywords already top3, projected = same as current.
-   estMonthlyValue   = round((estPage1Clicks − estCurrentClicks) × conversionRate × AOV)
-   monthlyOpportunity = SUM of estMonthlyValue across all keywords.
-   Round monthlyOpportunity to a sensible whole number in the user's currency. Cap at 250 × AOV per month — beyond that the number stops being credible for an SMB; if you cap, explain why in calculation.notes.
-
-8. current.estMonthlyTrafficValue   = SUM(monthlySearches × CTR_at_currentRankBand × conversionRate × AOV) across keywords (rounded).
-   current.estMonthlyClicks         = SUM(estCurrentClicks).
-   projected.estMonthlyTrafficValue = SUM(monthlySearches × 0.06 × conversionRate × AOV) — assume page1 average for all keywords (rounded).
-   projected.estMonthlyClicks       = SUM(estPage1Clicks).
-   projected.timelineDays           = 90.
-
-9. Blockers — name 3–5 SPECIFIC issues:
-   - MODE A: each blocker must reference observable evidence from the homepage / PageSpeed:
-     - On-page: missing/short meta description, generic title tag, missing h1, no schema markup, no language tag
-     - Performance: specific Core Web Vitals failures (LCP > 2500ms, CLS > 0.1, mobile perf < 50)
-     - Local: missing GMB link, no NAP, no local schema
-     - Authority: thin content, no internal linking signals
-   - MODE B: blockers reflect the structural reality of having no website yet — but stay industry-specific. Examples for a dentist with no site: "Kein Google Business Profile beansprucht — Patienten finden Sie nicht in Maps", "Keine Homepage = keine Conversion-Strecke für 'zahnarzt köln'-Suchen", "Kein Schema-Markup für LocalBusiness/Dentist verfügbar". Title and detail must mention the user's industry and top service.
-   Never use generic advice like "improve SEO".
-
-10. Competitors — list 2–3 plausible local/category competitors. Use real-sounding domains anchored to the inferred industry + location. Mark these as ESTIMATED in calculation.notes.
-
-11. calculation.conversionRateUsed = the user-provided conversion rate.
-    calculation.aovUsed            = the user-provided AOV.
-    calculation.notes MUST disclose:
-      - MODE A: "Rankings and search volumes are estimated from on-page signals and industry priors, not measured against live SERPs. AOV and conversion rate are user-provided."
-      - MODE B: "No domain provided — estimates are based entirely on the user-supplied industry and offering. All keywords treated as 'unranked'. Search volumes are conservative industry priors. AOV and conversion rate are user-provided."
-    Be transparent.
-
-You MUST call the submit_analysis tool with the structured result. Never reply in plain text.`
-
-const ANALYSIS_TOOL_INPUT_SCHEMA = {
-  type: 'object' as const,
-  properties: {
-    inferredIndustry: { type: 'string' },
-    inferredLocation: { type: 'string' },
-    monthlyOpportunity: { type: 'integer' },
-    current: {
-      type: 'object',
-      properties: {
-        estMonthlyTrafficValue: { type: 'integer' },
-        estMonthlyClicks: { type: 'integer' },
-      },
-      required: ['estMonthlyTrafficValue', 'estMonthlyClicks'],
-    },
-    projected: {
-      type: 'object',
-      properties: {
-        estMonthlyTrafficValue: { type: 'integer' },
-        estMonthlyClicks: { type: 'integer' },
-        timelineDays: { type: 'integer' },
-      },
-      required: ['estMonthlyTrafficValue', 'estMonthlyClicks', 'timelineDays'],
-    },
-    keywords: {
-      type: 'array',
-      minItems: 6,
-      maxItems: 12,
-      items: {
-        type: 'object',
-        properties: {
-          keyword: { type: 'string' },
-          monthlySearches: { type: 'integer' },
-          keywordDifficulty: { type: 'integer', minimum: 0, maximum: 100 },
-          currentRankBand: {
-            type: 'string',
-            enum: ['top3', 'page1', 'page2-3', 'page4plus', 'unranked'],
-          },
-          estCurrentClicks: { type: 'integer' },
-          estPage1Clicks: { type: 'integer' },
-          estMonthlyValue: { type: 'integer' },
-          intent: {
-            type: 'string',
-            enum: ['transactional', 'commercial', 'informational', 'navigational'],
-          },
-        },
-        required: [
-          'keyword',
-          'monthlySearches',
-          'keywordDifficulty',
-          'currentRankBand',
-          'estCurrentClicks',
-          'estPage1Clicks',
-          'estMonthlyValue',
-          'intent',
-        ],
-      },
-    },
-    competitors: {
-      type: 'array',
-      minItems: 2,
-      maxItems: 5,
-      items: {
-        type: 'object',
-        properties: {
-          domain: { type: 'string' },
-          reasonTheyWin: { type: 'string' },
-        },
-        required: ['domain', 'reasonTheyWin'],
-      },
-    },
-    blockers: {
-      type: 'array',
-      minItems: 3,
-      maxItems: 5,
-      items: {
-        type: 'object',
-        properties: {
-          title: { type: 'string' },
-          detail: { type: 'string' },
-          impact: { type: 'string', enum: ['high', 'medium', 'low'] },
-        },
-        required: ['title', 'detail', 'impact'],
-      },
-    },
-    calculation: {
-      type: 'object',
-      properties: {
-        conversionRateUsed: { type: 'number' },
-        aovUsed: { type: 'number' },
-        ctrCurveSource: { type: 'string' },
-        notes: { type: 'string' },
-      },
-      required: ['conversionRateUsed', 'aovUsed', 'ctrCurveSource', 'notes'],
-    },
-  },
-  required: [
-    'inferredIndustry',
-    'inferredLocation',
-    'monthlyOpportunity',
-    'current',
-    'projected',
-    'keywords',
-    'competitors',
-    'blockers',
-    'calculation',
-  ],
+function asFloat(s: string | undefined): number {
+  if (!s) return 0
+  const n = parseFloat(s)
+  return isFinite(n) ? n : 0
 }
 
-interface AnthropicInput {
+/* ========================== SEMRUSH CALLS ============================ */
+
+interface DomainOrganicRow {
+  keyword: string
+  position: number
+  searchVolume: number
+  cpc: number
+  trafficShare: number
+  keywordDifficulty: number
+  intent: KeywordRow['intent']
+}
+
+async function fetchDomainOrganic(domain: string, database: string): Promise<DomainOrganicRow[]> {
+  const rows = await semrush({
+    type: 'domain_organic',
+    domain,
+    database,
+    display_limit: String(KEYWORDS_LIMIT),
+    export_columns: 'Ph,Po,Nq,Cp,Tr,Kd,In',
+  })
+  return rows.map((r) => ({
+    keyword: r['Keyword'] ?? '',
+    position: asInt(r['Position']),
+    searchVolume: asInt(r['Search Volume']),
+    cpc: asFloat(r['CPC']),
+    trafficShare: asFloat(r['Traffic (%)']),
+    keywordDifficulty: asInt(r['Keyword Difficulty']),
+    intent: intentFromCode(r['Intents']),
+  })).filter((r) => r.keyword)
+}
+
+async function fetchDomainCompetitors(domain: string, database: string): Promise<CompetitorRow[]> {
+  const rows = await semrush({
+    type: 'domain_organic_organic',
+    domain,
+    database,
+    display_limit: String(COMPETITORS_LIMIT),
+    export_columns: 'Dn,Cr,Np,Or,Ot',
+  })
+  return rows.map((r) => {
+    const competitorDomain = r['Domain'] ?? ''
+    const commonKeywords = asInt(r['Common Keywords'])
+    const organicKeywords = asInt(r['Organic Keywords'])
+    const organicTraffic = asInt(r['Organic Traffic'])
+    return {
+      domain: competitorDomain,
+      reasonTheyWin: `${commonKeywords.toLocaleString('en-US')} überlappende Keywords · ${organicKeywords.toLocaleString('en-US')} Rankings · ${organicTraffic.toLocaleString('en-US')} organische Besucher/Monat (Semrush)`,
+    }
+  }).filter((c) => c.domain)
+}
+
+interface PhraseRow {
+  keyword: string
+  searchVolume: number
+  cpc: number
+  keywordDifficulty: number
+}
+
+async function fetchKeywordIdeas(seed: string, database: string): Promise<PhraseRow[]> {
+  const rows = await semrush({
+    type: 'phrase_related',
+    phrase: seed,
+    database,
+    display_limit: String(KEYWORDS_LIMIT),
+    export_columns: 'Ph,Nq,Cp,Kd',
+  })
+  return rows.map((r) => ({
+    keyword: r['Keyword'] ?? '',
+    searchVolume: asInt(r['Search Volume']),
+    cpc: asFloat(r['CPC']),
+    keywordDifficulty: asInt(r['Keyword Difficulty Index']),
+  })).filter((r) => r.keyword)
+}
+
+/* ========================== ASSEMBLY ============================ */
+
+interface BuildInput {
   domain: string | null
+  database: string
   currency: string
   aov: number
   conversionRate: number
   industryHint: string
-  homepageExcerpt: string | null
-  pageSpeed: { mobile: PageSpeedSummary; desktop: PageSpeedSummary } | null
+  organic: DomainOrganicRow[]
+  ideas: PhraseRow[]
+  competitors: CompetitorRow[]
 }
 
-function userMessage(input: AnthropicInput): string {
-  const mode = input.domain && input.homepageExcerpt ? 'A' : 'B'
-
-  const psSummary = input.pageSpeed
-    ? `PageSpeed (mobile / desktop):
-- Performance: ${input.pageSpeed.mobile.performance} / ${input.pageSpeed.desktop.performance}
-- SEO: ${input.pageSpeed.mobile.seo} / ${input.pageSpeed.desktop.seo}
-- LCP (ms): ${input.pageSpeed.mobile.lcpMs} / ${input.pageSpeed.desktop.lcpMs}
-- CLS: ${input.pageSpeed.mobile.cls} / ${input.pageSpeed.desktop.cls}
-- INP (ms): ${input.pageSpeed.mobile.inpMs ?? 'n/a'} / ${input.pageSpeed.desktop.inpMs ?? 'n/a'}`
-    : 'PageSpeed: unavailable (treat performance as unknown — do not assume good or bad).'
-
-  const hint = input.industryHint
-    ? `User-supplied industry / offering hint: "${input.industryHint}"`
-    : '(no industry hint provided)'
-
-  if (mode === 'B') {
-    return `MODE B — pre-launch / domain-less analysis.
-
-The user has NOT provided a website. Treat all keywords as "unranked" and base the entire analysis on the industry / offering hint below. Make every keyword, competitor and blocker specific to THIS industry and THIS offering — do not produce generic SMB output.
-
-User-provided business numbers (use these verbatim, do NOT use industry defaults):
-- Currency:        ${input.currency} (ISO 4217)
-- AOV per sale:    ${input.aov} ${input.currency}
-- Conversion rate: ${input.conversionRate} (${(input.conversionRate * 100).toFixed(2)}%)
-- ${hint}
-
-(No homepage HTML, no PageSpeed signals — analyse purely from the hint above.)
-
-Now call the submit_analysis tool with the JSON analysis. All money values must be integers in ${input.currency}. set domain field of competitors to plausible-but-clearly-illustrative example domains.`
-  }
-
-  return `MODE A — full audit (homepage HTML provided).
-
-Domain: ${input.domain}
-
-User-provided business numbers (use these verbatim, do NOT use industry defaults):
-- Currency:        ${input.currency} (ISO 4217)
-- AOV per sale:    ${input.aov} ${input.currency}
-- Conversion rate: ${input.conversionRate} (${(input.conversionRate * 100).toFixed(2)}%)
-- ${hint}
-
-${psSummary}
-
-Homepage HTML excerpt (first ~8KB after stripping scripts/styles):
-"""
-${input.homepageExcerpt}
-"""
-
-Now call the submit_analysis tool with the JSON analysis. All money values must be integers in ${input.currency}.`
+function classifyIntentByKeyword(keyword: string): KeywordRow['intent'] {
+  const k = keyword.toLowerCase()
+  if (/(kaufen|preis|kosten|buchen|bestellen|angebot|in der nähe|near me|buy|book|order|price|cost|deal|kaufen)/.test(k)) return 'transactional'
+  if (/(beste|best|top|vergleich|review|test|empfehlung)/.test(k)) return 'commercial'
+  if (/^(was|wie|wo|wer|warum|how|what|why|when|guide|tutorial)/.test(k)) return 'informational'
+  return 'commercial'
 }
 
-type LLMOutput = Omit<AnalysisResult, 'domain' | 'currency' | 'pageSpeed' | 'generatedAt'>
-
-async function runAnthropicAnalysis(input: AnthropicInput): Promise<LLMOutput> {
-  const apiKey = process.env.ANTHROPIC_API_KEY
-  if (!apiKey) throw new Error('ANTHROPIC_API_KEY not set')
-
-  const client = new Anthropic({ apiKey })
-  const message = await client.messages.create({
-    model: 'claude-haiku-4-5-20251001',
-    max_tokens: 4096,
-    temperature: 0.3,
-    system: [
-      {
-        type: 'text',
-        text: SYSTEM_PROMPT,
-        cache_control: { type: 'ephemeral' },
-      },
-    ],
-    tools: [
-      {
-        name: 'submit_analysis',
-        description:
-          'Submit the structured SEO opportunity analysis. Call this exactly once with the full result.',
-        input_schema: ANALYSIS_TOOL_INPUT_SCHEMA as unknown as Anthropic.Tool.InputSchema,
-      },
-    ],
-    tool_choice: { type: 'tool', name: 'submit_analysis' },
-    messages: [{ role: 'user', content: userMessage(input) }],
-  })
-
-  const toolUse = message.content.find((block) => block.type === 'tool_use')
-  if (!toolUse || toolUse.type !== 'tool_use') {
-    throw new Error('Anthropic did not return a tool_use block')
+function buildKeywordRows(input: BuildInput): KeywordRow[] {
+  const rows: KeywordRow[] = []
+  if (input.organic.length > 0) {
+    for (const r of input.organic) {
+      const ctrCurrent = ctrForPosition(r.position)
+      const estCurrentClicks = Math.round(r.searchVolume * ctrCurrent)
+      const estPage1Clicks = r.position > 0 && r.position <= 3
+        ? estCurrentClicks
+        : Math.round(r.searchVolume * CTR_PAGE_1_AVERAGE)
+      const upliftClicks = Math.max(0, estPage1Clicks - estCurrentClicks)
+      const estMonthlyValue = Math.round(upliftClicks * input.conversionRate * input.aov)
+      rows.push({
+        keyword: r.keyword,
+        monthlySearches: r.searchVolume,
+        keywordDifficulty: r.keywordDifficulty,
+        currentRankBand: rankBandForPosition(r.position),
+        currentPosition: r.position || null,
+        estCurrentClicks,
+        estPage1Clicks,
+        estMonthlyValue,
+        intent: r.intent,
+      })
+    }
+    return rows
   }
-  return toolUse.input as LLMOutput
+  for (const r of input.ideas) {
+    const estPage1Clicks = Math.round(r.searchVolume * CTR_PAGE_1_AVERAGE)
+    const estMonthlyValue = Math.round(estPage1Clicks * input.conversionRate * input.aov)
+    rows.push({
+      keyword: r.keyword,
+      monthlySearches: r.searchVolume,
+      keywordDifficulty: r.keywordDifficulty,
+      currentRankBand: 'unranked',
+      currentPosition: null,
+      estCurrentClicks: 0,
+      estPage1Clicks,
+      estMonthlyValue,
+      intent: classifyIntentByKeyword(r.keyword),
+    })
+  }
+  return rows
+}
+
+function buildBlockers(input: BuildInput, keywords: KeywordRow[]): Blocker[] {
+  const blockers: Blocker[] = []
+  if (!input.domain || input.organic.length === 0) {
+    blockers.push({
+      title: 'Keine messbare organische Sichtbarkeit',
+      detail: input.domain
+        ? `Semrush findet aktuell keine Top-100-Rankings für ${input.domain}. Die Domain ist entweder zu neu, technisch nicht indexiert oder produziert keine relevanten organischen Treffer.`
+        : 'Ohne Domain kann Semrush keine bestehenden Rankings messen. Das gesamte Potenzial ist noch ungenutzt.',
+      impact: 'high',
+    })
+    blockers.push({
+      title: 'Top-Keywords haben keine On-Page-Verankerung',
+      detail: `${keywords.length} Keywords mit insgesamt ${keywords.reduce((s, k) => s + k.monthlySearches, 0).toLocaleString('en-US')} Suchen/Monat — aktuell holt Ihre Domain davon ${keywords.reduce((s, k) => s + k.estCurrentClicks, 0)} Klicks. Es fehlt eine indexierbare Landingpage je Keyword-Cluster.`,
+      impact: 'high',
+    })
+    blockers.push({
+      title: 'Kein Wettbewerbssignal in Semrush',
+      detail: 'Wettbewerber-Mapping basiert auf gemeinsam rankenden Keywords. Da keine Rankings existieren, fehlt der direkte Benchmark — der Aufbau startet bei null.',
+      impact: 'medium',
+    })
+    return blockers
+  }
+  const beyondPage1 = keywords.filter((k) => k.currentRankBand === 'page2-3' || k.currentRankBand === 'page4plus' || k.currentRankBand === 'unranked')
+  const beyondPage1Volume = beyondPage1.reduce((s, k) => s + k.monthlySearches, 0)
+  if (beyondPage1.length > 0) {
+    blockers.push({
+      title: `${beyondPage1.length} Keywords stehen jenseits von Page 1`,
+      detail: `Zusammen ${beyondPage1Volume.toLocaleString('en-US')} Suchen/Monat (Semrush). Bei Page-2-Rankings fließt 1.2 % statt 6 % der Suchen — der Großteil des Potenzials ist abgehängt.`,
+      impact: 'high',
+    })
+  }
+  const highVolumeLow = keywords
+    .filter((k) => k.monthlySearches >= 500 && (k.currentPosition ?? 99) > 10)
+    .sort((a, b) => b.monthlySearches - a.monthlySearches)
+  if (highVolumeLow.length > 0) {
+    const top = highVolumeLow[0]!
+    blockers.push({
+      title: `Hochvolumige Keywords ranken nicht in den Top 10`,
+      detail: `"${top.keyword}" hat ${top.monthlySearches.toLocaleString('en-US')} Suchen/Monat — Sie ranken aktuell auf Position ${top.currentPosition}. ${highVolumeLow.length - 1} weitere Keywords mit ≥500 Suchen sind ebenfalls außerhalb Page 1.`,
+      impact: 'high',
+    })
+  }
+  if (input.competitors.length > 0) {
+    const c = input.competitors[0]!
+    blockers.push({
+      title: `Wettbewerber rankt für mehr Keywords`,
+      detail: `${c.domain} — ${c.reasonTheyWin}. Diese Überlappung ist der schnellste Weg zur Inhalts-Roadmap.`,
+      impact: 'medium',
+    })
+  }
+  if (blockers.length < 3) {
+    blockers.push({
+      title: 'Keyword-Difficulty zu niedrig genutzt',
+      detail: `Durchschnittliche Difficulty Ihrer rankenden Keywords: ${Math.round(keywords.reduce((s, k) => s + k.keywordDifficulty, 0) / Math.max(keywords.length, 1))}. Es gibt Spielraum für Keywords mit besserer Volumen/Difficulty-Quote.`,
+      impact: 'medium',
+    })
+  }
+  return blockers
+}
+
+function buildResult(input: BuildInput): AnalysisResult {
+  const keywords = buildKeywordRows(input)
+  const totalCurrentClicks = keywords.reduce((s, k) => s + k.estCurrentClicks, 0)
+  const totalPage1Clicks = keywords.reduce((s, k) => s + k.estPage1Clicks, 0)
+  const currentValue = Math.round(totalCurrentClicks * input.conversionRate * input.aov)
+  const projectedValue = Math.round(totalPage1Clicks * input.conversionRate * input.aov)
+  const monthlyOpportunity = Math.max(0, projectedValue - currentValue)
+
+  const inferredLocation = DB_TO_LOCATION[input.database] ?? input.database.toUpperCase()
+  const inferredIndustry = input.industryHint || (input.domain ? `Domain ${input.domain}` : 'Nicht spezifiziert')
+
+  const competitors = input.competitors
+  const blockers = buildBlockers(input, keywords)
+
+  return {
+    domain: input.domain,
+    currency: input.currency,
+    inferredIndustry,
+    inferredLocation,
+    monthlyOpportunity,
+    current: { estMonthlyTrafficValue: currentValue, estMonthlyClicks: totalCurrentClicks },
+    projected: {
+      estMonthlyTrafficValue: projectedValue,
+      estMonthlyClicks: totalPage1Clicks,
+      timelineDays: PROJECTION_TIMELINE_DAYS,
+    },
+    keywords,
+    competitors,
+    blockers,
+    calculation: {
+      conversionRateUsed: input.conversionRate,
+      aovUsed: input.aov,
+      ctrCurveSource: 'Backlinko 2024 organic CTR averages by exact position',
+      notes: input.domain && input.organic.length > 0
+        ? 'Rankings, Suchvolumen und Keyword-Difficulty stammen live aus der Semrush API. Klicks werden aus Position × CTR-Kurve modelliert. AOV und Conversion-Rate sind Ihre Angaben.'
+        : 'Domain hat keine Rankings in Semrush — Keyword-Ideen stammen aus phrase_related (Semrush). Alle Keywords gelten als „unranked", Klicks aktuell = 0. AOV und Conversion-Rate sind Ihre Angaben.',
+    },
+    pageSpeed: null,
+    generatedAt: new Date().toISOString(),
+    source: 'semrush',
+  }
 }
 
 /* ============================ HANDLER =========================== */
@@ -569,12 +513,12 @@ async function handleRequest(req: VercelRequest, res: VercelResponse) {
     aov?: unknown
     conversionRate?: unknown
     industryHint?: unknown
+    database?: unknown
   }
 
   const domain = normaliseDomain(typeof body.domain === 'string' ? body.domain : '')
   const industryHint = typeof body.industryHint === 'string' ? body.industryHint.trim().slice(0, 240) : ''
 
-  // Need at least one anchor — domain OR a meaningful industry/offering hint.
   if (!domain && industryHint.length < 3) {
     res.status(400).json({
       ok: false,
@@ -598,50 +542,72 @@ async function handleRequest(req: VercelRequest, res: VercelResponse) {
     return
   }
 
-  // MODE A: domain present — fetch homepage + PageSpeed.
-  // MODE B: no domain — analysis runs purely from industryHint.
-  let html: string | null = null
-  let pageSpeed: { mobile: PageSpeedSummary; desktop: PageSpeedSummary } | null = null
-  if (domain) {
-    const homepageUrl = `https://${domain}/`
-    ;[html, pageSpeed] = await Promise.all([fetchHomepage(domain), runPageSpeed(homepageUrl)])
-    // Soft-fail: if we can't reach the domain, drop into MODE B rather than rejecting outright.
-    // The user has given us a valid-looking domain + business numbers; an analysis based on the
-    // industry hint is still more useful than a hard error.
-  }
+  const databaseRaw = typeof body.database === 'string' ? body.database.toLowerCase() : ''
+  const database = /^[a-z]{2}$/.test(databaseRaw) ? databaseRaw : (CURRENCY_TO_DB[currency] ?? 'us')
 
-  const excerpt = html ? extractExcerpt(html) : null
-
-  let llm: Awaited<ReturnType<typeof runAnthropicAnalysis>>
-  try {
-    llm = await runAnthropicAnalysis({
-      domain,
-      currency,
-      aov,
-      conversionRate,
-      industryHint,
-      homepageExcerpt: excerpt,
-      pageSpeed,
-    })
-  } catch (err) {
-    const detail = err instanceof Error ? `${err.name}: ${err.message}` : String(err)
-    console.error('LLM analysis failed', detail, err)
-    res.status(502).json({
+  if (!process.env.SEMRUSH_API_KEY) {
+    res.status(500).json({
       ok: false,
-      error: `LLM error: ${detail}`,
-      code: 'llm_failed',
+      error: 'Server misconfigured: SEMRUSH_API_KEY not set.',
+      code: 'server_error',
     } satisfies AnalyseResponse)
     return
   }
 
-  res.status(200).json({
-    ok: true,
-    result: {
-      domain,
-      currency,
-      ...llm,
-      pageSpeed,
-      generatedAt: new Date().toISOString(),
-    },
-  } satisfies AnalyseResponse)
+  let organic: DomainOrganicRow[] = []
+  let competitors: CompetitorRow[] = []
+  let ideas: PhraseRow[] = []
+
+  try {
+    if (domain) {
+      const [organicRes, competitorsRes] = await Promise.allSettled([
+        fetchDomainOrganic(domain, database),
+        fetchDomainCompetitors(domain, database),
+      ])
+      if (organicRes.status === 'fulfilled') organic = organicRes.value
+      if (competitorsRes.status === 'fulfilled') competitors = competitorsRes.value
+    }
+    // If no domain rankings found, fall back to keyword ideas from the industry hint
+    // (or from the bare domain root-word as a seed if the user provided no hint).
+    if (organic.length === 0) {
+      const seed = industryHint || (domain ? domain.split('.')[0]! : '')
+      if (seed.length >= 3) {
+        ideas = await fetchKeywordIdeas(seed, database)
+      }
+    }
+  } catch (err) {
+    const detail = err instanceof Error ? `${err.name}: ${err.message}` : String(err)
+    console.error('Semrush call failed', detail, err)
+    res.status(502).json({
+      ok: false,
+      error: `Semrush error: ${detail}`,
+      code: 'fetch_failed',
+    } satisfies AnalyseResponse)
+    return
+  }
+
+  if (organic.length === 0 && ideas.length === 0) {
+    res.status(200).json({
+      ok: false,
+      error: domain
+        ? `Semrush hat für ${domain} keine organischen Rankings und keine verwertbaren Keyword-Ideen gefunden. Bitte ergänzen Sie Ihre Branche / Ihren Top-Service.`
+        : 'Semrush hat zu Ihrer Branchenbeschreibung keine Keywords gefunden. Bitte konkretisieren Sie das Angebot.',
+      code: 'no_data',
+    } satisfies AnalyseResponse)
+    return
+  }
+
+  const result = buildResult({
+    domain,
+    database,
+    currency,
+    aov,
+    conversionRate,
+    industryHint,
+    organic,
+    ideas,
+    competitors,
+  })
+
+  res.status(200).json({ ok: true, result } satisfies AnalyseResponse)
 }

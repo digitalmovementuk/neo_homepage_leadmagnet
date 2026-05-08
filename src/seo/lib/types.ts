@@ -3,7 +3,11 @@ export type RankBand = 'top3' | 'page1' | 'page2-3' | 'page4plus' | 'unranked'
 export interface KeywordRow {
   keyword: string
   monthlySearches: number
+  /** Semrush Keyword Difficulty 0–100. */
+  keywordDifficulty: number
   currentRankBand: RankBand
+  /** Live Semrush organic position (1–100), or null if not in top 100. */
+  currentPosition: number | null
   estCurrentClicks: number
   estPage1Clicks: number
   /** Money on the table, in the result's currency. */
@@ -29,16 +33,8 @@ export interface Calculation {
   notes: string
 }
 
-export interface PageSpeedSummary {
-  performance: number
-  seo: number
-  lcpMs: number
-  cls: number
-  inpMs: number | null
-}
-
 export interface AnalysisResult {
-  domain: string
+  domain: string | null
   /** ISO 4217 code echoed from the request (EUR, GBP, USD, …). */
   currency: string
   inferredIndustry: string
@@ -58,15 +54,16 @@ export interface AnalysisResult {
   competitors: CompetitorRow[]
   blockers: Blocker[]
   calculation: Calculation
-  pageSpeed: {
-    mobile: PageSpeedSummary
-    desktop: PageSpeedSummary
-  } | null
+  /** Always null — this analyser is Semrush-only, no Lighthouse signals. */
+  pageSpeed: null
   generatedAt: string
+  /** Always 'semrush' — disclosed for trust. */
+  source: 'semrush'
 }
 
 export interface AnalyseRequest {
-  domain: string
+  /** Optional — analyser falls back to MODE B (industry hint only) if missing. */
+  domain?: string
   /** ISO 4217 currency code, e.g. "EUR". */
   currency: string
   /** Visitor → customer conversion rate as a fraction (0.03 = 3%). */
@@ -75,8 +72,10 @@ export interface AnalyseRequest {
   aov: number
   /** Optional free-text industry hint (e.g. "dentist", "B2B SaaS"). */
   industryHint?: string
+  /** Optional Semrush database override (us, uk, de, …). Defaults from currency. */
+  database?: string
 }
 
 export type AnalyseResponse =
   | { ok: true; result: AnalysisResult }
-  | { ok: false; error: string; code: 'invalid_domain' | 'fetch_failed' | 'llm_failed' | 'rate_limited' | 'server_error' }
+  | { ok: false; error: string; code: 'invalid_domain' | 'fetch_failed' | 'rate_limited' | 'server_error' | 'no_data' }

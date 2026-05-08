@@ -49,7 +49,7 @@ export function SentStep({ result, onReset }: Props) {
             letterSpacing: '-0.022em',
           }}
         >
-          {c.sent.headline(result.domain)}
+          {c.sent.headline(result.domain ?? '')}
         </h2>
         <p className="mx-auto mt-3 max-w-[480px] text-[15px] leading-[1.55] text-ink-soft sm:text-[16px]">
           {c.sent.body(formatMoney(result.monthlyOpportunity, result.currency, lang))}

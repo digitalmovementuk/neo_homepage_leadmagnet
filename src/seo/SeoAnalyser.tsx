@@ -106,7 +106,7 @@ export default function SeoAnalyser() {
           name,
           email,
           phone: phoneFull,
-          domain: result.domain,
+          domain: (result.domain ?? ''),
           industry: result.inferredIndustry,
           location: result.inferredLocation,
           currency: result.currency,
@@ -115,12 +115,12 @@ export default function SeoAnalyser() {
           monthlyOpportunity: gbp,
           topBlockers: blockerLines,
           keywords: keywordLines,
-          _subject: c.emailSubject(name, email, result.domain, gbp),
+          _subject: c.emailSubject(name, email, (result.domain ?? ''), gbp),
           _template: 'table',
           _captcha: 'false',
           _autoresponse: c.emailAutoresponse(
             name,
-            result.domain,
+            (result.domain ?? ''),
             gbp,
             result.inferredIndustry,
             result.inferredLocation,
@@ -148,7 +148,7 @@ export default function SeoAnalyser() {
     if (step === 'input') document.title = c.documentTitleIdle
     else if (step === 'analysing') document.title = c.documentTitleAnalysing(payload.domain)
     else if (result)
-      document.title = c.documentTitleResults(result.domain, formatMoney(result.monthlyOpportunity, result.currency, lang))
+      document.title = c.documentTitleResults((result.domain ?? ''), formatMoney(result.monthlyOpportunity, result.currency, lang))
     else document.title = c.documentTitleIdle
   }, [step, payload.domain, result, c, lang])
 
