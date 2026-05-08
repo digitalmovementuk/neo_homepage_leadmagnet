@@ -23,7 +23,10 @@ export function Hero() {
   const t = useT();
   const { lang } = useLang();
   const { openSeo } = useSeoModal();
-  const seoLabel = lang === "en" ? "Free SEO check" : "Kostenloser SEO-Check";
+  const seoLabel =
+    lang === "en"
+      ? "Start free potential analysis"
+      : "Kostenlose Potenzialanalyse starten";
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [paused, setPaused] = useState(false);
@@ -161,16 +164,28 @@ export function Hero() {
                 initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                className="mt-3 sm:mt-5 md:mt-6 text-white uppercase italic"
-                style={{
-                  fontSize: "clamp(44px, 8vw, 124px)",
-                  lineHeight: "0.86",
-                  letterSpacing: "-0.05em",
-                  fontWeight: 700,
-                }}
+                className="mt-3 sm:mt-5 md:mt-6 max-w-[18ch] text-white"
               >
-                <span className="block">{t.hero.headlineTop}</span>
-                <span className="block font-medium text-white/95">
+                <span
+                  className="block uppercase italic"
+                  style={{
+                    fontSize: "clamp(36px, 6.4vw, 96px)",
+                    lineHeight: "0.94",
+                    letterSpacing: "-0.04em",
+                    fontWeight: 700,
+                  }}
+                >
+                  {t.hero.headlineTop}
+                </span>
+                <span
+                  className="mt-3 block max-w-[34ch] text-white/85 sm:mt-4"
+                  style={{
+                    fontSize: "clamp(15px, 1.8vw, 26px)",
+                    lineHeight: 1.25,
+                    letterSpacing: "-0.012em",
+                    fontWeight: 400,
+                  }}
+                >
                   {t.hero.headlineBottom}
                 </span>
               </motion.h1>

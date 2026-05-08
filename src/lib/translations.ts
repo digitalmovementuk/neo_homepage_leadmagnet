@@ -256,9 +256,9 @@ const de: Translations = {
 
   hero: {
     eyebrow: "High-End Performance Marketing",
-    headlineTop: "Digitales",
-    headlineBottom: "Wachstum.",
-    sub: "Wir machen Ihre Website zum Asset und generieren kontinuierliche Kundenanfragen.",
+    headlineTop: "Wöchentlich neue Verkaufschancen.",
+    headlineBottom: "Über Google Search, KI-Suche und eine hochwertige Website.",
+    sub: "Wir machen Ihre Leistungen in allen relevanten Städten und Stadtteilen sichtbar — damit Ihre Zielgruppe Sie findet und qualifizierte Anfragen entstehen.",
     services: [
       "Search Engine Optimization",
       "AI Search Optimization",
@@ -1539,9 +1539,9 @@ const en: Translations = {
 
   hero: {
     eyebrow: "High-end performance marketing",
-    headlineTop: "Digital",
-    headlineBottom: "Growth.",
-    sub: "We turn your website into an asset and generate a continuous flow of qualified enquiries.",
+    headlineTop: "New sales opportunities every week.",
+    headlineBottom: "Through Google Search, AI search, and a high-quality website.",
+    sub: "We make your services visible across every relevant city and district — so your target audience finds you and qualified enquiries roll in.",
     services: [
       "Search Engine Optimisation",
       "AI Search Optimisation",
