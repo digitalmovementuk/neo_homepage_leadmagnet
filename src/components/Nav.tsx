@@ -116,8 +116,8 @@ export function Nav() {
     ? "border-white/30 bg-white/10 text-white"
     : "border-ink/15 bg-white/70 text-ink";
 
-  const barHeightCls = compact ? "h-[48px] md:h-[56px]" : "h-[80px] md:h-[100px]";
-  const logoHeightCls = compact ? "h-6 sm:h-7" : "h-9 sm:h-12";
+  const barHeightCls = compact ? "h-[48px] md:h-[56px]" : "h-[64px] md:h-[76px]";
+  const logoHeightCls = compact ? "h-6 sm:h-7" : "h-7 sm:h-9";
   const linkSizeCls = compact ? "text-[13px]" : "text-[15px]";
   const linkGapCls = compact ? "gap-6 lg:gap-8" : "gap-7 lg:gap-10";
 
