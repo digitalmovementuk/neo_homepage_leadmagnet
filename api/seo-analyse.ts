@@ -276,6 +276,44 @@ interface PhraseRow {
   keywordDifficulty: number
 }
 
+/**
+ * Build progressively shorter seed candidates for Semrush phrase_related,
+ * which only returns useful results for short head-terms. Order: most specific
+ * (and informative) first, falling back to broader category words.
+ */
+function buildSeedCandidates(industryHint: string, domain: string | null): string[] {
+  const candidates: string[] = []
+  const seen = new Set<string>()
+  const push = (s: string) => {
+    const v = s.trim().toLowerCase()
+    if (v.length >= 3 && v.length <= 40 && !seen.has(v)) {
+      seen.add(v)
+      candidates.push(v)
+    }
+  }
+  if (industryHint) {
+    // Split on common separators (·, ,, /, |, -, : and "and"/"&") and filter
+    // stopwords/connectors. Keep tokens 3–40 chars.
+    const stopwords = /^(in|der|die|das|den|für|für|and|or|und|the|a|an|of|on|in|at|to|with|by|top|service|services|category|industry|business|company|firma|branche|geschäft|geschaeft)$/i
+    const segments = industryHint
+      .split(/[·,/|:;]+|\s(?:and|und|&)\s/i)
+      .map((s) => s.trim())
+      .filter(Boolean)
+    for (const seg of segments) {
+      // Try the segment as-is first (might be 1–2 useful words).
+      const words = seg.split(/\s+/).filter((w) => w.length >= 3 && !stopwords.test(w))
+      if (words.length >= 1 && words.length <= 3) push(words.join(' '))
+      if (words.length >= 1) push(words[0]!)
+    }
+    // Final fallback: the whole hint, raw (probably won't match — last resort).
+    push(industryHint)
+  }
+  if (domain) {
+    push(domain.split('.')[0]!)
+  }
+  return candidates
+}
+
 async function fetchKeywordIdeas(seed: string, database: string): Promise<PhraseRow[]> {
   const rows = await semrush({
     type: 'phrase_related',
@@ -569,10 +607,12 @@ async function handleRequest(req: VercelRequest, res: VercelResponse) {
     }
     // If no domain rankings found, fall back to keyword ideas from the industry hint
     // (or from the bare domain root-word as a seed if the user provided no hint).
+    // Semrush phrase_related needs a short seed — try progressively shorter forms.
     if (organic.length === 0) {
-      const seed = industryHint || (domain ? domain.split('.')[0]! : '')
-      if (seed.length >= 3) {
+      const seedCandidates = buildSeedCandidates(industryHint, domain)
+      for (const seed of seedCandidates) {
         ideas = await fetchKeywordIdeas(seed, database)
+        if (ideas.length > 0) break
       }
     }
   } catch (err) {
