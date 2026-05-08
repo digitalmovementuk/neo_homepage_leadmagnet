@@ -8,6 +8,8 @@ type RankBand = 'top3' | 'page1' | 'page2-3' | 'page4plus' | 'unranked'
 interface KeywordRow {
   keyword: string
   monthlySearches: number
+  /** Estimated SEO keyword difficulty 0–100 (Ahrefs/Moz convention). */
+  keywordDifficulty: number
   currentRankBand: RankBand
   estCurrentClicks: number
   estPage1Clicks: number
@@ -253,6 +255,15 @@ Method (apply rigorously, do not invent numbers):
      - Brand-new domain, very thin content, or no relevant on-page signal at all: "unranked"
    - MODE B: ALL keywords are "unranked" (no live discovery surface). estCurrentClicks = 0 across the board, current.estMonthlyTrafficValue = 0, current.estMonthlyClicks = 0.
 
+4b. Estimate keywordDifficulty (0–100, Ahrefs/Moz convention) using these priors:
+   - Hyper-local long-tail (4+ words, includes city/neighbourhood + niche service): 10–25
+   - Local commercial (city + service): 25–45
+   - Mid-tail commercial (service + qualifier, no location): 35–60
+   - Generic informational ("how does X work"): 20–45
+   - Head-term commercial without location ("zahnarzt", "restaurant"): 60–85
+   - National brand-category head ("crm software"): 70–95
+   Higher search volume + broader intent generally raise difficulty; tight long-tail intent lowers it. Round to nearest 5.
+
 5. CTR by position (Backlinko 2024 averages — use these EXACTLY):
    - top3:     0.27 average
    - page1:    0.06 average (positions 4–10)
@@ -330,6 +341,7 @@ const ANALYSIS_TOOL_INPUT_SCHEMA = {
         properties: {
           keyword: { type: 'string' },
           monthlySearches: { type: 'integer' },
+          keywordDifficulty: { type: 'integer', minimum: 0, maximum: 100 },
           currentRankBand: {
             type: 'string',
             enum: ['top3', 'page1', 'page2-3', 'page4plus', 'unranked'],
@@ -345,6 +357,7 @@ const ANALYSIS_TOOL_INPUT_SCHEMA = {
         required: [
           'keyword',
           'monthlySearches',
+          'keywordDifficulty',
           'currentRankBand',
           'estCurrentClicks',
           'estPage1Clicks',
