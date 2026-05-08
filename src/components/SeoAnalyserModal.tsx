@@ -47,28 +47,28 @@ export function SeoAnalyserModal() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.35 }}
             onClick={closeSeo}
-            className="fixed inset-0 z-[80] bg-ink/55 backdrop-blur-md"
+            className="fixed inset-0 z-[80] bg-ink/30 backdrop-blur-lg"
             aria-hidden
           />
 
           <motion.div
             key="seo-modal-panel"
-            initial={{ opacity: 0, y: 20, scale: 0.985 }}
+            initial={{ opacity: 0, y: 16, scale: 0.99 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.985 }}
-            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            exit={{ opacity: 0, y: 16, scale: 0.99 }}
+            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
             role="dialog"
             aria-modal="true"
             aria-label="SEO Potential Analyser"
-            className="fixed inset-2 sm:inset-4 md:inset-6 lg:inset-8 z-[90] overflow-hidden rounded-[20px] sm:rounded-[28px] border border-white/40 bg-surface-1 shadow-[0_30px_80px_-30px_rgba(15,8,32,0.55)]"
+            className="fixed inset-2 sm:inset-4 md:inset-6 lg:inset-8 z-[90] overflow-hidden rounded-[16px] sm:rounded-[20px] border border-white/55 bg-white/55 shadow-[0_30px_60px_-28px_rgba(20,20,50,0.18),0_6px_18px_-10px_rgba(20,20,50,0.08)] backdrop-blur-xl backdrop-saturate-150"
           >
             <button
               type="button"
               onClick={closeSeo}
               aria-label="Close"
-              className="absolute top-4 right-4 z-[5] grid h-10 w-10 place-items-center rounded-full bg-ink/[0.06] hover:bg-ink/[0.12] text-ink/75 hover:text-ink transition"
+              className="absolute top-4 right-4 z-[5] grid h-9 w-9 place-items-center rounded-full border border-ink/10 bg-white/70 text-ink-muted backdrop-blur-md transition hover:border-ink/20 hover:bg-white hover:text-ink"
             >
-              <X size={18} strokeWidth={2.4} />
+              <X size={16} strokeWidth={2.2} />
             </button>
 
             <div
@@ -77,8 +77,8 @@ export function SeoAnalyserModal() {
             >
               <Suspense
                 fallback={
-                  <div className="grid h-full w-full place-items-center bg-surface-1">
-                    <Loader2 size={20} className="animate-spin text-[#FF7A45]" />
+                  <div className="grid h-full w-full place-items-center">
+                    <Loader2 size={18} className="animate-spin text-ink-faint" />
                   </div>
                 }
               >

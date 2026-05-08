@@ -28,6 +28,7 @@ export function InputStep({ initial, onAnalyse, error }: Props) {
   const [aov, setAov] = useState<string>(String(initial.aov))
   const [convRate, setConvRate] = useState<string>(String((initial.conversionRate * 100).toFixed(1)))
   const [industryHint, setIndustryHint] = useState(initial.industryHint)
+  const [localError, setLocalError] = useState<string | null>(null)
 
   const cur = useMemo(() => getCurrency(currency), [currency])
 
@@ -41,11 +42,26 @@ export function InputStep({ initial, onAnalyse, error }: Props) {
     }
   }, [cur, aov])
 
-  const valid = domain.trim().length >= 4 && Number(aov) > 0 && Number(convRate) > 0
+  // The button is enabled as long as the business numbers are valid. The
+  // "need at least one anchor (domain OR industry hint)" rule is enforced on
+  // submit with a clear inline message — never via a silently disabled button.
+  const hasDomain = domain.trim().length >= 4
+  const hasHint = industryHint.trim().length >= 3
+  const numbersValid = Number(aov) > 0 && Number(convRate) > 0
+  const valid = numbersValid
 
   const handle = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    if (!valid) return
+    if (!numbersValid) return
+    if (!hasDomain && !hasHint) {
+      setLocalError(
+        lang === 'de'
+          ? 'Bitte Website angeben — oder Branche bzw. Top-Service beschreiben, damit wir die Analyse anpassen können.'
+          : 'Please add a website — or describe your industry / top service so we can tailor the analysis.',
+      )
+      return
+    }
+    setLocalError(null)
     onAnalyse({
       domain: domain.trim(),
       currency,
@@ -61,29 +77,21 @@ export function InputStep({ initial, onAnalyse, error }: Props) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0, y: -16 }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      className="relative flex h-full w-full flex-col items-center overflow-y-auto px-4 pb-7 pt-8 sm:px-8 sm:pb-10 sm:pt-10"
+      className="relative flex h-full w-full flex-col items-center overflow-y-auto px-4 pb-10 pt-10 sm:px-8 sm:pb-14 sm:pt-12"
       data-lenis-prevent
     >
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 mx-auto h-[440px] max-w-[1180px]"
-        style={{
-          background: 'radial-gradient(ellipse at 50% 0%, rgba(255,122,69,0.16), transparent 70%)',
-        }}
-      />
-
       <motion.div
-        initial={{ opacity: 0, y: 16 }}
+        initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className="relative w-full max-w-[840px]"
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        className="relative w-full max-w-[720px]"
       >
         {/* Top row: language pills (left) + currency picker (right) */}
         <div className="flex flex-wrap items-center justify-center gap-3 sm:justify-between">
           <div
             role="group"
             aria-label={c.langPicker.label}
-            className="inline-flex items-center gap-1 rounded-full border border-ink/10 bg-white p-1 shadow-ring"
+            className="inline-flex items-center gap-1 rounded-full border border-ink/10 bg-white/65 p-1 backdrop-blur-md"
           >
             <LangButton active={lang === 'de'} onClick={() => setLang('de')} label={c.langPicker.de} flag={<FlagDE />} />
             <LangButton active={lang === 'en'} onClick={() => setLang('en')} label={c.langPicker.en} flag={<FlagGB />} />
@@ -97,35 +105,35 @@ export function InputStep({ initial, onAnalyse, error }: Props) {
         </div>
 
         {/* Eyebrow + Title */}
-        <div className="mx-auto mt-7 max-w-[760px] text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-ink/10 bg-white px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-ink-muted shadow-ring">
-            <Sparkles size={13} strokeWidth={2.4} className="text-[#FF7A45]" />
+        <div className="mx-auto mt-9 max-w-[640px] text-center">
+          <span className="inline-flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-[0.14em] text-ink-muted">
+            <Sparkles size={12} strokeWidth={2.2} className="text-[#FF7A45]" />
             {c.input.eyebrow}
           </span>
 
           <h1
-            className="mt-5 text-ink"
+            className="mt-4 text-ink"
             style={{
-              fontSize: 'clamp(34px, 5vw, 64px)',
-              lineHeight: 1.0,
-              fontWeight: 700,
-              letterSpacing: '-0.022em',
+              fontSize: 'clamp(30px, 3.6vw, 44px)',
+              lineHeight: 1.1,
+              fontWeight: 500,
+              letterSpacing: '-0.025em',
             }}
           >
             {c.input.title}
           </h1>
 
-          <p className="mx-auto mt-3 max-w-[560px] text-[14.5px] leading-[1.55] text-ink-soft sm:text-[16px]">
+          <p className="mx-auto mt-3 max-w-[520px] text-[14.5px] leading-[1.55] text-ink-muted sm:text-[15.5px]">
             {c.input.sub}
           </p>
         </div>
 
         {/* Form */}
-        <form onSubmit={handle} className="mx-auto mt-7 max-w-[760px]">
+        <form onSubmit={handle} className="mx-auto mt-8 max-w-[560px] space-y-4">
           {/* Domain */}
           <label className="block">
-            <span className="mb-1.5 block text-[11px] font-bold uppercase tracking-[0.12em] text-ink-muted">
-              {c.input.domainLabel}
+            <span className="mb-1.5 block text-[12.5px] font-medium text-ink-muted">
+              {c.input.domainLabel} <span className="font-normal text-ink-faint">optional</span>
             </span>
             <input
               type="text"
@@ -138,99 +146,87 @@ export function InputStep({ initial, onAnalyse, error }: Props) {
               value={domain}
               onChange={(e) => setDomain(e.target.value)}
               aria-label={c.input.domainAria}
-              className="w-full rounded-full border border-ink/12 bg-white px-5 py-3.5 text-[16px] text-ink placeholder:text-ink-faint outline-none shadow-soft transition focus:border-ink/40 focus:ring-2 focus:ring-[#FF7A45]/15 sm:text-[17px]"
+              className="w-full rounded-[10px] border border-ink/[0.12] bg-white/55 px-4 py-3 text-[14.5px] text-ink placeholder:text-ink-faint outline-none transition hover:border-ink/[0.22] hover:bg-white/70 focus:border-ink focus:bg-white/85"
             />
           </label>
 
-          {/* Refine section */}
-          <div className="mt-5 rounded-[24px] border border-ink/[0.06] bg-surface-2 p-4 shadow-ring sm:p-5">
-            <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#FF7A45]">
-              {c.input.refineHeading}
-            </p>
-            <p className="mt-1 text-[12.5px] leading-[1.5] text-ink-muted">
-              {c.input.refineSub}
-            </p>
-
-            <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
-              {/* AOV */}
-              <label className="block">
-                <span className="mb-1 block text-[11px] font-bold uppercase tracking-[0.1em] text-ink-muted">
-                  {c.input.aovLabel}
-                </span>
-                <div className="flex items-center rounded-full border border-ink/12 bg-white pl-4 pr-1 shadow-ring focus-within:border-ink/40 focus-within:ring-2 focus-within:ring-[#FF7A45]/15">
-                  <span className="text-[14px] font-semibold text-ink-muted">{cur.symbol}</span>
-                  <input
-                    type="number"
-                    inputMode="numeric"
-                    min={1}
-                    step={1}
-                    value={aov}
-                    onChange={(e) => setAov(e.target.value)}
-                    className="flex-1 bg-transparent px-2 py-2.5 text-[15px] text-ink outline-none"
-                    aria-label={c.input.aovLabel}
-                  />
-                </div>
-                <span className="mt-1 block text-[11px] text-ink-faint">{c.input.aovHint}</span>
-              </label>
-
-              {/* Conversion rate */}
-              <label className="block">
-                <span className="mb-1 block text-[11px] font-bold uppercase tracking-[0.1em] text-ink-muted">
-                  {c.input.conversionRateLabel}
-                </span>
-                <div className="flex items-center rounded-full border border-ink/12 bg-white pl-4 pr-3 shadow-ring focus-within:border-ink/40 focus-within:ring-2 focus-within:ring-[#FF7A45]/15">
-                  <input
-                    type="number"
-                    inputMode="decimal"
-                    min={0.1}
-                    max={100}
-                    step={0.1}
-                    value={convRate}
-                    onChange={(e) => setConvRate(e.target.value)}
-                    className="flex-1 bg-transparent px-2 py-2.5 text-[15px] text-ink outline-none"
-                    aria-label={c.input.conversionRateLabel}
-                  />
-                  <span className="text-[14px] font-semibold text-ink-muted">%</span>
-                </div>
-                <span className="mt-1 block text-[11px] text-ink-faint">{c.input.conversionRateHint}</span>
-              </label>
-            </div>
-
-            <label className="mt-3 block">
-              <span className="mb-1 block text-[11px] font-bold uppercase tracking-[0.1em] text-ink-muted">
-                {c.input.industryHintLabel}
+          {/* AOV + Conversion rate */}
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <label className="block">
+              <span className="mb-1.5 block text-[12.5px] font-medium text-ink-muted">
+                {c.input.aovLabel}
               </span>
-              <input
-                type="text"
-                value={industryHint}
-                onChange={(e) => setIndustryHint(e.target.value)}
-                placeholder={c.input.industryHintPlaceholder}
-                className="w-full rounded-full border border-ink/12 bg-white px-4 py-2.5 text-[15px] text-ink placeholder:text-ink-faint outline-none shadow-ring transition focus:border-ink/40 focus:ring-2 focus:ring-[#FF7A45]/15"
-              />
-              <span className="mt-1 block text-[11px] text-ink-faint">{c.input.industryHintHelp}</span>
+              <div className="flex items-center rounded-[10px] border border-ink/[0.12] bg-white/55 pl-4 transition hover:border-ink/[0.22] hover:bg-white/70 focus-within:border-ink focus-within:bg-white/85">
+                <span className="text-[14px] font-medium text-ink-muted">{cur.symbol}</span>
+                <input
+                  type="number"
+                  inputMode="numeric"
+                  min={1}
+                  step={1}
+                  value={aov}
+                  onChange={(e) => setAov(e.target.value)}
+                  className="flex-1 bg-transparent px-2 py-3 text-[14.5px] text-ink outline-none"
+                  aria-label={c.input.aovLabel}
+                />
+              </div>
+            </label>
+
+            <label className="block">
+              <span className="mb-1.5 block text-[12.5px] font-medium text-ink-muted">
+                {c.input.conversionRateLabel}
+              </span>
+              <div className="flex items-center rounded-[10px] border border-ink/[0.12] bg-white/55 pr-4 transition hover:border-ink/[0.22] hover:bg-white/70 focus-within:border-ink focus-within:bg-white/85">
+                <input
+                  type="number"
+                  inputMode="decimal"
+                  min={0.1}
+                  max={100}
+                  step={0.1}
+                  value={convRate}
+                  onChange={(e) => setConvRate(e.target.value)}
+                  className="flex-1 bg-transparent px-4 py-3 text-[14.5px] text-ink outline-none"
+                  aria-label={c.input.conversionRateLabel}
+                />
+                <span className="text-[14px] font-medium text-ink-muted">%</span>
+              </div>
             </label>
           </div>
 
+          {/* Industry hint */}
+          <label className="block">
+            <span className="mb-1.5 block text-[12.5px] font-medium text-ink-muted">
+              {c.input.industryHintLabel} <span className="font-normal text-ink-faint">optional</span>
+            </span>
+            <input
+              type="text"
+              value={industryHint}
+              onChange={(e) => setIndustryHint(e.target.value)}
+              placeholder={c.input.industryHintPlaceholder}
+              className="w-full rounded-[10px] border border-ink/[0.12] bg-white/55 px-4 py-3 text-[14.5px] text-ink placeholder:text-ink-faint outline-none transition hover:border-ink/[0.22] hover:bg-white/70 focus:border-ink focus:bg-white/85"
+            />
+          </label>
+
           {/* Submit + footnote */}
-          <div className="mt-6 flex flex-col items-center gap-3">
+          <div className="!mt-7 flex flex-col items-center gap-3">
             <button
               type="submit"
               disabled={!valid}
-              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#FF7A45] px-7 py-3.5 text-[15px] font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#F15F2B] hover:shadow-pop disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:translate-y-0 disabled:hover:shadow-none sm:w-auto sm:min-w-[260px]"
+              className="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-[#0037D8] px-6 text-[14px] font-medium tracking-[-0.01em] text-white transition-colors duration-150 hover:bg-[#0029a8] disabled:cursor-not-allowed disabled:opacity-40"
             >
+              <Sparkles size={14} strokeWidth={2.4} />
               {c.input.submit}
-              <ArrowRight size={16} strokeWidth={2.4} />
+              <ArrowRight size={14} strokeWidth={2.2} />
             </button>
 
-            {error ? (
+            {localError || error ? (
               <p
                 role="alert"
-                className="w-full max-w-[520px] rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-center text-[13px] leading-[1.5] text-red-700"
+                className="w-full max-w-[480px] rounded-xl border border-red-200/70 bg-red-50/70 px-4 py-2.5 text-center text-[13px] leading-[1.5] text-red-700 backdrop-blur-sm"
               >
-                {error}
+                {localError || error}
               </p>
             ) : (
-              <p className="text-center text-[11px] uppercase tracking-[0.14em] text-ink-faint">
+              <p className="text-center text-[12px] tracking-[-0.01em] text-ink-faint">
                 {c.input.footnote}
               </p>
             )}

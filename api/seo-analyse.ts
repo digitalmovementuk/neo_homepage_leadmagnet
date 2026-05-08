@@ -43,7 +43,7 @@ interface PageSpeedSummary {
 }
 
 interface AnalysisResult {
-  domain: string
+  domain: string | null
   currency: string
   inferredIndustry: string
   inferredLocation: string
@@ -228,21 +228,30 @@ async function runPageSpeed(
 
 /* ========================== ANTHROPIC =========================== */
 
-const SYSTEM_PROMPT = `You are an SEO opportunity estimator for small-to-medium businesses. Given a domain's homepage HTML, PageSpeed signals, and the business's own AOV + conversion rate, you produce a defensible estimate of the monthly revenue the business is leaving on the table from organic search.
+const SYSTEM_PROMPT = `You are an SEO opportunity estimator for small-to-medium businesses. Given a domain's homepage HTML (when available), PageSpeed signals (when available), the business's own AOV + conversion rate, and an industry/offering hint, you produce a defensible estimate of the monthly revenue the business is leaving on the table from organic search.
+
+Two analysis modes — work out which one applies from the user message:
+
+  MODE A — full audit (domain + homepage HTML provided): use the homepage as primary signal, follow the heuristics in step 4 to estimate currentRankBand from on-page evidence.
+  MODE B — pre-launch / domain-less (no homepage HTML): rely entirely on the industry hint + top-service hint. Treat all keywords as "unranked" (the business has no live discovery surface). Make the analysis as specific to the user's stated industry and offering as possible — keywords, competitors, blockers must reflect THAT industry and THAT service, not generic SMB advice. inferredLocation can be "not specified" if no language/locale signal exists; default to the language used in the user message and currency for a sensible region guess.
 
 Method (apply rigorously, do not invent numbers):
 
-1. Infer industry and primary location from the homepage content (language, currency, addresses, schema, copy). If the user supplied an industry hint, use that hint to anchor the inferred industry — combine it with what the homepage shows.
+1. Infer industry and primary location:
+   - MODE A: from the homepage content (language, currency, addresses, schema, copy). If the user supplied an industry hint, anchor on it and combine with what the homepage shows.
+   - MODE B: from the industry hint + top-service hint VERBATIM. The hint IS the industry — make every keyword, competitor and blocker domain-specific to it.
 
 2. Generate 8–10 plausible high-intent keywords a real customer would type to find this business. Mix transactional (e.g. "pizza lieferung köln"), commercial (e.g. "zahnarzt köln innenstadt"), and 1–2 informational. Use the inferred location and the local language. Keyword phrases must read like real searches, not marketing slogans.
 
 3. Estimate monthlySearches conservatively from local market priors. For a city of ~1M people, a generic transactional keyword in a normal vertical sees 200–2,000 monthly searches; a hyper-niche one sees 50–300. Bigger cities and English-speaking markets scale up. Do NOT hallucinate huge volumes.
 
-4. Estimate currentRankBand from on-page signals + PageSpeed. Heuristic:
-   - Strong on-page (title contains target term, meta present, h1 clear, schema, mobile perf >70): "page1" or "top3"
-   - OK on-page but weak perf or thin content: "page2-3"
-   - Missing meta description, generic title, no schema, weak perf: "page4plus"
-   - Brand-new domain, very thin content, or no relevant on-page signal at all: "unranked"
+4. Estimate currentRankBand:
+   - MODE A: derive from on-page signals + PageSpeed:
+     - Strong on-page (title contains target term, meta present, h1 clear, schema, mobile perf >70): "page1" or "top3"
+     - OK on-page but weak perf or thin content: "page2-3"
+     - Missing meta description, generic title, no schema, weak perf: "page4plus"
+     - Brand-new domain, very thin content, or no relevant on-page signal at all: "unranked"
+   - MODE B: ALL keywords are "unranked" (no live discovery surface). estCurrentClicks = 0 across the board, current.estMonthlyTrafficValue = 0, current.estMonthlyClicks = 0.
 
 5. CTR by position (Backlinko 2024 averages — use these EXACTLY):
    - top3:     0.27 average
@@ -269,18 +278,23 @@ Method (apply rigorously, do not invent numbers):
    projected.estMonthlyClicks       = SUM(estPage1Clicks).
    projected.timelineDays           = 90.
 
-9. Blockers — name 3–5 SPECIFIC issues, each tied to evidence:
-   - On-page: cite missing/short meta description, generic title tag, missing h1, no schema markup, no language tag
-   - Performance: cite specific Core Web Vitals failures (LCP > 2500ms, CLS > 0.1, mobile perf < 50)
-   - Local: cite missing GMB link, no NAP, no local schema
-   - Authority: cite thin content, no internal linking signals
-   Each blocker must reference observable evidence — never generic advice like "improve SEO".
+9. Blockers — name 3–5 SPECIFIC issues:
+   - MODE A: each blocker must reference observable evidence from the homepage / PageSpeed:
+     - On-page: missing/short meta description, generic title tag, missing h1, no schema markup, no language tag
+     - Performance: specific Core Web Vitals failures (LCP > 2500ms, CLS > 0.1, mobile perf < 50)
+     - Local: missing GMB link, no NAP, no local schema
+     - Authority: thin content, no internal linking signals
+   - MODE B: blockers reflect the structural reality of having no website yet — but stay industry-specific. Examples for a dentist with no site: "Kein Google Business Profile beansprucht — Patienten finden Sie nicht in Maps", "Keine Homepage = keine Conversion-Strecke für 'zahnarzt köln'-Suchen", "Kein Schema-Markup für LocalBusiness/Dentist verfügbar". Title and detail must mention the user's industry and top service.
+   Never use generic advice like "improve SEO".
 
-10. Competitors — list 2–3 plausible local competitors by inferred-from-context name. Mark these as ESTIMATED in calculation.notes.
+10. Competitors — list 2–3 plausible local/category competitors. Use real-sounding domains anchored to the inferred industry + location. Mark these as ESTIMATED in calculation.notes.
 
 11. calculation.conversionRateUsed = the user-provided conversion rate.
     calculation.aovUsed            = the user-provided AOV.
-    calculation.notes MUST disclose: "Rankings and search volumes are estimated from on-page signals and industry priors, not measured against live SERPs. AOV and conversion rate are user-provided." Be transparent.
+    calculation.notes MUST disclose:
+      - MODE A: "Rankings and search volumes are estimated from on-page signals and industry priors, not measured against live SERPs. AOV and conversion rate are user-provided."
+      - MODE B: "No domain provided — estimates are based entirely on the user-supplied industry and offering. All keywords treated as 'unranked'. Search volumes are conservative industry priors. AOV and conversion rate are user-provided."
+    Be transparent.
 
 You MUST call the submit_analysis tool with the structured result. Never reply in plain text.`
 
@@ -391,16 +405,18 @@ const ANALYSIS_TOOL_INPUT_SCHEMA = {
 }
 
 interface AnthropicInput {
-  domain: string
+  domain: string | null
   currency: string
   aov: number
   conversionRate: number
   industryHint: string
-  homepageExcerpt: string
+  homepageExcerpt: string | null
   pageSpeed: { mobile: PageSpeedSummary; desktop: PageSpeedSummary } | null
 }
 
 function userMessage(input: AnthropicInput): string {
+  const mode = input.domain && input.homepageExcerpt ? 'A' : 'B'
+
   const psSummary = input.pageSpeed
     ? `PageSpeed (mobile / desktop):
 - Performance: ${input.pageSpeed.mobile.performance} / ${input.pageSpeed.desktop.performance}
@@ -411,10 +427,28 @@ function userMessage(input: AnthropicInput): string {
     : 'PageSpeed: unavailable (treat performance as unknown — do not assume good or bad).'
 
   const hint = input.industryHint
-    ? `User-supplied industry hint: "${input.industryHint}" (use this to anchor your inference).`
-    : 'No industry hint supplied — infer from the homepage.'
+    ? `User-supplied industry / offering hint: "${input.industryHint}"`
+    : '(no industry hint provided)'
 
-  return `Domain: ${input.domain}
+  if (mode === 'B') {
+    return `MODE B — pre-launch / domain-less analysis.
+
+The user has NOT provided a website. Treat all keywords as "unranked" and base the entire analysis on the industry / offering hint below. Make every keyword, competitor and blocker specific to THIS industry and THIS offering — do not produce generic SMB output.
+
+User-provided business numbers (use these verbatim, do NOT use industry defaults):
+- Currency:        ${input.currency} (ISO 4217)
+- AOV per sale:    ${input.aov} ${input.currency}
+- Conversion rate: ${input.conversionRate} (${(input.conversionRate * 100).toFixed(2)}%)
+- ${hint}
+
+(No homepage HTML, no PageSpeed signals — analyse purely from the hint above.)
+
+Now call the submit_analysis tool with the JSON analysis. All money values must be integers in ${input.currency}. set domain field of competitors to plausible-but-clearly-illustrative example domains.`
+  }
+
+  return `MODE A — full audit (homepage HTML provided).
+
+Domain: ${input.domain}
 
 User-provided business numbers (use these verbatim, do NOT use industry defaults):
 - Currency:        ${input.currency} (ISO 4217)
@@ -489,6 +523,16 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 }
 
 async function handleRequest(req: VercelRequest, res: VercelResponse) {
+  res.setHeader('Access-Control-Allow-Origin', '*')
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS')
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
+  res.setHeader('Vary', 'Origin')
+
+  if (req.method === 'OPTIONS') {
+    res.status(204).end()
+    return
+  }
+
   if (req.method !== 'POST') {
     res
       .status(405)
@@ -515,10 +559,13 @@ async function handleRequest(req: VercelRequest, res: VercelResponse) {
   }
 
   const domain = normaliseDomain(typeof body.domain === 'string' ? body.domain : '')
-  if (!domain) {
+  const industryHint = typeof body.industryHint === 'string' ? body.industryHint.trim().slice(0, 240) : ''
+
+  // Need at least one anchor — domain OR a meaningful industry/offering hint.
+  if (!domain && industryHint.length < 3) {
     res.status(400).json({
       ok: false,
-      error: 'Please enter a valid domain (e.g. example.com).',
+      error: 'Please provide either a website domain or describe your industry / top service.',
       code: 'invalid_domain',
     } satisfies AnalyseResponse)
     return
@@ -538,21 +585,19 @@ async function handleRequest(req: VercelRequest, res: VercelResponse) {
     return
   }
 
-  const industryHint = typeof body.industryHint === 'string' ? body.industryHint.trim().slice(0, 120) : ''
-
-  const homepageUrl = `https://${domain}/`
-  const [html, pageSpeed] = await Promise.all([fetchHomepage(domain), runPageSpeed(homepageUrl)])
-
-  if (!html) {
-    res.status(422).json({
-      ok: false,
-      error: `Couldn't reach ${domain}. Check the domain is live and reachable from the public internet.`,
-      code: 'fetch_failed',
-    } satisfies AnalyseResponse)
-    return
+  // MODE A: domain present — fetch homepage + PageSpeed.
+  // MODE B: no domain — analysis runs purely from industryHint.
+  let html: string | null = null
+  let pageSpeed: { mobile: PageSpeedSummary; desktop: PageSpeedSummary } | null = null
+  if (domain) {
+    const homepageUrl = `https://${domain}/`
+    ;[html, pageSpeed] = await Promise.all([fetchHomepage(domain), runPageSpeed(homepageUrl)])
+    // Soft-fail: if we can't reach the domain, drop into MODE B rather than rejecting outright.
+    // The user has given us a valid-looking domain + business numbers; an analysis based on the
+    // industry hint is still more useful than a hard error.
   }
 
-  const excerpt = extractExcerpt(html)
+  const excerpt = html ? extractExcerpt(html) : null
 
   let llm: Awaited<ReturnType<typeof runAnthropicAnalysis>>
   try {
