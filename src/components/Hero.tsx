@@ -93,6 +93,7 @@ export function Hero() {
           preload="auto"
           // @ts-expect-error fetchpriority is missing from React types
           fetchpriority="high"
+          poster={`${import.meta.env.BASE_URL}brand/hero-poster.jpg`}
           className="absolute inset-0 h-full w-full bg-black object-cover"
           src={`${import.meta.env.BASE_URL}video/hero.mp4#t=1.2`}
           {...({
