@@ -33,6 +33,20 @@
     />
     <link rel="canonical" href="https://www.neotheagency.de/" />
 
+    <!-- LCP: preload the hero poster as a high-priority image so iOS Safari has
+         the first frame painted while the 7.5MB hero.mp4 is still buffering.
+         The video element below uses the same JPG as poster + CSS background. -->
+    <link
+      rel="preload"
+      as="image"
+      href="/brand/hero-poster.jpg"
+      fetchpriority="high"
+    />
+    <!-- Hero video: preload only the first ~256KB so the first frame can
+         decode immediately. The full 7.5MB streams progressively as the
+         user lingers on slide 1. -->
+    <link rel="preload" as="video" href="/video/hero.mp4" type="video/mp4" />
+
     <link rel="icon" type="image/svg+xml" href="/brand/favicon.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/brand/favicon-32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/brand/favicon-16.png" />
@@ -68,14 +82,27 @@
     <meta name="twitter:image" content="https://www.neotheagency.de/brand/og-cover.jpg" />
     <meta name="twitter:image:alt" content="NEO THE AGENCY — Digitalagentur für Websites, SEO, Google Ads und Social Media" />
 
-    <!-- Fonts. Preconnect lets the browser open TLS to gstatic before the
-         CSS arrives that requests the actual woff2 files. -->
+    <!-- Fonts. Preconnect for TLS warm-up; the stylesheet itself is loaded
+         non-render-blocking via media swap so it never delays the LCP frame. -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap"
     />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap"
+      />
+    </noscript>
 
     <script type="application/ld+json">
       {

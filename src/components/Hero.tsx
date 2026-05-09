@@ -271,22 +271,23 @@ const HeroSlideView = ({
               "linear-gradient(180deg, rgba(0,0,0,0.58) 0%, rgba(0,0,0,0.20) 58%, rgba(0,0,0,0) 100%)",
           }}
         />
+        {/* Mobile: stronger, taller bottom scrim so the headline never floats over the rider. Desktop reverts to the lighter scrim. */}
         <div
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-[62%]"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-[78%] md:h-[62%]"
           style={{
             background:
-              "linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(5,4,10,0.46) 55%, rgba(5,4,10,0.92) 100%)",
+              "linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(5,4,10,0.62) 38%, rgba(5,4,10,0.92) 70%, rgba(5,4,10,0.97) 100%)",
           }}
         />
       </div>
 
       <div className="absolute inset-x-0 bottom-0 z-10">
-        <div className="mx-auto w-full max-w-[1512px] px-5 pb-[calc(72px+env(safe-area-inset-bottom))] sm:px-8 sm:pb-20 lg:px-12 lg:pb-24 xl:pb-28 2xl:px-0">
+        <div className="mx-auto w-full max-w-[1512px] px-5 pb-[calc(64px+env(safe-area-inset-bottom))] sm:px-8 sm:pb-20 lg:px-12 lg:pb-24 xl:pb-28 2xl:px-0">
           <div className="grid items-end gap-5 md:grid-cols-[minmax(0,680px)_auto] md:justify-between md:gap-10">
             <div className="flex w-full flex-col items-center text-center md:items-start md:text-left">
               <motion.p
-                key={`eyebrow-${slide.key}-${isActive}`}
-                initial={{ opacity: 0, y: 8 }}
+                key={`eyebrow-${slide.key}`}
+                initial={false}
                 animate={{ opacity: isActive ? 1 : 0.4, y: 0 }}
                 transition={{ duration: 0.5, delay: isActive ? 0.15 : 0 }}
                 className="text-[10.5px] font-bold uppercase tracking-[0.26em] text-white sm:text-[12px]"
@@ -295,8 +296,8 @@ const HeroSlideView = ({
               </motion.p>
 
               <motion.h1
-                key={`title-${slide.key}-${isActive}`}
-                initial={{ opacity: 0, y: 14 }}
+                key={`title-${slide.key}`}
+                initial={false}
                 animate={{ opacity: isActive ? 1 : 0.4, y: 0 }}
                 transition={{ duration: 0.7, delay: isActive ? 0.25 : 0, ease: [0.22, 1, 0.36, 1] }}
                 className="mt-3 max-w-[340px] text-white sm:mt-4 md:mt-5 md:max-w-[680px]"
@@ -304,8 +305,8 @@ const HeroSlideView = ({
                 <span
                   className="balance block"
                   style={{
-                    fontSize: "clamp(32px, 5vw, 72px)",
-                    lineHeight: "1.02",
+                    fontSize: "clamp(28px, 4.6vw, 72px)",
+                    lineHeight: "1.04",
                     letterSpacing: "-0.035em",
                     fontWeight: 700,
                     whiteSpace: "pre-line",
@@ -314,10 +315,10 @@ const HeroSlideView = ({
                   {slide.headlineTop}
                 </span>
                 <span
-                  className="mt-3 block max-w-[31ch] text-white/86 sm:mt-4"
+                  className="mt-2 block max-w-[31ch] text-white/86 sm:mt-4"
                   style={{
-                    fontSize: "clamp(16px, 1.55vw, 24px)",
-                    lineHeight: 1.22,
+                    fontSize: "clamp(14px, 1.55vw, 24px)",
+                    lineHeight: 1.25,
                     letterSpacing: "-0.01em",
                     fontWeight: 400,
                   }}
@@ -327,20 +328,20 @@ const HeroSlideView = ({
               </motion.h1>
 
               <motion.p
-                key={`sub-${slide.key}-${isActive}`}
-                initial={{ opacity: 0, y: 10 }}
+                key={`sub-${slide.key}`}
+                initial={false}
                 animate={{ opacity: isActive ? 1 : 0.3, y: 0 }}
                 transition={{ duration: 0.6, delay: isActive ? 0.4 : 0 }}
-                className="mt-4 max-w-[38ch] text-[13.5px] leading-relaxed text-white/68 sm:mt-5 sm:text-[15px] lg:max-w-[54ch] lg:text-[16px]"
+                className="mt-3 max-w-[38ch] text-[13.5px] leading-snug text-white/72 sm:mt-5 sm:text-[15px] sm:leading-relaxed sm:text-white/68 lg:max-w-[54ch] lg:text-[16px]"
               >
                 {slide.sub}
               </motion.p>
 
               <motion.div
-                initial={{ opacity: 0, y: 12 }}
+                initial={false}
                 animate={{ opacity: isActive ? 1 : 0.3, y: 0 }}
                 transition={{ duration: 0.6, delay: isActive ? 0.55 : 0 }}
-                className="mt-6 flex w-full flex-col items-center gap-3 md:hidden"
+                className="mt-5 flex w-full flex-col items-center gap-2.5 md:hidden"
               >
                 <button
                   type="button"
@@ -448,6 +449,15 @@ function SlideVideo({
       fetchpriority={priority ? "high" : "low"}
       poster={`${import.meta.env.BASE_URL}brand/hero-poster.jpg`}
       className="absolute inset-0 -z-10 h-full w-full bg-black object-cover"
+      // CSS background mirrors the poster so the layer behind the <video> is
+      // never a black box while iOS Safari decodes the first frame on slow networks.
+      style={{
+        backgroundImage: priority
+          ? `url('${import.meta.env.BASE_URL}brand/hero-poster.jpg')`
+          : undefined,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
       src={`${import.meta.env.BASE_URL}${file}`}
       aria-hidden
       {...({ "webkit-playsinline": "true", "x5-playsinline": "true" } as Record<string, string>)}
