@@ -315,14 +315,36 @@ function WhatItIs({ page }: { page: ServicePage[keyof ServicePage] }) {
               </h2>
             </Reveal>
           </div>
-          <Reveal delay={0.12}>
-            <div className="space-y-5 text-[16.5px] sm:text-[17.5px] text-ink-soft leading-relaxed">
-              {page.whatItIs.paragraphs.map((p, i) => (
-                <p key={i}>{p}</p>
-              ))}
-              <p className="text-ink font-semibold">{page.whatItIs.audience}</p>
-            </div>
-          </Reveal>
+          <div className="space-y-5 sm:space-y-6 text-[15.5px] sm:text-[17px] md:text-[17.5px] text-ink-soft leading-relaxed">
+            {page.whatItIs.paragraphs.map((p, i) => (
+              <motion.p
+                key={i}
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.4 }}
+                transition={{
+                  duration: 0.5,
+                  delay: 0.12 + 0.06 * i,
+                  ease: EASE_OUT,
+                }}
+              >
+                {p}
+              </motion.p>
+            ))}
+            <motion.p
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.4 }}
+              transition={{
+                duration: 0.5,
+                delay: 0.12 + 0.06 * page.whatItIs.paragraphs.length,
+                ease: EASE_OUT,
+              }}
+              className="text-ink font-semibold"
+            >
+              {page.whatItIs.audience}
+            </motion.p>
+          </div>
         </div>
       </div>
     </section>

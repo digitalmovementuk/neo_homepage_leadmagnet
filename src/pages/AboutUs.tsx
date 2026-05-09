@@ -133,7 +133,7 @@ function AboutHero() {
 
       <motion.div
         style={{ y: textY }}
-        className="relative mx-auto flex min-h-[78svh] w-full max-w-[var(--container-max)] flex-col justify-end px-[var(--gutter)] pb-14 pt-[max(140px,18vh)] sm:pb-20"
+        className="relative mx-auto flex min-h-[78svh] w-full max-w-[var(--container-max)] flex-col justify-end px-[var(--gutter)] pb-20 pt-[max(140px,18vh)] sm:pb-24 md:pb-20"
       >
         <Reveal>
           <p className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.26em] text-white/80 sm:text-[12px]">
@@ -234,7 +234,7 @@ function Pillars() {
           </Reveal>
         </div>
 
-        <ul className="mx-auto mt-14 flex max-w-[860px] flex-col gap-6 sm:gap-8 md:mt-16">
+        <ul className="mx-auto mt-14 flex max-w-[860px] flex-col gap-8 sm:gap-10 md:mt-16">
           {t.about.pillars.map((p, i) => {
             const Icon = PILLAR_ICONS[i] ?? Compass;
             return (
