@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useCountUp } from "../lib/useCountUp";
 import { Reveal } from "../lib/Reveal";
 import { useT, useLang } from "../lib/i18n";
@@ -18,22 +18,36 @@ export function Metrics() {
   const t = useT();
   const { lang } = useLang();
   const isEN = lang === "en";
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+  // Slow ambient orb drift — adds depth without distracting from the data
+  const orbY = useTransform(scrollYProgress, [0, 1], ["-10%", "16%"]);
+  const orbX = useTransform(scrollYProgress, [0, 1], ["0%", "-6%"]);
+
   return (
     <section
+      ref={sectionRef}
       id="metrics"
       data-surface="light"
       className="surface-light relative pt-16 sm:pt-20 md:pt-24 pb-16 sm:pb-20 md:pb-24 overflow-hidden"
     >
-      {/* Faint ambient orb — anchors the section visually without competing
-          with the cards. */}
-      <div
+      {/* Faint ambient orb — drifts on scroll for depth */}
+      <motion.div
         aria-hidden
+        style={{ x: orbX, y: orbY }}
         className="pointer-events-none absolute -top-20 -right-32 h-[520px] w-[520px] rounded-full opacity-[0.10]"
-        style={{
-          background:
-            "radial-gradient(circle at center, #EC178D 0%, transparent 65%)",
-        }}
-      />
+      >
+        <div
+          className="h-full w-full rounded-full"
+          style={{
+            background:
+              "radial-gradient(circle at center, #EC178D 0%, transparent 65%)",
+          }}
+        />
+      </motion.div>
 
       <div className="container-v3 relative">
         {/* Section header */}

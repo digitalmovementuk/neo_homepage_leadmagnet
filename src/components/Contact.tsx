@@ -50,29 +50,45 @@ export function Contact() {
           </Reveal>
 
           <ul className="mt-10 space-y-3">
-            <ContactTile
-              icon={<Phone size={18} />}
-              label={isEN ? "Call" : "Anrufen"}
-              value={business.phone}
-              caption={isEN ? "Mon–Fri, 9 am–6 pm" : "Mo–Fr, 9–18 Uhr"}
-              href={business.phoneHref}
-            />
-            <ContactTile
-              icon={<MessageCircle size={18} />}
-              label="WhatsApp"
-              value={isEN ? "Send a message" : "Nachricht schreiben"}
-              caption={isEN ? "Reply within 1 h" : "Antwort innerhalb 1 h"}
-              href={business.whatsappHref}
-              external
-              tone="whatsapp"
-            />
-            <ContactTile
-              icon={<Mail size={18} />}
-              label={isEN ? "Email" : "E-Mail"}
-              value={business.email}
-              caption={isEN ? "Reply within 24 h" : "Antwort innerhalb 24 h"}
-              href={business.emailHref}
-            />
+            {[
+              {
+                icon: <Phone size={18} />,
+                label: isEN ? "Call" : "Anrufen",
+                value: business.phone,
+                caption: isEN ? "Mon–Fri, 9 am–6 pm" : "Mo–Fr, 9–18 Uhr",
+                href: business.phoneHref,
+              },
+              {
+                icon: <MessageCircle size={18} />,
+                label: "WhatsApp",
+                value: isEN ? "Send a message" : "Nachricht schreiben",
+                caption: isEN ? "Reply within 1 h" : "Antwort innerhalb 1 h",
+                href: business.whatsappHref,
+                external: true,
+                tone: "whatsapp" as const,
+              },
+              {
+                icon: <Mail size={18} />,
+                label: isEN ? "Email" : "E-Mail",
+                value: business.email,
+                caption: isEN ? "Reply within 24 h" : "Antwort innerhalb 24 h",
+                href: business.emailHref,
+              },
+            ].map((tile, i) => (
+              <motion.div
+                key={tile.label}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.4 }}
+                transition={{
+                  duration: 0.5,
+                  delay: 0.18 + 0.07 * i,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+              >
+                <ContactTile {...tile} />
+              </motion.div>
+            ))}
           </ul>
         </div>
 

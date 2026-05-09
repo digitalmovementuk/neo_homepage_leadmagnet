@@ -131,6 +131,57 @@ export type Translations = {
     submit: string;
     dismiss: string;
   };
+  about: {
+    meta: { title: string; description: string };
+    hero: {
+      eyebrow: string;
+      headlinePre: string;
+      headlineSoft: string;
+      sub: string;
+      locations: string;
+    };
+    pillars: {
+      label: string;
+      headline: string;
+      body: string;
+    }[];
+    founder: {
+      eyebrow: string;
+      headlinePre: string;
+      headlineSoft: string;
+      paragraphs: string[];
+      role: string;
+      cv: { year: string; entry: string }[];
+    };
+    studio: {
+      eyebrow: string;
+      headlinePre: string;
+      headlineSoft: string;
+      body: string;
+      bullets: string[];
+    };
+    team: {
+      eyebrow: string;
+      headlinePre: string;
+      headlineSoft: string;
+      intro: string;
+      members: {
+        name: string;
+        role: string;
+        kicker: string;
+        bio: string;
+        image: string;
+      }[];
+    };
+    cta: {
+      eyebrow: string;
+      headlinePre: string;
+      headlineSoft: string;
+      body: string;
+      button: string;
+      secondary: string;
+    };
+  };
   servicePages: ServicePage;
 };
 
@@ -243,8 +294,8 @@ const de: Translations = {
   nav: {
     links: [
       { label: "Was wir tun", href: "#services" },
+      { label: "Über uns", href: "/about" },
       { label: "Kundenprojekte", href: "#cases" },
-      { label: "Zahlen", href: "#metrics" },
       { label: "Kontakt", href: "#contact" },
     ],
     cta: "Erstgespräch",
@@ -290,8 +341,8 @@ const de: Translations = {
       {
         index: "03",
         label: "Was Sie bekommen",
-        headline: "Kontinuierliche Kundenanfragen.",
-        detail: "Festpreis, 90 Tage, keine Mindestlaufzeit.",
+        headline: "Premium-Website + SEO-Pages.",
+        detail: "Eine hochwertige Website und SEO-optimierte Servicepages, die bei Google ranken.",
       },
     ],
   },
@@ -594,8 +645,6 @@ const de: Translations = {
       {
         title: "Agentur",
         links: [
-          { label: "Wofür wir stehen", href: "#why" },
-          { label: "Wie wir arbeiten", href: "#principles" },
           { label: "Kundenprojekte", href: "#cases" },
           { label: "Kontakt", href: "#contact" },
         ],
@@ -621,6 +670,142 @@ const de: Translations = {
     email: "E-Mail",
     submit: "Audit anfordern",
     dismiss: "Später vielleicht",
+  },
+
+  about: {
+    meta: {
+      title: "Über NEO · Die Agentur, die wirklich liefert",
+      description:
+        "Wer wir sind, woran wir glauben, und das Team hinter den 90-Tage-Sprints. Inhabergeführt, international, ohne Account-Manager-Ketten.",
+    },
+    hero: {
+      eyebrow: "Über uns",
+      headlinePre: "Eine kleine Agentur,",
+      headlineSoft: "die das Handwerk wieder ernst nimmt.",
+      sub: "Wir sind ein internationales Team aus Spezialisten, die Performance Marketing als Handwerk verstehen — nicht als Excel-Sport. Sieben Köpfe, ein klares Versprechen: messbare Ergebnisse in 90 Tagen.",
+      locations: "Berlin · New York",
+    },
+    pillars: [
+      {
+        label: "Vision",
+        headline:
+          "Eine Welt, in der jedes mittelständische Unternehmen online gefunden wird — auch von KI.",
+        body: "Suchmaschinen verändern sich schneller als je zuvor. Wir wollen, dass Inhaber-geführte Unternehmen nicht nur bei Google ranken, sondern auch in ChatGPT, Perplexity und Gemini stattfinden — ohne dass sie eine Konzern-Marketing-Abteilung dafür brauchen.",
+      },
+      {
+        label: "Mission",
+        headline:
+          "Performance Marketing entmystifizieren und in echte Anfragen umwandeln.",
+        body: "Schluss mit Eitelkeitsmetriken, Reporting-Theater und Account-Manager-Ketten. Wir liefern technische SEO, AI-Search-Optimierung und High-End-Websites zu einem Festpreis — und stehen mit unserem Namen dafür gerade.",
+      },
+      {
+        label: "Werte",
+        headline:
+          "Commitment. Performance. Fairer Preis.",
+        body: "Wir nehmen weniger Kunden, dafür stehen wir bei jedem mit dem Telefonhörer in der Hand. Was wir versprechen, halten wir — oder wir halten den Mund.",
+      },
+    ],
+    founder: {
+      eyebrow: "Der Gründer",
+      headlinePre: "Raoul Müller —",
+      headlineSoft: "die Person, die abhebt, wenn Sie anrufen.",
+      role: "Gründer & Geschäftsführer",
+      paragraphs: [
+        "Bevor ich NEO gegründet habe, habe ich zehn Jahre lang in Agenturen und Inhouse-Teams gesehen, wie der Markt eigentlich funktioniert: gute Unternehmen zahlen Tausende Euro pro Monat an Agenturen, die ihnen Reports zeigen — aber keine Anfragen liefern.",
+        "NEO ist meine Antwort darauf. Ein Festpreis. Ein 90-Tage-Sprint. Ein internationales Team aus echten Spezialisten — kein Pyramidensystem aus Junior-Beratern und White-Label-Subunternehmern. Wenn Sie hier anrufen, bin ich am Telefon.",
+        "Wir arbeiten mit Inhabern, die Wachstum ernst nehmen, klare Sprache mögen und keine Lust mehr auf Marketing-Theater haben. Das ist alles. Wenn das passt — schreiben Sie uns.",
+      ],
+      cv: [
+        { year: "2026", entry: "Gründung NEO THE AGENCY · Berlin" },
+        { year: "2022 – 2026", entry: "Head of Growth, B2B-SaaS-Scale-up · Hamburg" },
+        { year: "2018 – 2022", entry: "Senior SEO Lead · Internationale Agentur · München" },
+        { year: "2014 – 2018", entry: "Performance Marketing Manager · Berlin / London" },
+      ],
+    },
+    studio: {
+      eyebrow: "Wo wir arbeiten",
+      headlinePre: "Loft in Mitte.",
+      headlineSoft: "Satellit in Brooklyn.",
+      body: "Unser Hauptstudio sitzt in einem Industrie-Loft in Berlin-Mitte — mit Blick auf die Backsteinfassaden, Sichtbeton an der Decke, schwarzem Stahl an den Fenstern. Ein zweites kleines Team operiert aus Brooklyn, NYC. Beides bewusst gewählt: Wir bauen für Marken, die echtes Handwerk und einen guten Geschmack respektieren.",
+      bullets: [
+        "Eigene Studio-Räume statt Coworking-Theater",
+        "Persönliche Workshops vor Ort möglich",
+        "Async-first, aber synchron, wenn's zählt",
+      ],
+    },
+    team: {
+      eyebrow: "Das Team",
+      headlinePre: "Sieben Spezialisten.",
+      headlineSoft: "Eine Pipeline.",
+      intro:
+        "Jede Disziplin in einer Hand — kein Outsourcing, kein White-Label. Sie reden direkt mit der Person, die für Ihr Projekt den Code, die Kampagne oder die Strategie verantwortet.",
+      members: [
+        {
+          name: "Kenji Tanaka",
+          role: "SEO & GEO Specialist",
+          kicker: "Search · AI Search",
+          bio: "Optimiert Websites für Google und für die neuen KI-Suchen. Der Mann hinter unseren technischen Audits und der Content-Architektur, die rankt.",
+          image:
+            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80",
+        },
+        {
+          name: "Marcus Okafor",
+          role: "Web Developer",
+          kicker: "React · Performance",
+          bio: "Baut schnelle, mobile-first Websites mit perfekten Core Web Vitals. Wenn etwas nicht in 1,5 Sekunden lädt, ist es für ihn kaputt.",
+          image:
+            "https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=800&q=80",
+        },
+        {
+          name: "Sophie Lindberg",
+          role: "Operations Manager",
+          kicker: "Process · Quality",
+          bio: "Sorgt dafür, dass kein Projekt durchrutscht. Hält die 90-Tage-Sprints synchron — und unsere Reports auf den Punkt.",
+          image:
+            "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80",
+        },
+        {
+          name: "Amara Diallo",
+          role: "Creative Director",
+          kicker: "Brand · Art Direction",
+          bio: "Übersetzt Markenstrategie in visuelle Sprache, die hängenbleibt. Verantwortet Look & Feel jeder Website, die unser Studio verlässt.",
+          image:
+            "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=800&q=80",
+        },
+        {
+          name: "Lucia Moretti",
+          role: "Social Media Manager",
+          kicker: "Short-Form · Paid Social",
+          bio: "Baut Content, der gebuchte Termine bringt — keine Likes. Spezialisiert auf Founder-Brand-Content und Short-Form-Video.",
+          image:
+            "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=80",
+        },
+        {
+          name: "David Klein",
+          role: "Project Manager",
+          kicker: "Delivery · Stakeholder",
+          bio: "Ihr direkter Ansprechpartner für Timing, Scope und Erwartungsmanagement. Hält jedes Projekt im Plan — und Sie informiert.",
+          image:
+            "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80",
+        },
+        {
+          name: "Mira Hassan",
+          role: "Graphic Designer",
+          kicker: "Type · Editorial",
+          bio: "Designt Websites, Pitch Decks und Social-Visuals mit einem Auge fürs Detail, das man nicht lernen kann. Trägt schwarz, denkt in Raster.",
+          image:
+            "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&w=800&q=80",
+        },
+      ],
+    },
+    cta: {
+      eyebrow: "Bereit?",
+      headlinePre: "Lassen Sie uns",
+      headlineSoft: "über Ihr Wachstum reden.",
+      body: "Kostenloses Erstgespräch, persönlich vom Gründer. Antwort werktags innerhalb 24 h.",
+      button: "Kostenlose Potenzialanalyse starten",
+      secondary: "Erstgespräch vereinbaren",
+    },
   },
 
   servicePages: {
@@ -1526,8 +1711,8 @@ const en: Translations = {
   nav: {
     links: [
       { label: "What we do", href: "#services" },
+      { label: "About", href: "/about" },
       { label: "Case studies", href: "#cases" },
-      { label: "Results", href: "#metrics" },
       { label: "Contact", href: "#contact" },
     ],
     cta: "Free intro call",
@@ -1573,8 +1758,8 @@ const en: Translations = {
       {
         index: "03",
         label: "What you get",
-        headline: "Continuous enquiries.",
-        detail: "Fixed price, 90 days, no minimum term.",
+        headline: "Premium website + SEO pages.",
+        detail: "A high-end website and SEO-optimised service pages that rank on Google.",
       },
     ],
   },
@@ -1877,8 +2062,6 @@ const en: Translations = {
       {
         title: "Agency",
         links: [
-          { label: "What we stand for", href: "#why" },
-          { label: "How we work", href: "#principles" },
           { label: "Case studies", href: "#cases" },
           { label: "Contact", href: "#contact" },
         ],
@@ -1904,6 +2087,142 @@ const en: Translations = {
     email: "Email",
     submit: "Request audit",
     dismiss: "Maybe later",
+  },
+
+  about: {
+    meta: {
+      title: "About NEO · The agency that actually delivers",
+      description:
+        "Who we are, what we believe, and the team behind the 90-day sprints. Founder-led, international, no account-manager chain.",
+    },
+    hero: {
+      eyebrow: "About",
+      headlinePre: "A small agency",
+      headlineSoft: "taking the craft seriously again.",
+      sub: "We're an international team of specialists who treat performance marketing as a craft — not an Excel sport. Seven heads, one promise: measurable results in 90 days.",
+      locations: "Berlin · New York",
+    },
+    pillars: [
+      {
+        label: "Vision",
+        headline:
+          "A world where every founder-led business is found online — by people and by AI.",
+        body: "Search is changing faster than ever. We want owner-led companies to rank on Google and to surface in ChatGPT, Perplexity and Gemini — without needing an enterprise marketing department to make it happen.",
+      },
+      {
+        label: "Mission",
+        headline:
+          "Strip the mystery out of performance marketing and turn it into real enquiries.",
+        body: "Enough vanity metrics, reporting theatre and account-manager chains. We deliver technical SEO, AI-search optimisation and high-end websites at a fixed price — and we put our names to the result.",
+      },
+      {
+        label: "Values",
+        headline:
+          "Commitment. Performance. Fair pricing.",
+        body: "We take fewer clients so we can stand on the phone for each one. What we promise, we keep — or we keep quiet.",
+      },
+    ],
+    founder: {
+      eyebrow: "The founder",
+      headlinePre: "Raoul Müller —",
+      headlineSoft: "the person who picks up when you call.",
+      role: "Founder & Managing Director",
+      paragraphs: [
+        "Before NEO, I spent ten years inside agencies and in-house teams seeing how the market actually works: good companies pay agencies thousands a month for reports — but no enquiries.",
+        "NEO is my answer. A fixed price. A 90-day sprint. An international team of real specialists — not a pyramid of junior consultants and white-label sub-agencies. When you ring, I pick up.",
+        "We work with owners who take growth seriously, prefer plain language, and have run out of patience for marketing theatre. That's it. If that's you — write to us.",
+      ],
+      cv: [
+        { year: "2026", entry: "Founded NEO THE AGENCY · Berlin" },
+        { year: "2022 – 2026", entry: "Head of Growth, B2B SaaS scale-up · Hamburg" },
+        { year: "2018 – 2022", entry: "Senior SEO Lead · International agency · Munich" },
+        { year: "2014 – 2018", entry: "Performance Marketing Manager · Berlin / London" },
+      ],
+    },
+    studio: {
+      eyebrow: "Where we work",
+      headlinePre: "Loft in Mitte.",
+      headlineSoft: "Satellite in Brooklyn.",
+      body: "Our main studio sits in an industrial loft in Berlin-Mitte — looking out on red-brick facades, exposed concrete overhead, black steel framing the windows. A small second team operates out of Brooklyn, NYC. Both deliberate: we build for brands that respect real craft and good taste.",
+      bullets: [
+        "Owned studio space, no co-working theatre",
+        "Workshops on-site whenever it matters",
+        "Async-first, synchronous when it counts",
+      ],
+    },
+    team: {
+      eyebrow: "The team",
+      headlinePre: "Seven specialists.",
+      headlineSoft: "One pipeline.",
+      intro:
+        "Every discipline owned in-house — no outsourcing, no white-label. You speak directly to the person responsible for the code, the campaign, or the strategy on your project.",
+      members: [
+        {
+          name: "Kenji Tanaka",
+          role: "SEO & GEO Specialist",
+          kicker: "Search · AI Search",
+          bio: "Optimises websites for Google and for the new AI search engines. The man behind our technical audits and the content architecture that ranks.",
+          image:
+            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80",
+        },
+        {
+          name: "Marcus Okafor",
+          role: "Web Developer",
+          kicker: "React · Performance",
+          bio: "Builds fast, mobile-first websites with perfect Core Web Vitals. If something doesn't load in 1.5 seconds, he treats it as broken.",
+          image:
+            "https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=800&q=80",
+        },
+        {
+          name: "Sophie Lindberg",
+          role: "Operations Manager",
+          kicker: "Process · Quality",
+          bio: "Makes sure no project slips. Keeps the 90-day sprints in lockstep — and our reports on point.",
+          image:
+            "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80",
+        },
+        {
+          name: "Amara Diallo",
+          role: "Creative Director",
+          kicker: "Brand · Art Direction",
+          bio: "Translates brand strategy into visual language that sticks. Owns the look and feel of every website that leaves the studio.",
+          image:
+            "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=800&q=80",
+        },
+        {
+          name: "Lucia Moretti",
+          role: "Social Media Manager",
+          kicker: "Short-Form · Paid Social",
+          bio: "Builds content that drives booked calls — not likes. Specialises in founder-brand content and short-form video.",
+          image:
+            "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=80",
+        },
+        {
+          name: "David Klein",
+          role: "Project Manager",
+          kicker: "Delivery · Stakeholder",
+          bio: "Your direct contact for timing, scope and expectation management. Keeps every project on plan — and you in the loop.",
+          image:
+            "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80",
+        },
+        {
+          name: "Mira Hassan",
+          role: "Graphic Designer",
+          kicker: "Type · Editorial",
+          bio: "Designs websites, pitch decks and social visuals with an eye for detail you can't teach. Wears black, thinks in grids.",
+          image:
+            "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&w=800&q=80",
+        },
+      ],
+    },
+    cta: {
+      eyebrow: "Ready?",
+      headlinePre: "Let's talk",
+      headlineSoft: "about your growth.",
+      body: "Free intro call, personally with the founder. Reply within 24 h on weekdays.",
+      button: "Start free potential analysis",
+      secondary: "Book intro call",
+    },
   },
 
   servicePages: {

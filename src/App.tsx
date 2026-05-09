@@ -15,6 +15,7 @@ const ServiceSocialMedia = lazy(() =>
 const ServiceWebsites = lazy(() =>
   import("./pages/services/websites").then((m) => ({ default: m.ServiceWebsites })),
 );
+const AboutUs = lazy(() => import("./pages/AboutUs").then((m) => ({ default: m.AboutUs })));
 const NotFound = lazy(() => import("./pages/NotFound").then((m) => ({ default: m.NotFound })));
 
 const BASE = (import.meta.env.BASE_URL ?? "/").replace(/\/$/, "");
@@ -37,6 +38,8 @@ export default function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route index element={<HomePage />} />
+          <Route path="about" element={suspended(AboutUs)} />
+          <Route path="uber-uns" element={suspended(AboutUs)} />
           <Route path="services">
             <Route path="seo" element={suspended(ServiceSEO)} />
             <Route path="google-ads" element={suspended(ServiceGoogleAds)} />

@@ -47,7 +47,7 @@ export function ClientCases() {
       ref={sectionRef}
       id="cases"
       data-surface="light"
-      className="surface-light relative overflow-hidden md:min-h-[200vh] pt-16 sm:pt-20 md:pt-24 pb-16 sm:pb-20 md:pb-24"
+      className="surface-light relative overflow-hidden md:min-h-[200vh] md:pt-24 md:pb-24"
     >
       {/* Subtle ambient gradient orb — light-theme replacement for the
           previous dark cityscape parallax. Drifts gently as the user scrolls
@@ -73,10 +73,9 @@ export function ClientCases() {
         />
       </motion.div>
 
-      <div className="relative container-v3">
-        {/* Section header — same pattern as the other sections (eyebrow +
-            h2 + sub) for page coherency, then the mobile IG-story carousel
-            (or desktop stack) renders below. */}
+      <div className="relative container-v3 hidden md:block">
+        {/* Section header (desktop only — mobile uses the full-screen IG
+            carousel and doesn't need an external label). */}
         <div className="grid lg:grid-cols-[1.2fr_1fr] gap-6 lg:gap-12 items-end text-center lg:text-left">
           <div>
             <Reveal>
@@ -236,7 +235,7 @@ function MobileCaseStories({ studies }: { studies: CaseStudy[] }) {
   };
 
   return (
-    <div ref={sectionRef} className="md:hidden relative select-none mt-8">
+    <div ref={sectionRef} className="md:hidden relative select-none">
       <div
         ref={trackRef}
         className="snap-x flex overflow-x-auto"

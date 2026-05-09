@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion";
 import { Menu, X, ArrowRight, ChevronDown, ArrowUpRight } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { business } from "../content";
@@ -33,6 +33,14 @@ export function Nav() {
   const [open, setOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const servicesWrapRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll();
+  const progressScaleX = useSpring(scrollYProgress, {
+    stiffness: 140,
+    damping: 28,
+    mass: 0.4,
+    restDelta: 0.001,
+  });
 
   // Close service-dropdown on outside click + Escape.
   useEffect(() => {
@@ -132,7 +140,7 @@ export function Nav() {
             : "bg-transparent"
         }`}
       >
-        <div className={`container-v3 flex items-center justify-between transition-all duration-300 ${barHeightCls}`}>
+        <div className={`flex w-full items-center justify-between px-[var(--gutter)] transition-all duration-300 ${barHeightCls}`}>
           <Link
             to="/"
             className="flex items-center gap-3"
@@ -259,10 +267,11 @@ export function Nav() {
                   </div>
                 );
               }
+              const isPath = l.href.startsWith("/");
               return (
                 <Link
                   key={l.href}
-                  to={{ pathname: "/", hash: l.href }}
+                  to={isPath ? l.href : { pathname: "/", hash: l.href }}
                   className={`font-semibold tracking-tight transition-all duration-300 ${linkSizeCls} ${linkCls}`}
                 >
                   {l.label}
@@ -290,6 +299,12 @@ export function Nav() {
             </button>
           </div>
         </div>
+
+        <motion.div
+          aria-hidden
+          className="absolute inset-x-0 bottom-0 h-[2px] origin-left bg-[#FF7A45]"
+          style={{ scaleX: progressScaleX }}
+        />
       </header>
 
       <AnimatePresence>
@@ -327,22 +342,25 @@ export function Nav() {
               </div>
 
               <nav className="mt-10 flex flex-col">
-                {t.nav.links.map((l, i) => (
-                  <motion.div
-                    key={l.href}
-                    initial={{ opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.06 * i + 0.08 }}
-                  >
-                    <Link
-                      to={{ pathname: "/", hash: l.href }}
-                      onClick={() => setOpen(false)}
-                      className="block py-3.5 text-[24px] font-bold tracking-tight border-b border-white/10 text-white"
+                {t.nav.links.map((l, i) => {
+                  const isPath = l.href.startsWith("/");
+                  return (
+                    <motion.div
+                      key={l.href}
+                      initial={{ opacity: 0, y: 12 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.06 * i + 0.08 }}
                     >
-                      {l.label}
-                    </Link>
-                  </motion.div>
-                ))}
+                      <Link
+                        to={isPath ? l.href : { pathname: "/", hash: l.href }}
+                        onClick={() => setOpen(false)}
+                        className="block py-3.5 text-[24px] font-bold tracking-tight border-b border-white/10 text-white"
+                      >
+                        {l.label}
+                      </Link>
+                    </motion.div>
+                  );
+                })}
               </nav>
 
               {/* Mobile services list */}

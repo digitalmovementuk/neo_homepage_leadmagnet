@@ -18,23 +18,21 @@ export function StickyCTA() {
   const [show, setShow] = useState(false);
 
   // The bar appears after the long Snapshot section has fully passed. It
-  // stays available through the page and only disappears when the footer is
-  // fully visible, so it does not vanish over founder/contact content.
+  // hides as soon as the #contact section enters the viewport — that
+  // section already has its own primary CTA, so the floating bar would
+  // duplicate the ask.
   useEffect(() => {
     const snapshot = document.getElementById("snapshot");
-    const footer = document.querySelector("footer");
-    if (!snapshot || !footer) return;
+    const contact = document.getElementById("contact");
+    if (!snapshot || !contact) return;
     const onScroll = () => {
       const vh = window.innerHeight;
       const snapshotRect = snapshot.getBoundingClientRect();
-      const footerRect = footer.getBoundingClientRect();
+      const contactRect = contact.getBoundingClientRect();
       const navClearance = Math.min(96, vh * 0.14);
       const afterSnapshot = snapshotRect.bottom <= navClearance;
-      const footerFullyVisible =
-        footerRect.top >= -1 && footerRect.bottom <= vh + 1;
-      const atDocumentBottom =
-        window.scrollY + vh >= document.documentElement.scrollHeight - 2;
-      setShow(afterSnapshot && !footerFullyVisible && !atDocumentBottom);
+      const contactVisible = contactRect.top < vh && contactRect.bottom > 0;
+      setShow(afterSnapshot && !contactVisible);
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
