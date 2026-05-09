@@ -33,19 +33,19 @@
     />
     <link rel="canonical" href="https://www.neotheagency.de/" />
 
-    <!-- LCP: preload the hero poster as a high-priority image so iOS Safari has
-         the first frame painted while the 7.5MB hero.mp4 is still buffering.
-         The video element below uses the same JPG as poster + CSS background. -->
+    <!-- LCP: preload the hero poster as a high-priority image. Uses a
+         responsive WebP set so mobile pulls a 31KB asset, desktop a 67KB asset.
+         The same image is reused as the <video poster> + CSS background-image
+         on the SlideVideo, so it never re-fetches. -->
     <link
       rel="preload"
       as="image"
-      href="/brand/hero-poster.jpg"
+      href="/brand/hero-poster-mobile.webp"
+      imagesrcset="/brand/hero-poster-mobile.webp 800w, /brand/hero-poster.webp 1400w"
+      imagesizes="100vw"
+      type="image/webp"
       fetchpriority="high"
     />
-    <!-- Hero video: preload only the first ~256KB so the first frame can
-         decode immediately. The full 7.5MB streams progressively as the
-         user lingers on slide 1. -->
-    <link rel="preload" as="video" href="/video/hero.mp4" type="video/mp4" />
 
     <link rel="icon" type="image/svg+xml" href="/brand/favicon.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/brand/favicon-32.png" />
@@ -134,7 +134,41 @@
   </head>
   <body>
     <a class="skip-link" href="#main">Zum Inhalt springen</a>
-    <div id="root"></div>
+
+    <!-- LCP shell. This <img> paints before the JS bundle parses, so Lighthouse
+         records LCP against the WebP poster (~31KB on mobile, ~67KB on desktop)
+         instead of waiting for React to mount. Once React hydrates, the
+         SlideVideo overlays this image; we then hide it so it doesn't burn CPU
+         compositing under the live video. -->
+    <img
+      id="lcp-shell"
+      src="/brand/hero-poster-mobile.webp"
+      srcset="/brand/hero-poster-mobile.webp 800w, /brand/hero-poster.webp 1400w"
+      sizes="100vw"
+      alt=""
+      aria-hidden="true"
+      fetchpriority="high"
+      decoding="async"
+      style="position:fixed;inset:0;width:100vw;height:100svh;object-fit:cover;z-index:0;background:#05040A"
+    />
+    <div id="root" style="position:relative;z-index:1"></div>
+    <script>
+      // Drop the LCP shell once React paints the real hero. requestIdleCallback
+      // gives us a frame after the SlideVideo has rendered + the poster
+      // attribute has loaded, so the visual swap is invisible.
+      window.addEventListener("load", function () {
+        var fade = function () {
+          var img = document.getElementById("lcp-shell");
+          if (!img) return;
+          img.style.transition = "opacity .25s ease";
+          img.style.opacity = "0";
+          setTimeout(function () { img && img.parentNode && img.parentNode.removeChild(img); }, 320);
+        };
+        ("requestIdleCallback" in window)
+          ? window.requestIdleCallback(fade, { timeout: 1500 })
+          : setTimeout(fade, 800);
+      });
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

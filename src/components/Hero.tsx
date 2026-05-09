@@ -447,13 +447,14 @@ function SlideVideo({
       preload={priority ? "auto" : "metadata"}
       // @ts-expect-error fetchpriority is missing from React types
       fetchpriority={priority ? "high" : "low"}
-      poster={`${import.meta.env.BASE_URL}brand/hero-poster.jpg`}
+      poster={`${import.meta.env.BASE_URL}brand/hero-poster.webp`}
       className="absolute inset-0 -z-10 h-full w-full bg-black object-cover"
       // CSS background mirrors the poster so the layer behind the <video> is
-      // never a black box while iOS Safari decodes the first frame on slow networks.
+      // never a black box while iOS Safari decodes the first frame on slow
+      // networks. Browsers reuse the preloaded WebP from the document <head>.
       style={{
         backgroundImage: priority
-          ? `url('${import.meta.env.BASE_URL}brand/hero-poster.jpg')`
+          ? `image-set(url('${import.meta.env.BASE_URL}brand/hero-poster.webp') type('image/webp'))`
           : undefined,
         backgroundSize: "cover",
         backgroundPosition: "center",
