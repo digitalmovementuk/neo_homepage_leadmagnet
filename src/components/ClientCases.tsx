@@ -392,7 +392,7 @@ function StoryVideo({
       loop
       muted
       playsInline
-      preload="auto"
+      preload="metadata"
       // @ts-expect-error fetchpriority is missing from React types
       fetchpriority="low"
       // pointer-events-none — keeps the video purely visual so iOS can't
@@ -434,7 +434,7 @@ function CaseVideo({ file, poster }: { file: string; poster?: string }) {
       loop
       muted
       playsInline
-      preload="auto"
+      preload="metadata"
       poster={poster}
       // @ts-expect-error fetchpriority is missing from React types
       fetchpriority="low"

@@ -137,7 +137,7 @@ function TestimonialCard({ t, i, total, labels, unmutedId, onUnmute }: CardProps
           loop
           muted
           playsInline
-          preload="auto"
+          preload="metadata"
         />
 
         <div
