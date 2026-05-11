@@ -307,9 +307,9 @@ const de: Translations = {
 
   hero: {
     eyebrow: "High-End Performance Marketing",
-    headlineTop: "Wöchentlich neue Verkaufschancen.",
-    headlineBottom: "Über Google Search, KI-Suche und eine hochwertige Website.",
-    sub: "Wir machen Ihre Leistungen in allen relevanten Städten und Stadtteilen sichtbar — damit Ihre Zielgruppe Sie findet und qualifizierte Anfragen entstehen.",
+    headlineTop: "Jede Woche neue Verkaufschancen.",
+    headlineBottom: "Über Google, KI-Suche und eine Website, die liefert.",
+    sub: "Sichtbar in jeder relevanten Stadt. In jedem Stadtteil. Damit Anfragen reinkommen — nicht Hoffnungen.",
     services: [
       "Search Engine Optimization",
       "AI Search Optimization",
@@ -324,25 +324,25 @@ const de: Translations = {
 
   snapshot: {
     title: "Snapshot",
-    tagline: "In 30 Sekunden klar — was, für wen, was Sie bekommen.",
+    tagline: "30 Sekunden. Was, für wen, was Sie bekommen.",
     items: [
       {
         index: "01",
         label: "Was",
-        headline: "Mehr Kundenanfragen.",
-        detail: "Performance Marketing & SEO, das messbar Umsatz bringt.",
+        headline: "Mehr Anfragen.",
+        detail: "Performance Marketing & SEO. Messbar. Im Umsatz.",
       },
       {
         index: "02",
         label: "Für wen",
-        headline: "Für Inhaber & Mittelstand.",
-        detail: "Beratung, Handwerk, Dienstleister, B2B.",
+        headline: "Inhaber & Mittelstand.",
+        detail: "Beratung. Handwerk. Dienstleister. B2B.",
       },
       {
         index: "03",
         label: "Was Sie bekommen",
-        headline: "Premium-Website + SEO-Pages.",
-        detail: "Eine hochwertige Website und SEO-optimierte Servicepages, die bei Google ranken.",
+        headline: "Premium-Website. SEO-Pages.",
+        detail: "Eine Website, die liefert. Service-Pages, die ranken. Ab Tag 1.",
       },
     ],
   },
@@ -395,11 +395,11 @@ const de: Translations = {
     eyebrow: "Wofür wir stehen",
     headline: "Commitment.",
     paragraphs: [
-      "Unsere Kundenprojekte vereint ein Ziel: Unternehmenswachstum durch digitales Marketing. Erfolgreich sind wir, wenn unsere Kunden ihren Umsatz steigern.",
-      "NEO THE AGENCY® ist eine High-End Performance Marketing-Agentur. Projekterfolge sind bei uns messbar. Wir liefern Kundenanfragen.",
-      "Als ehemalige Strategieberater, Unternehmensberater und Projektmanager bekommen unsere Kunden das Komplettpaket: Digitalstrategie, professionelles Projektmanagement und Expertentum.",
+      "Ein Ziel verbindet alle Projekte: Ihr Umsatz wächst. Erfolg messen wir daran. Nicht an unserer Kreativität.",
+      "NEO THE AGENCY® ist High-End Performance Marketing. Erfolge sind messbar. Wir liefern Anfragen — keine Tabellen.",
+      "Hintergrund: Strategieberatung, Unternehmensberatung, Projektmanagement. Sie bekommen das Komplettpaket — Strategie, Projektsteuerung, Handwerk.",
     ],
-    closing: "Customer Excellence ist unser Kompass. Deshalb arbeiten wir mit drei klaren Prinzipien.",
+    closing: "Customer Excellence ist der Kompass. Drei Prinzipien zeigen, wie das in der Praxis aussieht.",
     founderName: "Raoul Müller",
     founderRole: "Gründer · NEO THE AGENCY",
   },
@@ -409,24 +409,24 @@ const de: Translations = {
     headlineMain: "Drei Prinzipien.",
     headlineSub: "Eine Methode.",
     intro:
-      "Customer Excellence ist abstrakt. Konkret heißt das für uns: Commitment, Performance, Fairer Preis. Drei Sätze, die jeden Tag entscheiden, was wir tun — und was wir lassen.",
+      "Customer Excellence klingt abstrakt. Konkret heißt das: Commitment. Performance. Fairer Preis. Drei Sätze. Jeden Tag.",
     items: [
       {
         title: "Commitment",
         body:
-          "Wir gehen mit. Sie bekommen den Gründer am Telefon, nicht einen Account-Manager mit Excel-Tabelle. Jedes Projekt wird zu unserem.",
+          "Wir gehen mit. Sie kriegen den Gründer am Hörer — nicht den Account-Manager mit Excel. Jedes Projekt wird unsers.",
         kicker: "Prinzip",
       },
       {
         title: "Performance",
         body:
-          "Wir messen Anfragen, nicht Klicks. Jeden Monat sehen Sie, was sich bewegt hat — und warum. Kein Schönreden, keine Eitelkeitsmetriken.",
+          "Wir zählen Anfragen. Nicht Klicks. Jeden Monat: was sich bewegt hat, warum. Kein Schönreden. Keine Eitelkeitsmetriken.",
         kicker: "Prinzip",
       },
       {
         title: "Fairer Preis",
         body:
-          "Festpreis vom ersten Tag an. Keine Setup-Surprise, keine Mindestlaufzeit, keine versteckten Stunden. Sie wissen, was Sie bekommen.",
+          "Festpreis vom ersten Tag. Kein Setup-Trick. Keine Mindestlaufzeit. Keine versteckten Stunden. Was Sie sehen, kriegen Sie.",
         kicker: "Prinzip",
       },
     ],
@@ -437,14 +437,14 @@ const de: Translations = {
     headlineMain: "Vier Disziplinen.",
     headlineSub: "Eine Pipeline.",
     intro:
-      "Eng verzahnt, weil sich Wachstum nicht in Silos einsperren lässt. Klicken Sie sich durch — oder lassen Sie den Slider laufen.",
+      "Eng verzahnt. Wachstum lebt nicht in Silos. Klicken Sie durch — oder lehnen Sie sich zurück.",
     items: [
       {
         key: "seo",
         title: "SEO",
-        promise: "Google Seite 1 in nur 90 Tagen.",
+        promise: "Google Seite 1. In 90 Tagen.",
         detail:
-          "Technische Korrekturen, Inhalte mit Klicks und Linkaufbau, der sich auszahlt. Wir zeigen Ihnen jeden Monat die Mathematik dahinter — was sich bewegt hat, warum, und was als Nächstes kommt.",
+          "Technische Fixes. Inhalte, die Klicks holen. Links, die sich auszahlen. Jeden Monat: die Mathe dahinter — was sich bewegt, warum, was als Nächstes kommt.",
         bullets: [
           "Technisches SEO-Audit",
           "Content + On-Page",
@@ -455,9 +455,9 @@ const de: Translations = {
       {
         key: "google-ads",
         title: "Google Ads",
-        promise: "ROI-positiver bezahlter Traffic, der druckt.",
+        promise: "Bezahlter Traffic, der druckt. ROI-positiv.",
         detail:
-          "Eng gefasste Kampagnen, mit Conversions getrackte Landingpages und wöchentliches Verschwendungs-Trimming. Wir bieten nicht auf Eitelkeitsbegriffe — wir bieten auf Umsatz.",
+          "Enge Kampagnen. Conversion-Tracking, das stimmt. Jede Woche: Verschwendung raus. Wir bieten auf Umsatz. Nicht auf Eitelkeit.",
         bullets: [
           "Search + Performance Max",
           "Conversion-Tracking",
@@ -468,9 +468,9 @@ const de: Translations = {
       {
         key: "social",
         title: "Social Media",
-        promise: "Inhalte, die Anfragen bringen — keine Eitelkeitsmetriken.",
+        promise: "Content, der Anfragen bringt. Likes sind kein KPI.",
         detail:
-          "Short-Form-Video, Paid Social und Kreatives, gebaut für Ihre Zielgruppe und Plattform. Follower sind nett — gebuchte Termine sind besser.",
+          "Short-Form. Paid Social. Kreatives, das für Ihre Plattform sitzt. Follower sind nett. Termine sind besser.",
         bullets: [
           "Short-Form-Video",
           "Paid Social",
@@ -481,9 +481,9 @@ const de: Translations = {
       {
         key: "websites",
         title: "Websites",
-        promise: "Conversion-optimierte Seiten, die ab Tag 1 ranken.",
+        promise: "Seiten, die ranken. Ab Tag 1. Die konvertieren. Ab Klick 1.",
         detail:
-          "Schnelle, moderne, mobile-first Websites, die schnell laden, gut aussehen und Besucher zu Anfragen machen. Auf Plattformen, die Sie selbst pflegen können.",
+          "Schnell. Modern. Mobile-first. Lädt schnell, sieht gut aus, macht aus Besuchern Anfragen. Auf Plattformen, die Sie selbst pflegen.",
         bullets: [
           "Mobile-first Design",
           "Core Web Vitals",
@@ -499,7 +499,7 @@ const de: Translations = {
     headlineMain: "Echte Marken.",
     headlineSub: "Echte Zahlen.",
     intro:
-      "Eine Auswahl. Mit allen Kunden seit fünf Jahren am Tisch — oder gar nicht erst angefangen.",
+      "Eine Auswahl. Alle Kunden seit fünf Jahren am Tisch. Oder gar nicht erst angefangen.",
     serviceLabel: "Leistungen",
     timelineLabel: "Zeitraum",
   },
@@ -509,7 +509,7 @@ const de: Translations = {
     headlineMain: "Was wir anders machen.",
     headlineSub: "Sechs Punkte.",
     intro:
-      "Damit Sie wissen, worauf Sie sich einlassen — bevor Sie sich einlassen.",
+      "Damit Sie wissen, worauf Sie sich einlassen. Bevor Sie sich einlassen.",
     columns: { other: "Andere Agenturen", neo: "NEO THE AGENCY" },
     rows: [
       {
@@ -550,35 +550,35 @@ const de: Translations = {
     headlineMain: "Vier Meilensteine.",
     headlineSub: "Keine Überraschungen.",
     intro:
-      "Was an Tag 1, 30, 60 und 90 passiert. Wir sagen es vorher, wir halten uns dran, und wir zeigen Ihnen jeden Monat die Mathematik.",
+      "Was an Tag 1, 30, 60, 90 passiert. Wir sagen es. Wir halten uns dran. Jeden Monat: die Mathe.",
     steps: [
       {
         n: "01",
         eta: "Tag 1",
         title: "Audit & Kickoff",
         body:
-          "Technisches SEO-Audit, Kanal-Diagnose, Konkurrenz-Mapping. 30-Min-Screen-Share, ein Gründer am Bildschirm.",
+          "Technisches SEO-Audit. Kanal-Diagnose. Wettbewerbs-Mapping. 30 Minuten Screen-Share, Gründer am Bildschirm.",
       },
       {
         n: "02",
         eta: "Tag 30",
         title: "Launch",
         body:
-          "Tracking live, neue Landingpages online, Google-Ads-Kampagnen aktiv, On-Page-SEO-Fixes ausgeliefert.",
+          "Tracking live. Neue Landingpages online. Google Ads aktiv. On-Page-SEO ausgeliefert.",
       },
       {
         n: "03",
         eta: "Tag 60",
         title: "Erste Page-1-Keywords",
         body:
-          "Erste kommerzielle Keywords ranken auf Seite 1. Pipeline füllt sich, monatlicher Klartext-Report mit den nächsten Hebeln.",
+          "Erste kommerzielle Keywords auf Seite 1. Pipeline füllt sich. Monatlicher Klartext-Report — mit den nächsten Hebeln.",
       },
       {
         n: "04",
         eta: "Tag 90",
         title: "8× Pipeline",
         body:
-          "Gemessene Steigerung qualifizierter Anfragen. Ab hier monatliche Optimierung — keine Überraschungen, keine Mindestlaufzeit.",
+          "Gemessene Steigerung qualifizierter Anfragen. Ab hier monatliche Optimierung. Keine Überraschungen. Keine Mindestlaufzeit.",
       },
     ],
   },
@@ -586,8 +586,8 @@ const de: Translations = {
   metrics: {
     eyebrow: "Zahlen",
     headlineMain: "Was wirklich zählt.",
-    headlineSub: "Anfragen, nicht Klicks.",
-    intro: "Vier Zahlen aus laufenden Kunden — gemessen, nicht behauptet.",
+    headlineSub: "Anfragen. Nicht Klicks.",
+    intro: "Vier Zahlen aus laufenden Kunden. Gemessen. Nicht behauptet.",
     items: [
       { value: 8, suffix: "×", label: "mehr Anfragen pro Monat" },
       { value: 90, suffix: "", label: "Tage bis Google Seite 1" },
@@ -600,9 +600,9 @@ const de: Translations = {
     headlinePre: "Sie reden mit der Person,",
     headlineSoft: "die auch liefert.",
     paragraphs: [
-      "Ich habe NEO gegründet, weil ich es leid war zu sehen, wie gute Unternehmen Tausende Euro pro Monat an Agenturen zahlen, die ihnen Eitelkeitsmetriken zeigen statt echte Anfragen im Posteingang.",
-      "Bei NEO bekommen Sie keinen Account-Manager, der eine Excel-Tabelle vorliest. Sie bekommen mich am Telefon, einen Festpreis ohne Lock-in, und einen 90-Tage-Sprint, hinter dem ich mit meinem Namen stehe.",
-      "Wenn das nach Ihrer Art zu arbeiten klingt — schreiben Sie mir unten. Ich antworte werktags innerhalb 24 h, persönlich.",
+      "Ich habe NEO gegründet, weil ich es leid war. Gute Firmen zahlen Tausende pro Monat. Bekommen Eitelkeitsmetriken. Keine Anfragen im Posteingang. Das ändert sich hier.",
+      "Bei NEO: kein Account-Manager mit Excel. Sie kriegen mich am Hörer. Festpreis. Kein Lock-in. Ein 90-Tage-Sprint mit meinem Namen drauf.",
+      "Klingt nach Ihrer Art? Schreiben Sie unten. Werktags antworte ich in 24 h. Persönlich.",
     ],
     signature: "Raoul",
     signatureBlock: "Raoul Müller · Gründer, NEO THE AGENCY",
@@ -613,14 +613,14 @@ const de: Translations = {
     headlinePre: "Lassen Sie uns",
     headlineSoft: "starten.",
     intro:
-      "Kostenloses Erstgespräch. Antwort werktags innerhalb 24 h, persönlich vom Gründer.",
+      "Kostenloses Erstgespräch. Werktags antworte ich in 24 h. Persönlich.",
     form: {
       name: "Name",
       email: "E-Mail",
       company: "Unternehmen (optional)",
       message: "Was möchten Sie erreichen?",
       submit: "Nachricht senden",
-      success: "Danke. Sie hören innerhalb von 24 h von uns.",
+      success: "Danke. Sie hören in 24 h von mir.",
     },
     tiles: [
       { kicker: "Telefon", value: "+49 30 123 4567" },
@@ -631,7 +631,7 @@ const de: Translations = {
 
   footer: {
     blurb:
-      "NEO THE AGENCY ist eine High-End Performance Marketing-Agentur. Wir machen Websites zu Assets und liefern qualifizierte Anfragen.",
+      "NEO THE AGENCY ist High-End Performance Marketing. Wir machen Websites zu Assets. Wir liefern qualifizierte Anfragen.",
     sections: [
       {
         title: "Leistungen",
@@ -665,7 +665,7 @@ const de: Translations = {
   modal: {
     eyebrow: "Bevor Sie weiterlesen",
     headline: "Kostenloses Audit Ihrer Website.",
-    sub: "30-Minuten-Walkthrough plus Ein-Seiten-Audit per E-Mail. Egal, ob Sie mit uns arbeiten oder nicht.",
+    sub: "30 Minuten Walkthrough plus Ein-Seiten-Audit per E-Mail. Egal, ob wir zusammenarbeiten oder nicht.",
     name: "Name",
     email: "E-Mail",
     submit: "Audit anfordern",
@@ -1725,15 +1725,15 @@ const en: Translations = {
   hero: {
     eyebrow: "High-end performance marketing",
     headlineTop: "New sales opportunities every week.",
-    headlineBottom: "Through Google Search, AI search, and a high-quality website.",
-    sub: "We make your services visible across every relevant city and district — so your target audience finds you and qualified enquiries roll in.",
+    headlineBottom: "Through Google, AI search, and a website that ships results.",
+    sub: "Visible in every relevant city. In every district. So enquiries roll in — not hope.",
     services: [
       "Search Engine Optimisation",
       "AI Search Optimisation",
       "High-End Website Development",
     ],
     priceLine: "Free consultation",
-    priceLineSub: "Reply within 24 h",
+    priceLineSub: "Reply within 24 h",
     cta: "Start",
     pauseLabel: "Pause hero video",
     playLabel: "Play hero video",
@@ -1741,25 +1741,25 @@ const en: Translations = {
 
   snapshot: {
     title: "Snapshot",
-    tagline: "Clear in 30 seconds — what, for whom, what you get.",
+    tagline: "30 seconds. What, for whom, what you get.",
     items: [
       {
         index: "01",
         label: "What",
         headline: "More enquiries.",
-        detail: "Performance marketing & SEO that measurably drives revenue.",
+        detail: "Performance marketing & SEO. Measurable. In revenue.",
       },
       {
         index: "02",
         label: "For whom",
         headline: "For owners & SMEs.",
-        detail: "Consultancies, trades, professional services, B2B.",
+        detail: "Consultancies. Trades. Services. B2B.",
       },
       {
         index: "03",
         label: "What you get",
-        headline: "Premium website + SEO pages.",
-        detail: "A high-end website and SEO-optimised service pages that rank on Google.",
+        headline: "Premium website. SEO pages.",
+        detail: "A website that ships. Service pages that rank. From day one.",
       },
     ],
   },
@@ -1812,12 +1812,12 @@ const en: Translations = {
     eyebrow: "What we stand for",
     headline: "Commitment.",
     paragraphs: [
-      "Our client work shares one goal: business growth through digital marketing. We're successful when our clients grow revenue.",
-      "NEO THE AGENCY® is a high-end performance marketing agency. Project success is measurable. We deliver enquiries.",
-      "As former strategy consultants, management consultants and project managers, our clients get the full package: digital strategy, professional project management, and genuine expertise.",
+      "One goal ties every project together: your revenue grows. That's how we measure success. Not by our creativity.",
+      "NEO THE AGENCY® is high-end performance marketing. Results are measurable. We deliver enquiries — not spreadsheets.",
+      "Background: strategy consulting, management consulting, project management. You get the full package — strategy, project ownership, craft.",
     ],
     closing:
-      "Customer excellence is our compass. That's why we work to three clear principles.",
+      "Customer excellence is the compass. Three principles show what that looks like in practice.",
     founderName: "Raoul Müller",
     founderRole: "Founder · NEO THE AGENCY",
   },
@@ -1827,18 +1827,18 @@ const en: Translations = {
     headlineMain: "Three principles.",
     headlineSub: "One method.",
     intro:
-      "Customer excellence is abstract. In practice, it means: commitment, performance, a fair price. Three sentences that decide what we do — and what we don't — every day.",
+      "Customer excellence sounds abstract. In practice it means: commitment. Performance. Fair price. Three sentences. Every day.",
     items: [
       {
         title: "Commitment",
         body:
-          "We're in. You get the founder on the phone, not an account manager with a spreadsheet. Every project becomes ours.",
+          "We're in. You get the founder on the line — not an account manager with a spreadsheet. Every project becomes ours.",
         kicker: "Principle",
       },
       {
         title: "Performance",
         body:
-          "We measure enquiries, not clicks. Every month you see what moved — and why. No spin, no vanity metrics.",
+          "We count enquiries. Not clicks. Every month: what moved, why. No spin. No vanity metrics.",
         kicker: "Principle",
       },
       {
@@ -1860,9 +1860,9 @@ const en: Translations = {
       {
         key: "seo",
         title: "SEO",
-        promise: "Google page one in 90 days.",
+        promise: "Google page one. In 90 days.",
         detail:
-          "Technical fixes, content that earns clicks, and link-building that pays off. We show you the maths every month — what moved, why, and what's next.",
+          "Technical fixes. Content that earns clicks. Links that pay. Every month: the maths behind it — what moved, why, what's next.",
         bullets: [
           "Technical SEO audit",
           "Content + on-page",
@@ -1873,9 +1873,9 @@ const en: Translations = {
       {
         key: "google-ads",
         title: "Google Ads",
-        promise: "ROI-positive paid traffic that prints.",
+        promise: "Paid traffic that prints. ROI-positive.",
         detail:
-          "Tightly scoped campaigns, conversion-tracked landing pages, and weekly waste trimming. We don't bid on vanity terms — we bid on revenue.",
+          "Tight campaigns. Conversion-tracking that holds up. Every week: waste out. We bid on revenue. Not on vanity.",
         bullets: [
           "Search + Performance Max",
           "Conversion tracking",
@@ -1886,9 +1886,9 @@ const en: Translations = {
       {
         key: "social",
         title: "Social Media",
-        promise: "Content that drives enquiries — not vanity metrics.",
+        promise: "Content that drives enquiries. Likes aren't a KPI.",
         detail:
-          "Short-form video, paid social, and creative built for your audience and platform. Followers are nice — booked calls are better.",
+          "Short-form. Paid social. Creative that sits on your platform. Followers are nice. Booked calls are better.",
         bullets: [
           "Short-form video",
           "Paid social",
@@ -1899,9 +1899,9 @@ const en: Translations = {
       {
         key: "websites",
         title: "Websites",
-        promise: "Conversion-optimised pages that rank from day one.",
+        promise: "Pages that rank. From day one. That convert. From click one.",
         detail:
-          "Fast, modern, mobile-first websites that load quickly, look right, and turn visitors into enquiries. On platforms you can edit yourself.",
+          "Fast. Modern. Mobile-first. Loads quick, looks right, turns visitors into enquiries. On platforms you maintain yourself.",
         bullets: [
           "Mobile-first design",
           "Core Web Vitals",
@@ -1926,7 +1926,7 @@ const en: Translations = {
     eyebrow: "NEO vs. others",
     headlineMain: "What we do differently.",
     headlineSub: "Six points.",
-    intro: "So you know what you're signing up for — before you sign up.",
+    intro: "So you know what you're signing up for. Before you sign up.",
     columns: { other: "Other agencies", neo: "NEO THE AGENCY" },
     rows: [
       {
@@ -1967,35 +1967,35 @@ const en: Translations = {
     headlineMain: "Four milestones.",
     headlineSub: "No surprises.",
     intro:
-      "What happens on day 1, 30, 60 and 90. We say it up front, we stick to it, and we show you the maths every month.",
+      "What happens on day 1, 30, 60, 90. We say it. We stick to it. Every month: the maths.",
     steps: [
       {
         n: "01",
         eta: "Day 1",
         title: "Audit & kickoff",
         body:
-          "Technical SEO audit, channel diagnosis, competitor mapping. 30-minute screen share, a founder on the call.",
+          "Technical SEO audit. Channel diagnosis. Competitor mapping. 30 minutes on a screen share, founder on the call.",
       },
       {
         n: "02",
         eta: "Day 30",
         title: "Launch",
         body:
-          "Tracking live, new landing pages online, Google Ads campaigns active, on-page SEO fixes shipped.",
+          "Tracking live. New landing pages online. Google Ads active. On-page SEO shipped.",
       },
       {
         n: "03",
         eta: "Day 60",
         title: "First page-one keywords",
         body:
-          "First commercial keywords rank on page one. Pipeline starts filling, monthly plain-talk report with the next levers.",
+          "First commercial keywords on page one. Pipeline starts filling. Monthly plain-talk report — with the next levers.",
       },
       {
         n: "04",
         eta: "Day 90",
         title: "8× pipeline",
         body:
-          "Measured uplift in qualified enquiries. From here on, monthly optimisation — no surprises, no minimum term.",
+          "Measured uplift in qualified enquiries. From here on, monthly optimisation. No surprises. No minimum term.",
       },
     ],
   },
@@ -2003,8 +2003,8 @@ const en: Translations = {
   metrics: {
     eyebrow: "Numbers",
     headlineMain: "What actually counts.",
-    headlineSub: "Enquiries, not clicks.",
-    intro: "Four numbers from live clients — measured, not claimed.",
+    headlineSub: "Enquiries. Not clicks.",
+    intro: "Four numbers from live clients. Measured. Not claimed.",
     items: [
       { value: 8, suffix: "×", label: "more enquiries per month" },
       { value: 90, suffix: "", label: "days to Google page one" },
@@ -2017,9 +2017,9 @@ const en: Translations = {
     headlinePre: "You'll talk to the person",
     headlineSoft: "who delivers.",
     paragraphs: [
-      "I founded NEO because I was tired of watching good companies pay agencies thousands a month to be shown vanity metrics instead of real enquiries in the inbox.",
-      "At NEO you don't get an account manager reading a spreadsheet. You get me on the phone, a fixed price with no lock-in, and a 90-day sprint I put my name on.",
-      "If that sounds like your way of working — drop me a line below. I reply personally, on weekdays, within 24 h.",
+      "I founded NEO because I was tired of it. Good companies pay thousands a month. They get vanity metrics. Not enquiries in the inbox. That changes here.",
+      "At NEO: no account manager with a spreadsheet. You get me on the line. Fixed price. No lock-in. A 90-day sprint with my name on it.",
+      "Sound like your way of working? Drop me a line below. Weekdays I reply in 24 h. Personally.",
     ],
     signature: "Raoul",
     signatureBlock: "Raoul Müller · Founder, NEO THE AGENCY",
@@ -2030,7 +2030,7 @@ const en: Translations = {
     headlinePre: "Let's get",
     headlineSoft: "started.",
     intro:
-      "Free consultation. Reply within 24 h on weekdays, personally from the founder.",
+      "Free consultation. Weekdays I reply in 24 h. Personally.",
     form: {
       name: "Name",
       email: "Email",
