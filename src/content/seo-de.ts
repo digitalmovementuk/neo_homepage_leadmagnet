@@ -1,6 +1,10 @@
 /**
  * NEO the Agency · SEO-Leistungsseite (/seo-agentur/)
- * Inhaltsmodul v1.0 (19.11.2026)
+ * Inhaltsmodul v1.1 (19.11.2026)
+ *
+ * Changelog
+ *   v1.1 (19.11.2026) Hero-Kicker, H1 und Footer: „für kleine Unternehmen“ →
+ *        „für Kleinunternehmen“ (Raoul). Andere Formen bleiben unverändert.
  *
  * Einzige Quelle für alle sichtbaren deutschen Texte der Seite.
  * Wortlaut 1:1 aus „NEO-SEO-Seitentexte-v1.1-20261119.md“. Hier nichts
@@ -82,8 +86,8 @@ export const seoDe = {
   },
 
   hero: {
-    kicker: "SEO FÜR KLEINE UNTERNEHMEN",
-    heading: { ink: "SEO für kleine Unternehmen", grey: "in ganz Deutschland" },
+    kicker: "SEO FÜR KLEINUNTERNEHMEN",
+    heading: { ink: "SEO für Kleinunternehmen", grey: "in ganz Deutschland" },
     subline:
       "Wir erstellen Ihre Website und Keyword-Seiten zu den Begriffen, nach denen Ihre Kunden suchen, und optimieren alles für Google, Google Maps und KI-Antworten.",
     primary: "Kostenloser Audit in 24 h",
@@ -741,7 +745,7 @@ export const seoDe = {
 
   footer: {
     logoAlt: "NEO the Agency Logo",
-    blurb: "SEO, Google Ads, Websites und Social Media für kleine Unternehmen in ganz Deutschland.",
+    blurb: "SEO, Google Ads, Websites und Social Media für Kleinunternehmen in ganz Deutschland.",
     startLink: "Projekt starten",
     servicesTitle: "Leistungen",
     agencyTitle: "Agentur",

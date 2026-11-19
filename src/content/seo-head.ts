@@ -1,8 +1,11 @@
 /**
  * Kopfbereich und strukturierte Daten der SEO-Seite (/seo-agentur/)
- * v1.1 (19.11.2026)
+ * v1.2 (19.11.2026)
  *
  * Changelog
+ *   v1.2 (19.11.2026) „für kleine Unternehmen" → „für Kleinunternehmen" in Titel,
+ *        Beschreibung, og:/twitter: und JSON-LD (Raoul). Eigenes Vorschaubild
+ *        /brand/og-seo-agentur.jpg (1200×630) statt des Startseiten-Bilds.
  *   v1.1 (19.11.2026) Freigegebener Titel und freigegebene Meta-Beschreibung aus
  *        NEO-SEO-Meta-Fehlertext-v1.1-20261119.md (wörtlich; in "24 h" steht ein
  *        geschütztes Leerzeichen U+00A0). og:/twitter: übernehmen beide Werte.
@@ -23,14 +26,16 @@ export const SEO_CANONICAL = `${SITE_ORIGIN}${seoDe.path}`;
 const H1 = `${seoDe.hero.heading.ink} ${seoDe.hero.heading.grey}`;
 
 export const seoHead = {
-  // Freigegeben (NEO-SEO-Meta-Fehlertext-v1.1-20261119.md), 55 und 153 Zeichen.
-  title: "SEO Agentur für kleine Unternehmen in Deutschland | NEO",
-  description: "SEO für kleine Unternehmen in Deutschland. Ihre Website erstellen wir ohne Aufpreis. Zahlung erst nach Einreichung bei Google. Kostenloser Audit in 24 h.",
+  // v1.2: „für Kleinunternehmen" (Raoul, 19.11.2026), 53 und 151 Zeichen.
+  title: "SEO Agentur für Kleinunternehmen in Deutschland | NEO",
+  description: "SEO für Kleinunternehmen in Deutschland. Ihre Website erstellen wir ohne Aufpreis. Zahlung erst nach Einreichung bei Google. Kostenloser Audit in 24 h.",
   canonical: SEO_CANONICAL,
   robots: "index, follow",
   lang: "de" as const,
-  ogImage: `${SITE_ORIGIN}/brand/og-cover.jpg`,
-  ogImageAlt: "NEO THE AGENCY - Digitalagentur für Websites, SEO und Google Ads",
+  ogImage: `${SITE_ORIGIN}/brand/og-seo-agentur.jpg`,
+  ogImageWidth: 1200,
+  ogImageHeight: 630,
+  ogImageAlt: "NEO THE AGENCY: SEO für Kleinunternehmen in ganz Deutschland",
   /** Hero-Bild: Handy bis 640 px, sonst Desktop (wie <picture> in SectionsA). */
   heroPreload: {
     mobile: `/${seoDe.hero.image.srcMobile}`,

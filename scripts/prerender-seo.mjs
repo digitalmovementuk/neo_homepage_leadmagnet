@@ -73,6 +73,9 @@ try {
   setMeta("property", "og:locale", "de_DE");
   setMeta("property", "og:image", h.ogImage);
   setMeta("property", "og:image:secure_url", h.ogImage);
+  setMeta("property", "og:image:type", "image/jpeg");
+  setMeta("property", "og:image:width", String(h.ogImageWidth));
+  setMeta("property", "og:image:height", String(h.ogImageHeight));
   setMeta("property", "og:image:alt", h.ogImageAlt);
   setMeta("name", "twitter:card", "summary_large_image");
   setMeta("name", "twitter:title", h.title);

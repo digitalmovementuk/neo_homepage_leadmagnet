@@ -9,6 +9,9 @@ type Args = {
   ogDescription?: string;
   ogImage?: string;
   ogImageAlt?: string;
+  /** Pixel size of ogImage; defaults to the homepage cover (2400×1260). */
+  ogImageWidth?: number;
+  ogImageHeight?: number;
   canonical?: string;
   lang?: Lang;
   /** Optional <meta name="robots">, e.g. "index, follow". Restored on unmount. */
@@ -29,6 +32,8 @@ export function useDocumentHead({
   ogDescription,
   ogImage,
   ogImageAlt,
+  ogImageWidth = 2400,
+  ogImageHeight = 1260,
   canonical,
   lang,
   robots,
@@ -76,8 +81,8 @@ export function useDocumentHead({
     if (ogImage && ogImageAlt) {
       setMeta('meta[property="og:image:secure_url"]', "content", ogImage);
       setMeta('meta[property="og:image:type"]', "content", "image/jpeg");
-      setMeta('meta[property="og:image:width"]', "content", "2400");
-      setMeta('meta[property="og:image:height"]', "content", "1260");
+      setMeta('meta[property="og:image:width"]', "content", String(ogImageWidth));
+      setMeta('meta[property="og:image:height"]', "content", String(ogImageHeight));
       setMeta('meta[property="og:image:alt"]', "content", ogImageAlt);
       setMeta('meta[name="twitter:image"]', "content", ogImage);
       setMeta('meta[name="twitter:image:alt"]', "content", ogImageAlt);
@@ -141,6 +146,8 @@ export function useDocumentHead({
     ogDescription,
     ogImage,
     ogImageAlt,
+    ogImageWidth,
+    ogImageHeight,
     canonical,
     lang,
     robots,

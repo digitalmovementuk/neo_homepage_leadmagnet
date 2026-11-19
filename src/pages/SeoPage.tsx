@@ -28,6 +28,8 @@ export function SeoPage() {
     canonical: seoHead.canonical,
     ogImage: seoHead.ogImage,
     ogImageAlt: seoHead.ogImageAlt,
+    ogImageWidth: seoHead.ogImageWidth,
+    ogImageHeight: seoHead.ogImageHeight,
     lang: seoHead.lang,
     robots: seoHead.robots,
     jsonLd: SEO_JSON_LD,
