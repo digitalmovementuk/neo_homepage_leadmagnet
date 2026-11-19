@@ -983,6 +983,7 @@ function FinalCTA({
   page: ServicePage[keyof ServicePage];
   isEN: boolean;
 }) {
+  const t = useT();
   return (
     <section
       data-surface="dark"
@@ -1037,6 +1038,30 @@ function FinalCTA({
             </Link>
           </div>
         </Reveal>
+        {/* Querverweise zu den anderen Leistungsseiten; Beschriftungen aus t.footer.sections[0]. */}
+        {(() => {
+          const services = t.footer.sections[0];
+          const others = services.links.filter((l) => l.href.startsWith("/") && l.href !== `/services/${page.slug}/`);
+          if (!others.length) return null;
+          return (
+            <nav aria-label={services.title} className="mt-12 sm:mt-14 border-t border-white/10 pt-6">
+              <p className="eyebrow text-white/55">{services.title}</p>
+              <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-3">
+                {others.map((l) => (
+                  <li key={l.href}>
+                    <Link
+                      to={l.href}
+                      className="inline-flex items-center gap-1.5 text-[14px] sm:text-[15px] text-white/75 hover:text-white transition-colors"
+                    >
+                      {l.label}
+                      <ArrowUpRight size={14} />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          );
+        })()}
       </div>
     </section>
   );

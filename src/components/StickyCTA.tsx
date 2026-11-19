@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useT } from "../lib/i18n";
@@ -61,13 +62,13 @@ export function StickyCTA() {
           {t.nav.cta}{" "}
           <span className="hidden sm:inline text-ink-muted font-medium">· {t.hero.priceLineSub}</span>
         </p>
-        <a
-          href="#contact"
+        <Link
+          to="/#contact"
           tabIndex={show ? 0 : -1}
           className="relative inline-flex items-center justify-center gap-1.5 sm:gap-2 rounded-full bg-[#0071E3] hover:bg-[#0077ED] text-white font-semibold text-[13.5px] sm:text-[15px] px-5 sm:px-7 py-2.5 sm:py-3.5 transition-colors animate-pulse-plum whitespace-nowrap"
         >
           {t.hero.cta} <ArrowRight size={14} strokeWidth={2.4} />
-        </a>
+        </Link>
       </motion.div>
     </div>
   );

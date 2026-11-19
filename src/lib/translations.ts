@@ -294,7 +294,7 @@ const de: Translations = {
   nav: {
     links: [
       { label: "Was wir tun", href: "#services" },
-      { label: "Über uns", href: "/about" },
+      { label: "Über uns", href: "/uber-uns/" },
       { label: "Kundenprojekte", href: "#cases" },
       { label: "Kontakt", href: "#contact" },
     ],
@@ -636,17 +636,18 @@ const de: Translations = {
       {
         title: "Leistungen",
         links: [
-          { label: "SEO", href: "#services" },
-          { label: "Google Ads", href: "#services" },
-          { label: "Social Media", href: "#services" },
-          { label: "Websites", href: "#services" },
+          { label: "SEO", href: "/seo-agentur/" },
+          { label: "Google Ads", href: "/services/google-ads/" },
+          { label: "Social Media", href: "/services/social-media/" },
+          { label: "Websites", href: "/services/websites/" },
         ],
       },
       {
         title: "Agentur",
         links: [
-          { label: "Kundenprojekte", href: "#cases" },
-          { label: "Kontakt", href: "#contact" },
+          { label: "Kundenprojekte", href: "/#cases" },
+          { label: "Über uns", href: "/uber-uns/" },
+          { label: "Kontakt", href: "/#contact" },
         ],
       },
     ],
@@ -1711,7 +1712,7 @@ const en: Translations = {
   nav: {
     links: [
       { label: "What we do", href: "#services" },
-      { label: "About", href: "/about" },
+      { label: "About", href: "/uber-uns/" },
       { label: "Case studies", href: "#cases" },
       { label: "Contact", href: "#contact" },
     ],
@@ -2053,17 +2054,18 @@ const en: Translations = {
       {
         title: "Services",
         links: [
-          { label: "SEO", href: "#services" },
-          { label: "Google Ads", href: "#services" },
-          { label: "Social Media", href: "#services" },
-          { label: "Websites", href: "#services" },
+          { label: "SEO", href: "/seo-agentur/" },
+          { label: "Google Ads", href: "/services/google-ads/" },
+          { label: "Social Media", href: "/services/social-media/" },
+          { label: "Websites", href: "/services/websites/" },
         ],
       },
       {
         title: "Agency",
         links: [
-          { label: "Case studies", href: "#cases" },
-          { label: "Contact", href: "#contact" },
+          { label: "Case studies", href: "/#cases" },
+          { label: "About", href: "/uber-uns/" },
+          { label: "Contact", href: "/#contact" },
         ],
       },
     ],

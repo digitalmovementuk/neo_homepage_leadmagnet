@@ -46,13 +46,13 @@ export function Footer() {
             </p>
           </div>
 
-          <a
-            href="#contact"
+          <Link
+            to="/#contact"
             className="inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-[0.18em] text-ink hover:text-ink-soft transition-colors"
           >
             {isEN ? "Start a project" : "Projekt starten"}{" "}
             <ArrowUpRight size={14} />
-          </a>
+          </Link>
         </div>
 
         {/* Sitemap grid */}
@@ -62,9 +62,9 @@ export function Footer() {
               <ul className="space-y-2.5">
                 {section.links.map((l) => (
                   <li key={l.label}>
-                    <a href={l.href} className={linkCls}>
+                    <Link to={l.href} className={linkCls}>
                       {l.label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>

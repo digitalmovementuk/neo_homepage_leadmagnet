@@ -7,9 +7,9 @@ import { useT } from "../lib/i18n";
 
 const SERVICE_ROUTES = [
   { slug: "seo" as const, path: "/seo-agentur/" },
-  { slug: "googleAds" as const, path: "/services/google-ads" },
-  { slug: "socialMedia" as const, path: "/services/social-media" },
-  { slug: "websites" as const, path: "/services/websites" },
+  { slug: "googleAds" as const, path: "/services/google-ads/" },
+  { slug: "socialMedia" as const, path: "/services/social-media/" },
+  { slug: "websites" as const, path: "/services/websites/" },
 ];
 
 type Surface = "dark" | "light";
@@ -245,8 +245,8 @@ export function Nav() {
                                 onDark ? "border-white/10" : "border-ink/8"
                               }`}
                             >
-                              <a
-                                href={l.href}
+                              <Link
+                                to={{ pathname: "/", hash: l.href }}
                                 onClick={() => setServicesOpen(false)}
                                 className={`flex items-center justify-between px-1 py-2 text-[12px] font-bold uppercase tracking-[0.18em] ${
                                   onDark
@@ -256,7 +256,7 @@ export function Nav() {
                               >
                                 {l.label}
                                 <ArrowUpRight size={12} strokeWidth={2.4} />
-                              </a>
+                              </Link>
                             </li>
                           </ul>
                         </motion.div>

@@ -153,10 +153,10 @@ export function SeoFooter() {
         <div className="mt-14 flex flex-col items-center justify-between gap-3 border-t border-ink/10 pt-6 text-[13px] text-ink-muted sm:mt-16 sm:flex-row">
           <p className="text-center sm:text-left">{footer.copyright}</p>
           <div className="flex items-center gap-6">
-            <Link to="/impressum" className="inline-flex min-h-[44px] items-center transition-colors hover:text-ink">
+            <Link to="/impressum/" className="inline-flex min-h-[44px] items-center transition-colors hover:text-ink">
               {footer.impressum}
             </Link>
-            <Link to="/datenschutz" className="inline-flex min-h-[44px] items-center transition-colors hover:text-ink">
+            <Link to="/datenschutz/" className="inline-flex min-h-[44px] items-center transition-colors hover:text-ink">
               {footer.datenschutz}
             </Link>
           </div>
