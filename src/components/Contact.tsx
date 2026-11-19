@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Check, Phone, MessageCircle, Mail, Clock } from "lucide-react";
+import { ArrowRight, Check, Phone, MessageCircle, Clock } from "lucide-react";
 import { business } from "../content";
 import { Reveal } from "../lib/Reveal";
 import { useT, useLang } from "../lib/i18n";
@@ -15,9 +15,20 @@ export function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const [hp, setHp] = useState(""); // honeypot
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (hp) return;
+    const d = new FormData(e.currentTarget);
+    const v = (k: string) => String(d.get(k) ?? "").trim();
+    const lines = [
+      isEN ? "Hello NEO, new enquiry from the website:" : "Hallo NEO, neue Anfrage über die Website:",
+      `Name: ${v("name")}`,
+      `E-Mail: ${v("email")}`,
+      v("phone") && `${isEN ? "Phone" : "Telefon"}: ${v("phone")}`,
+      v("service") && `${isEN ? "Service" : "Leistung"}: ${v("service")}`,
+      v("message") && `${isEN ? "Message" : "Nachricht"}: ${v("message")}`,
+    ].filter(Boolean).join("\n");
+    window.open(`${business.whatsappHref}?text=${encodeURIComponent(lines)}`, "_blank", "noopener");
     setSubmitted(true);
   };
 
@@ -66,13 +77,6 @@ export function Contact() {
                 href: business.whatsappHref,
                 external: true,
                 tone: "whatsapp" as const,
-              },
-              {
-                icon: <Mail size={18} />,
-                label: isEN ? "Email" : "E-Mail",
-                value: business.email,
-                caption: isEN ? "Reply within 24 h" : "Antwort innerhalb 24 h",
-                href: business.emailHref,
               },
             ].map((tile, i) => (
               <motion.div

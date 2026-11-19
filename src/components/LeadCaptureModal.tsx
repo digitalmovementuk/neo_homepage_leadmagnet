@@ -79,8 +79,11 @@ export function LeadCaptureModal() {
     if (open) setSubmitted(false);
   }, [open]);
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const d = new FormData(e.currentTarget);
+    const text = `Hallo NEO, ich möchte ein kostenloses Erstgespräch.\nName: ${String(d.get("name") ?? "").trim()}\nE-Mail: ${String(d.get("email") ?? "").trim()}`;
+    window.open(`https://wa.me/4916096897003?text=${encodeURIComponent(text)}`, "_blank", "noopener");
     setSubmitted(true);
     window.setTimeout(() => setOpen(false), 1600);
   };
@@ -167,8 +170,8 @@ export function LeadCaptureModal() {
                     </button>
                     <p className="text-[11px] text-ink-muted text-center pt-1 leading-relaxed">
                       {isEN
-                        ? "No spam. Unsubscribe anytime."
-                        : "Kein Spam. Jederzeit abbestellbar."}
+                        ? "No spam. Opens WhatsApp to send."
+                        : "Kein Spam. Öffnet WhatsApp zum Absenden."}
                     </p>
                   </form>
                 </>

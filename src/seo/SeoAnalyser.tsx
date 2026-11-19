@@ -14,7 +14,6 @@ import { SentStep } from './steps/Sent'
 
 type Step = 'input' | 'analysing' | 'rankings' | 'money' | 'blockers' | 'summary' | 'sent'
 
-const FORM_ENDPOINT = 'https://formsubmit.co/ajax/info@neotheagency.com'
 
 const DEFAULT_INPUT: InputPayload = {
   domain: '',
@@ -99,35 +98,16 @@ export default function SeoAnalyser() {
     const gbp = formatMoney(result.monthlyOpportunity, result.currency, lang)
 
     try {
-      const res = await fetch(FORM_ENDPOINT, {
-        method: 'POST',
-        headers: { 'content-type': 'application/json', accept: 'application/json' },
-        body: JSON.stringify({
-          name,
-          email,
-          phone: phoneFull,
-          domain: (result.domain ?? ''),
-          industry: result.inferredIndustry,
-          location: result.inferredLocation,
-          currency: result.currency,
-          aovUsed: payload.aov,
-          conversionRateUsed: `${(payload.conversionRate * 100).toFixed(1)}%`,
-          monthlyOpportunity: gbp,
-          topBlockers: blockerLines,
-          keywords: keywordLines,
-          _subject: c.emailSubject(name, email, (result.domain ?? ''), gbp),
-          _template: 'table',
-          _captcha: 'false',
-          _autoresponse: c.emailAutoresponse(
-            name,
-            (result.domain ?? ''),
-            gbp,
-            result.inferredIndustry,
-            result.inferredLocation,
-          ),
-        }),
-      })
-      if (!res.ok) throw new Error(`Form gateway returned ${res.status}`)
+      const text = [
+        'Hallo NEO, ich habe die SEO-Analyse gemacht und möchte die Auswertung besprechen.',
+        `Name: ${name}`,
+        `E-Mail: ${email}`,
+        phoneFull ? `Telefon: ${phoneFull}` : '',
+        `Domain: ${result.domain ?? ''}`,
+        `Potenzial: ${gbp}/Monat`,
+      ].filter(Boolean).join('\n')
+      void blockerLines; void keywordLines
+      window.open(`https://wa.me/4916096897003?text=${encodeURIComponent(text)}`, '_blank', 'noopener')
       setStep('sent')
     } catch (err) {
       console.error(err)

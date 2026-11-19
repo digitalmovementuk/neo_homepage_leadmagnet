@@ -16,8 +16,8 @@ import { useLeadModal, type LeadModalContent } from "../lib/leadModal";
 import type { ServicePage } from "../lib/translations";
 
 const EASE_OUT = [0.22, 1, 0.36, 1] as const;
-const SITE_ORIGIN = "https://digitalmovementuk.github.io";
-const SITE_BASE = "/Neo_Homepage_Apple";
+const SITE_ORIGIN = "https://www.neotheagency.de";
+const SITE_BASE = "";
 
 /**
  * ServicePageShell — comprehensive service product page used by all four

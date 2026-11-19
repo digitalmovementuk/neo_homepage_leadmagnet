@@ -1,4 +1,5 @@
-import { Phone, Mail, MapPin, ArrowUpRight } from "lucide-react";
+import { Phone, MapPin, ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { business } from "../content";
 import { useT, useLang } from "../lib/i18n";
 
@@ -21,14 +22,6 @@ function IGIcon({ size = 16 }: { size?: number }) {
     </svg>
   );
 }
-function FBIcon({ size = 16 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-      <path d="M13.5 22v-7.5h2.6l.4-3h-3V9.6c0-.87.27-1.46 1.52-1.46H17V5.4c-.3-.04-1.27-.13-2.4-.13-2.37 0-4 1.45-4 4.1V11.5H8v3h2.6V22h2.9z" />
-    </svg>
-  );
-}
-
 export function Footer() {
   const t = useT();
   const { lang } = useLang();
@@ -95,19 +88,6 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href={business.emailHref}
-                  className={`${linkCls} inline-flex items-center gap-2 break-all`}
-                >
-                  <Mail
-                    size={13}
-                    strokeWidth={2.2}
-                    className="text-ink-faint"
-                  />
-                  {business.email}
-                </a>
-              </li>
-              <li>
-                <a
                   href={business.whatsappHref}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -145,11 +125,7 @@ export function Footer() {
                   aria-label={s.label}
                   className="grid h-9 w-9 place-items-center rounded-full border border-ink/15 text-ink-soft hover:text-ink hover:border-ink/45 transition"
                 >
-                  {s.label === "Instagram" ? (
-                    <IGIcon size={15} />
-                  ) : (
-                    <FBIcon size={15} />
-                  )}
+                  <IGIcon size={15} />
                 </a>
               ))}
             </div>
@@ -164,9 +140,9 @@ export function Footer() {
           </p>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
             {t.footer.legal.map((l) => (
-              <a key={l.label} href={l.href} className="hover:text-ink">
+              <Link key={l.label} to={l.href} className="hover:text-ink">
                 {l.label}
-              </a>
+              </Link>
             ))}
             <span className="text-ink-faint">·</span>
             <span>{isEN ? "Germany" : "Deutschland"}</span>

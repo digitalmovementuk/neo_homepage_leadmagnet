@@ -349,14 +349,14 @@ export const COPY: Record<Lang, SeoCopy> = {
     },
 
     sent: {
-      headline: (domain) => `Ihre Roadmap für ${domain} ist auf dem Weg.`,
+      headline: (domain) => `Ihre Anfrage zu ${domain} ist fast fertig.`,
       body: (gbp) =>
-        `Wir bauen Ihren detaillierten 90-Tage-Plan, um ${gbp}/Monat aus organischer Suche zu erschließen.`,
+        `WhatsApp hat sich mit Ihrer Auswertung geöffnet. Senden Sie die Nachricht ab, dann besprechen wir, wie Sie ${gbp}/Monat aus organischer Suche erschließen.`,
       nextSteps: {
         title: "Was als Nächstes passiert",
         items: [
-          "Bestätigung per E-Mail — sofort in Ihrem Posteingang.",
-          "Detaillierte Roadmap als PDF — werktags innerhalb 24 Stunden.",
+          "Nachricht in WhatsApp absenden.",
+          "Persönliche Antwort werktags innerhalb 24 Stunden.",
           "Optional ein 30-Minuten-Strategiegespräch mit Neo, wenn Sie wollen.",
         ],
       },
@@ -559,14 +559,14 @@ export const COPY: Record<Lang, SeoCopy> = {
     },
 
     sent: {
-      headline: (domain) => `Your roadmap for ${domain} is on the way.`,
+      headline: (domain) => `Your request for ${domain} is almost done.`,
       body: (gbp) =>
-        `We're putting together your detailed 90-day plan to capture ${gbp}/month from organic search.`,
+        `WhatsApp has opened with your results. Send the message and we'll discuss how to capture ${gbp}/month from organic search.`,
       nextSteps: {
         title: "What happens next",
         items: [
-          "Confirmation email — already in your inbox.",
-          "Detailed roadmap PDF — within one working day.",
+          "Send the message in WhatsApp.",
+          "Personal reply within one working day.",
           "Optional 30-min strategy call with Neo, if you want it.",
         ],
       },

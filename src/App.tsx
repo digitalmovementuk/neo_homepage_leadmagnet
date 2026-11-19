@@ -16,6 +16,8 @@ const ServiceWebsites = lazy(() =>
   import("./pages/services/websites").then((m) => ({ default: m.ServiceWebsites })),
 );
 const AboutUs = lazy(() => import("./pages/AboutUs").then((m) => ({ default: m.AboutUs })));
+const Impressum = lazy(() => import("./pages/Impressum").then((m) => ({ default: m.Impressum })));
+const Datenschutz = lazy(() => import("./pages/Datenschutz").then((m) => ({ default: m.Datenschutz })));
 const NotFound = lazy(() => import("./pages/NotFound").then((m) => ({ default: m.NotFound })));
 
 const BASE = (import.meta.env.BASE_URL ?? "/").replace(/\/$/, "");
@@ -46,6 +48,8 @@ export default function App() {
             <Route path="social-media" element={suspended(ServiceSocialMedia)} />
             <Route path="websites" element={suspended(ServiceWebsites)} />
           </Route>
+          <Route path="impressum" element={suspended(Impressum)} />
+          <Route path="datenschutz" element={suspended(Datenschutz)} />
           <Route path="*" element={suspended(NotFound)} />
         </Route>
       </Routes>

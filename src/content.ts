@@ -4,25 +4,20 @@
 export const business = {
   name: "NEO THE AGENCY",
   tagline: "Neue Website. Google Seite 1. In 90 Tagen.",
-  // TODO: echte Telefonnummer eintragen
-  phone: "+49 30 123 4567",
-  phoneHref: "tel:+493012345678",
-  // TODO: echte E-Mail eintragen
-  email: "kontakt@neo-agency.de",
-  emailHref: "mailto:kontakt@neo-agency.de",
-  // TODO: echte WhatsApp-Nummer eintragen
-  whatsapp: "+49 30 123 4567",
-  whatsappHref: "https://wa.me/493012345678",
+  phone: "+49 160 9689 7003",
+  phoneHref: "tel:+4916096897003",
+  // Keine öffentliche E-Mail, bis ein funktionierendes NEO-Postfach existiert.
+  email: "",
+  emailHref: "",
+  whatsapp: "+49 160 9689 7003",
+  whatsappHref: "https://wa.me/4916096897003",
   address: {
-    // TODO: echte Adresse eintragen
-    line1: "Hardenbergstraße 1",
-    line2: "10623 Berlin",
+    line1: "Kolonnenstraße 8",
+    line2: "10827 Berlin",
     country: "Deutschland",
   },
   socials: [
-    // TODO: echte Profile eintragen
-    { label: "Instagram", href: "https://www.instagram.com/" },
-    { label: "Facebook", href: "https://www.facebook.com/" },
+    { label: "Instagram", href: "https://www.instagram.com/neotheagency.de/" },
   ],
 };
 

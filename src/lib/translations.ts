@@ -623,9 +623,9 @@ const de: Translations = {
       success: "Danke. Sie hören in 24 h von mir.",
     },
     tiles: [
-      { kicker: "Telefon", value: "+49 30 123 4567" },
-      { kicker: "E-Mail", value: "kontakt@neo-agency.de" },
-      { kicker: "Adresse", value: "Hardenbergstraße 1, 10623 Berlin" },
+      { kicker: "Telefon", value: "+49 160 9689 7003" },
+      { kicker: "WhatsApp", value: "+49 160 9689 7003" },
+      { kicker: "Adresse", value: "Kolonnenstraße 8, 10827 Berlin" },
     ],
   },
 
@@ -652,8 +652,8 @@ const de: Translations = {
     ],
     rights: "© NEO THE AGENCY. Alle Rechte vorbehalten.",
     legal: [
-      { label: "Impressum", href: "#" },
-      { label: "Datenschutz", href: "#" },
+      { label: "Impressum", href: "/impressum/" },
+      { label: "Datenschutz", href: "/datenschutz/" },
     ],
   },
 
@@ -746,7 +746,7 @@ const de: Translations = {
           kicker: "Search · AI Search",
           bio: "Optimiert Websites für Google und für die neuen KI-Suchen. Der Mann hinter unseren technischen Audits und der Content-Architektur, die rankt.",
           image:
-            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80",
+            "/media/stock/photo-1507003211169-0a1dd7228f2d-800.jpg",
         },
         {
           name: "Marcus Okafor",
@@ -754,7 +754,7 @@ const de: Translations = {
           kicker: "React · Performance",
           bio: "Baut schnelle, mobile-first Websites mit perfekten Core Web Vitals. Wenn etwas nicht in 1,5 Sekunden lädt, ist es für ihn kaputt.",
           image:
-            "https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=800&q=80",
+            "/media/stock/photo-1521119989659-a83eee488004-800.jpg",
         },
         {
           name: "Sophie Lindberg",
@@ -762,7 +762,7 @@ const de: Translations = {
           kicker: "Process · Quality",
           bio: "Sorgt dafür, dass kein Projekt durchrutscht. Hält die 90-Tage-Sprints synchron — und unsere Reports auf den Punkt.",
           image:
-            "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80",
+            "/media/stock/photo-1573496359142-b8d87734a5a2-800.jpg",
         },
         {
           name: "Amara Diallo",
@@ -770,7 +770,7 @@ const de: Translations = {
           kicker: "Brand · Art Direction",
           bio: "Übersetzt Markenstrategie in visuelle Sprache, die hängenbleibt. Verantwortet Look & Feel jeder Website, die unser Studio verlässt.",
           image:
-            "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=800&q=80",
+            "/media/stock/photo-1531123897727-8f129e1688ce-800.jpg",
         },
         {
           name: "Lucia Moretti",
@@ -778,7 +778,7 @@ const de: Translations = {
           kicker: "Short-Form · Paid Social",
           bio: "Baut Content, der gebuchte Termine bringt — keine Likes. Spezialisiert auf Founder-Brand-Content und Short-Form-Video.",
           image:
-            "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=80",
+            "/media/stock/photo-1494790108377-be9c29b29330-800.jpg",
         },
         {
           name: "David Klein",
@@ -786,7 +786,7 @@ const de: Translations = {
           kicker: "Delivery · Stakeholder",
           bio: "Ihr direkter Ansprechpartner für Timing, Scope und Erwartungsmanagement. Hält jedes Projekt im Plan — und Sie informiert.",
           image:
-            "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80",
+            "/media/stock/photo-1500648767791-00dcc994a43e-800.jpg",
         },
         {
           name: "Mira Hassan",
@@ -794,7 +794,7 @@ const de: Translations = {
           kicker: "Type · Editorial",
           bio: "Designt Websites, Pitch Decks und Social-Visuals mit einem Auge fürs Detail, das man nicht lernen kann. Trägt schwarz, denkt in Raster.",
           image:
-            "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&w=800&q=80",
+            "/media/stock/photo-1567532939604-b6b5b0db2604-800.jpg",
         },
       ],
     },
@@ -2040,9 +2040,9 @@ const en: Translations = {
       success: "Thank you. You'll hear from us within 24 h.",
     },
     tiles: [
-      { kicker: "Phone", value: "+49 30 123 4567" },
-      { kicker: "Email", value: "kontakt@neo-agency.de" },
-      { kicker: "Address", value: "Hardenbergstraße 1, 10623 Berlin" },
+      { kicker: "Phone", value: "+49 160 9689 7003" },
+      { kicker: "WhatsApp", value: "+49 160 9689 7003" },
+      { kicker: "Address", value: "Kolonnenstraße 8, 10827 Berlin" },
     ],
   },
 
@@ -2069,8 +2069,8 @@ const en: Translations = {
     ],
     rights: "© NEO THE AGENCY. All rights reserved.",
     legal: [
-      { label: "Imprint", href: "#" },
-      { label: "Privacy", href: "#" },
+      { label: "Impressum", href: "/impressum/" },
+      { label: "Datenschutz", href: "/datenschutz/" },
     ],
   },
 
@@ -2163,7 +2163,7 @@ const en: Translations = {
           kicker: "Search · AI Search",
           bio: "Optimises websites for Google and for the new AI search engines. The man behind our technical audits and the content architecture that ranks.",
           image:
-            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80",
+            "/media/stock/photo-1507003211169-0a1dd7228f2d-800.jpg",
         },
         {
           name: "Marcus Okafor",
@@ -2171,7 +2171,7 @@ const en: Translations = {
           kicker: "React · Performance",
           bio: "Builds fast, mobile-first websites with perfect Core Web Vitals. If something doesn't load in 1.5 seconds, he treats it as broken.",
           image:
-            "https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=800&q=80",
+            "/media/stock/photo-1521119989659-a83eee488004-800.jpg",
         },
         {
           name: "Sophie Lindberg",
@@ -2179,7 +2179,7 @@ const en: Translations = {
           kicker: "Process · Quality",
           bio: "Makes sure no project slips. Keeps the 90-day sprints in lockstep — and our reports on point.",
           image:
-            "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80",
+            "/media/stock/photo-1573496359142-b8d87734a5a2-800.jpg",
         },
         {
           name: "Amara Diallo",
@@ -2187,7 +2187,7 @@ const en: Translations = {
           kicker: "Brand · Art Direction",
           bio: "Translates brand strategy into visual language that sticks. Owns the look and feel of every website that leaves the studio.",
           image:
-            "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=800&q=80",
+            "/media/stock/photo-1531123897727-8f129e1688ce-800.jpg",
         },
         {
           name: "Lucia Moretti",
@@ -2195,7 +2195,7 @@ const en: Translations = {
           kicker: "Short-Form · Paid Social",
           bio: "Builds content that drives booked calls — not likes. Specialises in founder-brand content and short-form video.",
           image:
-            "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=80",
+            "/media/stock/photo-1494790108377-be9c29b29330-800.jpg",
         },
         {
           name: "David Klein",
@@ -2203,7 +2203,7 @@ const en: Translations = {
           kicker: "Delivery · Stakeholder",
           bio: "Your direct contact for timing, scope and expectation management. Keeps every project on plan — and you in the loop.",
           image:
-            "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80",
+            "/media/stock/photo-1500648767791-00dcc994a43e-800.jpg",
         },
         {
           name: "Mira Hassan",
@@ -2211,7 +2211,7 @@ const en: Translations = {
           kicker: "Type · Editorial",
           bio: "Designs websites, pitch decks and social visuals with an eye for detail you can't teach. Wears black, thinks in grids.",
           image:
-            "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&w=800&q=80",
+            "/media/stock/photo-1567532939604-b6b5b0db2604-800.jpg",
         },
       ],
     },

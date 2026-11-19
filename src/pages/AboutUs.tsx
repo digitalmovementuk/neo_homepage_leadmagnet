@@ -13,9 +13,9 @@ import { useDocumentHead } from "../lib/useDocumentHead";
 import { useSeoModal } from "../lib/seoModal";
 
 const STUDIO_IMAGE =
-  "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=2400&q=82";
+  "/media/stock/photo-1497366811353-6870744d04b2-2400.jpg";
 const HERO_IMAGE =
-  "https://images.unsplash.com/photo-1604328698692-f76ea9498e76?auto=format&fit=crop&w=2400&q=82";
+  "/media/stock/photo-1604328698692-f76ea9498e76-2400.jpg";
 const FOUNDER_IMAGE = `${import.meta.env.BASE_URL}brand/raoul-founder.png`;
 
 const EASE_OUT = [0.22, 1, 0.36, 1] as const;

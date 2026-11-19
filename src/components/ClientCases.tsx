@@ -16,7 +16,7 @@ const ACCENT_TINT: Record<CaseStudy["accent"], string> = {
 // Metropolitan urban skyline at night — sized tall (2:3) so the user scrolls
 // THROUGH the city as they pass the 200vh section.
 const BG_IMAGE =
-  "https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=2000&h=3000&q=80";
+  "/media/stock/photo-1444723121867-7a241cacace9-2000.jpg";
 
 /**
  * ClientCases — Apple "feature story" editorial stack with a parallax bg.

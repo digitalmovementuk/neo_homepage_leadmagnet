@@ -408,7 +408,7 @@ export function Nav() {
 
               <div className="mt-10 text-[13px] text-white/65 space-y-1.5">
                 <p>{business.phone}</p>
-                <p>{business.email}</p>
+                <p>Kolonnenstraße 8, 10827 Berlin</p>
               </div>
             </motion.aside>
           </>
