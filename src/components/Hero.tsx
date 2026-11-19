@@ -49,10 +49,10 @@ export function Hero() {
     {
       key: "search",
       eyebrow: isEN ? "Google Search & AI Search Optimization" : "Google-Suche und KI-Suche",
-      headlineTop: seo?.promise ?? (isEN ? "Goal: Google page one in 90 days." : "Ziel: Seite 1 bei Google in 90 Tagen."),
+      headlineTop: isEN ? (seo?.promise ?? "Goal: Google page one in 90 days.") : "Seite 1 bei Google in 90 Tagen:",
       headlineBottom: isEN
         ? "Search Engine Optimisation + AI Search Optimisation."
-        : "SEO und KI-Suche von Ihrer Online-Marketing-Agentur.",
+        : "SEO und KI-Suchoptimierung",
       sub: seo?.detail ?? t.hero.sub,
       video: "video/seo-logo.mp4",
     },
@@ -61,8 +61,8 @@ export function Hero() {
       eyebrow: isEN ? "Website Development" : "Website-Entwicklung",
       headlineTop: isEN
         ? "Conversion-optimised\nwebsites that rank."
-        : "Websites, die ranken\nund Anfragen bringen.",
-      headlineBottom: isEN ? "From day one." : "Von Anfang an für Google gebaut.",
+        : "Website-Entwicklung:",
+      headlineBottom: isEN ? "From day one." : "schnelle Websites, die Anfragen bringen",
       sub: websites?.detail ?? t.hero.sub,
       video: "video/website-logo.mp4",
     },
@@ -319,7 +319,7 @@ const HeroSlideView = ({
                   }}
                 >
                   {slide.headlineTop}
-                </span>
+                </span>{" "}
                 <span
                   className="mt-2 block max-w-[31ch] text-white/86 sm:mt-4"
                   style={{

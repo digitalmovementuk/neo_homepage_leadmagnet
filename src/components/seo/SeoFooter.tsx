@@ -66,7 +66,7 @@ export function SeoFooter() {
 
         <div className="grid gap-10 pt-12 text-center sm:grid-cols-2 sm:gap-12 sm:pt-14 sm:text-left lg:grid-cols-4">
           <nav aria-label={footer.servicesTitle}>
-            <h2 className={COL_HEAD}>{footer.servicesTitle}</h2>
+            <p className={COL_HEAD}>{footer.servicesTitle}</p>
             <ul>
               {header.services.map((item) => (
                 <li key={item.label}>
@@ -78,7 +78,7 @@ export function SeoFooter() {
             </ul>
           </nav>
           <nav aria-label={footer.agencyTitle}>
-            <h2 className={COL_HEAD}>{footer.agencyTitle}</h2>
+            <p className={COL_HEAD}>{footer.agencyTitle}</p>
             <ul>
               {header.links.map((item) => (
                 <li key={item.label}>
@@ -90,7 +90,7 @@ export function SeoFooter() {
             </ul>
           </nav>
           <div>
-            <h2 className={COL_HEAD}>{footer.contactTitle}</h2>
+            <p className={COL_HEAD}>{footer.contactTitle}</p>
             <ul>
               <li>
                 <a href={contact.phoneHref} className={COL_LINK}>
@@ -118,7 +118,7 @@ export function SeoFooter() {
             </ul>
           </div>
           <div>
-            <h2 className={COL_HEAD}>{footer.officeTitle}</h2>
+            <p className={COL_HEAD}>{footer.officeTitle}</p>
             <address className="inline-flex items-start gap-2 text-[14px] not-italic leading-relaxed text-ink-soft">
               <MapPin size={13} className="mt-1.5 text-ink-faint" aria-hidden />
               <span className="text-left">

@@ -370,7 +370,7 @@ export function FinalCta() {
                   <Phone size={18} strokeWidth={2.2} aria-hidden />
                 </span>
                 <span>
-                  <span className="block text-[16px] font-bold leading-tight text-white">{finalCta.callButton}</span>
+                  <span className="block text-[16px] font-bold leading-tight text-white">{finalCta.callButton}<span className="sr-only">: </span></span>
                   <span className="seo-mono mt-1 block text-[14px] text-white/70">{contact.phone}</span>
                 </span>
               </a>

@@ -29,7 +29,7 @@ export const navLinks = [
 ];
 
 export const heroStats = [
-  { value: 8, suffix: "x", label: "mehr Anfragen pro Monat" },
+  { value: 8, suffix: "×", label: "mehr Anfragen pro Monat" },
   { value: 90, suffix: "", label: "Tage bis Google Seite 1" },
 ];
 
@@ -311,7 +311,7 @@ export const caseStudiesDe: CaseStudy[] = [
     metrics: [
       { value: "11×", label: "Conversions" },
       { value: "1,5×", label: "Warenkorbwert" },
-      { value: "1,8 s", label: "LCP" },
+      { value: "1,8 s", label: "Ladezeit" },
     ],
     video: "video/cases/logistics.mp4",
     accent: "violet",

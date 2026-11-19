@@ -319,7 +319,7 @@ const de: Translations = {
     eyebrow: "Online-Marketing-Agentur für Inhaber und Mittelstand",
     headlineTop: "Jede Woche neue Verkaufschancen.",
     headlineBottom: "Über Google, KI-Suche und eine Website, die liefert.",
-    sub: "Als Online-Marketing-Agentur sorgen wir dafür, dass man Sie in jeder relevanten Stadt und in jedem Stadtteil findet. Wir verbinden SEO, KI-Suche, Google Ads, Social Media und Ihre Website zu einem Kanal, der planbar Anfragen bringt. Das Ergebnis sind Anfragen, keine leeren Versprechen.",
+    sub: "Als Online-Marketing-Agentur sorgen wir dafür, dass man Sie in den Städten und Stadtteilen findet, in denen Ihre Kunden suchen. Wir verbinden SEO, KI-Suche, Google Ads, Social Media und Ihre Website zu einem Kanal, der planbar Anfragen bringt. Das Ergebnis sind Anfragen, keine leeren Versprechen.",
     services: [
       "Suchmaschinenoptimierung (SEO)",
       "KI-Suchoptimierung",
@@ -333,7 +333,7 @@ const de: Translations = {
   },
 
   snapshot: {
-    title: "Ihre Online-Marketing-Agentur auf einen Blick",
+    title: "Was unsere Online-Marketing-Agentur leistet und für wen",
     tagline: "In 30 Sekunden: was wir tun, für wen und was Sie bekommen.",
     items: [
       {
@@ -359,7 +359,7 @@ const de: Translations = {
 
   testimonials: {
     eyebrow: "Stimmen unserer Kunden",
-    headline: "In ihren eigenen Worten.",
+    headline: "Kundenstimmen: Inhaber über ihre Ergebnisse mit NEO",
     description:
       "Fünf Kundenprojekte zeigen, was sich mit NEO verändert hat.",
     prevLabel: "Vorherige Stimme",
@@ -444,10 +444,10 @@ const de: Translations = {
 
   services: {
     eyebrow: "Was wir tun",
-    headlineMain: "Vier Disziplinen.",
-    headlineSub: "Eine Pipeline.",
+    headlineMain: "Full-Service-Agentur",
+    headlineSub: "für SEO, Google Ads, Social Media und Websites",
     intro:
-      "Als Full-Service-Agentur verzahnen wir alle vier Bereiche, denn Wachstum entsteht nicht in Silos. Klicken Sie sich durch oder lehnen Sie sich zurück.",
+      "Als Full-Service-Agentur verzahnen wir alle vier Bereiche, denn Wachstum entsteht nicht in Silos.",
     items: [
       {
         key: "seo",
@@ -506,8 +506,8 @@ const de: Translations = {
 
   cases: {
     eyebrow: "Kundenprojekte",
-    headlineMain: "Echte Marken.",
-    headlineSub: "Echte Zahlen.",
+    headlineMain: "Fallstudien:",
+    headlineSub: "internationale Kundenprojekte mit messbaren Ergebnissen",
     intro:
       "Eine Auswahl aus unseren Kundenprojekten.",
     serviceLabel: "Leistungen",
@@ -516,8 +516,8 @@ const de: Translations = {
 
   comparison: {
     eyebrow: "NEO im Vergleich",
-    headlineMain: "Was wir anders machen.",
-    headlineSub: "Sechs Punkte.",
+    headlineMain: "Was NEO",
+    headlineSub: "von anderen Online-Marketing-Agenturen unterscheidet",
     intro:
       "Damit Sie vorher wissen, worauf Sie sich einlassen.",
     columns: { other: "Andere Agenturen", neo: "NEO THE AGENCY" },
@@ -534,7 +534,7 @@ const de: Translations = {
       },
       {
         topic: "Ansprechpartner",
-        other: "Ein Account-Manager, der Excel vorliest",
+        other: "Sie sprechen direkt mit dem, der Ihre Kampagnen betreut.",
         neo: "Der Gründer, direkt am Telefon",
       },
       {
@@ -557,8 +557,8 @@ const de: Translations = {
 
   process: {
     eyebrow: "Der 90-Tage-Sprint",
-    headlineMain: "Vier Meilensteine.",
-    headlineSub: "Keine Überraschungen.",
+    headlineMain: "Ablauf:",
+    headlineSub: "vom Audit bis zum messbaren Ergebnis",
     intro:
       "Was an Tag 1, 30, 60 und 90 passiert, sagen wir Ihnen vorher. Daran halten wir uns. Jeden Monat sehen Sie schwarz auf weiß, was es gebracht hat.",
     steps: [
@@ -579,14 +579,14 @@ const de: Translations = {
       {
         n: "03",
         eta: "Tag 60",
-        title: "Erste Keywords auf Seite 1",
+        title: "Erste Suchbegriffe Richtung Seite 1",
         body:
-          "Die ersten kommerziellen Keywords stehen auf Seite 1, die Pipeline füllt sich. Sie bekommen einen monatlichen Report in Klartext, mit den nächsten Hebeln.",
+          "Erste kaufnahe Suchbegriffe bewegen sich messbar Richtung Seite 1, die Pipeline füllt sich. Sie bekommen einen monatlichen Report in Klartext, mit den nächsten Hebeln.",
       },
       {
         n: "04",
         eta: "Tag 90",
-        title: "8 × Pipeline",
+        title: "8-mal so viele qualifizierte Anfragen",
         body:
           "Gemessene Steigerung qualifizierter Anfragen. Ab hier optimieren wir monatlich. Keine Überraschungen, keine Mindestlaufzeit.",
       },
@@ -595,8 +595,8 @@ const de: Translations = {
 
   metrics: {
     eyebrow: "Zahlen",
-    headlineMain: "Was wirklich zählt.",
-    headlineSub: "Anfragen statt Klicks.",
+    headlineMain: "Performance-Marketing,",
+    headlineSub: "gemessen an Anfragen statt Klicks",
     intro: "Vier Zahlen aus echten Kundenprojekten. Gemessen, nicht behauptet.",
     items: [
       { value: 8, suffix: "×", label: "mehr Anfragen pro Monat" },
@@ -607,11 +607,11 @@ const de: Translations = {
 
   founder: {
     eyebrow: "Eine Notiz vom Gründer",
-    headlinePre: "Sie sprechen mit der Person,",
-    headlineSoft: "die auch liefert.",
+    headlinePre: "Direkter Kontakt zum Gründer",
+    headlineSoft: "statt Account-Manager",
     paragraphs: [
       "Ich habe NEO gegründet, weil ich es leid war: Gute Firmen zahlen Tausende im Monat, bekommen Zahlen, die gut aussehen, und trotzdem landen keine Anfragen im Posteingang. Hier ändert sich das.",
-      "Bei NEO gibt es keinen Account-Manager mit Excel-Tabelle. Sie haben mich am Telefon. Festpreis, kein Lock-in und ein 90-Tage-Sprint, für den ich mit meinem Namen geradestehe.",
+      "Bei NEO gibt es keinen Account-Manager mit Excel-Tabelle. Sie haben mich am Telefon. Festpreis, keine Mindestlaufzeit und ein 90-Tage-Sprint, für den ich mit meinem Namen geradestehe.",
       "Klingt nach Ihrer Art zu arbeiten? Schreiben Sie mir unten. Werktags antworte ich innerhalb von 24 Stunden, persönlich.",
     ],
     signature: "Raoul",
@@ -620,8 +620,8 @@ const de: Translations = {
 
   contact: {
     eyebrow: "Schreiben Sie uns",
-    headlinePre: "Lassen Sie uns",
-    headlineSoft: "starten.",
+    headlinePre: "Kostenloses Erstgespräch",
+    headlineSoft: "vereinbaren",
     intro:
       "Das Erstgespräch ist kostenlos. Ich antworte Ihnen persönlich, werktags innerhalb von 24 Stunden.",
     form: {
@@ -699,9 +699,9 @@ const de: Translations = {
     },
     pillarsIntro: {
       eyebrow: "Worauf wir bauen",
-      headlinePre: "Marketing-Agentur Berlin: drei Sätze.",
-      headlineSoft: "Eine Arbeitsweise.",
-      body: "Als Marketing-Agentur in Berlin messen wir an diesen drei Sätzen jedes Versprechen an unsere Kunden. Nach ihnen entscheiden wir, welche Aufträge wir annehmen und welche wir ablehnen.",
+      headlinePre: "Vision, Mission und Werte",
+      headlineSoft: "von NEO THE AGENCY",
+      body: "Als Marketing-Agentur in Berlin messen wir an diesen drei Grundsätzen jedes Versprechen an unsere Kunden. Nach ihnen entscheiden wir, welche Aufträge wir annehmen und welche wir ablehnen.",
     },
     pillars: [
       {
@@ -718,16 +718,16 @@ const de: Translations = {
       },
       {
         label: "Werte",
-        headline: "Commitment. Performance. Fairer Preis.",
+        headline: "Verbindlichkeit. Ergebnisse. Fairer Preis.",
         body: "Wir nehmen weniger Kunden an und sind für jeden Kunden direkt am Telefon erreichbar. Was wir versprechen, halten wir. Was wir nicht halten können, versprechen wir nicht.",
       },
     ],
     method: {
       eyebrow: "Arbeitsweise",
       headlinePre: "So arbeitet NEO THE AGENCY:",
-      headlineSoft: "ein Festpreis, ein 90-Tage-Sprint.",
+      headlineSoft: "Festpreis und 90-Tage-Sprint",
       intro:
-        "Jedes Projekt startet mit einem 90-Tage-Sprint zum Festpreis. Sie sprechen direkt mit den Leuten, die die Arbeit machen. Eine Pyramide aus Junior-Beratern gibt es bei uns nicht, und wir geben nichts an White-Label-Subunternehmer weiter.",
+        "Jedes Projekt startet mit einem 90-Tage-Sprint zum Festpreis. Sie sprechen direkt mit dem, der die Arbeit macht. Eine Pyramide aus Junior-Beratern gibt es bei uns nicht, und wir geben nichts an White-Label-Subunternehmer weiter.",
       steps: [
         {
           label: "Tag 1 · Analyse und Projektstart",
@@ -739,7 +739,7 @@ const de: Translations = {
         },
         {
           label: "Tag 60 · Erste Rankings",
-          body: "Ihre Seiten ranken für die ersten kaufrelevanten Suchbegriffe auf Seite 1. Jeden Monat bekommen Sie einen Bericht in klarer Sprache.",
+          body: "Erste kaufnahe Suchbegriffe bewegen sich messbar Richtung Seite 1. Jeden Monat bekommen Sie einen Bericht in klarer Sprache.",
         },
         {
           label: "Tag 90 · Pipeline",
@@ -750,7 +750,7 @@ const de: Translations = {
     },
     services: {
       eyebrow: "Leistungen",
-      headline: "Was wir für Sie übernehmen",
+      headline: "Unsere Leistungen: SEO, Google Ads, Social Media und Websites",
       items: [
         {
           title: "SEO",
@@ -781,18 +781,18 @@ const de: Translations = {
     },
     audience: {
       eyebrow: "Für wen",
-      headline: "Für Inhaber und Mittelstand",
+      headline: "Für wen wir arbeiten: inhabergeführte Unternehmen und Mittelstand",
       body: "Wir arbeiten für Unternehmen, meist inhabergeführte Firmen aus dem Mittelstand, die keine eigene Marketingabteilung haben und trotzdem bei Google und in KI-Antworten auftauchen wollen. Am besten passen wir zu Inhaberinnen und Inhabern, die Wachstum ernst nehmen, klare Sprache mögen und von Marketing-Floskeln genug haben. Unser Angebot richtet sich ausschließlich an Unternehmen.",
     },
     why: {
       eyebrow: "Warum NEO",
-      headline: "Weniger Berichte, mehr Anfragen",
+      headline: "Warum es NEO THE AGENCY gibt: Anfragen statt Berichte",
       body: "Viele gute Unternehmen zahlen Agenturen jeden Monat Tausende Euro und bekommen dafür Berichte, aber kaum Anfragen. Deshalb wurde NEO THE AGENCY 2026 in Berlin gegründet. Wir arbeiten mit festen Preisen, ohne lange Vertragsbindung und ohne White-Label-Dienstleister. Den Erfolg unserer Arbeit messen wir an qualifizierten Anfragen.",
     },
     studio: {
       eyebrow: "Standort",
       headlinePre: "Marketing-Agentur",
-      headlineSoft: "in Berlin-Schöneberg.",
+      headlineSoft: "in Berlin-Schöneberg",
       body: "Unser Sitz ist die Kolonnenstraße 8 in 10827 Berlin. Im Alltag arbeiten wir überwiegend asynchron. Wenn eine Entscheidung ansteht, sprechen wir live mit Ihnen.",
       bullets: [
         "Sitz in Berlin-Schöneberg",
@@ -803,8 +803,8 @@ const de: Translations = {
     },
     cta: {
       eyebrow: "Bereit?",
-      headlinePre: "Lassen Sie uns",
-      headlineSoft: "über Ihr Wachstum reden.",
+      headlinePre: "Kostenloses Erstgespräch",
+      headlineSoft: "mit NEO THE AGENCY",
       body: "Kostenloses Erstgespräch. Antwort werktags innerhalb von 24 Stunden.",
       button: "Kostenlose SEO-Analyse starten",
       secondary: "Erstgespräch vereinbaren",
@@ -819,13 +819,13 @@ const de: Translations = {
       meta: {
         title: "SEO für Inhaber und Mittelstand · NEO THE AGENCY",
         description:
-          "Google Seite 1 in 90 Tagen. Technisches SEO, Content der klickt, und Linkaufbau, der sich für inhabergeführte Unternehmen rechnet. Festpreis, kein Lock-in.",
+          "Google Seite 1 in 90 Tagen. Technisches SEO, Content der klickt, und Linkaufbau, der sich für inhabergeführte Unternehmen rechnet. Festpreis, keine Mindestlaufzeit.",
       },
       hero: {
         eyebrow: "Suchmaschinenoptimierung · für Inhaber und Mittelstand",
         headlineTop: "Google.",
         headlineBottom: "Seite 1.",
-        sub: "Wir bringen Ihre Website auf Seite 1 für die Begriffe, die Ihre Kunden tippen — in 90 Tagen, mit Festpreis und ohne Lock-in. Inhabergeführt, Klartext, messbar.",
+        sub: "Wir bringen Ihre Website auf Seite 1 für die Begriffe, die Ihre Kunden tippen — in 90 Tagen, mit Festpreis und ohne Mindestlaufzeit. Inhabergeführt, Klartext, messbar.",
         primaryCta: "Kostenloser SEO-Audit",
         secondaryCta: "Erstgespräch buchen",
         chips: ["Technisches SEO", "Content & On-Page", "Linkaufbau", "Lokales SEO"],
@@ -848,7 +848,7 @@ const de: Translations = {
         headlineMain: "Drei Zahlen,",
         headlineSub: "die zählen.",
         intro:
-          "Median über aktive Kundenprojekte der letzten 12 Monate. Branchen quer durch — Beratung, Handwerk, Premium-Dienstleister, B2B.",
+          "Median über aktive Kundenprojekte seit Gründung 2026. Branchen quer durch — Beratung, Handwerk, Premium-Dienstleister, B2B.",
         items: [
           {
             kicker: "Pipeline",
@@ -960,7 +960,7 @@ const de: Translations = {
               "Monatlicher Bericht in Klartext (eine Seite)",
               "Wöchentliche WhatsApp-Updates",
               "Direkt der Gründer — kein Account-Manager",
-              "Slack- oder E-Mail-Direkt-Zugang",
+              "Direkter Draht per WhatsApp und E-Mail",
             ],
           },
         ],
@@ -974,14 +974,14 @@ const de: Translations = {
         steps: [
           { eta: "Tag 1", title: "Audit & Kickoff", body: "Audit-Report im Posteingang. 60-Min-Strategy-Call. Sie verstehen, wo Sie stehen." },
           { eta: "Tag 30", title: "Fundament steht", body: "Technisches SEO sauber. Erste Content-Pages live. Tracking läuft, Daten fließen." },
-          { eta: "Tag 60", title: "Erste Page-1-Keywords", body: "Erste kommerzielle Keywords ranken auf Seite 1. Pipeline beginnt sich zu füllen." },
-          { eta: "Tag 90", title: "8 × Pipeline (Median)", body: "Messbare Steigerung qualifizierter Anfragen. Ab hier monatlich, ohne Mindestlaufzeit." },
+          { eta: "Tag 60", title: "Erste Suchbegriffe Richtung Seite 1", body: "Erste kaufnahe Suchbegriffe bewegen sich messbar Richtung Seite 1. Die Pipeline beginnt sich zu füllen." },
+          { eta: "Tag 90", title: "8-mal so viele qualifizierte Anfragen (Median)", body: "Messbare Steigerung qualifizierter Anfragen. Ab hier monatlich, ohne Mindestlaufzeit." },
         ],
       },
       stack: {
         eyebrow: "Tools & Standards",
         headlineMain: "Womit wir arbeiten.",
-        headlineSub: "Keine Geheimnisse, keine Lock-ins.",
+        headlineSub: "Keine Geheimnisse, keine Mindestlaufzeit.",
         intro:
           "Industrie-Standard-Tools, sauber integriert. Sie behalten alle Zugänge — auch wenn Sie irgendwann ohne uns weitermachen wollen.",
         items: [
@@ -1014,7 +1014,7 @@ const de: Translations = {
         body: "Wir prüfen Ihre Site auf 50+ technische und inhaltliche Faktoren und schicken Ihnen einen 1-Seiten-Bericht in Klartext. Was kaputt ist, was funktioniert, und die drei wirkungsvollsten nächsten Hebel — egal, ob Sie mit uns arbeiten oder nicht.",
         bullets: [
           "1-Seiten-Audit per E-Mail in 24 h",
-          "30-Min-Loom-Walkthrough",
+          "Kurze Videoauswertung Ihrer Website (ca. 5–10 Minuten)",
           "Konkrete nächste Schritte priorisiert",
           "Kein Verkaufsgespräch nötig",
         ],
@@ -1061,8 +1061,8 @@ const de: Translations = {
       },
       whatItIs: {
         eyebrow: "Was wir tun",
-        headlineMain: "Ihre Google-Ads-Agentur:",
-        headlineSub: "bezahlter Traffic, der sich rechnet.",
+        headlineMain: "Google Ads Agentur:",
+        headlineSub: "bezahlter Traffic, der sich rechnet",
         paragraphs: [
           "In der Google-Auktion gewinnt, wer diszipliniert auf Suchanfragen mit Kaufabsicht bietet und die Klicks auf Landingpages schickt, die daraus Anfragen machen.",
           "Bei NEO heißt das: Wir bieten nicht auf Begriffe, die nur gut aussehen. Wir messen jede Conversion sauber nach. Jede Woche fliegt raus, was kein Geld bringt: Suchbegriffe, Keywords und Anzeigen ohne Leistung. Übrig bleibt, was Anfragen liefert.",
@@ -1072,9 +1072,9 @@ const de: Translations = {
       },
       outcomes: {
         eyebrow: "Was sich verändert",
-        headlineMain: "Drei Zahlen,",
-        headlineSub: "die auch Ihr Finanzchef versteht.",
-        intro: "Median über alle aktiven Ads-Kunden der letzten 12 Monate. Das Volumen schwankt je nach Branche. Unser Ziel ist immer: ab dem zweiten Monat im Plus.",
+        headlineMain: "Google-Ads-Ergebnisse unserer Kunden:",
+        headlineSub: "ROAS und Kosten pro Anfrage",
+        intro: "Median über alle Ads-Projekte seit Gründung 2026. Das Volumen schwankt je nach Branche. Unser Ziel ist immer: ab dem zweiten Monat im Plus.",
         items: [
           {
             kicker: "ROAS",
@@ -1101,9 +1101,9 @@ const de: Translations = {
       },
       methodology: {
         eyebrow: "Wie wir arbeiten",
-        headlineMain: "Vier Phasen.",
-        headlineSub: "Disziplin schlägt Lautstärke.",
-        intro: "Bei Google Ads entscheidet zu 80 % das Setup und zu 20 % die Optimierung. Steht das Setup sauber, regelt sich vieles von selbst. Bis dahin drehen wir an jeder Schraube.",
+        headlineMain: "Unser SEA-Vorgehen:",
+        headlineSub: "vom Audit bis zu Skalierung und Reporting",
+        intro: "Der größte Hebel liegt im sauberen Aufbau des Kontos – die laufende Optimierung baut darauf auf. Steht das Setup sauber, regelt sich vieles von selbst. Bis dahin drehen wir an jeder Schraube.",
         phases: [
           {
             kicker: "Phase 1 · Tag 1 bis 7",
@@ -1153,8 +1153,8 @@ const de: Translations = {
       },
       deliverables: {
         eyebrow: "Was Sie bekommen",
-        headlineMain: "Google-Ads-Betreuung",
-        headlineSub: "in drei Säulen, alles inklusive.",
+        headlineMain: "Google Ads Betreuung zum Festpreis:",
+        headlineSub: "Strategie, Umsetzung, Reporting",
         intro: "Festpreis zzgl. MwSt., und das gesamte Werbebudget läuft über Ihr eigenes Konto. An Ihren Werbeausgaben verdienen wir nichts. Uns interessiert Ihr Ergebnis.",
         columns: [
           {
@@ -1184,15 +1184,15 @@ const de: Translations = {
               "Monatlicher Bericht zu Kosten und Umsatz auf einer Seite",
               "Wöchentliche Updates per WhatsApp",
               "Der Gründer persönlich, kein Junior",
-              "Direkter Draht per Slack oder E-Mail",
+              "Direkter Draht per WhatsApp und E-Mail",
             ],
           },
         ],
       },
       process: {
         eyebrow: "Der 90-Tage-Sprint",
-        headlineMain: "Vier Meilensteine.",
-        headlineSub: "Umsatz statt Klicks.",
+        headlineMain: "Meilensteine:",
+        headlineSub: "vom Audit bis zum stabilen ROAS",
         intro: "Was an Tag 1, 30, 60 und 90 passiert. Wir sagen es vorher, halten uns daran und zeigen Ihnen jeden Monat die ROAS-Rechnung.",
         steps: [
           {
@@ -1219,8 +1219,8 @@ const de: Translations = {
       },
       stack: {
         eyebrow: "Tools und Standards",
-        headlineMain: "Womit wir arbeiten.",
-        headlineSub: "Branchenstandard, sauber verbunden.",
+        headlineMain: "Unsere Google-Ads-Werkzeuge:",
+        headlineSub: "GA4, Tag Manager, Merchant Center, Looker Studio",
         intro: "Alle Konten und Zugänge gehören Ihnen, auch wenn Sie später ohne uns weitermachen. Sie sind an nichts gebunden.",
         items: [
           {
@@ -1251,8 +1251,8 @@ const de: Translations = {
       },
       faq: {
         eyebrow: "Häufige Fragen",
-        headlineMain: "Direkt gefragt.",
-        headlineSub: "Direkt beantwortet.",
+        headlineMain: "Häufige Fragen",
+        headlineSub: "an unsere Google Ads Agentur",
         intro: "Was Inhaber am häufigsten fragen, bevor sie ein Budget für Google Ads freigeben.",
         items: [
           {
@@ -1287,19 +1287,19 @@ const de: Translations = {
       },
       leadMagnet: {
         eyebrow: "Bevor Sie investieren",
-        headline: "Kostenloser Ads-Check für Ihr Konto.",
+        headline: "Kostenloser Google-Ads-Check für Ihr Werbekonto",
         body: "Wir sehen uns Ihr Google-Ads-Konto mit Lesezugriff an und finden die drei größten Streuverluste. Sie bekommen einen einseitigen Bericht in Klartext mit konkreten Hebeln, die Sie sofort umsetzen können, auch wenn Sie nicht mit uns zusammenarbeiten.",
         bullets: [
           "Analyse der Streuverluste in Ihrem aktiven Konto",
           "Die drei wichtigsten Quick Wins, nach Priorität",
-          "30-minütiges Erklärvideo per Loom",
+          "Kurze Videoauswertung Ihres Kontos (ca. 5–10 Minuten)",
           "Kein Verkaufsgespräch nötig",
         ],
         cta: "Ads-Check anfordern",
         note: "An Werktagen innerhalb von 48 Stunden in Ihrem Postfach. Lesezugriff genügt.",
         modal: {
           eyebrow: "Kostenloser Ads-Check",
-          headline: "Wo verliert Ihr Konto Geld?",
+          headline: "Wo Ihr Werbekonto Geld verliert",
           sub: "Wir prüfen Ihr Google-Ads-Konto mit Lesezugriff und schicken Ihnen die drei wichtigsten Sofortmaßnahmen per E-Mail.",
           submit: "Ads-Check anfordern",
           successHeadline: "Angekommen. Wir sehen uns Ihr Konto an.",
@@ -1308,8 +1308,8 @@ const de: Translations = {
       },
       finalCta: {
         eyebrow: "Bereit?",
-        headlineMain: "30 Minuten.",
-        headlineSub: "Ihr ROAS-Plan auf einer Seite.",
+        headlineMain: "Kostenloses Erstgespräch:",
+        headlineSub: "Ihr ROAS-Plan für Google Ads",
         body: "Kostenloses Erstgespräch mit dem Gründer. Wir sehen uns Ihr aktuelles Google-Ads-Setup gemeinsam an, danach bekommen Sie Ihren ROAS-Plan schriftlich. Ohne Verkaufspräsentation.",
         primary: "Erstgespräch buchen",
       },
@@ -1339,8 +1339,8 @@ const de: Translations = {
       },
       whatItIs: {
         eyebrow: "Was wir tun",
-        headlineMain: "Social-Media-Agentur",
-        headlineSub: "mit Vertriebsziel.",
+        headlineMain: "Social Media Agentur",
+        headlineSub: "für mehr Anfragen und Termine",
         paragraphs: [
           "Social Media ist für uns ein Anfragekanal und kein Schönheitswettbewerb. Erreichen Ihre Inhalte die richtige Zielgruppe mit der richtigen Absicht, entstehen daraus gebuchte Termine.",
           "Unsere Social-Media-Betreuung heißt konkret: Wir produzieren Short-Form-Videos, die Ihre Zielgruppe wirklich anschaut. Organischen Content kombinieren wir mit präzise gesteuerten Paid-Social-Kampagnen. Und jede Anfrage verfolgen wir bis zur Plattform zurück, von der sie kam.",
@@ -1350,9 +1350,9 @@ const de: Translations = {
       },
       outcomes: {
         eyebrow: "Was sich verändert",
-        headlineMain: "Drei Zahlen,",
-        headlineSub: "die zählen.",
-        intro: "Median über alle aktiven Social-Media-Kunden der letzten 12 Monate, aus B2B und hochpreisigem B2C. Also dort, wo eine einzelne Anfrage echtes Geld wert ist.",
+        headlineMain: "Social-Media-Ergebnisse unserer Kunden:",
+        headlineSub: "Anfragen und Kosten pro Anfrage",
+        intro: "Median über alle aktiven Social-Media-Kunden seit Gründung 2026, aus B2B und hochpreisigem B2C. Also dort, wo eine einzelne Anfrage echtes Geld wert ist.",
         items: [
           {
             kicker: "Pipeline",
@@ -1379,8 +1379,8 @@ const de: Translations = {
       },
       methodology: {
         eyebrow: "Wie wir arbeiten",
-        headlineMain: "Vier Phasen.",
-        headlineSub: "Ausgerichtet auf Anfragen.",
+        headlineMain: "Unser Vorgehen:",
+        headlineSub: "erst das Anfrageziel, dann der Content",
         intro: "Wir legen zuerst fest, welche Anfrage entstehen soll, und planen den Inhalt von dort aus rückwärts. Wer mit dem Inhalt anfängt, produziert ins Blaue.",
         phases: [
           {
@@ -1399,7 +1399,7 @@ const de: Translations = {
             title: "Redaktionsplan und Produktion",
             body: "Redaktionsplan, Produktionsablauf, Tracking. Bevor etwas live geht, ist alles dokumentiert.",
             bullets: [
-              "Redaktionsplan für 12 Monate",
+              "Redaktionsplan für die 90 Tage des Sprints, plus Ausblick auf die folgenden Monate",
               "Vorlagen und Hooks für Short-Form-Videos",
               "Paid-Social-Tracking (Meta- und TikTok-Pixel)",
               "Produktionsplan (12 Videos pro Monat)",
@@ -1431,8 +1431,8 @@ const de: Translations = {
       },
       deliverables: {
         eyebrow: "Was Sie bekommen",
-        headlineMain: "Drei Säulen.",
-        headlineSub: "Alles inklusive.",
+        headlineMain: "Social Media Betreuung zum Festpreis:",
+        headlineSub: "Strategie, Umsetzung, Reporting",
         intro: "Festpreis zzgl. MwSt.. Alle Werbebudgets laufen über Ihr eigenes Werbekonto. Produktion, Verbreitung und Reporting sind komplett enthalten.",
         columns: [
           {
@@ -1440,7 +1440,7 @@ const de: Translations = {
             items: [
               "Plattform-Audit",
               "Zielgruppen- und Conversion-Plan",
-              "Redaktionsplan für 12 Monate",
+              "Redaktionsplan für die 90 Tage des Sprints, plus Ausblick auf die folgenden Monate",
               "Wettbewerbsanalyse",
               "Benchmark-Modell für die Performance",
             ],
@@ -1462,15 +1462,15 @@ const de: Translations = {
               "Monatlicher Bericht in Klartext (eine Seite)",
               "Wöchentliche Updates per WhatsApp",
               "Direkt mit dem Gründer, kein Junior",
-              "Direkter Draht per Slack oder E-Mail",
+              "Direkter Draht per WhatsApp und E-Mail",
             ],
           },
         ],
       },
       process: {
         eyebrow: "Der 90-Tage-Sprint",
-        headlineMain: "Vier Meilensteine.",
-        headlineSub: "Termine statt Follower.",
+        headlineMain: "Meilensteine:",
+        headlineSub: "von den ersten Videos bis zu Terminen aus Social Media",
         intro: "Was an Tag 1, 30, 60 und 90 passiert, sagen wir Ihnen vorher. Dann liefern wir.",
         steps: [
           {
@@ -1497,8 +1497,8 @@ const de: Translations = {
       },
       stack: {
         eyebrow: "Tools und Plattformen",
-        headlineMain: "Womit wir arbeiten.",
-        headlineSub: "Plattformneutral, auf Conversions ausgerichtet.",
+        headlineMain: "Paid Social",
+        headlineSub: "auf Meta, TikTok, LinkedIn und YouTube",
         intro: "Als Social-Media-Agentur wählen wir Plattformen neutral aus. Wir arbeiten dort, wo Ihr Geschäft Anfragen bekommt, ob auf LinkedIn oder auf TikTok.",
         items: [
           {
@@ -1529,8 +1529,8 @@ const de: Translations = {
       },
       faq: {
         eyebrow: "Häufige Fragen",
-        headlineMain: "Direkt gefragt.",
-        headlineSub: "Direkt beantwortet.",
+        headlineMain: "Häufige Fragen",
+        headlineSub: "an unsere Social Media Agentur",
         intro: "Das fragen Inhaber am häufigsten, bevor sie Budget für Social Media freigeben.",
         items: [
           {
@@ -1555,7 +1555,7 @@ const de: Translations = {
           },
           {
             q: "Wie steht es mit Creators und Influencer-Marketing?",
-            a: "Wenn es passt, gern, aber als Zusatz und nicht als Standard. Inhabergeführte Marken wachsen meist am besten mit eigenem Gründer-Content. Creators kommen dazu, wenn das Volumen es rechtfertigt.",
+            a: "Wenn es passt, gern, aber als Zusatz und nicht als Standard. Inhabergeführte Unternehmen wachsen meist am besten mit eigenem Gründer-Content. Creators kommen dazu, wenn das Volumen es rechtfertigt.",
           },
           {
             q: "Was passiert nach den 90 Tagen?",
@@ -1565,7 +1565,7 @@ const de: Translations = {
       },
       leadMagnet: {
         eyebrow: "Bevor Sie investieren",
-        headline: "Kostenloses Content-Sample für Ihre Marke.",
+        headline: "Kostenloses Content-Sample: Short-Form-Video für Ihre Marke",
         body: "Wir produzieren für Ihre Marke ein Short-Form-Video von 60 Sekunden. Grundlage ist eine Conversion-Hypothese, die wir aus Ihrem Geschäft ableiten. So sehen Sie vor Ihrer Entscheidung, wie unser Content für Sie aussehen würde.",
         bullets: [
           "Ein fertig produziertes Short-Form-Video (60 Sekunden)",
@@ -1586,8 +1586,8 @@ const de: Translations = {
       },
       finalCta: {
         eyebrow: "Bereit?",
-        headlineMain: "30 Minuten.",
-        headlineSub: "Ihr Content-Plan auf einer Seite.",
+        headlineMain: "Kostenloses Erstgespräch:",
+        headlineSub: "Ihr Content-Plan für Social Media",
         body: "Kostenloses Erstgespräch mit dem Gründer. Wir klären gemeinsam, welche Plattform für Ihr Geschäft funktioniert und wie Ihr erster 90-Tage-Sprint aussehen würde.",
         primary: "Erstgespräch buchen",
       },
@@ -1616,27 +1616,27 @@ const de: Translations = {
       },
       whatItIs: {
         eyebrow: "Was wir tun",
-        headlineMain: "Webdesign-Agentur,",
-        headlineSub: "die Anfragen liefert.",
+        headlineMain: "Webdesign-Agentur",
+        headlineSub: "für Websites, die Anfragen bringen",
         paragraphs: [
           "Ihre Website ist Ihr aktivster Verkäufer: rund um die Uhr im Einsatz, ohne Krankheitstage. Eine schlechte Website kostet Sie jeden Tag Geld, eine gute bringt laufend Anfragen.",
-          "Wenn Sie bei NEO Ihre Website erstellen lassen, heißt das: Design für das Smartphone zuerst, Core Web Vitals mit einem LCP unter 2,5 Sekunden und eine Conversion-Architektur, die auf echtem Nutzerverhalten beruht. Alle Inhalte pflegen Sie selbst. Wegen eines fehlenden Kommas müssen Sie uns nicht anrufen.",
+          "Wenn Sie bei NEO Ihre Website erstellen lassen, heißt das: Design für das Smartphone zuerst, Core Web Vitals mit einer Ladezeit unter 2,5 Sekunden und eine Conversion-Architektur, die auf echtem Nutzerverhalten beruht. Alle Inhalte pflegen Sie selbst. Wegen eines fehlenden Kommas müssen Sie uns nicht anrufen.",
           "Sie bekommen eine Website, die von Anfang an für Google gebaut ist und Anfragen bringt. In den nächsten fünf Jahren wächst sie mit Ihnen mit, ohne komplettes Redesign.",
         ],
         audience: "Für inhabergeführte Unternehmen und Mittelständler, die mit ihrer Website verkaufen wollen. Ein Online-Auftritt aus Pflichtgefühl reicht ihnen nicht.",
       },
       outcomes: {
         eyebrow: "Was sich verändert",
-        headlineMain: "Drei Zahlen,",
-        headlineSub: "die Sie spüren.",
-        intro: "Median aller Website-Projekte der letzten 12 Monate. Branchen: Beratung, Handwerk, Premium-Dienstleister, B2B.",
+        headlineMain: "Website-Ergebnisse:",
+        headlineSub: "Ladezeit, Anfragequote und Zeit bis zum Launch",
+        intro: "Median aller Website-Projekte seit Gründung 2026. Branchen: Beratung, Handwerk, Premium-Dienstleister, B2B.",
         items: [
           {
             kicker: "Ladezeit",
             value: "1,8",
             unit: "s",
-            title: "LCP-Median",
-            body: "LCP im 75. Perzentil (Core Web Vitals).",
+            title: "Ladezeit der Seite (Median)",
+            body: "Zeit, bis der größte sichtbare Inhalt geladen ist, 75. Perzentil (Core Web Vitals).",
           },
           {
             kicker: "Conversion",
@@ -1656,16 +1656,16 @@ const de: Translations = {
       },
       methodology: {
         eyebrow: "Wie wir arbeiten",
-        headlineMain: "Vier Phasen.",
-        headlineSub: "Erst die Conversion, dann das Design.",
-        intro: "Wir legen zuerst die Conversion-Architektur fest und gestalten erst danach. Wer mit Pixeln anfängt, verliert.",
+        headlineMain: "Website erstellen lassen:",
+        headlineSub: "erst der Conversion-Plan, dann das Design",
+        intro: "Wir klären erst Ziel, Inhalte und Conversion-Architektur, dann folgt das Design.",
         phases: [
           {
             kicker: "Phase 1 · Woche 1",
             title: "Analyse und Conversion-Plan",
             body: "Wir analysieren Ihre Zielgruppe, Ihre Conversion-Pfade und Ihren Wettbewerb. Der Plan steht, bevor wir irgendetwas gestalten.",
             bullets: [
-              "Gespräche mit Ihrem Team und Zielgruppen-Analyse",
+              "Gespräche mit Ihnen und, falls vorhanden, Ihrem Team sowie Zielgruppen-Analyse",
               "Conversion-Architektur (Wireframes)",
               "Content-Inventur und Content-Plan",
               "SEO- und Technik-Briefing",
@@ -1673,7 +1673,7 @@ const de: Translations = {
           },
           {
             kicker: "Phase 2 · Woche 2 bis 3",
-            title: "Design & Prototyp",
+            title: "Design und Prototyp",
             body: "Detailentwurf im Erscheinungsbild Ihrer Marke oder im NEO-Designsystem. Fürs Smartphone zuerst, barrierefrei geprüft und auf Anfragen ausgerichtet.",
             bullets: [
               "Mobile-First-Design (375 px bis 1440 px)",
@@ -1684,7 +1684,7 @@ const de: Translations = {
           },
           {
             kicker: "Phase 3 · Woche 4 bis 5",
-            title: "Umsetzung & Inhalte",
+            title: "Umsetzung und Inhalte",
             body: "Wir bauen auf Plattformen, die Sie selbst pflegen können: Webflow, Framer oder bei Bedarf ein individueller Tech-Stack. Die Inhalte entstehen parallel.",
             bullets: [
               "Umsetzung auf Webflow, Framer oder individuell",
@@ -1695,7 +1695,7 @@ const de: Translations = {
           },
           {
             kicker: "Phase 4 · Woche 6",
-            title: "QA & Launch",
+            title: "Test und Livegang",
             body: "Wir testen Browser, Mobilgeräte, Ladezeit und Barrierefreiheit. Zur Übergabe bekommen Sie ein 30-minütiges Video-Tutorial, das zeigt, wie Sie Ihre Website selbst bearbeiten.",
             bullets: [
               "Browser- und Gerätetests",
@@ -1708,14 +1708,14 @@ const de: Translations = {
       },
       deliverables: {
         eyebrow: "Was Sie bekommen",
-        headlineMain: "Drei Säulen.",
-        headlineSub: "Alles inklusive.",
+        headlineMain: "Website zum Festpreis:",
+        headlineSub: "Strategie, Umsetzung, Launch und Betreuung",
         intro: "Ein Festpreis für die komplette Website: Design, Umsetzung, Content-Produktion und Launch. Ohne Zusatzmodule und ohne Überraschungen beim Setup.",
         columns: [
           {
             title: "Strategie",
             items: [
-              "Discovery und Gespräche mit Ihrem Team",
+              "Bestandsaufnahme und Gespräche mit Ihnen und, falls vorhanden, Ihrem Team",
               "Conversion-Architektur und Wireframes",
               "Content- und SEO-Plan",
               "Wettbewerbsanalyse",
@@ -1733,7 +1733,7 @@ const de: Translations = {
             ],
           },
           {
-            title: "Launch & Betreuung",
+            title: "Livegang und Betreuung",
             items: [
               "Browser- und Mobil-Tests",
               "Core-Web-Vitals-Optimierung",
@@ -1746,14 +1746,14 @@ const de: Translations = {
       },
       process: {
         eyebrow: "Der 6-Wochen-Sprint",
-        headlineMain: "Vier Meilensteine.",
-        headlineSub: "Jede Woche dokumentiert.",
+        headlineMain: "Projektplan:",
+        headlineSub: "von der Bestandsaufnahme bis zum Livegang",
         intro: "Ein Standard-Sprint dauert 6 Wochen. Was in welcher Woche passiert, sehen Sie hier.",
         steps: [
           {
             eta: "Woche 1",
-            title: "Discovery",
-            body: "Gespräche mit Ihrem Team, Conversion-Plan, Content-Inventur.",
+            title: "Bestandsaufnahme",
+            body: "Gespräche mit Ihnen und, falls vorhanden, Ihrem Team, Conversion-Plan, Content-Inventur.",
           },
           {
             eta: "Woche 2 bis 3",
@@ -1762,7 +1762,7 @@ const de: Translations = {
           },
           {
             eta: "Woche 4 bis 5",
-            title: "Umsetzung & Inhalte",
+            title: "Umsetzung und Inhalte",
             body: "Umsetzung auf der Plattform, Content-Produktion, sauber eingerichtetes Tracking.",
           },
           {
@@ -1774,8 +1774,8 @@ const de: Translations = {
       },
       stack: {
         eyebrow: "Tech-Stack",
-        headlineMain: "Womit wir bauen.",
-        headlineSub: "Und was Sie selbst pflegen.",
+        headlineMain: "Webflow, Framer oder individuell:",
+        headlineSub: "Plattformen, die Sie selbst pflegen",
         intro: "Wir bauen bevorzugt auf Plattformen, die Sie selbst pflegen. Individuelle Lösungen dokumentieren wir so, dass jeder Entwickler sie übernehmen kann.",
         items: [
           {
@@ -1806,8 +1806,8 @@ const de: Translations = {
       },
       faq: {
         eyebrow: "Häufige Fragen",
-        headlineMain: "Direkt gefragt.",
-        headlineSub: "Direkt beantwortet.",
+        headlineMain: "Häufige Fragen",
+        headlineSub: "zu Website-Erstellung und Relaunch",
         intro: "Was Inhaber am häufigsten fragen, bevor sie eine Website erstellen lassen oder einen Relaunch starten.",
         items: [
           {
@@ -1842,7 +1842,7 @@ const de: Translations = {
       },
       leadMagnet: {
         eyebrow: "Bevor Sie sich entscheiden",
-        headline: "Kostenloser Speed- und Conversion-Report.",
+        headline: "Kostenloser Speed- und Conversion-Report für Ihre Website",
         body: "Wir prüfen Ihre aktuelle Website auf Core Web Vitals, mobile Performance und Conversion-Architektur. Sie bekommen einen einseitigen Report mit den drei Hebeln, die am meisten bewirken. Ob Sie danach mit uns bauen, entscheiden Sie.",
         bullets: [
           "Messung der Core Web Vitals (LCP, CLS, INP)",
@@ -1854,7 +1854,7 @@ const de: Translations = {
         note: "An Werktagen innerhalb von 24 Stunden in Ihrem Posteingang.",
         modal: {
           eyebrow: "Kostenloser Speed- und Conversion-Report",
-          headline: "Wo verliert Ihre Website Anfragen?",
+          headline: "Wo Ihre Website Anfragen verliert",
           sub: "Schicken Sie uns Ihre Domain. Den Speed- und Conversion-Report bekommen Sie per E-Mail.",
           submit: "Report anfordern",
           successHeadline: "Angekommen. Wir messen.",
@@ -1863,8 +1863,8 @@ const de: Translations = {
       },
       finalCta: {
         eyebrow: "Bereit?",
-        headlineMain: "30 Minuten.",
-        headlineSub: "Ihr Website-Plan auf einer Seite.",
+        headlineMain: "Kostenloses Erstgespräch:",
+        headlineSub: "Ihr Plan für Website oder Relaunch",
         body: "Kostenloses Erstgespräch mit dem Gründer. Wir sehen uns Ihre aktuelle Website gemeinsam live an, danach bekommen Sie einen Sprint-Plan auf einer Seite. Ohne Verkaufspräsentation.",
         primary: "Erstgespräch buchen",
       },

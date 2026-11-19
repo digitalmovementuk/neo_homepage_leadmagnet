@@ -288,14 +288,14 @@ export function Packages() {
                   <p className="mt-6 border-t border-ink/10 pt-6 text-ink">
                     {item.pricePrefix ? (
                       <span className="mr-2 text-[16px] font-semibold text-ink-soft">{item.pricePrefix}</span>
-                    ) : null}
+                    ) : null}{" "}
                     <span
                       className={`font-bold leading-none tracking-tight ${
                         longPrice ? "text-[28px] sm:text-[30px]" : "seo-mono text-[44px] sm:text-[52px]"
                       }`}
                     >
                       {renderPrice(item.price)}
-                    </span>
+                    </span>{" "}
                     {item.priceSuffix ? (
                       <span className="mt-2 block text-[14px] font-medium text-ink-muted">{item.priceSuffix}</span>
                     ) : null}

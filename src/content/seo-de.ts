@@ -133,12 +133,12 @@ export const seoDe = {
 
   audit: {
     chips: ["2 Minuten", "Ergebnis in 24 h", "Ohne Verpflichtung"],
-    heading: { ink: "Ihr kostenloser SEO-Audit", grey: "von der SEO-Agentur in 24 Stunden" },
+    heading: { ink: "Kostenloser SEO-Audit", grey: "für Ihre Website" },
     subline:
       "Als SEO-Agentur schicken wir Ihnen ein kurzes Video, in dem wir Ihre Website durchgehen und die wichtigsten Stellschrauben zeigen.",
     button: "Audit anfordern",
     note:
-      "Antwort in 24 Stunden an Werktagen. Wir nutzen Ihre Angaben, um den Audit zu erstellen und Sie dazu zu kontaktieren. Details finden Sie in unserer Datenschutzerklärung.",
+      "Antwort in 24 Stunden an Werktagen. Wir nutzen Ihre Angaben, um das Audit zu erstellen und Sie dazu zu kontaktieren. Details finden Sie in unserer Datenschutzerklärung.",
     success:
       "Danke. Ihr Audit ist angefragt. Sie erhalten das Video innerhalb von 24 Stunden an Werktagen per E-Mail.",
   },
@@ -155,7 +155,7 @@ export const seoDe = {
 
   problem: {
     kicker: "DAS PROBLEM",
-    heading: { ink: "Gute Arbeit allein", grey: "bringt keine Anfragen über Google." },
+    heading: { ink: "Warum kleine Unternehmen", grey: "über Google zu wenig Anfragen bekommen" },
     intro: "Viele kleine Unternehmen sind besser als ihr Platz bei Google. Meist liegt es an drei Dingen.",
     cards: [
       {
@@ -175,7 +175,7 @@ export const seoDe = {
 
   measure: {
     kicker: "WAS ZÄHLT",
-    heading: { ink: "Anfragen.", grey: "Nicht Klicks." },
+    heading: { ink: "SEO-Erfolg,", grey: "gemessen an Anrufen und Anfragen" },
     body: "Ein Kunde sucht, klickt und ruft an. Genau diesen Weg messen wir. Klicks allein zahlen keine Rechnung.",
     steps: [
       { title: "Suche", text: "Ihr Kunde sucht bei Google, in Google Maps oder fragt eine KI." },
@@ -194,7 +194,7 @@ export const seoDe = {
 
   channels: {
     kicker: "DREI ORTE, EIN ZIEL",
-    heading: { ink: "Gefunden werden,", grey: "wo Ihre Kunden suchen." },
+    heading: { ink: "Sichtbar in Google-Suche,", grey: "Google Maps und KI-Antworten" },
     blocks: [
       {
         key: "search",
@@ -236,7 +236,7 @@ export const seoDe = {
 
   cex: {
     kicker: "KUNDENPROJEKT · CEX, KÖLN",
-    heading: { ink: "Drei Monate SEO", grey: "für eine Unternehmensberatung." },
+    heading: { ink: "Fallstudie:", grey: "SEO für eine Unternehmensberatung" },
     body: "CEx berät Unternehmen in Köln zu Change Management, Projektsteuerung und KI. Vom 15.08. bis 14.11.2026 haben wir die Website ausgebaut und für Google optimiert.",
     figures: [
       { value: "2,7×", label: "Einblendungen in der Google-Suche (Impressionen) pro Monat, von 682 auf 1.848" },
@@ -257,7 +257,7 @@ export const seoDe = {
 
   approach: {
     kicker: "SO ARBEITEN WIR",
-    heading: { ink: "SEO ohne Fachchinesisch.", grey: "Strategie, Umsetzung, Bericht." },
+    heading: { ink: "Unsere SEO-Betreuung:", grey: "Strategie, Umsetzung und monatlicher Bericht" },
     intro:
       "Gemacht für inhabergeführte Unternehmen, die wachsen wollen. Sie bekommen einen Plan, die Umsetzung und jeden Monat einen Bericht auf einer Seite.",
     columns: [
@@ -293,7 +293,7 @@ export const seoDe = {
 
   blocks: {
     kicker: "LEISTUNGEN IM DETAIL",
-    heading: { ink: "Neun Bausteine,", grey: "ein Ziel: mehr Anfragen." },
+    heading: { ink: "Leistungsumfang:", grey: "technisches SEO, Inhalte und lokales SEO" },
     /** Wird nur gezeigt, wenn ein Baustein ein href hat (Unterseiten gibt es noch nicht). */
     linkLabel: "Mehr erfahren",
     carouselLabel: "Neun Bausteine, seitlich wischbar",
@@ -366,7 +366,7 @@ export const seoDe = {
 
   timeline: {
     kicker: "DER ABLAUF",
-    heading: { ink: "Erst bauen,", grey: "dann bei Google einreichen." },
+    heading: { ink: "Ablauf:", grey: "Website bauen, freigeben, bei Google einreichen" },
     phase0Label: "Phase 0 · Vor dem Start",
     phase0: [
       { title: "Bauen.", text: "Wir erstellen Ihre Website und 20 Keyword-Seiten." },
@@ -401,7 +401,7 @@ export const seoDe = {
 
   later: {
     kicker: "DANACH",
-    heading: { ink: "Monat 4 bis 12:", grey: "ausbauen, was Anfragen bringt." },
+    heading: { ink: "Langfristige SEO-Betreuung:", grey: "ausbauen, was Anfragen bringt" },
     body: "Nach den ersten 90 Tagen sehen wir, welche Seiten Anrufe und Anfragen bringen. Dort legen wir nach: neue Seiten für weitere Leistungen und Orte, mehr Erwähnungen, laufende Pflege. Jeden Monat erhalten Sie Ihren Bericht auf einer Seite.",
     boxTitle: "Ehrlich gesagt: Rankings garantiert niemand.",
     boxText:
@@ -410,7 +410,7 @@ export const seoDe = {
 
   advantage: {
     kicker: "IHR VORTEIL",
-    heading: { ink: "Erst sehen,", grey: "dann zahlen." },
+    heading: { ink: "Ohne Vorkasse:", grey: "Sie zahlen erst nach Freigabe und Einreichung" },
     steps: [
       {
         title: "Wir liefern zuerst.",
@@ -428,7 +428,7 @@ export const seoDe = {
   },
 
   shortForm: {
-    heading: { ink: "Sehen Sie sich", grey: "Ihre Seiten zuerst an." },
+    heading: { ink: "Unverbindlich anfragen:", grey: "Ihre Seiten vor dem Start ansehen" },
     body: "Schreiben Sie uns kurz. Wir melden uns innerhalb von 24 Stunden an Werktagen.",
     button: "Ohne Risiko starten",
     note: "Wir nutzen Ihre Angaben, um Sie zu Ihrer Anfrage zu kontaktieren. Details finden Sie in unserer Datenschutzerklärung.",
@@ -437,7 +437,7 @@ export const seoDe = {
 
   packages: {
     kicker: "PAKETE UND PREISE",
-    heading: { ink: "Drei Pakete.", grey: "Eine Website ohne Aufpreis in jedem." },
+    heading: { ink: "SEO-Pakete und Preise,", grey: "jeweils mit Website ohne Aufpreis" },
     items: [
       {
         key: "fundament",
@@ -506,7 +506,7 @@ export const seoDe = {
 
   gains: {
     kicker: "IHR GEWINN",
-    heading: { ink: "Was sich für Sie", grey: "ändern soll." },
+    heading: { ink: "Ihre Vorteile:", grey: "mehr Anrufe, planbare Anfragen, weniger Werbekosten" },
     cards: [
       { key: "anrufe", title: "Mehr Anrufe", text: "Kunden finden Sie, wenn sie gerade suchen, und greifen zum Telefon." },
       { key: "planbar", title: "Planbare Anfragen", text: "Anfragen kommen gleichmäßiger, nicht nur über Empfehlungen und Zufall." },
@@ -517,7 +517,7 @@ export const seoDe = {
 
   fit: {
     kicker: "PASST ES?",
-    heading: { ink: "Für wen wir arbeiten", grey: "und für wen nicht." },
+    heading: { ink: "SEO für Kleinunternehmen:", grey: "für wen es passt und für wen nicht" },
     yesTitle: "Passt gut",
     yes: [
       "Gründer, die von Anfang an bei Google gefunden werden wollen",
@@ -535,7 +535,7 @@ export const seoDe = {
 
   team: {
     kicker: "WER FÜR SIE ARBEITET",
-    heading: { ink: "Sie sprechen mit denen,", grey: "die auch liefern." },
+    heading: { ink: "Ihr SEO-Team:", grey: "direkter Kontakt ohne Account-Manager" },
     intro: "Kein Account-Manager dazwischen. Wer Sie im Erstgespräch trifft, arbeitet auch an Ihrem Projekt.",
     people: [
       {
@@ -558,7 +558,7 @@ export const seoDe = {
 
   tools: {
     kicker: "UNSER WERKZEUG",
-    heading: { ink: "Gemessen mit Werkzeugen,", grey: "die Profis nutzen." },
+    heading: { ink: "Unsere SEO-Werkzeuge:", grey: "von Search Console bis PageSpeed Insights" },
     // Nur Namen als Text, keine Hersteller-Logos (Markenrichtlinien).
     items: [
       { key: "gsc", name: "Google Search Console", text: "Positionen, Klicks und Indexierung direkt von Google." },
@@ -571,7 +571,7 @@ export const seoDe = {
 
   reviews: {
     kicker: "KUNDENSTIMMEN",
-    heading: { ink: "Was Kunden", grey: "über NEO sagen." },
+    heading: { ink: "Kundenstimmen:", grey: "was Kunden über unsere SEO-Arbeit sagen" },
     slotCount: 8,
     slot: {
       stars: "[Sterne folgen]",
@@ -589,7 +589,7 @@ export const seoDe = {
 
   numbers: {
     kicker: "NEO IN ZAHLEN",
-    heading: { ink: "Zahlen,", grey: "die wir belegen können." },
+    heading: { ink: "SEO-Ergebnisse:", grey: "belegte Zahlen aus Kundenprojekten" },
     items: [
       { value: "[Zahl folgt]", label: "betreute Unternehmen" },
       { value: "[Zahl folgt]", label: "Kunden, die nach dem ersten Jahr bleiben" },
@@ -599,7 +599,7 @@ export const seoDe = {
 
   related: {
     kicker: "MEHR VON NEO",
-    heading: { ink: "SEO wirkt stärker", grey: "im Zusammenspiel." },
+    heading: { ink: "SEO kombinieren", grey: "mit Google Ads, Websites und Social Media" },
     carouselLabel: "Weitere Leistungen, seitlich wischbar",
     cards: [
       {
@@ -634,7 +634,7 @@ export const seoDe = {
 
   faq: {
     kicker: "FAQ",
-    heading: { ink: "Häufige Fragen", grey: "zu SEO bei NEO." },
+    heading: { ink: "Häufige Fragen", grey: "an unsere SEO-Agentur" },
     items: [
       {
         q: "Wie schnell sehe ich erste Ergebnisse?",
@@ -693,7 +693,7 @@ export const seoDe = {
 
   videos: {
     kicker: "NEO AUF YOUTUBE",
-    heading: { ink: "SEO erklärt,", grey: "in wenigen Minuten." },
+    heading: { ink: "SEO-Videos", grey: "auf unserem YouTube-Kanal" },
     body: "Auf unserem YouTube-Kanal zeigen wir, was bei Google zählt.",
     // Kein YouTube-Einbau: stille Platzhalter, bis Titel und Einwilligungslösung stehen.
     items: [
@@ -706,7 +706,7 @@ export const seoDe = {
   },
 
   finalCta: {
-    heading: { ink: "30 Minuten.", grey: "Ein Plan auf einer Seite." },
+    heading: { ink: "Kostenloses Erstgespräch:", grey: "Ihr persönlicher SEO-Plan" },
     body: "Kostenloses Erstgespräch mit dem Gründer. Sie bekommen eine ehrliche Einschätzung und einen Plan auf einer Seite. Dann entscheiden Sie. Keine Verkaufspräsentation, kein Druck.",
     button: "Erstgespräch anfragen",
     underButton: "Erste Rechnung erst nach der Einreichung bei Google",

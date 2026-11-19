@@ -7,7 +7,7 @@ export function Datenschutz() {
       title="Datenschutzerklärung"
       path="/datenschutz/"
     >
-      <LegalSection title="1. Verantwortlicher">
+      <LegalSection title="Verantwortlicher">
         <p>
           Digital Movement Germany, Raoul Müller, Kolonnenstraße 8, 10827 Berlin.
           <br />
@@ -24,7 +24,7 @@ export function Datenschutz() {
         </p>
       </LegalSection>
 
-      <LegalSection title="2. Hosting und Server-Protokolle">
+      <LegalSection title="Hosting und Server-Protokolle">
         <p>
           Die Website wird bei Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, USA,
           gehostet. Beim Aufruf jeder Seite verarbeitet Vercel technisch notwendige Daten: IP-Adresse,
@@ -38,14 +38,14 @@ export function Datenschutz() {
         </p>
       </LegalSection>
 
-      <LegalSection title="3. Schriften, Bilder und Videos">
+      <LegalSection title="Schriften, Bilder und Videos">
         <p>
           Schriften, Bilder und Videos werden zusammen mit der Website über Vercel ausgeliefert; Dritte
           wie Google Fonts werden nicht eingebunden.
         </p>
       </LegalSection>
 
-      <LegalSection title="4. Kontakt per Telefon, WhatsApp und Formular">
+      <LegalSection title="Kontakt per Telefon, WhatsApp und Formular">
         <p>
           Rufen Sie uns an oder schreiben Sie uns, verarbeiten wir Ihre Angaben, um Ihre Anfrage zu
           beantworten (Art. 6 Abs. 1 lit. b DSGVO).
@@ -59,7 +59,7 @@ export function Datenschutz() {
         </p>
       </LegalSection>
 
-      <LegalSection title="5. Kostenlose SEO-Analyse">
+      <LegalSection title="Kostenlose SEO-Analyse">
         <p>
           Nutzen Sie die SEO-Analyse, senden wir die eingegebene Domain und Ihre Angaben zu
           Branche und Kennzahlen an eine Serverfunktion bei Vercel. Diese ruft öffentlich verfügbare
@@ -69,7 +69,7 @@ export function Datenschutz() {
         </p>
       </LegalSection>
 
-      <LegalSection title="6. Links zu anderen Websites">
+      <LegalSection title="Links zu anderen Websites">
         <p>
           Wir verlinken auf YouTube, Facebook, Google und Websites unserer Kunden. Daten werden erst übertragen,
           wenn Sie einen solchen Link anklicken. Ab dann gelten die Datenschutzhinweise des jeweiligen
@@ -77,7 +77,7 @@ export function Datenschutz() {
         </p>
       </LegalSection>
 
-      <LegalSection title="7. Ihre Rechte">
+      <LegalSection title="Ihre Rechte">
         <p>
           Sie haben das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16), Löschung (Art. 17),
           Einschränkung der Verarbeitung (Art. 18), Datenübertragbarkeit (Art. 20) und Widerspruch

@@ -60,7 +60,7 @@ export function StickyCTA() {
       >
         <p className="text-[13px] sm:text-[14.5px] font-semibold text-ink leading-tight whitespace-nowrap">
           Kostenloses Erstgespräch{" "}
-          <span className="hidden sm:inline text-ink-muted font-medium">· Antwort in 24 h</span>
+          <span className="hidden sm:inline text-ink-muted font-medium">· Antwort innerhalb von 24 Stunden</span>
         </p>
         <Link
           to="/#contact"

@@ -146,7 +146,7 @@ export function Footer() {
                 {l.label}
               </Link>
             ))}
-            <span className="text-ink-faint">·</span>
+            <span className="hidden sm:inline text-ink-faint" aria-hidden>·</span>
             <span>Zuletzt aktualisiert: 19.11.2026</span>
           </div>
         </div>

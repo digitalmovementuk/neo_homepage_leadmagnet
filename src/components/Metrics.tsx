@@ -140,7 +140,7 @@ function FeaturedStat({ isEN }: { isEN: boolean }) {
           <p className="mt-3 max-w-[440px] text-[14px] sm:text-[15px] text-ink-soft leading-relaxed">
             {isEN
               ? "Average uplift across live SEO and Ads clients in the first six months. We show you the maths behind it every month."
-              : "Durchschnittliche Steigerung bei aktiven SEO- und Ads-Kunden in den ersten sechs Monaten. Die Zahlen dahinter sehen Sie jeden Monat."}
+              : "Durchschnittliche Steigerung bei aktiven SEO- und Ads-Kunden seit Gründung 2026. Die Zahlen dahinter sehen Sie jeden Monat."}
           </p>
         </div>
 
@@ -325,7 +325,7 @@ function ReviewsStat({ isEN }: { isEN: boolean }) {
       <p className="text-[14.5px] sm:text-[15.5px] text-ink-soft leading-relaxed">
         {isEN
           ? "Four real projects in Q1 2026 — from Azura Living Bali to Cunos. Every brand is now on page one for its core keywords."
-          : "Vier echte Projekte im ersten Quartal 2026, von Azura Living Bali bis Cunos. Jede dieser Marken steht heute mit ihren Kern-Keywords auf Seite 1."}
+          : "Vier Projekte aus dem ersten Quartal 2026, von Azura Living Bali bis Cunos – hier im Überblick."}
       </p>
     </motion.div>
   );
