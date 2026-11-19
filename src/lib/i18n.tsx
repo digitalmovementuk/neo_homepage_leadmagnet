@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
+import { createContext, useCallback, useContext, useEffect, useMemo, type ReactNode } from "react";
 import { translations, type Lang, type Translations } from "./translations";
 
 type LanguageContextValue = {
@@ -7,48 +7,27 @@ type LanguageContextValue = {
   t: Translations;
 };
 
-const STORAGE_KEY = "neo-lang";
+/**
+ * Sprache · v2.0 (19.11.2026): Die Website ist nur Deutsch, für alle Besucher
+ * und für Suchmaschinen. Keine Erkennung über Browser-Sprache oder
+ * localStorage mehr, kein Umschalter. Die englischen Texte bleiben im Code
+ * (translations.ts), werden aber nie angezeigt: lang ist immer "de".
+ */
+const LANG: Lang = "de";
 
 const LanguageContext = createContext<LanguageContextValue | null>(null);
 
-function detectInitialLang(): Lang {
-  if (typeof window === "undefined") return "de";
-  try {
-    const stored = window.localStorage.getItem(STORAGE_KEY);
-    if (stored === "de" || stored === "en") return stored;
-  } catch {
-    /* ignore */
-  }
-  // Browser preference fallback — only switch to EN if user's primary is English.
-  const nav = window.navigator?.language?.toLowerCase() ?? "";
-  if (nav.startsWith("en")) return "en";
-  return "de";
-}
-
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Lang>(() => detectInitialLang());
-
-  const setLang = useCallback((l: Lang) => {
-    setLangState(l);
-    try {
-      window.localStorage.setItem(STORAGE_KEY, l);
-    } catch {
-      /* ignore */
-    }
-    if (typeof document !== "undefined") {
-      document.documentElement.lang = l;
-    }
-  }, []);
+  // Absichtlich ohne Wirkung: Umschalten auf Englisch ist abgeschaltet.
+  const setLang = useCallback((_l: Lang) => {}, []);
 
   useEffect(() => {
-    if (typeof document !== "undefined") {
-      document.documentElement.lang = lang;
-    }
-  }, [lang]);
+    if (typeof document !== "undefined") document.documentElement.lang = LANG;
+  }, []);
 
   const value = useMemo<LanguageContextValue>(
-    () => ({ lang, setLang, t: translations[lang] }),
-    [lang, setLang]
+    () => ({ lang: LANG, setLang, t: translations[LANG] }),
+    [setLang]
   );
 
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;

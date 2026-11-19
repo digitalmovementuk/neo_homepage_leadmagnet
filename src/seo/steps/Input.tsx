@@ -88,14 +88,7 @@ export function InputStep({ initial, onAnalyse, error }: Props) {
       >
         {/* Top row: language pills (left) + currency picker (right) */}
         <div className="flex flex-wrap items-center justify-center gap-3 sm:justify-between">
-          <div
-            role="group"
-            aria-label={c.langPicker.label}
-            className="inline-flex items-center gap-1 rounded-full border border-ink/10 bg-white/65 p-1 backdrop-blur-md"
-          >
-            <LangButton active={lang === 'de'} onClick={() => setLang('de')} label={c.langPicker.de} flag={<FlagDE />} />
-            <LangButton active={lang === 'en'} onClick={() => setLang('en')} label={c.langPicker.en} flag={<FlagGB />} />
-          </div>
+          {/* Sprachauswahl entfernt (19.11.2026): die Seite ist nur Deutsch. */}
           <CurrencyPicker
             value={currency}
             onChange={setCurrency}
@@ -111,7 +104,7 @@ export function InputStep({ initial, onAnalyse, error }: Props) {
             {c.input.eyebrow}
           </span>
 
-          <h1
+          <h2
             className="mt-4 text-ink"
             style={{
               fontSize: 'clamp(30px, 3.6vw, 44px)',
@@ -121,7 +114,7 @@ export function InputStep({ initial, onAnalyse, error }: Props) {
             }}
           >
             {c.input.title}
-          </h1>
+          </h2>
 
           <p className="mx-auto mt-3 max-w-[520px] text-[14.5px] leading-[1.55] text-ink-muted sm:text-[15.5px]">
             {c.input.sub}

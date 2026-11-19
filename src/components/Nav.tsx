@@ -4,7 +4,6 @@ import { Menu, X, ArrowRight, ChevronDown, ArrowUpRight } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { business } from "../content";
 import { useT } from "../lib/i18n";
-import { LanguagePicker } from "./LanguagePicker";
 
 const SERVICE_ROUTES = [
   { slug: "seo" as const, path: "/seo-agentur/" },
@@ -21,8 +20,7 @@ type Surface = "dark" | "light";
  * a `data-surface` attribute and we pick whichever one straddles the nav
  * baseline. Logo + link colours flip accordingly so the bar always reads.
  *
- * Includes a clean LanguagePicker (DE/EN flags) — visible right of the
- * primary CTA on desktop, inline with the hamburger on mobile.
+ * Sprachauswahl entfernt (19.11.2026): die Seite ist nur Deutsch.
  */
 export function Nav() {
   const t = useT();
@@ -281,8 +279,6 @@ export function Nav() {
           </nav>
 
           <div className="flex items-center gap-2 sm:gap-3">
-            <LanguagePicker surface={surface} compact={compact} />
-
             <Link
               to={{ pathname: "/", hash: "#contact" }}
               className={`hidden md:inline-flex ${ctaCls}`}
@@ -401,10 +397,6 @@ export function Nav() {
               >
                 {t.nav.cta} <ArrowRight size={15} />
               </Link>
-
-              <div className="mt-8 flex justify-center">
-                <LanguagePicker surface="dark" />
-              </div>
 
               <div className="mt-10 text-[13px] text-white/65 space-y-1.5">
                 <p>{business.phone}</p>

@@ -253,6 +253,7 @@ const HeroSlideView = ({
   slideRef: (el: HTMLElement | null) => void;
   videoRef: (el: HTMLVideoElement | null) => void;
 }) => {
+  const HeadingTag = index === 0 ? motion.h1 : motion.h2;
   return (
     <article
       ref={slideRef}
@@ -295,7 +296,8 @@ const HeroSlideView = ({
                 {slide.eyebrow}
               </motion.p>
 
-              <motion.h1
+              {/* Nur Slide 1 trägt die H1; die anderen Slides sind H2 (eine H1 pro Seite). */}
+              <HeadingTag
                 key={`title-${slide.key}`}
                 initial={false}
                 animate={{ opacity: isActive ? 1 : 0.4, y: 0 }}
@@ -325,7 +327,7 @@ const HeroSlideView = ({
                 >
                   {slide.headlineBottom}
                 </span>
-              </motion.h1>
+              </HeadingTag>
 
               <motion.p
                 key={`sub-${slide.key}`}
