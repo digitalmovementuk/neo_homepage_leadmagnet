@@ -6,12 +6,100 @@
     }
   },
   "redirects": [
-    { "source": "/leistungen/seo", "destination": "/seo-agentur/", "permanent": true },
-    { "source": "/leistungen/seo/", "destination": "/seo-agentur/", "permanent": true },
-    { "source": "/services/seo", "destination": "/seo-agentur/", "permanent": true },
-    { "source": "/services/seo/", "destination": "/seo-agentur/", "permanent": true }
+    {
+      "source": "/seo-agentur",
+      "destination": "/seo-agentur/",
+      "permanent": true
+    },
+    {
+      "source": "/services/google-ads",
+      "destination": "/services/google-ads/",
+      "permanent": true
+    },
+    {
+      "source": "/services/social-media",
+      "destination": "/services/social-media/",
+      "permanent": true
+    },
+    {
+      "source": "/services/websites",
+      "destination": "/services/websites/",
+      "permanent": true
+    },
+    {
+      "source": "/uber-uns",
+      "destination": "/uber-uns/",
+      "permanent": true
+    },
+    {
+      "source": "/impressum",
+      "destination": "/impressum/",
+      "permanent": true
+    },
+    {
+      "source": "/datenschutz",
+      "destination": "/datenschutz/",
+      "permanent": true
+    },
+    {
+      "source": "/about",
+      "destination": "/uber-uns/",
+      "permanent": true
+    },
+    {
+      "source": "/about/",
+      "destination": "/uber-uns/",
+      "permanent": true
+    },
+    {
+      "source": "/leistungen/seo",
+      "destination": "/seo-agentur/",
+      "permanent": true
+    },
+    {
+      "source": "/leistungen/seo/",
+      "destination": "/seo-agentur/",
+      "permanent": true
+    },
+    {
+      "source": "/services/seo",
+      "destination": "/seo-agentur/",
+      "permanent": true
+    },
+    {
+      "source": "/services/seo/",
+      "destination": "/seo-agentur/",
+      "permanent": true
+    }
   ],
   "rewrites": [
-    { "source": "/((?!api/).*)", "destination": "/index.html" }
+    {
+      "source": "/seo-agentur/",
+      "destination": "/seo-agentur/index.html"
+    },
+    {
+      "source": "/services/google-ads/",
+      "destination": "/services/google-ads/index.html"
+    },
+    {
+      "source": "/services/social-media/",
+      "destination": "/services/social-media/index.html"
+    },
+    {
+      "source": "/services/websites/",
+      "destination": "/services/websites/index.html"
+    },
+    {
+      "source": "/uber-uns/",
+      "destination": "/uber-uns/index.html"
+    },
+    {
+      "source": "/impressum/",
+      "destination": "/impressum/index.html"
+    },
+    {
+      "source": "/datenschutz/",
+      "destination": "/datenschutz/index.html"
+    }
   ]
 }
