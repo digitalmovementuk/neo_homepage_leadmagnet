@@ -14,6 +14,13 @@ const SERVICE_ROUTES = [
 
 type Surface = "dark" | "light";
 
+/** "/#cases" or "#cases" → Link target on the home page; paths pass through. */
+function linkTarget(href: string) {
+  if (href.startsWith("/#")) return { pathname: "/", hash: href.slice(1) };
+  if (href.startsWith("#")) return { pathname: "/", hash: href };
+  return href;
+}
+
 /**
  * Fixed translucent top bar. Surface tone (dark/light) is derived from which
  * page section is currently behind the bar — each section in App.tsx carries
@@ -129,6 +136,12 @@ export function Nav() {
 
   return (
     <>
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-white focus:px-4 focus:py-2 focus:text-ink focus:shadow-lg"
+      >
+        Zum Inhalt springen
+      </a>
       <header
         className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
           scrolled
@@ -142,7 +155,7 @@ export function Nav() {
           <Link
             to="/"
             className="flex items-center gap-3"
-            aria-label="NEO THE AGENCY home"
+            aria-label="NEO THE AGENCY, zur Startseite"
           >
             <img
               src={`${import.meta.env.BASE_URL}brand/${
@@ -200,8 +213,8 @@ export function Nav() {
                           }`}
                         >
                           <ul className="py-2">
-                            {SERVICE_ROUTES.map((r) => {
-                              const sp = t.servicePages[r.slug];
+                            {SERVICE_ROUTES.map((r, si) => {
+                              const sv = t.nav.services?.[si];
                               return (
                                 <li key={r.slug}>
                                   <Link
@@ -224,7 +237,7 @@ export function Nav() {
                                     />
                                     <span className="flex-1">
                                       <span className="block text-[14px] font-semibold tracking-tight">
-                                        {sp.hero.headlineTop} {sp.hero.headlineBottom}
+                                        {sv?.title}
                                       </span>
                                       <span
                                         className={`block text-[12px] mt-0.5 leading-relaxed ${
@@ -233,7 +246,7 @@ export function Nav() {
                                             : "text-ink-muted"
                                         }`}
                                       >
-                                        {sp.hero.eyebrow}
+                                        {sv?.sub}
                                       </span>
                                     </span>
                                   </Link>
@@ -246,7 +259,7 @@ export function Nav() {
                               }`}
                             >
                               <Link
-                                to={{ pathname: "/", hash: l.href }}
+                                to={linkTarget(l.href)}
                                 onClick={() => setServicesOpen(false)}
                                 className={`flex items-center justify-between px-1 py-2 text-[12px] font-bold uppercase tracking-[0.18em] ${
                                   onDark
@@ -265,11 +278,10 @@ export function Nav() {
                   </div>
                 );
               }
-              const isPath = l.href.startsWith("/");
               return (
                 <Link
                   key={l.href}
-                  to={isPath ? l.href : { pathname: "/", hash: l.href }}
+                  to={linkTarget(l.href)}
                   className={`font-semibold tracking-tight transition-all duration-300 ${linkSizeCls} ${linkCls}`}
                 >
                   {l.label}
@@ -339,7 +351,6 @@ export function Nav() {
 
               <nav className="mt-10 flex flex-col">
                 {t.nav.links.map((l, i) => {
-                  const isPath = l.href.startsWith("/");
                   return (
                     <motion.div
                       key={l.href}
@@ -348,7 +359,7 @@ export function Nav() {
                       transition={{ delay: 0.06 * i + 0.08 }}
                     >
                       <Link
-                        to={isPath ? l.href : { pathname: "/", hash: l.href }}
+                        to={linkTarget(l.href)}
                         onClick={() => setOpen(false)}
                         className="block py-3.5 text-[24px] font-bold tracking-tight border-b border-white/10 text-white"
                       >
@@ -362,11 +373,11 @@ export function Nav() {
               {/* Mobile services list */}
               <div className="mt-6">
                 <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-white/45 mb-3">
-                  Services
+                  Leistungen
                 </p>
                 <ul className="space-y-1">
                   {SERVICE_ROUTES.map((r, i) => {
-                    const sp = t.servicePages[r.slug];
+                    const sv = t.nav.services?.[i];
                     return (
                       <motion.li
                         key={r.slug}
@@ -380,7 +391,7 @@ export function Nav() {
                           className="flex items-center justify-between py-2.5 text-[15px] text-white/85 hover:text-white"
                         >
                           <span>
-                            {sp.hero.headlineTop} {sp.hero.headlineBottom}
+                            {sv?.title}
                           </span>
                           <ArrowUpRight size={14} className="text-white/45" />
                         </Link>

@@ -48,11 +48,11 @@ export function Hero() {
     },
     {
       key: "search",
-      eyebrow: isEN ? "Google Search & AI Search Optimization" : "Google Search & KI-Suche Optimierung",
+      eyebrow: isEN ? "Google Search & AI Search Optimization" : "Google-Suche und KI-Suche",
       headlineTop: seo?.promise ?? (isEN ? "Google page one in 90 days." : "Google Seite 1 in 90 Tagen."),
       headlineBottom: isEN
         ? "Search Engine Optimisation + AI Search Optimisation."
-        : "Suchmaschinenoptimierung + KI-Suchoptimierung.",
+        : "Suchmaschinenoptimierung und KI-Suchoptimierung.",
       sub: seo?.detail ?? t.hero.sub,
       video: "video/seo-logo.mp4",
     },
@@ -61,7 +61,7 @@ export function Hero() {
       eyebrow: isEN ? "Website Development" : "Website-Entwicklung",
       headlineTop: isEN
         ? "Conversion-optimised\nwebsites that rank."
-        : "Conversion-optimierte\nWebsites, die ranken.",
+        : "Websites, die ranken\nund Anfragen bringen.",
       headlineBottom: isEN ? "From day one." : "Vom ersten Tag an.",
       sub: websites?.detail ?? t.hero.sub,
       video: "video/website-logo.mp4",
@@ -162,7 +162,7 @@ export function Hero() {
       data-surface="dark"
       className="surface-dark relative isolate h-[100svh] min-h-[100svh] w-screen overflow-hidden"
       aria-roledescription="carousel"
-      aria-label={lang === "en" ? "Hero carousel" : "Hero-Karussell"}
+      aria-label={lang === "en" ? "Hero carousel" : "Startbereich mit drei Folien"}
     >
       <div
         ref={trackRef}
@@ -218,7 +218,7 @@ export function Hero() {
               key={s.key}
               type="button"
               onClick={() => goTo(i)}
-              aria-label={lang === "en" ? `Go to slide ${i + 1}` : `Zu Slide ${i + 1}`}
+              aria-label={lang === "en" ? `Go to slide ${i + 1}` : `Zu Folie ${i + 1}`}
               className={`h-2.5 rounded-full transition-all sm:h-3 ${
                 activeIdx === i ? "w-9 bg-white/90 sm:w-12" : "w-2.5 bg-white/40 hover:bg-white/60 sm:w-3"
               }`}
@@ -253,14 +253,18 @@ const HeroSlideView = ({
   slideRef: (el: HTMLElement | null) => void;
   videoRef: (el: HTMLVideoElement | null) => void;
 }) => {
-  const HeadingTag = index === 0 ? motion.h1 : motion.h2;
+  // Variante A: Auf Folie 1 ist die Augenbraue die einzige H1 der Seite,
+  // die große Schlagzeile bleibt optisch gleich, ist aber ein <p>.
+  // Folien 2 und 3 tragen ihre Schlagzeile als H2.
+  const EyebrowTag = index === 0 ? motion.h1 : motion.p;
+  const HeadingTag = index === 0 ? motion.p : motion.h2;
   return (
     <article
       ref={slideRef}
       className="relative h-full w-screen flex-shrink-0"
       style={{ scrollSnapAlign: "start", scrollSnapStop: "always" }}
       aria-roledescription="slide"
-      aria-label={`${index + 1}: ${slide.headlineTop}`}
+      aria-label={`Folie ${index + 1}: ${slide.headlineTop.replace(/\n/g, " ")}`}
     >
       <SlideVideo file={slide.video} videoRef={videoRef} priority={index === 0} />
 
@@ -286,7 +290,7 @@ const HeroSlideView = ({
         <div className="mx-auto w-full max-w-[1512px] px-5 pb-[calc(64px+env(safe-area-inset-bottom))] sm:px-8 sm:pb-20 lg:px-12 lg:pb-24 xl:pb-28 2xl:px-0">
           <div className="grid items-end gap-5 md:grid-cols-[minmax(0,680px)_auto] md:justify-between md:gap-10">
             <div className="flex w-full flex-col items-center text-center md:items-start md:text-left">
-              <motion.p
+              <EyebrowTag
                 key={`eyebrow-${slide.key}`}
                 initial={false}
                 animate={{ opacity: isActive ? 1 : 0.4, y: 0 }}
@@ -294,9 +298,9 @@ const HeroSlideView = ({
                 className="text-[10.5px] font-bold uppercase tracking-[0.26em] text-white sm:text-[12px]"
               >
                 {slide.eyebrow}
-              </motion.p>
+              </EyebrowTag>
 
-              {/* Nur Slide 1 trägt die H1; die anderen Slides sind H2 (eine H1 pro Seite). */}
+              {/* Schlagzeile: Folie 1 = <p> (H1 ist die Augenbraue), Folien 2 und 3 = H2. */}
               <HeadingTag
                 key={`title-${slide.key}`}
                 initial={false}

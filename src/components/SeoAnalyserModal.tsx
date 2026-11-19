@@ -59,13 +59,13 @@ export function SeoAnalyserModal() {
             transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
             role="dialog"
             aria-modal="true"
-            aria-label="SEO Potential Analyser"
+            aria-label="SEO-Potenzialanalyse"
             className="fixed inset-2 sm:inset-4 md:inset-6 lg:inset-8 z-[90] overflow-hidden rounded-[16px] sm:rounded-[20px] border border-white/55 bg-white/55 shadow-[0_30px_60px_-28px_rgba(20,20,50,0.18),0_6px_18px_-10px_rgba(20,20,50,0.08)] backdrop-blur-xl backdrop-saturate-150"
           >
             <button
               type="button"
               onClick={closeSeo}
-              aria-label="Close"
+              aria-label="Schließen"
               className="absolute top-4 right-4 z-[5] grid h-9 w-9 place-items-center rounded-full border border-ink/10 bg-white/70 text-ink-muted backdrop-blur-md transition hover:border-ink/20 hover:bg-white hover:text-ink"
             >
               <X size={16} strokeWidth={2.2} />

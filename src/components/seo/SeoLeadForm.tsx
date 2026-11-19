@@ -191,7 +191,7 @@ export function SeoLeadForm({ variant, button, note, success, chips, underButton
 
           {/* Honeypot: außerhalb des Bildes, für Screenreader und Tastatur ausgeblendet. */}
           <div aria-hidden="true" style={{ position: "absolute", left: "-10000px", top: "auto", width: 1, height: 1, overflow: "hidden" }}>
-            <label htmlFor={`${uid}-hp`}>Firma</label>
+            <label htmlFor={`${uid}-hp`}>Bitte leer lassen</label>
             <input
               id={`${uid}-hp`}
               name="company_website"

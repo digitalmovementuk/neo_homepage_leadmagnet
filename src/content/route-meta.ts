@@ -26,7 +26,7 @@ const DEFAULT_OG = {
   ogImage: `${SITE_ORIGIN}/brand/og-cover.jpg`,
   ogImageWidth: 2400,
   ogImageHeight: 1260,
-  ogImageAlt: "NEO THE AGENCY — Digitalagentur für Websites, SEO, Google Ads und Social Media",
+  ogImageAlt: "NEO THE AGENCY, Online-Marketing-Agentur für Websites, SEO, Google Ads und Social Media",
 };
 
 export type RoutePath =
@@ -84,7 +84,6 @@ export function organizationNode(): Record<string, unknown> {
     },
     areaServed: { "@type": "Country", name: "Deutschland" },
     sameAs: [
-      "https://www.instagram.com/neotheagency.de/",
       "https://www.youtube.com/@neotheagency",
       "https://www.facebook.com/p/NEO-The-Agency-61588285349359/",
     ],
@@ -94,9 +93,9 @@ export function organizationNode(): Record<string, unknown> {
 export const ROUTE_META: Record<RoutePath, RouteMeta> = {
   "/": {
     path: "/",
-    title: "NEO THE AGENCY — Neue Website + Google Seite 1 in 90 Tagen",
+    title: "Online-Marketing-Agentur für Inhaber & KMU | NEO THE AGENCY",
     description:
-      "Wir bauen Websites, die ranken, überzeugen und Anfragen bringen. SEO, Google Ads, Social Media und Webentwicklung aus einer Hand — für den deutschen Markt.",
+      "Für Inhaber und Mittelstand: SEO, KI-Suche, Google Ads, Social Media und Websites aus einer Hand. Neue Website und Seite 1 bei Google in 90 Tagen.",
     robots: "index, follow",
     ...DEFAULT_OG,
     crumbs: [],
@@ -119,56 +118,59 @@ export const ROUTE_META: Record<RoutePath, RouteMeta> = {
   },
   "/services/google-ads/": {
     path: "/services/google-ads/",
-    title: "Google Ads für Inhaber & Mittelstand · NEO THE AGENCY",
+    title: "Google Ads Agentur: Betreuung zum Festpreis | NEO THE AGENCY",
     description:
-      "ROI-positiver bezahlter Traffic, der druckt. Eng gefasste Search- und Performance-Max-Kampagnen für inhabergeführte Unternehmen. Festpreis, wöchentliches Verschwendungs-Trimming.",
+      "Google Ads Betreuung für Inhaber und Mittelstand: Search Ads, Performance Max und sauberes Conversion-Tracking. Zum Festpreis, ohne lange Bindung.",
     robots: "index, follow",
     ...DEFAULT_OG,
+    ogImageAlt: "NEO THE AGENCY, Google Ads Agentur für Inhaber und Mittelstand",
     crumbs: [{ name: "Google Ads", path: "/services/google-ads/" }],
-    service: { name: "Google Ads", serviceType: "Google-Ads-Kampagnenbetreuung" },
+    service: { name: "Google Ads Agentur: ROI. Nicht Reichweite.", serviceType: "Google Ads" },
     chunk: "google-ads",
     sources: ["src/pages/services/google-ads.tsx", "src/components/ServicePageShell.tsx", "src/lib/translations.ts"],
   },
   "/services/social-media/": {
     path: "/services/social-media/",
-    title: "Social Media für Inhaber & Mittelstand · NEO THE AGENCY",
+    title: "Social Media Agentur für mehr Anfragen | NEO THE AGENCY",
     description:
-      "Inhalte, die Anfragen bringen — keine Eitelkeitsmetriken. Short-Form-Video, Paid Social und Kreativ-Production für inhabergeführte Marken. Festpreis, lead-driven.",
+      "Social Media Betreuung für Inhaber und Mittelstand: Short-Form-Video, Paid Social und Content-Produktion zum Festpreis. Unser Ziel sind echte Anfragen.",
     robots: "index, follow",
     ...DEFAULT_OG,
+    ogImageAlt: "NEO THE AGENCY: Social Media Agentur für Inhaber und Mittelstand",
     crumbs: [{ name: "Social Media", path: "/services/social-media/" }],
-    service: { name: "Social Media", serviceType: "Social-Media-Marketing" },
+    service: { name: "Social Media Agentur: Anfragen. Nicht Follower.", serviceType: "Social Media Betreuung und Paid Social" },
     chunk: "social-media",
     sources: ["src/pages/services/social-media.tsx", "src/components/ServicePageShell.tsx", "src/lib/translations.ts"],
   },
   "/services/websites/": {
     path: "/services/websites/",
-    title: "Websites für Inhaber & Mittelstand · NEO THE AGENCY",
+    title: "Webdesign-Agentur: Website zum Festpreis | NEO THE AGENCY",
     description:
-      "Conversion-optimierte Websites, die ab Tag 1 ranken. Mobile-First, Core Web Vitals, selbst editierbar. Festpreis, in 6–8 Wochen live.",
+      "Website erstellen lassen oder Relaunch: fürs Smartphone gebaut, schnell und selbst pflegbar. Zum Festpreis und in 6 bis 8 Wochen live. Jetzt anfragen.",
     robots: "index, follow",
     ...DEFAULT_OG,
+    ogImageAlt: "NEO THE AGENCY: Webdesign-Agentur für schnelle, selbst pflegbare Websites",
     crumbs: [{ name: "Websites", path: "/services/websites/" }],
-    service: { name: "Websites", serviceType: "Webdesign und Webentwicklung" },
+    service: { name: "Webdesign und Website-Relaunch", serviceType: "Webdesign" },
     chunk: "websites",
     sources: ["src/pages/services/websites.tsx", "src/components/ServicePageShell.tsx", "src/lib/translations.ts"],
   },
   "/uber-uns/": {
     path: "/uber-uns/",
-    title: "Über NEO · Die Agentur, die wirklich liefert",
+    title: "Über uns: Marketing-Agentur aus Berlin | NEO THE AGENCY",
     description:
-      "Wer wir sind, woran wir glauben, und das Team hinter den 90-Tage-Sprints. Inhabergeführt, international, ohne Account-Manager-Ketten.",
+      "NEO THE AGENCY ist eine kleine Marketing-Agentur aus Berlin: SEO, KI-Suche, Google Ads, Social Media und Websites für Inhaber und den Mittelstand.",
     robots: "index, follow",
     ...DEFAULT_OG,
+    ogImageAlt: "NEO THE AGENCY, Marketing-Agentur aus Berlin",
     crumbs: [{ name: "Über uns", path: "/uber-uns/" }],
     chunk: "AboutUs",
     sources: ["src/pages/AboutUs.tsx", "src/lib/translations.ts"],
   },
   "/impressum/": {
     path: "/impressum/",
-    title: "Impressum · NEO THE AGENCY",
-    // TODO-COPY: sachliche Platzhalter-Beschreibung, Text-Schritt darf ersetzen.
-    description: "Impressum der NEO THE AGENCY, Kolonnenstraße 8, 10827 Berlin: Anbieterangaben und Kontakt.",
+    title: "Impressum | NEO THE AGENCY",
+    description: "Impressum von NEO THE AGENCY: Angaben gemäß § 5 DDG, Anschrift Kolonnenstraße 8 in 10827 Berlin, Kontakt und Verantwortlicher für die Inhalte.",
     robots: "index, follow",
     ...DEFAULT_OG,
     crumbs: [{ name: "Impressum", path: "/impressum/" }],
@@ -177,9 +179,8 @@ export const ROUTE_META: Record<RoutePath, RouteMeta> = {
   },
   "/datenschutz/": {
     path: "/datenschutz/",
-    title: "Datenschutz · NEO THE AGENCY",
-    // TODO-COPY: sachliche Platzhalter-Beschreibung, Text-Schritt darf ersetzen.
-    description: "Datenschutzerklärung der NEO THE AGENCY: welche Daten diese Website verarbeitet, wozu und welche Rechte Sie haben.",
+    title: "Datenschutz | NEO THE AGENCY",
+    description: "Datenschutzerklärung von NEO THE AGENCY: welche Daten diese Website bei Hosting, Kontaktformular und SEO-Analyse verarbeitet und welche Rechte Sie haben.",
     robots: "index, follow",
     ...DEFAULT_OG,
     crumbs: [{ name: "Datenschutz", path: "/datenschutz/" }],
@@ -190,7 +191,7 @@ export const ROUTE_META: Record<RoutePath, RouteMeta> = {
 
 export const NOT_FOUND_META: RouteMeta = {
   path: "/404",
-  title: "Seite nicht gefunden · NEO THE AGENCY",
+  title: "Seite nicht gefunden | NEO THE AGENCY",
   description: "Diese Seite gibt es nicht. Zurück zur Startseite von NEO THE AGENCY.",
   robots: "noindex, follow",
   ...DEFAULT_OG,

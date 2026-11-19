@@ -24,7 +24,7 @@ export function InputStep({ initial, onAnalyse, error }: Props) {
   const c = COPY[lang]
 
   const [domain, setDomain] = useState(initial.domain)
-  const [currency, setCurrency] = useState(initial.currency)
+  const [currency] = useState('EUR')
   const [aov, setAov] = useState<string>(String(initial.aov))
   const [convRate, setConvRate] = useState<string>(String((initial.conversionRate * 100).toFixed(1)))
   const [industryHint, setIndustryHint] = useState(initial.industryHint)
@@ -86,16 +86,7 @@ export function InputStep({ initial, onAnalyse, error }: Props) {
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className="relative w-full max-w-[720px]"
       >
-        {/* Top row: language pills (left) + currency picker (right) */}
-        <div className="flex flex-wrap items-center justify-center gap-3 sm:justify-between">
-          {/* Sprachauswahl entfernt (19.11.2026): die Seite ist nur Deutsch. */}
-          <CurrencyPicker
-            value={currency}
-            onChange={setCurrency}
-            ariaLabel={c.currencyPicker.label}
-            lang={lang}
-          />
-        </div>
+        {/* Sprach- und Währungsauswahl entfernt (19.11.2026): nur Deutsch, Währung fest in Euro. */}
 
         {/* Eyebrow + Title */}
         <div className="mx-auto mt-9 max-w-[640px] text-center">

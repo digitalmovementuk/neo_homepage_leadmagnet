@@ -314,7 +314,7 @@ const CaseStorySlide = ({
         maxHeight: "100vh",
       }}
       aria-roledescription="slide"
-      aria-label={`${index + 1} of ${total}: ${study.client}`}
+      aria-label={`${index + 1} von ${total}: ${study.client}`}
     >
       <StoryVideo file={study.video} videoRef={videoRef} />
 
@@ -333,7 +333,7 @@ const CaseStorySlide = ({
           above (they have pointer-events-none so taps still reach here). */}
       <button
         type="button"
-        aria-label="Next case study"
+        aria-label="Nächstes Kundenprojekt"
         onClick={onTap}
         className="absolute inset-0 z-10 cursor-pointer bg-transparent"
       />

@@ -11,7 +11,7 @@ export function Contact() {
   const isEN = lang === "en";
   const SERVICES = isEN
     ? ["SEO", "Google Ads", "Social Media", "Website", "Not sure yet"]
-    : ["SEO", "Google Ads", "Social Media", "Website", "Noch unsicher"];
+    : ["SEO", "Google Ads", "Social Media", "Websites", "Noch offen"];
   const [submitted, setSubmitted] = useState(false);
   const [hp, setHp] = useState(""); // honeypot
 
@@ -73,7 +73,7 @@ export function Contact() {
                 icon: <MessageCircle size={18} />,
                 label: "WhatsApp",
                 value: isEN ? "Send a message" : "Nachricht schreiben",
-                caption: isEN ? "Reply within 1 h" : "Antwort innerhalb 1 h",
+                caption: isEN ? "Reply within 1 h" : "Antwort meist innerhalb einer Stunde",
                 href: business.whatsappHref,
                 external: true,
                 tone: "whatsapp" as const,
@@ -143,7 +143,7 @@ export function Contact() {
                           fontWeight: 700,
                         }}
                       >
-                        {isEN ? "Get a clear next step." : "Klarer nächster Schritt."}
+                        {isEN ? "Get a clear next step." : "Danach wissen Sie, was als Nächstes sinnvoll ist."}
                       </h3>
                     </div>
                     <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-ink">
@@ -153,7 +153,7 @@ export function Contact() {
                   <div className="mt-4 grid grid-cols-3 gap-1.5 sm:gap-2">
                     {(isEN
                       ? ["2 min", "24 h", "No pressure"]
-                      : ["2 Min.", "24 h", "Kein Druck"]
+                      : ["2 Minuten", "Antwort in 24 h", "Unverbindlich"]
                     ).map((item) => (
                       <span
                         key={item}
@@ -200,7 +200,7 @@ export function Contact() {
                   </Field>
                 </div>
                 <Field
-                  label={isEN ? "What do you need?" : "Was brauchen Sie?"}
+                  label={isEN ? "What do you need?" : "Welche Leistung interessiert Sie?"}
                   name="service"
                 >
                   <select
@@ -217,7 +217,7 @@ export function Contact() {
                   </select>
                 </Field>
                 <Field
-                  label={isEN ? "Tell us briefly" : "Erzählen Sie kurz"}
+                  label={isEN ? "Tell us briefly" : "Worum geht es?"}
                   name="message"
                 >
                   <textarea
@@ -227,7 +227,7 @@ export function Contact() {
                     placeholder={
                       isEN
                         ? "Where you are today, where you want to go, and what's in the way."
-                        : "Wo Sie heute stehen, wo Sie hinwollen, und was im Weg steht."
+                        : "Wo Sie heute stehen, wo Sie hinwollen und was Sie gerade bremst."
                     }
                     className={`${inputCls} resize-none min-h-[76px] sm:min-h-[104px]`}
                   />
@@ -265,9 +265,11 @@ export function Contact() {
                 </div>
 
                 <p className="text-[11px] text-ink-muted leading-relaxed">
-                  {isEN
-                    ? "By submitting you agree to be contacted about your enquiry."
-                    : "Mit Absenden stimmen Sie zu, zu Ihrer Anfrage kontaktiert zu werden."}
+                  Der Button öffnet WhatsApp mit Ihrer Nachricht. Mit dem Absenden willigen Sie ein, dass wir Sie zu Ihrer Anfrage kontaktieren. Mehr dazu in der{" "}
+                  <a href="/datenschutz/" className="underline underline-offset-2 hover:text-ink">
+                    Datenschutzerklärung
+                  </a>
+                  .
                 </p>
               </motion.form>
             ) : (
@@ -283,12 +285,10 @@ export function Contact() {
                   <Check size={26} strokeWidth={3} />
                 </div>
                 <h3 className="mt-5 text-[24px] font-extrabold text-ink">
-                  {isEN ? "Enquiry received." : "Anfrage erhalten."}
+                  Fast geschafft.
                 </h3>
                 <p className="mt-2 text-ink-soft leading-relaxed">
-                  {isEN
-                    ? "A founder — not a salesperson — replies personally within 24 h on weekdays."
-                    : "Ein Gründer — kein Vertriebler — antwortet persönlich innerhalb 24 h werktags."}
+                  WhatsApp hat sich mit Ihrer Anfrage geöffnet. Senden Sie die Nachricht dort ab. Der Gründer antwortet Ihnen persönlich, werktags innerhalb von 24 Stunden.
                 </p>
 
                 <div className="mt-7 rounded-2xl border border-ink/10 bg-surface-2 p-5 text-left space-y-3">
@@ -298,12 +298,10 @@ export function Contact() {
                     </span>
                     <div className="text-[13px] text-ink-soft leading-relaxed">
                       <p className="font-bold text-ink">
-                        {isEN ? "Reply within 24 h" : "Antwort innerhalb 24 h"}
+                        Antwort innerhalb von 24 Stunden
                       </p>
                       <p>
-                        {isEN
-                          ? "On weekdays. Audit comes in a 30-minute screen share."
-                          : "Werktags. Audit gibt's im 30-Min-Screen-Share."}
+                        Werktags. Das Audit gehen wir in 30 Minuten gemeinsam per Bildschirmfreigabe durch.
                       </p>
                     </div>
                   </div>
@@ -316,16 +314,14 @@ export function Contact() {
                         {isEN ? "Save the number" : "Nummer speichern"}
                       </p>
                       <p>
-                        {isEN ? "Callbacks come from " : "Rückrufe kommen von "}
+                        Wir rufen von{" "}
                         <a
                           href={business.phoneHref}
                           className="text-ink underline underline-offset-2 hover:opacity-80"
                         >
                           {business.phone}
                         </a>
-                        {isEN
-                          ? ". If we call, that's us."
-                          : ". Wenn wir anrufen, sind wir das."}
+                        {" "}zurück. Speichern Sie die Nummer, dann wissen Sie gleich, dass wir es sind.
                       </p>
                     </div>
                   </div>
@@ -338,7 +334,7 @@ export function Contact() {
                   className="btn btn-ghost mt-6 inline-flex"
                 >
                   <MessageCircle size={14} />{" "}
-                  {isEN ? "Or message on WhatsApp" : "Oder direkt per WhatsApp"}
+                  Oder direkt per WhatsApp schreiben
                 </a>
               </motion.div>
             )}

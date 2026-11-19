@@ -115,7 +115,7 @@ function FeaturedStat({ isEN }: { isEN: boolean }) {
           <div className="inline-flex items-center gap-2 text-[10.5px] font-bold uppercase tracking-[0.18em] text-ink-muted">
             <span>01</span>
             <span className="h-px w-6 bg-ink/15" />
-            <span>{isEN ? "Headline result" : "Vorzeige-Ergebnis"}</span>
+            <span>{isEN ? "Headline result" : "Vorzeigeergebnis"}</span>
           </div>
 
           <span
@@ -140,7 +140,7 @@ function FeaturedStat({ isEN }: { isEN: boolean }) {
           <p className="mt-3 max-w-[440px] text-[14px] sm:text-[15px] text-ink-soft leading-relaxed">
             {isEN
               ? "Average uplift across live SEO and Ads clients in the first six months. We show you the maths behind it every month."
-              : "Durchschnittliche Steigerung über aktive SEO- und Ads-Kunden in den ersten sechs Monaten. Wir zeigen Ihnen jeden Monat die Mathematik dahinter."}
+              : "Durchschnittliche Steigerung bei aktiven SEO- und Ads-Kunden in den ersten sechs Monaten. Die Zahlen dahinter sehen Sie jeden Monat."}
           </p>
         </div>
 
@@ -235,7 +235,7 @@ function DaysStat({ isEN }: { isEN: boolean }) {
       <div className="inline-flex self-center items-center gap-2 text-[10.5px] font-bold uppercase tracking-[0.18em] text-ink-muted">
         <span>02</span>
         <span className="h-px w-6 bg-ink/15" />
-        <span>{isEN ? "To Google page one" : "Bis Google Seite 1"}</span>
+        <span>{isEN ? "To Google page one" : "Bis Seite 1 bei Google"}</span>
       </div>
 
       <div className="my-6">
@@ -276,7 +276,7 @@ function DaysStat({ isEN }: { isEN: boolean }) {
       <p className="text-[14.5px] sm:text-[15.5px] text-ink-soft leading-relaxed">
         {isEN
           ? "From kick-off to the first commercial keyword on page one. The number is the median — some clients are faster."
-          : "Vom Kick-off bis zum ersten kommerziellen Keyword auf der ersten Seite. Der Wert ist der Median — manche Kunden sind schneller."}
+          : "Vom Kickoff bis zum ersten kommerziellen Keyword auf Seite 1. Der Wert ist der Median, manche Kunden sind schneller."}
       </p>
     </motion.div>
   );
@@ -318,14 +318,14 @@ function ReviewsStat({ isEN }: { isEN: boolean }) {
           }}
         >
           {inView ? value : 0}
-          <span className="text-ink/55"> in Q1</span>
+          <span className="text-ink/55"> {isEN ? "in Q1" : "im ersten Quartal"}</span>
         </span>
       </div>
 
       <p className="text-[14.5px] sm:text-[15.5px] text-ink-soft leading-relaxed">
         {isEN
           ? "Four real projects in Q1 2026 — from Azura Living Bali to Cunos. Every brand is now on page one for its core keywords."
-          : "Vier reale Projekte in Q1 2026 — von Azura Living Bali bis Cunos. Jede Marke ist heute auf Seite 1 für ihre Kern-Keywords."}
+          : "Vier echte Projekte im ersten Quartal 2026, von Azura Living Bali bis Cunos. Jede dieser Marken steht heute mit ihren Kern-Keywords auf Seite 1."}
       </p>
     </motion.div>
   );
@@ -421,7 +421,7 @@ function HeritageStat({ isEN }: { isEN: boolean }) {
       <p className="text-[14.5px] sm:text-[15.5px] text-ink-soft leading-relaxed">
         {isEN
           ? "Young studio, clear stance. The team you meet at the first call ships the work — no account-manager ping-pong."
-          : "Junges Studio, klare Ansage. Das Team, das Sie im Erstgespräch treffen, liefert auch die Arbeit ab — kein Account-Manager-Pingpong."}
+          : "Junges Studio, klare Ansage. Das Team aus dem Erstgespräch erledigt auch die Arbeit. Kein Pingpong über Account-Manager."}
       </p>
     </motion.div>
   );

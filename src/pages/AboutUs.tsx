@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, type ReactNode } from "react";
 import { Link } from "react-router-dom";
 import {
   motion,
@@ -8,7 +8,7 @@ import {
 } from "framer-motion";
 import { ArrowRight, Compass, Heart, MapPin, Sparkles, Target } from "lucide-react";
 import { Reveal } from "../lib/Reveal";
-import { useT, useLang } from "../lib/i18n";
+import { useT } from "../lib/i18n";
 import { useDocumentHead } from "../lib/useDocumentHead";
 import { routeHead } from "../content/route-meta";
 import { useSeoModal } from "../lib/seoModal";
@@ -17,24 +17,21 @@ const STUDIO_IMAGE =
   "/media/stock/photo-1497366811353-6870744d04b2-2400.jpg";
 const HERO_IMAGE =
   "/media/stock/photo-1604328698692-f76ea9498e76-2400.jpg";
-const FOUNDER_IMAGE = `${import.meta.env.BASE_URL}brand/raoul-founder.png`;
 
 const EASE_OUT = [0.22, 1, 0.36, 1] as const;
 
 /**
  * AboutUs — full About page.
  *
- * Layout arc: hero (loft photo + intro) → three pillars (vision / mission /
- * values) → founder (long-form note + CV strip) → studio image with location
- * detail → seven-person team grid → final CTA.
+ * Layout arc: hero → three pillars (vision / mission / values) → method
+ * (90-day sprint) → services → audience + why NEO → location → final CTA.
+ * Company only: no people or team section.
  *
  * Visual language stays in lock-step with the homepage: light-surface
  * editorial, ink type, large balanced headlines with a 55%-tone soft tail,
  * and the orange (#FF7A45) accent reserved for proofs and calls-to-action.
  */
 export function AboutUs() {
-  const t = useT();
-  const { lang } = useLang();
   const { openSeo } = useSeoModal();
 
   // Kopfdaten zentral in content/route-meta.ts.
@@ -44,9 +41,10 @@ export function AboutUs() {
     <>
       <AboutHero />
       <Pillars />
-      <FounderBio />
+      <Method />
+      <Services />
+      <AudienceAndWhy />
       <Studio />
-      <TeamGrid />
       <AboutCTA onOpenSeo={openSeo} />
     </>
   );
@@ -78,13 +76,12 @@ function AboutHero() {
       className="surface-dark relative isolate min-h-[78svh] w-full overflow-hidden"
     >
       <motion.div
-        aria-hidden
         style={{ y: imgY, scale: imgScale }}
         className="absolute inset-0 -z-10 h-[120%]"
       >
         <img
           src={HERO_IMAGE}
-          alt=""
+          alt={t.about.hero.imageAlt}
           className="h-full w-full object-cover"
           loading="eager"
           decoding="async"
@@ -182,8 +179,6 @@ const PILLAR_ICONS = [Compass, Target, Heart] as const;
  */
 function Pillars() {
   const t = useT();
-  const { lang } = useLang();
-  const isEN = lang === "en";
 
   return (
     <section
@@ -195,7 +190,7 @@ function Pillars() {
           <Reveal>
             <p className="inline-flex items-center justify-center gap-3 text-[11px] font-bold uppercase tracking-[0.26em] text-ink-muted">
               <span className="h-px w-8 bg-ink/20" aria-hidden />
-              {isEN ? "What we stand on" : "Worauf wir bauen"}
+              {t.about.pillarsIntro.eyebrow}
               <span className="h-px w-8 bg-ink/20" aria-hidden />
             </p>
           </Reveal>
@@ -209,24 +204,15 @@ function Pillars() {
                 fontWeight: 700,
               }}
             >
-              {isEN ? (
-                <>
-                  Three statements.{" "}
-                  <span className="text-ink/55">One way of working.</span>
-                </>
-              ) : (
-                <>
-                  Drei Sätze.{" "}
-                  <span className="text-ink/55">Eine Arbeitsweise.</span>
-                </>
-              )}
+              {t.about.pillarsIntro.headlinePre}{" "}
+              <span className="text-ink/55">
+                {t.about.pillarsIntro.headlineSoft}
+              </span>
             </h2>
           </Reveal>
           <Reveal delay={0.12}>
             <p className="mt-5 mx-auto max-w-[58ch] text-[15px] leading-relaxed text-ink-soft sm:text-[16.5px]">
-              {isEN
-                ? "Every promise we make to clients lines up against these. They sit on the studio wall, and they sit in every brief we accept — or decline."
-                : "Jedes Versprechen an unsere Kunden misst sich daran. Sie hängen im Studio und stehen in jedem Briefing, das wir annehmen — oder ablehnen."}
+              {t.about.pillarsIntro.body}
             </p>
           </Reveal>
         </div>
@@ -429,121 +415,154 @@ function PillarScrollCard({
 }
 
 /* ────────────────────────────────────────────────────────────── */
-/*  Founder bio + CV strip                                          */
+/*  Arbeitsweise, Leistungen, Für wen, Warum NEO                    */
 /* ────────────────────────────────────────────────────────────── */
 
-function FounderBio() {
-  const t = useT();
-  const { lang } = useLang();
-  const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-  // Subtle vertical drift on the founder image — anchors the eye, adds depth
-  // without disturbing the editorial feel.
-  const imgY = useTransform(scrollYProgress, [0, 1], ["-4%", "8%"]);
+function SectionHead({
+  eyebrow,
+  children,
+}: {
+  eyebrow: string;
+  children: ReactNode;
+}) {
+  return (
+    <>
+      <Reveal>
+        <p className="text-[11px] font-bold uppercase tracking-[0.26em] text-ink-muted sm:text-[12px]">
+          {eyebrow}
+        </p>
+      </Reveal>
+      <Reveal delay={0.06}>
+        <h2
+          className="mt-5 balance text-ink"
+          style={{
+            fontSize: "clamp(28px, 4.2vw, 52px)",
+            lineHeight: "1.05",
+            letterSpacing: "-0.03em",
+            fontWeight: 700,
+          }}
+        >
+          {children}
+        </h2>
+      </Reveal>
+    </>
+  );
+}
 
+function Method() {
+  const t = useT();
+  const m = t.about.method;
   return (
     <section
-      ref={ref}
       data-surface="light"
-      className="surface-light-2 relative overflow-hidden pt-16 sm:pt-20 md:pt-24 pb-16 sm:pb-20 md:pb-24"
+      className="surface-light relative overflow-hidden py-20 sm:py-24 md:py-28"
     >
       <div className="container-v3 relative">
-        <div className="grid items-start gap-10 sm:gap-12 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-16">
-          <Reveal>
-            <div className="relative mx-auto w-full max-w-[460px] lg:mx-0 lg:max-w-none">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-[28px] bg-surface-2 shadow-[0_36px_90px_-36px_rgba(38,39,47,0.32)] sm:rounded-[36px]">
-                <motion.img
-                  src={FOUNDER_IMAGE}
-                  alt={`${t.founder.signatureBlock}`}
-                  style={{ y: imgY }}
-                  className="absolute inset-0 h-[112%] w-full object-cover"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <div
-                  aria-hidden
-                  className="absolute inset-0 pointer-events-none"
-                  style={{
-                    background:
-                      "linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,0.45) 100%)",
-                  }}
-                />
-                <div className="absolute inset-x-0 bottom-0 p-6 text-white sm:p-7">
-                  <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-white/80">
-                    {t.about.founder.role}
-                  </p>
-                  <p className="mt-1.5 text-[20px] font-semibold tracking-tight sm:text-[22px]">
-                    Raoul Müller
-                  </p>
-                </div>
-              </div>
-              {/* Decorative offset square behind the photo — adds depth */}
-              <span
-                aria-hidden
-                className="pointer-events-none absolute -bottom-4 -right-4 -z-10 h-24 w-24 rounded-2xl bg-[#FF7A45]/20 sm:-bottom-5 sm:-right-5 sm:h-32 sm:w-32"
-              />
-            </div>
+        <div className="max-w-[760px]">
+          <SectionHead eyebrow={m.eyebrow}>
+            {m.headlinePre}{" "}
+            <span className="text-ink/55">{m.headlineSoft}</span>
+          </SectionHead>
+          <Reveal delay={0.12}>
+            <p className="mt-6 max-w-[60ch] text-[15px] leading-relaxed text-ink-soft sm:text-[16.5px]">
+              {m.intro}
+            </p>
           </Reveal>
-
-          <div>
-            <Reveal>
-              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#FF7A45]">
-                {t.about.founder.eyebrow}
-              </p>
-            </Reveal>
-            <Reveal delay={0.06}>
-              <h2
-                className="mt-5 max-w-[22ch] balance text-ink"
-                style={{
-                  fontSize: "clamp(28px, 4.2vw, 56px)",
-                  lineHeight: "1.04",
-                  letterSpacing: "-0.032em",
-                  fontWeight: 700,
-                }}
-              >
-                {t.about.founder.headlinePre}{" "}
-                <span className="text-ink/55">{t.about.founder.headlineSoft}</span>
-              </h2>
-            </Reveal>
-            <div className="mt-7 space-y-5 text-[15px] leading-relaxed text-ink-soft sm:text-[16.5px]">
-              {t.about.founder.paragraphs.map((p, i) => (
-                <Reveal key={i} delay={0.12 + 0.06 * i}>
-                  <p>{p}</p>
-                </Reveal>
-              ))}
-            </div>
-
-            <Reveal delay={0.32}>
-              <p className="mt-10 mb-4 text-[10.5px] font-bold uppercase tracking-[0.24em] text-ink-muted">
-                {lang === "en" ? "Track record" : "Werdegang"}
-              </p>
-            </Reveal>
-            <ul className="grid gap-3.5 border-t border-ink/10 pt-5 md:grid-cols-2">
-              {t.about.founder.cv.map((c, i) => (
-                <motion.li
-                  key={c.year}
-                  initial={{ opacity: 0, x: -12 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, amount: 0.4 }}
-                  transition={{
-                    duration: 0.5,
-                    delay: 0.36 + 0.06 * i,
-                    ease: EASE_OUT,
-                  }}
-                  className="flex gap-4 text-[13.5px] leading-snug"
-                >
-                  <span className="shrink-0 font-mono text-[12px] font-semibold tracking-[0.04em] text-ink-muted">
-                    {c.year}
-                  </span>
-                  <span className="text-ink-soft">{c.entry}</span>
-                </motion.li>
-              ))}
-            </ul>
-          </div>
         </div>
+        <ol className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {m.steps.map((step, i) => (
+            <motion.li
+              key={step.label}
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.4 }}
+              transition={{ duration: 0.5, delay: 0.06 * i, ease: EASE_OUT }}
+              className="rounded-2xl border border-ink/10 bg-white/70 p-6"
+            >
+              <h3 className="text-[15px] font-bold text-ink sm:text-[16px]">
+                {step.label}
+              </h3>
+              <p className="mt-3 text-[14px] leading-relaxed text-ink-soft sm:text-[14.5px]">
+                {step.body}
+              </p>
+            </motion.li>
+          ))}
+        </ol>
+        <Reveal delay={0.1}>
+          <p className="mt-8 text-[15px] font-semibold text-ink sm:text-[16px]">
+            {m.note}
+          </p>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+function Services() {
+  const t = useT();
+  const sv = t.about.services;
+  return (
+    <section
+      data-surface="light"
+      className="surface-light-2 relative overflow-hidden py-20 sm:py-24 md:py-28"
+    >
+      <div className="container-v3 relative">
+        <div className="max-w-[760px]">
+          <SectionHead eyebrow={sv.eyebrow}>{sv.headline}</SectionHead>
+        </div>
+        <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {sv.items.map((item, i) => (
+            <motion.li
+              key={item.title}
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.4 }}
+              transition={{ duration: 0.5, delay: 0.05 * i, ease: EASE_OUT }}
+            >
+              <Link
+                to={item.href}
+                className="group flex h-full flex-col rounded-2xl border border-ink/10 bg-white p-6 transition-colors hover:border-[#FF7A45]/60"
+              >
+                <h3 className="flex items-center justify-between gap-3 text-[16px] font-bold text-ink sm:text-[17px]">
+                  {item.title}
+                  <ArrowRight
+                    size={16}
+                    strokeWidth={2.2}
+                    aria-hidden
+                    className="shrink-0 text-ink/40 transition-transform group-hover:translate-x-0.5 group-hover:text-[#FF7A45]"
+                  />
+                </h3>
+                <p className="mt-3 text-[14px] leading-relaxed text-ink-soft sm:text-[14.5px]">
+                  {item.body}
+                </p>
+              </Link>
+            </motion.li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+function AudienceAndWhy() {
+  const t = useT();
+  const blocks = [t.about.audience, t.about.why];
+  return (
+    <section
+      data-surface="light"
+      className="surface-light relative overflow-hidden py-20 sm:py-24 md:py-28"
+    >
+      <div className="container-v3 relative grid gap-14 md:grid-cols-2 md:gap-16">
+        {blocks.map((b) => (
+          <div key={b.headline} className="max-w-[560px]">
+            <SectionHead eyebrow={b.eyebrow}>{b.headline}</SectionHead>
+            <Reveal delay={0.12}>
+              <p className="mt-6 text-[15px] leading-relaxed text-ink-soft sm:text-[16.5px]">
+                {b.body}
+              </p>
+            </Reveal>
+          </div>
+        ))}
       </div>
     </section>
   );
@@ -574,13 +593,12 @@ function Studio() {
       className="surface-dark relative isolate overflow-hidden"
     >
       <motion.div
-        aria-hidden
         style={{ y: imgY, scale: imgScale }}
         className="absolute inset-0 -z-10 h-[120%]"
       >
         <img
           src={STUDIO_IMAGE}
-          alt=""
+          alt={t.about.studio.imageAlt}
           className="h-full w-full object-cover"
           loading="lazy"
           decoding="async"
@@ -656,131 +674,6 @@ function Studio() {
         </motion.div>
       </div>
     </section>
-  );
-}
-
-/* ────────────────────────────────────────────────────────────── */
-/*  Team grid                                                        */
-/* ────────────────────────────────────────────────────────────── */
-
-function TeamGrid() {
-  const t = useT();
-  return (
-    <section
-      data-surface="light"
-      className="surface-light relative pt-20 sm:pt-24 md:pt-28 pb-16 sm:pb-20 md:pb-24"
-    >
-      <div className="container-v3">
-        <div className="grid items-end gap-6 lg:grid-cols-[1.15fr_1fr] lg:gap-12 text-center lg:text-left">
-          <div>
-            <Reveal>
-              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-ink-muted">
-                {t.about.team.eyebrow}
-              </p>
-            </Reveal>
-            <Reveal delay={0.06}>
-              <h2
-                className="mt-5 max-w-[18ch] mx-auto lg:mx-0 balance text-ink"
-                style={{
-                  fontSize: "clamp(34px, 5.4vw, 76px)",
-                  lineHeight: "1.02",
-                  letterSpacing: "-0.034em",
-                  fontWeight: 700,
-                }}
-              >
-                {t.about.team.headlinePre}{" "}
-                <span className="text-ink/55">{t.about.team.headlineSoft}</span>
-              </h2>
-            </Reveal>
-          </div>
-          <Reveal delay={0.12}>
-            <p className="text-[15px] sm:text-[17px] text-ink-soft leading-relaxed max-w-[480px] mx-auto lg:mx-0 lg:justify-self-end">
-              {t.about.team.intro}
-            </p>
-          </Reveal>
-        </div>
-
-        <ul className="mt-12 grid gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {t.about.team.members.map((m, i) => (
-            <TeamCard key={m.name} member={m} index={i} />
-          ))}
-        </ul>
-      </div>
-    </section>
-  );
-}
-
-function TeamCard({
-  member,
-  index,
-}: {
-  member: {
-    name: string;
-    role: string;
-    kicker: string;
-    bio: string;
-    image: string;
-  };
-  index: number;
-}) {
-  const ref = useRef<HTMLLIElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-  // Subtle within-frame parallax: the portrait drifts vertically as the
-  // card scrolls past, giving each tile depth without distorting the face.
-  const portraitY = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"]);
-
-  return (
-    <motion.li
-      ref={ref}
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.55, delay: 0.04 * index, ease: EASE_OUT }}
-      viewport={{ once: true, amount: 0.2 }}
-      className="group relative overflow-hidden rounded-[22px] border border-ink/8 bg-white shadow-[0_18px_48px_-30px_rgba(38,39,47,0.22)] transition-[transform,box-shadow] duration-500 hover:-translate-y-1 hover:shadow-[0_28px_70px_-30px_rgba(38,39,47,0.28)]"
-    >
-      <div className="relative aspect-[4/5] overflow-hidden bg-surface-2">
-        <motion.img
-          src={member.image}
-          alt={`${member.name}, ${member.role}`}
-          style={{ y: portraitY }}
-          className="absolute inset-0 h-[112%] w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
-          loading="lazy"
-          decoding="async"
-        />
-        <div
-          aria-hidden
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(0,0,0,0.45) 85%, rgba(0,0,0,0.65) 100%)",
-          }}
-        />
-        <span className="absolute left-4 top-4 rounded-full bg-white/85 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.20em] text-ink shadow-sm backdrop-blur-md">
-          {member.kicker}
-        </span>
-        {/* Name overlay revealed on hover for a richer feel without crowding */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 p-4 text-white opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-          <p className="text-[10.5px] font-bold uppercase tracking-[0.20em] text-white/85">
-            {member.role}
-          </p>
-        </div>
-      </div>
-
-      <div className="p-5 sm:p-6">
-        <h3 className="text-[17px] font-semibold tracking-tight text-ink sm:text-[18px]">
-          {member.name}
-        </h3>
-        <p className="mt-1 text-[12px] font-bold uppercase tracking-[0.16em] text-[#FF7A45] sm:text-[12.5px]">
-          {member.role}
-        </p>
-        <p className="mt-3 text-[13.5px] leading-relaxed text-ink-soft sm:text-[14px]">
-          {member.bio}
-        </p>
-      </div>
-    </motion.li>
   );
 }
 
@@ -877,6 +770,11 @@ function AboutCTA({ onOpenSeo }: { onOpenSeo: () => void }) {
                 {t.about.cta.secondary} <ArrowRight size={14} strokeWidth={2.2} />
               </Link>
             </div>
+          </Reveal>
+          <Reveal delay={0.28}>
+            <p className="mt-6 text-[12.5px] text-white/50 sm:text-[13px]">
+              {t.about.cta.smallprint}
+            </p>
           </Reveal>
         </div>
       </div>

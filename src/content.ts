@@ -6,26 +6,26 @@ export const business = {
   tagline: "Neue Website. Google Seite 1. In 90 Tagen.",
   phone: "+49 160 9689 7003",
   phoneHref: "tel:+4916096897003",
-  // Keine öffentliche E-Mail, bis ein funktionierendes NEO-Postfach existiert.
-  email: "",
-  emailHref: "",
-  whatsapp: "+49 160 9689 7003",
-  whatsappHref: "https://wa.me/4916096897003",
+  email: "info@neotheagency.com",
+  emailHref: "mailto:info@neotheagency.com",
+  whatsapp: "+49 176 82360647",
+  whatsappHref: "https://wa.me/4917682360647",
   address: {
     line1: "Kolonnenstraße 8",
     line2: "10827 Berlin",
     country: "Deutschland",
   },
   socials: [
-    { label: "Instagram", href: "https://www.instagram.com/neotheagency.de/" },
+    { kind: "youtube", label: "NEO auf YouTube", href: "https://www.youtube.com/@neotheagency" },
+    { kind: "facebook", label: "NEO auf Facebook", href: "https://www.facebook.com/p/NEO-The-Agency-61588285349359/" },
   ],
 };
 
 export const navLinks = [
-  { label: "Was wir tun", href: "#services" },
-  { label: "Kundenprojekte", href: "#cases" },
-  { label: "Zahlen", href: "#metrics" },
-  { label: "Kontakt", href: "#contact" },
+  { label: "Leistungen", href: "/#services" },
+  { label: "Über uns", href: "/uber-uns/" },
+  { label: "Kundenprojekte", href: "/#cases" },
+  { label: "Kontakt", href: "/#contact" },
 ];
 
 export const heroStats = [
@@ -200,7 +200,7 @@ export const caseStudies: CaseStudy[] = [
     metrics: [
       { value: "13x", label: "More leads" },
       { value: "60", label: "Days to page 1" },
-      { value: "8x", label: "ROAS" },
+      { value: "8-facher", label: "ROAS" },
     ],
     video: "video/cases/cleaning.mp4",
     accent: "pink",
@@ -216,7 +216,7 @@ export const caseStudies: CaseStudy[] = [
     body:
       "Same traffic, more than ten times the booked deliveries. We rewrote every service page, fixed Core Web Vitals, and rebuilt the quote-request flow around a single primary action.",
     metrics: [
-      { value: "11x", label: "Conversions" },
+      { value: "11×", label: "Conversions" },
       { value: "1.5x", label: "Avg. order value" },
       { value: "1.8s", label: "LCP" },
     ],
@@ -251,13 +251,13 @@ export const caseStudiesDe: CaseStudy[] = [
     location: "London",
     services: ["SEO", "Content", "Webdesign"],
     timeline: "5 Monate",
-    headline: "5x mehr Beratungen über Google",
+    headline: "5× mehr Beratungstermine über Google",
     body:
-      "Die Marke hatte klare Expertise, aber zu wenig Sichtbarkeit. Wir bauten Themenautorität rund um Pension Drawdown und Erbschaftsteuer auf und gaben der Website eine Architektur, die Vertrauen schneller erklärt.",
+      "Die Marke hatte klare Expertise, aber zu wenig Sichtbarkeit. Wir haben Themenautorität rund um Pension Drawdown und Erbschaftsteuer aufgebaut und der Website eine Struktur gegeben, die schneller Vertrauen schafft.",
     metrics: [
-      { value: "5x", label: "Beratungen" },
-      { value: "7x", label: "Organischer Traffic" },
-      { value: "#1", label: "12 Ziel-Keywords" },
+      { value: "5×", label: "Beratungen" },
+      { value: "7×", label: "organischer Traffic" },
+      { value: "#1", label: "für 12 Ziel-Keywords" },
     ],
     video: "video/cases/finance-skyline.mp4",
     accent: "violet",
@@ -265,17 +265,17 @@ export const caseStudiesDe: CaseStudy[] = [
   {
     slug: "cheshire-conservatory-roofs",
     client: "Cheshire Conservatory Roofs",
-    industry: "Dach & Hausbau",
+    industry: "Dach und Hausbau",
     location: "Cheshire",
     services: ["Local SEO", "Google Ads"],
     timeline: "3 Monate",
-    headline: "8x mehr gebuchte Aufträge pro Woche",
+    headline: "8× mehr gebuchte Aufträge pro Woche",
     body:
-      "Aus einer einfachen Broschüren-Seite wurde ein Lead-System. Angebotsformular, Google Business Profile und eine enge Performance-Max-Kampagne füllten den Kalender innerhalb eines Quartals.",
+      "Aus einer einfachen Broschürenseite wurde ein System, das Anfragen erzeugt. Angebotsformular, Google-Unternehmensprofil und eine eng geführte Performance-Max-Kampagne haben den Kalender innerhalb eines Quartals gefüllt.",
     metrics: [
-      { value: "8x", label: "Gebuchte Jobs" },
-      { value: "£42", label: "Kosten pro Lead" },
-      { value: "9/10", label: "Quote zu Auftrag" },
+      { value: "8×", label: "gebuchte Aufträge" },
+      { value: "42 £", label: "pro Anfrage" },
+      { value: "9 von 10", label: "Angeboten werden zu Aufträgen" },
     ],
     video: "video/cases/roofing.mp4",
     accent: "orange",
@@ -287,13 +287,13 @@ export const caseStudiesDe: CaseStudy[] = [
     location: "Manchester",
     services: ["SEO", "Webdesign", "Google Ads"],
     timeline: "4 Monate",
-    headline: "13x mehr Anfragen pro Monat",
+    headline: "13× mehr Anfragen pro Monat",
     body:
-      "Starke Bewertungen, aber kaum Google-Präsenz. Wir bauten die Website neu, ordneten die Service-Struktur und fokussierten Paid Search auf kaufbereite gewerbliche Suchbegriffe.",
+      "Starke Bewertungen, aber kaum Präsenz bei Google. Wir haben die Website neu gebaut, die Leistungsstruktur geordnet und die bezahlte Suche auf gewerbliche Suchbegriffe mit Kaufabsicht ausgerichtet.",
     metrics: [
-      { value: "13x", label: "Mehr Leads" },
+      { value: "13×", label: "mehr Anfragen" },
       { value: "60", label: "Tage bis Seite 1" },
-      { value: "8x", label: "ROAS" },
+      { value: "8-facher", label: "ROAS" },
     ],
     video: "video/cases/cleaning.mp4",
     accent: "pink",
@@ -305,13 +305,13 @@ export const caseStudiesDe: CaseStudy[] = [
     location: "Birmingham",
     services: ["SEO", "Webdesign"],
     timeline: "6 Monate",
-    headline: "11x mehr gebuchte Lieferungen",
+    headline: "11× mehr gebuchte Lieferungen",
     body:
-      "Gleicher Traffic, deutlich mehr Abschlüsse. Wir schrieben jede Service-Seite neu, verbesserten Core Web Vitals und reduzierten den Anfrageprozess auf eine klare Hauptaktion.",
+      "Gleicher Traffic, deutlich mehr Abschlüsse. Wir haben jede Leistungsseite neu geschrieben, die Core Web Vitals verbessert und den Anfrageweg auf eine klare Hauptaktion verkürzt.",
     metrics: [
-      { value: "11x", label: "Conversions" },
-      { value: "1,5x", label: "Warenkorbwert" },
-      { value: "1,8s", label: "LCP" },
+      { value: "11×", label: "Conversions" },
+      { value: "1,5×", label: "Warenkorbwert" },
+      { value: "1,8 s", label: "LCP" },
     ],
     video: "video/cases/logistics.mp4",
     accent: "violet",
@@ -323,11 +323,11 @@ export const caseStudiesDe: CaseStudy[] = [
     location: "Bristol",
     services: ["SEO", "Content", "Conversion"],
     timeline: "8 Monate",
-    headline: "18x mehr organischer Traffic",
+    headline: "18× mehr organischer Traffic",
     body:
-      "Gemeinsam mit den Gründern entstand ein Content-System von null. Heute rankt die Website für 800+ kommerzielle Suchanfragen und bucht Demo-Termine ohne laufende Paid-Spend-Abhängigkeit.",
+      "Gemeinsam mit den Gründern haben wir ein Content-System von Grund auf aufgebaut. Heute rankt die Website für über 800 kommerzielle Suchanfragen und bringt Demo-Termine, ohne dauerhaft von bezahlter Werbung abzuhängen.",
     metrics: [
-      { value: "18x", label: "Organischer Traffic" },
+      { value: "18×", label: "organischer Traffic" },
       { value: "800+", label: "Ranking-Keywords" },
       { value: "12", label: "Demos pro Woche" },
     ],

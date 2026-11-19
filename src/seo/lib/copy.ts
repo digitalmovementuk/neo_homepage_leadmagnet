@@ -161,15 +161,15 @@ export type SeoCopy = {
 
 export const COPY: Record<Lang, SeoCopy> = {
   de: {
-    documentTitleIdle: "SEO Potential Analyser — Neo",
+    documentTitleIdle: "SEO-Potenzialanalyse | NEO THE AGENCY",
     documentTitleAnalysing: (d) => `Analyse läuft: ${d}…`,
-    documentTitleResults: (d, gbp) => `${d} — ${gbp}/Mo Opportunity`,
+    documentTitleResults: (d, gbp) => `${d}: ${gbp} Potenzial pro Monat`,
 
     errors: {
       network:
-        "Analyse-Engine nicht erreichbar. Bitte Verbindung prüfen und erneut versuchen.",
+        "Die Analyse ist gerade nicht erreichbar. Bitte prüfen Sie Ihre Verbindung und versuchen Sie es erneut.",
       captureSend:
-        "Sorry — konnte nicht gesendet werden. Bitte erneut versuchen oder direkt schreiben.",
+        "Das Senden hat nicht geklappt. Bitte versuchen Sie es erneut oder schreiben Sie uns direkt.",
     },
 
     langPicker: {
@@ -183,102 +183,102 @@ export const COPY: Record<Lang, SeoCopy> = {
     },
 
     input: {
-      eyebrow: "SEO Potential Analyser",
-      title: "Wo lebt Ihre Website?",
-      sub: "Eine Domain. Drei kurze Angaben zu Ihrem Geschäft. Wir errechnen, wie viel Umsatz aus organischer Suche aktuell liegen bleibt.",
+      eyebrow: "SEO-Potenzialanalyse",
+      title: "Wie lautet die Adresse Ihrer Website?",
+      sub: "Eine Domain und drei kurze Angaben zu Ihrem Geschäft. Wir berechnen, wie viel Umsatz Ihnen in der Google-Suche derzeit entgeht.",
       placeholder: "meinrestaurant-koeln.de",
-      submit: "Analysieren",
+      submit: "Analyse starten",
       footnote:
-        "Live-Daten aus Semrush · Ihre Zahlen statt Branchenschätzwerte · 8 freie Analysen/Tag",
+        "Live-Daten aus Semrush · gerechnet mit Ihren Zahlen statt Branchenschätzungen · 8 kostenlose Analysen pro Tag",
       domainAria: "Website-Domain",
       refineHeading: "Ihre Geschäftszahlen",
       refineSub:
-        "Je genauer Sie diese Felder ausfüllen, desto präziser ist die Schätzung. Vorbelegungen sind branchenübliche Mittelwerte.",
+        "Je genauer Ihre Angaben, desto genauer die Schätzung. Vorausgefüllt sind übliche Durchschnittswerte Ihrer Branche.",
       domainLabel: "Website",
-      aovLabel: "Durchschnittlicher Umsatz pro Verkauf",
+      aovLabel: "Durchschnittlicher Umsatz pro Auftrag",
       aovHint: "Was bringt Ihnen ein neuer Kunde im Schnitt ein?",
-      conversionRateLabel: "Conversion-Rate (Besucher → Kunde)",
-      conversionRateHint: "Wie viele Website-Besucher kaufen oder werden Lead?",
-      industryHintLabel: "Branche / Geschäftstyp",
-      industryHintPlaceholder: "z. B. Zahnarztpraxis, Restaurant, B2B-SaaS",
-      industryHintHelp: "Optional — leer lassen heißt automatisch erkennen",
+      conversionRateLabel: "Abschlussquote (Besucher, die zu Kunden werden)",
+      conversionRateHint: "Wie viele Website-Besucher kaufen oder fragen an?",
+      industryHintLabel: "Branche",
+      industryHintPlaceholder: "z. B. Zahnarztpraxis, Restaurant, Softwareanbieter",
+      industryHintHelp: "Optional. Wenn Sie das Feld leer lassen, erkennen wir die Branche automatisch.",
     },
 
     analysing: {
       eyebrow: "Analyse läuft",
       lines: [
-        "Domain wird normalisiert…",
-        "Semrush-Datenbank für Region wird gewählt…",
-        "Live-Rankings werden aus Semrush abgefragt…",
-        "Top-Keywords mit Position, Volumen und Difficulty werden geladen…",
-        "Wettbewerber werden über gemeinsame Keywords identifiziert…",
-        "Falls kein Ranking: phrase_related liefert Keyword-Ideen aus Ihrer Branche…",
-        "Click-Through-Raten je Position werden angewendet (Backlinko 2024)…",
-        "Aktuelle vs. Page-1-Klicks werden verglichen…",
-        "Ihre Conversion-Rate und AOV werden gekreuzt…",
-        "90-Tage-Projektion wird modelliert…",
-        "Opportunity-Zahl wird zusammengesetzt…",
+        "Domain wird geprüft…",
+        "Semrush-Daten für Ihre Region werden ausgewählt…",
+        "Aktuelle Google-Positionen werden bei Semrush abgefragt…",
+        "Ihre wichtigsten Suchbegriffe werden mit Position, Suchvolumen und Schwierigkeit geladen…",
+        "Wettbewerber mit denselben Suchbegriffen werden ermittelt…",
+        "Noch keine Positionen? Dann laden wir passende Suchbegriffe aus Ihrer Branche…",
+        "Klickraten je Position werden eingerechnet (Quelle: Backlinko 2024)…",
+        "Klicks heute und auf Seite 1 werden verglichen…",
+        "Ihre Abschlussquote und Ihr Umsatz pro Auftrag werden eingerechnet…",
+        "90-Tage-Prognose wird berechnet…",
+        "Ihr Potenzial wird zusammengerechnet…",
       ],
     },
 
     reveal: {
       eyebrowSep: "·",
       metricLabel: "Geschätzter ungenutzter Umsatz pro Monat",
-      metricSuffix: "/ Monat aus organischer Suche",
+      metricSuffix: "/ Monat aus der Google-Suche",
       showMaths: "So haben wir gerechnet",
       hideMaths: "Schließen",
       mathsIntro:
-        "Summe über alle Keywords aus: monatliches Suchvolumen × CTR an Zielposition × Branchen-Conversion-Rate × Branchen-AOV, abzüglich aktuell geschätztem Wert auf aktueller Position.",
-      mathsCtr: "CTR-Kurve",
-      mathsConv: "Conversion-Rate (Branche)",
-      mathsAov: "AOV (Branche)",
+        "Summe über alle Suchbegriffe: monatliches Suchvolumen × Klickrate auf der Zielposition × Abschlussquote der Branche × Umsatz pro Auftrag in der Branche, abzüglich des geschätzten Werts der heutigen Position.",
+      mathsCtr: "Klickrate je Position",
+      mathsConv: "Abschlussquote (Branche)",
+      mathsAov: "Umsatz pro Auftrag (Branche)",
     },
 
     curve: {
-      title: "90-Tage-Projektion",
-      range: (d) => `Heute → Tag ${d}`,
+      title: "90-Tage-Prognose",
+      range: (d) => `Heute bis Tag ${d}`,
       todayPrefix: "Heute",
       daySuffix: "Tag",
-      perMonth: "Mo",
-      aria: "90-Tage-Projektion",
+      perMonth: "Monat",
+      aria: "90-Tage-Prognose",
     },
 
     breakdown: {
       eyebrow: "Die Aufschlüsselung",
-      headline: "Warum diese Zahl nicht erfunden ist.",
+      headline: "Woher diese Zahl kommt.",
       tabs: {
-        rankings: "Aktuelle Rankings",
-        money: "Geld auf dem Tisch",
-        blockers: "Was Sie blockiert",
+        rankings: "Ihre Positionen heute",
+        money: "Ungenutzter Umsatz",
+        blockers: "Was Sie bremst",
       },
     },
 
     rankings: {
-      searchesPerMo: "Suchen/Mo",
+      searchesPerMo: "Suchen/Monat",
       bands: {
         top3: "Top 3",
         page1: "Seite 1",
         "page2-3": "Seite 2–3",
-        page4plus: "Seite 4+",
-        unranked: "Ohne Ranking",
+        page4plus: "ab Seite 4",
+        unranked: "nicht gefunden",
       },
     },
 
     money: {
-      keyword: "Keyword",
-      searchesPerMo: "Suchen/Mo",
-      now: "Jetzt",
-      ifPage1: "Wenn Seite 1",
-      perMo: "£/Mo",
+      keyword: "Suchbegriff",
+      searchesPerMo: "Suchen/Monat",
+      now: "Heute",
+      ifPage1: "Auf Seite 1",
+      perMo: "€/Monat",
       clicks: "Klicks",
-      total: "Gesamtopportunity pro Monat",
+      total: "Ungenutzter Umsatz pro Monat insgesamt",
     },
 
     blockers: {
       impacts: {
-        high: "Hoher Impact",
-        medium: "Mittlerer Impact",
-        low: "Niedriger Impact",
+        high: "Große Wirkung",
+        medium: "Mittlere Wirkung",
+        low: "Geringe Wirkung",
       },
     },
 
@@ -290,74 +290,74 @@ export const COPY: Record<Lang, SeoCopy> = {
     },
 
     pageRankings: {
-      eyebrow: "Aktuelle Rankings",
+      eyebrow: "Ihre Positionen heute",
       headline: "So sichtbar sind Sie heute.",
-      sub: "Wo Ihre Kunden bei Google bereits suchen — und wo Sie aktuell auftauchen oder eben nicht.",
+      sub: "Wonach Ihre Kunden bei Google schon suchen und wo Sie dabei erscheinen oder fehlen.",
     },
     pageMoney: {
-      eyebrow: "Geld auf dem Tisch",
+      eyebrow: "Ungenutzter Umsatz",
       headline: "Was jede Position pro Monat wert ist.",
-      sub: "Klick-Volumen heute vs. auf Seite 1, multipliziert mit Ihren echten Geschäftszahlen.",
+      sub: "Klicks heute und auf Seite 1, gerechnet mit Ihren echten Geschäftszahlen.",
     },
     pageBlockers: {
-      eyebrow: "Was Sie blockiert",
+      eyebrow: "Was Sie bremst",
       headline: "Drei bis fünf Dinge, die zwischen Ihnen und Seite 1 stehen.",
-      sub: "Konkret und beobachtbar — keine generischen SEO-Phrasen.",
+      sub: "Konkrete Punkte, die sich an Ihrer Website überprüfen lassen.",
     },
 
     summary: {
       eyebrow: "Zusammenfassung",
-      headline: "Bereit, dieses Potenzial zu erschließen?",
-      sub: "Die wichtigsten Erkenntnisse aus Ihrer Analyse — plus ein direkter Draht zu Neo, wenn Sie die 90-Tage-Roadmap wollen.",
+      headline: "Möchten Sie dieses Potenzial nutzen?",
+      sub: "Die wichtigsten Ergebnisse Ihrer Analyse. Wenn Sie den 90-Tage-Plan möchten, sprechen Sie direkt mit NEO.",
       takeaways: {
-        opportunity: "Monatliche Opportunity",
+        opportunity: "Ungenutzter Umsatz pro Monat",
         topWins: "Größte Hebel",
-        topBlocker: "Wichtigster Blocker",
-        timeline: "90-Tage-Pfad",
+        topBlocker: "Größte Bremse",
+        timeline: "Ihr Weg in 90 Tagen",
         timelineBody: (days, gbp) =>
-          `In ${days} Tagen von heute auf ${gbp}/Monat aus organischer Suche.`,
+          `In ${days} Tagen von heute auf ${gbp} pro Monat aus der Google-Suche.`,
       },
-      contactHeadline: "Sprechen Sie mit Neo.",
+      contactHeadline: "Sprechen Sie mit NEO.",
       contactSub:
-        "Werktags innerhalb 24 Stunden zurück mit Ihrer detaillierten Roadmap.",
+        "Ihren ausführlichen Plan bekommen Sie werktags innerhalb von 24 Stunden.",
       trust: [
-        "Antwort werktags innerhalb 24 Stunden",
+        "Antwort werktags innerhalb von 24 Stunden",
         "Unverbindliches Strategiegespräch",
-        "Keine Verpflichtung, kein Spam",
+        "Kein Spam, keine Verpflichtung",
       ],
-      namePlaceholder: "Ihr vollständiger Name",
-      emailPlaceholder: "ihre@firma.com",
+      namePlaceholder: "Vor- und Nachname",
+      emailPlaceholder: "name@ihre-firma.de",
       phonePlaceholder: "Telefon",
       phoneCountryAria: "Ländervorwahl",
-      submit: "Roadmap an mich senden",
+      submit: "90-Tage-Plan anfordern",
       submitting: "Wird gesendet…",
-      note: "Kein Spam. Wir senden die Roadmap einmal und hören nur auf Wunsch wieder.",
+      note: "Kein Spam. Sie bekommen den Plan einmal, danach melden wir uns nur, wenn Sie es möchten.",
     },
 
     capture: {
-      eyebrow: "Die 90-Tage-Roadmap",
-      headline: "Möchten Sie die volle Roadmap?",
+      eyebrow: "Der 90-Tage-Plan",
+      headline: "Möchten Sie den vollständigen Plan?",
       sub: (gbp) =>
-        `Der detaillierte Plan, um diese ${gbp}/Monat zu erschließen — Keyword für Keyword, Blocker für Blocker, in 90 Tagen.`,
+        `Der ausführliche Plan für diese ${gbp} pro Monat: Suchbegriff für Suchbegriff, Hürde für Hürde, in 90 Tagen.`,
       nameLabel: "Name",
-      namePlaceholder: "Ihr vollständiger Name",
+      namePlaceholder: "Vor- und Nachname",
       emailLabel: "E-Mail",
-      emailPlaceholder: "ihre@firma.com",
-      submit: "Roadmap an mich senden",
+      emailPlaceholder: "name@ihre-firma.de",
+      submit: "90-Tage-Plan anfordern",
       submitting: "Wird gesendet…",
-      note: "Kein Spam. Wir senden die Roadmap einmal und hören nur auf Wunsch wieder.",
+      note: "Kein Spam. Sie bekommen den Plan einmal, danach melden wir uns nur, wenn Sie es möchten.",
     },
 
     sent: {
       headline: (domain) => `Ihre Anfrage zu ${domain} ist fast fertig.`,
       body: (gbp) =>
-        `WhatsApp hat sich mit Ihrer Auswertung geöffnet. Senden Sie die Nachricht ab, dann besprechen wir, wie Sie ${gbp}/Monat aus organischer Suche erschließen.`,
+        `WhatsApp hat sich mit Ihrer Auswertung geöffnet. Senden Sie die Nachricht ab, dann besprechen wir, wie Sie ${gbp} pro Monat aus der Google-Suche gewinnen.`,
       nextSteps: {
         title: "Was als Nächstes passiert",
         items: [
           "Nachricht in WhatsApp absenden.",
-          "Persönliche Antwort werktags innerhalb 24 Stunden.",
-          "Optional ein 30-Minuten-Strategiegespräch mit Neo, wenn Sie wollen.",
+          "Persönliche Antwort werktags innerhalb von 24 Stunden.",
+          "Auf Wunsch ein 30-minütiges Strategiegespräch mit NEO.",
         ],
       },
       reset: "Weitere Domain analysieren",
@@ -366,9 +366,9 @@ export const COPY: Record<Lang, SeoCopy> = {
     reset: "Weitere Domain analysieren",
 
     emailSubject: (name, email, domain, gbp) =>
-      `SEO Analyser — ${name || email} — ${domain} — ${gbp}/Mo Opportunity`,
+      `SEO-Analyse: ${name || email}, ${domain}, ${gbp} pro Monat`,
     emailAutoresponse: (name, domain, gbp, industry, location) =>
-      `Hi ${name},\n\nDanke, dass Sie Neos SEO Potential Analyser auf ${domain} laufen lassen haben.\n\nEinschätzung: rund ${gbp}/Monat ungenutzte Opportunity aus organischer Suche, basierend auf der erkannten Branche (${industry}) und dem Standort (${location}).\n\nWir melden uns werktags innerhalb 24 Stunden mit der detaillierten 90-Tage-Roadmap.\n\n— Neo The Agency`,
+      `Guten Tag ${name},\n\ndanke, dass Sie die SEO-Potenzialanalyse von NEO für ${domain} genutzt haben.\n\nUnsere Einschätzung: rund ${gbp} pro Monat ungenutzter Umsatz aus der Google-Suche, auf Basis der erkannten Branche (${industry}) und des Standorts (${location}).\n\nWir melden uns werktags innerhalb von 24 Stunden mit Ihrem ausführlichen 90-Tage-Plan.\n\nViele Grüße\nNEO THE AGENCY`,
   },
 
   en: {

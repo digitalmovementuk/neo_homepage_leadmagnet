@@ -1,31 +1,25 @@
-import { Phone, MapPin, ArrowUpRight } from "lucide-react";
+import { Phone, MapPin, ArrowUpRight, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import { business } from "../content";
-import { useT, useLang } from "../lib/i18n";
+import { useT } from "../lib/i18n";
 
-function IGIcon({ size = 16 }: { size?: number }) {
+function SocialIcon({ kind, size = 16 }: { kind: string; size?: number }) {
+  if (kind === "youtube") {
+    return (
+      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+        <rect x="2.5" y="5" width="19" height="14" rx="4" />
+        <path d="M10 9.2v5.6l4.8-2.8z" fill="currentColor" />
+      </svg>
+    );
+  }
   return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden
-    >
-      <rect x="3" y="3" width="18" height="18" rx="5" />
-      <circle cx="12" cy="12" r="4" />
-      <circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" />
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <path d="M14.5 8H17V4.5h-2.5A4 4 0 0 0 10.5 8.5V11H8v3.5h2.5V21H14v-6.5h2.6l.4-3.5h-3V8.9c0-.5.4-.9.5-.9z" />
     </svg>
   );
 }
 export function Footer() {
   const t = useT();
-  const { lang } = useLang();
-  const isEN = lang === "en";
   return (
     <footer
       id="footer"
@@ -50,7 +44,7 @@ export function Footer() {
             to="/#contact"
             className="inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-[0.18em] text-ink hover:text-ink-soft transition-colors"
           >
-            {isEN ? "Start a project" : "Projekt starten"}{" "}
+            Projekt starten{" "}
             <ArrowUpRight size={14} />
           </Link>
         </div>
@@ -71,7 +65,7 @@ export function Footer() {
             </Column>
           ))}
 
-          <Column heading={isEN ? "Contact" : "Kontakt"}>
+          <Column heading="Kontakt">
             <ul className="space-y-3 flex flex-col items-center sm:items-start">
               <li>
                 <a
@@ -93,13 +87,22 @@ export function Footer() {
                   rel="noopener noreferrer"
                   className={`${linkCls} inline-flex items-center gap-2`}
                 >
-                  {isEN ? "Message on WhatsApp" : "WhatsApp schreiben"}
+                  WhatsApp schreiben
+                </a>
+              </li>
+              <li>
+                <a
+                  href={business.emailHref}
+                  className={`${linkCls} inline-flex items-center gap-2`}
+                >
+                  <Mail size={13} strokeWidth={2.2} className="text-ink-faint" />
+                  {business.email}
                 </a>
               </li>
             </ul>
           </Column>
 
-          <Column heading={isEN ? "Office" : "Büro"}>
+          <Column heading="Büro">
             <address className="not-italic text-[13.5px] text-ink-soft leading-relaxed flex justify-center sm:justify-start gap-2">
               <MapPin
                 size={13}
@@ -111,7 +114,7 @@ export function Footer() {
                 <br />
                 {business.address.line2}
                 <br />
-                {isEN ? "Germany" : business.address.country}
+                {business.address.country}
               </span>
             </address>
 
@@ -125,7 +128,7 @@ export function Footer() {
                   aria-label={s.label}
                   className="grid h-9 w-9 place-items-center rounded-full border border-ink/15 text-ink-soft hover:text-ink hover:border-ink/45 transition"
                 >
-                  <IGIcon size={15} />
+                  <SocialIcon kind={s.kind} size={15} />
                 </a>
               ))}
             </div>
@@ -134,10 +137,7 @@ export function Footer() {
 
         {/* Legal strip */}
         <div className="mt-14 sm:mt-16 pt-6 border-t border-ink/10 flex flex-col items-center sm:flex-row sm:items-center sm:justify-between gap-4 text-[12px] text-ink-muted text-center sm:text-left">
-          <p>
-            © {new Date().getFullYear()} {business.name}.{" "}
-            {isEN ? "All rights reserved." : "Alle Rechte vorbehalten."}
-          </p>
+          <p>{t.footer.rights.replace("{year}", String(new Date().getFullYear()))}</p>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
             {t.footer.legal.map((l) => (
               <Link key={l.label} to={l.href} className="hover:text-ink">
@@ -145,7 +145,7 @@ export function Footer() {
               </Link>
             ))}
             <span className="text-ink-faint">·</span>
-            <span>{isEN ? "Germany" : "Deutschland"}</span>
+            <span>Deutschland</span>
           </div>
         </div>
       </div>

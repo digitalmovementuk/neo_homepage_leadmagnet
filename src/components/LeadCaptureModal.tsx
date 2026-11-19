@@ -32,10 +32,10 @@ export function LeadCaptureModal() {
     submit: t.modal.submit,
     successHeadline: isEN
       ? "Got it — we'll be in touch."
-      : "Erhalten — wir melden uns.",
+      : "Fast geschafft.",
     successBody: isEN
       ? "Your audit lands in your inbox within 24 working hours."
-      : "Ihr Audit landet werktags innerhalb 24 Stunden in Ihrem Posteingang.",
+      : "WhatsApp hat sich geöffnet. Senden Sie die Nachricht dort ab, dann erhalten Sie Ihr Audit werktags innerhalb von 24 Stunden.",
   };
 
   const c = content ?? defaultContent;
@@ -83,7 +83,7 @@ export function LeadCaptureModal() {
     e.preventDefault();
     const d = new FormData(e.currentTarget);
     const text = `Hallo NEO, ich möchte ein kostenloses Erstgespräch.\nName: ${String(d.get("name") ?? "").trim()}\nE-Mail: ${String(d.get("email") ?? "").trim()}`;
-    window.open(`https://wa.me/4916096897003?text=${encodeURIComponent(text)}`, "_blank", "noopener");
+    window.open(`https://wa.me/4917682360647?text=${encodeURIComponent(text)}`, "_blank", "noopener");
     setSubmitted(true);
     window.setTimeout(() => setOpen(false), 1600);
   };
@@ -171,7 +171,7 @@ export function LeadCaptureModal() {
                     <p className="text-[11px] text-ink-muted text-center pt-1 leading-relaxed">
                       {isEN
                         ? "No spam. Opens WhatsApp to send."
-                        : "Kein Spam. Öffnet WhatsApp zum Absenden."}
+                        : "Kein Spam. Zum Absenden öffnet sich WhatsApp."}
                     </p>
                   </form>
                 </>

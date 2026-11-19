@@ -108,7 +108,7 @@ export function AgencySnapshot() {
     <section
       id="snapshot"
       data-surface="light"
-      aria-label={isEN ? "Agency snapshot" : "Agentur-Snapshot"}
+      aria-label={isEN ? "Agency snapshot" : "Agentur auf einen Blick"}
       aria-roledescription="carousel"
       className="surface-light relative flex flex-col pt-16 sm:pt-20 md:pt-24 pb-16 sm:pb-20 md:pb-24 md:min-h-[680px]"
     >

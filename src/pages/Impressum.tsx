@@ -29,8 +29,13 @@ export function Impressum() {
           </a>
           <br />
           WhatsApp:{" "}
-          <a className={a} href="https://wa.me/4916096897003" target="_blank" rel="noopener noreferrer">
-            +49 160 9689 7003
+          <a className={a} href="https://wa.me/4917682360647" target="_blank" rel="noopener noreferrer">
+            +49 176 82360647
+          </a>
+          <br />
+          E-Mail:{" "}
+          <a className={a} href="mailto:info@neotheagency.com">
+            info@neotheagency.com
           </a>
         </p>
       </LegalSection>

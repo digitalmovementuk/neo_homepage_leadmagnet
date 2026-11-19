@@ -59,15 +59,15 @@ export function StickyCTA() {
         className="flex w-full max-w-[min(640px,calc(100vw-32px))] items-center justify-center gap-3 sm:gap-5 rounded-full bg-white/85 backdrop-blur-xl pl-5 sm:pl-7 pr-2 sm:pr-3 py-2 sm:py-3 border border-white/55 animate-pulse-bar"
       >
         <p className="text-[13px] sm:text-[14.5px] font-semibold text-ink leading-tight whitespace-nowrap">
-          {t.nav.cta}{" "}
-          <span className="hidden sm:inline text-ink-muted font-medium">· {t.hero.priceLineSub}</span>
+          Kostenloses Erstgespräch{" "}
+          <span className="hidden sm:inline text-ink-muted font-medium">· Antwort in 24 h</span>
         </p>
         <Link
           to="/#contact"
           tabIndex={show ? 0 : -1}
           className="relative inline-flex items-center justify-center gap-1.5 sm:gap-2 rounded-full bg-[#0071E3] hover:bg-[#0077ED] text-white font-semibold text-[13.5px] sm:text-[15px] px-5 sm:px-7 py-2.5 sm:py-3.5 transition-colors animate-pulse-plum whitespace-nowrap"
         >
-          {t.hero.cta} <ArrowRight size={14} strokeWidth={2.4} />
+          {t.sticky.button ?? t.hero.cta} <ArrowRight size={14} strokeWidth={2.4} />
         </Link>
       </motion.div>
     </div>

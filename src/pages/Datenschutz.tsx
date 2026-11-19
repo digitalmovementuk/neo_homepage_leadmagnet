@@ -11,7 +11,11 @@ export function Datenschutz() {
         <p>
           Digital Movement Germany, Raoul Müller, Kolonnenstraße 8, 10827 Berlin.
           <br />
-          Telefon und WhatsApp: +49 160 9689 7003
+          Telefon: +49 160 9689 7003
+          <br />
+          WhatsApp: +49 176 82360647
+          <br />
+          E-Mail: info@neotheagency.com
         </p>
         <p>
           Diese Erklärung beschreibt, welche personenbezogenen Daten beim Besuch von
@@ -41,16 +45,7 @@ export function Datenschutz() {
         </p>
       </LegalSection>
 
-      <LegalSection title="4. Lokale Speicherung der Spracheinstellung">
-        <p>
-          Wählen Sie Deutsch oder Englisch, speichern wir diese Auswahl im lokalen Speicher Ihres
-          Browsers (localStorage). Die Angabe verlässt Ihr Gerät nicht und dient nur dazu, die Seite in
-          Ihrer Sprache anzuzeigen (§ 25 Abs. 2 Nr. 2 TDDDG). Sie können sie jederzeit in Ihrem Browser
-          löschen.
-        </p>
-      </LegalSection>
-
-      <LegalSection title="5. Kontakt per Telefon, WhatsApp und Formular">
+      <LegalSection title="4. Kontakt per Telefon, WhatsApp und Formular">
         <p>
           Rufen Sie uns an oder schreiben Sie uns, verarbeiten wir Ihre Angaben, um Ihre Anfrage zu
           beantworten (Art. 6 Abs. 1 lit. b DSGVO).
@@ -64,7 +59,7 @@ export function Datenschutz() {
         </p>
       </LegalSection>
 
-      <LegalSection title="6. Kostenlose SEO-Analyse">
+      <LegalSection title="5. Kostenlose SEO-Analyse">
         <p>
           Nutzen Sie die SEO-Analyse, senden wir die eingegebene Domain und Ihre Angaben zu
           Branche und Kennzahlen an eine Serverfunktion bei Vercel. Diese ruft öffentlich verfügbare
@@ -75,15 +70,15 @@ export function Datenschutz() {
         </p>
       </LegalSection>
 
-      <LegalSection title="7. Links zu anderen Websites">
+      <LegalSection title="6. Links zu anderen Websites">
         <p>
-          Wir verlinken auf Instagram, Google und Websites unserer Kunden. Daten werden erst übertragen,
+          Wir verlinken auf YouTube, Facebook, Google und Websites unserer Kunden. Daten werden erst übertragen,
           wenn Sie einen solchen Link anklicken. Ab dann gelten die Datenschutzhinweise des jeweiligen
           Anbieters.
         </p>
       </LegalSection>
 
-      <LegalSection title="8. Ihre Rechte">
+      <LegalSection title="7. Ihre Rechte">
         <p>
           Sie haben das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16), Löschung (Art. 17),
           Einschränkung der Verarbeitung (Art. 18), Datenübertragbarkeit (Art. 20) und Widerspruch

@@ -107,7 +107,7 @@ export default function SeoAnalyser() {
         `Potenzial: ${gbp}/Monat`,
       ].filter(Boolean).join('\n')
       void blockerLines; void keywordLines
-      window.open(`https://wa.me/4916096897003?text=${encodeURIComponent(text)}`, '_blank', 'noopener')
+      window.open(`https://wa.me/4917682360647?text=${encodeURIComponent(text)}`, '_blank', 'noopener')
       setStep('sent')
     } catch (err) {
       console.error(err)

@@ -173,7 +173,15 @@ function Hero({
                   fontWeight: 700,
                 }}
               >
-                <span className="block">{page.hero.headlineTop}</span>
+                {page.hero.h1Lead && (
+                  <span
+                    className="block not-italic normal-case font-semibold text-white/80 mb-3 sm:mb-4"
+                    style={{ fontSize: "clamp(18px, 2.4vw, 32px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}
+                  >
+                    {page.hero.h1Lead}{" "}
+                  </span>
+                )}
+                <span className="block">{page.hero.headlineTop}</span>{" "}
                 <span className="block font-medium text-white/95">
                   {page.hero.headlineBottom}
                 </span>

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useDocumentHead } from "../lib/useDocumentHead";
 import { routeHead } from "../content/route-meta";
 
@@ -12,7 +12,7 @@ export function NotFound() {
       className="surface-dark relative min-h-[100svh] flex items-center justify-center px-6"
     >
       <div className="text-center max-w-[560px]">
-        <p className="eyebrow text-white/55">404</p>
+        <p className="eyebrow text-white/55">Fehler 404</p>
         <h1
           className="mt-5 text-white"
           style={{
@@ -22,18 +22,27 @@ export function NotFound() {
             fontWeight: 700,
           }}
         >
-          Hier ist nichts.
+          Diese Seite gibt es nicht.
         </h1>
         <p className="mt-5 text-[15px] sm:text-[17px] text-white/65 leading-relaxed">
-          {"Die Seite, die Sie suchen, gibt es nicht. Vielleicht ist sie umgezogen, vielleicht haben wir sie nie gebaut. Wie auch immer — zurück zum Start."}
+          Vielleicht hat sich die Adresse geändert oder sie enthält einen Tippfehler. Auf der Startseite finden Sie alle Leistungen und den Weg zum Erstgespräch.
         </p>
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
         <Link
           to="/"
-          className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#0071E3] hover:bg-[#0077ED] text-white font-medium text-[15px] px-6 py-3 transition-colors"
+          className="inline-flex items-center gap-2 rounded-full bg-[#0071E3] hover:bg-[#0077ED] text-white font-medium text-[15px] px-6 py-3 transition-colors"
         >
           <ArrowLeft size={15} />
           Zur Startseite
         </Link>
+        <Link
+          to={{ pathname: "/", hash: "#contact" }}
+          className="inline-flex items-center gap-2 rounded-full border border-white/30 hover:border-white/60 text-white font-medium text-[15px] px-6 py-3 transition-colors"
+        >
+          Erstgespräch anfragen
+          <ArrowRight size={15} />
+        </Link>
+        </div>
       </div>
     </section>
   );

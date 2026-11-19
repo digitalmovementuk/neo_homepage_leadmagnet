@@ -63,13 +63,13 @@ export const seoDe = {
   },
 
   header: {
-    logoAlt: "NEO the Agency Logo",
+    logoAlt: "NEO THE AGENCY",
     servicesLabel: "Leistungen",
     services: [
       { label: "SEO", to: SEO_PATH, hash: "" },
       { label: "Google Ads", to: "/services/google-ads/", hash: "" },
-      { label: "Websites", to: "/services/websites/", hash: "" },
       { label: "Social Media", to: "/services/social-media/", hash: "" },
+      { label: "Websites", to: "/services/websites/", hash: "" },
     ],
     links: [
       { label: "Über uns", to: "/uber-uns/", hash: "" },
@@ -79,9 +79,6 @@ export const seoDe = {
     cta: "Erstgespräch",
     menuOpen: "Menü öffnen",
     menuClose: "Menü schließen",
-    /** Zeigt nur die aktuelle Sprache. Es gibt keine englische Fassung dieser Seite. */
-    languageCode: "DE",
-    languageLabel: "Sprache: Deutsch",
     skipLabel: "Zum Inhalt springen",
   },
 
@@ -105,7 +102,7 @@ export const seoDe = {
   },
 
   trail: {
-    label: "Brotkrumen-Navigation",
+    label: "Navigationspfad",
     items: [
       { label: "Startseite", to: "/", hash: "" },
       { label: "Leistungen", to: "/", hash: "#services" },
@@ -730,7 +727,7 @@ export const seoDe = {
     button: "Erstgespräch anfragen",
     underButton: "Erste Rechnung erst nach der Einreichung bei Google",
     note: "Wir nutzen Ihre Angaben, um Sie zu Ihrer Anfrage zu kontaktieren. Details finden Sie in unserer Datenschutzerklärung.",
-    success: "Danke. Wir melden uns innerhalb von 24 Stunden an Werktagen.",
+    success: "Danke. Wir melden uns werktags innerhalb von 24 Stunden.",
     altHeading: "Lieber direkt sprechen?",
     callButton: "NEO anrufen",
     whatsappButton: "Per WhatsApp schreiben",
@@ -744,8 +741,8 @@ export const seoDe = {
   },
 
   footer: {
-    logoAlt: "NEO the Agency Logo",
-    blurb: "SEO, Google Ads, Websites und Social Media für Kleinunternehmen in ganz Deutschland.",
+    logoAlt: "NEO THE AGENCY",
+    blurb: "Performance-Marketing aus Berlin: SEO, Google Ads, Websites und Social Media für inhabergeführte und kleine Unternehmen in ganz Deutschland. Wir machen Ihre Website zum Vertriebskanal, der qualifizierte Anfragen bringt.",
     startLink: "Projekt starten",
     servicesTitle: "Leistungen",
     agencyTitle: "Agentur",
@@ -754,7 +751,7 @@ export const seoDe = {
     whatsappLine: "WhatsApp: +49 176 82360647",
     youtubeLabel: "NEO auf YouTube",
     facebookLabel: "NEO auf Facebook",
-    copyright: "© 2026 Digital Movement Germany, Raoul Müller, handelnd als NEO the Agency",
+    copyright: "© {year} Digital Movement Germany, Raoul Müller, handelnd als NEO the Agency. Alle Rechte vorbehalten.",
     impressum: "Impressum",
     datenschutz: "Datenschutz",
   },

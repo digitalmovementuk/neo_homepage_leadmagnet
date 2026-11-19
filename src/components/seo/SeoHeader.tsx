@@ -214,14 +214,6 @@ export function SeoHeader() {
           </nav>
 
           <div className="flex items-center gap-2 sm:gap-3">
-            {/* Sprach-Kennzeichen: zeigt nur „DE“, schaltet nichts um (siehe README). */}
-            <span
-              role="img"
-              aria-label={header.languageLabel}
-              className={`inline-flex h-11 min-w-[44px] items-center justify-center rounded-pill border px-3 text-[12px] font-bold tracking-[0.12em] backdrop-blur transition-colors md:h-9 md:min-w-[40px] ${pillTone}`}
-            >
-              {header.languageCode}
-            </span>
             <a
               href={`#${anchors.finalCta}`}
               className={`hidden md:inline-flex items-center gap-2 rounded-full bg-[#0071E3] font-medium text-white transition-all duration-300 hover:bg-[#0077ED] ${
