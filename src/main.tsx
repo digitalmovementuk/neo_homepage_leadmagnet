@@ -18,7 +18,7 @@ const tree = (
   </StrictMode>
 );
 
-// /seo-agentur/ kommt vorgerendert aus dem Build: dann hydrieren statt neu zeichnen.
+// Alle Seiten kommen vorgerendert aus dem Build (scripts/prerender-seo.mjs): dann hydrieren statt neu zeichnen.
 const rootEl = document.getElementById("root")!;
 if (rootEl.firstElementChild) hydrateRoot(rootEl, tree);
 else createRoot(rootEl).render(tree);

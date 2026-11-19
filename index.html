@@ -5,26 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#FF7A45" />
 
-    <!-- GitHub Pages SPA-fallback decode (rafgraph/spa-github-pages).
-         404.html redirects unknown URLs to /?/path encoded — this script
-         flips that back into a real history entry so React Router can
-         match the route on first paint. -->
-    <script type="text/javascript">
-      (function (l) {
-        if (l.search[1] === "/") {
-          var decoded = l.search
-            .slice(1)
-            .split("&")
-            .map(function (s) { return s.replace(/~and~/g, "&"); })
-            .join("?");
-          window.history.replaceState(
-            null,
-            "",
-            l.pathname.slice(0, -1) + decoded + l.hash
-          );
-        }
-      })(window.location);
-    </script>
 
     <title>NEO THE AGENCY — Neue Website + Google Seite 1 in 90 Tagen</title>
     <meta
@@ -86,32 +66,7 @@
     <!-- Fonts are self-hosted (no request to Google). -->
     <link rel="stylesheet" href="/fonts/geist.css" />
 
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "NEO THE AGENCY",
-        "alternateName": "Neo Agency",
-        "description": "Deutsche Digitalagentur für planbares Wachstum. SEO, Google Ads, Social Media, Websites.",
-        "url": "https://www.neotheagency.de/",
-        "logo": "https://www.neotheagency.de/brand/icon-blue-n-512.png",
-        "image": "https://www.neotheagency.de/brand/og-cover.jpg",
-        "telephone": "+49 160 9689 7003",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Kolonnenstraße 8",
-          "addressLocality": "Berlin",
-          "postalCode": "10827",
-          "addressCountry": "DE"
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "5.0",
-          "reviewCount": "20"
-        },
-        "sameAs": ["https://www.instagram.com/neotheagency.de/"]
-      }
-    </script>
+    <!-- JSON-LD je Seite setzt scripts/prerender-seo.mjs aus src/content/route-meta.ts. -->
   </head>
   <body>
     <a class="skip-link" href="#main">Zum Inhalt springen</a>

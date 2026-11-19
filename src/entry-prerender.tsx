@@ -1,9 +1,11 @@
 /**
- * Prerender-Einstieg für /seo-agentur/ · v1.1 (19.11.2026)
+ * Prerender-Einstieg für alle Seiten · v2.0 (19.11.2026)
  * Wird nur von scripts/prerender-seo.mjs beim Build genutzt (Vite SSR-Build),
- * nie im Browser. Rendert dieselbe Route wie die App, mit StaticRouter.
+ * nie im Browser. Rendert dieselben Routen wie die App, mit StaticRouter.
  *
  * Changelog
+ *   v2.0 (19.11.2026) renderRoute(path) für jede Route (auch 404); Kopfdaten
+ *        aus content/route-meta.ts.
  *   v1.2 (19.11.2026) Dieselben Provider wie src/main.tsx (LeadModal, SeoModal), damit Hydrierung passt.
  *   v1.1 (19.11.2026) progressiveChunkSize: Infinity, damit der Seiteninhalt
  *        direkt im HTML steht (sonst lagert React ihn ans Ende aus und blendet
@@ -18,19 +20,28 @@ import { LanguageProvider } from "./lib/i18n";
 import { LeadModalProvider } from "./lib/leadModal";
 import { SeoModalProvider } from "./lib/seoModal";
 import { buildSeoJsonLd, seoHead } from "./content/seo-head";
-import { seoDe } from "./content/seo-de";
+import {
+  NOT_FOUND_META,
+  ROUTE_META,
+  ROUTE_PATHS,
+  SITE_ORIGIN,
+  buildRouteJsonLd,
+  routeHead,
+} from "./content/route-meta";
 
-export { buildSeoJsonLd, seoHead };
-export const SEO_PATH = seoDe.path;
+export { NOT_FOUND_META, ROUTE_META, ROUTE_PATHS, SITE_ORIGIN, buildRouteJsonLd, buildSeoJsonLd, routeHead, seoHead };
 
-/** Rendert die Seite vollständig (wartet auf lazy geladene Teile) und gibt das HTML für #root zurück. */
-export async function renderSeoPage(): Promise<string> {
+/** Adresse, unter der die App die 404-Ansicht zeigt (gibt es nicht als Route). */
+export const NOT_FOUND_PROBE = "/__seite-nicht-gefunden__/";
+
+/** Rendert eine Route vollständig (wartet auf lazy geladene Teile) und gibt das HTML für #root zurück. */
+export async function renderRoute(location: string): Promise<string> {
   const { prelude } = await prerenderToNodeStream(
     <StrictMode>
       <LanguageProvider>
         <LeadModalProvider>
           <SeoModalProvider>
-            <StaticRouter basename={BASE} location={seoDe.path}>
+            <StaticRouter basename={BASE} location={location}>
               <AppRoutes />
             </StaticRouter>
           </SeoModalProvider>
