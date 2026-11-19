@@ -28,6 +28,8 @@ export function WhyManifesto() {
                 <img
                   src={`${import.meta.env.BASE_URL}brand/raoul-founder.png`}
                   alt={t.whyManifesto.founderName}
+                  width={426}
+                  height={426}
                   className="absolute inset-0 h-full w-full object-cover"
                   loading="lazy"
                   decoding="async"

@@ -38,6 +38,8 @@ export function FounderNote() {
                 <motion.img
                   src={`${import.meta.env.BASE_URL}brand/raoul-founder.png`}
                   alt="Raoul Müller, Gründer von NEO THE AGENCY"
+                  width={426}
+                  height={426}
                   style={{ y: portraitY }}
                   className="absolute inset-0 h-[112%] w-full object-cover"
                   loading="lazy"

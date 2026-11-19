@@ -82,6 +82,8 @@ function AboutHero() {
         <img
           src={HERO_IMAGE}
           alt={t.about.hero.imageAlt}
+          width={1600}
+          height={1066}
           className="h-full w-full object-cover"
           loading="eager"
           decoding="async"
@@ -599,6 +601,8 @@ function Studio() {
         <img
           src={STUDIO_IMAGE}
           alt={t.about.studio.imageAlt}
+          width={1600}
+          height={1068}
           className="h-full w-full object-cover"
           loading="lazy"
           decoding="async"

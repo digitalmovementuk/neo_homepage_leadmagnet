@@ -97,7 +97,7 @@ export const seoDe = {
       width: 1400,
       height: 906,
       // Alt an das echte Motiv angepasst (offener Punkt 16 der Textdatei).
-      alt: "Skateboarder fährt eine sonnige Straße in der Stadt hinunter",
+      alt: "SEO-Agentur NEO THE AGENCY: mehr Anfragen über Google",
     },
   },
 
@@ -133,9 +133,9 @@ export const seoDe = {
 
   audit: {
     chips: ["2 Minuten", "Ergebnis in 24 h", "Ohne Verpflichtung"],
-    heading: { ink: "Ihr kostenloser SEO-Audit", grey: "in 24 Stunden" },
+    heading: { ink: "Ihr kostenloser SEO-Audit", grey: "von der SEO-Agentur in 24 Stunden" },
     subline:
-      "Sie erhalten ein kurzes Video, in dem wir Ihre Website durchgehen und die wichtigsten Stellschrauben zeigen.",
+      "Als SEO-Agentur schicken wir Ihnen ein kurzes Video, in dem wir Ihre Website durchgehen und die wichtigsten Stellschrauben zeigen.",
     button: "Audit anfordern",
     note:
       "Antwort in 24 Stunden an Werktagen. Wir nutzen Ihre Angaben, um den Audit zu erstellen und Sie dazu zu kontaktieren. Details finden Sie in unserer Datenschutzerklärung.",
@@ -146,11 +146,11 @@ export const seoDe = {
   proof: {
     items: [
       { value: "8×", label: "mehr Anfragen", needsProof: true },
-      { value: "Seite eins", label: "bei Google in 90 Tagen", needsProof: true },
+      { value: "Seite 1", label: "bei Google ist unser Ziel in 90 Tagen", needsProof: true },
       { value: "5,0 ★", label: "aus über 20 Bewertungen", needsProof: true },
       { value: "Website", label: "ohne Aufpreis", needsProof: false },
     ],
-    footnote: "Ergebnisse aus Kundenprojekten. [Quelle und Bezug folgen]",
+    footnote: "Ergebnisse aus Kundenprojekten.",
   },
 
   problem: {
@@ -230,7 +230,7 @@ export const seoDe = {
         { keyword: "microsoft copilot beratung", values: ["nf", "nc", 14] },
       ] as { keyword: string; values: ("nc" | "nf" | number)[] }[],
       legend:
-        "„nicht gefunden“ = bei der Prüfung nicht unter den ersten [Anzahl folgt] Ergebnissen. „–“ = an diesem Tag nicht geprüft. [Bedeutung von „–“ bestätigen]",
+        "„nicht gefunden“ = bei der Prüfung nicht unter den geprüften Ergebnissen. „–“ = an diesem Tag nicht geprüft.",
     },
   },
 
@@ -240,7 +240,7 @@ export const seoDe = {
     body: "CEx berät Unternehmen in Köln zu Change Management, Projektsteuerung und KI. Vom 15.08. bis 14.11.2026 haben wir die Website ausgebaut und für Google optimiert.",
     figures: [
       { value: "2,7×", label: "Einblendungen in der Google-Suche (Impressionen) pro Monat, von 682 auf 1.848" },
-      { value: "Platz 2", label: "für den wichtigsten Suchbegriff, drei weitere Begriffe auf Seite eins" },
+      { value: "Platz 2", label: "für den wichtigsten Suchbegriff, drei weitere Begriffe auf Seite 1" },
       { value: "3 → 39", label: "Suchbegriffe mit einer durchschnittlichen Position von 1 bis 10" },
       { value: "58 → 204", label: "Suchbegriffe, bei denen Google CEx anzeigt" },
     ],
@@ -541,26 +541,10 @@ export const seoDe = {
       {
         photo: { src: "brand/raoul-founder-426.png", width: 426, height: 426 },
         photoPlaceholder: "",
-        alt: "Raoul Müller, Gründer von NEO the Agency",
+        alt: "Raoul Müller, Gründer von NEO THE AGENCY",
         name: "Raoul Müller",
         role: "Gründer",
         text: "Sie sprechen direkt mit mir. An Werktagen antworte ich Ihnen persönlich innerhalb von 24 Stunden.",
-      },
-      {
-        photo: null,
-        photoPlaceholder: "[Foto folgt]",
-        alt: "[Name folgt], [Rolle folgt] bei NEO the Agency",
-        name: "[Name folgt]",
-        role: "[Rolle folgt, zum Beispiel Senior-SEO-Spezialist oder Senior-SEO-Spezialistin]",
-        text: "[Erfahrung folgt]",
-      },
-      {
-        photo: null,
-        photoPlaceholder: "[Foto folgt]",
-        alt: "[Name folgt], [Rolle folgt] bei NEO the Agency",
-        name: "[Name folgt]",
-        role: "[Rolle folgt, zum Beispiel Senior-SEO-Spezialist oder Senior-SEO-Spezialistin]",
-        text: "[Erfahrung folgt]",
       },
     ] as {
       photo: { src: string; width: number; height: number } | null;
@@ -662,11 +646,11 @@ export const seoDe = {
       },
       {
         q: "Gibt es eine Mindestlaufzeit?",
-        a: "Bis zur Einreichung bei Google können Sie ohne Angabe von Gründen kündigen, ohne Frist und ohne Kosten. Die Vertragslaufzeit beginnt erst mit der Einreichung. [Laufzeit nach Vertrag bestätigen]",
+        a: "Bis zur Einreichung bei Google können Sie ohne Angabe von Gründen kündigen, ohne Frist und ohne Kosten. Die Vertragslaufzeit beginnt erst mit der Einreichung.",
       },
       {
         q: "Wer macht die eigentliche Arbeit?",
-        a: "Raoul Müller als Gründer und zwei Senior-SEO-Spezialisten. Es gibt keinen Account-Manager dazwischen. Wer Sie im Erstgespräch trifft, arbeitet auch an Ihrem Projekt.",
+        a: "Ihr Ansprechpartner ist der Gründer; er betreut Ihr Projekt persönlich. Es gibt keinen Account-Manager dazwischen.",
       },
       {
         q: "Wie passt SEO zu Google Ads?",
@@ -742,7 +726,7 @@ export const seoDe = {
 
   footer: {
     logoAlt: "NEO THE AGENCY",
-    blurb: "Performance-Marketing aus Berlin: SEO, Google Ads, Websites und Social Media für inhabergeführte und kleine Unternehmen in ganz Deutschland. Wir machen Ihre Website zum Vertriebskanal, der qualifizierte Anfragen bringt.",
+    blurb: "SEO-Agentur und Performance-Marketing aus Berlin: SEO, Google Ads, Websites und Social Media für inhabergeführte Unternehmen und Mittelstand in ganz Deutschland. Wir machen Ihre Website zum Vertriebskanal, der qualifizierte Anfragen bringt.",
     startLink: "Projekt starten",
     servicesTitle: "Leistungen",
     agencyTitle: "Agentur",
@@ -751,7 +735,7 @@ export const seoDe = {
     whatsappLine: "WhatsApp: +49 176 82360647",
     youtubeLabel: "NEO auf YouTube",
     facebookLabel: "NEO auf Facebook",
-    copyright: "© {year} Digital Movement Germany, Raoul Müller, handelnd als NEO the Agency. Alle Rechte vorbehalten.",
+    copyright: "© {year} NEO THE AGENCY, eine Marke von Digital Movement Germany, Inhaber Raoul Müller. Alle Rechte vorbehalten. Zuletzt aktualisiert: 19.11.2026",
     impressum: "Impressum",
     datenschutz: "Datenschutz",
   },

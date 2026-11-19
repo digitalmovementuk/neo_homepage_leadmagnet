@@ -180,7 +180,7 @@ export function AgencySnapshot() {
               key={s.index}
               type="button"
               onClick={() => goTo(i)}
-              aria-label={isEN ? `Jump to ${s.headline}` : `Zu ${s.headline} springen`}
+              aria-label={isEN ? `Jump to ${s.headline}` : `Zu „${s.headline.replace(/\.$/, "")}“ springen`}
               className={`h-2.5 sm:h-3 rounded-full transition-all ${
                 activeIdx === i ? "w-9 sm:w-12 bg-ink/85" : "w-2.5 sm:w-3 bg-ink/35 hover:bg-ink/55"
               }`}
@@ -222,6 +222,8 @@ const SnapshotSlide = ({
           <img
             src={bgUrl}
             alt=""
+            width={1600}
+            height={1067}
             loading="lazy"
             decoding="async"
             className="absolute inset-0 h-full w-full object-cover"

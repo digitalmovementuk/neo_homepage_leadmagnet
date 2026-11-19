@@ -162,6 +162,8 @@ export function Nav() {
                 onDark ? "logo-color-negative" : "logo-color-positive"
               }.png`}
               alt="NEO THE AGENCY"
+              width={8012}
+              height={807}
               className={`w-auto transition-all duration-300 ${logoHeightCls}`}
               draggable={false}
             />
@@ -338,6 +340,8 @@ export function Nav() {
                 <img
                   src={`${import.meta.env.BASE_URL}brand/logo-color-negative.png`}
                   alt="NEO THE AGENCY"
+                  width={8012}
+                  height={807}
                   className="h-7 w-auto"
                 />
                 <button

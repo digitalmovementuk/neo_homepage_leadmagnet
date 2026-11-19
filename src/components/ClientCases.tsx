@@ -393,8 +393,6 @@ function StoryVideo({
       muted
       playsInline
       preload="metadata"
-      // @ts-expect-error fetchpriority is missing from React types
-      fetchpriority="low"
       // pointer-events-none — keeps the video purely visual so iOS can't
       // intercept taps; the slide-local "Next" button beneath catches them.
       className="absolute inset-0 h-full w-full object-cover pointer-events-none"
@@ -436,8 +434,6 @@ function CaseVideo({ file, poster }: { file: string; poster?: string }) {
       playsInline
       preload="metadata"
       poster={poster}
-      // @ts-expect-error fetchpriority is missing from React types
-      fetchpriority="low"
       // pointer-events-none — keeps the video purely visual so iOS Safari
       // can't intercept taps (which would toggle native playback / restart
       // the loop). All taps reach the slide's "Next case" button beneath.

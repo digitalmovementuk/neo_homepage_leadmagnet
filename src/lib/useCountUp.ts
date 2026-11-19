@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 
 export function useCountUp(target: number, duration = 1600) {
-  const [value, setValue] = useState(0);
+  // Endwert im vorgerenderten HTML (Google und Nutzer ohne JS sehen die echte Zahl); gezählt wird erst beim Einblenden.
+  const [value, setValue] = useState(target);
   const ref = useRef<HTMLElement | null>(null);
   const fired = useRef(false);
 

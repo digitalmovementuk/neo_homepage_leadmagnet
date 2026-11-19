@@ -83,6 +83,7 @@ export function organizationNode(): Record<string, unknown> {
       addressCountry: "DE",
     },
     areaServed: { "@type": "Country", name: "Deutschland" },
+    knowsAbout: ["Suchmaschinenoptimierung", "Google Ads", "Social-Media-Marketing", "Webdesign", "KI-Suche"],
     sameAs: [
       "https://www.youtube.com/@neotheagency",
       "https://www.facebook.com/p/NEO-The-Agency-61588285349359/",
@@ -95,7 +96,7 @@ export const ROUTE_META: Record<RoutePath, RouteMeta> = {
     path: "/",
     title: "Online-Marketing-Agentur für Inhaber & KMU | NEO THE AGENCY",
     description:
-      "Für Inhaber und Mittelstand: SEO, KI-Suche, Google Ads, Social Media und Websites aus einer Hand. Neue Website und Seite 1 bei Google in 90 Tagen.",
+      "Online-Marketing-Agentur für Inhaber und Mittelstand: SEO, KI-Suche, Google Ads, Social Media und Websites aus einer Hand. Ziel: Seite 1 bei Google in 90 Tagen.",
     robots: "index, follow",
     ...DEFAULT_OG,
     crumbs: [],
@@ -104,7 +105,7 @@ export const ROUTE_META: Record<RoutePath, RouteMeta> = {
   "/seo-agentur/": {
     path: "/seo-agentur/",
     // Freigegeben (Raoul, 19.11.2026), siehe content/seo-head.ts v1.2.
-    title: "SEO Agentur für Kleinunternehmen in Deutschland | NEO",
+    title: "SEO-Agentur für Kleinunternehmen in Deutschland | NEO THE AGENCY",
     description:
       "SEO für Kleinunternehmen in Deutschland. Ihre Website erstellen wir ohne Aufpreis. Zahlung erst nach Einreichung bei Google. Kostenloser Audit in 24 h.",
     robots: "index, follow",
@@ -118,27 +119,27 @@ export const ROUTE_META: Record<RoutePath, RouteMeta> = {
   },
   "/services/google-ads/": {
     path: "/services/google-ads/",
-    title: "Google Ads Agentur: Betreuung zum Festpreis | NEO THE AGENCY",
+    title: "Google-Ads-Agentur: Betreuung zum Festpreis | NEO THE AGENCY",
     description:
-      "Google Ads Betreuung für Inhaber und Mittelstand: Search Ads, Performance Max und sauberes Conversion-Tracking. Zum Festpreis, ohne lange Bindung.",
+      "Google-Ads-Agentur für Inhaber und Mittelstand: Search Ads, Performance Max und sauberes Conversion-Tracking. Zum Festpreis, ohne lange Bindung.",
     robots: "index, follow",
     ...DEFAULT_OG,
-    ogImageAlt: "NEO THE AGENCY, Google Ads Agentur für Inhaber und Mittelstand",
+    ogImageAlt: "NEO THE AGENCY, Google-Ads-Agentur für Inhaber und Mittelstand",
     crumbs: [{ name: "Google Ads", path: "/services/google-ads/" }],
-    service: { name: "Google Ads Agentur: ROI. Nicht Reichweite.", serviceType: "Google Ads" },
+    service: { name: "Google-Ads-Agentur: ROI. Nicht Reichweite.", serviceType: "Google Ads" },
     chunk: "google-ads",
     sources: ["src/pages/services/google-ads.tsx", "src/components/ServicePageShell.tsx", "src/lib/translations.ts"],
   },
   "/services/social-media/": {
     path: "/services/social-media/",
-    title: "Social Media Agentur für mehr Anfragen | NEO THE AGENCY",
+    title: "Social-Media-Agentur für mehr Anfragen | NEO THE AGENCY",
     description:
-      "Social Media Betreuung für Inhaber und Mittelstand: Short-Form-Video, Paid Social und Content-Produktion zum Festpreis. Unser Ziel sind echte Anfragen.",
+      "Social-Media-Agentur für Inhaber und Mittelstand: Short-Form-Video, Paid Social und Content-Produktion zum Festpreis. Unser Ziel sind echte Anfragen.",
     robots: "index, follow",
     ...DEFAULT_OG,
-    ogImageAlt: "NEO THE AGENCY: Social Media Agentur für Inhaber und Mittelstand",
+    ogImageAlt: "NEO THE AGENCY: Social-Media-Agentur für Inhaber und Mittelstand",
     crumbs: [{ name: "Social Media", path: "/services/social-media/" }],
-    service: { name: "Social Media Agentur: Anfragen. Nicht Follower.", serviceType: "Social Media Betreuung und Paid Social" },
+    service: { name: "Social-Media-Agentur: Anfragen. Nicht Follower.", serviceType: "Social-Media-Betreuung und Paid Social" },
     chunk: "social-media",
     sources: ["src/pages/services/social-media.tsx", "src/components/ServicePageShell.tsx", "src/lib/translations.ts"],
   },
@@ -146,7 +147,7 @@ export const ROUTE_META: Record<RoutePath, RouteMeta> = {
     path: "/services/websites/",
     title: "Webdesign-Agentur: Website zum Festpreis | NEO THE AGENCY",
     description:
-      "Website erstellen lassen oder Relaunch: fürs Smartphone gebaut, schnell und selbst pflegbar. Zum Festpreis und in 6 bis 8 Wochen live. Jetzt anfragen.",
+      "Webdesign-Agentur: Website erstellen lassen oder Relaunch, fürs Smartphone gebaut, schnell und selbst pflegbar. Zum Festpreis, in 6 bis 8 Wochen live.",
     robots: "index, follow",
     ...DEFAULT_OG,
     ogImageAlt: "NEO THE AGENCY: Webdesign-Agentur für schnelle, selbst pflegbare Websites",
@@ -240,10 +241,11 @@ export function buildRouteJsonLd(path: RoutePath): Record<string, unknown> {
       description: meta.description,
       inLanguage: "de-DE",
       isPartOf: { "@id": `${SITE_ORIGIN}/#website` },
-      breadcrumb: { "@id": `${url}#breadcrumb` },
+      ...(meta.crumbs.length ? { breadcrumb: { "@id": `${url}#breadcrumb` } } : {}),
+      dateModified: "2026-11-19",
       ...(meta.service ? { about: { "@id": `${url}#service` } } : {}),
     },
-    breadcrumbNode(meta, url),
+    ...(meta.crumbs.length ? [breadcrumbNode(meta, url)] : []),
   ];
   if (meta.service) {
     graph.push({

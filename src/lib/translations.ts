@@ -319,7 +319,7 @@ const de: Translations = {
     eyebrow: "Online-Marketing-Agentur für Inhaber und Mittelstand",
     headlineTop: "Jede Woche neue Verkaufschancen.",
     headlineBottom: "Über Google, KI-Suche und eine Website, die liefert.",
-    sub: "Als Online-Marketing-Agentur sorgen wir dafür, dass man Sie in jeder relevanten Stadt und in jedem Stadtteil findet. Das Ergebnis sind Anfragen, keine leeren Versprechen.",
+    sub: "Als Online-Marketing-Agentur sorgen wir dafür, dass man Sie in jeder relevanten Stadt und in jedem Stadtteil findet. Wir verbinden SEO, KI-Suche, Google Ads, Social Media und Ihre Website zu einem Kanal, der planbar Anfragen bringt. Das Ergebnis sind Anfragen, keine leeren Versprechen.",
     services: [
       "Suchmaschinenoptimierung (SEO)",
       "KI-Suchoptimierung",
@@ -352,7 +352,7 @@ const de: Translations = {
         index: "03",
         label: "Was Sie bekommen",
         headline: "Premium-Website und SEO-Seiten.",
-        detail: "Eine Website, die liefert, und Leistungsseiten, die ab Tag 1 ranken.",
+        detail: "Eine Website, die liefert, und Leistungsseiten, die von Anfang an für Google gebaut sind.",
       },
     ],
   },
@@ -361,7 +361,7 @@ const de: Translations = {
     eyebrow: "Stimmen unserer Kunden",
     headline: "In ihren eigenen Worten.",
     description:
-      "Fünf Inhaber erzählen, was sich in den ersten 90 Tagen mit NEO messbar verändert hat.",
+      "Fünf Kundenprojekte zeigen, was sich mit NEO verändert hat.",
     prevLabel: "Vorherige Stimme",
     nextLabel: "Nächste Stimme",
     soundOn: "Ton an",
@@ -370,31 +370,31 @@ const de: Translations = {
     items: [
       {
         name: "Ayham Muhrez",
-        role: "CEO & Founder Azura Living Bali",
+        role: "Gründer und CEO, Azura Living Bali",
         description:
           "In 90 Tagen von null auf Seite 1 für „villa rental bali“. Seitdem laufend Direktbuchungen statt Provision an Plattformen.",
       },
       {
-        name: "Faisaö Chauhan",
-        role: "Director ADDRESSBALI®",
+        name: "Faisal Chauhan",
+        role: "Geschäftsleitung, ADDRESSBALI®",
         description:
-          "Premium-Villenmarke. Kompletter Website-Relaunch plus Performance-Marketing-Sprint, 8× mehr Anfragen in der Pipeline.",
+          "Premium-Villenmarke. Kompletter Website-Relaunch plus Performance-Marketing-Sprint, 8 × mehr Anfragen in der Pipeline.",
       },
       {
         name: "Enting Man",
-        role: "Founder & Director Cunos",
+        role: "Gründer, Cunos",
         description:
-          "B2B-Beratungsmarke. Klare Positionierung, eine Website-Struktur, die von SEO her gedacht ist, und qualifizierte Inbound-Anfragen ab Tag 30.",
+          "B2B-Beratungsmarke. Klare Positionierung, eine Website-Struktur, die von SEO her gedacht ist, und qualifizierte Inbound-Anfragen ab dem 30. Tag.",
       },
       {
         name: "Dana",
-        role: "Marketing Director Pentadoc",
+        role: "Marketingleitung, Pentadoc",
         description:
           "Plattform für Document Intelligence. Redaktionelle Startseite, klarer Weg zur Anfrage, doppelt so viele Demo-Anfragen.",
       },
       {
         name: "Johannes",
-        role: "Founder & CEO CEx",
+        role: "Gründer, CEx",
         description:
           "Plattform für Customer Excellence. Startbereich mit Sonnenuntergangsmotiv plus Leistungskarten. Die SEO-Struktur trägt das Wachstum der B2B-Pipeline.",
       },
@@ -406,7 +406,7 @@ const de: Translations = {
     headline: "Commitment.",
     paragraphs: [
       "Ein Ziel verbindet alle Projekte: Ihr Umsatz wächst. Erfolg messen wir daran. Nicht an unserer Kreativität.",
-      "NEO THE AGENCY® ist High-End Performance Marketing. Erfolge sind messbar. Wir liefern Anfragen — keine Tabellen.",
+      "NEO THE AGENCY® steht für Performance-Marketing auf hohem Niveau. Erfolge sind messbar. Wir liefern Anfragen statt Tabellen.",
       "Hintergrund: Strategieberatung, Unternehmensberatung, Projektmanagement. Sie bekommen das Komplettpaket — Strategie, Projektsteuerung, Handwerk.",
     ],
     closing: "Customer Excellence ist der Kompass. Drei Prinzipien zeigen, wie das in der Praxis aussieht.",
@@ -452,7 +452,7 @@ const de: Translations = {
       {
         key: "seo",
         title: "SEO",
-        promise: "Seite 1 bei Google. In 90 Tagen.",
+        promise: "Ziel: Seite 1 bei Google in 90 Tagen.",
         detail:
           "Wir beheben technische Fehler, schreiben Inhalte, die Klicks holen, und bauen Links auf, die sich auszahlen. Jeden Monat zeigen wir Ihnen die Zahlen dahinter: was sich bewegt hat, warum und was als Nächstes kommt.",
         bullets: [
@@ -465,7 +465,7 @@ const de: Translations = {
       {
         key: "google-ads",
         title: "Google Ads",
-        promise: "Bezahlter Traffic, der sich rechnet. ROI-positiv.",
+        promise: "Bezahlter Traffic, der sich rechnet.",
         detail:
           "Eng geschnittene Kampagnen und ein Conversion-Tracking, das stimmt. Jede Woche streichen wir, was Budget verbrennt. Wir optimieren auf Umsatz, nicht auf schöne Klickzahlen.",
         bullets: [
@@ -478,7 +478,7 @@ const de: Translations = {
       {
         key: "social",
         title: "Social Media",
-        promise: "Content, der Anfragen bringt. Likes sind kein KPI.",
+        promise: "Content, der Anfragen bringt. Likes allein bringen keine Anfragen.",
         detail:
           "Kurzvideos, Paid Social und Kreativarbeit, die zur jeweiligen Plattform passt. Follower sind nett, Termine sind besser.",
         bullets: [
@@ -491,7 +491,7 @@ const de: Translations = {
       {
         key: "websites",
         title: "Websites",
-        promise: "Seiten, die ab Tag 1 ranken und ab dem ersten Klick konvertieren.",
+        promise: "Seiten, die von Anfang an für Google gebaut sind und aus Besuchern Anfragen machen.",
         detail:
           "Modern und zuerst für das Smartphone gebaut. Ihre Website lädt schnell, sieht gut aus und macht aus Besuchern Anfragen. Auf Plattformen, die Sie selbst pflegen können.",
         bullets: [
@@ -509,7 +509,7 @@ const de: Translations = {
     headlineMain: "Echte Marken.",
     headlineSub: "Echte Zahlen.",
     intro:
-      "Eine Auswahl. Alle Kunden sitzen seit fünf Jahren mit uns am Tisch, sonst hätten wir gar nicht erst angefangen.",
+      "Eine Auswahl aus unseren Kundenprojekten.",
     serviceLabel: "Leistungen",
     timelineLabel: "Zeitraum",
   },
@@ -565,7 +565,7 @@ const de: Translations = {
       {
         n: "01",
         eta: "Tag 1",
-        title: "Audit und Kickoff",
+        title: "Analyse und Projektstart",
         body:
           "Technisches SEO-Audit, Kanal-Diagnose und Wettbewerbsanalyse. Dazu 30 Minuten Bildschirmfreigabe direkt mit dem Gründer.",
       },
@@ -586,7 +586,7 @@ const de: Translations = {
       {
         n: "04",
         eta: "Tag 90",
-        title: "8× Pipeline",
+        title: "8 × Pipeline",
         body:
           "Gemessene Steigerung qualifizierter Anfragen. Ab hier optimieren wir monatlich. Keine Überraschungen, keine Mindestlaufzeit.",
       },
@@ -657,11 +657,10 @@ const de: Translations = {
         links: [
           { label: "Über uns", href: "/uber-uns/" },
           { label: "Kundenprojekte", href: "/#cases" },
-          { label: "Kontakt", href: "/#contact" },
         ],
       },
     ],
-    rights: "© {year} Digital Movement Germany, Raoul Müller, handelnd als NEO the Agency. Alle Rechte vorbehalten.",
+    rights: "© {year} NEO THE AGENCY, eine Marke von Digital Movement Germany, Inhaber Raoul Müller. Alle Rechte vorbehalten.",
     legal: [
       { label: "Impressum", href: "/impressum/" },
       { label: "Datenschutz", href: "/datenschutz/" },
@@ -700,9 +699,9 @@ const de: Translations = {
     },
     pillarsIntro: {
       eyebrow: "Worauf wir bauen",
-      headlinePre: "Drei Sätze.",
+      headlinePre: "Marketing-Agentur Berlin: drei Sätze.",
       headlineSoft: "Eine Arbeitsweise.",
-      body: "An diesen drei Sätzen messen wir jedes Versprechen an unsere Kunden. Nach ihnen entscheiden wir, welche Aufträge wir annehmen und welche wir ablehnen.",
+      body: "Als Marketing-Agentur in Berlin messen wir an diesen drei Sätzen jedes Versprechen an unsere Kunden. Nach ihnen entscheiden wir, welche Aufträge wir annehmen und welche wir ablehnen.",
     },
     pillars: [
       {
@@ -715,7 +714,7 @@ const de: Translations = {
         label: "Mission",
         headline:
           "Performance-Marketing verständlich machen und in echte Anfragen übersetzen.",
-        body: "Schluss mit Vanity-Metriken, Reporting-Theater und Account-Manager-Ketten. Wir liefern technische SEO, Optimierung für KI-Antworten und High-End-Websites zum Festpreis und stehen mit unserem Namen dafür gerade.",
+        body: "Schluss mit Kennzahlen ohne Aussagekraft, Berichten ohne Inhalt und Ketten von Account-Managern. Wir liefern technische SEO, Optimierung für KI-Antworten und hochwertige Websites zum Festpreis und stehen mit unserem Namen dafür gerade.",
       },
       {
         label: "Werte",
@@ -731,7 +730,7 @@ const de: Translations = {
         "Jedes Projekt startet mit einem 90-Tage-Sprint zum Festpreis. Sie sprechen direkt mit den Leuten, die die Arbeit machen. Eine Pyramide aus Junior-Beratern gibt es bei uns nicht, und wir geben nichts an White-Label-Subunternehmer weiter.",
       steps: [
         {
-          label: "Tag 1 · Audit und Kickoff",
+          label: "Tag 1 · Analyse und Projektstart",
           body: "Technisches SEO-Audit, Kanal-Diagnose und Wettbewerbsanalyse. Die Ergebnisse gehen wir mit Ihnen in 30 Minuten per Bildschirmfreigabe durch.",
         },
         {
@@ -766,17 +765,17 @@ const de: Translations = {
         {
           title: "Google Ads",
           body: "Kampagnen für Suchanfragen mit Kaufabsicht, mit sauberem Tracking ab dem ersten Monat.",
-          href: "/services/google-ads",
+          href: "/services/google-ads/",
         },
         {
           title: "Social Media",
           body: "Betreuung Ihrer Social-Media-Kanäle als Teil Ihrer gesamten Marketingstrategie.",
-          href: "/services/social-media",
+          href: "/services/social-media/",
         },
         {
           title: "Websites",
-          body: "High-End-Websites und Landingpages, die Ihnen vom ersten Tag an gehören.",
-          href: "/services/websites",
+          body: "Hochwertige Websites und Landingpages, die Ihnen vom ersten Tag an gehören.",
+          href: "/services/websites/",
         },
       ],
     },
@@ -807,7 +806,7 @@ const de: Translations = {
       headlinePre: "Lassen Sie uns",
       headlineSoft: "über Ihr Wachstum reden.",
       body: "Kostenloses Erstgespräch. Antwort werktags innerhalb von 24 Stunden.",
-      button: "Kostenlose Potenzialanalyse starten",
+      button: "Kostenlose SEO-Analyse starten",
       secondary: "Erstgespräch vereinbaren",
       smallprint:
         "Alle Preise netto zzgl. MwSt. Das Angebot richtet sich an Unternehmen.",
@@ -818,12 +817,12 @@ const de: Translations = {
     seo: {
       slug: "seo",
       meta: {
-        title: "SEO für Inhaber & Mittelstand · NEO THE AGENCY",
+        title: "SEO für Inhaber und Mittelstand · NEO THE AGENCY",
         description:
           "Google Seite 1 in 90 Tagen. Technisches SEO, Content der klickt, und Linkaufbau, der sich für inhabergeführte Unternehmen rechnet. Festpreis, kein Lock-in.",
       },
       hero: {
-        eyebrow: "Suchmaschinenoptimierung · für Inhaber & Mittelstand",
+        eyebrow: "Suchmaschinenoptimierung · für Inhaber und Mittelstand",
         headlineTop: "Google.",
         headlineBottom: "Seite 1.",
         sub: "Wir bringen Ihre Website auf Seite 1 für die Begriffe, die Ihre Kunden tippen — in 90 Tagen, mit Festpreis und ohne Lock-in. Inhabergeführt, Klartext, messbar.",
@@ -917,12 +916,12 @@ const de: Translations = {
           {
             kicker: "Phase 4 · Tag 61–90",
             title: "Autorität & Skalierung",
-            body: "Saubere Links — keine PBNs, kein Spam. Digital PR, Branchen-Kataloge, Partnerschaften. Plus monatlicher Klartext-Report.",
+            body: "Saubere Links — keine PBNs, kein Spam. Digital PR, Branchen-Kataloge, Partnerschaften. Plus monatlicher Bericht in Klartext.",
             bullets: [
               "Digital-PR-Kampagne (3–5 Platzierungen / Quartal)",
               "Verzeichnis- und Branchen-Listings",
               "Partner- und Gast-Beiträge",
-              "Monatlicher Klartext-Report mit nächsten Hebeln",
+              "Monatlicher Bericht in Klartext mit nächsten Hebeln",
             ],
           },
         ],
@@ -958,7 +957,7 @@ const de: Translations = {
             title: "Reporting",
             items: [
               "Live-Dashboard (Rankings, Traffic, Anfragen)",
-              "Monatlicher Klartext-Report (eine Seite)",
+              "Monatlicher Bericht in Klartext (eine Seite)",
               "Wöchentliche WhatsApp-Updates",
               "Direkt der Gründer — kein Account-Manager",
               "Slack- oder E-Mail-Direkt-Zugang",
@@ -976,7 +975,7 @@ const de: Translations = {
           { eta: "Tag 1", title: "Audit & Kickoff", body: "Audit-Report im Posteingang. 60-Min-Strategy-Call. Sie verstehen, wo Sie stehen." },
           { eta: "Tag 30", title: "Fundament steht", body: "Technisches SEO sauber. Erste Content-Pages live. Tracking läuft, Daten fließen." },
           { eta: "Tag 60", title: "Erste Page-1-Keywords", body: "Erste kommerzielle Keywords ranken auf Seite 1. Pipeline beginnt sich zu füllen." },
-          { eta: "Tag 90", title: "8× Pipeline (Median)", body: "Messbare Steigerung qualifizierter Anfragen. Ab hier monatlich, ohne Mindestlaufzeit." },
+          { eta: "Tag 90", title: "8 × Pipeline (Median)", body: "Messbare Steigerung qualifizierter Anfragen. Ab hier monatlich, ohne Mindestlaufzeit." },
         ],
       },
       stack: {
@@ -997,7 +996,7 @@ const de: Translations = {
       faq: {
         eyebrow: "Häufige Fragen",
         headlineMain: "Direkt gefragt.",
-        headlineSub: "Direkt geantwortet.",
+        headlineSub: "Direkt beantwortet.",
         intro: "Was wir am häufigsten von Inhabern hören, bevor sie buchen.",
         items: [
           { q: "Wie schnell sehe ich erste Ergebnisse?", a: "Ranking-Bewegung in den ersten 2–4 Wochen, erste Page-1-Keywords nach 60–90 Tagen. Echte Anfragen-Steigerung typischerweise ab Monat 3. Was Sie konkret erwarten können, sagen wir Ihnen nach dem Audit — ohne Schönreden." },
@@ -1012,7 +1011,7 @@ const de: Translations = {
       leadMagnet: {
         eyebrow: "Bevor Sie sich entscheiden",
         headline: "Kostenloser SEO-Audit für Ihre Website.",
-        body: "Wir prüfen Ihre Site auf 50+ technische und inhaltliche Faktoren und schicken Ihnen einen 1-Seiten-Klartext-Report. Was kaputt ist, was funktioniert, und die drei wirkungsvollsten nächsten Hebel — egal, ob Sie mit uns arbeiten oder nicht.",
+        body: "Wir prüfen Ihre Site auf 50+ technische und inhaltliche Faktoren und schicken Ihnen einen 1-Seiten-Bericht in Klartext. Was kaputt ist, was funktioniert, und die drei wirkungsvollsten nächsten Hebel — egal, ob Sie mit uns arbeiten oder nicht.",
         bullets: [
           "1-Seiten-Audit per E-Mail in 24 h",
           "30-Min-Loom-Walkthrough",
@@ -1042,12 +1041,12 @@ const de: Translations = {
     googleAds: {
       slug: "google-ads",
       meta: {
-        title: "Google Ads Agentur: Betreuung zum Festpreis | NEO THE AGENCY",
-        description: "Google Ads Betreuung für Inhaber und Mittelstand: Search Ads, Performance Max und sauberes Conversion-Tracking. Zum Festpreis, ohne lange Bindung.",
+        title: "Google-Ads-Agentur: Betreuung zum Festpreis | NEO THE AGENCY",
+        description: "Google-Ads-Agentur für Inhaber und Mittelstand: Search Ads, Performance Max und sauberes Conversion-Tracking. Zum Festpreis, ohne lange Bindung.",
       },
       hero: {
-        eyebrow: "Google Ads Betreuung · für Inhaber und Mittelstand",
-        headlineTop: "Google Ads Agentur:",
+        eyebrow: "Google-Ads-Betreuung · für Inhaber und Mittelstand",
+        headlineTop: "Google-Ads-Agentur:",
         headlineBottom: "ROI. Nicht Reichweite.",
         sub: "Als Google-Ads-Agentur bauen wir Kampagnen, die Anfragen bringen und nicht nur Klicks kosten. Eng gefasst, mit Conversion-Tracking und jede Woche von Streuverlusten bereinigt. Zum Festpreis und ohne lange Vertragsbindung.",
         primaryCta: "Kostenloser Ads-Check",
@@ -1062,12 +1061,12 @@ const de: Translations = {
       },
       whatItIs: {
         eyebrow: "Was wir tun",
-        headlineMain: "Ihre Google Ads Agentur:",
+        headlineMain: "Ihre Google-Ads-Agentur:",
         headlineSub: "bezahlter Traffic, der sich rechnet.",
         paragraphs: [
           "In der Google-Auktion gewinnt, wer diszipliniert auf Suchanfragen mit Kaufabsicht bietet und die Klicks auf Landingpages schickt, die daraus Anfragen machen.",
-          "Bei NEO heißt das: Wir bieten nicht auf Begriffe, die nur gut aussehen. Wir messen jede Conversion auf den Cent genau. Jede Woche fliegt raus, was kein Geld bringt: Suchbegriffe, Keywords und Anzeigen ohne Leistung. Übrig bleibt, was Anfragen liefert.",
-          "Jeden Monat bekommen Sie eine Notiz in Klartext: was investiert wurde, was zurückkam, der ROAS pro Kampagne und die drei nächsten Hebel.",
+          "Bei NEO heißt das: Wir bieten nicht auf Begriffe, die nur gut aussehen. Wir messen jede Conversion sauber nach. Jede Woche fliegt raus, was kein Geld bringt: Suchbegriffe, Keywords und Anzeigen ohne Leistung. Übrig bleibt, was Anfragen liefert.",
+          "Jeden Monat bekommen Sie eine Notiz in Klartext: was investiert wurde, was zurückkam, der ROAS pro Kampagne und die drei nächsten Schritte.",
         ],
         audience: "Für inhabergeführte Unternehmen und Mittelständler, denen Anfragen wichtiger sind als Reichweite. Wenn Sie eine SEA-Agentur für planbare Anfragen suchen und keine Markenkampagne, sind Sie hier richtig.",
       },
@@ -1075,13 +1074,13 @@ const de: Translations = {
         eyebrow: "Was sich verändert",
         headlineMain: "Drei Zahlen,",
         headlineSub: "die auch Ihr Finanzchef versteht.",
-        intro: "Median über alle aktiven Ads-Kunden der letzten 12 Monate. Das Volumen schwankt je nach Branche. Unser Ziel ist immer: ab Monat 2 cash-positiv.",
+        intro: "Median über alle aktiven Ads-Kunden der letzten 12 Monate. Das Volumen schwankt je nach Branche. Unser Ziel ist immer: ab dem zweiten Monat im Plus.",
         items: [
           {
             kicker: "ROAS",
             value: "5,2",
             unit: "×",
-            title: "Return on Ad Spend",
+            title: "Werbeertrag (ROAS)",
             body: "Median über aktive Sprints, gemessen als Umsatz aus Google-Ads-Anfragen geteilt durch die Werbeausgaben.",
           },
           {
@@ -1125,7 +1124,7 @@ const de: Translations = {
               "Search-Kampagnen je Leistung oder Branche",
               "Performance Max für Volumen, mit klar abgegrenzten Asset-Gruppen",
               "Landingpages mit durchdachter Conversion-Struktur",
-              "Negativ-Keyword-Liste mit 200+ Begriffen",
+              "Negativ-Keyword-Liste mit über 200 Begriffen",
             ],
           },
           {
@@ -1147,14 +1146,14 @@ const de: Translations = {
               "Mehr Budget für profitable Kampagnen",
               "Feinsteuerung nach Region und Tageszeit",
               "Gezielt aufgebaute Remarketing-Zielgruppen",
-              "Monatlicher Cash-Bericht mit ROAS pro Kampagne",
+              "Monatlicher Bericht zu Kosten und Umsatz mit ROAS pro Kampagne",
             ],
           },
         ],
       },
       deliverables: {
         eyebrow: "Was Sie bekommen",
-        headlineMain: "Google Ads Betreuung",
+        headlineMain: "Google-Ads-Betreuung",
         headlineSub: "in drei Säulen, alles inklusive.",
         intro: "Festpreis zzgl. MwSt., und das gesamte Werbebudget läuft über Ihr eigenes Konto. An Ihren Werbeausgaben verdienen wir nichts. Uns interessiert Ihr Ergebnis.",
         columns: [
@@ -1182,7 +1181,7 @@ const de: Translations = {
             title: "Reporting",
             items: [
               "Live-Dashboard (ROAS, CPL, Conversions)",
-              "Monatlicher Cash-Bericht auf einer Seite",
+              "Monatlicher Bericht zu Kosten und Umsatz auf einer Seite",
               "Wöchentliche Updates per WhatsApp",
               "Der Gründer persönlich, kein Junior",
               "Direkter Draht per Slack oder E-Mail",
@@ -1213,7 +1212,7 @@ const de: Translations = {
           },
           {
             eta: "Tag 90",
-            title: "5× ROAS (Median)",
+            title: "5,2 × ROAS (Median)",
             body: "Profitable Kampagnen werden skaliert. Danach optimieren wir monatlich weiter.",
           },
         ],
@@ -1301,7 +1300,7 @@ const de: Translations = {
         modal: {
           eyebrow: "Kostenloser Ads-Check",
           headline: "Wo verliert Ihr Konto Geld?",
-          sub: "Wir prüfen Ihr Google-Ads-Konto mit Lesezugriff und schicken Ihnen die drei wichtigsten Hebel per E-Mail.",
+          sub: "Wir prüfen Ihr Google-Ads-Konto mit Lesezugriff und schicken Ihnen die drei wichtigsten Sofortmaßnahmen per E-Mail.",
           submit: "Ads-Check anfordern",
           successHeadline: "Angekommen. Wir sehen uns Ihr Konto an.",
           successBody: "Ihr Ads-Check kommt an Werktagen innerhalb von 48 Stunden per E-Mail.",
@@ -1319,15 +1318,15 @@ const de: Translations = {
     socialMedia: {
       slug: "social-media",
       meta: {
-        title: "Social Media Agentur für mehr Anfragen | NEO THE AGENCY",
-        description: "Social Media Betreuung für Inhaber und Mittelstand: Short-Form-Video, Paid Social und Content-Produktion zum Festpreis. Unser Ziel sind echte Anfragen.",
+        title: "Social-Media-Agentur für mehr Anfragen | NEO THE AGENCY",
+        description: "Social-Media-Agentur für Inhaber und Mittelstand: Short-Form-Video, Paid Social und Content-Produktion zum Festpreis. Unser Ziel sind echte Anfragen.",
       },
       hero: {
-        eyebrow: "Social Media Betreuung · für Inhaber & Mittelstand",
-        h1Lead: "Social Media Agentur:",
+        eyebrow: "Social-Media-Betreuung · für Inhaber und Mittelstand",
+        h1Lead: "Social-Media-Agentur:",
         headlineTop: "Anfragen.",
         headlineBottom: "Nicht Follower.",
-        sub: "Als Social Media Agentur für Inhaber und Mittelstand produzieren wir Short-Form-Videos, schalten Paid-Social-Anzeigen und liefern Content, der gebuchte Termine bringt statt Likes. Inhabergeführt, mit klarem Fokus auf Inhalte, ohne Buzzword-Bingo.",
+        sub: "Als Social-Media-Agentur für Inhaber und Mittelstand produzieren wir Short-Form-Videos, schalten Paid-Social-Anzeigen und liefern Content, der gebuchte Termine bringt statt Likes. Vom Gründer betreut, mit klarem Ziel: Anfragen.",
         primaryCta: "Content-Sample anfordern",
         secondaryCta: "Erstgespräch buchen",
         chips: [
@@ -1340,11 +1339,11 @@ const de: Translations = {
       },
       whatItIs: {
         eyebrow: "Was wir tun",
-        headlineMain: "Social Media Agentur",
+        headlineMain: "Social-Media-Agentur",
         headlineSub: "mit Vertriebsziel.",
         paragraphs: [
           "Social Media ist für uns ein Anfragekanal und kein Schönheitswettbewerb. Erreichen Ihre Inhalte die richtige Zielgruppe mit der richtigen Absicht, entstehen daraus gebuchte Termine.",
-          "Unsere Social Media Betreuung heißt konkret: Wir produzieren Short-Form-Videos, die Ihre Zielgruppe wirklich anschaut. Organischen Content kombinieren wir mit präzise gesteuerten Paid-Social-Kampagnen. Und jede Anfrage verfolgen wir bis zur Plattform zurück, von der sie kam.",
+          "Unsere Social-Media-Betreuung heißt konkret: Wir produzieren Short-Form-Videos, die Ihre Zielgruppe wirklich anschaut. Organischen Content kombinieren wir mit präzise gesteuerten Paid-Social-Kampagnen. Und jede Anfrage verfolgen wir bis zur Plattform zurück, von der sie kam.",
           "Jeden Monat bekommen Sie einen kurzen Bericht in Klartext: welche Inhalte funktionieren, welche Plattform Anfragen bringt und was wir als Nächstes produzieren.",
         ],
         audience: "Für inhabergeführte Marken und mittelständische Unternehmen, die Social Media als Vertriebskanal nutzen wollen und nicht als PR-Bühne.",
@@ -1360,19 +1359,19 @@ const de: Translations = {
             value: "3,4",
             unit: "×",
             title: "mehr Anfragen aus Social Media",
-            body: "Durchschnittliche Steigerung nach 6 Monaten, organisches Short-Form und Paid Social zusammengerechnet.",
+            body: "Median-Steigerung nach 6 Monaten, organisches Short-Form und Paid Social zusammengerechnet.",
           },
           {
             kicker: "CPL",
             value: "32 €",
             unit: "Median",
             title: "Kosten pro Anfrage über Paid Social",
-            body: "Median über alle aktiven Kampagnen. Je nach Branche verschieden, aber durchgehend unter den Kosten pro Anfrage aus Google Ads.",
+            body: "Median über alle aktiven Kampagnen. Je nach Branche verschieden.",
           },
           {
             kicker: "Volumen",
             value: "12",
-            unit: "/Monat",
+            unit: " pro Monat",
             title: "produzierte Short-Form-Videos",
             body: "Pro Monat im Sprint: Reels, TikToks und YouTube Shorts, alle redaktionell geplant.",
           },
@@ -1397,7 +1396,7 @@ const de: Translations = {
           },
           {
             kicker: "Phase 2 · Tag 8 bis 30",
-            title: "Content-Maschine und Setup",
+            title: "Redaktionsplan und Produktion",
             body: "Redaktionsplan, Produktionsablauf, Tracking. Bevor etwas live geht, ist alles dokumentiert.",
             bullets: [
               "Redaktionsplan für 12 Monate",
@@ -1420,12 +1419,12 @@ const de: Translations = {
           {
             kicker: "Phase 4 · Tag 61 bis 90",
             title: "Skalieren und nachschärfen",
-            body: "Was funktioniert, bauen wir aus. Was nicht funktioniert, stoppen wir. Dazu kommt jeden Monat ein Klartext-Report über den Beitrag zu Ihrer Pipeline.",
+            body: "Was funktioniert, bauen wir aus. Was nicht funktioniert, stoppen wir. Dazu kommt jeden Monat ein Bericht in Klartext über den Beitrag zu Ihrer Pipeline.",
             bullets: [
               "Ausbau der profitabelsten Content-Formate",
               "Plattformwechsel, wo nötig",
               "Kampagnen mit Creator-Partnern (optional)",
-              "Monatlicher Klartext-Report mit Pipeline-Rechnung",
+              "Monatlicher Bericht in Klartext mit Pipeline-Rechnung",
             ],
           },
         ],
@@ -1434,7 +1433,7 @@ const de: Translations = {
         eyebrow: "Was Sie bekommen",
         headlineMain: "Drei Säulen.",
         headlineSub: "Alles inklusive.",
-        intro: "Festpreis (netto zzgl. MwSt.). Alle Werbebudgets laufen über Ihr eigenes Werbekonto. Produktion, Verbreitung und Reporting sind komplett enthalten.",
+        intro: "Festpreis zzgl. MwSt.. Alle Werbebudgets laufen über Ihr eigenes Werbekonto. Produktion, Verbreitung und Reporting sind komplett enthalten.",
         columns: [
           {
             title: "Strategie",
@@ -1460,7 +1459,7 @@ const de: Translations = {
             title: "Reporting",
             items: [
               "Live-Dashboard (Pipeline je Plattform)",
-              "Monatlicher Klartext-Report (eine Seite)",
+              "Monatlicher Bericht in Klartext (eine Seite)",
               "Wöchentliche Updates per WhatsApp",
               "Direkt mit dem Gründer, kein Junior",
               "Direkter Draht per Slack oder E-Mail",
@@ -1476,13 +1475,13 @@ const de: Translations = {
         steps: [
           {
             eta: "Tag 1",
-            title: "Audit und Kickoff",
+            title: "Analyse und Projektstart",
             body: "Plattform-Audit, Zielgruppen- und Content-Plan, gemeinsamer Termin zum Tracking-Setup.",
           },
           {
             eta: "Tag 30",
             title: "Erste Inhalte live",
-            body: "Die ersten 12 Videos sind produziert und veröffentlicht. Paid Social läuft.",
+            body: "Redaktionsplan steht, die ersten Videos sind gedreht, Paid Social ist eingerichtet.",
           },
           {
             eta: "Tag 60",
@@ -1500,7 +1499,7 @@ const de: Translations = {
         eyebrow: "Tools und Plattformen",
         headlineMain: "Womit wir arbeiten.",
         headlineSub: "Plattformneutral, auf Conversions ausgerichtet.",
-        intro: "Als Paid Social Agentur wählen wir Plattformen neutral aus. Wir arbeiten dort, wo Ihr Geschäft Anfragen bekommt, ob auf LinkedIn oder auf TikTok.",
+        intro: "Als Social-Media-Agentur wählen wir Plattformen neutral aus. Wir arbeiten dort, wo Ihr Geschäft Anfragen bekommt, ob auf LinkedIn oder auf TikTok.",
         items: [
           {
             name: "Meta Business Suite",
@@ -1531,7 +1530,7 @@ const de: Translations = {
       faq: {
         eyebrow: "Häufige Fragen",
         headlineMain: "Direkt gefragt.",
-        headlineSub: "Direkt geantwortet.",
+        headlineSub: "Direkt beantwortet.",
         intro: "Das fragen Inhaber am häufigsten, bevor sie Budget für Social Media freigeben.",
         items: [
           {
@@ -1598,12 +1597,12 @@ const de: Translations = {
       slug: "websites",
       meta: {
         title: "Webdesign-Agentur: Website zum Festpreis | NEO THE AGENCY",
-        description: "Website erstellen lassen oder Relaunch: fürs Smartphone gebaut, schnell und selbst pflegbar. Zum Festpreis und in 6 bis 8 Wochen live. Jetzt anfragen.",
+        description: "Webdesign-Agentur: Website erstellen lassen oder Relaunch, fürs Smartphone gebaut, schnell und selbst pflegbar. Zum Festpreis, in 6 bis 8 Wochen live.",
       },
       hero: {
-        eyebrow: "Webdesign & Website-Entwicklung · für Inhaber und Mittelstand",
+        eyebrow: "Webdesign und Website-Entwicklung · für Inhaber und Mittelstand",
         headlineTop: "Webdesign-Agentur:",
-        headlineBottom: "Ihre Website als Asset.",
+        headlineBottom: "Ihre Website als Vertriebskanal.",
         sub: "Als Webdesign-Agentur bauen wir moderne Websites, die zuerst fürs Smartphone gestaltet sind, schnell laden und aus Besuchern Anfragen machen. Gebaut auf Plattformen, die Sie selbst pflegen können.",
         primaryCta: "Speed- und Conversion-Report",
         secondaryCta: "Erstgespräch buchen",
@@ -1622,7 +1621,7 @@ const de: Translations = {
         paragraphs: [
           "Ihre Website ist Ihr aktivster Verkäufer: rund um die Uhr im Einsatz, ohne Krankheitstage. Eine schlechte Website kostet Sie jeden Tag Geld, eine gute bringt laufend Anfragen.",
           "Wenn Sie bei NEO Ihre Website erstellen lassen, heißt das: Design für das Smartphone zuerst, Core Web Vitals mit einem LCP unter 2,5 Sekunden und eine Conversion-Architektur, die auf echtem Nutzerverhalten beruht. Alle Inhalte pflegen Sie selbst. Wegen eines fehlenden Kommas müssen Sie uns nicht anrufen.",
-          "Sie bekommen eine Website, die vom ersten Tag an rankt und Anfragen bringt. In den nächsten fünf Jahren wächst sie mit Ihnen mit, ohne komplettes Redesign.",
+          "Sie bekommen eine Website, die von Anfang an für Google gebaut ist und Anfragen bringt. In den nächsten fünf Jahren wächst sie mit Ihnen mit, ohne komplettes Redesign.",
         ],
         audience: "Für inhabergeführte Unternehmen und Mittelständler, die mit ihrer Website verkaufen wollen. Ein Online-Auftritt aus Pflichtgefühl reicht ihnen nicht.",
       },
@@ -1637,7 +1636,7 @@ const de: Translations = {
             value: "1,8",
             unit: "s",
             title: "LCP-Median",
-            body: "Largest Contentful Paint im 75. Perzentil. Damit schneller als 92 % der Mittelstands-Websites im DACH-Raum.",
+            body: "LCP im 75. Perzentil (Core Web Vitals).",
           },
           {
             kicker: "Conversion",
@@ -1663,10 +1662,10 @@ const de: Translations = {
         phases: [
           {
             kicker: "Phase 1 · Woche 1",
-            title: "Discovery & Conversion-Plan",
+            title: "Analyse und Conversion-Plan",
             body: "Wir analysieren Ihre Zielgruppe, Ihre Conversion-Pfade und Ihren Wettbewerb. Der Plan steht, bevor wir irgendetwas gestalten.",
             bullets: [
-              "Stakeholder-Interviews und Zielgruppen-Analyse",
+              "Gespräche mit Ihrem Team und Zielgruppen-Analyse",
               "Conversion-Architektur (Wireframes)",
               "Content-Inventur und Content-Plan",
               "SEO- und Technik-Briefing",
@@ -1675,7 +1674,7 @@ const de: Translations = {
           {
             kicker: "Phase 2 · Woche 2 bis 3",
             title: "Design & Prototyp",
-            body: "High-Fidelity-Design im Erscheinungsbild Ihrer Marke oder im NEO-Designsystem. Fürs Smartphone zuerst, barrierefrei geprüft und auf Anfragen ausgerichtet.",
+            body: "Detailentwurf im Erscheinungsbild Ihrer Marke oder im NEO-Designsystem. Fürs Smartphone zuerst, barrierefrei geprüft und auf Anfragen ausgerichtet.",
             bullets: [
               "Mobile-First-Design (375 px bis 1440 px)",
               "Klickbarer Prototyp in Figma",
@@ -1689,7 +1688,7 @@ const de: Translations = {
             body: "Wir bauen auf Plattformen, die Sie selbst pflegen können: Webflow, Framer oder bei Bedarf ein individueller Tech-Stack. Die Inhalte entstehen parallel.",
             bullets: [
               "Umsetzung auf Webflow, Framer oder individuell",
-              "Content-Produktion parallel zum Build",
+              "Content-Produktion zur Umsetzung",
               "Schema.org und SEO sauber integriert",
               "Tracking mit GA4 und Tag Manager ab Tag 1",
             ],
@@ -1716,7 +1715,7 @@ const de: Translations = {
           {
             title: "Strategie",
             items: [
-              "Discovery und Stakeholder-Interviews",
+              "Discovery und Gespräche mit Ihrem Team",
               "Conversion-Architektur und Wireframes",
               "Content- und SEO-Plan",
               "Wettbewerbsanalyse",
@@ -1754,7 +1753,7 @@ const de: Translations = {
           {
             eta: "Woche 1",
             title: "Discovery",
-            body: "Stakeholder-Interviews, Conversion-Plan, Content-Inventur.",
+            body: "Gespräche mit Ihrem Team, Conversion-Plan, Content-Inventur.",
           },
           {
             eta: "Woche 2 bis 3",
@@ -1764,7 +1763,7 @@ const de: Translations = {
           {
             eta: "Woche 4 bis 5",
             title: "Umsetzung & Inhalte",
-            body: "Build auf der Plattform, Content-Produktion, sauber eingerichtetes Tracking.",
+            body: "Umsetzung auf der Plattform, Content-Produktion, sauber eingerichtetes Tracking.",
           },
           {
             eta: "Woche 6",
@@ -1777,7 +1776,7 @@ const de: Translations = {
         eyebrow: "Tech-Stack",
         headlineMain: "Womit wir bauen.",
         headlineSub: "Und was Sie selbst pflegen.",
-        intro: "Wir bauen auf Plattformen, die Sie selbst pflegen. Keine WordPress-Plugin-Hölle und keine Individuallösung, die nur wir öffnen können.",
+        intro: "Wir bauen bevorzugt auf Plattformen, die Sie selbst pflegen. Individuelle Lösungen dokumentieren wir so, dass jeder Entwickler sie übernehmen kann.",
         items: [
           {
             name: "Webflow",
@@ -1837,7 +1836,7 @@ const de: Translations = {
           },
           {
             q: "Was kostet eine Website mit Webflow, was eine individuelle Lösung?",
-            a: "Der Festpreis beginnt bei 15.000 € netto zzgl. MwSt. für eine Marketing-Website auf Webflow und kann bei individuellen React- oder E-Commerce-Projekten über 60.000 € netto liegen. Im Erstgespräch nennen wir Ihnen eine konkrete Zahl.",
+            a: "Der Festpreis beginnt bei 15.000 € zzgl. MwSt. für eine Marketing-Website auf Webflow und kann bei individuellen React- oder E-Commerce-Projekten über 60.000 € zzgl. MwSt. liegen. Im Erstgespräch nennen wir Ihnen eine konkrete Zahl.",
           },
         ],
       },

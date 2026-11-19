@@ -122,8 +122,6 @@ function Hero({
             playsInline
             preload="auto"
             poster={`${base}brand/og-cover.jpg`}
-            // @ts-expect-error fetchpriority is missing from React types
-            fetchpriority="high"
             className="absolute inset-0 h-full w-full object-cover scale-105"
             src={`${base}${page.hero.video}#t=0.1`}
             {...({
@@ -855,6 +853,7 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
       transition={{ duration: 0.5, delay: 0.04 * index, ease: EASE_OUT }}
       className="rounded-2xl border border-ink/10 bg-white overflow-hidden"
     >
+      <h3 className="m-0">
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
@@ -878,6 +877,7 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
           )}
         </span>
       </button>
+      </h3>
       <motion.div
         initial={false}
         animate={{

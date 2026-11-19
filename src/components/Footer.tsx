@@ -33,6 +33,8 @@ export function Footer() {
             <img
               src={`${import.meta.env.BASE_URL}brand/logo-color-positive.png`}
               alt="NEO THE AGENCY"
+              width={8012}
+              height={807}
               className="h-8 w-auto mx-auto lg:mx-0"
             />
             <p className="mt-5 text-[14px] sm:text-[15px] text-ink-soft leading-relaxed">
@@ -145,7 +147,7 @@ export function Footer() {
               </Link>
             ))}
             <span className="text-ink-faint">·</span>
-            <span>Deutschland</span>
+            <span>Zuletzt aktualisiert: 19.11.2026</span>
           </div>
         </div>
       </div>

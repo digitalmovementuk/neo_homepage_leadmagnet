@@ -12,14 +12,7 @@ const TICKS = [1, 10, 20];
 const pct = (position: number) => ((Math.min(position, SCALE_MAX) - 1) / (SCALE_MAX - 1)) * 100;
 
 function DateLabel({ date }: { date: string }) {
-  const cut = date.lastIndexOf(".") + 1;
-  return (
-    <>
-      {date.slice(0, cut)}
-      <wbr />
-      {date.slice(cut)}
-    </>
-  );
+  return <span className="whitespace-nowrap">{date}</span>;
 }
 
 export function CexPositionsChart() {

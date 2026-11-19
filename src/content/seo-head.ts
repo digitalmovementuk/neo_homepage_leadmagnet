@@ -109,6 +109,7 @@ export function buildSeoJsonLd(): Record<string, unknown> {
     isPartOf: { "@id": ID.site },
     about: { "@id": ID.service },
     breadcrumb: { "@id": ID.breadcrumb },
+    dateModified: "2026-11-19",
     primaryImageOfPage: { "@id": ID.heroImage },
     speakable: { "@type": "SpeakableSpecification", cssSelector: ["#top-titel", "#top-titel + p"] },
   };

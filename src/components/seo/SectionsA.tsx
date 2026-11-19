@@ -347,15 +347,11 @@ export function Cex() {
                 >
                   {cex.link.label}
                 </a>
-              ) : (
-                /* Noch kein Ziel vorhanden: bewusst kein klickbarer Link. */
-                <p className="mt-3 text-[14px] leading-[1.9] text-ink-soft">
-                  <span className="font-semibold text-ink">{cex.link.label}</span> <RichText text={cex.link.placeholder} />
-                </p>
-              )}
+              ) : null /* Noch kein Ziel vorhanden: bewusst kein Link und kein Platzhalter. */}
             </div>
           </Reveal>
 
+          {(cex.photo.src || !cex.quote.startsWith("[")) && (
           <div className="grid gap-4 sm:grid-cols-2 sm:gap-5">
             <Reveal delay={0.06}>
               {cex.photo.src ? (
@@ -390,6 +386,7 @@ export function Cex() {
               </figure>
             </Reveal>
           </div>
+          )}
         </div>
       </div>
     </Section>

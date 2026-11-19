@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /brand/logo-options/
 
 Sitemap: https://www.neotheagency.de/sitemap.xml

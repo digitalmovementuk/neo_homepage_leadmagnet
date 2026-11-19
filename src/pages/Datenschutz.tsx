@@ -40,8 +40,8 @@ export function Datenschutz() {
 
       <LegalSection title="3. Schriften, Bilder und Videos">
         <p>
-          Schriften, Bilder und Videos liegen auf unserem eigenen Server. Beim Laden der Seite werden
-          dafür keine Daten an Dritte wie Google Fonts übertragen.
+          Schriften, Bilder und Videos werden zusammen mit der Website über Vercel ausgeliefert; Dritte
+          wie Google Fonts werden nicht eingebunden.
         </p>
       </LegalSection>
 
@@ -64,8 +64,7 @@ export function Datenschutz() {
           Nutzen Sie die SEO-Analyse, senden wir die eingegebene Domain und Ihre Angaben zu
           Branche und Kennzahlen an eine Serverfunktion bei Vercel. Diese ruft öffentlich verfügbare
           Ranking-Daten bei Semrush Inc., 800 Boylston Street, Suite 2475, Boston, MA 02199, USA, ab.
-          An Semrush wird nur die Domain beziehungsweise werden nur Suchbegriffe übermittelt, keine
-          Angaben zu Ihrer Person. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO, weil Sie die Analyse
+          An Semrush übermitteln wir nur die Domain und Suchbegriffe, keine Angaben zu Ihrer Person. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO, weil Sie die Analyse
           anfordern. Die Ergebnisse werden nicht dauerhaft gespeichert.
         </p>
       </LegalSection>

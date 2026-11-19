@@ -195,6 +195,7 @@ function TestimonialCard({ t, i, total, labels, unmutedId, onUnmute }: CardProps
           {t.description}
         </p>
 
+        {t.websiteUrl !== "#" && (
         <a
           href={t.websiteUrl}
           target={t.websiteUrl.startsWith("http") ? "_blank" : undefined}
@@ -206,6 +207,7 @@ function TestimonialCard({ t, i, total, labels, unmutedId, onUnmute }: CardProps
           <span>{labels.visit}</span>
           <ArrowUpRight size={13} strokeWidth={2.2} />
         </a>
+        )}
       </div>
     </motion.li>
   );

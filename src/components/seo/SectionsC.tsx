@@ -305,6 +305,7 @@ export function Videos() {
     <Section id="videos" surface="light">
       <div className="container-v3">
         <SectionHead id="videos" kicker={videos.kicker} heading={videos.heading} intro={videos.body} split />
+        {videos.items.some((v) => !v.title.startsWith("[")) && (
         <Reveal className="mt-10 sm:mt-14">
           {/* Keine eingebetteten Videos: Einbetten braucht erst die Einwilligung (Zwei-Klick-Lösung). */}
           <ul
@@ -329,6 +330,7 @@ export function Videos() {
             className="mt-4 lg:hidden"
           />
         </Reveal>
+        )}
         <div className="mt-8 flex justify-center lg:justify-start">
           <a
             href={contact.youtubeHref}

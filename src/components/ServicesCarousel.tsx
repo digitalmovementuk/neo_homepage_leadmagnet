@@ -179,7 +179,7 @@ export function ServicesCarousel() {
               key={s.key}
               type="button"
               onClick={() => goTo(i)}
-              aria-label={isEN ? `Jump to ${s.title}` : `Zu ${s.title} springen`}
+              aria-label={isEN ? `Jump to ${s.title}` : `Zu „${s.title.replace(/\.$/, "")}“ springen`}
               className={`h-2.5 sm:h-3 rounded-full transition-all ${
                 activeIdx === i ? "w-9 sm:w-12 bg-ink/85" : "w-2.5 sm:w-3 bg-ink/35 hover:bg-ink/55"
               }`}
@@ -308,8 +308,6 @@ function ServiceVideo({ file }: { file: string }) {
       muted
       playsInline
       preload="metadata"
-      // @ts-expect-error fetchpriority is missing from React types
-      fetchpriority="low"
       // object-cover fills both axes; the extra scale crops the brand padding
       // around the centred logo so the animation reads boldly to the edges.
       className="absolute inset-0 h-full w-full object-cover scale-[1.18] origin-center"

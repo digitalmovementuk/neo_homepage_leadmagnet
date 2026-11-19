@@ -25,9 +25,10 @@ export function LegalPage({
         <div className="max-w-[760px]">
           <p className="eyebrow text-ink-muted">{eyebrow}</p>
           <h1
-            className="mt-4 text-ink"
+            className="mt-4 text-ink break-words hyphens-auto"
+            lang="de"
             style={{
-              fontSize: "clamp(36px, 5vw, 64px)",
+              fontSize: "clamp(30px, 5vw, 64px)",
               lineHeight: "1.04",
               letterSpacing: "-0.034em",
               fontWeight: 700,

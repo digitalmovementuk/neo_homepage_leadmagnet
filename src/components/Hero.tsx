@@ -29,7 +29,7 @@ export function Hero() {
   const seoLabel =
     lang === "en"
       ? "Start free potential analysis"
-      : "Kostenlose Potenzialanalyse starten";
+      : "Kostenlose SEO-Analyse starten";
 
   // Three slides — one per headline service. Slide 1 is the brand hero;
   // slides 2 and 3 spotlight specific services using copy from t.services.
@@ -49,10 +49,10 @@ export function Hero() {
     {
       key: "search",
       eyebrow: isEN ? "Google Search & AI Search Optimization" : "Google-Suche und KI-Suche",
-      headlineTop: seo?.promise ?? (isEN ? "Google page one in 90 days." : "Google Seite 1 in 90 Tagen."),
+      headlineTop: seo?.promise ?? (isEN ? "Goal: Google page one in 90 days." : "Ziel: Seite 1 bei Google in 90 Tagen."),
       headlineBottom: isEN
         ? "Search Engine Optimisation + AI Search Optimisation."
-        : "Suchmaschinenoptimierung und KI-Suchoptimierung.",
+        : "SEO und KI-Suche von Ihrer Online-Marketing-Agentur.",
       sub: seo?.detail ?? t.hero.sub,
       video: "video/seo-logo.mp4",
     },
@@ -62,7 +62,7 @@ export function Hero() {
       headlineTop: isEN
         ? "Conversion-optimised\nwebsites that rank."
         : "Websites, die ranken\nund Anfragen bringen.",
-      headlineBottom: isEN ? "From day one." : "Vom ersten Tag an.",
+      headlineBottom: isEN ? "From day one." : "Von Anfang an für Google gebaut.",
       sub: websites?.detail ?? t.hero.sub,
       video: "video/website-logo.mp4",
     },
@@ -451,8 +451,6 @@ function SlideVideo({
       muted
       playsInline
       preload={priority ? "auto" : "metadata"}
-      // @ts-expect-error fetchpriority is missing from React types
-      fetchpriority={priority ? "high" : "low"}
       poster={`${import.meta.env.BASE_URL}brand/hero-poster.webp`}
       className="absolute inset-0 -z-10 h-full w-full bg-black object-cover"
       // CSS background mirrors the poster so the layer behind the <video> is
