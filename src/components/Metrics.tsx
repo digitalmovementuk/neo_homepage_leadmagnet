@@ -318,7 +318,7 @@ function ReviewsStat({ isEN }: { isEN: boolean }) {
           }}
         >
           {inView ? value : 0}
-          <span className="text-ink/55"> {isEN ? "in Q1" : "im ersten Quartal"}</span>
+          <span className="block text-ink/55" style={{ fontSize: "0.3em", lineHeight: 1.15, letterSpacing: "-0.02em", marginTop: "0.3em" }}>{isEN ? "in Q1" : "im ersten Quartal"}</span>
         </span>
       </div>
 
