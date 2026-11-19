@@ -5,6 +5,12 @@
       "maxDuration": 45
     }
   },
+  "redirects": [
+    { "source": "/leistungen/seo", "destination": "/seo-agentur/", "permanent": true },
+    { "source": "/leistungen/seo/", "destination": "/seo-agentur/", "permanent": true },
+    { "source": "/services/seo", "destination": "/seo-agentur/", "permanent": true },
+    { "source": "/services/seo/", "destination": "/seo-agentur/", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/((?!api/).*)", "destination": "/index.html" }
   ]

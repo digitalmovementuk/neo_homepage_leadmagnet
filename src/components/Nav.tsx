@@ -7,7 +7,7 @@ import { useT } from "../lib/i18n";
 import { LanguagePicker } from "./LanguagePicker";
 
 const SERVICE_ROUTES = [
-  { slug: "seo" as const, path: "/services/seo" },
+  { slug: "seo" as const, path: "/seo-agentur/" },
   { slug: "googleAds" as const, path: "/services/google-ads" },
   { slug: "socialMedia" as const, path: "/services/social-media" },
   { slug: "websites" as const, path: "/services/websites" },

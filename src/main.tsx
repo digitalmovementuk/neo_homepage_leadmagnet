@@ -1,12 +1,12 @@
 import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
+import { createRoot, hydrateRoot } from "react-dom/client";
 import App from "./App";
 import { LanguageProvider } from "./lib/i18n";
 import { LeadModalProvider } from "./lib/leadModal";
 import { SeoModalProvider } from "./lib/seoModal";
 import "./index.css";
 
-createRoot(document.getElementById("root")!).render(
+const tree = (
   <StrictMode>
     <LanguageProvider>
       <LeadModalProvider>
@@ -15,5 +15,10 @@ createRoot(document.getElementById("root")!).render(
         </SeoModalProvider>
       </LeadModalProvider>
     </LanguageProvider>
-  </StrictMode>,
+  </StrictMode>
 );
+
+// /seo-agentur/ kommt vorgerendert aus dem Build: dann hydrieren statt neu zeichnen.
+const rootEl = document.getElementById("root")!;
+if (rootEl.firstElementChild) hydrateRoot(rootEl, tree);
+else createRoot(rootEl).render(tree);

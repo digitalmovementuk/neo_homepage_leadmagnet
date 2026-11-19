@@ -6,7 +6,7 @@ import { Reveal } from "../lib/Reveal";
 import { useT, useLang } from "../lib/i18n";
 
 const SERVICE_ROUTE_MAP: Record<string, string> = {
-  seo: "/services/seo",
+  seo: "/seo-agentur/",
   "google-ads": "/services/google-ads",
   social: "/services/social-media",
   websites: "/services/websites",

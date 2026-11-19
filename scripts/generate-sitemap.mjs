@@ -1,0 +1,47 @@
+#!/usr/bin/env node
+// generate-sitemap.mjs · v1.0 (19.11.2026)
+// Erzeugt public/sitemap.xml für www.neotheagency.de. Jede neue Route muss
+// hier eingetragen werden, sonst fehlt sie in der Sitemap.
+// Changelog: v1.0 (19.11.2026) Erste Fassung, 8 Adressen inkl. /seo-agentur/.
+
+import { writeFileSync } from "node:fs";
+import { dirname, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
+
+const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
+const ORIGIN = "https://www.neotheagency.de";
+
+const ROUTES = [
+  { path: "/", priority: "1.0", changefreq: "weekly" },
+  { path: "/seo-agentur/", priority: "0.9", changefreq: "weekly" },
+  { path: "/services/google-ads", priority: "0.7", changefreq: "monthly" },
+  { path: "/services/social-media", priority: "0.7", changefreq: "monthly" },
+  { path: "/services/websites", priority: "0.7", changefreq: "monthly" },
+  { path: "/uber-uns", priority: "0.5", changefreq: "monthly" },
+  { path: "/impressum", priority: "0.2", changefreq: "yearly" },
+  { path: "/datenschutz", priority: "0.2", changefreq: "yearly" },
+];
+const EXPECTED = 8;
+
+const lastmod = new Date().toISOString().slice(0, 10);
+
+const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${ROUTES.map(
+  (r) => `  <url>
+    <loc>${ORIGIN}${r.path}</loc>
+    <lastmod>${lastmod}</lastmod>
+    <changefreq>${r.changefreq}</changefreq>
+    <priority>${r.priority}</priority>
+  </url>`
+).join("\n")}
+</urlset>
+`;
+
+if (ROUTES.length !== EXPECTED) {
+  console.error(`generate-sitemap: erwartet ${EXPECTED} Adressen, gefunden ${ROUTES.length}.`);
+  process.exit(1);
+}
+const out = resolve(ROOT, "public/sitemap.xml");
+writeFileSync(out, xml, "utf8");
+console.log(`✓ sitemap.xml mit ${ROUTES.length} Adressen → ${out}`);

@@ -8,8 +8,11 @@ type Args = {
   ogTitle?: string;
   ogDescription?: string;
   ogImage?: string;
+  ogImageAlt?: string;
   canonical?: string;
   lang?: Lang;
+  /** Optional <meta name="robots">, e.g. "index, follow". Restored on unmount. */
+  robots?: string;
   /** Optional Schema.org JSON-LD object — stringified into a <script>. */
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 };
@@ -25,8 +28,10 @@ export function useDocumentHead({
   ogTitle,
   ogDescription,
   ogImage,
+  ogImageAlt,
   canonical,
   lang,
+  robots,
   jsonLd,
 }: Args) {
   useEffect(() => {
@@ -66,6 +71,17 @@ export function useDocumentHead({
       ogDescription ?? description
     );
     if (ogImage) setMeta('meta[property="og:image"]', "content", ogImage);
+    // Extended image tags only when a page passes ogImageAlt (SEO page);
+    // other routes keep exactly the tags they had before.
+    if (ogImage && ogImageAlt) {
+      setMeta('meta[property="og:image:secure_url"]', "content", ogImage);
+      setMeta('meta[property="og:image:type"]', "content", "image/jpeg");
+      setMeta('meta[property="og:image:width"]', "content", "2400");
+      setMeta('meta[property="og:image:height"]', "content", "1260");
+      setMeta('meta[property="og:image:alt"]', "content", ogImageAlt);
+      setMeta('meta[name="twitter:image"]', "content", ogImage);
+      setMeta('meta[name="twitter:image:alt"]', "content", ogImageAlt);
+    }
     setMeta(
       'meta[property="og:url"]',
       "content",
@@ -82,6 +98,10 @@ export function useDocumentHead({
       "content",
       ogDescription ?? description
     );
+
+    const robotsEl = document.head.querySelector<HTMLMetaElement>('meta[name="robots"]');
+    const prevRobots = robotsEl ? robotsEl.getAttribute("content") : null;
+    if (robots) setMeta('meta[name="robots"]', "content", robots);
 
     if (canonical) setLink("canonical", canonical);
     if (lang) document.documentElement.lang = lang;
@@ -104,10 +124,26 @@ export function useDocumentHead({
 
     return () => {
       document.title = prevTitle;
+      if (robots) {
+        const r = document.head.querySelector('meta[name="robots"]');
+        if (prevRobots === null) r?.remove();
+        else r?.setAttribute("content", prevRobots);
+      }
       const s = document.head.querySelector(
         'script[data-route-jsonld="true"]'
       );
       if (s) s.remove();
     };
-  }, [title, description, ogTitle, ogDescription, ogImage, canonical, lang, jsonLd]);
+  }, [
+    title,
+    description,
+    ogTitle,
+    ogDescription,
+    ogImage,
+    ogImageAlt,
+    canonical,
+    lang,
+    robots,
+    jsonLd,
+  ]);
 }

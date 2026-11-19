@@ -1,0 +1,194 @@
+/* SEO-Seite (/seo-agentur/) · nur innerhalb von .seo-page wirksam.
+   Die Startseite bleibt davon unberührt. v1.0 (19.11.2026) */
+
+.seo-page ::selection {
+  background: rgba(0, 113, 227, 0.2);
+  color: #26272f;
+}
+.seo-page .surface-dark ::selection,
+.seo-page .surface-deep ::selection {
+  background: rgba(255, 122, 69, 0.45);
+  color: #fff;
+}
+
+/* Dunkle Abschnitte wie auf der Live-Seite /services/seo. */
+.seo-page .seo-dark {
+  background: #0a0a0c;
+  color: #fff;
+}
+
+/* Überschriften: gleiche Handschrift wie auf der Startseite. */
+.seo-page .seo-h2 {
+  font-size: clamp(32px, 5.4vw, 64px);
+  line-height: 1.04;
+  letter-spacing: -0.034em;
+  font-weight: 700;
+  text-wrap: balance;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  /* Nur sehr lange Wörter trennen (ab 16 Buchstaben), damit kurze Wörter ganz bleiben. */
+  hyphenate-limit-chars: 16 8 8;
+}
+.seo-page .seo-h2-card {
+  font-weight: 700;
+  font-size: clamp(28px, 4.8vw, 56px);
+  line-height: 1.04;
+  letter-spacing: -0.034em;
+  text-wrap: balance;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+.seo-page .seo-h2-xl {
+  font-size: clamp(38px, 7vw, 96px);
+  line-height: 1;
+  letter-spacing: -0.035em;
+  font-weight: 700;
+  text-wrap: balance;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  /* Nur sehr lange Wörter trennen (ab 16 Buchstaben), damit kurze Wörter ganz bleiben. */
+  hyphenate-limit-chars: 16 8 8;
+}
+
+/* Sichtbarer Fokus für Tastaturnutzer. */
+.seo-page a:focus-visible,
+.seo-page button:focus-visible,
+.seo-page summary:focus-visible,
+.seo-page [tabindex]:focus-visible {
+  outline: 2px solid #0071e3;
+  outline-offset: 3px;
+  border-radius: 10px;
+}
+.seo-page .surface-dark a:focus-visible,
+.seo-page .surface-dark button:focus-visible,
+.seo-page .surface-deep a:focus-visible,
+.seo-page .surface-deep button:focus-visible,
+.seo-page .seo-on-dark:focus-visible {
+  outline-color: #ffb07a;
+}
+
+/* Offener Platzhalter: leeres, gestricheltes Feld, nie wie fertiger Text. */
+.seo-page .seo-ph {
+  display: inline-block;
+  border: 1.5px dashed rgba(38, 39, 47, 0.38);
+  border-radius: 8px;
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(38, 39, 47, 0.035) 0 6px,
+    rgba(38, 39, 47, 0) 6px 12px
+  );
+  padding: 1px 8px;
+  font-family: "Geist Mono", "Geist Mono Variable", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: max(12px, 0.82em);
+  font-weight: 500;
+  font-style: normal;
+  letter-spacing: 0;
+  line-height: 1.5;
+  color: #66636d;
+  text-transform: none;
+  vertical-align: baseline;
+  overflow-wrap: anywhere;
+}
+.seo-page .seo-ph-dark {
+  border-color: rgba(255, 255, 255, 0.42);
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 0.06) 0 6px,
+    rgba(255, 255, 255, 0) 6px 12px
+  );
+  color: rgba(255, 255, 255, 0.74);
+}
+.seo-page .seo-slot {
+  border: 1.5px dashed rgba(38, 39, 47, 0.3);
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(38, 39, 47, 0.03) 0 8px,
+    rgba(38, 39, 47, 0) 8px 16px
+  );
+}
+.seo-page .seo-slot-dark {
+  border: 1.5px dashed rgba(255, 255, 255, 0.34);
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 0.05) 0 8px,
+    rgba(255, 255, 255, 0) 8px 16px
+  );
+}
+
+/* Karten heben sich beim Überfahren leicht an. */
+.seo-page .seo-lift {
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@media (hover: hover) {
+  .seo-page .seo-lift:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 26px 60px -28px rgba(27, 14, 46, 0.26);
+  }
+}
+
+/* Hauptbutton: weicher blauer Schatten, hebt sich 2 px. */
+.seo-page .seo-btn-blue {
+  box-shadow: 0 10px 26px -10px rgba(0, 113, 227, 0.6);
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.25s, box-shadow 0.25s;
+}
+@media (hover: hover) {
+  .seo-page .seo-btn-blue:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 32px -12px rgba(0, 113, 227, 0.65);
+  }
+}
+.seo-page .seo-btn-blue:active {
+  transform: translateY(0);
+}
+
+/* FAQ: Antwort klappt weich auf. */
+.seo-page .seo-faq-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.seo-page .seo-faq-panel[data-open="true"] {
+  grid-template-rows: 1fr;
+}
+.seo-page .seo-faq-panel > div {
+  overflow: hidden;
+  visibility: hidden;
+  transition: visibility 0s linear 0.35s;
+}
+.seo-page .seo-faq-panel[data-open="true"] > div {
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+/* Zähler und Zahlen in Mono-Schrift. */
+.seo-page .seo-mono {
+  font-family: "Geist Mono", "Geist Mono Variable", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Zeichnungen: Linien in Tinte, Akzente in Orange und Blau. */
+.seo-page .seo-art {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Ladekreis im Formular-Button. */
+@keyframes seo-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.seo-page .seo-spinner {
+  animation: seo-spin 0.8s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .seo-page .seo-lift:hover,
+  .seo-page .seo-btn-blue:hover {
+    transform: none;
+  }
+  .seo-page .seo-pulse-off {
+    animation: none !important;
+  }
+}
