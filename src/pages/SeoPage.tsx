@@ -13,27 +13,18 @@
  *   v1.0 (19.11.2026) Design-Stand.
  */
 import { seoDe } from "../content/seo-de";
-import { buildSeoJsonLd, seoHead } from "../content/seo-head";
+import { buildSeoJsonLd } from "../content/seo-head";
+import { routeHead } from "../content/route-meta";
 import { useDocumentHead } from "../lib/useDocumentHead";
 import { AuditForm, Cex, Channels, Hero, Measure, Problem, Proof } from "../components/seo/SectionsA";
 import { Advantage, Approach, Blocks, Fit, Gains, Later, Packages, ShortForm, Timeline } from "../components/seo/SectionsB";
 import { Faq, FinalCta, Numbers, Related, Reviews, Team, Tools, Videos } from "../components/seo/SectionsC";
 
-const SEO_JSON_LD = buildSeoJsonLd();
+const SEO_HEAD = { ...routeHead("/seo-agentur/"), jsonLd: buildSeoJsonLd() };
 
 export function SeoPage() {
-  useDocumentHead({
-    title: seoHead.title,
-    description: seoHead.description,
-    canonical: seoHead.canonical,
-    ogImage: seoHead.ogImage,
-    ogImageAlt: seoHead.ogImageAlt,
-    ogImageWidth: seoHead.ogImageWidth,
-    ogImageHeight: seoHead.ogImageHeight,
-    lang: seoHead.lang,
-    robots: seoHead.robots,
-    jsonLd: SEO_JSON_LD,
-  });
+  // Kopfdaten zentral in content/route-meta.ts; der ausführliche Graph aus seo-head.ts.
+  useDocumentHead(SEO_HEAD);
   const { showReviews, showNumbers } = seoDe.flags;
   return (
     <>

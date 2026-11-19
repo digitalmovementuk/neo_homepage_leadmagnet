@@ -1,3 +1,7 @@
+/**
+ * v1.1 (19.11.2026): Werte kommen je Route aus src/content/route-meta.ts
+ * (routeHead). canonical: null entfernt den Canonical-Link (404-Ansicht).
+ */
 import { useEffect } from "react";
 
 type Lang = "de" | "en";
@@ -12,7 +16,8 @@ type Args = {
   /** Pixel size of ogImage; defaults to the homepage cover (2400×1260). */
   ogImageWidth?: number;
   ogImageHeight?: number;
-  canonical?: string;
+  /** Absolute URL; null = no canonical (404 view). */
+  canonical?: string | null;
   lang?: Lang;
   /** Optional <meta name="robots">, e.g. "index, follow". Restored on unmount. */
   robots?: string;
@@ -109,6 +114,7 @@ export function useDocumentHead({
     if (robots) setMeta('meta[name="robots"]', "content", robots);
 
     if (canonical) setLink("canonical", canonical);
+    else if (canonical === null) document.head.querySelector('link[rel="canonical"]')?.remove();
     if (lang) document.documentElement.lang = lang;
 
     // JSON-LD — replace any previous route-scoped block.

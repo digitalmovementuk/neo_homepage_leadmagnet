@@ -1,23 +1,20 @@
-import { useEffect, type ReactNode } from "react";
+import type { ReactNode } from "react";
+import { useDocumentHead } from "../lib/useDocumentHead";
+import { routeHead } from "../content/route-meta";
 
 export function LegalPage({
   eyebrow,
   title,
-  docTitle,
+  path,
   children,
 }: {
   eyebrow: string;
   title: string;
-  docTitle: string;
+  /** Route in content/route-meta.ts (Titel, Beschreibung, Canonical, JSON-LD). */
+  path: "/impressum/" | "/datenschutz/";
   children: ReactNode;
 }) {
-  useEffect(() => {
-    const prev = document.title;
-    document.title = docTitle;
-    return () => {
-      document.title = prev;
-    };
-  }, [docTitle]);
+  useDocumentHead(routeHead(path));
 
   return (
     <section

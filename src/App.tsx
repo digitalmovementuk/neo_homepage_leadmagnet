@@ -46,9 +46,10 @@ export function AppRoutes() {
       {/* Alte Adressen leiten auf /seo-agentur/ um (Server: echte 301/308, siehe vercel.json). */}
       <Route path="leistungen/seo" element={<Navigate to="/seo-agentur/" replace />} />
       <Route path="services/seo" element={<Navigate to="/seo-agentur/" replace />} />
+      {/* /about → /uber-uns/ (Server: 308, siehe vercel.json). */}
+      <Route path="about" element={<Navigate to="/uber-uns/" replace />} />
       <Route element={<Layout />}>
         <Route index element={<HomePage />} />
-        <Route path="about" element={suspended(AboutUs)} />
         <Route path="uber-uns" element={suspended(AboutUs)} />
         <Route path="services">
           <Route path="google-ads" element={suspended(ServiceGoogleAds)} />

@@ -1,8 +1,10 @@
 /**
  * Kopfbereich und strukturierte Daten der SEO-Seite (/seo-agentur/)
- * v1.2 (19.11.2026)
+ * v1.3 (19.11.2026)
  *
  * Changelog
+ *   v1.3 (19.11.2026) Titel/Beschreibung/Vorschaubild aus content/route-meta.ts;
+ *        Organisation aus organizationNode() (jetzt mit Logo, gleiche @id auf allen Seiten).
  *   v1.2 (19.11.2026) „für kleine Unternehmen" → „für Kleinunternehmen" in Titel,
  *        Beschreibung, og:/twitter: und JSON-LD (Raoul). Eigenes Vorschaubild
  *        /brand/og-seo-agentur.jpg (1200×630) statt des Startseiten-Bilds.
@@ -19,23 +21,25 @@
  * noch keine NEO-Logodatei).
  */
 import { anchors, seoDe } from "./seo-de";
+import { ORG_ID, ROUTE_META, SITE_NAME, SITE_ORIGIN, organizationNode } from "./route-meta";
 
-export const SITE_ORIGIN = "https://www.neotheagency.de";
+export { SITE_ORIGIN };
 export const SEO_CANONICAL = `${SITE_ORIGIN}${seoDe.path}`;
+const META = ROUTE_META["/seo-agentur/"];
 
 const H1 = `${seoDe.hero.heading.ink} ${seoDe.hero.heading.grey}`;
 
 export const seoHead = {
-  // v1.2: „für Kleinunternehmen" (Raoul, 19.11.2026), 53 und 151 Zeichen.
-  title: "SEO Agentur für Kleinunternehmen in Deutschland | NEO",
-  description: "SEO für Kleinunternehmen in Deutschland. Ihre Website erstellen wir ohne Aufpreis. Zahlung erst nach Einreichung bei Google. Kostenloser Audit in 24 h.",
+  // Titel, Beschreibung und Vorschaubild stehen seit v1.3 in content/route-meta.ts.
+  title: META.title,
+  description: META.description,
   canonical: SEO_CANONICAL,
-  robots: "index, follow",
+  robots: META.robots,
   lang: "de" as const,
-  ogImage: `${SITE_ORIGIN}/brand/og-seo-agentur.jpg`,
-  ogImageWidth: 1200,
-  ogImageHeight: 630,
-  ogImageAlt: "NEO THE AGENCY: SEO für Kleinunternehmen in ganz Deutschland",
+  ogImage: META.ogImage,
+  ogImageWidth: META.ogImageWidth,
+  ogImageHeight: META.ogImageHeight,
+  ogImageAlt: META.ogImageAlt,
   /** Hero-Bild: Handy bis 640 px, sonst Desktop (wie <picture> in SectionsA). */
   heroPreload: {
     mobile: `/${seoDe.hero.image.srcMobile}`,
@@ -45,7 +49,7 @@ export const seoHead = {
 };
 
 const ID = {
-  org: `${SITE_ORIGIN}/#organization`,
+  org: ORG_ID,
   site: `${SITE_ORIGIN}/#website`,
   person: `${SITE_ORIGIN}/#raoul-mueller`,
   page: `${SEO_CANONICAL}#webpage`,
@@ -61,29 +65,12 @@ function absolute(pathOrHash: string): string {
 }
 
 export function buildSeoJsonLd(): Record<string, unknown> {
-  const { contact, hero, trail, blocks, packages, team, faq } = seoDe;
-  const [postalCode, ...localityParts] = contact.city.split(" ");
+  const { hero, trail, blocks, packages, team, faq } = seoDe;
   const founder = team.people[0];
   const fundament = packages.items[0];
 
-  const organization = {
-    "@type": ["Organization", "ProfessionalService"],
-    "@id": ID.org,
-    name: "NEO the Agency",
-    url: `${SITE_ORIGIN}/`,
-    email: contact.email,
-    telephone: contact.phoneHref.replace("tel:", ""),
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: contact.street,
-      postalCode,
-      addressLocality: localityParts.join(" "),
-      addressCountry: "DE",
-    },
-    areaServed: { "@type": "Country", name: "Deutschland" },
-    founder: { "@id": ID.person },
-    sameAs: [contact.youtubeHref, contact.facebookHref],
-  };
+  // Gemeinsamer Organisations-Knoten (mit Logo, ohne AggregateRating), plus Gründer-Verweis.
+  const organization = { ...organizationNode(), founder: { "@id": ID.person } };
 
   const person = {
     "@type": "Person",
@@ -98,7 +85,7 @@ export function buildSeoJsonLd(): Record<string, unknown> {
     "@type": "WebSite",
     "@id": ID.site,
     url: `${SITE_ORIGIN}/`,
-    name: "NEO the Agency",
+    name: SITE_NAME,
     inLanguage: "de-DE",
     publisher: { "@id": ID.org },
   };

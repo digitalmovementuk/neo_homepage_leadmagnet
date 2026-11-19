@@ -12,12 +12,11 @@ import {
 import { Reveal } from "../lib/Reveal";
 import { useT, useLang } from "../lib/i18n";
 import { useDocumentHead } from "../lib/useDocumentHead";
+import { routeHead, type RoutePath } from "../content/route-meta";
 import { useLeadModal, type LeadModalContent } from "../lib/leadModal";
 import type { ServicePage } from "../lib/translations";
 
 const EASE_OUT = [0.22, 1, 0.36, 1] as const;
-const SITE_ORIGIN = "https://www.neotheagency.de";
-const SITE_BASE = "";
 
 /**
  * ServicePageShell — comprehensive service product page used by all four
@@ -44,35 +43,8 @@ export function ServicePageShell({ slug }: { slug: keyof ServicePage }) {
   const page = t.servicePages[slug];
   const { openWith } = useLeadModal();
 
-  const path = `/services/${page.slug}`;
-  const canonical = `${SITE_ORIGIN}${SITE_BASE}${path}`;
-
-  useDocumentHead({
-    title: page.meta.title,
-    description: page.meta.description,
-    canonical,
-    lang,
-    ogImage: `${SITE_ORIGIN}${SITE_BASE}/brand/og-cover.jpg`,
-    jsonLd: {
-      "@context": "https://schema.org",
-      "@type": "Service",
-      name: page.hero.headlineTop + " " + page.hero.headlineBottom,
-      provider: {
-        "@type": "Organization",
-        name: "NEO THE AGENCY",
-        url: `${SITE_ORIGIN}${SITE_BASE}/`,
-      },
-      areaServed: { "@type": "Country", name: "Germany" },
-      description: page.meta.description,
-      serviceType: page.hero.headlineTop,
-      audience: {
-        "@type": "BusinessAudience",
-        audienceType: isEN
-          ? "Founder-led businesses and SMEs"
-          : "Inhabergeführte Unternehmen und Mittelstand",
-      },
-    },
-  });
+  // Titel, Beschreibung, Canonical und JSON-LD zentral in content/route-meta.ts.
+  useDocumentHead(routeHead(`/services/${page.slug}/` as RoutePath));
 
   const openLeadMagnet = () => openWith(page.leadMagnet.modal);
 

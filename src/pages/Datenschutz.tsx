@@ -5,7 +5,7 @@ export function Datenschutz() {
     <LegalPage
       eyebrow="Rechtliches"
       title="Datenschutzerklärung"
-      docTitle="Datenschutz · NEO THE AGENCY"
+      path="/datenschutz/"
     >
       <LegalSection title="1. Verantwortlicher">
         <p>

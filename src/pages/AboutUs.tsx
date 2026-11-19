@@ -10,6 +10,7 @@ import { ArrowRight, Compass, Heart, MapPin, Sparkles, Target } from "lucide-rea
 import { Reveal } from "../lib/Reveal";
 import { useT, useLang } from "../lib/i18n";
 import { useDocumentHead } from "../lib/useDocumentHead";
+import { routeHead } from "../content/route-meta";
 import { useSeoModal } from "../lib/seoModal";
 
 const STUDIO_IMAGE =
@@ -36,12 +37,8 @@ export function AboutUs() {
   const { lang } = useLang();
   const { openSeo } = useSeoModal();
 
-  useDocumentHead({
-    title: t.about.meta.title,
-    description: t.about.meta.description,
-    lang,
-    canonical: lang === "de" ? "/uber-uns" : "/about",
-  });
+  // Kopfdaten zentral in content/route-meta.ts.
+  useDocumentHead(routeHead("/uber-uns/"));
 
   return (
     <>
