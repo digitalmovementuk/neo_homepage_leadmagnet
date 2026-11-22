@@ -1,4 +1,4 @@
-# NEO platform links: live QA · v1.0 (22.11.2026)
+# NEO platform links: live QA · v1.1 (22.11.2026)
 
 Live commit: 9b2a1c0 on main (www.neotheagency.de). Rollback: revert to 68fdfcf and push to main.
 
@@ -32,7 +32,18 @@ Live commit: 9b2a1c0 on main (www.neotheagency.de). Rollback: revert to 68fdfcf 
 - Facebook link back to the website not verified; the page lists Bonn.
 - YouTube link back to the website not verified.
 - wlw has no review form, so its card links to the profile.
-- /datenschutz is 391 px wide at a 375 px screen. This was already the case before the change.
+- ~~/datenschutz is 391 px wide at a 375 px screen.~~ Fixed in 5cab12b; see below.
+- New finding: at the top of the legal pages, the white NEO logo and menu sit on a white background and are hard to see. This is not caused by the heading fix and has not been fixed yet.
+
+## Follow-up fix (22.11.2026, commit 5cab12b)
+- Cause: the single long word "Datenschutzerklärung" in the heading needed 371 px, but only 335 px were free.
+- Fix: the heading on legal pages now hyphenates (`hyphens: auto`, `overflow-wrap: break-word`, `lang="de"`).
+- Live recheck:
+  - /datenschutz: 375 px wide at 375 and 1440 px wide at 1440, so no sideways scroll;
+  - homepage: unchanged;
+  - 0 console errors on all 4 runs.
+- Screenshots: `after-datenschutz-fix/`.
 
 ## Changelog
+- v1.1 (22.11.2026): privacy page width fix and recheck added.
 - v1.0 (22.11.2026): first live QA note.
