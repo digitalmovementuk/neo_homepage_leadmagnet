@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="720" viewBox="0 0 1600 720" role="img" aria-labelledby="title desc">
+  <title id="title">NEO Logo 01 - Velocity</title>
+  <desc id="desc">A fast italic NEO wordmark with orange orbit accents.</desc>
+  <defs>
+    
+  </defs>
+  
+      
+  <g transform="translate(95 88) scale(1.78) skewX(-8)">
+    <polygon points="0,280 58,280 88,0 30,0" fill="#0037D8"/>
+    <polygon points="170,280 228,280 258,0 200,0" fill="#0037D8"/>
+    <polygon points="61,0 125,0 199,280 135,280" fill="#0037D8"/>
+
+    <polygon points="320,0 585,0 572,68 383,68 374,112 542,112 530,178 362,178 354,212 548,212 535,280 290,280" fill="#0037D8"/>
+
+    <circle cx="715" cy="140" r="112" fill="none" stroke="#0037D8" stroke-width="58"/>
+    <path d="M650 38 C728 48 775 92 786 150" fill="none" stroke="#FF7A45" stroke-width="24" stroke-linecap="round"/>
+       <path d="M498 220 C536 270 592 292 654 280" fill="none" stroke="#FF7A45" stroke-width="18" stroke-linecap="round"/>
+  </g>
+      <text x="118" y="642" fill="#26272F" font-family="Geist, Helvetica Neue, Arial, sans-serif" font-size="48" font-weight="800" letter-spacing="14">THE AGENCY</text>
+      <rect x="118" y="666" width="430" height="8" rx="4" fill="#FF7A45"/>
+      
+</svg>

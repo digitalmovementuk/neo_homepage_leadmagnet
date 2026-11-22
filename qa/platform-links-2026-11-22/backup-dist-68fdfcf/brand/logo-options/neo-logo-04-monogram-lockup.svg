@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="720" viewBox="0 0 1600 720" role="img" aria-labelledby="title desc">
+  <title id="title">NEO Logo 04 - Monogram Lockup</title>
+  <desc id="desc">A clean N monogram with a corporate wordmark.</desc>
+  <defs>
+    
+  </defs>
+  
+      <g transform="translate(118 132)">
+        <rect x="0" y="0" width="374" height="374" rx="52" fill="#FFFFFF" stroke="#26272F" stroke-width="14"/>
+        <g transform="translate(76 62) skewX(-7)">
+          <polygon points="0,250 50,250 76,0 26,0" fill="#0037D8"/>
+          <polygon points="166,250 216,250 242,0 192,0" fill="#0037D8"/>
+          <polygon points="54,0 110,0 190,250 134,250" fill="#0037D8"/>
+        </g>
+        <rect x="262" y="44" width="58" height="12" rx="6" fill="#FF7A45"/>
+      </g>
+      <text x="590" y="300" fill="#26272F" font-family="Geist, Helvetica Neue, Arial, sans-serif" font-size="168" font-weight="900" letter-spacing="-7">NEO</text>
+      <text x="604" y="388" fill="#0037D8" font-family="Geist, Helvetica Neue, Arial, sans-serif" font-size="44" font-weight="850" letter-spacing="10">THE AGENCY</text>
+      <rect x="604" y="424" width="506" height="3" fill="#26272F" opacity="0.25"/>
+      
+</svg>

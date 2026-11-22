@@ -1,4 +1,4 @@
-# NEO platform links: live QA · v1.1 (22.11.2026)
+# NEO platform links: live QA · v1.2 (22.11.2026)
 
 Live commit: 9b2a1c0 on main (www.neotheagency.de). Rollback: revert to 68fdfcf and push to main.
 
@@ -33,7 +33,7 @@ Live commit: 9b2a1c0 on main (www.neotheagency.de). Rollback: revert to 68fdfcf 
 - YouTube link back to the website not verified.
 - wlw has no review form, so its card links to the profile.
 - ~~/datenschutz is 391 px wide at a 375 px screen.~~ Fixed in 5cab12b; see below.
-- New finding: at the top of the legal pages, the white NEO logo and menu sit on a white background and are hard to see. This is not caused by the heading fix and has not been fixed yet.
+- ~~Legal pages: white NEO logo and menu on a white background at the top.~~ Fixed in 8058562; see below.
 
 ## Follow-up fix (22.11.2026, commit 5cab12b)
 - Cause: the single long word "Datenschutzerklärung" in the heading needed 371 px, but only 335 px were free.
@@ -44,6 +44,13 @@ Live commit: 9b2a1c0 on main (www.neotheagency.de). Rollback: revert to 68fdfcf 
   - 0 console errors on all 4 runs.
 - Screenshots: `after-datenschutz-fix/`.
 
+## Follow-up fix 2 (22.11.2026, commit 8058562)
+- Cause: the header picks its colours once, before the legal page has finished loading, so it stayed white until the visitor scrolled.
+- Fix: the header checks again as soon as a page appears. Impressum and Datenschutz now show the dark logo and dark menu text the site already uses on light sections. Pages with a dark top area keep the white header.
+- Live recheck: /impressum, /datenschutz and home at 375 and 1440; widths 375/1440, dark logo on both legal pages, white logo on home, 0 console errors on all 6 runs, checked by eye.
+- Screenshots: `after-legal-header-fix/`.
+
 ## Changelog
+- v1.2 (22.11.2026): legal-page header readability fix and recheck added.
 - v1.1 (22.11.2026): privacy page width fix and recheck added.
 - v1.0 (22.11.2026): first live QA note.

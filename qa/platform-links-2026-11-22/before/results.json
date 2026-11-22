@@ -1,0 +1,384 @@
+[
+ {
+  "path": "/",
+  "width": 1440,
+  "cls": 0.0016652698072059328,
+  "orgs": [
+   {
+    "type": "LocalBusiness",
+    "id": null,
+    "sameAs": [
+     "https://www.instagram.com/neotheagency.de/"
+    ],
+    "rating": true
+   }
+  ],
+  "parseErr": false,
+  "links": [
+   "https://www.instagram.com/neotheagency.de/"
+  ],
+  "scrollW": 1440,
+  "errors": []
+ },
+ {
+  "path": "/seo-agentur/",
+  "width": 1440,
+  "cls": 0.009101755401234568,
+  "orgs": [
+   {
+    "type": [
+     "Organization",
+     "ProfessionalService"
+    ],
+    "id": "https://www.neotheagency.de/#organization",
+    "sameAs": [
+     "https://www.youtube.com/@neotheagency",
+     "https://www.facebook.com/p/NEO-The-Agency-61588285349359/"
+    ],
+    "rating": false
+   }
+  ],
+  "parseErr": false,
+  "links": [
+   "https://www.youtube.com/@neotheagency",
+   "https://www.facebook.com/p/NEO-The-Agency-61588285349359/"
+  ],
+  "scrollW": 1440,
+  "errors": []
+ },
+ {
+  "path": "/services/google-ads",
+  "width": 1440,
+  "cls": 0.001436690216692387,
+  "orgs": [
+   {
+    "type": "LocalBusiness",
+    "id": null,
+    "sameAs": [
+     "https://www.instagram.com/neotheagency.de/"
+    ],
+    "rating": true
+   },
+   {
+    "type": "Organization",
+    "id": null,
+    "sameAs": null,
+    "rating": false
+   }
+  ],
+  "parseErr": false,
+  "links": [
+   "https://www.instagram.com/neotheagency.de/"
+  ],
+  "scrollW": 1440,
+  "errors": []
+ },
+ {
+  "path": "/services/social-media",
+  "width": 1440,
+  "cls": 0.001436690216692387,
+  "orgs": [
+   {
+    "type": "LocalBusiness",
+    "id": null,
+    "sameAs": [
+     "https://www.instagram.com/neotheagency.de/"
+    ],
+    "rating": true
+   },
+   {
+    "type": "Organization",
+    "id": null,
+    "sameAs": null,
+    "rating": false
+   }
+  ],
+  "parseErr": false,
+  "links": [
+   "https://www.instagram.com/neotheagency.de/"
+  ],
+  "scrollW": 1440,
+  "errors": []
+ },
+ {
+  "path": "/services/websites",
+  "width": 1440,
+  "cls": 0.001436690216692387,
+  "orgs": [
+   {
+    "type": "LocalBusiness",
+    "id": null,
+    "sameAs": [
+     "https://www.instagram.com/neotheagency.de/"
+    ],
+    "rating": true
+   },
+   {
+    "type": "Organization",
+    "id": null,
+    "sameAs": null,
+    "rating": false
+   }
+  ],
+  "parseErr": false,
+  "links": [
+   "https://www.instagram.com/neotheagency.de/"
+  ],
+  "scrollW": 1440,
+  "errors": []
+ },
+ {
+  "path": "/uber-uns",
+  "width": 1440,
+  "cls": 0.001436690216692387,
+  "orgs": [
+   {
+    "type": "LocalBusiness",
+    "id": null,
+    "sameAs": [
+     "https://www.instagram.com/neotheagency.de/"
+    ],
+    "rating": true
+   }
+  ],
+  "parseErr": false,
+  "links": [
+   "https://www.instagram.com/neotheagency.de/"
+  ],
+  "scrollW": 1440,
+  "errors": []
+ },
+ {
+  "path": "/impressum",
+  "width": 1440,
+  "cls": 0.001436690216692387,
+  "orgs": [
+   {
+    "type": "LocalBusiness",
+    "id": null,
+    "sameAs": [
+     "https://www.instagram.com/neotheagency.de/"
+    ],
+    "rating": true
+   }
+  ],
+  "parseErr": false,
+  "links": [
+   "https://www.instagram.com/neotheagency.de/"
+  ],
+  "scrollW": 1440,
+  "errors": []
+ },
+ {
+  "path": "/datenschutz",
+  "width": 1440,
+  "cls": 0.00143173928594393,
+  "orgs": [
+   {
+    "type": "LocalBusiness",
+    "id": null,
+    "sameAs": [
+     "https://www.instagram.com/neotheagency.de/"
+    ],
+    "rating": true
+   }
+  ],
+  "parseErr": false,
+  "links": [
+   "https://www.instagram.com/neotheagency.de/"
+  ],
+  "scrollW": 1440,
+  "errors": []
+ },
+ {
+  "path": "/",
+  "width": 375,
+  "cls": 0,
+  "orgs": [
+   {
+    "type": "LocalBusiness",
+    "id": null,
+    "sameAs": [
+     "https://www.instagram.com/neotheagency.de/"
+    ],
+    "rating": true
+   }
+  ],
+  "parseErr": false,
+  "links": [
+   "https://www.instagram.com/neotheagency.de/"
+  ],
+  "scrollW": 375,
+  "errors": []
+ },
+ {
+  "path": "/seo-agentur/",
+  "width": 375,
+  "cls": 0,
+  "orgs": [
+   {
+    "type": [
+     "Organization",
+     "ProfessionalService"
+    ],
+    "id": "https://www.neotheagency.de/#organization",
+    "sameAs": [
+     "https://www.youtube.com/@neotheagency",
+     "https://www.facebook.com/p/NEO-The-Agency-61588285349359/"
+    ],
+    "rating": false
+   }
+  ],
+  "parseErr": false,
+  "links": [
+   "https://www.youtube.com/@neotheagency",
+   "https://www.facebook.com/p/NEO-The-Agency-61588285349359/"
+  ],
+  "scrollW": 375,
+  "errors": []
+ },
+ {
+  "path": "/services/google-ads",
+  "width": 375,
+  "cls": 0,
+  "orgs": [
+   {
+    "type": "LocalBusiness",
+    "id": null,
+    "sameAs": [
+     "https://www.instagram.com/neotheagency.de/"
+    ],
+    "rating": true
+   },
+   {
+    "type": "Organization",
+    "id": null,
+    "sameAs": null,
+    "rating": false
+   }
+  ],
+  "parseErr": false,
+  "links": [
+   "https://www.instagram.com/neotheagency.de/"
+  ],
+  "scrollW": 375,
+  "errors": []
+ },
+ {
+  "path": "/services/social-media",
+  "width": 375,
+  "cls": 0,
+  "orgs": [
+   {
+    "type": "LocalBusiness",
+    "id": null,
+    "sameAs": [
+     "https://www.instagram.com/neotheagency.de/"
+    ],
+    "rating": true
+   },
+   {
+    "type": "Organization",
+    "id": null,
+    "sameAs": null,
+    "rating": false
+   }
+  ],
+  "parseErr": false,
+  "links": [
+   "https://www.instagram.com/neotheagency.de/"
+  ],
+  "scrollW": 375,
+  "errors": []
+ },
+ {
+  "path": "/services/websites",
+  "width": 375,
+  "cls": 0,
+  "orgs": [
+   {
+    "type": "LocalBusiness",
+    "id": null,
+    "sameAs": [
+     "https://www.instagram.com/neotheagency.de/"
+    ],
+    "rating": true
+   },
+   {
+    "type": "Organization",
+    "id": null,
+    "sameAs": null,
+    "rating": false
+   }
+  ],
+  "parseErr": false,
+  "links": [
+   "https://www.instagram.com/neotheagency.de/"
+  ],
+  "scrollW": 375,
+  "errors": []
+ },
+ {
+  "path": "/uber-uns",
+  "width": 375,
+  "cls": 0,
+  "orgs": [
+   {
+    "type": "LocalBusiness",
+    "id": null,
+    "sameAs": [
+     "https://www.instagram.com/neotheagency.de/"
+    ],
+    "rating": true
+   }
+  ],
+  "parseErr": false,
+  "links": [
+   "https://www.instagram.com/neotheagency.de/"
+  ],
+  "scrollW": 375,
+  "errors": []
+ },
+ {
+  "path": "/impressum",
+  "width": 375,
+  "cls": 0,
+  "orgs": [
+   {
+    "type": "LocalBusiness",
+    "id": null,
+    "sameAs": [
+     "https://www.instagram.com/neotheagency.de/"
+    ],
+    "rating": true
+   }
+  ],
+  "parseErr": false,
+  "links": [
+   "https://www.instagram.com/neotheagency.de/"
+  ],
+  "scrollW": 375,
+  "errors": []
+ },
+ {
+  "path": "/datenschutz",
+  "width": 375,
+  "cls": 0,
+  "orgs": [
+   {
+    "type": "LocalBusiness",
+    "id": null,
+    "sameAs": [
+     "https://www.instagram.com/neotheagency.de/"
+    ],
+    "rating": true
+   }
+  ],
+  "parseErr": false,
+  "links": [
+   "https://www.instagram.com/neotheagency.de/"
+  ],
+  "scrollW": 391,
+  "errors": []
+ }
+]

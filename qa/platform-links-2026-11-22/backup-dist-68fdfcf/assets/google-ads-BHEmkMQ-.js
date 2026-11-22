@@ -1,0 +1,1 @@
+import{j as o}from"./index-CpbINwi4.js";import{S as r}from"./ServicePageShell-Bd17xZz-.js";import"./useDocumentHead-BonHvtDo.js";import"./plus-BTNalA3S.js";function m(){return o.jsx(r,{slug:"googleAds"})}export{m as ServiceGoogleAds};

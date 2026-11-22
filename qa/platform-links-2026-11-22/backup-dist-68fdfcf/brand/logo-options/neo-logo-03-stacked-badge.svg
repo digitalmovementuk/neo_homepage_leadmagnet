@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="720" viewBox="0 0 1600 720" role="img" aria-labelledby="title desc">
+  <title id="title">NEO Logo 03 - Stacked Badge</title>
+  <desc id="desc">A compact badge and stacked wordmark for premium agency use.</desc>
+  <defs>
+    
+  </defs>
+  
+      <rect x="96" y="96" width="432" height="432" rx="72" fill="#0037D8"/>
+      <g transform="translate(174 180) scale(1.2) skewX(-8)">
+        <polygon points="0,260 54,260 82,0 28,0" fill="#FFFFFF"/>
+        <polygon points="160,260 214,260 242,0 188,0" fill="#FFFFFF"/>
+        <polygon points="56,0 114,0 190,260 132,260" fill="#FFFFFF"/>
+      </g>
+      <circle cx="456" cy="166" r="44" fill="#FF7A45"/>
+      <text x="614" y="292" fill="#26272F" font-family="Geist, Helvetica Neue, Arial, sans-serif" font-size="184" font-weight="950" font-style="italic" letter-spacing="-8">NEO</text>
+      <text x="626" y="392" fill="#0037D8" font-family="Geist, Helvetica Neue, Arial, sans-serif" font-size="42" font-weight="800" letter-spacing="12">THE AGENCY</text>
+      <text x="626" y="464" fill="#66636D" font-family="Geist, Helvetica Neue, Arial, sans-serif" font-size="30" font-weight="600">Websites. SEO. Paid growth.</text>
+      
+</svg>

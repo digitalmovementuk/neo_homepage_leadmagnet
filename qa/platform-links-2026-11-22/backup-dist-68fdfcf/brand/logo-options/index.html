@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NEO THE AGENCY - Logo Options</title>
+    <style>
+      :root {
+        --ink: #26272F;
+        --soft: #66636D;
+        --blue: #0037D8;
+        --accent: #FF7A45;
+        --paper: #f5f5f7;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Geist, Helvetica Neue, Arial, sans-serif;
+        color: var(--ink);
+        background: var(--paper);
+      }
+      main {
+        width: min(1440px, calc(100% - 48px));
+        margin: 0 auto;
+        padding: 56px 0 72px;
+      }
+      header {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 24px;
+        margin-bottom: 32px;
+      }
+      h1 {
+        margin: 0;
+        font-size: clamp(34px, 5vw, 72px);
+        line-height: 0.92;
+        letter-spacing: -0.04em;
+      }
+      .meta {
+        max-width: 440px;
+        margin: 0;
+        color: var(--soft);
+        font-size: 16px;
+        line-height: 1.5;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+      .card {
+        background: white;
+        border: 1px solid rgba(38, 39, 47, 0.09);
+        border-radius: 18px;
+        padding: 18px;
+        box-shadow: 0 18px 50px rgba(38, 39, 47, 0.08);
+      }
+      .logo {
+        display: grid;
+        place-items: center;
+        min-height: 230px;
+        border-radius: 12px;
+        background:
+          linear-gradient(45deg, rgba(38, 39, 47, 0.035) 25%, transparent 25%),
+          linear-gradient(-45deg, rgba(38, 39, 47, 0.035) 25%, transparent 25%),
+          linear-gradient(45deg, transparent 75%, rgba(38, 39, 47, 0.035) 75%),
+          linear-gradient(-45deg, transparent 75%, rgba(38, 39, 47, 0.035) 75%);
+        background-size: 24px 24px;
+        background-position: 0 0, 0 12px, 12px -12px, -12px 0;
+        overflow: hidden;
+      }
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      .caption {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        margin-top: 14px;
+      }
+      h2 {
+        margin: 0;
+        font-size: 18px;
+        letter-spacing: -0.02em;
+      }
+      p {
+        margin: 6px 0 0;
+        color: var(--soft);
+        font-size: 14px;
+        line-height: 1.35;
+      }
+      a {
+        color: var(--blue);
+        font-weight: 750;
+        text-decoration: none;
+        white-space: nowrap;
+      }
+      @media (max-width: 860px) {
+        main { width: min(100% - 28px, 720px); padding-top: 32px; }
+        header { display: block; }
+        .meta { margin-top: 14px; }
+        .grid { grid-template-columns: 1fr; }
+        .logo { min-height: 180px; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>NEO logo options</h1>
+        <p class="meta">Ten SVG logo directions for NEO THE AGENCY. Each file is in this folder and uses the current brand DNA: electric blue, graphite, white and orange.</p>
+      </header>
+      <section class="grid">
+        <article class="card">
+          <div class="logo"><img src="./neo-logo-01-velocity.svg" alt="NEO Logo 01 - Velocity" /></div>
+          <div class="caption">
+            <div>
+              <h2>01 - Velocity</h2>
+              <p>Closest to the current mark. Fast, bold, loud.</p>
+            </div>
+            <a href="./neo-logo-01-velocity.svg">SVG</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="logo"><img src="./neo-logo-02-orbit.svg" alt="NEO Logo 02 - Orbit" /></div>
+          <div class="caption">
+            <div>
+              <h2>02 - Orbit</h2>
+              <p>More polished and tech-driven, with an SEO growth signal.</p>
+            </div>
+            <a href="./neo-logo-02-orbit.svg">SVG</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="logo"><img src="./neo-logo-03-stacked-badge.svg" alt="NEO Logo 03 - Stacked Badge" /></div>
+          <div class="caption">
+            <div>
+              <h2>03 - Stacked Badge</h2>
+              <p>Useful for avatars, favicons, pitch decks and small spaces.</p>
+            </div>
+            <a href="./neo-logo-03-stacked-badge.svg">SVG</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="logo"><img src="./neo-logo-04-monogram-lockup.svg" alt="NEO Logo 04 - Monogram Lockup" /></div>
+          <div class="caption">
+            <div>
+              <h2>04 - Monogram Lockup</h2>
+              <p>Simple, serious and easy to use across business documents.</p>
+            </div>
+            <a href="./neo-logo-04-monogram-lockup.svg">SVG</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="logo"><img src="./neo-logo-05-signal.svg" alt="NEO Logo 05 - Signal" /></div>
+          <div class="caption">
+            <div>
+              <h2>05 - Signal</h2>
+              <p>Best when the logo needs to explain growth at first glance.</p>
+            </div>
+            <a href="./neo-logo-05-signal.svg">SVG</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="logo"><img src="./neo-logo-06-framed.svg" alt="NEO Logo 06 - Framed" /></div>
+          <div class="caption">
+            <div>
+              <h2>06 - Framed</h2>
+              <p>Feels structured, digital and premium without being too playful.</p>
+            </div>
+            <a href="./neo-logo-06-framed.svg">SVG</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="logo"><img src="./neo-logo-07-pulse.svg" alt="NEO Logo 07 - Pulse" /></div>
+          <div class="caption">
+            <div>
+              <h2>07 - Pulse</h2>
+              <p>Good for a performance marketing story: leads, tracking and motion.</p>
+            </div>
+            <a href="./neo-logo-07-pulse.svg">SVG</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="logo"><img src="./neo-logo-08-prism.svg" alt="NEO Logo 08 - Prism" /></div>
+          <div class="caption">
+            <div>
+              <h2>08 - Prism</h2>
+              <p>Most modern and app-like, useful if the brand should feel newer.</p>
+            </div>
+            <a href="./neo-logo-08-prism.svg">SVG</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="logo"><img src="./neo-logo-09-apex.svg" alt="NEO Logo 09 - Apex" /></div>
+          <div class="caption">
+            <div>
+              <h2>09 - Apex</h2>
+              <p>More luxury and founder-led. Good for high-ticket clients.</p>
+            </div>
+            <a href="./neo-logo-09-apex.svg">SVG</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="logo"><img src="./neo-logo-10-grid-system.svg" alt="NEO Logo 10 - Grid System" /></div>
+          <div class="caption">
+            <div>
+              <h2>10 - Grid System</h2>
+              <p>Strong for a studio that builds repeatable marketing machines.</p>
+            </div>
+            <a href="./neo-logo-10-grid-system.svg">SVG</a>
+          </div>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>

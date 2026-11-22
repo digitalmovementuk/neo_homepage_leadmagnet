@@ -1,0 +1,1 @@
+import{j as e}from"./index-CpbINwi4.js";import{S as r}from"./ServicePageShell-Bd17xZz-.js";import"./useDocumentHead-BonHvtDo.js";import"./plus-BTNalA3S.js";function m(){return e.jsx(r,{slug:"websites"})}export{m as ServiceWebsites};
