@@ -1,4 +1,5 @@
 import { useEffect, type ReactNode } from "react";
+import { PlatformTrustStrip } from "../components/PlatformTrustStrip";
 
 export function LegalPage({
   eyebrow,
@@ -38,6 +39,7 @@ export function LegalPage({
           >
             {title}
           </h1>
+          <PlatformTrustStrip tone="light" align="start" className="mt-6" />
           <div className="legal-body mt-10 sm:mt-12 space-y-9 text-[15px] sm:text-[16px] leading-relaxed text-ink-soft">
             {children}
           </div>

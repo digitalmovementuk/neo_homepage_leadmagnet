@@ -25,6 +25,7 @@ import {
 import { SeoLeadForm } from "./SeoLeadForm";
 import { ChannelArt } from "./illustrations";
 import { CexPositionsChart } from "./CexPositionsChart";
+import { PlatformTrustStrip } from "../PlatformTrustStrip";
 
 const two = (n: number) => String(n).padStart(2, "0");
 
@@ -94,6 +95,7 @@ export function Hero() {
             <p className="pretty mt-5 max-w-[40ch] text-[14.5px] leading-relaxed text-white/65 sm:max-w-[56ch] sm:text-[16px] lg:max-w-[62ch] lg:text-[17px]">
               {hero.subline}
             </p>
+            <PlatformTrustStrip tone="dark" forceDe align="responsive-lg" className="mt-6" />
           </div>
           <div className="flex flex-col items-center gap-3 lg:max-w-[340px] lg:items-start lg:pb-1">
             <a

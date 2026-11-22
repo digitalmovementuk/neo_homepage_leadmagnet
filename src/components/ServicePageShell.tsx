@@ -14,6 +14,8 @@ import { useT, useLang } from "../lib/i18n";
 import { useDocumentHead } from "../lib/useDocumentHead";
 import { useLeadModal, type LeadModalContent } from "../lib/leadModal";
 import type { ServicePage } from "../lib/translations";
+import { PlatformTrustStrip } from "./PlatformTrustStrip";
+import { ORG_ID } from "../content/platforms";
 
 const EASE_OUT = [0.22, 1, 0.36, 1] as const;
 const SITE_ORIGIN = "https://www.neotheagency.de";
@@ -57,11 +59,7 @@ export function ServicePageShell({ slug }: { slug: keyof ServicePage }) {
       "@context": "https://schema.org",
       "@type": "Service",
       name: page.hero.headlineTop + " " + page.hero.headlineBottom,
-      provider: {
-        "@type": "Organization",
-        name: "NEO THE AGENCY",
-        url: `${SITE_ORIGIN}${SITE_BASE}/`,
-      },
+      provider: { "@id": ORG_ID },
       areaServed: { "@type": "Country", name: "Germany" },
       description: page.meta.description,
       serviceType: page.hero.headlineTop,
@@ -215,6 +213,15 @@ function Hero({
               >
                 {page.hero.sub}
               </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.55 }}
+                className="mt-5 md:mt-6"
+              >
+                <PlatformTrustStrip tone="dark" />
+              </motion.div>
 
               <motion.ul
                 initial={{ opacity: 0, y: 10 }}

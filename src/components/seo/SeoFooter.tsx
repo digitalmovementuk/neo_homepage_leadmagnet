@@ -1,38 +1,17 @@
 /**
- * Abschnitt 26 · Fußbereich der SEO-Seite · v1.0 (19.11.2026)
+ * Abschnitt 26 · Fußbereich der SEO-Seite · v1.1 (22.11.2026)
+ * v1.1: Block „Bewerten Sie uns" (PlatformReviewLinks) mit allen Profilen ersetzt die YouTube/Facebook-Knöpfe.
  * Gleicher Aufbau wie der Fußbereich der Startseite, deutsche Texte.
  */
 import { Link } from "react-router-dom";
 import { ArrowUpRight, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { anchors, seoDe } from "../../content/seo-de";
 import { asset, SiteLink } from "./ui";
+import { PlatformReviewLinks } from "../PlatformReviewLinks";
 
 const COL_HEAD = "mb-3 text-[12px] font-bold uppercase tracking-[0.20em] text-ink-muted";
 const COL_LINK =
   "inline-flex min-h-[44px] min-w-[44px] items-center gap-2 text-[14px] text-ink-soft transition-colors hover:text-ink sm:min-h-[36px]";
-
-function YoutubeIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
-      <rect x="2.5" y="5.5" width="19" height="13" rx="4" stroke="currentColor" strokeWidth="1.8" />
-      <path d="M10 9.4v5.2l4.6-2.6L10 9.4Z" fill="currentColor" />
-    </svg>
-  );
-}
-
-function FacebookIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
-      <circle cx="12" cy="12" r="9.5" stroke="currentColor" strokeWidth="1.8" />
-      <path
-        d="M13 20.5v-7h2.2l.4-2.6H13V9.4c0-.8.3-1.3 1.4-1.3h1.3V5.8c-.5-.1-1.2-.2-2-.2-2 0-3.3 1.2-3.3 3.4v1.9H8.3v2.6h2.1v7"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
 
 export function SeoFooter() {
   const { footer, header, contact } = seoDe;
@@ -127,30 +106,12 @@ export function SeoFooter() {
                 {contact.city}
               </span>
             </address>
-            <div className="mt-4 flex items-center justify-center gap-2 sm:justify-start">
-              <a
-                href={contact.youtubeHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={footer.youtubeLabel}
-                className="grid h-11 w-11 place-items-center rounded-full border border-ink/10 bg-white text-ink-soft transition-colors hover:text-ink"
-              >
-                <YoutubeIcon />
-              </a>
-              <a
-                href={contact.facebookHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={footer.facebookLabel}
-                className="grid h-11 w-11 place-items-center rounded-full border border-ink/10 bg-white text-ink-soft transition-colors hover:text-ink"
-              >
-                <FacebookIcon />
-              </a>
-            </div>
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col items-center justify-between gap-3 border-t border-ink/10 pt-6 text-[13px] text-ink-muted sm:mt-16 sm:flex-row">
+        <PlatformReviewLinks forceDe />
+
+        <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-ink/10 pt-6 text-[13px] text-ink-muted sm:mt-12 sm:flex-row">
           <p className="text-center sm:text-left">{footer.copyright}</p>
           <div className="flex items-center gap-6">
             <Link to="/impressum" className="inline-flex min-h-[44px] items-center transition-colors hover:text-ink">

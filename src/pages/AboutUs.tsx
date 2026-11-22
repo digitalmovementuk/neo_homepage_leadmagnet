@@ -11,6 +11,7 @@ import { Reveal } from "../lib/Reveal";
 import { useT, useLang } from "../lib/i18n";
 import { useDocumentHead } from "../lib/useDocumentHead";
 import { useSeoModal } from "../lib/seoModal";
+import { PlatformTrustStrip } from "../components/PlatformTrustStrip";
 
 const STUDIO_IMAGE =
   "/media/stock/photo-1497366811353-6870744d04b2-2400.jpg";
@@ -165,6 +166,9 @@ function AboutHero() {
             <MapPin size={14} strokeWidth={2} className="text-[#FF7A45]" />
             {t.about.hero.locations}
           </p>
+        </Reveal>
+        <Reveal delay={0.28}>
+          <PlatformTrustStrip tone="dark" align="start" className="mt-6" />
         </Reveal>
       </motion.div>
     </section>

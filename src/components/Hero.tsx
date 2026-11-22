@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Pause, Play, Sparkles } from "lucide-react";
 import { useT, useLang } from "../lib/i18n";
 import { useSeoModal } from "../lib/seoModal";
+import { PlatformTrustStrip } from "./PlatformTrustStrip";
 
 const AUTOPLAY_MS = 8000;
 
@@ -224,6 +225,12 @@ export function Hero() {
               }`}
             />
           ))}
+        </div>
+      </div>
+
+      <div className="pointer-events-none absolute inset-x-0 top-[78px] z-20 sm:top-[92px]">
+        <div className="pointer-events-auto mx-auto w-fit max-w-full px-4 md:ml-0 md:max-w-[1512px] md:px-8 lg:px-12">
+          <PlatformTrustStrip tone="dark" pill align="center" />
         </div>
       </div>
     </section>

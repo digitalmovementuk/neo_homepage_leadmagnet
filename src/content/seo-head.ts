@@ -1,8 +1,11 @@
 /**
  * Kopfbereich und strukturierte Daten der SEO-Seite (/seo-agentur/)
- * v1.2 (19.11.2026)
+ * v1.3 (22.11.2026)
  *
  * Changelog
+ *   v1.3 (22.11.2026) Organization.sameAs = Instagram, Facebook, YouTube, Trustpilot,
+ *        ProvenExpert, Sortlist, wlw (content/platforms.ts); Person.sameAs = LinkedIn
+ *        des Gründers. Keine Bewertungs-Auszeichnung (noch keine echten Bewertungen).
  *   v1.2 (19.11.2026) „für kleine Unternehmen" → „für Kleinunternehmen" in Titel,
  *        Beschreibung, og:/twitter: und JSON-LD (Raoul). Eigenes Vorschaubild
  *        /brand/og-seo-agentur.jpg (1200×630) statt des Startseiten-Bilds.
@@ -19,6 +22,7 @@
  * noch keine NEO-Logodatei).
  */
 import { anchors, seoDe } from "./seo-de";
+import { FOUNDER_LINKEDIN, ORG_SAME_AS } from "./platforms";
 
 export const SITE_ORIGIN = "https://www.neotheagency.de";
 export const SEO_CANONICAL = `${SITE_ORIGIN}${seoDe.path}`;
@@ -82,7 +86,8 @@ export function buildSeoJsonLd(): Record<string, unknown> {
     },
     areaServed: { "@type": "Country", name: "Deutschland" },
     founder: { "@id": ID.person },
-    sameAs: [contact.youtubeHref, contact.facebookHref],
+    // v1.3: alle geprüften Profile (Social + Bewertungsplattformen) aus content/platforms.ts
+    sameAs: ORG_SAME_AS,
   };
 
   const person = {
@@ -92,6 +97,7 @@ export function buildSeoJsonLd(): Record<string, unknown> {
     jobTitle: founder.role,
     image: absolute(founder.photo!.src),
     worksFor: { "@id": ID.org },
+    sameAs: [FOUNDER_LINKEDIN],
   };
 
   const website = {

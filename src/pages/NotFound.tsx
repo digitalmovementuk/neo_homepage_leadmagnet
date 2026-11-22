@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { useLang } from "../lib/i18n";
+import { PlatformTrustStrip } from "../components/PlatformTrustStrip";
 
 export function NotFound() {
   const { lang } = useLang();
@@ -35,6 +36,7 @@ export function NotFound() {
           <ArrowLeft size={15} />
           {isEN ? "Back to homepage" : "Zur Startseite"}
         </Link>
+        <PlatformTrustStrip tone="light" align="center" className="mt-10" />
       </div>
     </section>
   );

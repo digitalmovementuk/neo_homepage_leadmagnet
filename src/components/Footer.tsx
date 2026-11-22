@@ -2,26 +2,9 @@ import { Phone, MapPin, ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { business } from "../content";
 import { useT, useLang } from "../lib/i18n";
+import { PlatformReviewLinks } from "./PlatformReviewLinks";
 
-function IGIcon({ size = 16 }: { size?: number }) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden
-    >
-      <rect x="3" y="3" width="18" height="18" rx="5" />
-      <circle cx="12" cy="12" r="4" />
-      <circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" />
-    </svg>
-  );
-}
+
 export function Footer() {
   const t = useT();
   const { lang } = useLang();
@@ -115,25 +98,14 @@ export function Footer() {
               </span>
             </address>
 
-            <div className="mt-6 flex items-center justify-center sm:justify-start gap-3">
-              {business.socials.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={s.label}
-                  className="grid h-9 w-9 place-items-center rounded-full border border-ink/15 text-ink-soft hover:text-ink hover:border-ink/45 transition"
-                >
-                  <IGIcon size={15} />
-                </a>
-              ))}
-            </div>
           </Column>
         </div>
 
+        {/* Bewertungsplattformen + Social-Profile (v22.11.2026) */}
+        <PlatformReviewLinks />
+
         {/* Legal strip */}
-        <div className="mt-14 sm:mt-16 pt-6 border-t border-ink/10 flex flex-col items-center sm:flex-row sm:items-center sm:justify-between gap-4 text-[12px] text-ink-muted text-center sm:text-left">
+        <div className="mt-10 sm:mt-12 pt-6 border-t border-ink/10 flex flex-col items-center sm:flex-row sm:items-center sm:justify-between gap-4 text-[12px] text-ink-muted text-center sm:text-left">
           <p>
             © {new Date().getFullYear()} {business.name}.{" "}
             {isEN ? "All rights reserved." : "Alle Rechte vorbehalten."}
