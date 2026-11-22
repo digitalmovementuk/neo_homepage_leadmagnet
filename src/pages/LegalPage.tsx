@@ -29,8 +29,12 @@ export function LegalPage({
         <div className="max-w-[760px]">
           <p className="eyebrow text-ink-muted">{eyebrow}</p>
           <h1
+            lang="de"
             className="mt-4 text-ink"
             style={{
+              // 22.11.2026: lange Einzelwörter („Datenschutzerklärung") passten auf 375 px nicht → Silbentrennung
+              hyphens: "auto",
+              overflowWrap: "break-word",
               fontSize: "clamp(36px, 5vw, 64px)",
               lineHeight: "1.04",
               letterSpacing: "-0.034em",
