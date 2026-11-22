@@ -101,8 +101,15 @@ export function Nav() {
 
     compute();
     window.addEventListener("scroll", onScroll, { passive: true });
+    // 22.11.2026: Seiten werden nachgeladen. Ohne erneute Prüfung blieb die Leiste
+    // auf hellen Seiten (Impressum, Datenschutz) weiß auf weiß, bis man scrollte.
+    // Sobald eine neue Seite in <main> erscheint, Farbe neu bestimmen.
+    const main = document.getElementById("main");
+    const observer = main ? new MutationObserver(onScroll) : null;
+    if (main && observer) observer.observe(main, { childList: true });
     return () => {
       window.removeEventListener("scroll", onScroll);
+      observer?.disconnect();
       if (frame) cancelAnimationFrame(frame);
     };
   }, []);
