@@ -9,7 +9,7 @@ export function Datenschutz() {
     >
       <LegalSection title="1. Verantwortlicher">
         <p>
-          Digital Movement Germany, Raoul Müller, Kolonnenstraße 8, 10827 Berlin.
+          NEO THE AGENCY, Inhaber: Raoul Müller und Johannes Kaluc, Kolonnenstraße 8, 10827 Berlin.
           <br />
           Telefon und WhatsApp: +49 160 9689 7003
         </p>

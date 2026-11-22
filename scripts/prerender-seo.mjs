@@ -83,7 +83,7 @@ try {
   setMeta("name", "twitter:image", h.ogImage);
   setMeta("name", "twitter:image:alt", h.ogImageAlt);
 
-  // Startseiten-JSON-LD (Digital Movement) raus, SEO-Graph rein. Das Attribut
+  // Startseiten-JSON-LD raus, SEO-Graph rein. Das Attribut
   // data-route-jsonld lässt useDocumentHead denselben Block weiterverwenden.
   const homeLd = /\s*<script type="application\/ld\+json">[\s\S]*?<\/script>/;
   must(html, homeLd, "Startseiten-JSON-LD");

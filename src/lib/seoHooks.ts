@@ -11,7 +11,7 @@
  * │ FORM ADAPTER · TODO(engineer) wire later                             │
  * │ submitSeoLead() ist die EINZIGE Stelle, an der der echte Versand      │
  * │ angeschlossen wird. Heute: keine Netzwerkanfrage, 900 ms Wartezeit,  │
- * │ Erfolg. Die Startseiten-Route (leads.digitalmovement.uk) hier NICHT  │
+ * │ Erfolg. Die Formular-Route der Startseite hier NICHT                 │
  * │ ungeprüft übernehmen; in Tests den Versand abfangen, nie an ein      │
  * │ echtes Postfach.                                                     │
  * └──────────────────────────────────────────────────────────────────────┘

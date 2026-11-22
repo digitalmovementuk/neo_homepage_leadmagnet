@@ -754,7 +754,7 @@ export const seoDe = {
     whatsappLine: "WhatsApp: +49 176 82360647",
     youtubeLabel: "NEO auf YouTube",
     facebookLabel: "NEO auf Facebook",
-    copyright: "© 2026 Digital Movement Germany, Raoul Müller, handelnd als NEO the Agency",
+    copyright: "© 2026 NEO THE AGENCY · Inhaber: Raoul Müller und Johannes Kaluc",
     impressum: "Impressum",
     datenschutz: "Datenschutz",
   },

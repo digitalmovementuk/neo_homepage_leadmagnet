@@ -8,9 +8,9 @@ export function Impressum() {
     <LegalPage eyebrow="Rechtliches" title="Impressum" docTitle="Impressum · NEO THE AGENCY">
       <LegalSection title="Angaben gemäß § 5 DDG">
         <p>
-          Digital Movement Germany
+          NEO THE AGENCY
           <br />
-          Raoul Müller
+          Inhaber: Raoul Müller und Johannes Kaluc
           <br />
           Kolonnenstraße 8
           <br />
@@ -18,7 +18,6 @@ export function Impressum() {
           <br />
           Deutschland
         </p>
-        <p>NEO THE AGENCY ist eine Marke von Digital Movement Germany.</p>
       </LegalSection>
 
       <LegalSection title="Kontakt">
