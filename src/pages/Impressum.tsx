@@ -5,7 +5,12 @@ const a = "text-ink underline underline-offset-2 hover:text-[#0071E3]";
 
 export function Impressum() {
   return (
-    <LegalPage eyebrow="Rechtliches" title="Impressum" docTitle="Impressum · NEO THE AGENCY">
+    <LegalPage
+      eyebrow="Rechtliches"
+      title="Impressum"
+      docTitle="Impressum · NEO THE AGENCY"
+      canonical="https://www.neotheagency.de/impressum"
+    >
       <LegalSection title="Angaben gemäß § 5 DDG">
         <p>
           NEO THE AGENCY

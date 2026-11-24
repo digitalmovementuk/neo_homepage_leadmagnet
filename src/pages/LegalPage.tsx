@@ -5,11 +5,14 @@ export function LegalPage({
   eyebrow,
   title,
   docTitle,
+  canonical,
   children,
 }: {
   eyebrow: string;
   title: string;
   docTitle: string;
+  /** Eigene Canonical-Adresse der Seite (v1.1, 24.11.2026): vorher zeigte der Platzhalter der Startseite. */
+  canonical: string;
   children: ReactNode;
 }) {
   useEffect(() => {
@@ -19,6 +22,34 @@ export function LegalPage({
       document.title = prev;
     };
   }, [docTitle]);
+
+  // Canonical und og:url auf die eigene Adresse setzen, beim Verlassen zurück (sonst bleibt die Startseite eingetragen).
+  useEffect(() => {
+    const created: Element[] = [];
+    const swap = (selector: string, attr: string, tag: string, attrs: Record<string, string>) => {
+      let el = document.head.querySelector(selector);
+      let prev: string | null = null;
+      if (!el) {
+        el = document.createElement(tag);
+        for (const [k, v] of Object.entries(attrs)) el.setAttribute(k, v);
+        document.head.appendChild(el);
+        created.push(el);
+      } else {
+        prev = el.getAttribute(attr);
+      }
+      el.setAttribute(attr, canonical);
+      return () => {
+        if (!created.includes(el!) && prev !== null) el!.setAttribute(attr, prev);
+      };
+    };
+    const undoLink = swap('link[rel="canonical"]', "href", "link", { rel: "canonical" });
+    const undoOg = swap('meta[property="og:url"]', "content", "meta", { property: "og:url" });
+    return () => {
+      undoLink();
+      undoOg();
+      created.forEach((el) => el.remove());
+    };
+  }, [canonical]);
 
   return (
     <section

@@ -2,7 +2,7 @@
 
 > NEO THE AGENCY ist eine Berliner Agentur für digitales Marketing. Für Inhaber und mittelständische Unternehmen übernehmen wir SEO, Optimierung für KI-Antworten, Google Ads, Social Media und Websites. Was Ihr Projekt kostet, sagen wir Ihnen nach einer kurzen Analyse, bevor Sie etwas unterschreiben. Es gibt keine Mindestlaufzeit, und alles, was wir für Sie aufbauen, gehört Ihnen vom ersten Tag an. Unser Angebot richtet sich ausschließlich an Unternehmen.
 
-Version 1.0 (24.11.2026). Changelog: v1.0 (24.11.2026) erste Fassung mit Kontakt, Hauptseiten und offiziellen Profilen.
+Version 1.1 (24.11.2026). Changelog: v1.1 (24.11.2026) Profile mit eigener Canonical-Adresse, LinkedIn-Unternehmensseite ergänzt, Sortlist entfernt (Profil nicht erreichbar), Datenschutz ergänzt. v1.0 (24.11.2026) erste Fassung mit Kontakt, Hauptseiten und offiziellen Profilen.
 
 ## Kontakt
 
@@ -22,6 +22,7 @@ Version 1.0 (24.11.2026). Changelog: v1.0 (24.11.2026) erste Fassung mit Kontakt
 - [Websites](https://www.neotheagency.de/services/websites): Websites für Unternehmen
 - [Über uns](https://www.neotheagency.de/uber-uns): Team und Arbeitsweise
 - [Impressum](https://www.neotheagency.de/impressum)
+- [Datenschutz](https://www.neotheagency.de/datenschutz)
 
 ## Offizielle Profile
 
@@ -29,9 +30,9 @@ Nur diese Profile gehören zu NEO THE AGENCY. Gleiche Liste wie schema.org sameA
 
 - [Instagram](https://www.instagram.com/neotheagency.de/)
 - [Facebook](https://www.facebook.com/p/NEO-The-Agency-61588285349359/)
-- [YouTube](https://www.youtube.com/@neotheagency)
+- [YouTube](https://www.youtube.com/channel/UC3CeypgZBXXlulyqtEkuiSA) (@neotheagency)
+- [LinkedIn](https://www.linkedin.com/company/neo-the-agency/)
 - [Trustpilot](https://www.trustpilot.com/review/neotheagency.de)
-- [ProvenExpert](https://www.provenexpert.com/neo-the-agency/)
-- [Sortlist](https://www.sortlist.com/agency/neo-the-agency)
+- [ProvenExpert](https://www.provenexpert.com/de-de/neo-the-agency/)
 - [wlw (Wer liefert was)](https://www.wlw.de/de/firma/neo-the-agency-22435144)
-- [Hotfrog](https://www.hotfrog.de/company/AaIOiKj7cWG-UnaRBU1CjA)
+- [Hotfrog](https://www.hotfrog.de/company/AaIOiKj7cWG-UnaRBU1CjA/neo-the-agency/berlin/advertising-services)

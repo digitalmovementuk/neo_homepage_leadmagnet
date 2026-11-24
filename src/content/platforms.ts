@@ -1,10 +1,14 @@
 /**
- * Bewertungs- und Profilplattformen + Social-Profile von NEO THE AGENCY · v1.1 (24.11.2026)
+ * Bewertungs- und Profilplattformen + Social-Profile von NEO THE AGENCY · v1.2 (24.11.2026)
  * Eine Quelle für: Vertrauensleiste im ersten Bildschirm, Bewertungsblock im Fußbereich
  * und Organization.sameAs im strukturierten Datensatz (JSON-LD).
  * Nur geprüfte Adressen. Keine Sterne, Punktzahlen oder Bewertungsanzahlen (es gibt noch keine echten Bewertungen).
  *
  * Changelog
+ * - v1.2 (24.11.2026): sameAs nutzt die eigene Canonical-Adresse jedes Profils (sameAsUrl: ProvenExpert /de-de/,
+ *   YouTube-Kanal-ID, Hotfrog lange Adresse). LinkedIn-Unternehmensseite (ORG_LINKEDIN, live geprüft: NEO THE AGENCY,
+ *   Kolonnenstraße 8, Berlin) ergänzt. Sortlist aus sameAs genommen (inSameAs: false), weil sortlist.com und .de am
+ *   24.11.2026 „agency doesn't exist" (404) zeigen. Sichtbare Leisten und Links unverändert.
  * - v1.1 (24.11.2026): DIRECTORY_PROFILES (Hotfrog, live geprüft) ergänzt, fließt nur in sameAs; sichtbare Leisten unverändert.
  * - v1.0 (22.11.2026): Trustpilot, ProvenExpert, Sortlist, wlw + Instagram, Facebook, YouTube; Gründer-LinkedIn.
  */
@@ -25,6 +29,10 @@ export type Platform = {
   height: number;
   altDe: string;
   altEn: string;
+  /** Eigene Canonical-Adresse der Profilseite für sameAs, falls sie vom sichtbaren Link abweicht. */
+  sameAsUrl?: string;
+  /** false = nicht in sameAs / robots.txt / llms.txt (Profil gerade nicht erreichbar). */
+  inSameAs?: boolean;
 };
 
 export const PLATFORMS: Platform[] = [
@@ -46,6 +54,7 @@ export const PLATFORMS: Platform[] = [
     name: "ProvenExpert",
     profileUrl: "https://www.provenexpert.com/neo-the-agency/",
     reviewUrl: "https://www.provenexpert.com/neo-the-agency/582u/",
+    sameAsUrl: "https://www.provenexpert.com/de-de/neo-the-agency/",
     hasReviewForm: true,
     logo: "logos/platforms/provenexpert.svg",
     logoWhite: "logos/platforms/provenexpert-white.svg",
@@ -59,6 +68,8 @@ export const PLATFORMS: Platform[] = [
     name: "Sortlist",
     profileUrl: "https://www.sortlist.com/agency/neo-the-agency",
     reviewUrl: "https://www.sortlist.com/agency/neo-the-agency/review",
+    // 24.11.2026: sortlist.com und sortlist.de zeigen „agency doesn't exist" (404) → nicht in sameAs, bis das Profil wieder lädt.
+    inSameAs: false,
     hasReviewForm: true,
     logo: "logos/platforms/sortlist.svg",
     logoWhite: "logos/platforms/sortlist-white.svg",
@@ -86,16 +97,29 @@ export type Social = {
   key: "instagram" | "facebook" | "youtube";
   name: string;
   url: string;
+  /** Eigene Canonical-Adresse der Profilseite für sameAs, falls sie vom sichtbaren Link abweicht. */
+  sameAsUrl?: string;
 };
 
 export const SOCIALS: Social[] = [
   { key: "instagram", name: "Instagram", url: "https://www.instagram.com/neotheagency.de/" },
   { key: "facebook", name: "Facebook", url: "https://www.facebook.com/p/NEO-The-Agency-61588285349359/" },
-  { key: "youtube", name: "YouTube", url: "https://www.youtube.com/@neotheagency" },
+  {
+    key: "youtube",
+    name: "YouTube",
+    url: "https://www.youtube.com/@neotheagency",
+    sameAsUrl: "https://www.youtube.com/channel/UC3CeypgZBXXlulyqtEkuiSA",
+  },
 ];
 
 /** LinkedIn des Gründers – gehört an den Person-Knoten, nicht an die Organisation. */
 export const FOUNDER_LINKEDIN = "https://www.linkedin.com/in/raoulmueller";
+
+/**
+ * LinkedIn-Unternehmensseite von NEO THE AGENCY (live geprüft 24.11.2026: Berlin, Kolonnenstraße 8, Website neotheagency.de).
+ * Nur sameAs, robots.txt-Kommentar und llms.txt – wird NICHT sichtbar angezeigt. Nie /company/neotheagency verwenden (das ist Digital Movement UK).
+ */
+export const ORG_LINKEDIN = "https://www.linkedin.com/company/neo-the-agency/";
 
 /**
  * Branchenverzeichnisse mit live geprüftem NEO-Eintrag (Name, Adresse, Telefon passen).
@@ -103,12 +127,17 @@ export const FOUNDER_LINKEDIN = "https://www.linkedin.com/in/raoulmueller";
  * Neue Einträge erst nach Live-Prüfung aufnehmen (Liste: NEO-oeffentliche-links-2026-11-24.md).
  */
 export const DIRECTORY_PROFILES: string[] = [
-  "https://www.hotfrog.de/company/AaIOiKj7cWG-UnaRBU1CjA",
+  // Canonical-Adresse der Hotfrog-Seite (live geprüft 24.11.2026)
+  "https://www.hotfrog.de/company/AaIOiKj7cWG-UnaRBU1CjA/neo-the-agency/berlin/advertising-services",
 ];
 
-/** Alle Profile der Organisation für schema.org sameAs (sichtbare Links + Branchenverzeichnisse). */
+/**
+ * Alle Profile der Organisation für schema.org sameAs, jeweils mit der eigenen Canonical-Adresse der Profilseite.
+ * Gleiche Liste in index.html, public/robots.txt und public/llms.txt (bei Änderungen alle vier anpassen).
+ */
 export const ORG_SAME_AS: string[] = [
-  ...SOCIALS.map((s) => s.url),
-  ...PLATFORMS.map((p) => p.profileUrl),
+  ...SOCIALS.map((s) => s.sameAsUrl ?? s.url),
+  ORG_LINKEDIN,
+  ...PLATFORMS.filter((p) => p.inSameAs !== false).map((p) => p.sameAsUrl ?? p.profileUrl),
   ...DIRECTORY_PROFILES,
 ];

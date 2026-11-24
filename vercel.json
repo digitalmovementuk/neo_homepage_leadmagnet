@@ -9,7 +9,8 @@
     { "source": "/leistungen/seo", "destination": "/seo-agentur/", "permanent": true },
     { "source": "/leistungen/seo/", "destination": "/seo-agentur/", "permanent": true },
     { "source": "/services/seo", "destination": "/seo-agentur/", "permanent": true },
-    { "source": "/services/seo/", "destination": "/seo-agentur/", "permanent": true }
+    { "source": "/services/seo/", "destination": "/seo-agentur/", "permanent": true },
+    { "source": "/sitemap-index.xml", "destination": "/sitemap.xml", "permanent": true }
   ],
   "rewrites": [
     { "source": "/((?!api/).*)", "destination": "/index.html" }

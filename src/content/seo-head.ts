@@ -1,8 +1,11 @@
 /**
  * Kopfbereich und strukturierte Daten der SEO-Seite (/seo-agentur/)
- * v1.4 (24.11.2026)
+ * v1.5 (24.11.2026)
  *
  * Changelog
+ *   v1.5 (24.11.2026) Organization.telephone = „+49 160 9689 7003" (wie index.html und Impressum;
+ *        vorher „+4916096897003"). sameAs aus platforms.ts v1.2 (Canonical-Adressen,
+ *        LinkedIn-Unternehmensseite, ohne Sortlist).
  *   v1.4 (24.11.2026) Organization.sameAs zusätzlich mit Hotfrog (DIRECTORY_PROFILES
  *        in content/platforms.ts). Organization.name = „NEO THE AGENCY" + alternateName
  *        „Neo Agency" wie in index.html (vorher „NEO the Agency"). WebSite-Knoten unverändert.
@@ -81,7 +84,7 @@ export function buildSeoJsonLd(): Record<string, unknown> {
     alternateName: "Neo Agency",
     url: `${SITE_ORIGIN}/`,
     email: contact.email,
-    telephone: contact.phoneHref.replace("tel:", ""),
+    telephone: contact.phone,
     address: {
       "@type": "PostalAddress",
       streetAddress: contact.street,

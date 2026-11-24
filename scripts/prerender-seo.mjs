@@ -1,5 +1,5 @@
 /**
- * Prerender /seo-agentur/ zu statischem HTML · v1.1 (19.11.2026)
+ * Prerender /seo-agentur/ zu statischem HTML · v1.2 (24.11.2026)
  *
  * Läuft NACH `vite build`. Leichtester Weg ohne neues Paket:
  *   1. Vite baut src/entry-prerender.tsx einmal für Node (SSR) in einen
@@ -14,6 +14,8 @@
  * dist/index.html (Startseite) wird nur gelesen, nie verändert.
  *
  * Changelog
+ *   v1.2 (24.11.2026) /impressum und /datenschutz bekommen eigenes statisches HTML mit eigener
+ *        Canonical, og:url und Titel (Hülle = Startseite, Inhalt bleibt die App). Sichtbar unverändert.
  *   v1.1 (19.11.2026) Adresse /seo-agentur/; Weiterleitungsseiten für alte Adressen.
  *   v1.0 (19.11.2026) Erste Fassung.
  */
@@ -47,7 +49,8 @@ try {
   const appHtml = await renderSeoPage();
   if (!appHtml.includes('id="top-titel"')) throw new Error("prerender-seo: H1 fehlt im gerenderten HTML");
 
-  let html = await readFile(path.join(dist, "index.html"), "utf8");
+  const homeShell = await readFile(path.join(dist, "index.html"), "utf8");
+  let html = homeShell;
   const h = seoHead;
 
   const setMeta = (attr, key, value) => {
@@ -117,6 +120,25 @@ try {
   await mkdir(outDir, { recursive: true });
   await writeFile(path.join(outDir, "index.html"), html);
   console.log(`prerender-seo: ${path.relative(root, path.join(outDir, "index.html"))} (${(Buffer.byteLength(html) / 1024).toFixed(1)} kB)`);
+
+  // Rechtsseiten: gleiche Hülle wie die Startseite, aber eigene Canonical, og:url und Titel im Roh-HTML.
+  const origin = new URL(h.canonical).origin;
+  for (const page of [
+    { path: "/impressum", title: "Impressum · NEO THE AGENCY" },
+    { path: "/datenschutz", title: "Datenschutz · NEO THE AGENCY" },
+  ]) {
+    let legal = homeShell;
+    const url = origin + page.path;
+    must(legal, /<link rel="canonical" href="[^"]*"\s*\/?>/, "canonical (Rechtsseite)");
+    legal = legal.replace(/<link rel="canonical" href="[^"]*"\s*\/?>/, `<link rel="canonical" href="${esc(url)}" />`);
+    must(legal, /<meta\s+property="og:url"\s+content="[^"]*"\s*\/?>/, "og:url (Rechtsseite)");
+    legal = legal.replace(/<meta\s+property="og:url"\s+content="[^"]*"\s*\/?>/, `<meta property="og:url" content="${esc(url)}" />`);
+    legal = legal.replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(page.title)}</title>`);
+    const dir = path.join(dist, ...page.path.split("/").filter(Boolean));
+    await mkdir(dir, { recursive: true });
+    await writeFile(path.join(dir, "index.html"), legal);
+    console.log(`prerender-seo: ${page.path} (eigene Canonical)`);
+  }
 
   // Alte Adressen: kleine Weiterleitungsseite, falls der Server keine 301 sendet.
   const target = h.canonical;
