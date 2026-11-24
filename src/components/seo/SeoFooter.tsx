@@ -25,7 +25,7 @@ export function SeoFooter() {
                 src={asset("brand/logo-color-positive.png")}
                 alt={footer.logoAlt}
                 width={1600}
-                height={161}
+                height={174}
                 loading="lazy"
                 decoding="async"
                 className="h-8 w-auto"

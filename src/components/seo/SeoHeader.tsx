@@ -130,7 +130,7 @@ export function SeoHeader() {
               src={asset(dark ? "brand/logo-color-negative.png" : "brand/logo-color-positive.png")}
               alt={header.logoAlt}
               width={1600}
-              height={161}
+              height={174}
               draggable={false}
               className={`w-auto transition-all duration-300 ${compact ? "h-6 sm:h-7" : "h-7 sm:h-9"}`}
             />
@@ -281,7 +281,7 @@ export function SeoHeader() {
                   src={asset("brand/logo-color-negative.png")}
                   alt={header.logoAlt}
                   width={1600}
-                  height={161}
+                  height={174}
                   className="h-7 w-auto"
                   draggable={false}
                 />

@@ -396,7 +396,7 @@ const de: Translations = {
     headline: "Commitment.",
     paragraphs: [
       "Ein Ziel verbindet alle Projekte: Ihr Umsatz wächst. Erfolg messen wir daran. Nicht an unserer Kreativität.",
-      "NEO THE AGENCY® ist High-End Performance Marketing. Erfolge sind messbar. Wir liefern Anfragen — keine Tabellen.",
+      "NEO THE AGENCY ist High-End Performance Marketing. Erfolge sind messbar. Wir liefern Anfragen — keine Tabellen.",
       "Hintergrund: Strategieberatung, Unternehmensberatung, Projektmanagement. Sie bekommen das Komplettpaket — Strategie, Projektsteuerung, Handwerk.",
     ],
     closing: "Customer Excellence ist der Kompass. Drei Prinzipien zeigen, wie das in der Praxis aussieht.",
@@ -1813,7 +1813,7 @@ const en: Translations = {
     headline: "Commitment.",
     paragraphs: [
       "One goal ties every project together: your revenue grows. That's how we measure success. Not by our creativity.",
-      "NEO THE AGENCY® is high-end performance marketing. Results are measurable. We deliver enquiries — not spreadsheets.",
+      "NEO THE AGENCY is high-end performance marketing. Results are measurable. We deliver enquiries — not spreadsheets.",
       "Background: strategy consulting, management consulting, project management. You get the full package — strategy, project ownership, craft.",
     ],
     closing:
