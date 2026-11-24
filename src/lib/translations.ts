@@ -683,7 +683,7 @@ const de: Translations = {
       headlinePre: "Eine Berliner Agentur,",
       headlineSoft: "die das Handwerk wieder ernst nimmt.",
       sub: "Wir sind ein internationales Team aus Spezialisten, die Performance Marketing als Handwerk verstehen — nicht als Excel-Sport. Unser Versprechen: messbare Ergebnisse in 90 Tagen.",
-      locations: "Berlin · New York",
+      locations: "Berlin-Schöneberg",
     },
     pillars: [
       {
@@ -724,9 +724,9 @@ const de: Translations = {
     },
     studio: {
       eyebrow: "Wo wir arbeiten",
-      headlinePre: "Loft in Mitte.",
-      headlineSoft: "Satellit in Brooklyn.",
-      body: "Unser Hauptstudio sitzt in einem Industrie-Loft in Berlin-Mitte — mit Blick auf die Backsteinfassaden, Sichtbeton an der Decke, schwarzem Stahl an den Fenstern. Ein zweites Team arbeitet aus Brooklyn, NYC. Beides bewusst gewählt: Wir bauen für Marken, die echtes Handwerk und einen guten Geschmack respektieren.",
+      headlinePre: "Berlin-Schöneberg.",
+      headlineSoft: "Kolonnenstraße 8.",
+      body: "Unser Büro liegt in der Kolonnenstraße 8 in Berlin-Schöneberg. Von hier aus betreuen wir Inhaber und mittelständische Unternehmen in ganz Deutschland, persönlich und ohne Umwege.",
       bullets: [
         "Eigene Studio-Räume statt Coworking-Theater",
         "Persönliche Workshops vor Ort möglich",
@@ -2100,7 +2100,7 @@ const en: Translations = {
       headlinePre: "A Berlin agency",
       headlineSoft: "taking the craft seriously again.",
       sub: "We're an international team of specialists who treat performance marketing as a craft — not an Excel sport. Our promise: measurable results in 90 days.",
-      locations: "Berlin · New York",
+      locations: "Berlin-Schöneberg",
     },
     pillars: [
       {
@@ -2141,9 +2141,9 @@ const en: Translations = {
     },
     studio: {
       eyebrow: "Where we work",
-      headlinePre: "Loft in Mitte.",
-      headlineSoft: "Satellite in Brooklyn.",
-      body: "Our main studio sits in an industrial loft in Berlin-Mitte — looking out on red-brick facades, exposed concrete overhead, black steel framing the windows. A second team operates out of Brooklyn, NYC. Both deliberate: we build for brands that respect real craft and good taste.",
+      headlinePre: "Berlin-Schöneberg.",
+      headlineSoft: "Kolonnenstraße 8.",
+      body: "Our office is at Kolonnenstraße 8 in Berlin-Schöneberg. From here we work with owner-led and mid-sized businesses across Germany, in person and without detours.",
       bullets: [
         "Owned studio space, no co-working theatre",
         "Workshops on-site whenever it matters",

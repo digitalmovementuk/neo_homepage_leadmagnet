@@ -50,12 +50,12 @@ export const seoDe = {
   },
 
   contact: {
-    email: "info@neotheagency.com",
-    emailHref: "mailto:info@neotheagency.com",
+    email: "office@neotheagency.de",
+    emailHref: "mailto:office@neotheagency.de",
     phone: "+49 160 9689 7003",
     phoneHref: "tel:+4916096897003",
-    whatsapp: "+49 176 82360647",
-    whatsappHref: "https://wa.me/4917682360647",
+    whatsapp: "+49 160 9689 7003",
+    whatsappHref: "https://wa.me/4916096897003",
     street: "Kolonnenstraße 8",
     city: "10827 Berlin",
     youtubeHref: "https://www.youtube.com/@neotheagency",
@@ -125,7 +125,7 @@ export const seoDe = {
     errorEmail: "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
     // Freigegeben (NEO-SEO-Meta-Fehlertext-v1.1-20261119.md), 175 Zeichen.
     // E-Mail und Telefonnummer werden im Formular automatisch verlinkt.
-    errorSend: "Ihre Anfrage konnte leider nicht gesendet werden. Bitte versuchen Sie es noch einmal, schreiben Sie uns an info@neotheagency.com oder rufen Sie uns unter +49 160 9689 7003 an.",
+    errorSend: "Ihre Anfrage konnte leider nicht gesendet werden. Bitte versuchen Sie es noch einmal, schreiben Sie uns an office@neotheagency.de oder rufen Sie uns unter +49 160 9689 7003 an.",
     privacyLinkText: "Datenschutzerklärung",
     privacyHref: "/datenschutz",
     website: { label: "Ihre Website", placeholder: "www.ihre-firma.de" },
@@ -751,7 +751,7 @@ export const seoDe = {
     agencyTitle: "Agentur",
     contactTitle: "Kontakt",
     officeTitle: "Büro",
-    whatsappLine: "WhatsApp: +49 176 82360647",
+    whatsappLine: "WhatsApp: +49 160 9689 7003",
     youtubeLabel: "NEO auf YouTube",
     facebookLabel: "NEO auf Facebook",
     copyright: "© 2026 NEO THE AGENCY · Inhaber: Raoul Müller und Johannes Kaluc",
