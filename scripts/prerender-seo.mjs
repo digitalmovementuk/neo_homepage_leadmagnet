@@ -1,5 +1,5 @@
 /**
- * Prerender /seo-agentur/ zu statischem HTML · v1.2 (24.11.2026)
+ * Prerender /seo-agentur/ zu statischem HTML · v1.3 (24.11.2026)
  *
  * Läuft NACH `vite build`. Leichtester Weg ohne neues Paket:
  *   1. Vite baut src/entry-prerender.tsx einmal für Node (SSR) in einen
@@ -14,6 +14,9 @@
  * dist/index.html (Startseite) wird nur gelesen, nie verändert.
  *
  * Changelog
+ *   v1.3 (24.11.2026) /services/google-ads, /services/social-media, /services/websites und /uber-uns bekommen
+ *        eigenes statisches HTML mit eigener Canonical, og:url, Titel, Beschreibung, og:/twitter:-Titel und -Beschreibung
+ *        (Werte aus translations.de über routeHeads). Sichtbar unverändert.
  *   v1.2 (24.11.2026) /impressum und /datenschutz bekommen eigenes statisches HTML mit eigener
  *        Canonical, og:url und Titel (Hülle = Startseite, Inhalt bleibt die App). Sichtbar unverändert.
  *   v1.1 (19.11.2026) Adresse /seo-agentur/; Weiterleitungsseiten für alte Adressen.
@@ -44,7 +47,8 @@ try {
   const entryFile = (await readdir(ssrOut)).find((f) => /^entry-prerender\.(m?js)$/.test(f));
   if (!entryFile) throw new Error("prerender-seo: SSR-Ausgabe fehlt");
   const mod = await import(pathToFileURL(path.join(ssrOut, entryFile)).href);
-  const { renderSeoPage, seoHead, buildSeoJsonLd, SEO_PATH } = mod;
+  const { renderSeoPage, seoHead, buildSeoJsonLd, SEO_PATH, routeHeads } = mod;
+  if (!Array.isArray(routeHeads) || routeHeads.length !== 4) throw new Error("prerender-seo: routeHeads fehlt");
 
   const appHtml = await renderSeoPage();
   if (!appHtml.includes('id="top-titel"')) throw new Error("prerender-seo: H1 fehlt im gerenderten HTML");
@@ -138,6 +142,32 @@ try {
     await mkdir(dir, { recursive: true });
     await writeFile(path.join(dir, "index.html"), legal);
     console.log(`prerender-seo: ${page.path} (eigene Canonical)`);
+  }
+
+  // Leistungsseiten und /uber-uns: Hülle der Startseite, aber eigene Canonical, og:url, Titel und
+  // Beschreibung (auch für og/twitter) schon im Roh-HTML. Die App setzt zur Laufzeit dieselben Werte.
+  const swapMeta = (src, attr, key, value, label) => {
+    const re = new RegExp(`<meta\\s+${attr}="${key}"\\s+content="[^"]*"\\s*/?>`);
+    must(src, re, `${key} (${label})`);
+    return src.replace(re, `<meta ${attr}="${key}" content="${esc(value)}" />`);
+  };
+  for (const page of routeHeads) {
+    let pageHtml = homeShell;
+    const url = origin + page.path;
+    must(pageHtml, /<link rel="canonical" href="[^"]*"\s*\/?>/, `canonical (${page.path})`);
+    pageHtml = pageHtml.replace(/<link rel="canonical" href="[^"]*"\s*\/?>/, `<link rel="canonical" href="${esc(url)}" />`);
+    must(pageHtml, /<title>[\s\S]*?<\/title>/, `title (${page.path})`);
+    pageHtml = pageHtml.replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(page.title)}</title>`);
+    pageHtml = swapMeta(pageHtml, "property", "og:url", url, page.path);
+    pageHtml = swapMeta(pageHtml, "name", "description", page.description, page.path);
+    pageHtml = swapMeta(pageHtml, "property", "og:title", page.title, page.path);
+    pageHtml = swapMeta(pageHtml, "property", "og:description", page.description, page.path);
+    pageHtml = swapMeta(pageHtml, "name", "twitter:title", page.title, page.path);
+    pageHtml = swapMeta(pageHtml, "name", "twitter:description", page.description, page.path);
+    const dir = path.join(dist, ...page.path.split("/").filter(Boolean));
+    await mkdir(dir, { recursive: true });
+    await writeFile(path.join(dir, "index.html"), pageHtml);
+    console.log(`prerender-seo: ${page.path} (eigener Kopfbereich)`);
   }
 
   // Alte Adressen: kleine Weiterleitungsseite, falls der Server keine 301 sendet.

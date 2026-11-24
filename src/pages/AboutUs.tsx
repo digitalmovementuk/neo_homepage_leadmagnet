@@ -41,7 +41,10 @@ export function AboutUs() {
     title: t.about.meta.title,
     description: t.about.meta.description,
     lang,
-    canonical: lang === "de" ? "/uber-uns" : "/about",
+    canonical:
+      lang === "de"
+        ? "https://www.neotheagency.de/uber-uns"
+        : "https://www.neotheagency.de/about",
   });
 
   return (

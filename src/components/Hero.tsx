@@ -322,7 +322,7 @@ const HeroSlideView = ({
                   {slide.headlineTop}
                 </span>
                 <span
-                  className="mt-2 block max-w-[31ch] text-white/86 sm:mt-4"
+                  className="mx-auto mt-2 block max-w-[31ch] text-white/86 sm:mt-4 md:mx-0"
                   style={{
                     fontSize: "clamp(14px, 1.55vw, 24px)",
                     lineHeight: 1.25,
