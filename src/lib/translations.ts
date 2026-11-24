@@ -676,13 +676,13 @@ const de: Translations = {
     meta: {
       title: "Über NEO · Die Agentur, die wirklich liefert",
       description:
-        "Wer wir sind, woran wir glauben, und das Team hinter den 90-Tage-Sprints. Inhabergeführt, international, ohne Account-Manager-Ketten.",
+        "Wer wir sind, woran wir glauben, und das Team hinter den 90-Tage-Sprints. Eine Berliner Agentur für digitales Marketing, international, ohne Account-Manager-Ketten.",
     },
     hero: {
       eyebrow: "Über uns",
-      headlinePre: "Eine kleine Agentur,",
+      headlinePre: "Eine Berliner Agentur,",
       headlineSoft: "die das Handwerk wieder ernst nimmt.",
-      sub: "Wir sind ein internationales Team aus Spezialisten, die Performance Marketing als Handwerk verstehen — nicht als Excel-Sport. Sieben Köpfe, ein klares Versprechen: messbare Ergebnisse in 90 Tagen.",
+      sub: "Wir sind ein internationales Team aus Spezialisten, die Performance Marketing als Handwerk verstehen — nicht als Excel-Sport. Unser Versprechen: messbare Ergebnisse in 90 Tagen.",
       locations: "Berlin · New York",
     },
     pillars: [
@@ -702,7 +702,7 @@ const de: Translations = {
         label: "Werte",
         headline:
           "Commitment. Performance. Fairer Preis.",
-        body: "Wir nehmen weniger Kunden, dafür stehen wir bei jedem mit dem Telefonhörer in der Hand. Was wir versprechen, halten wir — oder wir halten den Mund.",
+        body: "Jeder Kunde hat bei uns einen festen Ansprechpartner, der ans Telefon geht. Was wir versprechen, halten wir — oder wir halten den Mund.",
       },
     ],
     founder: {
@@ -726,7 +726,7 @@ const de: Translations = {
       eyebrow: "Wo wir arbeiten",
       headlinePre: "Loft in Mitte.",
       headlineSoft: "Satellit in Brooklyn.",
-      body: "Unser Hauptstudio sitzt in einem Industrie-Loft in Berlin-Mitte — mit Blick auf die Backsteinfassaden, Sichtbeton an der Decke, schwarzem Stahl an den Fenstern. Ein zweites kleines Team operiert aus Brooklyn, NYC. Beides bewusst gewählt: Wir bauen für Marken, die echtes Handwerk und einen guten Geschmack respektieren.",
+      body: "Unser Hauptstudio sitzt in einem Industrie-Loft in Berlin-Mitte — mit Blick auf die Backsteinfassaden, Sichtbeton an der Decke, schwarzem Stahl an den Fenstern. Ein zweites Team arbeitet aus Brooklyn, NYC. Beides bewusst gewählt: Wir bauen für Marken, die echtes Handwerk und einen guten Geschmack respektieren.",
       bullets: [
         "Eigene Studio-Räume statt Coworking-Theater",
         "Persönliche Workshops vor Ort möglich",
@@ -820,7 +820,7 @@ const de: Translations = {
         eyebrow: "Suchmaschinenoptimierung · für Inhaber & Mittelstand",
         headlineTop: "Google.",
         headlineBottom: "Seite 1.",
-        sub: "Wir bringen Ihre Website auf Seite 1 für die Begriffe, die Ihre Kunden tippen — in 90 Tagen, mit Festpreis und ohne Lock-in. Inhabergeführt, Klartext, messbar.",
+        sub: "Wir bringen Ihre Website auf Seite 1 für die Begriffe, die Ihre Kunden tippen — in 90 Tagen, mit Festpreis und ohne Lock-in. Persönlich betreut, Klartext, messbar.",
         primaryCta: "Kostenloser SEO-Audit",
         secondaryCta: "Erstgespräch buchen",
         chips: ["Technisches SEO", "Content & On-Page", "Linkaufbau", "Lokales SEO"],
@@ -1268,7 +1268,7 @@ const de: Translations = {
         eyebrow: "Social Media · für Inhaber & Mittelstand",
         headlineTop: "Anfragen.",
         headlineBottom: "Nicht Follower.",
-        sub: "Short-Form-Video, Paid Social und Kreativ-Content, der gebuchte Termine bringt — nicht Likes. Inhabergeführt, content-fokussiert, ohne Buzzword-Bingo.",
+        sub: "Short-Form-Video, Paid Social und Kreativ-Content, der gebuchte Termine bringt — nicht Likes. Persönlich betreut, content-fokussiert, ohne Buzzword-Bingo.",
         primaryCta: "Content-Sample anfragen",
         secondaryCta: "Erstgespräch buchen",
         chips: ["Short-Form-Video", "Paid Social", "Kreativ-Production", "Posting-Plan"],
@@ -2093,13 +2093,13 @@ const en: Translations = {
     meta: {
       title: "About NEO · The agency that actually delivers",
       description:
-        "Who we are, what we believe, and the team behind the 90-day sprints. Founder-led, international, no account-manager chain.",
+        "Who we are, what we believe, and the team behind the 90-day sprints. A Berlin digital marketing agency, international, no account-manager chain.",
     },
     hero: {
       eyebrow: "About",
-      headlinePre: "A small agency",
+      headlinePre: "A Berlin agency",
       headlineSoft: "taking the craft seriously again.",
-      sub: "We're an international team of specialists who treat performance marketing as a craft — not an Excel sport. Seven heads, one promise: measurable results in 90 days.",
+      sub: "We're an international team of specialists who treat performance marketing as a craft — not an Excel sport. Our promise: measurable results in 90 days.",
       locations: "Berlin · New York",
     },
     pillars: [
@@ -2119,7 +2119,7 @@ const en: Translations = {
         label: "Values",
         headline:
           "Commitment. Performance. Fair pricing.",
-        body: "We take fewer clients so we can stand on the phone for each one. What we promise, we keep — or we keep quiet.",
+        body: "Every client gets a dedicated contact who picks up the phone. What we promise, we keep — or we keep quiet.",
       },
     ],
     founder: {
@@ -2143,7 +2143,7 @@ const en: Translations = {
       eyebrow: "Where we work",
       headlinePre: "Loft in Mitte.",
       headlineSoft: "Satellite in Brooklyn.",
-      body: "Our main studio sits in an industrial loft in Berlin-Mitte — looking out on red-brick facades, exposed concrete overhead, black steel framing the windows. A small second team operates out of Brooklyn, NYC. Both deliberate: we build for brands that respect real craft and good taste.",
+      body: "Our main studio sits in an industrial loft in Berlin-Mitte — looking out on red-brick facades, exposed concrete overhead, black steel framing the windows. A second team operates out of Brooklyn, NYC. Both deliberate: we build for brands that respect real craft and good taste.",
       bullets: [
         "Owned studio space, no co-working theatre",
         "Workshops on-site whenever it matters",
@@ -2237,7 +2237,7 @@ const en: Translations = {
         eyebrow: "Search engine optimisation · for founders & SMEs",
         headlineTop: "Google.",
         headlineBottom: "Page one.",
-        sub: "We get your website to page one for the terms your customers actually type — in 90 days, on a fixed price, without lock-in. Founder-led, plain talk, measurable.",
+        sub: "We get your website to page one for the terms your customers actually type — in 90 days, on a fixed price, without lock-in. Personal service, plain talk, measurable.",
         primaryCta: "Free SEO audit",
         secondaryCta: "Book a consultation",
         chips: ["Technical SEO", "Content & on-page", "Link-building", "Local SEO"],
@@ -2685,7 +2685,7 @@ const en: Translations = {
         eyebrow: "Social media · for founders & SMEs",
         headlineTop: "Enquiries.",
         headlineBottom: "Not followers.",
-        sub: "Short-form video, paid social and creative content that books appointments — not likes. Founder-led, content-driven, no buzzword bingo.",
+        sub: "Short-form video, paid social and creative content that books appointments — not likes. Personal service, content-driven, no buzzword bingo.",
         primaryCta: "Free content sample",
         secondaryCta: "Book a consultation",
         chips: ["Short-form video", "Paid social", "Creative production", "Posting plan"],

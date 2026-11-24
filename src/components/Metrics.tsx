@@ -365,7 +365,7 @@ function HeritageStat({ isEN }: { isEN: boolean }) {
       <div className="inline-flex self-center items-center gap-2 text-[10.5px] font-bold uppercase tracking-[0.18em] text-ink-muted">
         <span>04</span>
         <span className="h-px w-6 bg-ink/15" />
-        <span>{isEN ? "Founder-led · plain talk" : "Inhabergeführt · Klartext"}</span>
+        <span>{isEN ? "Personal service · plain talk" : "Persönlich betreut · Klartext"}</span>
       </div>
 
       <div className="my-6">
@@ -420,8 +420,8 @@ function HeritageStat({ isEN }: { isEN: boolean }) {
 
       <p className="text-[14.5px] sm:text-[15.5px] text-ink-soft leading-relaxed">
         {isEN
-          ? "Young studio, clear stance. The team you meet at the first call ships the work — no account-manager ping-pong."
-          : "Junges Studio, klare Ansage. Das Team, das Sie im Erstgespräch treffen, liefert auch die Arbeit ab — kein Account-Manager-Pingpong."}
+          ? "Clear stance. The team you meet at the first call ships the work — no account-manager ping-pong."
+          : "Klare Ansage: Das Team, das Sie im Erstgespräch treffen, liefert auch die Arbeit ab — kein Account-Manager-Pingpong."}
       </p>
     </motion.div>
   );
