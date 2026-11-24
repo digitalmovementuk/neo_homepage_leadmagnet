@@ -1,10 +1,11 @@
 /**
- * Bewertungs- und Profilplattformen + Social-Profile von NEO THE AGENCY · v1.0 (22.11.2026)
+ * Bewertungs- und Profilplattformen + Social-Profile von NEO THE AGENCY · v1.1 (24.11.2026)
  * Eine Quelle für: Vertrauensleiste im ersten Bildschirm, Bewertungsblock im Fußbereich
  * und Organization.sameAs im strukturierten Datensatz (JSON-LD).
  * Nur geprüfte Adressen. Keine Sterne, Punktzahlen oder Bewertungsanzahlen (es gibt noch keine echten Bewertungen).
  *
  * Changelog
+ * - v1.1 (24.11.2026): DIRECTORY_PROFILES (Hotfrog, live geprüft) ergänzt, fließt nur in sameAs; sichtbare Leisten unverändert.
  * - v1.0 (22.11.2026): Trustpilot, ProvenExpert, Sortlist, wlw + Instagram, Facebook, YouTube; Gründer-LinkedIn.
  */
 
@@ -96,8 +97,18 @@ export const SOCIALS: Social[] = [
 /** LinkedIn des Gründers – gehört an den Person-Knoten, nicht an die Organisation. */
 export const FOUNDER_LINKEDIN = "https://www.linkedin.com/in/raoulmueller";
 
-/** Alle Profile der Organisation für schema.org sameAs (gleiche Adressen wie die sichtbaren Links). */
+/**
+ * Branchenverzeichnisse mit live geprüftem NEO-Eintrag (Name, Adresse, Telefon passen).
+ * Nur für sameAs, robots.txt-Kommentar und llms.txt – wird NICHT sichtbar angezeigt.
+ * Neue Einträge erst nach Live-Prüfung aufnehmen (Liste: NEO-oeffentliche-links-2026-11-24.md).
+ */
+export const DIRECTORY_PROFILES: string[] = [
+  "https://www.hotfrog.de/company/AaIOiKj7cWG-UnaRBU1CjA",
+];
+
+/** Alle Profile der Organisation für schema.org sameAs (sichtbare Links + Branchenverzeichnisse). */
 export const ORG_SAME_AS: string[] = [
   ...SOCIALS.map((s) => s.url),
   ...PLATFORMS.map((p) => p.profileUrl),
+  ...DIRECTORY_PROFILES,
 ];

@@ -1,8 +1,11 @@
 /**
  * Kopfbereich und strukturierte Daten der SEO-Seite (/seo-agentur/)
- * v1.3 (22.11.2026)
+ * v1.4 (24.11.2026)
  *
  * Changelog
+ *   v1.4 (24.11.2026) Organization.sameAs zusätzlich mit Hotfrog (DIRECTORY_PROFILES
+ *        in content/platforms.ts). Organization.name = „NEO THE AGENCY" + alternateName
+ *        „Neo Agency" wie in index.html (vorher „NEO the Agency"). WebSite-Knoten unverändert.
  *   v1.3 (22.11.2026) Organization.sameAs = Instagram, Facebook, YouTube, Trustpilot,
  *        ProvenExpert, Sortlist, wlw (content/platforms.ts); Person.sameAs = LinkedIn
  *        des Gründers. Keine Bewertungs-Auszeichnung (noch keine echten Bewertungen).
@@ -73,7 +76,9 @@ export function buildSeoJsonLd(): Record<string, unknown> {
   const organization = {
     "@type": ["Organization", "ProfessionalService"],
     "@id": ID.org,
-    name: "NEO the Agency",
+    // v1.4: gleicher Name wie im Startseiten-Datensatz (index.html), damit beide Seiten dieselbe Firma beschreiben
+    name: "NEO THE AGENCY",
+    alternateName: "Neo Agency",
     url: `${SITE_ORIGIN}/`,
     email: contact.email,
     telephone: contact.phoneHref.replace("tel:", ""),

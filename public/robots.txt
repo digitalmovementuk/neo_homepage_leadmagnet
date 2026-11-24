@@ -1,4 +1,20 @@
+# robots.txt · NEO THE AGENCY · v1.1 (24.11.2026)
+# Changelog: v1.1 (24.11.2026) offizielle NEO-Profile als Kommentar ergänzt; Crawl-Regeln unverändert.
+
 User-agent: *
 Allow: /
 
 Sitemap: https://www.neotheagency.de/sitemap.xml
+
+# Offizielle Profile von NEO THE AGENCY (Kolonnenstraße 8, 10827 Berlin, +49 160 9689 7003).
+# Gleiche Liste wie schema.org sameAs auf jeder Seite (@id https://www.neotheagency.de/#organization).
+# Instagram:    https://www.instagram.com/neotheagency.de/
+# Facebook:     https://www.facebook.com/p/NEO-The-Agency-61588285349359/
+# YouTube:      https://www.youtube.com/@neotheagency
+# Trustpilot:   https://www.trustpilot.com/review/neotheagency.de
+# ProvenExpert: https://www.provenexpert.com/neo-the-agency/
+# Sortlist:     https://www.sortlist.com/agency/neo-the-agency
+# wlw:          https://www.wlw.de/de/firma/neo-the-agency-22435144
+# Hotfrog:      https://www.hotfrog.de/company/AaIOiKj7cWG-UnaRBU1CjA
+# Gründer Raoul Müller (LinkedIn): https://www.linkedin.com/in/raoulmueller
+# Kurzinfo für KI-Systeme: https://www.neotheagency.de/llms.txt
