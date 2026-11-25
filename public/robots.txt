@@ -1,5 +1,6 @@
-# robots.txt · NEO THE AGENCY · v1.2 (24.11.2026)
-# Changelog: v1.2 (24.11.2026) Profil-Liste = sameAs mit eigener Canonical-Adresse jedes Profils, LinkedIn-Unternehmensseite ergänzt,
+# robots.txt · NEO THE AGENCY · v1.3 (25.11.2026)
+# Changelog: v1.3 (25.11.2026) Sortlist mit korrigierter Adresse (/agency/neotheagency) wieder in der Profil-Liste; Crawl-Regeln unverändert.
+#            v1.2 (24.11.2026) Profil-Liste = sameAs mit eigener Canonical-Adresse jedes Profils, LinkedIn-Unternehmensseite ergänzt,
 #            Sortlist entfernt (Profil zeigt 404); Crawl-Regeln unverändert.
 #            v1.1 (24.11.2026) offizielle NEO-Profile als Kommentar ergänzt; Crawl-Regeln unverändert.
 
@@ -16,6 +17,7 @@ Sitemap: https://www.neotheagency.de/sitemap.xml
 # LinkedIn:     https://www.linkedin.com/company/neo-the-agency/
 # Trustpilot:   https://www.trustpilot.com/review/neotheagency.de
 # ProvenExpert: https://www.provenexpert.com/de-de/neo-the-agency/
+# Sortlist:     https://www.sortlist.com/agency/neotheagency
 # wlw:          https://www.wlw.de/de/firma/neo-the-agency-22435144
 # Hotfrog:      https://www.hotfrog.de/company/AaIOiKj7cWG-UnaRBU1CjA/neo-the-agency/berlin/advertising-services
 # Gründer Raoul Müller (LinkedIn): https://www.linkedin.com/in/raoulmueller

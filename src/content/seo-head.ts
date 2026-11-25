@@ -1,8 +1,9 @@
 /**
  * Kopfbereich und strukturierte Daten der SEO-Seite (/seo-agentur/)
- * v1.5 (24.11.2026)
+ * v1.6 (25.11.2026)
  *
  * Changelog
+ *   v1.6 (25.11.2026) sameAs aus platforms.ts v1.3: Sortlist mit korrigierter Adresse wieder enthalten.
  *   v1.5 (24.11.2026) Organization.telephone = „+49 160 9689 7003" (wie index.html und Impressum;
  *        vorher „+4916096897003"). sameAs aus platforms.ts v1.2 (Canonical-Adressen,
  *        LinkedIn-Unternehmensseite, ohne Sortlist).

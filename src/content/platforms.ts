@@ -1,10 +1,12 @@
 /**
- * Bewertungs- und Profilplattformen + Social-Profile von NEO THE AGENCY · v1.2 (24.11.2026)
+ * Bewertungs- und Profilplattformen + Social-Profile von NEO THE AGENCY · v1.3 (25.11.2026)
  * Eine Quelle für: Vertrauensleiste im ersten Bildschirm, Bewertungsblock im Fußbereich
  * und Organization.sameAs im strukturierten Datensatz (JSON-LD).
  * Nur geprüfte Adressen. Keine Sterne, Punktzahlen oder Bewertungsanzahlen (es gibt noch keine echten Bewertungen).
  *
  * Changelog
+ * - v1.3 (25.11.2026): Sortlist-Adresse korrigiert (/agency/neotheagency statt /agency/neo-the-agency, live geprüft:
+ *   Profil lädt, Bewertungsseite /review lädt) und wieder in sameAs aufgenommen.
  * - v1.2 (24.11.2026): sameAs nutzt die eigene Canonical-Adresse jedes Profils (sameAsUrl: ProvenExpert /de-de/,
  *   YouTube-Kanal-ID, Hotfrog lange Adresse). LinkedIn-Unternehmensseite (ORG_LINKEDIN, live geprüft: NEO THE AGENCY,
  *   Kolonnenstraße 8, Berlin) ergänzt. Sortlist aus sameAs genommen (inSameAs: false), weil sortlist.com und .de am
@@ -66,10 +68,8 @@ export const PLATFORMS: Platform[] = [
   {
     key: "sortlist",
     name: "Sortlist",
-    profileUrl: "https://www.sortlist.com/agency/neo-the-agency",
-    reviewUrl: "https://www.sortlist.com/agency/neo-the-agency/review",
-    // 24.11.2026: sortlist.com und sortlist.de zeigen „agency doesn't exist" (404) → nicht in sameAs, bis das Profil wieder lädt.
-    inSameAs: false,
+    profileUrl: "https://www.sortlist.com/agency/neotheagency",
+    reviewUrl: "https://www.sortlist.com/agency/neotheagency/review",
     hasReviewForm: true,
     logo: "logos/platforms/sortlist.svg",
     logoWhite: "logos/platforms/sortlist-white.svg",
