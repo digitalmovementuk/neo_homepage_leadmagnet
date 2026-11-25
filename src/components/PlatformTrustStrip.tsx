@@ -2,6 +2,7 @@
  * Vertrauensleiste im ersten Bildschirm · v1.1 (25.11.2026)
  * Offizielle Logos aller Plattformen mit öffentlichem NEO-Profil (Liste: content/platforms.ts), jeweils mit Link zum Profil.
  * Keine Sterne, Punktzahlen oder Zahlen. Feste Höhe, damit nichts springt.
+ * v1.2: Branchenbuch Deutschland ergänzt. Nur noch auf Über uns, Rechtsseiten und 404; im Hero stehen jetzt die großen Kacheln (PlatformBadges).
  * v1.1: acht Logos, Liste bricht sauber um (mittig auf dem Handy), Höhe je Logo optisch angeglichen.
  */
 import { PLATFORMS, type Platform } from "../content/platforms";
@@ -13,6 +14,7 @@ const STRIP_H: Partial<Record<Platform["key"], string>> = {
   tupalo: "h-[16px] sm:h-[19px]",
   hotfrog: "h-[15px] sm:h-[18px]",
   showmelocal: "h-[13px] sm:h-[16px]",
+  branchenbuchdeutschland: "h-[17px] sm:h-[21px]",
 };
 import { useLang } from "../lib/i18n";
 

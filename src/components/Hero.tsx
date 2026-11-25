@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Pause, Play, Sparkles } from "lucide-react";
 import { useT, useLang } from "../lib/i18n";
 import { useSeoModal } from "../lib/seoModal";
-import { PlatformTrustStrip } from "./PlatformTrustStrip";
+import { PlatformBadges } from "./PlatformBadges";
 
 const AUTOPLAY_MS = 8000;
 
@@ -72,6 +72,18 @@ export function Hero() {
   const trackRef = useRef<HTMLDivElement>(null);
   const slideRefs = useRef<(HTMLElement | null)[]>([]);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  const sectionRef = useRef<HTMLElement>(null);
+  const badgesRef = useRef<HTMLDivElement>(null);
+
+  // Platform badges sit above the dots; the slide copy keeps its distance via --hb (badge block height).
+  useEffect(() => {
+    const el = badgesRef.current;
+    const sec = sectionRef.current;
+    if (!el || !sec || typeof ResizeObserver === "undefined") return;
+    const ro = new ResizeObserver(() => sec.style.setProperty("--hb", `${Math.ceil(el.offsetHeight)}px`));
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
   const [activeIdx, setActiveIdx] = useState(0);
   const [paused, setPaused] = useState(false);
   const [hovering, setHovering] = useState(false);
@@ -159,9 +171,10 @@ export function Hero() {
 
   return (
     <section
+      ref={sectionRef}
       id="top"
       data-surface="dark"
-      className="surface-dark relative isolate h-[100svh] min-h-[100svh] w-screen overflow-hidden"
+      className="surface-dark relative isolate h-[max(100svh,700px)] min-h-[100svh] w-screen overflow-hidden [--hb:176px] sm:[--hb:150px] md:h-[100svh] lg:[--hb:84px]"
       aria-roledescription="carousel"
       aria-label={lang === "en" ? "Hero carousel" : "Hero-Karussell"}
     >
@@ -228,9 +241,12 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="pointer-events-none absolute inset-x-0 top-[78px] z-20 sm:top-[92px]">
-        <div className="pointer-events-auto mx-auto w-fit max-w-full px-4 md:ml-0 md:max-w-[1512px] md:px-8 lg:px-12">
-          <PlatformTrustStrip tone="dark" pill align="center" />
+      <div
+        ref={badgesRef}
+        className="pointer-events-none absolute inset-x-0 bottom-[calc(64px+env(safe-area-inset-bottom))] z-20 sm:bottom-[84px]"
+      >
+        <div className="mx-auto w-full max-w-[1512px] px-5 sm:px-8 lg:px-12 2xl:px-0">
+          <PlatformBadges className="pointer-events-auto" />
         </div>
       </div>
     </section>
@@ -289,7 +305,7 @@ const HeroSlideView = ({
       </div>
 
       <div className="absolute inset-x-0 bottom-0 z-10">
-        <div className="mx-auto w-full max-w-[1512px] px-5 pb-[calc(64px+env(safe-area-inset-bottom))] sm:px-8 sm:pb-20 lg:px-12 lg:pb-24 xl:pb-28 2xl:px-0">
+        <div className="mx-auto w-full max-w-[1512px] px-5 pb-[calc(var(--hb)+80px+env(safe-area-inset-bottom))] sm:px-8 sm:pb-[calc(var(--hb)+108px)] lg:px-12 lg:pb-[calc(var(--hb)+112px)] 2xl:px-0">
           <div className="grid items-end gap-5 md:grid-cols-[minmax(0,680px)_auto] md:justify-between md:gap-10">
             <div className="flex w-full flex-col items-center text-center md:items-start md:text-left">
               <motion.p

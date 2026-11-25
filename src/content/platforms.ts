@@ -9,6 +9,8 @@
  *   Name, Kolonnenstraße 8, Berlin). Hotfrog dafür aus DIRECTORY_PROFILES genommen (sonst doppelt in sameAs).
  *   Tupalo: Bewerten nur nach Anmeldung, darum „Profil ansehen“. Logos: offizielle Dateien der Plattformen
  *   (11880 SVG, Hotfrog PNG, Tupalo SVG von tupalo.de, ShowMeLocal-Bildmarke + Schriftzug).
+ * - v1.5 (25.11.2026): Branchenbuch Deutschland ergänzt (live geprüft: Name, Kolonnenstraße 8, 10827 Berlin, Telefon,
+ *   Website passen). Keine Bewertungsseite, darum nur Hero-Kacheln und sameAs, nicht im Fußbereich. Logo: offizielle Datei.
  * - v1.3 (25.11.2026): Sortlist-Adresse korrigiert (/agency/neotheagency statt /agency/neo-the-agency, live geprüft:
  *   Profil lädt, Bewertungsseite /review lädt) und wieder in sameAs aufgenommen.
  * - v1.2 (24.11.2026): sameAs nutzt die eigene Canonical-Adresse jedes Profils (sameAsUrl: ProvenExpert /de-de/,
@@ -23,7 +25,7 @@ export const ORG_ID = "https://www.neotheagency.de/#organization";
 export const PERSON_ID = "https://www.neotheagency.de/#raoul-mueller";
 
 export type Platform = {
-  key: "trustpilot" | "provenexpert" | "sortlist" | "wlw" | "hotfrog" | "showmelocal" | "tupalo" | "11880";
+  key: "trustpilot" | "provenexpert" | "sortlist" | "wlw" | "hotfrog" | "showmelocal" | "tupalo" | "11880" | "branchenbuchdeutschland";
   name: string;
   profileUrl: string;
   reviewUrl: string;
@@ -146,6 +148,19 @@ export const PLATFORMS: Platform[] = [
     height: 40,
     altDe: "11880.com Logo",
     altEn: "11880.com logo",
+  },
+  {
+    key: "branchenbuchdeutschland",
+    name: "Branchenbuch Deutschland",
+    profileUrl: "https://www.branchenbuchdeutschland.de/branchenbuch/eintrag/neo-the-agency-berlin-103670504.html",
+    reviewUrl: "https://www.branchenbuchdeutschland.de/branchenbuch/eintrag/neo-the-agency-berlin-103670504.html",
+    hasReviewForm: false,
+    logo: "logos/platforms/branchenbuchdeutschland.svg",
+    logoWhite: "logos/platforms/branchenbuchdeutschland-white.svg",
+    width: 456,
+    height: 111,
+    altDe: "Branchenbuch Deutschland Logo",
+    altEn: "Branchenbuch Deutschland logo",
   },
 ];
 

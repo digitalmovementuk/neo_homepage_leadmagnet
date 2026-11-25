@@ -14,7 +14,7 @@ import { useT, useLang } from "../lib/i18n";
 import { useDocumentHead } from "../lib/useDocumentHead";
 import { useLeadModal, type LeadModalContent } from "../lib/leadModal";
 import type { ServicePage } from "../lib/translations";
-import { PlatformTrustStrip } from "./PlatformTrustStrip";
+import { PlatformBadges } from "./PlatformBadges";
 import { ORG_ID } from "../content/platforms";
 
 const EASE_OUT = [0.22, 1, 0.36, 1] as const;
@@ -220,7 +220,7 @@ function Hero({
                 transition={{ duration: 0.6, delay: 0.55 }}
                 className="mt-5 md:mt-6"
               >
-                <PlatformTrustStrip tone="dark" />
+                <PlatformBadges />
               </motion.div>
 
               <motion.ul

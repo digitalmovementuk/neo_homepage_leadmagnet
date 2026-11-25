@@ -1,5 +1,7 @@
 /**
- * Bewertungsblock im Fußbereich · v1.1 (25.11.2026)
+ * Bewertungsblock im Fußbereich · v1.2 (25.11.2026)
+ * v1.2: nur Plattformen mit eigener Bewertungsseite (hasReviewForm); jede Karte öffnet die Seite zum Bewerten.
+ *   Profile ohne Bewertungsseite (wlw, Tupalo, Branchenbuch Deutschland) stehen nur noch im Hero.
  * v1.1: acht Plattformen (Hotfrog, ShowMeLocal, Tupalo, 11880 dazu), Logohöhe je Plattform optisch angeglichen.
  * „Bewerten Sie uns“: Logo jeder Plattform + direkter Link zum Bewerten,
  * darunter die Social-Profile (Instagram, Facebook, YouTube) und das LinkedIn des Gründers.
@@ -7,6 +9,8 @@
  */
 import { ArrowUpRight } from "lucide-react";
 import { FOUNDER_LINKEDIN, PLATFORMS, SOCIALS, type Platform, type Social } from "../content/platforms";
+
+const REVIEW_PLATFORMS = PLATFORMS.filter((p) => p.hasReviewForm);
 
 const CARD_H: Partial<Record<Platform["key"], string>> = {
   wlw: "h-[26px]",
@@ -105,21 +109,17 @@ export function PlatformReviewLinks({ forceDe }: { forceDe?: boolean }) {
           </ul>
         </div>
 
-        <ul className="grid w-full max-w-[720px] grid-cols-2 gap-3 sm:grid-cols-4">
-          {PLATFORMS.map((p) => (
+        <ul className="grid w-full max-w-[720px] grid-cols-2 gap-3 sm:grid-cols-3">
+          {REVIEW_PLATFORMS.map((p) => (
             <li key={p.key}>
               <a
                 href={p.reviewUrl}
                 target="_blank"
                 rel="noopener"
                 aria-label={
-                  p.hasReviewForm
-                    ? en
-                      ? `Write a review for NEO THE AGENCY on ${p.name} (opens in a new tab)`
-                      : `NEO THE AGENCY auf ${p.name} bewerten (öffnet in neuem Tab)`
-                    : en
-                      ? `NEO THE AGENCY profile on ${p.name} (opens in a new tab)`
-                      : `Profil von NEO THE AGENCY auf ${p.name} (öffnet in neuem Tab)`
+                  en
+                    ? `Write a review for NEO THE AGENCY on ${p.name} (opens in a new tab)`
+                    : `NEO THE AGENCY auf ${p.name} bewerten (öffnet in neuem Tab)`
                 }
                 className="group flex h-full flex-col items-center justify-between gap-4 rounded-2xl border border-ink/10 bg-white px-4 py-5 text-center transition-colors hover:border-ink/30"
               >
@@ -135,13 +135,7 @@ export function PlatformReviewLinks({ forceDe }: { forceDe?: boolean }) {
                   />
                 </span>
                 <span className="inline-flex items-center gap-1 text-[12.5px] font-semibold text-ink-soft group-hover:text-ink">
-                  {p.hasReviewForm
-                    ? en
-                      ? "Write a review"
-                      : "Bewertung schreiben"
-                    : en
-                      ? "View profile"
-                      : "Profil ansehen"}
+                  {en ? "Write a review" : "Bewertung schreiben"}
                   <ArrowUpRight size={13} aria-hidden />
                 </span>
               </a>

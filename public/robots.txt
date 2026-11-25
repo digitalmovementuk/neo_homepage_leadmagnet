@@ -24,5 +24,6 @@ Sitemap: https://www.neotheagency.de/sitemap.xml
 # ShowMeLocal:  https://global.showmelocal.com/40534185-neo-the-agency-advertising-agency-berlin
 # Tupalo:       https://www.tupalo.de/berlin/neo-the-agency
 # 11880:        https://www.11880.com/branchenbuch/berlin/534146917B114308011/neo-the-agency.html
+# Branchenbuch Deutschland: https://www.branchenbuchdeutschland.de/branchenbuch/eintrag/neo-the-agency-berlin-103670504.html
 # Gründer Raoul Müller (LinkedIn): https://www.linkedin.com/in/raoulmueller
 # Kurzinfo für KI-Systeme: https://www.neotheagency.de/llms.txt
