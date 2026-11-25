@@ -1,10 +1,14 @@
 /**
- * Bewertungs- und Profilplattformen + Social-Profile von NEO THE AGENCY · v1.4 (25.11.2026)
+ * Bewertungs- und Profilplattformen + Social-Profile von NEO THE AGENCY · v1.6 (25.11.2026)
  * Eine Quelle für: Vertrauensleiste im ersten Bildschirm, Bewertungsblock im Fußbereich
  * und Organization.sameAs im strukturierten Datensatz (JSON-LD).
  * Nur geprüfte Adressen. Keine Sterne, Punktzahlen oder Bewertungsanzahlen (es gibt noch keine echten Bewertungen).
  *
  * Changelog
+ * - v1.6 (25.11.2026): Facebook als Bewertungsplattform ergänzt (abgemeldet geprüft: Seite neotheagencyde zeigt
+ *   „Not yet rated (0 reviews)“, Bewerten nach kostenloser Anmeldung). Nur Fußbereich: showInHero false, weil im
+ *   Hero-Band „As seen on“ nur fremde Plattformen stehen, nie eigene Social-Profile; inSameAs false, weil Facebook
+ *   schon über SOCIALS in sameAs steht. Tupalo: Bewerten mit kostenlosem Konto möglich, darum jetzt im Fußbereich.
  * - v1.4 (25.11.2026): Hotfrog, ShowMeLocal, Tupalo und 11880 sichtbar ergänzt (Leiste + Fußbereich, je live geprüft:
  *   Name, Kolonnenstraße 8, Berlin). Hotfrog dafür aus DIRECTORY_PROFILES genommen (sonst doppelt in sameAs).
  *   Tupalo: Bewerten nur nach Anmeldung, darum „Profil ansehen“. Logos: offizielle Dateien der Plattformen
@@ -25,7 +29,7 @@ export const ORG_ID = "https://www.neotheagency.de/#organization";
 export const PERSON_ID = "https://www.neotheagency.de/#raoul-mueller";
 
 export type Platform = {
-  key: "trustpilot" | "provenexpert" | "sortlist" | "wlw" | "hotfrog" | "showmelocal" | "tupalo" | "11880" | "branchenbuchdeutschland";
+  key: "trustpilot" | "provenexpert" | "sortlist" | "wlw" | "hotfrog" | "showmelocal" | "tupalo" | "11880" | "branchenbuchdeutschland" | "facebook";
   name: string;
   profileUrl: string;
   reviewUrl: string;
@@ -39,8 +43,10 @@ export type Platform = {
   altEn: string;
   /** Eigene Canonical-Adresse der Profilseite für sameAs, falls sie vom sichtbaren Link abweicht. */
   sameAsUrl?: string;
-  /** false = nicht in sameAs / robots.txt / llms.txt (Profil gerade nicht erreichbar). */
+  /** false = nicht in sameAs / robots.txt / llms.txt (Profil gerade nicht erreichbar oder schon über SOCIALS enthalten). */
   inSameAs?: boolean;
+  /** false = nicht im Hero-Band „As seen on“ und nicht in der Vertrauensleiste (eigene Social-Profile). */
+  showInHero?: boolean;
 };
 
 export const PLATFORMS: Platform[] = [
@@ -128,7 +134,7 @@ export const PLATFORMS: Platform[] = [
     name: "Tupalo",
     profileUrl: "https://www.tupalo.de/berlin/neo-the-agency",
     reviewUrl: "https://www.tupalo.de/berlin/neo-the-agency",
-    hasReviewForm: false,
+    hasReviewForm: true,
     logo: "logos/platforms/tupalo.svg",
     logoWhite: "logos/platforms/tupalo-white.svg",
     width: 137,
@@ -162,7 +168,25 @@ export const PLATFORMS: Platform[] = [
     altDe: "Branchenbuch Deutschland Logo",
     altEn: "Branchenbuch Deutschland logo",
   },
+  {
+    key: "facebook",
+    name: "Facebook",
+    profileUrl: "https://www.facebook.com/p/NEO-The-Agency-61588285349359/",
+    reviewUrl: "https://www.facebook.com/neotheagencyde/reviews",
+    hasReviewForm: true,
+    showInHero: false,
+    inSameAs: false,
+    logo: "logos/platforms/facebook.svg",
+    logoWhite: "logos/platforms/facebook-white.svg",
+    width: 886,
+    height: 158,
+    altDe: "Facebook Logo",
+    altEn: "Facebook logo",
+  },
 ];
+
+/** Plattformen für das Hero-Band „As seen on“ und die Vertrauensleiste: nur fremde Plattformen, keine eigenen Social-Profile. */
+export const HERO_PLATFORMS: Platform[] = PLATFORMS.filter((p) => p.showInHero !== false);
 
 export type Social = {
   key: "instagram" | "facebook" | "youtube";

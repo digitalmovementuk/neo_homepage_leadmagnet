@@ -1,5 +1,6 @@
 /**
- * Bewertungsblock im Fußbereich · v1.2 (25.11.2026)
+ * Bewertungsblock im Fußbereich · v1.3 (25.11.2026)
+ * v1.3: Tupalo und Facebook dazu (acht Karten, ab sm vier Spalten, Kartentext in einer Zeile); Facebook steht nur hier, nicht im Hero.
  * v1.2: nur Plattformen mit eigener Bewertungsseite (hasReviewForm); jede Karte öffnet die Seite zum Bewerten.
  *   Profile ohne Bewertungsseite (wlw, Tupalo, Branchenbuch Deutschland) stehen nur noch im Hero.
  * v1.1: acht Plattformen (Hotfrog, ShowMeLocal, Tupalo, 11880 dazu), Logohöhe je Plattform optisch angeglichen.
@@ -18,6 +19,7 @@ const CARD_H: Partial<Record<Platform["key"], string>> = {
   tupalo: "h-[23px]",
   hotfrog: "h-[22px]",
   showmelocal: "h-[18px]",
+  facebook: "h-[18px]",
 };
 import { useLang } from "../lib/i18n";
 
@@ -109,7 +111,7 @@ export function PlatformReviewLinks({ forceDe }: { forceDe?: boolean }) {
           </ul>
         </div>
 
-        <ul className="grid w-full max-w-[720px] grid-cols-2 gap-3 sm:grid-cols-3">
+        <ul className="grid w-full max-w-[760px] grid-cols-2 gap-3 sm:grid-cols-4">
           {REVIEW_PLATFORMS.map((p) => (
             <li key={p.key}>
               <a
@@ -121,7 +123,7 @@ export function PlatformReviewLinks({ forceDe }: { forceDe?: boolean }) {
                     ? `Write a review for NEO THE AGENCY on ${p.name} (opens in a new tab)`
                     : `NEO THE AGENCY auf ${p.name} bewerten (öffnet in neuem Tab)`
                 }
-                className="group flex h-full flex-col items-center justify-between gap-4 rounded-2xl border border-ink/10 bg-white px-4 py-5 text-center transition-colors hover:border-ink/30"
+                className="group flex h-full flex-col items-center justify-between gap-4 rounded-2xl border border-ink/10 bg-white px-3 py-5 text-center transition-colors hover:border-ink/30"
               >
                 <span className="flex h-7 items-center">
                   <img
@@ -134,7 +136,7 @@ export function PlatformReviewLinks({ forceDe }: { forceDe?: boolean }) {
                     className={`w-auto ${CARD_H[p.key] ?? "h-[20px]"}`}
                   />
                 </span>
-                <span className="inline-flex items-center gap-1 text-[12.5px] font-semibold text-ink-soft group-hover:text-ink">
+                <span className="inline-flex items-center gap-1 whitespace-nowrap text-[12px] font-semibold text-ink-soft group-hover:text-ink">
                   {en ? "Write a review" : "Bewertung schreiben"}
                   <ArrowUpRight size={13} aria-hidden />
                 </span>

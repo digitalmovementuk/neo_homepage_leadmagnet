@@ -1,11 +1,12 @@
 /**
- * Vertrauensleiste im ersten Bildschirm · v1.1 (25.11.2026)
+ * Vertrauensleiste im ersten Bildschirm · v1.3 (25.11.2026)
+ * v1.3: nur fremde Plattformen (HERO_PLATFORMS), keine eigenen Social-Profile wie Facebook.
  * Offizielle Logos aller Plattformen mit öffentlichem NEO-Profil (Liste: content/platforms.ts), jeweils mit Link zum Profil.
  * Keine Sterne, Punktzahlen oder Zahlen. Feste Höhe, damit nichts springt.
  * v1.2: Branchenbuch Deutschland ergänzt. Nur noch auf Über uns, Rechtsseiten und 404; im Hero stehen jetzt die großen Kacheln (PlatformBadges).
  * v1.1: acht Logos, Liste bricht sauber um (mittig auf dem Handy), Höhe je Logo optisch angeglichen.
  */
-import { PLATFORMS, type Platform } from "../content/platforms";
+import { HERO_PLATFORMS, type Platform } from "../content/platforms";
 
 /** Optisch gleiche Größe: hohe, kompakte Logos etwas größer, breite Schriftzüge etwas kleiner. */
 const STRIP_H: Partial<Record<Platform["key"], string>> = {
@@ -65,7 +66,7 @@ export function PlatformTrustStrip({ tone = "dark", forceDe, pill, align = "resp
           {label}
         </span>
         <ul className={`flex flex-wrap items-center ${alignCls} gap-x-4 gap-y-2.5 sm:gap-x-5`}>
-          {PLATFORMS.map((p) => (
+          {HERO_PLATFORMS.map((p) => (
             <li key={p.key} className="flex">
               <a
                 href={p.profileUrl}

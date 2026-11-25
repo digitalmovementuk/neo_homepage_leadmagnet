@@ -232,3 +232,63 @@ section[id] {
     scroll-margin-top: 76px;
   }
 }
+
+/* Hero-Band „As seen on“ (PlatformBadges v2.0, 25.11.2026): endlose Schleife aus zwei gleichen Sätzen,
+   weiche Kanten, Pause bei Maus und Fokus, bei „Bewegung reduzieren“ eine ruhige Reihe. */
+.neo-marquee {
+  position: relative;
+  overflow: hidden;
+  height: 48px;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 9%, #000 91%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 9%, #000 91%, transparent 100%);
+}
+@media (min-width: 640px) {
+  .neo-marquee { height: 60px; }
+}
+.neo-marquee-track {
+  display: flex;
+  width: max-content;
+  height: 100%;
+  animation: neo-marquee 55s linear infinite;
+  will-change: transform;
+}
+.neo-marquee-set {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 48px;
+  padding-right: 48px;
+  margin: 0;
+  list-style: none;
+}
+@media (min-width: 640px) {
+  .neo-marquee-set { gap: 64px; padding-right: 64px; }
+}
+.neo-marquee:hover .neo-marquee-track,
+.neo-marquee:focus-within .neo-marquee-track {
+  animation-play-state: paused;
+}
+@keyframes neo-marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .neo-marquee {
+    height: auto;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .neo-marquee-track {
+    animation: none !important;
+    transform: none;
+    width: 100%;
+    justify-content: center;
+  }
+  .neo-marquee-set {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px 32px;
+    padding: 6px 0;
+  }
+  .neo-marquee-set[data-dup] { display: none; }
+}
