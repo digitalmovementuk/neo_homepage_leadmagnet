@@ -1,9 +1,19 @@
 /**
- * Vertrauensleiste im ersten Bildschirm · v1.0 (22.11.2026)
- * Offizielle Logos von Trustpilot, ProvenExpert, Sortlist und wlw, jeweils mit Link zum öffentlichen Profil.
+ * Vertrauensleiste im ersten Bildschirm · v1.1 (25.11.2026)
+ * Offizielle Logos aller Plattformen mit öffentlichem NEO-Profil (Liste: content/platforms.ts), jeweils mit Link zum Profil.
  * Keine Sterne, Punktzahlen oder Zahlen. Feste Höhe, damit nichts springt.
+ * v1.1: acht Logos, Liste bricht sauber um (mittig auf dem Handy), Höhe je Logo optisch angeglichen.
  */
-import { PLATFORMS } from "../content/platforms";
+import { PLATFORMS, type Platform } from "../content/platforms";
+
+/** Optisch gleiche Größe: hohe, kompakte Logos etwas größer, breite Schriftzüge etwas kleiner. */
+const STRIP_H: Partial<Record<Platform["key"], string>> = {
+  wlw: "h-[17px] sm:h-[20px]",
+  "11880": "h-[19px] sm:h-[23px]",
+  tupalo: "h-[16px] sm:h-[19px]",
+  hotfrog: "h-[15px] sm:h-[18px]",
+  showmelocal: "h-[13px] sm:h-[16px]",
+};
 import { useLang } from "../lib/i18n";
 
 type Props = {
@@ -52,7 +62,7 @@ export function PlatformTrustStrip({ tone = "dark", forceDe, pill, align = "resp
         >
           {label}
         </span>
-        <ul className="flex items-center gap-x-4 sm:gap-x-5">
+        <ul className={`flex flex-wrap items-center ${alignCls} gap-x-4 gap-y-2.5 sm:gap-x-5`}>
           {PLATFORMS.map((p) => (
             <li key={p.key} className="flex">
               <a
@@ -71,7 +81,7 @@ export function PlatformTrustStrip({ tone = "dark", forceDe, pill, align = "resp
                   height={p.height}
                   loading="lazy"
                   decoding="async"
-                  className={`w-auto ${p.key === "wlw" ? "h-[17px] sm:h-[20px]" : "h-[14px] sm:h-[17px]"}`}
+                  className={`w-auto ${STRIP_H[p.key] ?? "h-[14px] sm:h-[17px]"}`}
                 />
               </a>
             </li>

@@ -1,10 +1,14 @@
 /**
- * Bewertungs- und Profilplattformen + Social-Profile von NEO THE AGENCY · v1.3 (25.11.2026)
+ * Bewertungs- und Profilplattformen + Social-Profile von NEO THE AGENCY · v1.4 (25.11.2026)
  * Eine Quelle für: Vertrauensleiste im ersten Bildschirm, Bewertungsblock im Fußbereich
  * und Organization.sameAs im strukturierten Datensatz (JSON-LD).
  * Nur geprüfte Adressen. Keine Sterne, Punktzahlen oder Bewertungsanzahlen (es gibt noch keine echten Bewertungen).
  *
  * Changelog
+ * - v1.4 (25.11.2026): Hotfrog, ShowMeLocal, Tupalo und 11880 sichtbar ergänzt (Leiste + Fußbereich, je live geprüft:
+ *   Name, Kolonnenstraße 8, Berlin). Hotfrog dafür aus DIRECTORY_PROFILES genommen (sonst doppelt in sameAs).
+ *   Tupalo: Bewerten nur nach Anmeldung, darum „Profil ansehen“. Logos: offizielle Dateien der Plattformen
+ *   (11880 SVG, Hotfrog PNG, Tupalo SVG von tupalo.de, ShowMeLocal-Bildmarke + Schriftzug).
  * - v1.3 (25.11.2026): Sortlist-Adresse korrigiert (/agency/neotheagency statt /agency/neo-the-agency, live geprüft:
  *   Profil lädt, Bewertungsseite /review lädt) und wieder in sameAs aufgenommen.
  * - v1.2 (24.11.2026): sameAs nutzt die eigene Canonical-Adresse jedes Profils (sameAsUrl: ProvenExpert /de-de/,
@@ -19,7 +23,7 @@ export const ORG_ID = "https://www.neotheagency.de/#organization";
 export const PERSON_ID = "https://www.neotheagency.de/#raoul-mueller";
 
 export type Platform = {
-  key: "trustpilot" | "provenexpert" | "sortlist" | "wlw";
+  key: "trustpilot" | "provenexpert" | "sortlist" | "wlw" | "hotfrog" | "showmelocal" | "tupalo" | "11880";
   name: string;
   profileUrl: string;
   reviewUrl: string;
@@ -91,6 +95,58 @@ export const PLATFORMS: Platform[] = [
     altDe: "wlw (Wer liefert was) Logo",
     altEn: "wlw (Wer liefert was) logo",
   },
+  {
+    key: "hotfrog",
+    name: "Hotfrog",
+    profileUrl: "https://www.hotfrog.de/company/AaIOiKj7cWG-UnaRBU1CjA/neo-the-agency/berlin/advertising-services",
+    reviewUrl: "https://www.hotfrog.de/review/AaIOiKj7cWG-UnaRBU1CjA",
+    hasReviewForm: true,
+    logo: "logos/platforms/hotfrog.svg",
+    logoWhite: "logos/platforms/hotfrog-white.svg",
+    width: 230,
+    height: 63,
+    altDe: "Hotfrog Logo",
+    altEn: "Hotfrog logo",
+  },
+  {
+    key: "showmelocal",
+    name: "ShowMeLocal",
+    profileUrl: "https://global.showmelocal.com/40534185-neo-the-agency-advertising-agency-berlin",
+    reviewUrl: "https://global.showmelocal.com/postareview.aspx?bid=40534185",
+    hasReviewForm: true,
+    logo: "logos/platforms/showmelocal.svg",
+    logoWhite: "logos/platforms/showmelocal-white.svg",
+    width: 218,
+    height: 40,
+    altDe: "ShowMeLocal Logo",
+    altEn: "ShowMeLocal logo",
+  },
+  {
+    key: "tupalo",
+    name: "Tupalo",
+    profileUrl: "https://www.tupalo.de/berlin/neo-the-agency",
+    reviewUrl: "https://www.tupalo.de/berlin/neo-the-agency",
+    hasReviewForm: false,
+    logo: "logos/platforms/tupalo.svg",
+    logoWhite: "logos/platforms/tupalo-white.svg",
+    width: 137,
+    height: 44,
+    altDe: "Tupalo Logo",
+    altEn: "Tupalo logo",
+  },
+  {
+    key: "11880",
+    name: "11880.com",
+    profileUrl: "https://www.11880.com/branchenbuch/berlin/534146917B114308011/neo-the-agency.html",
+    reviewUrl: "https://www.11880.com/branchenbuch/berlin/534146917B114308011/neo-the-agency.html#jetzt-bewerten",
+    hasReviewForm: true,
+    logo: "logos/platforms/11880.svg",
+    logoWhite: "logos/platforms/11880-white.svg",
+    width: 88,
+    height: 40,
+    altDe: "11880.com Logo",
+    altEn: "11880.com logo",
+  },
 ];
 
 export type Social = {
@@ -127,8 +183,7 @@ export const ORG_LINKEDIN = "https://www.linkedin.com/company/neo-the-agency/";
  * Neue Einträge erst nach Live-Prüfung aufnehmen (Liste: NEO-oeffentliche-links-2026-11-24.md).
  */
 export const DIRECTORY_PROFILES: string[] = [
-  // Canonical-Adresse der Hotfrog-Seite (live geprüft 24.11.2026)
-  "https://www.hotfrog.de/company/AaIOiKj7cWG-UnaRBU1CjA/neo-the-agency/berlin/advertising-services",
+  // Hotfrog ist seit v1.4 eine sichtbare Plattform (PLATFORMS) und steht dort in sameAs.
 ];
 
 /**

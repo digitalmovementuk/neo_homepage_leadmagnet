@@ -1,11 +1,20 @@
 /**
- * Bewertungsblock im Fußbereich · v1.0 (22.11.2026)
+ * Bewertungsblock im Fußbereich · v1.1 (25.11.2026)
+ * v1.1: acht Plattformen (Hotfrog, ShowMeLocal, Tupalo, 11880 dazu), Logohöhe je Plattform optisch angeglichen.
  * „Bewerten Sie uns“: Logo jeder Plattform + direkter Link zum Bewerten,
  * darunter die Social-Profile (Instagram, Facebook, YouTube) und das LinkedIn des Gründers.
  * Gleiche Adressen wie in Organization.sameAs.
  */
 import { ArrowUpRight } from "lucide-react";
-import { FOUNDER_LINKEDIN, PLATFORMS, SOCIALS, type Social } from "../content/platforms";
+import { FOUNDER_LINKEDIN, PLATFORMS, SOCIALS, type Platform, type Social } from "../content/platforms";
+
+const CARD_H: Partial<Record<Platform["key"], string>> = {
+  wlw: "h-[26px]",
+  "11880": "h-[28px]",
+  tupalo: "h-[23px]",
+  hotfrog: "h-[22px]",
+  showmelocal: "h-[18px]",
+};
 import { useLang } from "../lib/i18n";
 
 function SocialIcon({ k }: { k: Social["key"] | "linkedin" }) {
@@ -122,7 +131,7 @@ export function PlatformReviewLinks({ forceDe }: { forceDe?: boolean }) {
                     height={p.height}
                     loading="lazy"
                     decoding="async"
-                    className={`w-auto ${p.key === "wlw" ? "h-[26px]" : "h-[20px]"}`}
+                    className={`w-auto ${CARD_H[p.key] ?? "h-[20px]"}`}
                   />
                 </span>
                 <span className="inline-flex items-center gap-1 text-[12.5px] font-semibold text-ink-soft group-hover:text-ink">

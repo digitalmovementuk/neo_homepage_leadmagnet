@@ -1,5 +1,6 @@
-# robots.txt · NEO THE AGENCY · v1.3 (25.11.2026)
-# Changelog: v1.3 (25.11.2026) Sortlist mit korrigierter Adresse (/agency/neotheagency) wieder in der Profil-Liste; Crawl-Regeln unverändert.
+# robots.txt · NEO THE AGENCY · v1.4 (25.11.2026)
+# Changelog: v1.4 (25.11.2026) ShowMeLocal, Tupalo und 11880 in der Profil-Liste ergänzt; Crawl-Regeln unverändert.
+#            v1.3 (25.11.2026) Sortlist mit korrigierter Adresse (/agency/neotheagency) wieder in der Profil-Liste; Crawl-Regeln unverändert.
 #            v1.2 (24.11.2026) Profil-Liste = sameAs mit eigener Canonical-Adresse jedes Profils, LinkedIn-Unternehmensseite ergänzt,
 #            Sortlist entfernt (Profil zeigt 404); Crawl-Regeln unverändert.
 #            v1.1 (24.11.2026) offizielle NEO-Profile als Kommentar ergänzt; Crawl-Regeln unverändert.
@@ -20,5 +21,8 @@ Sitemap: https://www.neotheagency.de/sitemap.xml
 # Sortlist:     https://www.sortlist.com/agency/neotheagency
 # wlw:          https://www.wlw.de/de/firma/neo-the-agency-22435144
 # Hotfrog:      https://www.hotfrog.de/company/AaIOiKj7cWG-UnaRBU1CjA/neo-the-agency/berlin/advertising-services
+# ShowMeLocal:  https://global.showmelocal.com/40534185-neo-the-agency-advertising-agency-berlin
+# Tupalo:       https://www.tupalo.de/berlin/neo-the-agency
+# 11880:        https://www.11880.com/branchenbuch/berlin/534146917B114308011/neo-the-agency.html
 # Gründer Raoul Müller (LinkedIn): https://www.linkedin.com/in/raoulmueller
 # Kurzinfo für KI-Systeme: https://www.neotheagency.de/llms.txt
