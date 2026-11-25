@@ -22,6 +22,7 @@ const CARD_H: Partial<Record<Platform["key"], string>> = {
   showmelocal: "h-[18px]",
   facebook: "h-[18px]",
   clutch: "h-[19px]",
+  designrush: "h-[18px]",
 };
 import { useLang } from "../lib/i18n";
 

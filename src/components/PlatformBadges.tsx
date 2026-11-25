@@ -24,6 +24,7 @@ const LOGO_H: Partial<Record<Platform["key"], string>> = {
   showmelocal: "h-[26px] sm:h-[33px]",
   branchenbuchdeutschland: "h-[38px] sm:h-[51px]",
   clutch: "h-[24px] sm:h-[30px]",
+  designrush: "h-[26px] sm:h-[33px]",
 };
 const DEFAULT_H = "h-[29px] sm:h-[37px]";
 

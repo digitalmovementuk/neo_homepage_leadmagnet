@@ -1,10 +1,14 @@
 /**
- * Bewertungs- und Profilplattformen + Social-Profile von NEO THE AGENCY · v1.7 (25.11.2026)
+ * Bewertungs- und Profilplattformen + Social-Profile von NEO THE AGENCY · v1.8 (25.11.2026)
  * Eine Quelle für: Vertrauensleiste im ersten Bildschirm, Bewertungsblock im Fußbereich
  * und Organization.sameAs im strukturierten Datensatz (JSON-LD).
  * Nur geprüfte Adressen. Keine Sterne, Punktzahlen oder Bewertungsanzahlen (es gibt noch keine echten Bewertungen).
  *
  * Changelog
+ * - v1.8 (25.11.2026): DesignRush ergänzt (Profil designrush.com/agency/profile/neo-the-agency jetzt öffentlich, in Chrome
+ *   geprüft: NEO THE AGENCY, Kolonnenstraße 8, 10827 Berlin, neotheagency.de). Hero-Band, Fußbereich und sameAs.
+ *   Bewertungslink = Profilseite (dort „Submit a review“; dessen Ziel /submit/review/neo-the-agency zeigt am 25.11. noch 404).
+ *   Logo: offizielle Datei designrush-purple-logo.svg von designrush.com, weiße Fassung für dunkle Flächen.
  * - v1.7 (25.11.2026): Clutch ergänzt (Bewertungsformular review.clutch.co, provider_id 2778599, nennt NEO THE AGENCY).
  *   Fußbereich + Hero-Band. inSameAs false, weil es noch keine öffentliche Clutch-Profilseite gibt (ein Formular ist kein Profil).
  *   Logo: offizielle Datei von clutch.co. DesignRush noch nicht sichtbar: Profil laut DesignRush-Mail „under review“,
@@ -33,7 +37,7 @@ export const ORG_ID = "https://www.neotheagency.de/#organization";
 export const PERSON_ID = "https://www.neotheagency.de/#raoul-mueller";
 
 export type Platform = {
-  key: "trustpilot" | "provenexpert" | "sortlist" | "wlw" | "hotfrog" | "showmelocal" | "tupalo" | "11880" | "branchenbuchdeutschland" | "clutch" | "facebook";
+  key: "trustpilot" | "provenexpert" | "sortlist" | "wlw" | "hotfrog" | "showmelocal" | "tupalo" | "11880" | "branchenbuchdeutschland" | "clutch" | "designrush" | "facebook";
   name: string;
   profileUrl: string;
   reviewUrl: string;
@@ -186,6 +190,19 @@ export const PLATFORMS: Platform[] = [
     height: 115,
     altDe: "Clutch Logo",
     altEn: "Clutch logo",
+  },
+  {
+    key: "designrush",
+    name: "DesignRush",
+    profileUrl: "https://www.designrush.com/agency/profile/neo-the-agency",
+    reviewUrl: "https://www.designrush.com/agency/profile/neo-the-agency",
+    hasReviewForm: true,
+    logo: "logos/platforms/designrush.svg",
+    logoWhite: "logos/platforms/designrush-white.svg",
+    width: 154,
+    height: 36,
+    altDe: "DesignRush Logo",
+    altEn: "DesignRush logo",
   },
   {
     key: "facebook",
