@@ -1,5 +1,6 @@
 /**
- * Bewertungsblock im Fußbereich · v1.3 (25.11.2026)
+ * Bewertungsblock im Fußbereich · v1.4 (25.11.2026)
+ * v1.4: Clutch dazu (neun Karten, ab sm drei Spalten = drei volle Reihen; mobil steht die neunte Karte mittig).
  * v1.3: Tupalo und Facebook dazu (acht Karten, ab sm vier Spalten, Kartentext in einer Zeile); Facebook steht nur hier, nicht im Hero.
  * v1.2: nur Plattformen mit eigener Bewertungsseite (hasReviewForm); jede Karte öffnet die Seite zum Bewerten.
  *   Profile ohne Bewertungsseite (wlw, Tupalo, Branchenbuch Deutschland) stehen nur noch im Hero.
@@ -20,6 +21,7 @@ const CARD_H: Partial<Record<Platform["key"], string>> = {
   hotfrog: "h-[22px]",
   showmelocal: "h-[18px]",
   facebook: "h-[18px]",
+  clutch: "h-[19px]",
 };
 import { useLang } from "../lib/i18n";
 
@@ -111,9 +113,9 @@ export function PlatformReviewLinks({ forceDe }: { forceDe?: boolean }) {
           </ul>
         </div>
 
-        <ul className="grid w-full max-w-[760px] grid-cols-2 gap-3 sm:grid-cols-4">
+        <ul className="grid w-full max-w-[760px] grid-cols-2 gap-3 sm:grid-cols-3">
           {REVIEW_PLATFORMS.map((p) => (
-            <li key={p.key}>
+            <li key={p.key} className="last:col-span-2 last:mx-auto last:w-[calc(50%-6px)] sm:last:col-span-1 sm:last:mx-0 sm:last:w-auto">
               <a
                 href={p.reviewUrl}
                 target="_blank"

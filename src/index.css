@@ -233,7 +233,7 @@ section[id] {
   }
 }
 
-/* Hero-Band „As seen on“ (PlatformBadges v2.0, 25.11.2026): endlose Schleife aus zwei gleichen Sätzen,
+/* Hero-Band „Gesehen auf“ / „As seen on“ (PlatformBadges v2.1, 25.11.2026): endlose Schleife aus zwei gleichen Sätzen,
    weiche Kanten, Pause bei Maus und Fokus, bei „Bewegung reduzieren“ eine ruhige Reihe. */
 .neo-marquee {
   position: relative;

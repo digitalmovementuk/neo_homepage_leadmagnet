@@ -75,7 +75,7 @@ export function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   const badgesRef = useRef<HTMLDivElement>(null);
 
-  // "As seen on" band sits above the dots; the slide copy keeps its distance via --hb (badge block height).
+  // "Gesehen auf" / "As seen on" band sits above the dots; the slide copy keeps its distance via --hb (badge block height).
   useEffect(() => {
     const el = badgesRef.current;
     const sec = sectionRef.current;
@@ -174,7 +174,7 @@ export function Hero() {
       ref={sectionRef}
       id="top"
       data-surface="dark"
-      className="surface-dark relative isolate h-[max(100svh,700px)] min-h-[100svh] w-screen overflow-hidden [--hb:74px] sm:[--hb:88px] md:h-[100svh] md:[--hb:60px]"
+      className="surface-dark relative isolate h-[max(100svh,700px)] min-h-[100svh] w-screen overflow-hidden [--hb:82px] sm:[--hb:97px] md:h-[100svh] md:[--hb:68px]"
       aria-roledescription="carousel"
       aria-label={lang === "en" ? "Hero carousel" : "Hero-Karussell"}
     >

@@ -1,10 +1,14 @@
 /**
- * Bewertungs- und Profilplattformen + Social-Profile von NEO THE AGENCY · v1.6 (25.11.2026)
+ * Bewertungs- und Profilplattformen + Social-Profile von NEO THE AGENCY · v1.7 (25.11.2026)
  * Eine Quelle für: Vertrauensleiste im ersten Bildschirm, Bewertungsblock im Fußbereich
  * und Organization.sameAs im strukturierten Datensatz (JSON-LD).
  * Nur geprüfte Adressen. Keine Sterne, Punktzahlen oder Bewertungsanzahlen (es gibt noch keine echten Bewertungen).
  *
  * Changelog
+ * - v1.7 (25.11.2026): Clutch ergänzt (Bewertungsformular review.clutch.co, provider_id 2778599, nennt NEO THE AGENCY).
+ *   Fußbereich + Hero-Band. inSameAs false, weil es noch keine öffentliche Clutch-Profilseite gibt (ein Formular ist kein Profil).
+ *   Logo: offizielle Datei von clutch.co. DesignRush noch nicht sichtbar: Profil laut DesignRush-Mail „under review“,
+ *   öffentliche Seite zeigt 404; aufnehmen, sobald das Profil freigeschaltet und live geprüft ist.
  * - v1.6 (25.11.2026): Facebook als Bewertungsplattform ergänzt (abgemeldet geprüft: Seite neotheagencyde zeigt
  *   „Not yet rated (0 reviews)“, Bewerten nach kostenloser Anmeldung). Nur Fußbereich: showInHero false, weil im
  *   Hero-Band „As seen on“ nur fremde Plattformen stehen, nie eigene Social-Profile; inSameAs false, weil Facebook
@@ -29,7 +33,7 @@ export const ORG_ID = "https://www.neotheagency.de/#organization";
 export const PERSON_ID = "https://www.neotheagency.de/#raoul-mueller";
 
 export type Platform = {
-  key: "trustpilot" | "provenexpert" | "sortlist" | "wlw" | "hotfrog" | "showmelocal" | "tupalo" | "11880" | "branchenbuchdeutschland" | "facebook";
+  key: "trustpilot" | "provenexpert" | "sortlist" | "wlw" | "hotfrog" | "showmelocal" | "tupalo" | "11880" | "branchenbuchdeutschland" | "clutch" | "facebook";
   name: string;
   profileUrl: string;
   reviewUrl: string;
@@ -45,7 +49,7 @@ export type Platform = {
   sameAsUrl?: string;
   /** false = nicht in sameAs / robots.txt / llms.txt (Profil gerade nicht erreichbar oder schon über SOCIALS enthalten). */
   inSameAs?: boolean;
-  /** false = nicht im Hero-Band „As seen on“ und nicht in der Vertrauensleiste (eigene Social-Profile). */
+  /** false = nicht im Hero-Band „Gesehen auf“ und nicht in der Vertrauensleiste (eigene Social-Profile). */
   showInHero?: boolean;
 };
 
@@ -169,6 +173,21 @@ export const PLATFORMS: Platform[] = [
     altEn: "Branchenbuch Deutschland logo",
   },
   {
+    key: "clutch",
+    name: "Clutch",
+    profileUrl: "https://review.clutch.co/review?provider_id=2778599",
+    reviewUrl: "https://review.clutch.co/review?provider_id=2778599",
+    hasReviewForm: true,
+    /** Noch keine öffentliche Profilseite, nur das Bewertungsformular: darum nicht in sameAs. */
+    inSameAs: false,
+    logo: "logos/platforms/clutch.svg",
+    logoWhite: "logos/platforms/clutch-white.svg",
+    width: 406,
+    height: 115,
+    altDe: "Clutch Logo",
+    altEn: "Clutch logo",
+  },
+  {
     key: "facebook",
     name: "Facebook",
     profileUrl: "https://www.facebook.com/p/NEO-The-Agency-61588285349359/",
@@ -185,7 +204,7 @@ export const PLATFORMS: Platform[] = [
   },
 ];
 
-/** Plattformen für das Hero-Band „As seen on“ und die Vertrauensleiste: nur fremde Plattformen, keine eigenen Social-Profile. */
+/** Plattformen für das Hero-Band „Gesehen auf“ und die Vertrauensleiste: nur fremde Plattformen, keine eigenen Social-Profile. */
 export const HERO_PLATFORMS: Platform[] = PLATFORMS.filter((p) => p.showInHero !== false);
 
 export type Social = {
