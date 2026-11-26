@@ -45,7 +45,7 @@ export function Approach() {
         <div className="mt-10 grid gap-4 sm:mt-14 sm:gap-5 lg:grid-cols-3">
           {approach.columns.map((column, i) => (
             <Reveal key={column.title} delay={i * 0.07} className={CARD_L5}>
-              <p aria-hidden className={`${KICKER} text-[#FF7A45]`}>
+              <p aria-hidden className={`${KICKER} text-[#F05F22]`}>
                 {two(i + 1)}
               </p>
               <h3 className={`mt-4 ${H3_CARD} text-white`}>{column.title}</h3>
@@ -89,7 +89,7 @@ export function Blocks() {
                 {card.href ? (
                   <a
                     href={card.href}
-                    className="mt-4 inline-flex min-h-[44px] items-center gap-1.5 text-[15px] font-semibold text-[#0071E3]"
+                    className="mt-4 inline-flex min-h-[44px] items-center gap-1.5 text-[15px] font-semibold text-brand-violet-deep"
                   >
                     {blocks.linkLabel}
                     <ArrowRight size={15} strokeWidth={2.4} aria-hidden />
@@ -200,7 +200,7 @@ export function Advantage() {
             <li key={step.title} className="h-full">
               <Reveal delay={i * 0.08} className={`h-full ${CARD_L6}`}>
                 <p aria-hidden className={`flex items-center gap-2.5 ${KICKER} text-ink-muted`}>
-                  <span className="h-2 w-2 rounded-full bg-[#FF7A45]" />
+                  <span className="h-2 w-2 rounded-full bg-[#F05F22]" />
                   {two(i + 1)}
                 </p>
                 <h3 className={`mt-5 ${H3_CARD} text-ink`}>{step.title}</h3>
@@ -220,10 +220,10 @@ export function ShortForm() {
   return (
     <Section id="start" surface="light">
       <div className="container-v3">
-        <Reveal className="relative overflow-hidden rounded-[28px] border border-[#FF7A45]/30 bg-white p-6 shadow-[0_30px_80px_-50px_rgba(255,122,69,0.55)] sm:rounded-[36px] sm:p-10 md:p-14">
+        <Reveal className="relative overflow-hidden rounded-[28px] border border-[#F05F22]/30 bg-white p-6 shadow-[0_30px_80px_-50px_rgba(240,95,34,0.55)] sm:rounded-[36px] sm:p-10 md:p-14">
           <span
             aria-hidden
-            className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[#FF7A45]/[0.12] blur-3xl"
+            className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[#F05F22]/[0.12] blur-3xl"
           />
           <div className="relative grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-14">
             <div className="text-center lg:text-left">
@@ -278,7 +278,7 @@ export function Packages() {
                   delay={i * 0.07}
                   className={`relative flex h-full flex-col rounded-[28px] bg-white p-7 sm:rounded-[36px] sm:p-8 xl:p-9 ${
                     item.highlight
-                      ? "border-2 border-[#FF7A45]/60 shadow-[0_30px_80px_-50px_rgba(255,122,69,0.6)]"
+                      ? "border-2 border-[#F05F22]/60 shadow-[0_30px_80px_-50px_rgba(240,95,34,0.6)]"
                       : "border border-ink/[0.08]"
                   }`}
                 >
@@ -317,7 +317,7 @@ export function Packages() {
                       href={`#${item.target}`}
                       className={`group inline-flex min-h-[52px] w-full items-center justify-center gap-1.5 whitespace-nowrap rounded-full px-3 py-3 text-center text-[14px] font-semibold leading-tight sm:gap-2 sm:px-5 sm:text-[15.5px] lg:gap-1 lg:px-2 lg:text-[12.5px] xl:gap-2 xl:px-4 xl:text-[14.5px] ${
                         item.highlight
-                          ? "seo-btn-blue bg-[#0071E3] text-white hover:bg-[#0077ED]"
+                          ? "seo-btn-blue bg-brand-pink bg-brand-button text-white hover:brightness-[0.92]"
                           : "border border-ink/25 bg-white text-ink transition-colors hover:border-ink hover:bg-ink hover:text-white"
                       }`}
                     >

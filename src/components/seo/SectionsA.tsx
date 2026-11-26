@@ -100,7 +100,7 @@ export function Hero() {
           <div className="flex flex-col items-center gap-3 lg:max-w-[340px] lg:items-start lg:pb-1">
             <a
               href={`#${anchors.audit}`}
-              className="seo-btn-blue seo-on-dark group inline-flex min-h-[52px] w-full items-center justify-center gap-2 rounded-full bg-[#0071E3] px-7 py-3.5 text-[15px] font-semibold text-white hover:bg-[#0077ED] min-[480px]:w-auto sm:text-[16px]"
+              className="seo-btn-blue seo-on-dark group inline-flex min-h-[52px] w-full items-center justify-center gap-2 rounded-full bg-brand-pink bg-brand-button px-7 py-3.5 text-[15px] font-semibold text-white hover:brightness-[0.92] min-[480px]:w-auto sm:text-[16px]"
             >
               {hero.primary}
               <ArrowRight size={16} strokeWidth={2.4} className="transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden />
@@ -159,11 +159,11 @@ export function AuditForm() {
     <Section id={anchors.audit} surface="light">
       <div className="container-v3">
         <Trail className="-mt-10 mb-5 sm:-mt-12 sm:mb-6 md:-mt-14" />
-        <Reveal className="relative overflow-hidden rounded-[28px] border-2 border-[#FF7A45] bg-white p-6 sm:rounded-[40px] sm:p-10 md:p-14">
+        <Reveal className="relative overflow-hidden rounded-[28px] border-2 border-[#F05F22] bg-white p-6 sm:rounded-[40px] sm:p-10 md:p-14">
           <div
             aria-hidden
             className="pointer-events-none absolute -right-24 -top-24 h-[420px] w-[420px] rounded-full"
-            style={{ background: "radial-gradient(circle, rgba(255,122,69,0.22) 0%, rgba(255,122,69,0) 68%)" }}
+            style={{ background: "radial-gradient(circle, rgba(240,95,34,0.22) 0%, rgba(240,95,34,0) 68%)" }}
           />
           <div className="relative grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-center lg:gap-14">
             <div className="text-center lg:text-left">
@@ -252,7 +252,7 @@ export function Measure() {
             <li key={step.title} className="h-full">
               <Reveal delay={i * 0.07} className={`h-full ${CARD_L6}`}>
                 <div className="flex items-center gap-3">
-                  <span aria-hidden className="h-2.5 w-2.5 rounded-full bg-[#FF7A45] ring-4 ring-[#FF7A45]/20" />
+                  <span aria-hidden className="h-2.5 w-2.5 rounded-full bg-[#F05F22] ring-4 ring-[#F05F22]/20" />
                   <span className={`${KICKER} text-ink-muted`}>{two(i + 1)}</span>
                 </div>
                 <h3 className={`mt-5 ${H3_CARD} text-ink`}>{step.title}</h3>
@@ -287,7 +287,7 @@ export function Channels() {
         <div className="mt-10 grid gap-4 sm:mt-14 sm:gap-5 md:grid-cols-3">
           {channels.blocks.map((block, i) => (
             <Reveal key={block.key} delay={i * 0.07} className={CARD_L5}>
-              <p className={`${KICKER} text-[#FF7A45]`}>{two(i + 1)}</p>
+              <p className={`${KICKER} text-[#F05F22]`}>{two(i + 1)}</p>
               <div className="mt-5 overflow-hidden rounded-2xl bg-white px-4 pt-4">
                 <ChannelArt kind={block.key} alt={block.alt} />
               </div>
@@ -381,7 +381,7 @@ export function Cex() {
             </Reveal>
             <Reveal delay={0.12}>
               <figure className={`h-full ${CARD_L6}`}>
-                <Quote size={24} className="text-[#FF7A45]" aria-hidden />
+                <Quote size={24} className="text-[#F05F22]" aria-hidden />
                 <blockquote className="mt-4 text-[18px] font-semibold leading-snug tracking-[-0.01em] text-ink sm:text-[20px]">
                   <RichText text={cex.quote} />
                 </blockquote>

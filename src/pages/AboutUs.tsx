@@ -30,7 +30,7 @@ const EASE_OUT = [0.22, 1, 0.36, 1] as const;
  *
  * Visual language stays in lock-step with the homepage: light-surface
  * editorial, ink type, large balanced headlines with a 55%-tone soft tail,
- * and the orange (#FF7A45) accent reserved for proofs and calls-to-action.
+ * and the orange (#F05F22) accent reserved for proofs and calls-to-action.
  */
 export function AboutUs() {
   const t = useT();
@@ -113,7 +113,7 @@ function AboutHero() {
           className="h-full w-full rounded-full"
           style={{
             background:
-              "radial-gradient(circle at center, #FF7A45 0%, transparent 65%)",
+              "radial-gradient(circle at center, #F05F22 0%, transparent 65%)",
           }}
         />
       </motion.div>
@@ -166,7 +166,7 @@ function AboutHero() {
         </Reveal>
         <Reveal delay={0.22}>
           <p className="mt-7 inline-flex items-center gap-2 text-[11.5px] font-bold uppercase tracking-[0.22em] text-white/60 sm:text-[12px]">
-            <MapPin size={14} strokeWidth={2} className="text-[#FF7A45]" />
+            <MapPin size={14} strokeWidth={2} className="text-[#F05F22]" />
             {t.about.hero.locations}
           </p>
         </Reveal>
@@ -293,7 +293,7 @@ function PillarScrollCard({
   const accentRadialOpacity = useTransform(focus, [0, 1], [0, 0.28]);
 
   // Type + chrome colour interpolations
-  const headlineColor = useTransform(focus, [0, 1], ["#26272F", "#FFFFFF"]);
+  const headlineColor = useTransform(focus, [0, 1], ["#231F20", "#FFFFFF"]);
   const bodyColor = useTransform(
     focus,
     [0, 1],
@@ -307,9 +307,9 @@ function PillarScrollCard({
   const iconBg = useTransform(
     focus,
     [0, 1],
-    ["rgba(255,122,69,0.12)", "rgba(255,255,255,0.12)"],
+    ["rgba(240,95,34,0.12)", "rgba(255,255,255,0.12)"],
   );
-  const iconColor = useTransform(focus, [0, 1], ["#FF7A45", "#FFFFFF"]);
+  const iconColor = useTransform(focus, [0, 1], ["#F05F22", "#FFFFFF"]);
   const numeralColor = useTransform(
     focus,
     [0, 1],
@@ -364,14 +364,14 @@ function PillarScrollCard({
         style={{
           opacity: accentRadialOpacity,
           background:
-            "radial-gradient(circle at center, #FF7A45 0%, transparent 65%)",
+            "radial-gradient(circle at center, #F05F22 0%, transparent 65%)",
         }}
       />
 
       {/* Always-on top accent line, brand orange */}
       <span
         aria-hidden
-        className="absolute inset-x-0 top-0 z-10 h-[2px] bg-gradient-to-r from-[#FF7A45] via-[#FF8E5C] to-[#FFB07A]"
+        className="absolute inset-x-0 top-0 z-10 h-[2px] bg-gradient-to-r from-[#F05F22] via-[#FF8E5C] to-[#FFB07A]"
       />
 
       {/* Big italic numeral watermark — colour interpolates with focus */}
@@ -405,7 +405,7 @@ function PillarScrollCard({
         </motion.span>
       </div>
 
-      <p className="relative mt-7 text-[11px] font-bold uppercase tracking-[0.22em] text-[#FF7A45]">
+      <p className="relative mt-7 text-[11px] font-bold uppercase tracking-[0.22em] text-[#F05F22]">
         {pillar.label}
       </p>
 
@@ -493,14 +493,14 @@ function FounderBio() {
               {/* Decorative offset square behind the photo — adds depth */}
               <span
                 aria-hidden
-                className="pointer-events-none absolute -bottom-4 -right-4 -z-10 h-24 w-24 rounded-2xl bg-[#FF7A45]/20 sm:-bottom-5 sm:-right-5 sm:h-32 sm:w-32"
+                className="pointer-events-none absolute -bottom-4 -right-4 -z-10 h-24 w-24 rounded-2xl bg-[#F05F22]/20 sm:-bottom-5 sm:-right-5 sm:h-32 sm:w-32"
               />
             </div>
           </Reveal>
 
           <div>
             <Reveal>
-              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#FF7A45]">
+              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#F05F22]">
                 {t.about.founder.eyebrow}
               </p>
             </Reveal>
@@ -657,7 +657,7 @@ function Studio() {
               >
                 <span
                   aria-hidden
-                  className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#FF7A45]"
+                  className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#F05F22]"
                 />
                 {b}
               </motion.li>
@@ -783,7 +783,7 @@ function TeamCard({
         <h3 className="text-[17px] font-semibold tracking-tight text-ink sm:text-[18px]">
           {member.name}
         </h3>
-        <p className="mt-1 text-[12px] font-bold uppercase tracking-[0.16em] text-[#FF7A45] sm:text-[12.5px]">
+        <p className="mt-1 text-[12px] font-bold uppercase tracking-[0.16em] text-[#F05F22] sm:text-[12.5px]">
           {member.role}
         </p>
         <p className="mt-3 text-[13.5px] leading-relaxed text-ink-soft sm:text-[14px]">
@@ -826,7 +826,7 @@ function AboutCTA({ onOpenSeo }: { onOpenSeo: () => void }) {
           className="h-full w-full rounded-full"
           style={{
             background:
-              "radial-gradient(circle at center, #FF7A45 0%, transparent 65%)",
+              "radial-gradient(circle at center, #F05F22 0%, transparent 65%)",
           }}
         />
       </motion.div>
@@ -875,7 +875,7 @@ function AboutCTA({ onOpenSeo }: { onOpenSeo: () => void }) {
               <button
                 type="button"
                 onClick={onOpenSeo}
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#FF7A45] px-6 py-3.5 text-[14px] font-semibold text-white shadow-[0_18px_44px_rgba(255,122,69,0.34)] transition-colors hover:bg-[#F15F2B] sm:text-[14.5px]"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#F05F22] px-6 py-3.5 text-[14px] font-semibold text-white shadow-[0_18px_44px_rgba(240,95,34,0.34)] transition-colors hover:bg-[#F15F2B] sm:text-[14.5px]"
               >
                 <Sparkles size={15} strokeWidth={2.4} />
                 {t.about.cta.button}

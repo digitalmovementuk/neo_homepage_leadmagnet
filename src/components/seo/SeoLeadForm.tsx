@@ -22,7 +22,7 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 const FIELD =
   "w-full min-h-[50px] rounded-2xl border bg-white px-4 py-3 text-[16px] text-ink placeholder:text-ink-faint outline-none transition focus:bg-white focus:ring-4";
-const FIELD_OK = "border-ink/[0.14] focus:border-[#0071E3]/[0.65] focus:ring-[#0071E3]/[0.12]";
+const FIELD_OK = "border-ink/[0.14] focus:border-brand-violet-deep/[0.65] focus:ring-brand-violet-deep/[0.12]";
 const FIELD_ERR = "border-[#B02E1F] focus:border-[#B02E1F] focus:ring-[#B02E1F]/[0.12]";
 const LABEL = "mb-1.5 block text-[12px] font-semibold uppercase tracking-[0.12em] text-ink-muted";
 
@@ -180,7 +180,7 @@ export function SeoLeadForm({ variant, button, note, success, chips, underButton
                   key={chip}
                   className="flex items-center gap-2 whitespace-nowrap text-[13px] font-semibold leading-tight text-ink sm:text-[14px]"
                 >
-                  <span aria-hidden className="grid h-4 w-4 shrink-0 place-items-center rounded-full bg-[#FF7A45] text-white">
+                  <span aria-hidden className="grid h-4 w-4 shrink-0 place-items-center rounded-full bg-[#F05F22] text-white">
                     <Check size={9} strokeWidth={3.5} />
                   </span>
                   {chip}
@@ -289,7 +289,7 @@ export function SeoLeadForm({ variant, button, note, success, chips, underButton
             type="submit"
             disabled={loading}
             aria-busy={loading || undefined}
-            className="seo-btn-blue group !mt-6 inline-flex min-h-[52px] w-full items-center justify-center gap-2 rounded-full bg-[#0071E3] px-6 text-[16px] font-semibold text-white hover:bg-[#0077ED] disabled:cursor-progress disabled:opacity-70"
+            className="seo-btn-blue group !mt-6 inline-flex min-h-[52px] w-full items-center justify-center gap-2 rounded-full bg-brand-pink bg-brand-button px-6 text-[16px] font-semibold text-white hover:brightness-[0.92] disabled:cursor-progress disabled:opacity-70"
           >
             {loading ? <Loader2 size={17} strokeWidth={2.4} className="seo-spinner" aria-hidden /> : null}
             {button}

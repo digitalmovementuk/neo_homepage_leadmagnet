@@ -99,23 +99,23 @@ export function Contact() {
         {/* Right — form */}
         <div
           id="contact-form"
-          className="relative z-[45] scroll-mt-20 md:scroll-mt-28 overflow-hidden rounded-[28px] sm:rounded-[36px] border border-[#0071E3]/25 bg-white shadow-[0_34px_90px_-42px_rgba(0,113,227,0.55),0_18px_46px_-30px_rgba(38,39,47,0.34)]"
+          className="relative z-[45] scroll-mt-20 md:scroll-mt-28 overflow-hidden rounded-[28px] sm:rounded-[36px] border border-brand-violet-deep/25 bg-white shadow-[0_34px_90px_-42px_rgba(154,47,198,0.55),0_18px_46px_-30px_rgba(38,39,47,0.34)]"
         >
           <div
             aria-hidden
             className="absolute inset-x-0 top-0 h-1.5"
             style={{
               background:
-                "linear-gradient(90deg, #0071E3 0%, #FF7A45 55%, #EC178D 100%)",
+                "linear-gradient(90deg, #FFB23D 0%, #F05F22 30%, #EC178D 62%, #D332FF 85%, #9A2FC6 100%)",
             }}
           />
           <div
             aria-hidden
-            className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-[#0071E3]/[0.12] blur-3xl"
+            className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-brand-pink/[0.12] blur-3xl"
           />
           <div
             aria-hidden
-            className="absolute -left-24 bottom-10 h-56 w-56 rounded-full bg-[#FF7A45]/10 blur-3xl"
+            className="absolute -left-24 bottom-10 h-56 w-56 rounded-full bg-[#F05F22]/10 blur-3xl"
           />
           <AnimatePresence mode="wait">
             {!submitted ? (
@@ -247,19 +247,19 @@ export function Contact() {
 
                 <button
                   type="submit"
-                  className="group w-full mt-1 inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full bg-[#0071E3] hover:bg-[#0077ED] text-white font-semibold text-[15px] py-2.5 sm:py-3 transition-all duration-300 shadow-[0_18px_38px_-18px_rgba(0,113,227,0.85)] hover:-translate-y-0.5 hover:shadow-[0_24px_46px_-20px_rgba(0,113,227,0.95)]"
+                  className="group w-full mt-1 inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full bg-brand-pink bg-brand-button hover:brightness-[0.92] text-white font-semibold text-[15px] py-2.5 sm:py-3 transition-all duration-300 shadow-[0_18px_38px_-18px_rgba(154,47,198,0.85)] hover:-translate-y-0.5 hover:shadow-[0_24px_46px_-20px_rgba(154,47,198,0.95)]"
                 >
                   {isEN ? "Request consultation" : "Erstgespräch anfragen"}{" "}
                   <ArrowRight size={15} className="transition-transform duration-300 group-hover:translate-x-0.5" />
                 </button>
 
                 <div className="grid grid-cols-2 gap-2">
-                  <p className="inline-flex items-center gap-2 rounded-2xl bg-[#0071E3]/[0.07] px-3 py-2 text-[11.5px] font-semibold text-ink-soft">
-                    <Check size={13} className="text-[#0071E3]" strokeWidth={2.6} />
+                  <p className="inline-flex items-center gap-2 rounded-2xl bg-brand-violet-deep/[0.07] px-3 py-2 text-[11.5px] font-semibold text-ink-soft">
+                    <Check size={13} className="text-brand-violet-deep" strokeWidth={2.6} />
                     {isEN ? "Founder reply" : "Antwort vom Gründer"}
                   </p>
-                  <p className="inline-flex items-center gap-2 rounded-2xl bg-[#FF7A45]/[0.10] px-3 py-2 text-[11.5px] font-semibold text-ink-soft">
-                    <Clock size={13} className="text-[#FF7A45]" strokeWidth={2.6} />
+                  <p className="inline-flex items-center gap-2 rounded-2xl bg-[#F05F22]/[0.10] px-3 py-2 text-[11.5px] font-semibold text-ink-soft">
+                    <Clock size={13} className="text-[#F05F22]" strokeWidth={2.6} />
                     {isEN ? "No jargon" : "Kein Fachchinesisch"}
                   </p>
                 </div>
@@ -350,7 +350,7 @@ export function Contact() {
 }
 
 const inputCls =
-  "w-full rounded-2xl border border-ink/[0.12] bg-[#F8FAFC] px-3.5 sm:px-4 py-2.5 sm:py-3.5 text-[15px] text-ink placeholder:text-ink-faint outline-none transition focus:border-[#0071E3]/[0.65] focus:bg-white focus:ring-4 focus:ring-[#0071E3]/[0.10]";
+  "w-full rounded-2xl border border-ink/[0.12] bg-[#F8FAFC] px-3.5 sm:px-4 py-2.5 sm:py-3.5 text-[15px] text-ink placeholder:text-ink-faint outline-none transition focus:border-brand-violet-deep/[0.65] focus:bg-white focus:ring-4 focus:ring-brand-violet-deep/[0.10]";
 
 const selectCls = `${inputCls} pr-10`;
 

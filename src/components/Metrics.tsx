@@ -263,7 +263,7 @@ function DaysStat({ isEN }: { isEN: boolean }) {
             transition={{ duration: 1.4, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
             className="absolute inset-y-0 left-0 rounded-full"
             style={{
-              background: "linear-gradient(90deg, #F15F2B 0%, #FF7A45 100%)",
+              background: "linear-gradient(90deg, #F15F2B 0%, #F05F22 100%)",
             }}
           />
         </div>
@@ -392,7 +392,7 @@ function HeritageStat({ isEN }: { isEN: boolean }) {
             transition={{ duration: 1.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             className="absolute inset-y-0 left-0 h-px"
             style={{
-              background: "linear-gradient(90deg, #FFB07A 0%, #FF7A45 100%)",
+              background: "linear-gradient(90deg, #FFB07A 0%, #F05F22 100%)",
             }}
           />
           <div className="absolute inset-x-0 -top-1 flex justify-between">

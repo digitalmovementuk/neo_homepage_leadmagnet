@@ -101,7 +101,7 @@ export function LanguagePicker({ surface, compact = false }: Props) {
             aria-label={t.nav.languageLabel}
             className={`absolute right-0 mt-2 min-w-[160px] rounded-2xl border backdrop-blur-xl overflow-hidden z-[60] ${
               onDark
-                ? "border-white/15 bg-[#1a1b22]/90 text-white shadow-[0_30px_60px_-30px_rgba(0,0,0,0.6)]"
+                ? "border-white/15 bg-[#1a0e2e]/90 text-white shadow-[0_30px_60px_-30px_rgba(0,0,0,0.6)]"
                 : "border-ink/10 bg-white/95 text-ink shadow-[0_30px_60px_-30px_rgba(38,39,47,0.25)]"
             }`}
           >

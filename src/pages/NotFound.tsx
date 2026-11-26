@@ -31,7 +31,7 @@ export function NotFound() {
         </p>
         <Link
           to="/"
-          className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#0071E3] hover:bg-[#0077ED] text-white font-medium text-[15px] px-6 py-3 transition-colors"
+          className="mt-8 inline-flex items-center gap-2 rounded-full bg-brand-pink bg-brand-button hover:brightness-[0.92] text-white font-medium text-[15px] px-6 py-3 transition-colors"
         >
           <ArrowLeft size={15} />
           {isEN ? "Back to homepage" : "Zur Startseite"}

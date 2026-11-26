@@ -47,7 +47,7 @@ export function FounderNote() {
               {/* Decorative offset square — adds depth, matches About page */}
               <span
                 aria-hidden
-                className="pointer-events-none absolute -bottom-4 -right-4 -z-10 h-24 w-24 rounded-2xl bg-[#FF7A45]/20 sm:-bottom-5 sm:-right-5 sm:h-32 sm:w-32"
+                className="pointer-events-none absolute -bottom-4 -right-4 -z-10 h-24 w-24 rounded-2xl bg-[#F05F22]/20 sm:-bottom-5 sm:-right-5 sm:h-32 sm:w-32"
               />
             </div>
           </Reveal>

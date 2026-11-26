@@ -35,14 +35,14 @@ export function AnalysingStep({ domain }: Props) {
         className="pointer-events-none absolute inset-x-0 top-0 mx-auto h-[520px] max-w-[1180px]"
         style={{
           background:
-            'radial-gradient(ellipse at 50% 0%, rgba(255,122,69,0.16), transparent 70%)',
+            'radial-gradient(ellipse at 50% 0%, rgba(240,95,34,0.16), transparent 70%)',
         }}
       />
 
       <div className="relative w-full max-w-[720px] rounded-[28px] border border-ink/[0.06] bg-white/90 p-6 shadow-card backdrop-blur sm:p-8">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div className="min-w-0">
-            <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#FF7A45]">
+            <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#F05F22]">
               {c.analysing.eyebrow}
             </p>
             <h2
@@ -57,7 +57,7 @@ export function AnalysingStep({ domain }: Props) {
               {domain}
             </h2>
           </div>
-          <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-[#FF7A45]/15 text-[#FF7A45]">
+          <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-[#F05F22]/15 text-[#F05F22]">
             <Loader2 size={20} className="animate-spin" />
           </span>
         </div>
@@ -77,7 +77,7 @@ export function AnalysingStep({ domain }: Props) {
                 <span
                   className={`grid h-7 w-7 shrink-0 place-items-center rounded-full transition-colors duration-300 ${
                     state === 'done'
-                      ? 'bg-[#FF7A45]/15 text-[#FF7A45]'
+                      ? 'bg-[#F05F22]/15 text-[#F05F22]'
                       : state === 'active'
                         ? 'bg-ink/[0.06] text-ink'
                         : 'bg-ink/[0.04] text-ink-faint'

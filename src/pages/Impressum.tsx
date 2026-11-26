@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { LegalPage, LegalSection } from "./LegalPage";
 
-const a = "text-ink underline underline-offset-2 hover:text-[#0071E3]";
+const a = "text-ink underline underline-offset-2 hover:text-brand-violet-deep";
 
 export function Impressum() {
   return (

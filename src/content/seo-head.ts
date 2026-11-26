@@ -15,7 +15,7 @@
  *        des Gründers. Keine Bewertungs-Auszeichnung (noch keine echten Bewertungen).
  *   v1.2 (19.11.2026) „für kleine Unternehmen" → „für Kleinunternehmen" in Titel,
  *        Beschreibung, og:/twitter: und JSON-LD (Raoul). Eigenes Vorschaubild
- *        /brand/og-seo-agentur.jpg (1200×630) statt des Startseiten-Bilds.
+ *        /brand/og-neo-seo-agentur.jpg (1200×630) statt des Startseiten-Bilds.
  *   v1.1 (19.11.2026) Freigegebener Titel und freigegebene Meta-Beschreibung aus
  *        NEO-SEO-Meta-Fehlertext-v1.1-20261119.md (wörtlich; in "24 h" steht ein
  *        geschütztes Leerzeichen U+00A0). og:/twitter: übernehmen beide Werte.
@@ -43,7 +43,7 @@ export const seoHead = {
   canonical: SEO_CANONICAL,
   robots: "index, follow",
   lang: "de" as const,
-  ogImage: `${SITE_ORIGIN}/brand/og-seo-agentur.jpg`,
+  ogImage: `${SITE_ORIGIN}/brand/og-neo-seo-agentur.jpg`,
   ogImageWidth: 1200,
   ogImageHeight: 630,
   ogImageAlt: "NEO THE AGENCY: SEO für Kleinunternehmen in ganz Deutschland",

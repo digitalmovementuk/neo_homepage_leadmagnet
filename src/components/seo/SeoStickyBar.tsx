@@ -74,7 +74,7 @@ export function SeoStickyBar() {
           <a
             href={`#${anchors.finalCta}`}
             tabIndex={show ? 0 : -1}
-            className={`seo-pulse-off inline-flex min-h-[44px] items-center gap-1.5 whitespace-nowrap rounded-full bg-[#0071E3] px-5 py-2.5 text-[14px] font-semibold text-white hover:bg-[#0077ED] lg:px-7 lg:py-3.5 lg:text-[15px] ${
+            className={`seo-pulse-off inline-flex min-h-[44px] items-center gap-1.5 whitespace-nowrap rounded-full bg-brand-pink bg-brand-button px-5 py-2.5 text-[14px] font-semibold text-white hover:brightness-[0.92] lg:px-7 lg:py-3.5 lg:text-[15px] ${
               reduce ? "" : "animate-pulse-plum"
             }`}
           >

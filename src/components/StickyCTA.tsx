@@ -64,7 +64,7 @@ export function StickyCTA() {
         <a
           href="#contact"
           tabIndex={show ? 0 : -1}
-          className="relative inline-flex items-center justify-center gap-1.5 sm:gap-2 rounded-full bg-[#0071E3] hover:bg-[#0077ED] text-white font-semibold text-[13.5px] sm:text-[15px] px-5 sm:px-7 py-2.5 sm:py-3.5 transition-colors animate-pulse-plum whitespace-nowrap"
+          className="relative inline-flex items-center justify-center gap-1.5 sm:gap-2 rounded-full bg-brand-pink bg-brand-button hover:brightness-[0.92] text-white font-semibold text-[13.5px] sm:text-[15px] px-5 sm:px-7 py-2.5 sm:py-3.5 transition-colors animate-pulse-plum whitespace-nowrap"
         >
           {t.hero.cta} <ArrowRight size={14} strokeWidth={2.4} />
         </a>

@@ -49,7 +49,7 @@ export function Comparison() {
           className="h-full w-full rounded-full"
           style={{
             background:
-              "radial-gradient(circle at center, #FF7A45 0%, transparent 65%)",
+              "radial-gradient(circle at center, #F05F22 0%, transparent 65%)",
           }}
         />
       </motion.div>
@@ -139,12 +139,12 @@ export function Comparison() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.08, ease: EASE_OUT }}
-            className="relative rounded-[28px] sm:rounded-[36px] border-2 bg-white p-7 sm:p-9 shadow-[0_30px_80px_-30px_rgba(255,122,69,0.35)]"
-            style={{ borderColor: "#FF7A45" }}
+            className="relative rounded-[28px] sm:rounded-[36px] border-2 bg-white p-7 sm:p-9 shadow-[0_30px_80px_-30px_rgba(240,95,34,0.35)]"
+            style={{ borderColor: "#F05F22" }}
           >
             <span
               className="absolute -top-3 left-7 sm:left-9 inline-flex items-center gap-1.5 rounded-full text-white text-[10.5px] font-bold uppercase tracking-[0.18em] px-3 py-1.5"
-              style={{ background: "#FF7A45" }}
+              style={{ background: "#F05F22" }}
             >
               NEO
             </span>
@@ -165,7 +165,7 @@ export function Comparison() {
                 >
                   <span
                     className="mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full text-white"
-                    style={{ background: "#FF7A45" }}
+                    style={{ background: "#F05F22" }}
                   >
                     <Check size={11} strokeWidth={3} />
                   </span>

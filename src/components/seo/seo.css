@@ -2,12 +2,12 @@
    Die Startseite bleibt davon unberührt. v1.0 (19.11.2026) */
 
 .seo-page ::selection {
-  background: rgba(0, 113, 227, 0.2);
-  color: #26272f;
+  background: rgba(154, 47, 198, 0.2);
+  color: #231f20;
 }
 .seo-page .surface-dark ::selection,
 .seo-page .surface-deep ::selection {
-  background: rgba(255, 122, 69, 0.45);
+  background: rgba(240, 95, 34, 0.45);
   color: #fff;
 }
 
@@ -55,7 +55,7 @@
 .seo-page button:focus-visible,
 .seo-page summary:focus-visible,
 .seo-page [tabindex]:focus-visible {
-  outline: 2px solid #0071e3;
+  outline: 2px solid #9a2fc6;
   outline-offset: 3px;
   border-radius: 10px;
 }
@@ -126,15 +126,15 @@
   }
 }
 
-/* Hauptbutton: weicher blauer Schatten, hebt sich 2 px. */
+/* Hauptbutton: weicher Marken-Schatten (violett), hebt sich 2 px. */
 .seo-page .seo-btn-blue {
-  box-shadow: 0 10px 26px -10px rgba(0, 113, 227, 0.6);
+  box-shadow: 0 10px 26px -10px rgba(154, 47, 198, 0.6);
   transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.25s, box-shadow 0.25s;
 }
 @media (hover: hover) {
   .seo-page .seo-btn-blue:hover {
     transform: translateY(-2px);
-    box-shadow: 0 16px 32px -12px rgba(0, 113, 227, 0.65);
+    box-shadow: 0 16px 32px -12px rgba(154, 47, 198, 0.65);
   }
 }
 .seo-page .seo-btn-blue:active {

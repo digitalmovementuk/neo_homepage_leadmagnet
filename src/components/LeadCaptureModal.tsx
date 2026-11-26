@@ -164,7 +164,7 @@ export function LeadCaptureModal() {
                     />
                     <button
                       type="submit"
-                      className="w-full mt-1 inline-flex items-center justify-center gap-2 rounded-full bg-[#0071E3] hover:bg-[#0077ED] text-white font-semibold text-[15px] py-3 transition-colors"
+                      className="w-full mt-1 inline-flex items-center justify-center gap-2 rounded-full bg-brand-pink bg-brand-button hover:brightness-[0.92] text-white font-semibold text-[15px] py-3 transition-colors"
                     >
                       {c.submit} <ArrowRight size={15} />
                     </button>

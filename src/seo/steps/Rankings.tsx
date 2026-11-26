@@ -7,7 +7,7 @@ import type { AnalysisResult, KeywordRow } from '../lib/types'
 
 const RANK_COLOUR: Record<KeywordRow['currentRankBand'], string> = {
   top3: '#22c55e',
-  page1: '#FF7A45',
+  page1: '#F05F22',
   'page2-3': '#f59e0b',
   page4plus: '#ef4444',
   unranked: '#8A8791',
@@ -63,7 +63,7 @@ export function RankingsPage({ result, onBack, onNext }: Props) {
                 <span className="text-[12px] font-medium text-ink-muted sm:text-[12.5px]">
                   {k.monthlySearches.toLocaleString(lang === 'de' ? 'de-DE' : 'en-GB')} {c.rankings.searchesPerMo}
                   {' · '}
-                  <span className="font-bold text-[#FF7A45]">
+                  <span className="font-bold text-[#F05F22]">
                     {k.estMonthlyValue > 0 ? `+${formatMoney(k.estMonthlyValue, result.currency, lang)}/${c.curve.perMonth}` : '—'}
                   </span>
                 </span>
@@ -89,8 +89,8 @@ export function RankingsPage({ result, onBack, onNext }: Props) {
           ))}
         </ul>
 
-        <aside className="rounded-[24px] border border-[#FF7A45]/15 bg-[#fff7f2] p-5 shadow-ring lg:sticky lg:top-0">
-          <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#FF7A45]">
+        <aside className="rounded-[24px] border border-[#F05F22]/15 bg-[#fff7f2] p-5 shadow-ring lg:sticky lg:top-0">
+          <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#F05F22]">
             {c.summary.takeaways.opportunity}
           </p>
           <p className="mt-2 text-[34px] font-bold leading-none tracking-[-0.03em] text-ink">
@@ -101,7 +101,7 @@ export function RankingsPage({ result, onBack, onNext }: Props) {
             {result.keywords.slice(0, 2).map((k) => (
               <div key={k.keyword} className="rounded-2xl border border-white/70 bg-white/75 p-3">
                 <p className="truncate text-[11px] font-semibold text-ink-muted">{k.keyword}</p>
-                <p className="mt-1 text-[13px] font-bold text-[#FF7A45]">
+                <p className="mt-1 text-[13px] font-bold text-[#F05F22]">
                   +{formatMoney(k.estMonthlyValue, result.currency, lang)}/{c.curve.perMonth}
                 </p>
               </div>
@@ -152,7 +152,7 @@ export function PageShell({
       {/* Header — right padding leaves room for the modal's X close button */}
       <header className="flex min-h-[58px] flex-wrap items-center justify-between gap-3 border-b border-ink/[0.06] px-4 py-3 pr-16 sm:px-8 sm:pr-20">
         <div className="flex min-w-0 items-center gap-2">
-          <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#FF7A45]/15 text-[#FF7A45]">
+          <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#F05F22]/15 text-[#F05F22]">
             <TrendingUp size={14} strokeWidth={2.4} />
           </span>
           <span className="truncate text-[13px] font-semibold text-ink">{result.domain}</span>
@@ -164,7 +164,7 @@ export function PageShell({
             <span
               key={i}
               className={`h-1.5 rounded-full transition-all ${
-                i + 1 === step ? 'w-8 bg-[#FF7A45]' : i + 1 < step ? 'w-4 bg-ink/30' : 'w-4 bg-ink/10'
+                i + 1 === step ? 'w-8 bg-[#F05F22]' : i + 1 < step ? 'w-4 bg-ink/30' : 'w-4 bg-ink/10'
               }`}
             />
           ))}
@@ -175,7 +175,7 @@ export function PageShell({
       {/* Page content */}
       <div className="min-h-0 flex-1 overflow-y-auto" data-lenis-prevent>
         <div className="mx-auto w-full max-w-[1120px] px-5 py-7 sm:px-8 sm:py-8 lg:py-9">
-          <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#FF7A45]">{eyebrow}</p>
+          <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#F05F22]">{eyebrow}</p>
           <h2
             className="mt-2 text-ink"
             style={{
@@ -205,7 +205,7 @@ export function PageShell({
         <button
           type="button"
           onClick={onNext}
-          className="inline-flex items-center gap-1.5 rounded-full bg-[#FF7A45] px-5 py-2.5 text-[13px] font-semibold text-white transition-all hover:bg-[#F15F2B] hover:shadow-pop"
+          className="inline-flex items-center gap-1.5 rounded-full bg-[#F05F22] px-5 py-2.5 text-[13px] font-semibold text-white transition-all hover:bg-[#F15F2B] hover:shadow-pop"
         >
           {nextLabelOverride ?? (isLast ? c.nav.finish : c.nav.next)}
           <ArrowRight size={14} strokeWidth={2.4} />

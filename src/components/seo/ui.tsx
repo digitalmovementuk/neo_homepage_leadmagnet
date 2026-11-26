@@ -106,7 +106,7 @@ export const KICKER = "text-[11px] sm:text-[12px] font-bold uppercase tracking-[
 export const H3_CARD = "text-[20px] sm:text-[22px] font-bold leading-tight tracking-[-0.02em]";
 export const BODY_CARD = "text-[15.5px] sm:text-[16px] leading-relaxed";
 export const PILL_BLUE =
-  "seo-btn-blue group inline-flex min-h-[52px] items-center justify-center gap-2 rounded-full bg-[#0071E3] px-7 py-3.5 text-[15px] sm:text-[16px] font-semibold text-white hover:bg-[#0077ED]";
+  "seo-btn-blue group inline-flex min-h-[52px] items-center justify-center gap-2 rounded-full bg-brand-pink bg-brand-button px-7 py-3.5 text-[15px] sm:text-[16px] font-semibold text-white hover:brightness-[0.92]";
 
 /** Oranger Haken-Punkt wie auf der Live-Seite; `no` = grauer Punkt mit Kreuz. */
 export function Tick({ no = false, dark = false }: { no?: boolean; dark?: boolean }) {
@@ -114,7 +114,7 @@ export function Tick({ no = false, dark = false }: { no?: boolean; dark?: boolea
     <span
       aria-hidden
       className={`mt-1 grid h-4 w-4 shrink-0 place-items-center rounded-full ${
-        no ? (dark ? "bg-white/15 text-white/70" : "bg-ink/10 text-ink/60") : "bg-[#FF7A45] text-white"
+        no ? (dark ? "bg-white/15 text-white/70" : "bg-ink/10 text-ink/60") : "bg-[#F05F22] text-white"
       }`}
     >
       {no ? <X size={9} strokeWidth={3.5} /> : <Check size={9} strokeWidth={3.5} />}
@@ -358,7 +358,7 @@ export function Counter({ index, total, dark = false }: { index: number; total: 
   const two = (n: number) => String(n).padStart(2, "0");
   return (
     <span className={`seo-mono text-[13px] font-medium tracking-[0.04em] ${dark ? "text-white/60" : "text-ink-muted"}`}>
-      <span className={dark ? "text-[#FF7A45]" : "text-[#C2410C]"}>{two(index)}</span> / {two(total)}
+      <span className={dark ? "text-[#F05F22]" : "text-[#C2410C]"}>{two(index)}</span> / {two(total)}
     </span>
   );
 }

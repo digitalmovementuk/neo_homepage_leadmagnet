@@ -54,7 +54,7 @@ export function ServicePageShell({ slug }: { slug: keyof ServicePage }) {
     description: page.meta.description,
     canonical,
     lang,
-    ogImage: `${SITE_ORIGIN}${SITE_BASE}/brand/og-cover.jpg`,
+    ogImage: `${SITE_ORIGIN}${SITE_BASE}/brand/og-neo-home.jpg`,
     jsonLd: {
       "@context": "https://schema.org",
       "@type": "Service",
@@ -147,7 +147,7 @@ function Hero({
             muted
             playsInline
             preload="auto"
-            poster={`${base}brand/og-cover.jpg`}
+            poster={`${base}brand/og-neo-home.jpg`}
             // @ts-expect-error fetchpriority is missing from React types
             fetchpriority="high"
             className="absolute inset-0 h-full w-full object-cover scale-105"
@@ -249,7 +249,7 @@ function Hero({
                 <button
                   type="button"
                   onClick={onLeadMagnet}
-                  className="inline-flex items-center gap-2 rounded-full bg-[#0071E3] hover:bg-[#0077ED] text-white font-medium text-[14px] px-6 py-2.5 transition-colors"
+                  className="inline-flex items-center gap-2 rounded-full bg-brand-pink bg-brand-button hover:brightness-[0.92] text-white font-medium text-[14px] px-6 py-2.5 transition-colors"
                 >
                   {page.hero.primaryCta} <ArrowRight size={14} />
                 </button>
@@ -272,7 +272,7 @@ function Hero({
               <button
                 type="button"
                 onClick={onLeadMagnet}
-                className="inline-flex items-center justify-center gap-1.5 rounded-full bg-[#0071E3] hover:bg-[#0077ED] text-white font-medium text-[14px] px-5 py-2 transition-colors"
+                className="inline-flex items-center justify-center gap-1.5 rounded-full bg-brand-pink bg-brand-button hover:brightness-[0.92] text-white font-medium text-[14px] px-5 py-2 transition-colors"
               >
                 {page.hero.primaryCta} <ArrowRight size={13} />
               </button>
@@ -544,7 +544,7 @@ function Methodology({ page }: { page: ServicePage[keyof ServicePage] }) {
                       >
                         <span
                           className="mt-1 grid h-4 w-4 shrink-0 place-items-center rounded-full text-white"
-                          style={{ background: "#FF7A45" }}
+                          style={{ background: "#F05F22" }}
                           aria-hidden
                         >
                           <Check size={9} strokeWidth={3.5} />
@@ -641,7 +641,7 @@ function Deliverables({ page }: { page: ServicePage[keyof ServicePage] }) {
                   >
                     <span
                       className="mt-1 grid h-4 w-4 shrink-0 place-items-center rounded-full text-white"
-                      style={{ background: "#FF7A45" }}
+                      style={{ background: "#F05F22" }}
                       aria-hidden
                     >
                       <Check size={9} strokeWidth={3.5} />
@@ -722,9 +722,9 @@ function ProcessTimelineService({
                 aria-hidden
                 className="block h-[14px] w-[14px] rounded-full"
                 style={{
-                  background: i === 0 ? "#FFB07A" : "#FF7A45",
+                  background: i === 0 ? "#FFB07A" : "#F05F22",
                   boxShadow:
-                    "0 0 0 4px rgba(255,255,255,1), 0 0 0 5px rgba(255,122,69,0.4)",
+                    "0 0 0 4px rgba(255,255,255,1), 0 0 0 5px rgba(240,95,34,0.4)",
                 }}
               />
               <p className="mt-5 text-[10.5px] font-bold uppercase tracking-[0.20em] text-ink-muted">
@@ -803,7 +803,7 @@ function Stack({ page }: { page: ServicePage[keyof ServicePage] }) {
               <div className="flex items-start gap-3">
                 <span
                   className="grid h-9 w-9 shrink-0 place-items-center rounded-full text-white"
-                  style={{ background: "#FF7A45" }}
+                  style={{ background: "#F05F22" }}
                   aria-hidden
                 >
                   <Sparkles size={15} strokeWidth={2.2} />
@@ -943,14 +943,14 @@ function LeadMagnet({
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.7, ease: EASE_OUT }}
           className="relative rounded-[28px] sm:rounded-[40px] border-2 bg-white p-8 sm:p-12 md:p-16 overflow-hidden"
-          style={{ borderColor: "#FF7A45" }}
+          style={{ borderColor: "#F05F22" }}
         >
           <span
             aria-hidden
             className="absolute -top-32 -right-32 h-[420px] w-[420px] rounded-full opacity-[0.10]"
             style={{
               background:
-                "radial-gradient(circle at center, #FF7A45 0%, transparent 70%)",
+                "radial-gradient(circle at center, #F05F22 0%, transparent 70%)",
             }}
           />
           <div className="relative grid lg:grid-cols-[1.4fr_1fr] gap-8 lg:gap-12 items-center">
@@ -980,7 +980,7 @@ function LeadMagnet({
                   >
                     <span
                       className="mt-1 grid h-4 w-4 shrink-0 place-items-center rounded-full text-white"
-                      style={{ background: "#FF7A45" }}
+                      style={{ background: "#F05F22" }}
                       aria-hidden
                     >
                       <Check size={9} strokeWidth={3.5} />
@@ -994,7 +994,7 @@ function LeadMagnet({
               <button
                 type="button"
                 onClick={onOpen}
-                className="inline-flex items-center gap-2 rounded-full bg-[#0071E3] hover:bg-[#0077ED] text-white font-semibold text-[15px] sm:text-[16px] px-7 py-3.5 transition-colors"
+                className="inline-flex items-center gap-2 rounded-full bg-brand-pink bg-brand-button hover:brightness-[0.92] text-white font-semibold text-[15px] sm:text-[16px] px-7 py-3.5 transition-colors"
               >
                 {page.leadMagnet.cta} <ArrowRight size={16} />
               </button>
@@ -1029,7 +1029,7 @@ function FinalCTA({
         className="absolute -bottom-40 -left-40 h-[520px] w-[520px] rounded-full opacity-[0.18]"
         style={{
           background:
-            "radial-gradient(circle at center, #FF7A45 0%, transparent 70%)",
+            "radial-gradient(circle at center, #F05F22 0%, transparent 70%)",
         }}
       />
       <div className="container-v3 relative">
@@ -1059,7 +1059,7 @@ function FinalCTA({
           <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-4">
             <a
               href="/#contact"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#0071E3] hover:bg-[#0077ED] text-white font-semibold text-[15px] sm:text-[16px] px-7 py-3.5 transition-colors"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-pink bg-brand-button hover:brightness-[0.92] text-white font-semibold text-[15px] sm:text-[16px] px-7 py-3.5 transition-colors"
             >
               {page.finalCta.primary} <ArrowRight size={16} />
             </a>

@@ -87,7 +87,7 @@ export function CexPositionsChart() {
         {/* Dieselben Werte als Bild; für Vorleseprogramme reicht die Tabelle. */}
         <div aria-hidden className="rounded-[20px] bg-white/[0.04] p-4 sm:p-6">
           <p className="seo-mono flex items-center gap-2 text-[13px] font-semibold text-white">
-            <span className="h-3 w-3 rounded-full bg-[#FF7A45]" />
+            <span className="h-3 w-3 rounded-full bg-[#F05F22]" />
             {lastDate}
           </p>
           <div className="mt-5 space-y-4 px-2">
@@ -112,7 +112,7 @@ export function CexPositionsChart() {
                       className="absolute top-1/2 grid h-7 w-7 -translate-x-1/2 -translate-y-1/2 place-items-center"
                       style={{ left: `${left}%` }}
                     >
-                      <span className="h-3.5 w-3.5 rounded-full bg-[#FF7A45] ring-2 ring-[#0a0a0c]" />
+                      <span className="h-3.5 w-3.5 rounded-full bg-[#F05F22] ring-2 ring-[#0a0a0c]" />
                     </span>
                     <span
                       className="seo-mono absolute top-1/2 -translate-y-1/2 text-[14px] font-bold text-white"

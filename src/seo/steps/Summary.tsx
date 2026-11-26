@@ -47,7 +47,7 @@ export function SummaryPage({ result, sending, captureError, onBack, onSubmit, o
       {/* Header — right padding leaves room for the modal's X close button */}
       <header className="flex min-h-[58px] flex-wrap items-center justify-between gap-3 border-b border-ink/[0.06] px-4 py-3 pr-16 sm:px-8 sm:pr-20">
         <div className="flex min-w-0 items-center gap-2">
-          <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#FF7A45]/15 text-[#FF7A45]">
+          <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#F05F22]/15 text-[#F05F22]">
             <TrendingUp size={14} strokeWidth={2.4} />
           </span>
           <span className="truncate text-[13px] font-semibold text-ink">{result.domain}</span>
@@ -58,7 +58,7 @@ export function SummaryPage({ result, sending, captureError, onBack, onSubmit, o
           {[1, 2, 3, 4].map((i) => (
             <span
               key={i}
-              className={`h-1.5 rounded-full transition-all ${i === 4 ? 'w-8 bg-[#FF7A45]' : 'w-4 bg-ink/30'}`}
+              className={`h-1.5 rounded-full transition-all ${i === 4 ? 'w-8 bg-[#F05F22]' : 'w-4 bg-ink/30'}`}
             />
           ))}
           <span className="ml-2 hidden sm:inline text-[11px] font-semibold text-ink-muted">{c.nav.pageOf(4, 4)}</span>
@@ -70,7 +70,7 @@ export function SummaryPage({ result, sending, captureError, onBack, onSubmit, o
         <div className="mx-auto w-full max-w-[1120px] px-5 py-5 sm:px-8 sm:py-7 lg:py-8">
           <div className="text-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-ink/10 bg-white px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-ink-muted shadow-ring">
-              <Sparkles size={13} strokeWidth={2.4} className="text-[#FF7A45]" />
+              <Sparkles size={13} strokeWidth={2.4} className="text-[#F05F22]" />
               {c.summary.eyebrow}
             </span>
             <h2
@@ -121,7 +121,7 @@ export function SummaryPage({ result, sending, captureError, onBack, onSubmit, o
                   {topWins.map((k) => (
                     <li key={k.keyword} className="flex items-baseline justify-between gap-3">
                       <span className="min-w-0 truncate text-[14px] font-semibold text-ink">{k.keyword}</span>
-                      <span className="shrink-0 text-[13px] font-bold text-[#FF7A45]">
+                      <span className="shrink-0 text-[13px] font-bold text-[#F05F22]">
                         +{formatMoney(k.estMonthlyValue, result.currency, lang)}/{c.curve.perMonth}
                       </span>
                     </li>
@@ -153,10 +153,10 @@ export function SummaryPage({ result, sending, captureError, onBack, onSubmit, o
             {/* RIGHT — Contact form */}
             <form
               onSubmit={handle}
-              className="order-2 flex flex-col gap-3 rounded-[24px] border border-[#FF7A45]/20 bg-white p-5 shadow-card sm:p-6 lg:sticky lg:top-0 lg:order-none"
+              className="order-2 flex flex-col gap-3 rounded-[24px] border border-[#F05F22]/20 bg-white p-5 shadow-card sm:p-6 lg:sticky lg:top-0 lg:order-none"
             >
               <div>
-                <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#FF7A45]">
+                <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#F05F22]">
                   {c.capture.eyebrow}
                 </p>
                 <h3
@@ -177,14 +177,14 @@ export function SummaryPage({ result, sending, captureError, onBack, onSubmit, o
                 name="name"
                 required
                 placeholder={c.summary.namePlaceholder}
-                className="w-full rounded-full border border-ink/15 bg-white px-4 py-3 text-[14.5px] text-ink placeholder:text-ink-faint outline-none transition focus:border-ink/45 focus:ring-2 focus:ring-[#FF7A45]/15"
+                className="w-full rounded-full border border-ink/15 bg-white px-4 py-3 text-[14.5px] text-ink placeholder:text-ink-faint outline-none transition focus:border-ink/45 focus:ring-2 focus:ring-[#F05F22]/15"
               />
               <input
                 name="email"
                 type="email"
                 required
                 placeholder={c.summary.emailPlaceholder}
-                className="w-full rounded-full border border-ink/15 bg-white px-4 py-3 text-[14.5px] text-ink placeholder:text-ink-faint outline-none transition focus:border-ink/45 focus:ring-2 focus:ring-[#FF7A45]/15"
+                className="w-full rounded-full border border-ink/15 bg-white px-4 py-3 text-[14.5px] text-ink placeholder:text-ink-faint outline-none transition focus:border-ink/45 focus:ring-2 focus:ring-[#F05F22]/15"
               />
 
               <div className="flex items-stretch gap-2">
@@ -201,7 +201,7 @@ export function SummaryPage({ result, sending, captureError, onBack, onSubmit, o
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder={c.summary.phonePlaceholder}
-                  className="min-w-0 flex-1 rounded-full border border-ink/15 bg-white px-4 py-3 text-[14.5px] text-ink placeholder:text-ink-faint outline-none transition focus:border-ink/45 focus:ring-2 focus:ring-[#FF7A45]/15"
+                  className="min-w-0 flex-1 rounded-full border border-ink/15 bg-white px-4 py-3 text-[14.5px] text-ink placeholder:text-ink-faint outline-none transition focus:border-ink/45 focus:ring-2 focus:ring-[#F05F22]/15"
                 />
               </div>
 
@@ -223,7 +223,7 @@ export function SummaryPage({ result, sending, captureError, onBack, onSubmit, o
               <button
                 type="submit"
                 disabled={sending}
-                className="mt-1 inline-flex items-center justify-center gap-2 rounded-full bg-[#FF7A45] px-6 py-3.5 text-[15px] font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#F15F2B] hover:shadow-pop disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0 disabled:hover:shadow-none"
+                className="mt-1 inline-flex items-center justify-center gap-2 rounded-full bg-[#F05F22] px-6 py-3.5 text-[15px] font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#F15F2B] hover:shadow-pop disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0 disabled:hover:shadow-none"
               >
                 {sending ? (
                   <>
@@ -241,7 +241,7 @@ export function SummaryPage({ result, sending, captureError, onBack, onSubmit, o
               <ul className="mt-1 space-y-1.5 border-t border-ink/[0.06] pt-3">
                 {c.summary.trust.map((line) => (
                   <li key={line} className="flex items-center gap-2 text-[11.5px] text-ink-soft">
-                    <Shield size={11} strokeWidth={2.4} className="shrink-0 text-[#FF7A45]" />
+                    <Shield size={11} strokeWidth={2.4} className="shrink-0 text-[#F05F22]" />
                     {line}
                   </li>
                 ))}
@@ -352,7 +352,7 @@ function CountryDialPicker({
                       {cd.dial}
                     </span>
                     <span className="flex-1 truncate text-ink-soft">{cd.name[lang]}</span>
-                    {active && <Check size={14} strokeWidth={2.6} className="text-[#FF7A45]" />}
+                    {active && <Check size={14} strokeWidth={2.6} className="text-[#F05F22]" />}
                   </button>
                 </li>
               )

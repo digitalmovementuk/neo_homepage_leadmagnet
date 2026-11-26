@@ -2,7 +2,7 @@
 
 > NEO THE AGENCY ist eine Berliner Agentur für digitales Marketing. Für Inhaber und mittelständische Unternehmen übernehmen wir SEO, Optimierung für KI-Antworten, Google Ads, Social Media und Websites. Was Ihr Projekt kostet, sagen wir Ihnen nach einer kurzen Analyse, bevor Sie etwas unterschreiben. Es gibt keine Mindestlaufzeit, und alles, was wir für Sie aufbauen, gehört Ihnen vom ersten Tag an. Unser Angebot richtet sich ausschließlich an Unternehmen.
 
-Version 1.3 (25.11.2026). Changelog: v1.3 (25.11.2026) ShowMeLocal, Tupalo und 11880 in den Profilen ergänzt. v1.2 (25.11.2026) Sortlist mit korrigierter Adresse wieder in den Profilen. v1.1 (24.11.2026) Profile mit eigener Canonical-Adresse, LinkedIn-Unternehmensseite ergänzt, Sortlist entfernt (Profil nicht erreichbar), Datenschutz ergänzt. v1.0 (24.11.2026) erste Fassung mit Kontakt, Hauptseiten und offiziellen Profilen.
+Version 1.4 (26.11.2026). Changelog: v1.4 (26.11.2026) neues Logo und Markenbild (Logo, Favicon, Vorschaubild) ergänzt. v1.3 (25.11.2026) ShowMeLocal, Tupalo und 11880 in den Profilen ergänzt. v1.2 (25.11.2026) Sortlist mit korrigierter Adresse wieder in den Profilen. v1.1 (24.11.2026) Profile mit eigener Canonical-Adresse, LinkedIn-Unternehmensseite ergänzt, Sortlist entfernt (Profil nicht erreichbar), Datenschutz ergänzt. v1.0 (24.11.2026) erste Fassung mit Kontakt, Hauptseiten und offiziellen Profilen.
 
 ## Kontakt
 
@@ -12,6 +12,8 @@ Version 1.3 (25.11.2026). Changelog: v1.3 (25.11.2026) ShowMeLocal, Tupalo und 1
 - E-Mail: office@neotheagency.de
 - Website: https://www.neotheagency.de/
 - Gründer: Raoul Müller (https://www.linkedin.com/in/raoulmueller)
+- Logo: https://www.neotheagency.de/brand/neo-logo-light.svg (Bildzeichen: https://www.neotheagency.de/brand/android-chrome-512x512.png)
+- Vorschaubild: https://www.neotheagency.de/brand/og-neo-home.jpg
 
 ## Hauptseiten
 

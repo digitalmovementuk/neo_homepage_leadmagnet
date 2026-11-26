@@ -5,9 +5,9 @@
  */
 import type { ReactNode } from "react";
 
-const INK = "#26272F";
-const BLUE = "#0071E3";
-const ORANGE = "#FF7A45";
+const INK = "#231F20";
+const BLUE = "#9A2FC6"; // brand violet-deep (kit v1.1); name kept
+const ORANGE = "#F05F22";
 const LINE = "rgba(38,39,47,0.14)";
 const SOFT = "rgba(38,39,47,0.22)";
 
@@ -26,7 +26,7 @@ function SearchArt() {
       <path d="M66 108.5 69.5 106v16" stroke="#fff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
       <rect x="94" y="99" width="150" height="10" rx="5" fill={BLUE} />
       <rect x="94" y="118" width="206" height="7" rx="3.5" fill={SOFT} />
-      <circle cx="334" cy="114" r="13" fill="rgba(255,122,69,0.16)" />
+      <circle cx="334" cy="114" r="13" fill="rgba(240,95,34,0.16)" />
       <path d="M334 120v-12m-5 5 5-5 5 5" stroke={ORANGE} strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
 
       <rect x="40" y="158" width="320" height="40" rx="14" fill="#fff" stroke={LINE} strokeWidth="1.5" />
@@ -50,7 +50,7 @@ function MapsArt() {
       </clipPath>
       <rect x="24" y="20" width="352" height="220" rx="20" fill="#fff" stroke={LINE} strokeWidth="1.5" />
       <g clipPath="url(#seo-map-clip)">
-        <path d="M24 196c60-30 96-10 140-44s80-24 212-70v158H24Z" fill="rgba(0,113,227,0.07)" />
+        <path d="M24 196c60-30 96-10 140-44s80-24 212-70v158H24Z" fill="rgba(154,47,198,0.07)" />
         <path d="M24 92h352M24 160h352" stroke="#ECECF0" strokeWidth="12" />
         <path d="M108 20v220M232 20v220M318 20v220" stroke="#ECECF0" strokeWidth="12" />
         <path d="M24 226 190 20" stroke="#E2E2E8" strokeWidth="8" />
@@ -65,7 +65,7 @@ function MapsArt() {
       <circle cx="152" cy="112" r="7.5" fill="#fff" />
 
       <rect x="204" y="118" width="156" height="108" rx="16" fill="#fff" stroke={LINE} strokeWidth="1.5" />
-      <rect x="220" y="134" width="34" height="34" rx="10" fill="rgba(0,113,227,0.12)" />
+      <rect x="220" y="134" width="34" height="34" rx="10" fill="rgba(154,47,198,0.12)" />
       <path d="M229 158v-12l8-5 8 5v12Z" stroke={BLUE} strokeWidth="2" strokeLinejoin="round" />
       <rect x="264" y="138" width="78" height="9" rx="4.5" fill={INK} />
       <rect x="264" y="154" width="54" height="6" rx="3" fill={SOFT} />
@@ -93,12 +93,12 @@ function AiArt() {
       />
       <rect x="88" y="100" width="170" height="9" rx="4.5" fill={INK} />
       <rect x="60" y="130" width="280" height="7" rx="3.5" fill={SOFT} />
-      <rect x="56" y="146" width="188" height="15" rx="5" fill="rgba(0,113,227,0.14)" />
+      <rect x="56" y="146" width="188" height="15" rx="5" fill="rgba(154,47,198,0.14)" />
       <rect x="60" y="150" width="180" height="7" rx="3.5" fill={BLUE} />
       <rect x="252" y="150" width="70" height="7" rx="3.5" fill={SOFT} />
       <rect x="60" y="170" width="230" height="7" rx="3.5" fill={SOFT} />
 
-      <rect x="60" y="194" width="168" height="30" rx="15" fill="rgba(0,113,227,0.08)" stroke={BLUE} strokeWidth="1.5" />
+      <rect x="60" y="194" width="168" height="30" rx="15" fill="rgba(154,47,198,0.08)" stroke={BLUE} strokeWidth="1.5" />
       <path
         d="M80 205.500h-2.500a3.500 3.500 0 0 0 0 7H80m5-7h2.500a3.500 3.500 0 0 1 0 7H85m-5.500-3.500h6"
         stroke={BLUE}
@@ -136,16 +136,16 @@ export function AuditArt() {
       <rect x="32" y="72" width="120" height="11" rx="5.5" fill={INK} />
       <rect x="32" y="94" width="180" height="7" rx="3.5" fill={SOFT} />
       <rect x="32" y="108" width="150" height="7" rx="3.5" fill={SOFT} />
-      <rect x="32" y="132" width="78" height="60" rx="12" fill="rgba(0,113,227,0.09)" />
+      <rect x="32" y="132" width="78" height="60" rx="12" fill="rgba(154,47,198,0.09)" />
       <rect x="120" y="132" width="78" height="60" rx="12" fill="rgba(38,39,47,0.05)" />
-      <rect x="208" y="132" width="84" height="60" rx="12" fill="rgba(255,122,69,0.12)" />
+      <rect x="208" y="132" width="84" height="60" rx="12" fill="rgba(240,95,34,0.12)" />
       <circle cx="162" cy="118" r="30" fill={BLUE} />
       <path d="M154 105v26l22-13-22-13Z" fill="#fff" />
 
       <rect x="252" y="62" width="176" height="150" rx="18" fill="#fff" stroke={LINE} strokeWidth="1.5" />
       {[0, 1, 2].map((i) => (
         <g key={i} transform={`translate(0 ${i * 44})`}>
-          <circle cx="280" cy="94" r="11" fill={i === 2 ? "rgba(255,122,69,0.18)" : "rgba(0,113,227,0.12)"} />
+          <circle cx="280" cy="94" r="11" fill={i === 2 ? "rgba(240,95,34,0.18)" : "rgba(154,47,198,0.12)"} />
           <path
             d="m275 94 3.500 3.500 6.500-7"
             stroke={i === 2 ? ORANGE : BLUE}

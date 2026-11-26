@@ -51,16 +51,16 @@ export function MoneyPage({ result, onBack, onNext }: Props) {
                 <td className="px-5 py-3.5 text-right tabular-nums text-ink-muted">
                   {k.estPage1Clicks} {c.money.clicks}
                 </td>
-                <td className="px-5 py-3.5 text-right tabular-nums font-bold text-[#FF7A45]">
+                <td className="px-5 py-3.5 text-right tabular-nums font-bold text-[#F05F22]">
                   {formatMoney(k.estMonthlyValue, result.currency, lang)}
                 </td>
               </tr>
             ))}
-            <tr className="bg-[#FF7A45]/[0.08]">
+            <tr className="bg-[#F05F22]/[0.08]">
               <td colSpan={4} className="px-5 py-3.5 text-right font-bold text-ink">
                 {c.money.total}
               </td>
-              <td className="px-5 py-3.5 text-right tabular-nums text-[15px] font-bold text-[#FF7A45]">
+              <td className="px-5 py-3.5 text-right tabular-nums text-[15px] font-bold text-[#F05F22]">
                 {formatMoney(result.monthlyOpportunity, result.currency, lang)}
               </td>
             </tr>
@@ -73,7 +73,7 @@ export function MoneyPage({ result, onBack, onNext }: Props) {
             <li key={k.keyword} className="rounded-[22px] border border-ink/[0.07] bg-white p-4 shadow-ring">
               <div className="flex items-start justify-between gap-3">
                 <p className="min-w-0 text-[15px] font-semibold leading-[1.35] text-ink">{k.keyword}</p>
-                <p className="shrink-0 text-[14px] font-bold text-[#FF7A45]">
+                <p className="shrink-0 text-[14px] font-bold text-[#F05F22]">
                   {formatMoney(k.estMonthlyValue, result.currency, lang)}
                 </p>
               </div>
@@ -95,8 +95,8 @@ export function MoneyPage({ result, onBack, onNext }: Props) {
           ))}
         </ul>
 
-        <div className="order-1 rounded-[24px] border border-[#FF7A45]/15 bg-[#fff7f2] p-5 shadow-ring lg:sticky lg:top-0 lg:order-none">
-          <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#FF7A45]">{c.money.total}</p>
+        <div className="order-1 rounded-[24px] border border-[#F05F22]/15 bg-[#fff7f2] p-5 shadow-ring lg:sticky lg:top-0 lg:order-none">
+          <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#F05F22]">{c.money.total}</p>
           <p className="mt-2 text-[34px] font-bold leading-none tracking-[-0.03em] text-ink">
             {formatMoney(result.monthlyOpportunity, result.currency, lang)}
           </p>

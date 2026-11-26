@@ -203,7 +203,7 @@ function TestimonialCard({ t, i, total, labels, unmutedId, onUnmute }: CardProps
           rel={
             t.websiteUrl.startsWith("http") ? "noopener noreferrer" : undefined
           }
-          className="mt-auto inline-flex items-center justify-center gap-1.5 h-8 sm:h-9 px-3.5 sm:px-4 rounded-full bg-ink text-white text-[11.5px] sm:text-[12px] font-semibold tracking-[0.01em] hover:bg-[#0071E3] transition-colors duration-300"
+          className="mt-auto inline-flex items-center justify-center gap-1.5 h-8 sm:h-9 px-3.5 sm:px-4 rounded-full bg-ink text-white text-[11.5px] sm:text-[12px] font-semibold tracking-[0.01em] hover:bg-brand-pink hover:bg-brand-button transition-colors duration-300"
         >
           <span>{labels.visit}</span>
           <ArrowUpRight size={13} strokeWidth={2.2} />

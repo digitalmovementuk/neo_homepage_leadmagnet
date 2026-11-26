@@ -126,7 +126,7 @@ export function Nav() {
     ? "text-white/85 hover:text-white"
     : "text-ink-soft hover:text-ink";
   const ctaSize = compact ? "text-[13px] px-4 py-2" : "text-[14px] px-5 py-2.5";
-  const ctaCls = `inline-flex items-center gap-2 rounded-full bg-[#0071E3] hover:bg-[#0077ED] text-white font-medium transition-all duration-300 ${ctaSize}`;
+  const ctaCls = `inline-flex items-center gap-2 rounded-full bg-brand-pink bg-brand-button hover:brightness-[0.92] text-white font-medium transition-all duration-300 ${ctaSize}`;
   const hamburgerCls = onDark
     ? "border-white/30 bg-white/10 text-white"
     : "border-ink/15 bg-white/70 text-ink";
@@ -155,9 +155,11 @@ export function Nav() {
           >
             <img
               src={`${import.meta.env.BASE_URL}brand/${
-                onDark ? "logo-color-negative" : "logo-color-positive"
-              }.png`}
+                onDark ? "neo-logo-dark" : "neo-logo-light"
+              }.svg`}
               alt="NEO THE AGENCY"
+              width={757}
+              height={110}
               className={`w-auto transition-all duration-300 ${logoHeightCls}`}
               draggable={false}
             />
@@ -204,7 +206,7 @@ export function Nav() {
                           }}
                           className={`absolute left-1/2 -translate-x-1/2 mt-3 min-w-[300px] rounded-2xl border backdrop-blur-xl overflow-hidden z-[60] ${
                             onDark
-                              ? "border-white/15 bg-[#1a1b22]/90 text-white shadow-[0_30px_60px_-30px_rgba(0,0,0,0.6)]"
+                              ? "border-white/15 bg-[#1a0e2e]/90 text-white shadow-[0_30px_60px_-30px_rgba(0,0,0,0.6)]"
                               : "border-ink/10 bg-white/95 text-ink shadow-[0_30px_60px_-30px_rgba(38,39,47,0.25)]"
                           }`}
                         >
@@ -309,7 +311,7 @@ export function Nav() {
 
         <motion.div
           aria-hidden
-          className="absolute inset-x-0 bottom-0 h-[2px] origin-left bg-[#FF7A45]"
+          className="absolute inset-x-0 bottom-0 h-[2px] origin-left bg-[#F05F22]"
           style={{ scaleX: progressScaleX }}
         />
       </header>
@@ -335,8 +337,10 @@ export function Nav() {
             >
               <div className="flex items-center justify-between">
                 <img
-                  src={`${import.meta.env.BASE_URL}brand/logo-color-negative.png`}
+                  src={`${import.meta.env.BASE_URL}brand/neo-logo-dark.svg`}
                   alt="NEO THE AGENCY"
+                  width={757}
+                  height={110}
                   className="h-7 w-auto"
                 />
                 <button
@@ -404,7 +408,7 @@ export function Nav() {
               <Link
                 to={{ pathname: "/", hash: "#contact" }}
                 onClick={() => setOpen(false)}
-                className="mt-8 w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#0071E3] hover:bg-[#0077ED] text-white text-[15px] font-medium py-3 transition-colors"
+                className="mt-8 w-full inline-flex items-center justify-center gap-2 rounded-full bg-brand-pink bg-brand-button hover:brightness-[0.92] text-white text-[15px] font-medium py-3 transition-colors"
               >
                 {t.nav.cta} <ArrowRight size={15} />
               </Link>

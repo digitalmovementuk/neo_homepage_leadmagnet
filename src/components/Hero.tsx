@@ -369,7 +369,7 @@ const HeroSlideView = ({
                 <button
                   type="button"
                   onClick={onOpenSeo}
-                  className="inline-flex min-h-11 max-w-full items-center justify-center gap-1.5 rounded-full bg-[#FF7A45] px-5 py-2.5 text-center text-[14px] font-semibold text-white shadow-[0_8px_24px_rgba(255,122,69,0.30)] transition-colors hover:bg-[#F15F2B]"
+                  className="inline-flex min-h-11 max-w-full items-center justify-center gap-1.5 rounded-full bg-[#F05F22] px-5 py-2.5 text-center text-[14px] font-semibold text-white shadow-[0_8px_24px_rgba(240,95,34,0.30)] transition-colors hover:bg-[#F15F2B]"
                 >
                   <Sparkles size={14} strokeWidth={2.4} />
                   {seoLabel}
@@ -395,7 +395,7 @@ const HeroSlideView = ({
               <button
                 type="button"
                 onClick={onOpenSeo}
-                className="inline-flex min-h-11 items-center justify-center gap-1.5 rounded-full bg-[#0071E3] px-5 py-2.5 text-[14px] font-semibold text-white transition-colors hover:bg-[#0077ED]"
+                className="inline-flex min-h-11 items-center justify-center gap-1.5 rounded-full bg-brand-pink bg-brand-button px-5 py-2.5 text-[14px] font-semibold text-white transition-colors hover:brightness-[0.92]"
               >
                 <Sparkles size={14} strokeWidth={2.4} />
                 {seoLabel}

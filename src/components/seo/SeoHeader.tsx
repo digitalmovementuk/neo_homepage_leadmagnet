@@ -127,10 +127,10 @@ export function SeoHeader() {
         >
           <Link to="/" className={`flex min-h-[44px] items-center gap-3${dark ? " seo-on-dark" : ""}`}>
             <img
-              src={asset(dark ? "brand/logo-color-negative.png" : "brand/logo-color-positive.png")}
+              src={asset(dark ? "brand/neo-logo-dark.svg" : "brand/neo-logo-light.svg")}
               alt={header.logoAlt}
-              width={1600}
-              height={174}
+              width={757}
+              height={110}
               draggable={false}
               className={`w-auto transition-all duration-300 ${compact ? "h-6 sm:h-7" : "h-7 sm:h-9"}`}
             />
@@ -172,7 +172,7 @@ export function SeoHeader() {
                     <div
                       className={`min-w-[300px] overflow-hidden rounded-2xl border backdrop-blur-xl ${
                         dark
-                          ? "border-white/15 bg-[#1a1b22]/90 text-white shadow-[0_30px_60px_-30px_rgba(0,0,0,0.6)]"
+                          ? "border-white/15 bg-[#1a0e2e]/90 text-white shadow-[0_30px_60px_-30px_rgba(0,0,0,0.6)]"
                           : "border-ink/10 bg-white/95 text-ink shadow-[0_30px_60px_-30px_rgba(38,39,47,0.25)]"
                       }`}
                     >
@@ -193,7 +193,7 @@ export function SeoHeader() {
                                 <ArrowUpRight
                                   size={14}
                                   strokeWidth={2.2}
-                                  className={`mt-1 ${current ? (dark ? "text-[#FF7A45]" : "text-[#C2410C]") : dark ? "text-white/55" : "text-ink-muted"}`}
+                                  className={`mt-1 ${current ? (dark ? "text-[#F05F22]" : "text-[#C2410C]") : dark ? "text-white/55" : "text-ink-muted"}`}
                                 />
                                 <span className="block text-[14px] font-semibold tracking-tight">{item.label}</span>
                               </SiteLink>
@@ -224,7 +224,7 @@ export function SeoHeader() {
             </span>
             <a
               href={`#${anchors.finalCta}`}
-              className={`hidden md:inline-flex items-center gap-2 rounded-full bg-[#0071E3] font-medium text-white transition-all duration-300 hover:bg-[#0077ED] ${
+              className={`hidden md:inline-flex items-center gap-2 rounded-full bg-brand-pink bg-brand-button font-medium text-white transition-all duration-300 hover:brightness-[0.92] ${
                 compact ? "px-4 py-2 text-[13px]" : "px-5 py-2.5 text-[14px]"
               }${dark ? " seo-on-dark" : ""}`}
             >
@@ -246,7 +246,7 @@ export function SeoHeader() {
         </div>
         <motion.div
           aria-hidden
-          className="absolute inset-x-0 bottom-0 h-[2px] origin-left bg-[#FF7A45]"
+          className="absolute inset-x-0 bottom-0 h-[2px] origin-left bg-[#F05F22]"
           style={{ scaleX: reduce ? scrollYProgress : spring }}
         />
       </header>
@@ -278,10 +278,10 @@ export function SeoHeader() {
             >
               <div className="flex items-center justify-between">
                 <img
-                  src={asset("brand/logo-color-negative.png")}
+                  src={asset("brand/neo-logo-dark.svg")}
                   alt={header.logoAlt}
-                  width={1600}
-                  height={174}
+                  width={757}
+                  height={110}
                   className="h-7 w-auto"
                   draggable={false}
                 />
@@ -344,7 +344,7 @@ export function SeoHeader() {
               <a
                 href={`#${anchors.finalCta}`}
                 onClick={() => setOpen(false)}
-                className="seo-on-dark mt-8 inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-full bg-[#0071E3] py-3 text-[15px] font-medium text-white hover:bg-[#0077ED]"
+                className="seo-on-dark mt-8 inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-full bg-brand-pink bg-brand-button py-3 text-[15px] font-medium text-white hover:brightness-[0.92]"
               >
                 {header.cta}
                 <ArrowRight size={15} />

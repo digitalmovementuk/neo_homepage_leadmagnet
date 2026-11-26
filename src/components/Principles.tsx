@@ -66,7 +66,7 @@ export function Principles() {
             >
               <span
                 className="grid h-12 w-12 place-items-center rounded-full text-white shrink-0"
-                style={{ background: "#FF7A45" }}
+                style={{ background: "#F05F22" }}
               >
                 <p.icon size={20} strokeWidth={2.2} />
               </span>

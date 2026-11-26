@@ -107,7 +107,7 @@ export function InputStep({ initial, onAnalyse, error }: Props) {
         {/* Eyebrow + Title */}
         <div className="mx-auto mt-9 max-w-[640px] text-center">
           <span className="inline-flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-[0.14em] text-ink-muted">
-            <Sparkles size={12} strokeWidth={2.2} className="text-[#FF7A45]" />
+            <Sparkles size={12} strokeWidth={2.2} className="text-[#F05F22]" />
             {c.input.eyebrow}
           </span>
 
@@ -261,7 +261,7 @@ function LangButton({
     >
       <span className="block h-3.5 w-5 overflow-hidden rounded-[2px] ring-1 ring-black/10">{flag}</span>
       {label}
-      {active && <Check size={13} strokeWidth={2.6} className="text-[#FF7A45]" />}
+      {active && <Check size={13} strokeWidth={2.6} className="text-[#F05F22]" />}
     </button>
   )
 }
@@ -345,7 +345,7 @@ function CurrencyPicker({
                     <span className="w-8 shrink-0 text-[14px] font-bold tabular-nums text-ink">{c.symbol}</span>
                     <span className="w-10 shrink-0 font-mono text-[12px] font-semibold text-ink-muted">{c.code}</span>
                     <span className="flex-1 text-ink">{c.name[lang]}</span>
-                    {active && <Check size={14} strokeWidth={2.6} className="text-[#FF7A45]" />}
+                    {active && <Check size={14} strokeWidth={2.6} className="text-[#F05F22]" />}
                   </button>
                 </li>
               )

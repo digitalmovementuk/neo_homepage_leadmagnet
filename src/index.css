@@ -5,7 +5,7 @@
 /* v3_apple — design system of the NEO site.
    Two surfaces alternate down the page:
      light: #fbfbfd
-     dark:  #1B0E2E (DM plum) */
+     dark:  #1A0E2E (NEO night, brand kit v1.1) */
 
 @layer base {
   :root {
@@ -13,22 +13,26 @@
        Light theme uses only white tones (no warmer sand). */
     --surface-light: #ffffff;
     --surface-light-2: #f5f5f7;
-    --surface-dark: #26272f;
-    --surface-deep: #1a1b22;
+    --surface-dark: #1a0e2e;
+    --surface-deep: #120a20;
 
-    --ink: #26272f;
+    --ink: #231f20;
     --ink-soft: #4a4d59;
     --ink-muted: #66636d;
     --ink-faint: #8a8791;
 
-    --accent: #ff7a45;
+    --accent: #f05f22;
     --grad-brand: linear-gradient(
       135deg,
-      #ffb07a 0%,
-      #ff7a45 50%,
-      #f15f2b 100%
+      #ffb23d 14%,
+      #f05f22 33%,
+      #ec178d 59%,
+      #d332ff 78%,
+      #9a2fc6 100%
     );
-    --grad-cta: linear-gradient(90deg, #ff7a45 0%, #f15f2b 100%);
+    --grad-cta: linear-gradient(55deg, #f05f22 0%, #ec178d 50%, #9a2fc6 100%);
+    --brand-night: #1a0e2e;
+    --brand-link: #9a2fc6;
 
     --container-max: 1280px;
     --gutter: clamp(20px, 4vw, 56px);

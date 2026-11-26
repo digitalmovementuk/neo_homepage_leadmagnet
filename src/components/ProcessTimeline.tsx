@@ -96,7 +96,7 @@ export function ProcessTimeline() {
               style={{
                 width: lineFill,
                 background:
-                  "linear-gradient(90deg, #FFB07A 0%, #FF7A45 100%)",
+                  "linear-gradient(90deg, #FFB07A 0%, #F05F22 100%)",
               }}
             />
           </div>
@@ -111,7 +111,7 @@ export function ProcessTimeline() {
               style={{
                 height: lineFill,
                 background:
-                  "linear-gradient(180deg, #FFB07A 0%, #FF7A45 100%)",
+                  "linear-gradient(180deg, #FFB07A 0%, #F05F22 100%)",
               }}
             />
           </div>
@@ -158,8 +158,8 @@ function ProcessStep({
   const dotGlow = useTransform(
     progress,
     [start, dotEnd],
-    ["0 0 0 4px rgba(38,39,47,1), 0 0 0 4px rgba(255,122,69,0)",
-     "0 0 0 4px rgba(38,39,47,1), 0 0 0 5px rgba(255,122,69,0.4)"],
+    ["0 0 0 4px rgba(38,39,47,1), 0 0 0 4px rgba(240,95,34,0)",
+     "0 0 0 4px rgba(38,39,47,1), 0 0 0 5px rgba(240,95,34,0.4)"],
   );
 
   return (
@@ -172,7 +172,7 @@ function ProcessStep({
         aria-hidden
         className="absolute left-0 top-1 block h-[18px] w-[18px] rounded-full md:static md:mx-auto"
         style={{
-          background: index === 0 ? "#FFB07A" : "#FF7A45",
+          background: index === 0 ? "#FFB07A" : "#F05F22",
           scale: dotScale,
           boxShadow: dotGlow,
         }}

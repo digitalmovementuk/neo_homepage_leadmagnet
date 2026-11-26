@@ -26,7 +26,7 @@ export function SentStep({ result, onReset }: Props) {
         className="pointer-events-none absolute inset-x-0 top-0 mx-auto h-[520px] max-w-[1180px]"
         style={{
           background:
-            'radial-gradient(ellipse at 50% 0%, rgba(255,122,69,0.16), transparent 70%)',
+            'radial-gradient(ellipse at 50% 0%, rgba(240,95,34,0.16), transparent 70%)',
         }}
       />
 
@@ -35,7 +35,7 @@ export function SentStep({ result, onReset }: Props) {
           initial={{ scale: 0, rotate: -90 }}
           animate={{ scale: 1, rotate: 0 }}
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: 0.05 }}
-          className="grid h-16 w-16 mx-auto place-items-center rounded-full bg-[#FF7A45]/15 text-[#FF7A45]"
+          className="grid h-16 w-16 mx-auto place-items-center rounded-full bg-[#F05F22]/15 text-[#F05F22]"
         >
           <CheckCircle2 size={28} strokeWidth={2} />
         </motion.span>
@@ -56,7 +56,7 @@ export function SentStep({ result, onReset }: Props) {
         </p>
 
         <div className="mx-auto mt-7 max-w-[480px] rounded-[24px] border border-ink/[0.07] bg-white p-5 text-left shadow-card sm:p-6">
-          <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#FF7A45]">
+          <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#F05F22]">
             {c.sent.nextSteps.title}
           </p>
           <ul className="mt-3 space-y-2.5">
@@ -68,7 +68,7 @@ export function SentStep({ result, onReset }: Props) {
                 transition={{ duration: 0.4, delay: 0.2 + i * 0.1 }}
                 className="flex items-start gap-2.5"
               >
-                <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-[#FF7A45]/15 text-[#FF7A45]">
+                <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-[#F05F22]/15 text-[#F05F22]">
                   <Check size={11} strokeWidth={3} />
                 </span>
                 <span className="text-[13.5px] leading-[1.5] text-ink-soft">{item}</span>

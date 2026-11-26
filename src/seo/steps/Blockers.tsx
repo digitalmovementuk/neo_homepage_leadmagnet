@@ -70,7 +70,7 @@ export function BlockersPage({ result, onBack, onNext }: Props) {
           </p>
           <p className="mt-2 text-[18px] font-semibold leading-[1.25]">{result.blockers[0]?.title}</p>
           <div className="mt-5 h-1.5 overflow-hidden rounded-full bg-white/12">
-            <div className="h-full w-2/3 rounded-full bg-[#FF7A45]" />
+            <div className="h-full w-2/3 rounded-full bg-[#F05F22]" />
           </div>
           <p className="mt-4 text-[12.5px] leading-[1.55] text-white/68">{c.pageBlockers.sub}</p>
         </aside>

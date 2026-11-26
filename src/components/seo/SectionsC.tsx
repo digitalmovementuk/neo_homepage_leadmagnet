@@ -218,7 +218,7 @@ export function Related() {
                   {card.link.href ? (
                     <a
                       href={card.link.href}
-                      className="group mt-5 inline-flex min-h-[44px] items-center gap-1.5 text-[15px] font-semibold text-[#0071E3]"
+                      className="group mt-5 inline-flex min-h-[44px] items-center gap-1.5 text-[15px] font-semibold text-brand-violet-deep"
                     >
                       {card.link.label}
                       <ArrowRight size={15} strokeWidth={2.4} className="transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden />
@@ -354,7 +354,7 @@ export function FinalCta() {
     <Section id="erstgespraech" surface="dark" className="relative overflow-hidden">
       <div
         aria-hidden
-        className="pointer-events-none absolute -bottom-40 -left-40 h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle,rgba(255,122,69,0.22),transparent_65%)]"
+        className="pointer-events-none absolute -bottom-40 -left-40 h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle,rgba(240,95,34,0.22),transparent_65%)]"
       />
       <div className="container-v3 relative grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
         <div>
