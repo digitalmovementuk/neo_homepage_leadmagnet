@@ -85,11 +85,11 @@
 
 /* ── Kopf ── */
 .hero-form .hf-head { margin-bottom: 18px; }
-.hero-form .hf-head h2 {
+.hero-form .hf-head .hf-title {
   font-size: clamp(1.24rem, 3.6vw, 1.46rem); font-weight: 700; color: #1a0e2e;
   margin: 0 0 6px; letter-spacing: -.02em; line-height: 1.2;
 }
-.hero-form .hf-head p { font-size: .86rem; color: #4a4156; margin: 0; }
+.hero-form .hf-head p:not(.hf-title) { font-size: .86rem; color: #4a4156; margin: 0; }
 
 /* ── Felder ── */
 .hero-form .field { display: grid; gap: 6px; margin-bottom: 13px; }
@@ -188,7 +188,7 @@
 
 /* ── Niedrige Bildschirme am Desktop ── */
 @media (min-width: 1024px) and (max-height: 860px) {
-  .hero-form .hf-head p { display: none; }
+  .hero-form .hf-head p:not(.hf-title) { display: none; }
   .hero-form .form-fine { display: none; }
 }
 @media (min-width: 1024px) and (max-height: 780px) {

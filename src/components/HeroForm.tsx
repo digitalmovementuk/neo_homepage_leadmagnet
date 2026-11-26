@@ -229,7 +229,7 @@ export function HeroForm() {
       {status === "form" ? (
         <form noValidate onSubmit={onSubmit} aria-labelledby="hf-title">
           <div className="hf-head">
-            <h2 id="hf-title">{L.title}</h2>
+            <p id="hf-title" className="hf-title">{L.title}</p>
             <p>{L.sub}</p>
           </div>
 
