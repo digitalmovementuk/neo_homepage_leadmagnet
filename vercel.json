@@ -13,6 +13,6 @@
     { "source": "/sitemap-index.xml", "destination": "/sitemap.xml", "permanent": true }
   ],
   "rewrites": [
-    { "source": "/((?!api/).*)", "destination": "/index.html" }
+    { "source": "/((?!api/|snapshot/).*)", "destination": "/index.html" }
   ]
 }
