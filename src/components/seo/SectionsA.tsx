@@ -82,8 +82,8 @@ export function Hero() {
       />
 
       <div className="absolute inset-x-0 bottom-0 z-10">
-        <div className="mx-auto grid w-full max-w-[1512px] gap-7 px-5 pb-[calc(40px+env(safe-area-inset-bottom))] text-center sm:px-8 sm:pb-16 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end lg:gap-14 lg:px-12 lg:pb-20 lg:text-left 2xl:px-0">
-          <div className="flex flex-col items-center lg:items-start">
+        <div className="mx-auto grid w-full max-w-[1512px] grid-cols-[minmax(0,1fr)] gap-7 px-5 pb-[calc(40px+env(safe-area-inset-bottom))] text-center sm:px-8 sm:pb-16 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end lg:gap-14 lg:px-12 lg:pb-20 lg:text-left 2xl:px-0">
+          <div className="flex min-w-0 flex-col items-center lg:items-start">
             <p className="text-[10.5px] font-bold uppercase tracking-[0.32em] text-white/85 sm:text-[12px]">{hero.kicker}</p>
             <h1
               id="top-titel"
