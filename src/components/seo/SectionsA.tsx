@@ -84,13 +84,15 @@ export function Hero() {
       <div className="absolute inset-x-0 bottom-0 z-10">
         <div className="mx-auto grid w-full max-w-[1512px] grid-cols-[minmax(0,1fr)] gap-7 px-5 pb-[calc(40px+env(safe-area-inset-bottom))] text-center sm:px-8 sm:pb-16 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end lg:gap-14 lg:px-12 lg:pb-20 lg:text-left 2xl:px-0">
           <div className="flex min-w-0 flex-col items-center lg:items-start">
-            <p className="text-[10.5px] font-bold uppercase tracking-[0.32em] text-white/85 sm:text-[12px]">{hero.kicker}</p>
-            <h1
-              id="top-titel"
-              className="mt-4 font-bold uppercase italic text-white balance sm:mt-5"
-              style={{ fontSize: "clamp(32px, 5.2vw, 80px)", lineHeight: 0.92, letterSpacing: "-0.045em" }}
-            >
-              {hero.heading.ink} <span className="font-medium text-white/60 lg:block">{hero.heading.grey}</span>
+            {/* SEO 26.11.2026: Kicker (mit Fokus-Suchbegriff) steht im H1, Optik unverändert. */}
+            <h1 id="top-titel" className="flex flex-col items-center lg:items-start">
+              <span className="block text-[10.5px] font-bold uppercase tracking-[0.32em] text-white/85 sm:text-[12px]">{hero.kicker}</span>{" "}
+              <span
+                className="mt-4 block font-bold uppercase italic text-white balance sm:mt-5"
+                style={{ fontSize: "clamp(32px, 5.2vw, 80px)", lineHeight: 0.92, letterSpacing: "-0.045em" }}
+              >
+                {hero.heading.ink} <span className="font-medium text-white/60 lg:block">{hero.heading.grey}</span>
+              </span>
             </h1>
             <p className="pretty mt-5 max-w-[40ch] text-[14.5px] leading-relaxed text-white/65 sm:max-w-[56ch] sm:text-[16px] lg:max-w-[62ch] lg:text-[17px]">
               {hero.subline}

@@ -1,8 +1,9 @@
 #!/usr/bin/env node
-// generate-sitemap.mjs · v1.0 (19.11.2026)
+// generate-sitemap.mjs · v1.1 (26.11.2026)
 // Erzeugt public/sitemap.xml für www.neotheagency.de. Jede neue Route muss
 // hier eingetragen werden, sonst fehlt sie in der Sitemap.
-// Changelog: v1.0 (19.11.2026) Erste Fassung, 8 Adressen inkl. /seo-agentur/.
+// Changelog: v1.1 (26.11.2026) Flache Adressen = Fokus-Suchbegriff (/google-ads-agentur/, /social-media-agentur/, /webdesign-agentur/, /neo-the-agency/).
+//            v1.0 (19.11.2026) Erste Fassung, 8 Adressen inkl. /seo-agentur/.
 
 import { writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
@@ -14,10 +15,10 @@ const ORIGIN = "https://www.neotheagency.de";
 const ROUTES = [
   { path: "/", priority: "1.0", changefreq: "weekly" },
   { path: "/seo-agentur/", priority: "0.9", changefreq: "weekly" },
-  { path: "/services/google-ads", priority: "0.7", changefreq: "monthly" },
-  { path: "/services/social-media", priority: "0.7", changefreq: "monthly" },
-  { path: "/services/websites", priority: "0.7", changefreq: "monthly" },
-  { path: "/uber-uns", priority: "0.5", changefreq: "monthly" },
+  { path: "/google-ads-agentur/", priority: "0.7", changefreq: "monthly" },
+  { path: "/social-media-agentur/", priority: "0.7", changefreq: "monthly" },
+  { path: "/webdesign-agentur/", priority: "0.7", changefreq: "monthly" },
+  { path: "/neo-the-agency/", priority: "0.5", changefreq: "monthly" },
   { path: "/impressum", priority: "0.2", changefreq: "yearly" },
   { path: "/datenschutz", priority: "0.2", changefreq: "yearly" },
 ];

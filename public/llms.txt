@@ -19,10 +19,10 @@ Version 1.4 (26.11.2026). Changelog: v1.4 (26.11.2026) neues Logo und Markenbild
 
 - [Startseite](https://www.neotheagency.de/): Überblick über alle Leistungen
 - [SEO-Agentur](https://www.neotheagency.de/seo-agentur/): SEO und Optimierung für KI-Antworten
-- [Google Ads](https://www.neotheagency.de/services/google-ads): Google-Ads-Kampagnen
-- [Social Media](https://www.neotheagency.de/services/social-media): Social-Media-Marketing
-- [Websites](https://www.neotheagency.de/services/websites): Websites für Unternehmen
-- [Über uns](https://www.neotheagency.de/uber-uns): Team und Arbeitsweise
+- [Google Ads](https://www.neotheagency.de/google-ads-agentur/): Google-Ads-Kampagnen
+- [Social Media](https://www.neotheagency.de/social-media-agentur/): Social-Media-Marketing
+- [Websites](https://www.neotheagency.de/webdesign-agentur/): Websites für Unternehmen
+- [Über uns](https://www.neotheagency.de/neo-the-agency/): Team und Arbeitsweise
 - [Impressum](https://www.neotheagency.de/impressum)
 - [Datenschutz](https://www.neotheagency.de/datenschutz)
 

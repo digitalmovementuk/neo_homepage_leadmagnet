@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, useReducedMotion } from "framer-motion";
 import {
@@ -15,7 +15,7 @@ import { useDocumentHead } from "../lib/useDocumentHead";
 import { useLeadModal, type LeadModalContent } from "../lib/leadModal";
 import type { ServicePage } from "../lib/translations";
 import { PlatformBadges } from "./PlatformBadges";
-import { ORG_ID } from "../content/platforms";
+import { servicePageJsonLd, SERVICE_PATHS } from "../content/route-jsonld";
 
 const EASE_OUT = [0.22, 1, 0.36, 1] as const;
 const SITE_ORIGIN = "https://www.neotheagency.de";
@@ -46,8 +46,14 @@ export function ServicePageShell({ slug }: { slug: keyof ServicePage }) {
   const page = t.servicePages[slug];
   const { openWith } = useLeadModal();
 
-  const path = `/services/${page.slug}`;
+  const path = SERVICE_PATHS[page.slug] ?? `/${page.slug}/`;
   const canonical = `${SITE_ORIGIN}${SITE_BASE}${path}`;
+
+  // Strukturierte Daten aus einer Quelle mit dem Build (Service + WebPage + Brotkrumen), 26.11.2026.
+  const jsonLd = useMemo(
+    () => servicePageJsonLd(page.slug, page.meta.title, page.meta.description, isEN),
+    [page.slug, page.meta.title, page.meta.description, isEN],
+  );
 
   useDocumentHead({
     title: page.meta.title,
@@ -55,21 +61,7 @@ export function ServicePageShell({ slug }: { slug: keyof ServicePage }) {
     canonical,
     lang,
     ogImage: `${SITE_ORIGIN}${SITE_BASE}/brand/og-neo-home.jpg`,
-    jsonLd: {
-      "@context": "https://schema.org",
-      "@type": "Service",
-      name: page.hero.headlineTop + " " + page.hero.headlineBottom,
-      provider: { "@id": ORG_ID },
-      areaServed: { "@type": "Country", name: "Germany" },
-      description: page.meta.description,
-      serviceType: page.hero.headlineTop,
-      audience: {
-        "@type": "BusinessAudience",
-        audienceType: isEN
-          ? "Founder-led businesses and SMEs"
-          : "Inhabergeführte Unternehmen und Mittelstand",
-      },
-    },
+    jsonLd,
   });
 
   const openLeadMagnet = () => openWith(page.leadMagnet.modal);
@@ -178,32 +170,34 @@ function Hero({
         <div className="container-v3 pb-6 sm:pb-10 md:pb-20 lg:pb-24">
           <div className="flex flex-col items-center text-center gap-5 md:flex-row md:items-end md:justify-between md:text-left md:gap-10">
             <div className="flex flex-col items-center md:items-start w-full md:w-auto">
-              <motion.p
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="text-[10.5px] sm:text-[12px] font-bold uppercase text-white tracking-[0.32em]"
-              >
-                {page.hero.eyebrow}
-              </motion.p>
-
-              <motion.h1
-                initial={{ opacity: 0, y: 14 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.35, ease: EASE_OUT }}
-                className="mt-3 sm:mt-5 md:mt-6 text-white uppercase italic"
-                style={{
-                  fontSize: "clamp(40px, 7.5vw, 112px)",
-                  lineHeight: "0.86",
-                  letterSpacing: "-0.05em",
-                  fontWeight: 700,
-                }}
-              >
-                <span className="block">{page.hero.headlineTop}</span>
-                <span className="block font-medium text-white/95">
-                  {page.hero.headlineBottom}
-                </span>
-              </motion.h1>
+              {/* SEO 26.11.2026: Eyebrow (mit Fokus-Suchbegriff) steht im H1, Optik unverändert. */}
+              <h1 className="flex flex-col items-center md:items-start">
+                <motion.span
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className="block text-[10.5px] sm:text-[12px] font-bold uppercase text-white tracking-[0.32em]"
+                >
+                  {page.hero.eyebrow}
+                </motion.span>{" "}
+                <motion.span
+                  initial={{ opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: 0.35, ease: EASE_OUT }}
+                  className="mt-3 block sm:mt-5 md:mt-6 text-white uppercase italic"
+                  style={{
+                    fontSize: "clamp(40px, 7.5vw, 112px)",
+                    lineHeight: "0.86",
+                    letterSpacing: "-0.05em",
+                    fontWeight: 700,
+                  }}
+                >
+                  <span className="block">{page.hero.headlineTop}</span>{" "}
+                  <span className="block font-medium text-white/95">
+                    {page.hero.headlineBottom}
+                  </span>
+                </motion.span>
+              </h1>
 
               <motion.p
                 initial={{ opacity: 0, y: 10 }}

@@ -6,13 +6,95 @@
     }
   },
   "redirects": [
-    { "source": "/leistungen/seo", "destination": "/seo-agentur/", "permanent": true },
-    { "source": "/leistungen/seo/", "destination": "/seo-agentur/", "permanent": true },
-    { "source": "/services/seo", "destination": "/seo-agentur/", "permanent": true },
-    { "source": "/services/seo/", "destination": "/seo-agentur/", "permanent": true },
-    { "source": "/sitemap-index.xml", "destination": "/sitemap.xml", "permanent": true }
+    {
+      "source": "/leistungen/seo",
+      "destination": "/seo-agentur/",
+      "permanent": true
+    },
+    {
+      "source": "/leistungen/seo/",
+      "destination": "/seo-agentur/",
+      "permanent": true
+    },
+    {
+      "source": "/services/seo",
+      "destination": "/seo-agentur/",
+      "permanent": true
+    },
+    {
+      "source": "/services/seo/",
+      "destination": "/seo-agentur/",
+      "permanent": true
+    },
+    {
+      "source": "/sitemap-index.xml",
+      "destination": "/sitemap.xml",
+      "permanent": true
+    },
+    {
+      "source": "/services/google-ads",
+      "destination": "/google-ads-agentur/",
+      "permanent": true
+    },
+    {
+      "source": "/services/google-ads/",
+      "destination": "/google-ads-agentur/",
+      "permanent": true
+    },
+    {
+      "source": "/services/social-media",
+      "destination": "/social-media-agentur/",
+      "permanent": true
+    },
+    {
+      "source": "/services/social-media/",
+      "destination": "/social-media-agentur/",
+      "permanent": true
+    },
+    {
+      "source": "/services/websites",
+      "destination": "/webdesign-agentur/",
+      "permanent": true
+    },
+    {
+      "source": "/services/websites/",
+      "destination": "/webdesign-agentur/",
+      "permanent": true
+    },
+    {
+      "source": "/uber-uns",
+      "destination": "/neo-the-agency/",
+      "permanent": true
+    },
+    {
+      "source": "/uber-uns/",
+      "destination": "/neo-the-agency/",
+      "permanent": true
+    },
+    {
+      "source": "/about",
+      "destination": "/neo-the-agency/",
+      "permanent": true
+    },
+    {
+      "source": "/about/",
+      "destination": "/neo-the-agency/",
+      "permanent": true
+    }
   ],
-  "rewrites": [
-    { "source": "/((?!api/|snapshot/).*)", "destination": "/index.html" }
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    }
   ]
 }

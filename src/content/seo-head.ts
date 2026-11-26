@@ -1,8 +1,9 @@
 /**
  * Kopfbereich und strukturierte Daten der SEO-Seite (/seo-agentur/)
- * v1.6 (25.11.2026)
+ * v1.7 (26.11.2026)
  *
  * Changelog
+ *   v1.7 (26.11.2026) Titel und Meta mit Fokus-Suchbegriff „SEO-Agentur" (QA-Gate 26.11.).
  *   v1.6 (25.11.2026) sameAs aus platforms.ts v1.3: Sortlist mit korrigierter Adresse wieder enthalten.
  *   v1.5 (24.11.2026) Organization.telephone = „+49 160 9689 7003" (wie index.html und Impressum;
  *        vorher „+4916096897003"). sameAs aus platforms.ts v1.2 (Canonical-Adressen,
@@ -38,8 +39,9 @@ const H1 = `${seoDe.hero.heading.ink} ${seoDe.hero.heading.grey}`;
 
 export const seoHead = {
   // v1.2: „für Kleinunternehmen" (Raoul, 19.11.2026), 53 und 151 Zeichen.
-  title: "SEO Agentur für Kleinunternehmen in Deutschland | NEO",
-  description: "SEO für Kleinunternehmen in Deutschland. Ihre Website erstellen wir ohne Aufpreis. Zahlung erst nach Einreichung bei Google. Kostenloser Audit in 24 h.",
+  // v1.7 (26.11.2026): Fokus-Suchbegriff „SEO-Agentur" in Titel und Meta (QA-Gate, Raoul-Scope); 54 und 144 Zeichen.
+  title: "SEO-Agentur für Kleinunternehmen in Deutschland | NEO",
+  description: "SEO-Agentur für Kleinunternehmen. Ihre Website erstellen wir ohne Aufpreis. Zahlung erst nach Einreichung bei Google. Kostenloser Audit in 24 h.",
   canonical: SEO_CANONICAL,
   robots: "index, follow",
   lang: "de" as const,

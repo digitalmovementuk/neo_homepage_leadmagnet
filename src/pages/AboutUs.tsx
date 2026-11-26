@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useMemo, useRef } from "react";
 import { Link } from "react-router-dom";
 import {
   motion,
@@ -12,6 +12,7 @@ import { useT, useLang } from "../lib/i18n";
 import { useDocumentHead } from "../lib/useDocumentHead";
 import { useSeoModal } from "../lib/seoModal";
 import { PlatformTrustStrip } from "../components/PlatformTrustStrip";
+import { aboutPageJsonLd } from "../content/route-jsonld";
 
 const STUDIO_IMAGE =
   "/media/stock/photo-1497366811353-6870744d04b2-2400.jpg";
@@ -37,14 +38,20 @@ export function AboutUs() {
   const { lang } = useLang();
   const { openSeo } = useSeoModal();
 
+  const jsonLd = useMemo(
+    () => aboutPageJsonLd(t.about.meta.title, t.about.meta.description, lang === "en"),
+    [t.about.meta.title, t.about.meta.description, lang],
+  );
+
   useDocumentHead({
+    jsonLd,
     title: t.about.meta.title,
     description: t.about.meta.description,
     lang,
     canonical:
       lang === "de"
-        ? "https://www.neotheagency.de/uber-uns"
-        : "https://www.neotheagency.de/about",
+        ? "https://www.neotheagency.de/neo-the-agency/"
+        : "https://www.neotheagency.de/neo-the-agency/",
   });
 
   return (
@@ -139,24 +146,25 @@ function AboutHero() {
         style={{ y: textY }}
         className="relative mx-auto flex min-h-[78svh] w-full max-w-[var(--container-max)] flex-col justify-end px-[var(--gutter)] pb-20 pt-[max(140px,18vh)] sm:pb-24 md:pb-20"
       >
+        {/* SEO 26.11.2026: Eyebrow (mit Fokus-Suchbegriff) steht im H1, Optik unverändert. */}
         <Reveal>
-          <p className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.26em] text-white/80 sm:text-[12px]">
-            <span className="h-px w-7 bg-white/45" aria-hidden />
-            {t.about.hero.eyebrow}
-          </p>
-        </Reveal>
-        <Reveal delay={0.06}>
-          <h1
-            className="mt-5 max-w-[20ch] balance text-white"
-            style={{
-              fontSize: "clamp(40px, 6.6vw, 92px)",
-              lineHeight: "1.0",
-              letterSpacing: "-0.038em",
-              fontWeight: 700,
-            }}
-          >
-            {t.about.hero.headlinePre}{" "}
-            <span className="text-white/55">{t.about.hero.headlineSoft}</span>
+          <h1 className="flex flex-col items-start">
+            <span className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.26em] text-white/80 sm:text-[12px]">
+              <span className="h-px w-7 bg-white/45" aria-hidden />
+              {t.about.hero.eyebrow}
+            </span>{" "}
+            <span
+              className="mt-5 block max-w-[20ch] balance text-white"
+              style={{
+                fontSize: "clamp(40px, 6.6vw, 92px)",
+                lineHeight: "1.0",
+                letterSpacing: "-0.038em",
+                fontWeight: 700,
+              }}
+            >
+              {t.about.hero.headlinePre}{" "}
+              <span className="text-white/55">{t.about.hero.headlineSoft}</span>
+            </span>
           </h1>
         </Reveal>
         <Reveal delay={0.14}>

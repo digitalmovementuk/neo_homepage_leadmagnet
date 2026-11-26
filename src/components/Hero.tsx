@@ -276,6 +276,9 @@ const HeroSlideView = ({
   slideRef: (el: HTMLElement | null) => void;
   videoRef: (el: HTMLVideoElement | null) => void;
 }) => {
+  // Nur die erste Folie trägt die Seitenüberschrift (eine H1 pro Seite); die anderen sind gleich gestaltete Absätze.
+  // SEO 26.11.2026: auf Folie 1 umschließt das H1 Eyebrow + Überschrift (Fokus-Suchbegriff im H1).
+  const HeadWrap = index === 0 ? "h1" : "div";
   return (
     <article
       ref={slideRef}
@@ -308,22 +311,23 @@ const HeroSlideView = ({
         <div className="mx-auto w-full max-w-[1512px] px-5 pb-[calc(var(--hb)+80px+env(safe-area-inset-bottom))] sm:px-8 sm:pb-[calc(var(--hb)+108px)] lg:px-12 lg:pb-[calc(var(--hb)+112px)] 2xl:px-0">
           <div className="grid items-end gap-5 md:grid-cols-[minmax(0,680px)_auto] md:justify-between md:gap-10">
             <div className="flex w-full flex-col items-center text-center md:items-start md:text-left">
-              <motion.p
+              <HeadWrap className="flex w-full flex-col items-center md:items-start">
+              <motion.span
                 key={`eyebrow-${slide.key}`}
                 initial={false}
                 animate={{ opacity: isActive ? 1 : 0.4, y: 0 }}
                 transition={{ duration: 0.5, delay: isActive ? 0.15 : 0 }}
-                className="text-[10.5px] font-bold uppercase tracking-[0.26em] text-white sm:text-[12px]"
+                className="block text-[10.5px] font-bold uppercase tracking-[0.26em] text-white sm:text-[12px]"
               >
                 {slide.eyebrow}
-              </motion.p>
+              </motion.span>{" "}
 
-              <motion.h1
+              <motion.span
                 key={`title-${slide.key}`}
                 initial={false}
                 animate={{ opacity: isActive ? 1 : 0.4, y: 0 }}
                 transition={{ duration: 0.7, delay: isActive ? 0.25 : 0, ease: [0.22, 1, 0.36, 1] }}
-                className="mt-3 max-w-[340px] text-white sm:mt-4 md:mt-5 md:max-w-[680px]"
+                className="mt-3 block max-w-[340px] text-white sm:mt-4 md:mt-5 md:max-w-[680px]"
               >
                 <span
                   className="balance block"
@@ -336,7 +340,7 @@ const HeroSlideView = ({
                   }}
                 >
                   {slide.headlineTop}
-                </span>
+                </span>{" "}
                 <span
                   className="mx-auto mt-2 block max-w-[31ch] text-white/86 sm:mt-4 md:mx-0"
                   style={{
@@ -348,7 +352,8 @@ const HeroSlideView = ({
                 >
                   {slide.headlineBottom}
                 </span>
-              </motion.h1>
+              </motion.span>
+              </HeadWrap>
 
               <motion.p
                 key={`sub-${slide.key}`}

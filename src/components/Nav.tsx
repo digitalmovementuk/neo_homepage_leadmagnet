@@ -8,9 +8,9 @@ import { LanguagePicker } from "./LanguagePicker";
 
 const SERVICE_ROUTES = [
   { slug: "seo" as const, path: "/seo-agentur/" },
-  { slug: "googleAds" as const, path: "/services/google-ads" },
-  { slug: "socialMedia" as const, path: "/services/social-media" },
-  { slug: "websites" as const, path: "/services/websites" },
+  { slug: "googleAds" as const, path: "/google-ads-agentur/" },
+  { slug: "socialMedia" as const, path: "/social-media-agentur/" },
+  { slug: "websites" as const, path: "/webdesign-agentur/" },
 ];
 
 type Surface = "dark" | "light";

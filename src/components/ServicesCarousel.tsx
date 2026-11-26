@@ -8,9 +8,9 @@ import { useT, useLang } from "../lib/i18n";
 
 const SERVICE_ROUTE_MAP: Record<string, string> = {
   seo: "/seo-agentur/",
-  "google-ads": "/services/google-ads",
-  social: "/services/social-media",
-  websites: "/services/websites",
+  "google-ads": "/google-ads-agentur/",
+  social: "/social-media-agentur/",
+  websites: "/webdesign-agentur/",
 };
 
 const AUTOPLAY_MS = 8000;

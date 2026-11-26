@@ -1,0 +1,123 @@
+/**
+ * Strukturierte Daten (JSON-LD) für Leistungsseiten, Über uns und Rechtsseiten · v1.1 (26.11.2026)
+ * Eine Quelle für Browser (useDocumentHead) und Build (scripts/prerender-seo.mjs),
+ * damit das Roh-HTML und die fertige Seite dieselben Daten tragen.
+ *
+ * Changelog
+ *   v1.1 (26.11.2026) SERVICE_PATHS + ABOUT_PATH: flache Adressen je Fokus-Suchbegriff (/google-ads-agentur/ usw.).
+ *   v1.0 (26.11.2026) Erste Fassung: Service + BreadcrumbList + WebPage; AboutPage; WebPage für Rechtsseiten;
+ *        servicePageJsonLd/aboutPageJsonLd mit Fachbegriffen statt Werbe-Überschriften.
+ */
+import { ORG_ID } from "./platforms";
+
+export const SITE_ORIGIN = "https://www.neotheagency.de";
+const WEBSITE_ID = `${SITE_ORIGIN}/#website`;
+
+type Ld = Record<string, unknown>;
+
+function breadcrumb(url: string, name: string, isEN: boolean): Ld {
+  return {
+    "@type": "BreadcrumbList",
+    "@id": `${url}#breadcrumb`,
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: isEN ? "Home" : "Startseite", item: `${SITE_ORIGIN}/` },
+      { "@type": "ListItem", position: 2, name, item: url },
+    ],
+  };
+}
+
+function webPage(type: string, url: string, name: string, description: string, isEN: boolean): Ld {
+  return {
+    "@type": type,
+    "@id": `${url}#webpage`,
+    url,
+    name,
+    description,
+    inLanguage: isEN ? "en" : "de-DE",
+    isPartOf: { "@id": WEBSITE_ID },
+    about: { "@id": ORG_ID },
+    breadcrumb: { "@id": `${url}#breadcrumb` },
+  };
+}
+
+export function serviceJsonLd(args: {
+  url: string;
+  name: string;
+  serviceType: string;
+  title: string;
+  description: string;
+  isEN: boolean;
+}): Ld {
+  const { url, name, serviceType, title, description, isEN } = args;
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        "@id": `${url}#service`,
+        name,
+        url,
+        provider: { "@id": ORG_ID },
+        areaServed: { "@type": "Country", name: "Germany" },
+        description,
+        serviceType,
+        audience: {
+          "@type": "BusinessAudience",
+          audienceType: isEN ? "Founder-led businesses and SMEs" : "Inhabergeführte Unternehmen und Mittelstand",
+        },
+      },
+      webPage("WebPage", url, title, description, isEN),
+      breadcrumb(url, serviceType, isEN),
+    ],
+  };
+}
+
+export function simplePageJsonLd(args: {
+  type: "AboutPage" | "WebPage";
+  url: string;
+  crumb: string;
+  title: string;
+  description: string;
+  isEN: boolean;
+}): Ld {
+  const { type, url, crumb, title, description, isEN } = args;
+  return {
+    "@context": "https://schema.org",
+    "@graph": [webPage(type, url, title, description, isEN), breadcrumb(url, crumb, isEN)],
+  };
+}
+
+/** Fachbegriffe je Leistungsseite (statt der Werbe-Überschrift „ROI." als serviceType). */
+const SERVICE_NAMES: Record<string, { de: [string, string]; en: [string, string] }> = {
+  "google-ads": { de: ["Google-Ads-Betreuung", "Google Ads"], en: ["Google Ads management", "Google Ads"] },
+  "social-media": { de: ["Social-Media-Marketing", "Social Media"], en: ["Social media marketing", "Social media"] },
+  websites: { de: ["Webdesign und Website-Erstellung", "Webdesign"], en: ["Web design and website builds", "Web design"] },
+};
+
+/** Flache Adressen je Leistungsseite (26.11.2026): Adresse = Fokus-Suchbegriff. Alte /services/...-Adressen leiten per 301 weiter (vercel.json). */
+export const SERVICE_PATHS: Record<string, string> = {
+  "google-ads": "/google-ads-agentur/",
+  "social-media": "/social-media-agentur/",
+  websites: "/webdesign-agentur/",
+};
+/** Über-uns-Seite unter dem Markennamen (26.11.2026); /uber-uns und /about leiten weiter. */
+export const ABOUT_PATH = "/neo-the-agency/";
+
+/** JSON-LD für die Leistungsseiten: dieselbe Funktion nutzt der Browser und der Build. */
+export function servicePageJsonLd(slug: string, title: string, description: string, isEN: boolean): Ld {
+  const names = SERVICE_NAMES[slug] ?? { de: [title, title], en: [title, title] };
+  const [name, serviceType] = isEN ? names.en : names.de;
+  return serviceJsonLd({ url: `${SITE_ORIGIN}${SERVICE_PATHS[slug] ?? `/${slug}/`}`, name, serviceType, title, description, isEN });
+}
+
+/** JSON-LD für die Über-uns-Seite (eine Adresse für beide Sprachen). */
+export function aboutPageJsonLd(title: string, description: string, isEN: boolean): Ld {
+  return simplePageJsonLd({
+    type: "AboutPage",
+    url: `${SITE_ORIGIN}${ABOUT_PATH}`,
+    crumb: isEN ? "About" : "Über uns",
+    title,
+    description,
+    isEN,
+  });
+}

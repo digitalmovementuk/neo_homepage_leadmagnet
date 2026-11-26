@@ -1,5 +1,5 @@
 /**
- * Ihre Ansprechpartner · v1.1 (26.11.2026)
+ * Ihre Ansprechpartner · v1.2 (26.11.2026) — v1.2: Fokus-Suchbegriff im Alt-Text der ersten Karte.
  * Fester Abschnitt direkt über dem Fußbereich, auf allen Seiten (Startseite,
  * Leistungsseiten, /seo-agentur/, Rechtliches). Zeigt die beiden Inhaber
  * Johannes Kaluc und Raoul Müller mit echten Fotos (Quelle: DM-Team-Ordner,
@@ -11,11 +11,19 @@
  * `data-surface` steuert dabei weiter die Logofarbe in der Kopfzeile.
  */
 import { ArrowRight, Phone } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { business } from "../content";
 import { Reveal } from "../lib/Reveal";
 
 type Tone = "dark" | "light";
+
+const FOCUS_BY_PATH: Record<string, string> = {
+  "/": "Online-Marketing-Agentur",
+  "/seo-agentur": "SEO-Agentur",
+  "/google-ads-agentur": "Google-Ads-Agentur",
+  "/social-media-agentur": "Social-Media-Agentur",
+  "/webdesign-agentur": "Webdesign-Agentur",
+};
 type Lang = "de" | "en";
 
 const PEOPLE = [
@@ -73,6 +81,9 @@ export function ContactPersons({
   const c = COPY[lang];
   const dark = tone === "dark";
   const base = import.meta.env.BASE_URL;
+  // SEO 26.11.2026: Fokus-Suchbegriff der Seite im Alt-Text der ersten Personenkarte.
+  const { pathname } = useLocation();
+  const focus = lang === "de" ? FOCUS_BY_PATH[pathname.replace(/\/+$/, "") || "/"] : undefined;
 
   const ctaCls = dark ? "btn btn-on-dark" : "btn btn-primary";
   const callCls = dark ? "btn btn-ghost-on-dark" : "btn btn-ghost";
@@ -155,7 +166,7 @@ export function ContactPersons({
                         src={`${base}${p.photo}-384.webp`}
                         srcSet={`${base}${p.photo}-192.webp 192w, ${base}${p.photo}-384.webp 384w`}
                         sizes="160px"
-                        alt={`${p.name}, ${p.role[lang]} bei NEO THE AGENCY`}
+                        alt={`${p.name}, ${p.role[lang]} bei NEO THE AGENCY${i === 0 && focus ? `, Ihrer ${focus}` : ""}`}
                         width={160}
                         height={160}
                         loading="lazy"
@@ -194,6 +205,6 @@ export function toneForPath(pathname: string): Tone {
   const p = pathname.replace(/\/+$/, "") || "/";
   if (p === "/") return "dark";
   if (p === "/impressum" || p === "/datenschutz") return "dark";
-  if (p.startsWith("/services") || p === "/about" || p === "/uber-uns" || p === "/seo-agentur") return "light";
+  if (["/google-ads-agentur", "/social-media-agentur", "/webdesign-agentur", "/neo-the-agency", "/seo-agentur"].includes(p.replace(/\/$/, ""))) return "light";
   return "dark";
 }

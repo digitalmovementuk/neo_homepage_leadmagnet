@@ -1,8 +1,12 @@
 /**
  * NEO the Agency · SEO-Leistungsseite (/seo-agentur/)
- * Inhaltsmodul v1.1 (19.11.2026)
+ * Inhaltsmodul v1.2 (26.11.2026)
  *
  * Changelog
+ *   v1.2 (26.11.2026) QA-Gate: Fokus-Suchbegriff „SEO-Agentur" und die Neben-Suchbegriffe
+ *        „Local-SEO-Agentur" und „B2B-SEO-Agentur" in Problem-, Ablauf-, Lokal-, Passt-es- und
+ *        Team-Text. Ab jetzt ist qa/qa-gate-2026-11-26/wp-handoff.json die Textquelle für WordPress;
+ *        die Textdatei v1.1 ist für diese fünf Stellen überholt.
  *   v1.1 (19.11.2026) Hero-Kicker, H1 und Footer: „für kleine Unternehmen“ →
  *        „für Kleinunternehmen“ (Raoul). Andere Formen bleiben unverändert.
  *
@@ -86,10 +90,10 @@ export const seoDe = {
   },
 
   hero: {
-    kicker: "SEO FÜR KLEINUNTERNEHMEN",
+    kicker: "Ihre SEO-Agentur",
     heading: { ink: "SEO für Kleinunternehmen", grey: "in ganz Deutschland" },
     subline:
-      "Wir erstellen Ihre Website und Keyword-Seiten zu den Begriffen, nach denen Ihre Kunden suchen, und optimieren alles für Google, Google Maps und KI-Antworten.",
+      "Als SEO-Agentur erstellen wir Ihre Website und Keyword-Seiten zu den Begriffen, nach denen Ihre Kunden suchen, und optimieren alles für Google, Google Maps und KI-Antworten.",
     primary: "Kostenloser Audit in 24 h",
     secondary: "30-Minuten-Gespräch",
     micro:
@@ -159,7 +163,7 @@ export const seoDe = {
   problem: {
     kicker: "DAS PROBLEM",
     heading: { ink: "Gute Arbeit allein", grey: "bringt keine Anfragen über Google." },
-    intro: "Viele kleine Unternehmen sind besser als ihr Platz bei Google. Meist liegt es an drei Dingen.",
+    intro: "Viele kleine Unternehmen sind besser als ihr Platz bei Google. Als SEO-Agentur sehen wir meist drei Ursachen.",
     cards: [
       {
         title: "Google versteht nicht, was Sie anbieten",
@@ -262,7 +266,7 @@ export const seoDe = {
     kicker: "SO ARBEITEN WIR",
     heading: { ink: "SEO ohne Fachchinesisch.", grey: "Strategie, Umsetzung, Bericht." },
     intro:
-      "Gemacht für inhabergeführte Unternehmen, die wachsen wollen. Sie bekommen einen Plan, die Umsetzung und jeden Monat einen Bericht auf einer Seite.",
+      "Gemacht für inhabergeführte Unternehmen, die wachsen wollen. Von uns als SEO-Agentur bekommen Sie einen Plan, die Umsetzung und jeden Monat einen Bericht auf einer Seite.",
     columns: [
       {
         title: "Strategie",
@@ -318,7 +322,7 @@ export const seoDe = {
       {
         key: "lokal",
         title: "Lokales SEO und Google Maps",
-        text: "Seiten für Ihre Einsatzorte und ein gepflegter Eintrag in der Karte, wenn jemand in Ihrer Nähe sucht.",
+        text: "Als Local-SEO-Agentur bauen wir Seiten für Ihre Einsatzorte und pflegen Ihren Eintrag in der Karte, wenn jemand in Ihrer Nähe sucht.",
         alt: "Illustration: Stadtplan mit markierten Orten",
         href: null,
       },
@@ -526,6 +530,7 @@ export const seoDe = {
       "Gründer, die von Anfang an bei Google gefunden werden wollen",
       "Kleine Unternehmen, die ihre Anfragen nicht dem Zufall überlassen wollen",
       "Lokale Dienstleister, die in ihrer Stadt und Region vorne stehen wollen",
+      "B2B-Firmen, die eine B2B-SEO-Agentur für planbare Firmenanfragen suchen",
       "Betriebe in ganz Deutschland, von Flensburg bis Passau",
     ],
     noTitle: "Passt nicht",
@@ -539,7 +544,7 @@ export const seoDe = {
   team: {
     kicker: "WER FÜR SIE ARBEITET",
     heading: { ink: "Sie sprechen mit denen,", grey: "die auch liefern." },
-    intro: "Kein Account-Manager dazwischen. Wer Sie im Erstgespräch trifft, arbeitet auch an Ihrem Projekt.",
+    intro: "Kein Account-Manager dazwischen. Wer Sie im Erstgespräch trifft, arbeitet in unserer SEO-Agentur auch an Ihrem Projekt.",
     people: [
       {
         photo: { src: "brand/raoul-founder-426.png", width: 426, height: 426 },
@@ -669,7 +674,7 @@ export const seoDe = {
       },
       {
         q: "Wer macht die eigentliche Arbeit?",
-        a: "Raoul Müller als Gründer und zwei Senior-SEO-Spezialisten. Es gibt keinen Account-Manager dazwischen. Wer Sie im Erstgespräch trifft, arbeitet auch an Ihrem Projekt.",
+        a: "Raoul Müller als Gründer und zwei Senior-SEO-Spezialisten. Es gibt keinen Account-Manager dazwischen. Wer Sie im Erstgespräch trifft, arbeitet in unserer SEO-Agentur auch an Ihrem Projekt.",
       },
       {
         q: "Wie passt SEO zu Google Ads?",

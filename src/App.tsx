@@ -48,13 +48,16 @@ export function AppRoutes() {
       <Route path="services/seo" element={<Navigate to="/seo-agentur/" replace />} />
       <Route element={<Layout />}>
         <Route index element={<HomePage />} />
-        <Route path="about" element={suspended(AboutUs)} />
-        <Route path="uber-uns" element={suspended(AboutUs)} />
-        <Route path="services">
-          <Route path="google-ads" element={suspended(ServiceGoogleAds)} />
-          <Route path="social-media" element={suspended(ServiceSocialMedia)} />
-          <Route path="websites" element={suspended(ServiceWebsites)} />
-        </Route>
+        {/* Flache Adressen = Fokus-Suchbegriff (26.11.2026). Alte Adressen: 301 in vercel.json, hier nur Rückfall im Browser. */}
+        <Route path="neo-the-agency" element={suspended(AboutUs)} />
+        <Route path="google-ads-agentur" element={suspended(ServiceGoogleAds)} />
+        <Route path="social-media-agentur" element={suspended(ServiceSocialMedia)} />
+        <Route path="webdesign-agentur" element={suspended(ServiceWebsites)} />
+        <Route path="about" element={<Navigate to="/neo-the-agency/" replace />} />
+        <Route path="uber-uns" element={<Navigate to="/neo-the-agency/" replace />} />
+        <Route path="services/google-ads" element={<Navigate to="/google-ads-agentur/" replace />} />
+        <Route path="services/social-media" element={<Navigate to="/social-media-agentur/" replace />} />
+        <Route path="services/websites" element={<Navigate to="/webdesign-agentur/" replace />} />
         <Route path="impressum" element={suspended(Impressum)} />
         <Route path="datenschutz" element={suspended(Datenschutz)} />
         <Route path="*" element={suspended(NotFound)} />

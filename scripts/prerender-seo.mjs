@@ -1,5 +1,5 @@
 /**
- * Prerender /seo-agentur/ zu statischem HTML · v1.3 (24.11.2026)
+ * Prerender aller Seiten zu statischem HTML · v1.6 (26.11.2026)
  *
  * Läuft NACH `vite build`. Leichtester Weg ohne neues Paket:
  *   1. Vite baut src/entry-prerender.tsx einmal für Node (SSR) in einen
@@ -11,9 +11,16 @@
  *   4. Weiterleitungsseiten für die alten Adressen /leistungen/seo/ und
  *      /services/seo/ (meta refresh + canonical + noindex), falls der Server
  *      keine echte 301 setzt.
- * dist/index.html (Startseite) wird nur gelesen, nie verändert.
+ *   5. Ab v1.5: Startseite, Leistungsseiten, Über-uns-Seite (ab v1.6 /neo-the-agency/), Rechtsseiten und
+ *      404 kommen fertig gerendert (Inhalt in #root, eigenes JSON-LD).
  *
  * Changelog
+ *   v1.6 (26.11.2026) Flache Adressen je Fokus-Suchbegriff: /google-ads-agentur/, /social-media-agentur/,
+ *        /webdesign-agentur/, /neo-the-agency/ (alte Adressen leiten per 301 weiter, vercel.json);
+ *        keine /about-Kopie mehr.
+ *   v1.5 (26.11.2026) QA-Gate: alle Seiten vorgerendert (Inhalt ohne JavaScript lesbar), eigenes JSON-LD je Seite
+ *        (Service/AboutPage/WebPage + Breadcrumb), Beschreibung für die Rechtsseiten, /about als Kopie von /uber-uns,
+ *        echte 404-Seite (dist/404.html, noindex). Titel der Rechtsseiten unverändert.
  *   v1.4 (26.11.2026) /datenschutz: Titel „Datenschutzerklärung · NEO THE AGENCY" (passt zur Überschrift; vorher „Datenschutz · NEO THE AGENCY").
  *   v1.3 (24.11.2026) /services/google-ads, /services/social-media, /services/websites und /uber-uns bekommen
  *        eigenes statisches HTML mit eigener Canonical, og:url, Titel, Beschreibung, og:/twitter:-Titel und -Beschreibung
@@ -48,7 +55,8 @@ try {
   const entryFile = (await readdir(ssrOut)).find((f) => /^entry-prerender\.(m?js)$/.test(f));
   if (!entryFile) throw new Error("prerender-seo: SSR-Ausgabe fehlt");
   const mod = await import(pathToFileURL(path.join(ssrOut, entryFile)).href);
-  const { renderSeoPage, seoHead, buildSeoJsonLd, SEO_PATH, routeHeads } = mod;
+  const { renderSeoPage, renderPage, seoHead, buildSeoJsonLd, SEO_PATH, routeHeads, legalHeads } = mod;
+  if (!Array.isArray(legalHeads) || legalHeads.length !== 2) throw new Error("prerender-seo: legalHeads fehlt");
   if (!Array.isArray(routeHeads) || routeHeads.length !== 4) throw new Error("prerender-seo: routeHeads fehlt");
 
   const appHtml = await renderSeoPage();
@@ -56,6 +64,34 @@ try {
 
   const homeShell = await readFile(path.join(dist, "index.html"), "utf8");
   let html = homeShell;
+  const assets = await readdir(path.join(dist, "assets"));
+
+  const rootRe = /<div id="root"([^>]*)><\/div>/;
+  const inject = (src, body, label) => {
+    must(src, rootRe, `#root (${label})`);
+    return src.replace(rootRe, (_m, attrs) => `<div id="root"${attrs}>${body}</div>`);
+  };
+  const shellRe = /\s*<!-- LCP shell[\s\S]*?-->\s*<img\s+id="lcp-shell"[\s\S]*?\/>/;
+  const homePreloadRe = /\s*<!-- LCP: preload[\s\S]*?-->\s*<link\s+rel="preload"\s+as="image"[\s\S]*?\/>/;
+  // Startseiten-Platzhalterbild und -Preload gehören nur auf die Startseite.
+  const stripHomeOnly = (src, label) => {
+    must(src, shellRe, `LCP-Hülle (${label})`);
+    must(src, homePreloadRe, `Startseiten-Preload (${label})`);
+    return src.replace(shellRe, "").replace(homePreloadRe, "");
+  };
+  const addChunk = (src, re) => {
+    const f = assets.find((a) => re.test(a));
+    if (!f) throw new Error(`prerender-seo: Seitenmodul fehlt (${re})`);
+    return src.replace("</head>", `    <link rel="modulepreload" crossorigin href="/assets/${f}" />\n  </head>`);
+  };
+  const addLd = (src, data) =>
+    src.replace("</head>", `    <script type="application/ld+json" data-route-jsonld="true">${JSON.stringify(data).replace(/</g, "\\u003c")}</script>\n  </head>`);
+  const writePage = async (route, content, note) => {
+    const dir = path.join(dist, ...route.split("/").filter(Boolean));
+    await mkdir(dir, { recursive: true });
+    await writeFile(path.join(dir, "index.html"), content);
+    console.log(`prerender-seo: ${route} ${note} (${(Buffer.byteLength(content) / 1024).toFixed(1)} kB)`);
+  };
   const h = seoHead;
 
   const setMeta = (attr, key, value) => {
@@ -113,18 +149,20 @@ try {
   if (seoChunk) html = html.replace("</head>", `    <link rel="modulepreload" crossorigin href="/assets/${seoChunk}" />\n  </head>`);
 
   // Platzhalterbild der Startseite (LCP-Hülle) gehört nicht auf diese Seite.
-  const shell = /\s*<!-- LCP shell[\s\S]*?-->\s*<img\s+id="lcp-shell"[\s\S]*?\/>/;
-  must(html, shell, "LCP-Hülle");
-  html = html.replace(shell, "");
-
-  const rootRe = /<div id="root"([^>]*)><\/div>/;
-  must(html, rootRe, "#root");
-  html = html.replace(rootRe, (_m, attrs) => `<div id="root"${attrs}>${appHtml}</div>`);
+  must(html, shellRe, "LCP-Hülle");
+  html = html.replace(shellRe, "");
+  html = inject(html, appHtml, SEO_PATH);
 
   const outDir = path.join(dist, ...SEO_PATH.split("/").filter(Boolean));
   await mkdir(outDir, { recursive: true });
   await writeFile(path.join(outDir, "index.html"), html);
   console.log(`prerender-seo: ${path.relative(root, path.join(outDir, "index.html"))} (${(Buffer.byteLength(html) / 1024).toFixed(1)} kB)`);
+
+  const swapMeta = (src, attr, key, value, label) => {
+    const re = new RegExp(`<meta\\s+${attr}="${key}"\\s+content="[^"]*"\\s*/?>`);
+    must(src, re, `${key} (${label})`);
+    return src.replace(re, `<meta ${attr}="${key}" content="${esc(value)}" />`);
+  };
 
   // Rechtsseiten: gleiche Hülle wie die Startseite, aber eigene Canonical, og:url und Titel im Roh-HTML.
   const origin = new URL(h.canonical).origin;
@@ -139,19 +177,21 @@ try {
     must(legal, /<meta\s+property="og:url"\s+content="[^"]*"\s*\/?>/, "og:url (Rechtsseite)");
     legal = legal.replace(/<meta\s+property="og:url"\s+content="[^"]*"\s*\/?>/, `<meta property="og:url" content="${esc(url)}" />`);
     legal = legal.replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(page.title)}</title>`);
-    const dir = path.join(dist, ...page.path.split("/").filter(Boolean));
-    await mkdir(dir, { recursive: true });
-    await writeFile(path.join(dir, "index.html"), legal);
-    console.log(`prerender-seo: ${page.path} (eigene Canonical)`);
+    const lh = legalHeads.find((l) => l.path === page.path);
+    if (!lh) throw new Error(`prerender-seo: legalHeads ohne ${page.path}`);
+    legal = swapMeta(legal, "name", "description", lh.description, page.path);
+    legal = swapMeta(legal, "property", "og:title", page.title, page.path);
+    legal = swapMeta(legal, "property", "og:description", lh.description, page.path);
+    legal = swapMeta(legal, "name", "twitter:title", page.title, page.path);
+    legal = swapMeta(legal, "name", "twitter:description", lh.description, page.path);
+    legal = addLd(stripHomeOnly(legal, page.path), lh.jsonLd);
+    legal = addChunk(legal, page.path === "/impressum" ? /^Impressum-.*\.js$/ : /^Datenschutz-.*\.js$/);
+    legal = inject(legal, await renderPage(page.path), page.path);
+    await writePage(page.path, legal, "(eigene Canonical, vorgerendert)");
   }
 
-  // Leistungsseiten und /uber-uns: Hülle der Startseite, aber eigene Canonical, og:url, Titel und
+  // Leistungsseiten und /neo-the-agency/: Hülle der Startseite, aber eigene Canonical, og:url, Titel und
   // Beschreibung (auch für og/twitter) schon im Roh-HTML. Die App setzt zur Laufzeit dieselben Werte.
-  const swapMeta = (src, attr, key, value, label) => {
-    const re = new RegExp(`<meta\\s+${attr}="${key}"\\s+content="[^"]*"\\s*/?>`);
-    must(src, re, `${key} (${label})`);
-    return src.replace(re, `<meta ${attr}="${key}" content="${esc(value)}" />`);
-  };
   for (const page of routeHeads) {
     let pageHtml = homeShell;
     const url = origin + page.path;
@@ -165,11 +205,27 @@ try {
     pageHtml = swapMeta(pageHtml, "property", "og:description", page.description, page.path);
     pageHtml = swapMeta(pageHtml, "name", "twitter:title", page.title, page.path);
     pageHtml = swapMeta(pageHtml, "name", "twitter:description", page.description, page.path);
-    const dir = path.join(dist, ...page.path.split("/").filter(Boolean));
-    await mkdir(dir, { recursive: true });
-    await writeFile(path.join(dir, "index.html"), pageHtml);
-    console.log(`prerender-seo: ${page.path} (eigener Kopfbereich)`);
+    pageHtml = addChunk(addLd(stripHomeOnly(pageHtml, page.path), page.jsonLd), page.chunk);
+    pageHtml = inject(pageHtml, await renderPage(page.path), page.path);
+    await writePage(page.path, pageHtml, "(eigener Kopfbereich, vorgerendert)");
   }
+
+  // 404: echte Fehlerseite mit Navigation, noindex, ohne Canonical. Vercel liefert sie mit Status 404.
+  let notFound = stripHomeOnly(homeShell, "404");
+  notFound = notFound.replace(/\s*<link rel="canonical" href="[^"]*"\s*\/?>/, "");
+  notFound = notFound.replace(/\s*<meta\s+property="og:url"\s+content="[^"]*"\s*\/?>/, "");
+  notFound = notFound.replace(/<title>[\s\S]*?<\/title>/, "<title>Seite nicht gefunden · NEO THE AGENCY</title>");
+  notFound = notFound.replace("</head>", '    <meta name="robots" content="noindex, follow" />\n  </head>');
+  notFound = addChunk(notFound, /^NotFound-.*\.js$/);
+  notFound = inject(notFound, await renderPage("/404-seite-nicht-gefunden"), "404");
+  await writeFile(path.join(dist, "404.html"), notFound);
+  console.log("prerender-seo: 404.html (noindex)");
+
+  // Startseite zuletzt: erst jetzt dist/index.html überschreiben, alle anderen Seiten nutzen die leere Hülle.
+  const homeBody = await renderPage("/");
+  if (!/<h1[\s>]/.test(homeBody)) throw new Error("prerender-seo: H1 fehlt auf der Startseite");
+  await writeFile(path.join(dist, "index.html"), inject(homeShell, homeBody, "/"));
+  console.log(`prerender-seo: / (vorgerendert, ${(Buffer.byteLength(homeBody) / 1024).toFixed(1)} kB Inhalt)`);
 
   // Alte Adressen: kleine Weiterleitungsseite, falls der Server keine 301 sendet.
   const target = h.canonical;

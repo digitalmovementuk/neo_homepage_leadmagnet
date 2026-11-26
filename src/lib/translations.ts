@@ -289,7 +289,7 @@ const de: Translations = {
   nav: {
     links: [
       { label: "Was wir tun", href: "#services" },
-      { label: "Über uns", href: "/about" },
+      { label: "Über uns", href: "/neo-the-agency/" },
       { label: "Kundenprojekte", href: "#cases" },
       { label: "Kontakt", href: "#contact" },
     ],
@@ -301,10 +301,10 @@ const de: Translations = {
   },
 
   hero: {
-    eyebrow: "High-End Performance Marketing",
+    eyebrow: "Online-Marketing-Agentur · Performance-Marketing-Agentur",
     headlineTop: "Jede Woche neue Verkaufschancen.",
     headlineBottom: "Über Google, KI-Suche und eine Website, die liefert.",
-    sub: "Sichtbar in jeder relevanten Stadt. In jedem Stadtteil. Damit Anfragen reinkommen — nicht Hoffnungen.",
+    sub: "Als Online-Marketing-Agentur machen wir Sie sichtbar in jeder relevanten Stadt. In jedem Stadtteil. Damit Anfragen reinkommen — nicht Hoffnungen.",
     services: [
       "Search Engine Optimization",
       "AI Search Optimization",
@@ -408,7 +408,7 @@ const de: Translations = {
     headlineMain: "SEO, Google Ads, Social Media, Websites.",
     headlineSub: "Ein Team. Mehr Anfragen.",
     intro:
-      "Eng verzahnt. Wachstum lebt nicht in Silos. Klicken Sie durch — oder lehnen Sie sich zurück.",
+      "Als Full-Service-Agentur arbeiten wir eng verzahnt. Wachstum lebt nicht in Silos. Klicken Sie durch — oder lehnen Sie sich zurück.",
     items: [
       {
         key: "seo",
@@ -480,7 +480,7 @@ const de: Translations = {
     headlineMain: "Was NEO anders macht.",
     headlineSub: "Sechs Punkte.",
     intro:
-      "Damit Sie wissen, worauf Sie sich einlassen. Bevor Sie sich einlassen.",
+      "Damit Sie wissen, worauf Sie sich bei Ihrer Online-Marketing-Agentur einlassen. Bevor Sie sich einlassen.",
     columns: { other: "Andere Agenturen", neo: "NEO THE AGENCY" },
     rows: [
       {
@@ -645,15 +645,15 @@ const de: Translations = {
 
   about: {
     meta: {
-      title: "Über NEO · Die Agentur, die wirklich liefert",
+      title: "Über NEO THE AGENCY · Die Agentur, die wirklich liefert",
       description:
-        "Wer wir sind, woran wir glauben, und das Team hinter den 90-Tage-Sprints. Eine Berliner Agentur für digitales Marketing, international, ohne Account-Manager-Ketten.",
+        "Über NEO THE AGENCY: wer wir sind, woran wir glauben und das Team hinter den 90-Tage-Sprints. Berliner Agentur für Digitalmarketing, ohne Account-Manager.",
     },
     hero: {
-      eyebrow: "Über uns",
+      eyebrow: "NEO THE AGENCY · Über uns",
       headlinePre: "Eine Berliner Agentur,",
       headlineSoft: "die das Handwerk wieder ernst nimmt.",
-      sub: "Wir sind ein internationales Team aus Spezialisten, die Performance Marketing als Handwerk verstehen — nicht als Excel-Sport. Unser Versprechen: messbare Ergebnisse in 90 Tagen.",
+      sub: "NEO THE AGENCY ist ein internationales Team aus Spezialisten, die Performance Marketing als Handwerk verstehen — nicht als Excel-Sport. Unser Versprechen: messbare Ergebnisse in 90 Tagen.",
       locations: "Berlin-Schöneberg",
     },
     pillars: [
@@ -1007,15 +1007,15 @@ const de: Translations = {
     googleAds: {
       slug: "google-ads",
       meta: {
-        title: "Google Ads für Inhaber & Mittelstand · NEO THE AGENCY",
+        title: "Google-Ads-Agentur: Betreuung zum Festpreis | NEO THE AGENCY",
         description:
-          "ROI-positiver bezahlter Traffic, der druckt. Eng gefasste Search- und Performance-Max-Kampagnen für inhabergeführte Unternehmen. Festpreis, wöchentliches Verschwendungs-Trimming.",
+          "Google-Ads-Agentur für Inhaber und Mittelstand: Search Ads, Performance Max und sauberes Conversion-Tracking. Zum Festpreis, ohne Mindestlaufzeit.",
       },
       hero: {
-        eyebrow: "Google Ads · für Inhaber & Mittelstand",
+        eyebrow: "Google-Ads-Agentur · für Inhaber & Mittelstand",
         headlineTop: "ROI.",
         headlineBottom: "Nicht Reichweite.",
-        sub: "Wir bauen Google-Ads-Kampagnen, die Anfragen drucken, nicht Klicks abrechnen. Eng gefasst, conversion-getrackt, wöchentlich auf Verschwendung getrimmt. Festpreis, kein Lock-in.",
+        sub: "Als Google-Ads-Agentur bauen wir Kampagnen, die Anfragen drucken, nicht Klicks abrechnen. Eng gefasst, conversion-getrackt, wöchentlich auf Verschwendung getrimmt. Festpreis, kein Lock-in.",
         primaryCta: "Kostenloses Ads-Teardown",
         secondaryCta: "Erstgespräch buchen",
         chips: ["Search Ads", "Performance Max", "Conversion-Tracking", "Landingpage-Tuning"],
@@ -1027,11 +1027,11 @@ const de: Translations = {
         headlineSub: "der sich rechnet.",
         paragraphs: [
           "Google Ads ist kein Auktions-Glücksspiel. Es ist diszipliniertes Bieten auf kommerzielle Suchabsicht — kombiniert mit Landingpages, die das, was wir kaufen, auch in Anfragen verwandeln.",
-          "Bei NEO heißt das: Wir bieten nicht auf Eitelkeitsbegriffe. Wir tracken jede Conversion bis zum Cent. Wir trimmen wöchentlich Verschwendung — Suchbegriffe, Keywords, Anzeigen, die nicht performen, raus. Was bleibt, druckt.",
+          "Bei NEO als Google-Ads-Agentur heißt das: Wir bieten nicht auf Eitelkeitsbegriffe. Wir tracken jede Conversion bis zum Cent. Wir trimmen wöchentlich Verschwendung — Suchbegriffe, Keywords, Anzeigen, die nicht performen, raus. Was bleibt, druckt.",
           "Sie sehen jeden Monat eine Klartext-Notiz: was investiert wurde, was reingekommen ist, ROAS pro Kampagne, und welche drei Hebel als Nächstes kommen.",
         ],
         audience:
-          "Gemacht für inhabergeführte Unternehmen und Mittelstand, die ROI über Reach stellen — keine Markenkampagnen, sondern Anfragen-Pipelines.",
+          "Gemacht für inhabergeführte Unternehmen und Mittelstand, die ROI über Reach stellen — keine Markenkampagnen, sondern Anfragen-Pipelines. Als SEA-Agentur übernehmen wir die laufende Google-Ads-Betreuung komplett.",
       },
       outcomes: {
         eyebrow: "Was sich verändert",
@@ -1231,15 +1231,15 @@ const de: Translations = {
     socialMedia: {
       slug: "social-media",
       meta: {
-        title: "Social Media für Inhaber & Mittelstand · NEO THE AGENCY",
+        title: "Social-Media-Agentur für mehr Anfragen | NEO THE AGENCY",
         description:
-          "Inhalte, die Anfragen bringen — keine Eitelkeitsmetriken. Short-Form-Video, Paid Social und Kreativ-Production für inhabergeführte Marken. Festpreis, lead-driven.",
+          "Social-Media-Agentur für Inhaber und Mittelstand: Short-Form-Video, Paid Social und Content-Produktion zum Festpreis. Unser Ziel sind echte Anfragen.",
       },
       hero: {
-        eyebrow: "Social Media · für Inhaber & Mittelstand",
+        eyebrow: "Social-Media-Agentur · für Inhaber & Mittelstand",
         headlineTop: "Anfragen.",
         headlineBottom: "Nicht Follower.",
-        sub: "Short-Form-Video, Paid Social und Kreativ-Content, der gebuchte Termine bringt — nicht Likes. Persönlich betreut, content-fokussiert, ohne Buzzword-Bingo.",
+        sub: "Als Social-Media-Agentur liefern wir Short-Form-Video, Paid Social und Kreativ-Content, der gebuchte Termine bringt — nicht Likes. Persönlich betreut, content-fokussiert, ohne Buzzword-Bingo.",
         primaryCta: "Content-Sample anfragen",
         secondaryCta: "Erstgespräch buchen",
         chips: ["Short-Form-Video", "Paid Social", "Kreativ-Production", "Posting-Plan"],
@@ -1251,11 +1251,11 @@ const de: Translations = {
         headlineSub: "der konvertiert.",
         paragraphs: [
           "Social Media ist kein Beauty-Contest. Es ist ein Anfragen-Kanal — wenn die Inhalte zur richtigen Zielgruppe in der richtigen Suchabsicht laufen, ergeben sich gebuchte Termine, nicht Vanity-Likes.",
-          "Bei NEO heißt das: Wir bauen Short-Form-Video, das Ihre Zielgruppe tatsächlich konsumiert. Wir kombinieren organischen Content mit eng gefasstem Paid Social. Und wir tracken jede Anfrage zurück bis zur Plattform.",
+          "Bei NEO als Social-Media-Agentur heißt das: Wir bauen Short-Form-Video, das Ihre Zielgruppe tatsächlich konsumiert. Wir kombinieren organischen Content mit eng gefasstem Paid Social. Und wir tracken jede Anfrage zurück bis zur Plattform.",
           "Sie sehen jeden Monat eine Klartext-Notiz: welche Inhalte performen, welche Plattform Anfragen liefert, und was als Nächstes produziert wird.",
         ],
         audience:
-          "Gemacht für inhabergeführte Marken und Mittelstand, die Social als Vertriebskanal nutzen wollen — nicht als PR-Bühne.",
+          "Gemacht für inhabergeführte Marken und Mittelstand, die Social als Vertriebskanal nutzen wollen — nicht als PR-Bühne. Als Paid-Social-Agentur übernehmen wir die laufende Social-Media-Betreuung: Inhalte, Anzeigen und Auswertung.",
       },
       outcomes: {
         eyebrow: "Was sich verändert",
@@ -1455,15 +1455,15 @@ const de: Translations = {
     websites: {
       slug: "websites",
       meta: {
-        title: "Websites für Inhaber & Mittelstand · NEO THE AGENCY",
+        title: "Webdesign-Agentur: Website zum Festpreis | NEO THE AGENCY",
         description:
-          "Conversion-optimierte Websites, die ab Tag 1 ranken. Mobile-First, Core Web Vitals, selbst editierbar. Festpreis, in 6–8 Wochen live.",
+          "Webdesign-Agentur: Website erstellen lassen oder Relaunch, fürs Smartphone gebaut, schnell und selbst pflegbar. Zum Festpreis, in 6 bis 8 Wochen live.",
       },
       hero: {
-        eyebrow: "Website-Development · für Inhaber & Mittelstand",
+        eyebrow: "Webdesign-Agentur · für Inhaber & Mittelstand",
         headlineTop: "Ihre Site,",
         headlineBottom: "als Asset.",
-        sub: "Schnelle, moderne, mobile-first Websites, die schnell laden, gut aussehen und Besucher zu Anfragen machen. Auf Plattformen, die Sie selbst pflegen können.",
+        sub: "Als Webdesign-Agentur bauen wir moderne, mobile-first Websites, die schnell laden, gut aussehen und Besucher zu Anfragen machen. Auf Plattformen, die Sie selbst pflegen können.",
         primaryCta: "Speed- & Conversion-Report",
         secondaryCta: "Erstgespräch buchen",
         chips: ["Mobile-First", "Core Web Vitals", "Conversion-Architektur", "Selbst editierbar"],
@@ -1475,11 +1475,11 @@ const de: Translations = {
         headlineSub: "die druckbar liefern.",
         paragraphs: [
           "Eine Website ist kein Visitenkarten-PDF online. Sie ist Ihr aktivster Verkäufer — 24/7, ohne Krankheitstage. Wenn sie schlecht ist, kostet sie täglich Geld. Wenn sie gut ist, druckt sie Anfragen.",
-          "Bei NEO heißt das: Mobile-First-Design, Core Web Vitals unter 2,5 s LCP, Conversion-Architektur basierend auf echtem Nutzerverhalten. Plus: alle Inhalte selbst editierbar — Sie sind nicht für jeden Komma-Fix abhängig.",
+          "Bei NEO als Webdesign-Agentur heißt das: Mobile-First-Design, Core Web Vitals unter 2,5 s LCP, Conversion-Architektur basierend auf echtem Nutzerverhalten. Plus: alle Inhalte selbst editierbar — Sie sind nicht für jeden Komma-Fix abhängig.",
           "Sie bekommen eine Site, die ab Tag 1 rankt, ab Tag 1 konvertiert und über die nächsten 5 Jahre mitwächst — ohne komplettes Re-Design.",
         ],
         audience:
-          "Gemacht für inhabergeführte Unternehmen und Mittelstand, die ihre Website als Vertriebs-Asset behandeln — nicht als Pflicht-Online-Auftritt.",
+          "Gemacht für inhabergeführte Unternehmen und Mittelstand, die ihre Website als Vertriebs-Asset behandeln — nicht als Pflicht-Online-Auftritt. Ob Sie eine neue Website erstellen lassen oder einen Relaunch planen: Als Website-Relaunch-Agentur arbeiten wir nach demselben Ablauf.",
       },
       outcomes: {
         eyebrow: "Was sich verändert",
@@ -1682,7 +1682,7 @@ const en: Translations = {
   nav: {
     links: [
       { label: "What we do", href: "#services" },
-      { label: "About", href: "/about" },
+      { label: "About", href: "/neo-the-agency/" },
       { label: "Case studies", href: "#cases" },
       { label: "Contact", href: "#contact" },
     ],

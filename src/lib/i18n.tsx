@@ -19,14 +19,21 @@ function detectInitialLang(): Lang {
   } catch {
     /* ignore */
   }
-  // Browser preference fallback — only switch to EN if user's primary is English.
-  const nav = window.navigator?.language?.toLowerCase() ?? "";
-  if (nav.startsWith("en")) return "en";
+  // German is the indexed language. No browser-language fallback: Google renders with an
+  // en-US browser, so auto-switching would show it English titles (QA-Gate 26.11.2026).
+  // English only when the visitor picked it via the language switch.
   return "de";
 }
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Lang>(() => detectInitialLang());
+  // Start in German so the first render matches the prerendered German HTML
+  // (avoids React hydration error #418); switch to a stored/browser choice after mount.
+  const [lang, setLangState] = useState<Lang>("de");
+
+  useEffect(() => {
+    const initial = detectInitialLang();
+    if (initial !== "de") setLangState(initial);
+  }, []);
 
   const setLang = useCallback((l: Lang) => {
     setLangState(l);
