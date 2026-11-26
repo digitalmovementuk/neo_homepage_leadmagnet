@@ -296,3 +296,8 @@ section[id] {
   }
   .neo-marquee-set[data-dup] { display: none; }
 }
+
+/* 26.11.2026: weiße Logo-Schrift bleibt auch über hellen Videobildern lesbar. */
+.logo-on-video {
+  filter: drop-shadow(0 1px 6px rgba(10, 6, 20, 0.45));
+}

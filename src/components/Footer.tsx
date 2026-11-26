@@ -20,7 +20,7 @@ export function Footer() {
         <div className="flex flex-col items-center lg:items-end lg:flex-row lg:justify-between text-center lg:text-left gap-8 pb-12 sm:pb-16 border-b border-ink/10">
           <div className="max-w-[460px]">
             <img
-              src={`${import.meta.env.BASE_URL}brand/neo-logo-light.svg`}
+              src={`${import.meta.env.BASE_URL}brand/neo-logo-black.svg`}
               alt="NEO THE AGENCY"
               width={757}
               height={110}

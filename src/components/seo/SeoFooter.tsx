@@ -22,7 +22,7 @@ export function SeoFooter() {
           <div>
             <Link to="/" className="inline-flex min-h-[44px] items-center">
               <img
-                src={asset("brand/neo-logo-light.svg")}
+                src={asset("brand/neo-logo-black.svg")}
                 alt={footer.logoAlt}
                 width={757}
                 height={110}

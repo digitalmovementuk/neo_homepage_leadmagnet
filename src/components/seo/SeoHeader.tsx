@@ -126,14 +126,30 @@ export function SeoHeader() {
           }`}
         >
           <Link to="/" className={`flex min-h-[44px] items-center gap-3${dark ? " seo-on-dark" : ""}`}>
-            <img
-              src={asset(dark ? "brand/neo-logo-dark.svg" : "brand/neo-logo-light.svg")}
-              alt={header.logoAlt}
-              width={757}
-              height={110}
-              draggable={false}
-              className={`w-auto transition-all duration-300 ${compact ? "h-6 sm:h-7" : "h-7 sm:h-9"}`}
-            />
+            {/* 26.11.2026: weiße Schrift über dunklen Flächen, schwarze über hellen; weich überblendet. */}
+            <span className="relative inline-flex">
+              <img
+                src={asset("brand/neo-logo-white.svg")}
+                alt={header.logoAlt}
+                width={757}
+                height={110}
+                draggable={false}
+                className={`logo-on-video w-auto transition-all duration-300 ${compact ? "h-6 sm:h-7" : "h-7 sm:h-9"} ${
+                  dark ? "opacity-100" : "opacity-0"
+                }`}
+              />
+              <img
+                src={asset("brand/neo-logo-black.svg")}
+                alt=""
+                aria-hidden="true"
+                width={757}
+                height={110}
+                draggable={false}
+                className={`absolute inset-0 w-auto transition-all duration-300 ${compact ? "h-6 sm:h-7" : "h-7 sm:h-9"} ${
+                  dark ? "opacity-0" : "opacity-100"
+                }`}
+              />
+            </span>
           </Link>
 
           <nav
@@ -278,7 +294,7 @@ export function SeoHeader() {
             >
               <div className="flex items-center justify-between">
                 <img
-                  src={asset("brand/neo-logo-dark.svg")}
+                  src={asset("brand/neo-logo-white.svg")}
                   alt={header.logoAlt}
                   width={757}
                   height={110}

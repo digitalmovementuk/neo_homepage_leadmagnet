@@ -153,16 +153,32 @@ export function Nav() {
             className="flex items-center gap-3"
             aria-label="NEO THE AGENCY home"
           >
-            <img
-              src={`${import.meta.env.BASE_URL}brand/${
-                onDark ? "neo-logo-dark" : "neo-logo-light"
-              }.svg`}
-              alt="NEO THE AGENCY"
-              width={757}
-              height={110}
-              className={`w-auto transition-all duration-300 ${logoHeightCls}`}
-              draggable={false}
-            />
+            {/* 26.11.2026: beide Logos liegen übereinander und blenden weich um:
+                weiße Schrift über dunklen Flächen und dem Video, schwarze Schrift
+                über hellen Flächen. Beide sind sofort geladen, nichts flackert. */}
+            <span className="relative inline-flex">
+              <img
+                src={`${import.meta.env.BASE_URL}brand/neo-logo-white.svg`}
+                alt="NEO THE AGENCY"
+                width={757}
+                height={110}
+                className={`logo-on-video w-auto transition-all duration-300 ${logoHeightCls} ${
+                  onDark ? "opacity-100" : "opacity-0"
+                }`}
+                draggable={false}
+              />
+              <img
+                src={`${import.meta.env.BASE_URL}brand/neo-logo-black.svg`}
+                alt=""
+                aria-hidden="true"
+                width={757}
+                height={110}
+                className={`absolute inset-0 w-auto transition-all duration-300 ${logoHeightCls} ${
+                  onDark ? "opacity-0" : "opacity-100"
+                }`}
+                draggable={false}
+              />
+            </span>
           </Link>
 
           <nav className={`hidden md:flex items-center transition-all duration-300 ${linkGapCls}`}>
@@ -337,7 +353,7 @@ export function Nav() {
             >
               <div className="flex items-center justify-between">
                 <img
-                  src={`${import.meta.env.BASE_URL}brand/neo-logo-dark.svg`}
+                  src={`${import.meta.env.BASE_URL}brand/neo-logo-white.svg`}
                   alt="NEO THE AGENCY"
                   width={757}
                   height={110}
