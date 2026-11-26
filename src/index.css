@@ -101,6 +101,15 @@
     text-transform: uppercase;
     line-height: 1;
   }
+  /* Shared section H2 · v1.0 (26.11.2026): one size, weight, tracking and
+     line-height for every homepage section heading. Max 2 lines on desktop. */
+  .section-h2 {
+    font-size: clamp(30px, 3.4vw, 52px);
+    line-height: 1.06;
+    letter-spacing: -0.032em;
+    font-weight: 700;
+    text-wrap: balance;
+  }
   .balance { text-wrap: balance; }
   .pretty  { text-wrap: pretty; }
 

@@ -58,20 +58,14 @@ export function ProcessTimeline() {
       className="surface-dark relative pt-16 sm:pt-20 md:pt-24 pb-16 sm:pb-20 md:pb-24 overflow-hidden"
     >
       <div className="container-v3 relative">
-        <div className="grid lg:grid-cols-[1.2fr_1fr] gap-6 lg:gap-12 items-end text-center lg:text-left">
+        <div className="grid lg:grid-cols-[1.6fr_1fr] gap-6 lg:gap-12 items-end text-center lg:text-left">
           <div>
             <Reveal>
               <p className="eyebrow text-white/55">{t.process.eyebrow}</p>
             </Reveal>
             <Reveal delay={0.05}>
               <h2
-                className="mt-5 max-w-[18ch] mx-auto lg:mx-0 balance text-white"
-                style={{
-                  fontSize: "clamp(34px, 6vw, 84px)",
-                  lineHeight: "1.04",
-                  letterSpacing: "-0.034em",
-                  fontWeight: 700,
-                }}
+                className="section-h2 mt-5 mx-auto lg:mx-0 text-white"
               >
                 {t.process.headlineMain}
                 <span className="text-white/55"> {t.process.headlineSub}</span>

@@ -259,20 +259,14 @@ export function VideoTestimonials() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.6, ease: EASE_OUT }}
-          className="grid lg:grid-cols-[1.2fr_1fr] gap-3 lg:gap-12 items-end pb-6 sm:pb-10 md:pb-12 border-b border-white/10 text-center lg:text-left"
+          className="grid lg:grid-cols-[1.6fr_1fr] gap-3 lg:gap-12 items-end pb-6 sm:pb-10 md:pb-12 border-b border-white/10 text-center lg:text-left"
         >
           <div>
             <p className="eyebrow text-white/55 text-[10.5px] sm:text-[12px]">
               {t.testimonials.eyebrow}
             </p>
             <h2
-              className="mt-3 sm:mt-5 max-w-[20ch] mx-auto lg:mx-0 balance text-white"
-              style={{
-                fontSize: "clamp(28px, 6vw, 84px)",
-                lineHeight: "1.04",
-                letterSpacing: "-0.034em",
-                fontWeight: 700,
-              }}
+              className="section-h2 mt-3 sm:mt-5 mx-auto lg:mx-0 text-white"
             >
               {t.testimonials.headline}
             </h2>

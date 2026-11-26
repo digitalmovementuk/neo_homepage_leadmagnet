@@ -309,13 +309,7 @@ function WhatItIs({ page }: { page: ServicePage[keyof ServicePage] }) {
             </Reveal>
             <Reveal delay={0.05}>
               <h2
-                className="mt-5 max-w-[18ch] balance text-ink"
-                style={{
-                  fontSize: "clamp(34px, 5.6vw, 72px)",
-                  lineHeight: "1.04",
-                  letterSpacing: "-0.034em",
-                  fontWeight: 700,
-                }}
+                className="section-h2 mt-5 text-ink"
               >
                 {page.whatItIs.headlineMain}
                 <span className="text-ink/55"> {page.whatItIs.headlineSub}</span>
@@ -375,13 +369,7 @@ function Outcomes({ page }: { page: ServicePage[keyof ServicePage] }) {
             </Reveal>
             <Reveal delay={0.05}>
               <h2
-                className="mt-5 max-w-[20ch] mx-auto lg:mx-0 balance text-ink"
-                style={{
-                  fontSize: "clamp(32px, 5.4vw, 64px)",
-                  lineHeight: "1.04",
-                  letterSpacing: "-0.034em",
-                  fontWeight: 700,
-                }}
+                className="section-h2 mt-5 mx-auto lg:mx-0 text-ink"
               >
                 {page.outcomes.headlineMain}
                 <span className="text-ink/55">
@@ -468,13 +456,7 @@ function Methodology({ page }: { page: ServicePage[keyof ServicePage] }) {
           </Reveal>
           <Reveal delay={0.05}>
             <h2
-              className="mt-5 balance text-ink"
-              style={{
-                fontSize: "clamp(32px, 5.4vw, 64px)",
-                lineHeight: "1.04",
-                letterSpacing: "-0.034em",
-                fontWeight: 700,
-              }}
+              className="section-h2 mt-5 text-ink"
             >
               {page.methodology.headlineMain}
               <span className="text-ink/55">
@@ -582,13 +564,7 @@ function Deliverables({ page }: { page: ServicePage[keyof ServicePage] }) {
             </Reveal>
             <Reveal delay={0.05}>
               <h2
-                className="mt-5 max-w-[20ch] mx-auto lg:mx-0 balance text-white"
-                style={{
-                  fontSize: "clamp(32px, 5.4vw, 64px)",
-                  lineHeight: "1.04",
-                  letterSpacing: "-0.034em",
-                  fontWeight: 700,
-                }}
+                className="section-h2 mt-5 mx-auto lg:mx-0 text-white"
               >
                 {page.deliverables.headlineMain}
                 <span className="text-white/55">
@@ -681,13 +657,7 @@ function ProcessTimelineService({
             </Reveal>
             <Reveal delay={0.05}>
               <h2
-                className="mt-5 max-w-[18ch] mx-auto lg:mx-0 balance text-ink"
-                style={{
-                  fontSize: "clamp(32px, 5.4vw, 64px)",
-                  lineHeight: "1.04",
-                  letterSpacing: "-0.034em",
-                  fontWeight: 700,
-                }}
+                className="section-h2 mt-5 mx-auto lg:mx-0 text-ink"
               >
                 {page.process.headlineMain}
                 <span className="text-ink/55">
@@ -767,13 +737,7 @@ function Stack({ page }: { page: ServicePage[keyof ServicePage] }) {
           </Reveal>
           <Reveal delay={0.05}>
             <h2
-              className="mt-5 balance text-ink"
-              style={{
-                fontSize: "clamp(32px, 5.4vw, 64px)",
-                lineHeight: "1.04",
-                letterSpacing: "-0.034em",
-                fontWeight: 700,
-              }}
+              className="section-h2 mt-5 text-ink"
             >
               {page.stack.headlineMain}
               <span className="text-ink/55"> {page.stack.headlineSub}</span>
@@ -842,13 +806,7 @@ function FAQ({ page }: { page: ServicePage[keyof ServicePage] }) {
             </Reveal>
             <Reveal delay={0.05}>
               <h2
-                className="mt-5 max-w-[14ch] balance text-ink"
-                style={{
-                  fontSize: "clamp(32px, 5.4vw, 64px)",
-                  lineHeight: "1.04",
-                  letterSpacing: "-0.034em",
-                  fontWeight: 700,
-                }}
+                className="section-h2 mt-5 text-ink"
               >
                 {page.faq.headlineMain}
                 <span className="text-ink/55"> {page.faq.headlineSub}</span>
@@ -959,13 +917,7 @@ function LeadMagnet({
                 {page.leadMagnet.eyebrow}
               </p>
               <h2
-                className="mt-5 max-w-[18ch] balance text-ink"
-                style={{
-                  fontSize: "clamp(28px, 4.8vw, 56px)",
-                  lineHeight: "1.04",
-                  letterSpacing: "-0.030em",
-                  fontWeight: 700,
-                }}
+                className="section-h2 mt-5 text-ink"
               >
                 {page.leadMagnet.headline}
               </h2>
@@ -1038,13 +990,7 @@ function FinalCTA({
         </Reveal>
         <Reveal delay={0.05}>
           <h2
-            className="mt-5 max-w-[20ch] balance text-white"
-            style={{
-              fontSize: "clamp(38px, 7vw, 96px)",
-              lineHeight: "1.0",
-              letterSpacing: "-0.04em",
-              fontWeight: 700,
-            }}
+            className="section-h2 mt-5 text-white"
           >
             {page.finalCta.headlineMain}
             <span className="text-white/55"> {page.finalCta.headlineSub}</span>

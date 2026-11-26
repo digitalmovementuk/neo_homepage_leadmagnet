@@ -169,7 +169,7 @@ export function AuditForm() {
             <div className="text-center lg:text-left">
               <h2
                 id={`${anchors.audit}-titel`}
-                className="seo-h2-card mx-auto max-w-[16ch] text-ink lg:mx-0"
+                className="seo-h2-card mx-auto text-ink lg:mx-0"
               >
                 {audit.heading.ink} <span className="text-ink/55">{audit.heading.grey}</span>
               </h2>
@@ -310,7 +310,7 @@ export function Cex() {
   return (
     <Section id="cex" surface="light-2">
       <div className="container-v3">
-        <SectionHead id="cex" kicker={cex.kicker} heading={cex.heading} intro={cex.body} split className="xl:!grid-cols-[1.5fr_1fr] xl:!gap-10" headingClassName="max-w-[22ch] xl:max-w-none xl:!text-[56px]" />
+        <SectionHead id="cex" kicker={cex.kicker} heading={cex.heading} intro={cex.body} split className="xl:!grid-cols-[1.5fr_1fr] xl:!gap-10" />
 
         <ul className="mt-10 grid grid-cols-2 gap-3 sm:mt-14 sm:gap-5 lg:grid-cols-4">
           {cex.figures.map((figure, i) => (

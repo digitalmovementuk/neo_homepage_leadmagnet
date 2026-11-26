@@ -104,20 +104,14 @@ export function ServicesCarousel() {
       className="surface-light relative flex flex-col pt-16 sm:pt-20 md:pt-24 pb-16 sm:pb-20 md:pb-24 md:min-h-[680px]"
     >
       <div className="container-v3 shrink-0">
-        <div className="grid lg:grid-cols-[1.2fr_1fr] gap-4 lg:gap-10 items-end text-center lg:text-left">
+        <div className="grid lg:grid-cols-[1.6fr_1fr] gap-4 lg:gap-10 items-end text-center lg:text-left">
           <div>
             <Reveal>
               <p className="eyebrow text-ink-muted">{t.services.eyebrow}</p>
             </Reveal>
             <Reveal delay={0.05}>
               <h2
-                className="mt-3 max-w-[18ch] mx-auto lg:mx-0 balance text-ink"
-                style={{
-                  fontSize: "clamp(28px, 3.6vw, 52px)",
-                  lineHeight: "1.02",
-                  letterSpacing: "-0.034em",
-                  fontWeight: 700,
-                }}
+                className="section-h2 mt-3 mx-auto lg:mx-0 text-ink"
               >
                 {t.services.headlineMain}
                 <span className="text-ink/55"> {t.services.headlineSub}</span>

@@ -82,9 +82,9 @@ export function PlatformReviewLinks({ forceDe }: { forceDe?: boolean }) {
     >
       <div className="flex flex-col items-center gap-8 lg:gap-10">
         <div className="max-w-[360px] text-center lg:max-w-[560px]">
-          <h2 id="bewerten-titel" className="text-[12px] font-bold uppercase tracking-[0.20em] text-ink-muted">
+          <p id="bewerten-titel" className="text-[12px] font-bold uppercase tracking-[0.20em] text-ink-muted">
             {en ? "Review us" : "Bewerten Sie uns"}
-          </h2>
+          </p>
           <p className="mt-3 text-[14px] leading-relaxed text-ink-soft">
             {en
               ? "Worked with us? A short, honest review on one of these platforms helps other businesses decide."

@@ -113,10 +113,10 @@ export function ContactPersons({
             <Reveal delay={0.05}>
               <h2
                 id="ansprechpartner-titel"
-                className="balance mx-auto mt-4 max-w-[16ch] text-[32px] font-bold leading-[1.05] tracking-[-0.03em] sm:text-[40px] lg:mx-0 lg:text-[48px]"
+                className="section-h2 mx-auto mt-4 lg:mx-0"
               >
                 {c.headInk}{" "}
-                <span className={dark ? "text-white/45" : "text-ink/40"}>{c.headGrey}</span>
+                <span className={dark ? "text-white/55" : "text-ink/55"}>{c.headGrey}</span>
               </h2>
             </Reveal>
             <Reveal delay={0.1}>

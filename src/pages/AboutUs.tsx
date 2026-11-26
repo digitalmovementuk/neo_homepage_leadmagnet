@@ -211,13 +211,7 @@ function Pillars() {
           </Reveal>
           <Reveal delay={0.06}>
             <h2
-              className="mt-5 balance text-ink"
-              style={{
-                fontSize: "clamp(30px, 4.4vw, 56px)",
-                lineHeight: "1.04",
-                letterSpacing: "-0.032em",
-                fontWeight: 700,
-              }}
+              className="section-h2 mt-5 text-ink"
             >
               {isEN ? (
                 <>
@@ -506,13 +500,7 @@ function FounderBio() {
             </Reveal>
             <Reveal delay={0.06}>
               <h2
-                className="mt-5 max-w-[22ch] balance text-ink"
-                style={{
-                  fontSize: "clamp(28px, 4.2vw, 56px)",
-                  lineHeight: "1.04",
-                  letterSpacing: "-0.032em",
-                  fontWeight: 700,
-                }}
+                className="section-h2 mt-5 text-ink"
               >
                 {t.about.founder.headlinePre}{" "}
                 <span className="text-ink/55">{t.about.founder.headlineSoft}</span>
@@ -624,13 +612,7 @@ function Studio() {
           </Reveal>
           <Reveal delay={0.06}>
             <h2
-              className="mt-5 balance text-white"
-              style={{
-                fontSize: "clamp(30px, 5vw, 64px)",
-                lineHeight: "1.04",
-                letterSpacing: "-0.032em",
-                fontWeight: 700,
-              }}
+              className="section-h2 mt-5 text-white"
             >
               {t.about.studio.headlinePre}{" "}
               <span className="text-white/55">{t.about.studio.headlineSoft}</span>
@@ -690,13 +672,7 @@ function TeamGrid() {
             </Reveal>
             <Reveal delay={0.06}>
               <h2
-                className="mt-5 max-w-[18ch] mx-auto lg:mx-0 balance text-ink"
-                style={{
-                  fontSize: "clamp(34px, 5.4vw, 76px)",
-                  lineHeight: "1.02",
-                  letterSpacing: "-0.034em",
-                  fontWeight: 700,
-                }}
+                className="section-h2 mt-5 mx-auto lg:mx-0 text-ink"
               >
                 {t.about.team.headlinePre}{" "}
                 <span className="text-ink/55">{t.about.team.headlineSoft}</span>
@@ -853,13 +829,7 @@ function AboutCTA({ onOpenSeo }: { onOpenSeo: () => void }) {
           </Reveal>
           <Reveal delay={0.06}>
             <h2
-              className="mt-5 balance text-white"
-              style={{
-                fontSize: "clamp(30px, 5.6vw, 76px)",
-                lineHeight: "1.02",
-                letterSpacing: "-0.034em",
-                fontWeight: 700,
-              }}
+              className="section-h2 mt-5 text-white"
             >
               {t.about.cta.headlinePre}{" "}
               <span className="text-white/55">{t.about.cta.headlineSoft}</span>

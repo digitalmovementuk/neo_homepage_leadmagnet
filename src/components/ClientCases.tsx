@@ -77,20 +77,14 @@ export function ClientCases() {
       <div className="relative container-v3 hidden md:block">
         {/* Section header (desktop only — mobile uses the full-screen IG
             carousel and doesn't need an external label). */}
-        <div className="grid lg:grid-cols-[1.2fr_1fr] gap-6 lg:gap-12 items-end text-center lg:text-left">
+        <div className="grid lg:grid-cols-[1.6fr_1fr] gap-6 lg:gap-12 items-end text-center lg:text-left">
           <div>
             <Reveal>
               <p className="eyebrow text-ink-muted">{t.cases.eyebrow}</p>
             </Reveal>
             <Reveal delay={0.05}>
               <h2
-                className="mt-5 max-w-[18ch] mx-auto lg:mx-0 balance text-ink"
-                style={{
-                  fontSize: "clamp(34px, 6vw, 84px)",
-                  lineHeight: "1.04",
-                  letterSpacing: "-0.034em",
-                  fontWeight: 700,
-                }}
+                className="section-h2 mt-5 mx-auto lg:mx-0 text-ink"
               >
                 {t.cases.headlineMain}
                 <span className="text-ink/55"> {t.cases.headlineSub}</span>

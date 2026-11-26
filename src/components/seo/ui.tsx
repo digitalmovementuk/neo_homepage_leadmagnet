@@ -137,7 +137,7 @@ export function SectionHead({
   center = false,
   split = false,
   className = "",
-  headingClassName = "max-w-[20ch]",
+  headingClassName = "",
 }: {
   id: string;
   kicker?: string;
@@ -175,7 +175,7 @@ export function SectionHead({
   ) : null;
   if (split && intro) {
     return (
-      <Reveal className={`grid gap-5 sm:gap-6 lg:grid-cols-[1.2fr_1fr] lg:items-end lg:gap-16 ${align} ${className}`}>
+      <Reveal className={`grid gap-5 sm:gap-6 lg:grid-cols-[1.6fr_1fr] lg:items-end lg:gap-10 ${align} ${className}`}>
         <div>
           {eyebrow}
           {title}

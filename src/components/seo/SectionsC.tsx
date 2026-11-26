@@ -250,7 +250,7 @@ export function Faq() {
     <Section id="faq" surface="light-2">
       <div className="container-v3 grid gap-10 lg:grid-cols-[0.9fr_1.4fr] lg:gap-16">
         <div className="lg:sticky lg:top-28 lg:self-start">
-          <SectionHead id="faq" kicker={faq.kicker} heading={faq.heading} headingClassName="max-w-[14ch]" />
+          <SectionHead id="faq" kicker={faq.kicker} heading={faq.heading} />
         </div>
         <Reveal>
           {/* Alle Antworten stehen immer im Quelltext, auch zugeklappt. */}
@@ -358,7 +358,7 @@ export function FinalCta() {
       />
       <div className="container-v3 relative grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
         <div>
-          <SectionHead id="erstgespraech" heading={finalCta.heading} intro={finalCta.body} xl dark headingClassName="max-w-[14ch]" />
+          <SectionHead id="erstgespraech" heading={finalCta.heading} intro={finalCta.body} xl dark />
           <Reveal delay={0.1} className="mt-10 sm:mt-12">
             <h3 className="text-center text-[18px] font-bold tracking-[-0.02em] text-white sm:text-[20px] lg:text-left">{finalCta.altHeading}</h3>
             <div className="mt-4 grid gap-3 sm:grid-cols-2">

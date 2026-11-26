@@ -17,11 +17,11 @@
   color: #fff;
 }
 
-/* Überschriften: gleiche Handschrift wie auf der Startseite. */
+/* Überschriften: gleiche Handschrift wie auf der Startseite (H2 v1.0, 26.11.2026: eine Größe für alle H2). */
 .seo-page .seo-h2 {
-  font-size: clamp(32px, 5.4vw, 64px);
-  line-height: 1.04;
-  letter-spacing: -0.034em;
+  font-size: clamp(30px, 3.4vw, 52px);
+  line-height: 1.06;
+  letter-spacing: -0.032em;
   font-weight: 700;
   text-wrap: balance;
   hyphens: auto;
@@ -31,17 +31,17 @@
 }
 .seo-page .seo-h2-card {
   font-weight: 700;
-  font-size: clamp(28px, 4.8vw, 56px);
-  line-height: 1.04;
-  letter-spacing: -0.034em;
+  font-size: clamp(30px, 3.4vw, 52px);
+  line-height: 1.06;
+  letter-spacing: -0.032em;
   text-wrap: balance;
   hyphens: auto;
   -webkit-hyphens: auto;
 }
 .seo-page .seo-h2-xl {
-  font-size: clamp(38px, 7vw, 96px);
-  line-height: 1;
-  letter-spacing: -0.035em;
+  font-size: clamp(30px, 3.4vw, 52px);
+  line-height: 1.06;
+  letter-spacing: -0.032em;
   font-weight: 700;
   text-wrap: balance;
   hyphens: auto;

@@ -227,7 +227,7 @@ export function ShortForm() {
           />
           <div className="relative grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-14">
             <div className="text-center lg:text-left">
-              <h2 id="start-titel" className="seo-h2-card mx-auto max-w-[18ch] text-ink lg:mx-0">
+              <h2 id="start-titel" className="seo-h2-card mx-auto text-ink lg:mx-0">
                 {shortForm.heading.ink} <span className="text-ink/55">{shortForm.heading.grey}</span>
               </h2>
               <p className="mx-auto mt-5 max-w-[52ch] text-[15.5px] leading-relaxed text-ink-soft sm:text-[17.5px] lg:mx-0">
@@ -267,7 +267,7 @@ export function Packages() {
   return (
     <Section id="pakete" surface="light-2">
       <div className="container-v3">
-        <SectionHead id="pakete" kicker={packages.kicker} heading={packages.heading} headingClassName="max-w-[22ch]" />
+        <SectionHead id="pakete" kicker={packages.kicker} heading={packages.heading} />
 
         <ul className="mt-10 grid gap-4 sm:mt-14 sm:gap-5 lg:grid-cols-3 lg:items-stretch">
           {packages.items.map((item, i) => {
