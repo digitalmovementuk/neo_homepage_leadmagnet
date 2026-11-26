@@ -78,8 +78,8 @@ export default {
         ring: "0 0 0 1px rgba(26, 14, 46, 0.08)",
       },
       backgroundImage: {
-        "dm-cta": "linear-gradient(55deg, #F05F22 0%, #EC178D 50%, #9A2FC6 100%)",
-        "brand-button": "linear-gradient(55deg, #F05F22 0%, #EC178D 50%, #9A2FC6 100%)",
+        "dm-cta": "linear-gradient(55deg, #D9127F 0%, #C0198A 50%, #9A2FC6 100%)",
+        "brand-button": "linear-gradient(55deg, #D9127F 0%, #C0198A 50%, #9A2FC6 100%)",
         "brand-gradient":
           "linear-gradient(135deg, #FFB23D 14%, #F05F22 33%, #EC178D 59%, #D332FF 78%, #9A2FC6 100%)",
         "brand-gradient-dark":

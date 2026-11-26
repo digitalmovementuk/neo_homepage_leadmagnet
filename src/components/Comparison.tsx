@@ -138,7 +138,7 @@ export function Comparison() {
           >
             <span
               className="absolute -top-3 left-7 sm:left-9 inline-flex items-center gap-1.5 rounded-full text-white text-[10.5px] font-bold uppercase tracking-[0.18em] px-3 py-1.5"
-              style={{ background: "#F05F22" }}
+              style={{ background: "#D9127F" }}
             >
               NEO
             </span>
