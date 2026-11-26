@@ -1,0 +1,218 @@
+/*
+ * Hero-Formular „Kostenloses Erstgespräch" · v1.0 (26.11.2026)
+ * Quelle: mockups/hero-merge-2026-11-26/neo-hero-merge-v2.html (helles Milchglas + Spotlight).
+ * Alle Regeln sind auf .hero-shell / .hero-form begrenzt, damit nichts auf andere Seitenteile wirkt.
+ *
+ * Changelog
+ *   v1.0 (26.11.2026) Erste Fassung: Milchglas (Kontrast ≥ 4,5:1), Spotlight bei Maus,
+ *        bleibt an bei Text/Fokus, Touch = Licht bei Fokus/Tippen, reduzierte Bewegung = statisch.
+ */
+.hero-shell {
+  --nhf-ease: cubic-bezier(.22, 1, .36, 1);
+  --nhf-grad: linear-gradient(100deg, #F05F22 0%, #EC178D 55%, #D332FF 100%);
+}
+
+/* ── Platz: ab 1024 px rechts im Hero, darunter ein dunkles Band unter dem Hero ── */
+.hero-shell .form-slot { position: relative; z-index: 15; }
+@media (min-width: 1024px) {
+  .hero-shell .form-slot { position: absolute; left: 0; right: 0; bottom: calc(var(--hb) + 92px); pointer-events: none; }
+  .hero-shell .form-slot .nhf-wrap { display: flex; justify-content: flex-end; }
+  .hero-shell .form-slot .hero-form { pointer-events: auto; width: 410px; }
+}
+@media (max-width: 1023.98px) {
+  .hero-shell .form-band {
+    position: relative;
+    background:
+      radial-gradient(120% 70% at 85% 0%, rgba(236, 23, 141, .22) 0%, rgba(236, 23, 141, 0) 60%),
+      radial-gradient(90% 60% at 0% 100%, rgba(154, 47, 198, .25) 0%, rgba(154, 47, 198, 0) 65%),
+      #0a0712;
+    padding: 28px 0 44px;
+    overflow: hidden;
+  }
+  .hero-shell .form-slot .hero-form { max-width: 520px; margin: 0 auto; }
+}
+
+/* ── Karte: helles Milchglas ── */
+.hero-form {
+  --sx: 50%; --sy: 0%;
+  position: relative;
+  border-radius: 26px;
+  padding: 30px 28px;
+  display: flex; flex-direction: column; justify-content: center;
+  color: #1a0e2e;
+  text-align: left;
+  background: linear-gradient(165deg, rgba(255, 255, 255, .86) 0%, rgba(255, 248, 252, .74) 100%);
+  -webkit-backdrop-filter: blur(22px) saturate(170%);
+  backdrop-filter: blur(22px) saturate(170%);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, .5), 0 30px 80px -30px rgba(0, 0, 0, .75), 0 0 46px -14px rgba(236, 23, 141, .4);
+  transition: box-shadow .5s var(--nhf-ease), background .5s var(--nhf-ease);
+}
+.hero-form::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1px;
+  background: linear-gradient(150deg, rgba(255, 255, 255, .95), rgba(255, 255, 255, .35) 45%, rgba(236, 23, 141, .5));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  pointer-events: none;
+}
+.hero-form > *:not(.hf-spot):not(.hf-beam) { position: relative; z-index: 1; }
+@media (min-width: 1024px) {
+  .hero-form { padding: 22px 24px 18px; }
+  .hero-form .hf-head { margin-bottom: 14px; }
+}
+@media (max-width: 420px) { .hero-form { padding: 26px 20px; } }
+
+/* ── Spotlight: Lichtkegel von oben + Lichtfleck am Mauszeiger + weicher Schein ── */
+.hero-form .hf-spot {
+  position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; z-index: 0;
+  transition: opacity .45s var(--nhf-ease);
+  background: radial-gradient(360px circle at var(--sx) var(--sy), rgba(255, 255, 255, 1) 0%, rgba(255, 236, 248, .6) 32%, rgba(255, 255, 255, 0) 72%);
+}
+.hero-form .hf-beam {
+  position: absolute; left: 50%; bottom: calc(100% - 8px); width: 118%; height: 150px;
+  transform: translateX(-50%); pointer-events: none; opacity: 0; z-index: 0;
+  transition: opacity .5s var(--nhf-ease);
+  clip-path: polygon(41% 0, 59% 0, 100% 100%, 0 100%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 246, 252, .16) 45%, rgba(255, 246, 252, .34) 100%);
+  filter: blur(6px);
+}
+@media (max-width: 1023.98px) { .hero-form .hf-beam { height: 34px; } }
+.hero-form.is-lit {
+  background: linear-gradient(165deg, rgba(255, 255, 255, .95) 0%, rgba(255, 251, 253, .86) 100%);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, .9), 0 0 70px -6px rgba(255, 236, 246, .8), 0 0 130px -20px rgba(236, 23, 141, .6), 0 30px 80px -30px rgba(0, 0, 0, .75);
+}
+.hero-form.is-lit .hf-spot, .hero-form.is-lit .hf-beam { opacity: 1; }
+
+/* ── Kopf ── */
+.hero-form .hf-head { margin-bottom: 18px; }
+.hero-form .hf-head h2 {
+  font-size: clamp(1.24rem, 3.6vw, 1.46rem); font-weight: 700; color: #1a0e2e;
+  margin: 0 0 6px; letter-spacing: -.02em; line-height: 1.2;
+}
+.hero-form .hf-head p { font-size: .86rem; color: #4a4156; margin: 0; }
+
+/* ── Felder ── */
+.hero-form .field { display: grid; gap: 6px; margin-bottom: 13px; }
+@media (min-width: 1024px) { .hero-form .field { margin-bottom: 10px; } }
+.hero-form .field > label { font-size: .66rem; font-weight: 800; letter-spacing: .11em; text-transform: uppercase; color: #4a4156; }
+.hero-form .field input:not([type=checkbox]), .hero-form .field select {
+  width: 100%; font: inherit; font-size: .97rem; color: #1a0e2e;
+  padding: 13px 15px; border-radius: 14px;
+  background-color: rgba(255, 255, 255, .8);
+  border: 1px solid rgba(26, 14, 46, .2);
+  -webkit-appearance: none; appearance: none; outline: none;
+  transition: border-color .2s, background-color .2s, box-shadow .2s;
+}
+@media (min-width: 1024px) { .hero-form .field input:not([type=checkbox]), .hero-form .field select { padding: 10px 14px; } }
+.hero-form .field input::placeholder { color: #6b6276; opacity: 1; }
+.hero-form .field select {
+  padding-right: 40px; cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%234a4156' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 14px center;
+}
+.hero-form .field select option { background: #fff; color: #1a0e2e; }
+.hero-form .field input:not([type=checkbox]):focus, .hero-form .field select:focus {
+  border-color: #C0198A; background-color: #fff; box-shadow: 0 0 0 4px rgba(236, 23, 141, .2);
+}
+.hero-form .field.err input:not([type=checkbox]), .hero-form .field.err select {
+  border-color: #C0198A; box-shadow: 0 0 0 4px rgba(236, 23, 141, .2);
+}
+.hero-form .msg { display: none; font-size: .72rem; color: #850e40; font-weight: 600; }
+.hero-form .field.err .msg { display: block; }
+
+.hero-form label.check {
+  display: flex; gap: 10px; align-items: flex-start; cursor: pointer;
+  font-size: .8rem; line-height: 1.45; color: #3f3650;
+  text-transform: none; letter-spacing: 0; font-weight: 500;
+}
+.hero-form label.check input { width: 18px; height: 18px; flex: 0 0 18px; margin: 1px 0 0; accent-color: #C0198A; }
+.hero-form label.check a { color: #1a0e2e; text-decoration: underline; text-underline-offset: 2px; }
+.hero-form .field.err label.check input { outline: 2px solid #C0198A; outline-offset: 2px; }
+
+.hero-form .neo-hp { position: absolute !important; left: -9999px !important; width: 1px; height: 1px; overflow: hidden; }
+
+/* ── Knopf ── */
+.hero-form .nhf-btn {
+  position: relative; isolation: isolate; overflow: hidden;
+  display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 12px;
+  min-height: 55px; margin-top: 6px; padding: 6px 6px 6px 26px;
+  border: 0; border-radius: 999px; cursor: pointer;
+  background: #fff; color: #fff;
+  font: 700 .95rem/1.2 Geist, ui-sans-serif, system-ui, sans-serif; text-align: left;
+  box-shadow: 0 0 18px -3px #ec178d94, 0 0 38px -6px #ec178d70, 0 12px 30px -14px #ec178dd9;
+  animation: nhfGlow 3.6s ease-in-out infinite;
+  transition: color .35s var(--nhf-ease), transform .35s var(--nhf-ease);
+}
+.hero-form .nhf-btn::before {
+  content: ""; position: absolute; z-index: -1; top: 0; right: 0; bottom: 0; left: 0;
+  border-radius: 999px; background: var(--nhf-grad);
+  transition: top .5s cubic-bezier(.65, .05, .25, 1), right .5s cubic-bezier(.65, .05, .25, 1), bottom .5s cubic-bezier(.65, .05, .25, 1), left .5s cubic-bezier(.65, .05, .25, 1);
+}
+.hero-form .nhf-btn:hover, .hero-form .nhf-btn:focus-visible { color: #7a1fa3; transform: translateY(-2px); }
+.hero-form .nhf-btn:hover::before, .hero-form .nhf-btn:focus-visible::before { top: 6px; right: 6px; bottom: 6px; left: calc(100% - 46px); }
+.hero-form .nhf-btn:focus-visible { outline: 2px solid #1a0e2e; outline-offset: 3px; }
+.hero-form .nhf-btn[disabled] { cursor: progress; }
+.hero-form .nhf-arrow { display: grid; place-items: center; width: 40px; height: 40px; flex: 0 0 40px; border-radius: 999px; color: #fff; }
+.hero-form .nhf-arrow svg { width: 17px; height: 17px; transition: transform .35s var(--nhf-ease); }
+.hero-form .nhf-btn:hover .nhf-arrow svg { transform: translateX(2px); }
+@keyframes nhfGlow {
+  0%, 58%, to { box-shadow: 0 0 13px -4px #ec178d6b, 0 0 28px -9px #ec178d4d, 0 12px 30px -14px #ec178dd1; }
+  79% { box-shadow: 0 0 26px -1px #ec178dd1, 0 0 62px -3px #ec178d9e, 0 14px 34px -12px #ec178deb; }
+}
+
+.hero-form .form-fine { font-size: .72rem; color: #4a4156; text-align: center; margin: 11px 0 0; line-height: 1.45; }
+
+/* ── Erfolg / WhatsApp blockiert ── */
+.hero-form .form-ok { padding: 22px 6px; text-align: center; outline: none; }
+.hero-form .ok-ic { width: 52px; height: 52px; margin: 0 auto 14px; border-radius: 999px; display: grid; place-items: center; background: var(--nhf-grad); color: #fff; }
+.hero-form .form-ok h3 { font-size: 1.2rem; font-weight: 700; color: #1a0e2e; margin: 0 0 8px; letter-spacing: -.01em; }
+.hero-form .form-ok p { font-size: .9rem; color: #4a4156; margin: 0 0 14px; line-height: 1.5; }
+.hero-form .nhf-wa {
+  display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 10px 20px;
+  border-radius: 999px; background: #1a0e2e; color: #fff; font-weight: 700; font-size: .9rem; text-decoration: none;
+}
+.hero-form .nhf-wa:hover { background: #2c1a48; }
+.hero-form .nhf-wa:focus-visible { outline: 2px solid #C0198A; outline-offset: 3px; }
+.hero-form .nhf-again { display: block; margin: 12px auto 0; background: none; border: 0; color: #3f3650; font-size: .8rem; text-decoration: underline; cursor: pointer; }
+
+/* ── Einblenden (≤ 0,6 s) ── */
+.hero-form.rv { opacity: 0; transform: translateY(22px); transition: opacity .55s cubic-bezier(.22, 1, .36, 1), transform .55s cubic-bezier(.2, .7, .3, 1), box-shadow .5s var(--nhf-ease), background .5s var(--nhf-ease); }
+.hero-form.rv.in { opacity: 1; transform: none; }
+
+/* ── Glas-Pille um den Potenzialanalyse-Knopf im Hero ── */
+.hero-shell .nhf-cta {
+  display: none; align-items: center; gap: 14px; padding: 6px; border-radius: 999px;
+  background: #00000057; -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, .10); box-shadow: 0 18px 50px rgba(0, 0, 0, .28);
+}
+
+/* ── Niedrige Bildschirme am Desktop ── */
+@media (min-width: 1024px) and (max-height: 860px) {
+  .hero-form .hf-head p { display: none; }
+  .hero-form .form-fine { display: none; }
+}
+@media (min-width: 1024px) and (max-height: 780px) {
+  .hero-form .field.field-opt { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-form, .hero-form .hf-spot, .hero-form .hf-beam { transition: none; }
+  .hero-form.rv { opacity: 1; transform: none; transition: none; }
+  .hero-form .nhf-btn { animation: none; transition: none; }
+  .hero-form .nhf-btn::before { transition: none; }
+}
+
+/* Kurze Laptop-Bildschirme: Überschrift bleibt unter der Navigation, Pause-Knopf überlappt das Formular nicht */
+/* Pause-Knopf überall direkt unter der Navigation, damit er weder Überschrift noch Formular verdeckt */
+.hero-shell .nh-pause { top: 92px; }
+@media (min-width: 1024px) and (max-height: 860px) {
+  .hero-shell .nh-top { font-size: clamp(28px, min(4.6vw, 7vh), 72px) !important; }
+}
+@media (min-width: 1024px) and (max-height: 800px) {
+  .hero-shell .nh-sub { display: none; }
+}
+
+/* Zweiter Hero-Knopf nur ab Tablet; auf dem Handy gibt es schon den mittigen Knopf */
+@media (min-width: 768px) {
+  .hero-shell .nhf-cta { display: inline-flex; }
+}

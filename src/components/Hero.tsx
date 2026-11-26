@@ -4,6 +4,7 @@ import { Pause, Play, Sparkles } from "lucide-react";
 import { useT, useLang } from "../lib/i18n";
 import { useSeoModal } from "../lib/seoModal";
 import { PlatformBadges } from "./PlatformBadges";
+import { HeroForm } from "./HeroForm";
 
 const AUTOPLAY_MS = 8000;
 
@@ -73,12 +74,13 @@ export function Hero() {
   const slideRefs = useRef<(HTMLElement | null)[]>([]);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const sectionRef = useRef<HTMLElement>(null);
+  const shellRef = useRef<HTMLDivElement>(null);
   const badgesRef = useRef<HTMLDivElement>(null);
 
   // "Gesehen auf" / "As seen on" band sits above the dots; the slide copy keeps its distance via --hb (badge block height).
   useEffect(() => {
     const el = badgesRef.current;
-    const sec = sectionRef.current;
+    const sec = shellRef.current;
     if (!el || !sec || typeof ResizeObserver === "undefined") return;
     const ro = new ResizeObserver(() => sec.style.setProperty("--hb", `${Math.ceil(el.offsetHeight)}px`));
     ro.observe(el);
@@ -170,11 +172,13 @@ export function Hero() {
   };
 
   return (
+    // Hero-Hülle 26.11.2026: trägt --hb (Höhe der „Gesehen auf"-Leiste), damit Hero-Text und Erstgespräch-Formular denselben Abstand nutzen.
+    <div ref={shellRef} className="hero-shell relative [--hb:134px] sm:[--hb:163px] md:[--hb:134px]">
     <section
       ref={sectionRef}
       id="top"
       data-surface="dark"
-      className="surface-dark relative isolate h-[max(100svh,700px)] min-h-[100svh] w-screen overflow-hidden [--hb:134px] sm:[--hb:163px] md:h-[100svh] md:[--hb:134px]"
+      className="surface-dark relative isolate h-[max(100svh,700px)] min-h-[100svh] w-screen overflow-hidden md:h-[100svh]"
       aria-roledescription="carousel"
       aria-label={lang === "en" ? "Hero carousel" : "Hero-Karussell"}
     >
@@ -202,9 +206,6 @@ export function Hero() {
             index={i}
             isActive={i === activeIdx}
             seoLabel={seoLabel}
-            ctaSecondary={t.hero.cta}
-            priceLine={t.hero.priceLine}
-            priceLineSub={t.hero.priceLineSub}
             onOpenSeo={openSeo}
             slideRef={(el) => {
               slideRefs.current[i] = el;
@@ -220,7 +221,7 @@ export function Hero() {
         type="button"
         onClick={togglePlay}
         aria-label={paused ? t.hero.playLabel : t.hero.pauseLabel}
-        className="absolute right-5 top-[max(16vh,140px)] z-20 grid h-9 w-9 place-items-center rounded-full border border-white/18 bg-black/24 text-white backdrop-blur-md transition hover:bg-black/36 sm:right-8 sm:h-10 sm:w-10 lg:right-10"
+        className="nh-pause absolute right-5 top-[max(16vh,140px)] z-20 grid h-9 w-9 place-items-center rounded-full border border-white/18 bg-black/24 text-white backdrop-blur-md transition hover:bg-black/36 sm:right-8 sm:h-10 sm:w-10 lg:right-10"
       >
         {paused ? <Play size={13} fill="white" /> : <Pause size={12} fill="white" />}
       </button>
@@ -250,6 +251,15 @@ export function Hero() {
         </div>
       </div>
     </section>
+      {/* Erstgespräch-Formular: ab 1024 px rechts im Hero, darunter als dunkles Band direkt unter dem Hero. */}
+      <div className="form-band">
+        <div className="form-slot">
+          <div className="nhf-wrap mx-auto w-full max-w-[1512px] px-5 sm:px-8 lg:px-12 2xl:px-0">
+            <HeroForm />
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -258,9 +268,6 @@ const HeroSlideView = ({
   index,
   isActive,
   seoLabel,
-  ctaSecondary,
-  priceLine,
-  priceLineSub,
   onOpenSeo,
   slideRef,
   videoRef,
@@ -269,9 +276,6 @@ const HeroSlideView = ({
   index: number;
   isActive: boolean;
   seoLabel: string;
-  ctaSecondary: string;
-  priceLine: string;
-  priceLineSub: string;
   onOpenSeo: () => void;
   slideRef: (el: HTMLElement | null) => void;
   videoRef: (el: HTMLVideoElement | null) => void;
@@ -309,7 +313,7 @@ const HeroSlideView = ({
 
       <div className="absolute inset-x-0 bottom-0 z-10">
         <div className="mx-auto w-full max-w-[1512px] px-5 pb-[calc(var(--hb)+80px+env(safe-area-inset-bottom))] sm:px-8 sm:pb-[calc(var(--hb)+108px)] lg:px-12 lg:pb-[calc(var(--hb)+112px)] 2xl:px-0">
-          <div className="grid items-end gap-5 md:grid-cols-[minmax(0,680px)_auto] md:justify-between md:gap-10">
+          <div className="grid items-end gap-5 md:max-w-[680px] lg:max-w-[min(680px,calc(100%-460px))]">
             <div className="flex w-full flex-col items-center text-center md:items-start md:text-left">
               <HeadWrap className="flex w-full flex-col items-center md:items-start">
               <motion.span
@@ -326,11 +330,11 @@ const HeroSlideView = ({
                 key={`title-${slide.key}`}
                 initial={false}
                 animate={{ opacity: isActive ? 1 : 0.4, y: 0 }}
-                transition={{ duration: 0.7, delay: isActive ? 0.25 : 0, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 0.6, delay: isActive ? 0.25 : 0, ease: [0.22, 1, 0.36, 1] }}
                 className="mt-3 block max-w-[340px] text-white sm:mt-4 md:mt-5 md:max-w-[680px]"
               >
                 <span
-                  className="balance block"
+                  className="nh-top balance block"
                   style={{
                     fontSize: "clamp(28px, 4.6vw, 72px)",
                     lineHeight: "1.04",
@@ -360,7 +364,7 @@ const HeroSlideView = ({
                 initial={false}
                 animate={{ opacity: isActive ? 1 : 0.3, y: 0 }}
                 transition={{ duration: 0.6, delay: isActive ? 0.4 : 0 }}
-                className="mt-3 max-w-[38ch] text-[13.5px] leading-snug text-white/72 sm:mt-5 sm:text-[15px] sm:leading-relaxed sm:text-white/68 lg:max-w-[54ch] lg:text-[16px]"
+                className="nh-sub mt-3 max-w-[38ch] text-[13.5px] leading-snug text-white/72 sm:mt-5 sm:text-[15px] sm:leading-relaxed sm:text-white/68 lg:max-w-[54ch] lg:text-[16px]"
               >
                 {slide.sub}
               </motion.p>
@@ -387,33 +391,25 @@ const HeroSlideView = ({
                   <Sparkles size={14} strokeWidth={2.4} />
                   {seoLabel}
                 </button>
-                <a
-                  href="#contact"
-                  className="inline-flex min-h-10 items-center justify-center rounded-full bg-white/12 px-5 py-2.5 text-[14px] font-medium text-white backdrop-blur-md transition-colors hover:bg-white/18"
+              </motion.div>
+
+              <motion.div
+                initial={false}
+                animate={{ opacity: isActive ? 1 : 0.3, y: 0 }}
+                transition={{ duration: 0.6, delay: isActive ? 0.55 : 0 }}
+                className="nhf-cta mt-5 hidden md:inline-flex lg:mt-6"
+              >
+                <button
+                  type="button"
+                  onClick={onOpenSeo}
+                  className="inline-flex min-h-11 items-center justify-center gap-1.5 rounded-full bg-brand-button px-5 py-2.5 text-[14px] font-semibold text-white transition hover:-translate-y-0.5 hover:brightness-[0.92]"
                 >
-                  {ctaSecondary}
-                </a>
+                  <Sparkles size={14} strokeWidth={2.4} />
+                  {seoLabel}
+                </button>
               </motion.div>
             </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: isActive ? 1 : 0.3, y: 0 }}
-              transition={{ duration: 0.6, delay: isActive ? 0.55 : 0 }}
-              className="hidden min-w-0 shrink-0 items-center gap-3 rounded-full border border-white/10 bg-black/34 p-2 pl-5 shadow-[0_18px_50px_rgba(0,0,0,0.28)] backdrop-blur-xl md:flex"
-            >
-              <p className="max-w-[270px] text-right text-[13px] font-semibold leading-tight text-white/82">
-                {priceLine} <span className="text-white/52">· {priceLineSub}</span>
-              </p>
-              <button
-                type="button"
-                onClick={onOpenSeo}
-                className="inline-flex min-h-11 items-center justify-center gap-1.5 rounded-full bg-brand-pink bg-brand-button px-5 py-2.5 text-[14px] font-semibold text-white transition-colors hover:brightness-[0.92]"
-              >
-                <Sparkles size={14} strokeWidth={2.4} />
-                {seoLabel}
-              </button>
-            </motion.div>
           </div>
         </div>
       </div>
