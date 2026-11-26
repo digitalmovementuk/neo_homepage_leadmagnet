@@ -93,7 +93,7 @@ export const seoDe = {
     kicker: "Ihre SEO-Agentur",
     heading: { ink: "SEO für Kleinunternehmen", grey: "in ganz Deutschland" },
     subline:
-      "Als SEO-Agentur erstellen wir Ihre Website und Keyword-Seiten zu den Begriffen, nach denen Ihre Kunden suchen, und optimieren alles für Google, Google Maps und KI-Antworten.",
+      "Als SEO-Agentur erstellen wir Ihre Website und Keyword-Seiten zu den Begriffen, nach denen Ihre Kunden suchen, und optimieren alles für Google, Google Maps und KI-Antworten. Wir kümmern uns um technisches SEO, lokales SEO mit Google Maps, Ihr Unternehmensprofil bei Google und strukturierte Daten. Jeden Monat erhalten Sie einen Bericht in klarer Sprache.",
     primary: "Kostenloser Audit in 24 h",
     secondary: "30-Minuten-Gespräch",
     micro:
@@ -140,9 +140,9 @@ export const seoDe = {
 
   audit: {
     chips: ["2 Minuten", "Ergebnis in 24 h", "Ohne Verpflichtung"],
-    heading: { ink: "Ihr kostenloser SEO-Audit", grey: "in 24 Stunden" },
+    heading: { ink: "SEO-Agentur: Ihr kostenloser SEO-Audit", grey: "in 24 Stunden" },
     subline:
-      "Sie erhalten ein kurzes Video, in dem wir Ihre Website durchgehen und die wichtigsten Stellschrauben zeigen.",
+      "Als SEO-Agentur schicken wir Ihnen ein kurzes Video, in dem wir Ihre Website durchgehen und die wichtigsten Stellschrauben zeigen.",
     button: "Audit anfordern",
     note:
       "Antwort in 24 Stunden an Werktagen. Wir nutzen Ihre Angaben, um den Audit zu erstellen und Sie dazu zu kontaktieren. Details finden Sie in unserer Datenschutzerklärung.",

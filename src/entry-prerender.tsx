@@ -37,7 +37,7 @@ const de = translations.de;
 type RouteHead = { path: string; title: string; description: string; chunk: RegExp; jsonLd: Record<string, unknown> };
 const svc = (key: "googleAds" | "socialMedia" | "websites", chunk: RegExp): RouteHead => {
   const p = de.servicePages[key];
-  return { path: SERVICE_PATHS[p.slug], ...p.meta, chunk, jsonLd: servicePageJsonLd(p.slug, p.meta.title, p.meta.description, false) };
+  return { path: SERVICE_PATHS[p.slug], ...p.meta, chunk, jsonLd: servicePageJsonLd(p.slug, p.meta.title, p.meta.description, false, p.faq.items) };
 };
 export const routeHeads: RouteHead[] = [
   svc("googleAds", /^google-ads-.*\.js$/),

@@ -1,5 +1,5 @@
 /**
- * Prerender aller Seiten zu statischem HTML · v1.6 (26.11.2026)
+ * Prerender aller Seiten zu statischem HTML · v1.7 (26.11.2026)
  *
  * Läuft NACH `vite build`. Leichtester Weg ohne neues Paket:
  *   1. Vite baut src/entry-prerender.tsx einmal für Node (SSR) in einen
@@ -15,6 +15,7 @@
  *      404 kommen fertig gerendert (Inhalt in #root, eigenes JSON-LD).
  *
  * Changelog
+ *   v1.7 (26.11.2026) Startseiten-WebPage (data-home-only) wird auf allen anderen Seiten entfernt.
  *   v1.6 (26.11.2026) Flache Adressen je Fokus-Suchbegriff: /google-ads-agentur/, /social-media-agentur/,
  *        /webdesign-agentur/, /neo-the-agency/ (alte Adressen leiten per 301 weiter, vercel.json);
  *        keine /about-Kopie mehr.
@@ -73,11 +74,13 @@ try {
   };
   const shellRe = /\s*<!-- LCP shell[\s\S]*?-->\s*<img\s+id="lcp-shell"[\s\S]*?\/>/;
   const homePreloadRe = /\s*<!-- LCP: preload[\s\S]*?-->\s*<link\s+rel="preload"\s+as="image"[\s\S]*?\/>/;
+  const homeOnlyLdRe = /\s*<!-- Startseite: WebPage[\s\S]*?-->\s*<script type="application\/ld\+json" data-home-only="true">[\s\S]*?<\/script>/;
   // Startseiten-Platzhalterbild und -Preload gehören nur auf die Startseite.
   const stripHomeOnly = (src, label) => {
     must(src, shellRe, `LCP-Hülle (${label})`);
     must(src, homePreloadRe, `Startseiten-Preload (${label})`);
-    return src.replace(shellRe, "").replace(homePreloadRe, "");
+    must(src, homeOnlyLdRe, `Startseiten-WebPage (${label})`);
+    return src.replace(shellRe, "").replace(homePreloadRe, "").replace(homeOnlyLdRe, "");
   };
   const addChunk = (src, re) => {
     const f = assets.find((a) => re.test(a));
@@ -132,6 +135,8 @@ try {
   const homeLd = /\s*<script type="application\/ld\+json">[\s\S]*?<\/script>/;
   must(html, homeLd, "Startseiten-JSON-LD");
   html = html.replace(homeLd, "");
+  must(html, homeOnlyLdRe, "Startseiten-WebPage");
+  html = html.replace(homeOnlyLdRe, "");
   const ld = JSON.stringify(buildSeoJsonLd()).replace(/</g, "\\u003c");
   html = html.replace("</head>", `    <script type="application/ld+json" data-route-jsonld="true">${ld}</script>\n  </head>`);
 

@@ -32,7 +32,7 @@ export function Footer() {
           </div>
 
           <a
-            href="#contact"
+            href="/#contact"
             className="inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-[0.18em] text-ink hover:text-ink-soft transition-colors"
           >
             {isEN ? "Start a project" : "Projekt starten"}{" "}
@@ -116,7 +116,8 @@ export function Footer() {
         <div className="mt-10 sm:mt-12 pt-6 border-t border-ink/10 flex flex-col items-center sm:flex-row sm:items-center sm:justify-between gap-4 text-[12px] text-ink-muted text-center sm:text-left">
           <p>
             © {new Date().getFullYear()} {business.name}.{" "}
-            {isEN ? "All rights reserved." : "Alle Rechte vorbehalten."}
+            {isEN ? "All rights reserved." : "Alle Rechte vorbehalten."}{" "}
+            {isEN ? "Last updated: 26.11.2026" : "Stand: 26.11.2026"}
           </p>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
             {t.footer.legal.map((l) => (

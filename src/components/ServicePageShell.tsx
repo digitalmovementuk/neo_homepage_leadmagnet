@@ -51,8 +51,8 @@ export function ServicePageShell({ slug }: { slug: keyof ServicePage }) {
 
   // Strukturierte Daten aus einer Quelle mit dem Build (Service + WebPage + Brotkrumen), 26.11.2026.
   const jsonLd = useMemo(
-    () => servicePageJsonLd(page.slug, page.meta.title, page.meta.description, isEN),
-    [page.slug, page.meta.title, page.meta.description, isEN],
+    () => servicePageJsonLd(page.slug, page.meta.title, page.meta.description, isEN, page.faq.items),
+    [page.slug, page.meta.title, page.meta.description, isEN, page.faq.items],
   );
 
   useDocumentHead({
@@ -834,6 +834,7 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
       transition={{ duration: 0.5, delay: 0.04 * index, ease: EASE_OUT }}
       className="rounded-2xl border border-ink/10 bg-white overflow-hidden"
     >
+      <h3 className="m-0">
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
@@ -857,6 +858,7 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
           )}
         </span>
       </button>
+      </h3>
       <motion.div
         initial={false}
         animate={{

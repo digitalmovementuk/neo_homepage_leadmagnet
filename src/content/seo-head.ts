@@ -132,6 +132,7 @@ export function buildSeoJsonLd(): Record<string, unknown> {
   const webpage = {
     "@type": "WebPage",
     "@id": ID.page,
+    dateModified: "2026-11-26",
     url: SEO_CANONICAL,
     name: seoHead.title,
     description: seoHead.description,

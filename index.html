@@ -162,17 +162,21 @@
         ]
       }
     </script>
+    <!-- Startseite: WebPage mit Stand-Datum (nur Startseite; der Build entfernt es auf allen anderen Seiten) -->
+    <script type="application/ld+json" data-home-only="true">{"@context": "https://schema.org", "@type": "WebPage", "@id": "https://www.neotheagency.de/#webpage", "url": "https://www.neotheagency.de/", "name": "Online-Marketing-Agentur für Inhaber & KMU | NEO THE AGENCY", "description": "Online-Marketing-Agentur für Inhaber und Mittelstand: SEO, KI-Suche, Google Ads, Social Media und Websites aus einer Hand. Ziel: Google-Seite 1 in 90 Tagen.", "inLanguage": "de-DE", "isPartOf": {"@id": "https://www.neotheagency.de/#website"}, "about": {"@id": "https://www.neotheagency.de/#organization"}, "dateModified": "2026-11-26"}</script>
   </head>
   <body>
     <a class="skip-link" href="#main">Zum Inhalt springen</a>
 
-    <!-- LCP shell. This <img> paints before the JS bundle parses, so Lighthouse
+    <!-- LCP shell. This image paints before the JS bundle parses, so Lighthouse
          records LCP against the WebP poster (~31KB on mobile, ~67KB on desktop)
          instead of waiting for React to mount. Once React hydrates, the
          SlideVideo overlays this image; we then hide it so it doesn't burn CPU
          compositing under the live video. -->
     <img
       id="lcp-shell"
+      width="800"
+      height="518"
       src="/brand/hero-poster-mobile.webp"
       srcset="/brand/hero-poster-mobile.webp 800w, /brand/hero-poster.webp 1400w"
       sizes="100vw"

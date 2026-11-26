@@ -304,7 +304,7 @@ const de: Translations = {
     eyebrow: "Online-Marketing-Agentur · Performance-Marketing-Agentur",
     headlineTop: "Jede Woche neue Verkaufschancen.",
     headlineBottom: "Über Google, KI-Suche und eine Website, die liefert.",
-    sub: "Als Online-Marketing-Agentur machen wir Sie sichtbar in jeder relevanten Stadt. In jedem Stadtteil. Damit Anfragen reinkommen — nicht Hoffnungen.",
+    sub: "Als Online-Marketing-Agentur machen wir Sie sichtbar in jeder relevanten Stadt. In jedem Stadtteil. Damit Anfragen reinkommen — nicht Hoffnungen. Ein Team kümmert sich um SEO, Google Ads, Social Media und Ihre Website. Sie bekommen einen festen Ansprechpartner, einen Festpreis und jeden Monat einen Bericht, der zeigt, was sich bewegt hat.",
     services: [
       "Search Engine Optimization",
       "AI Search Optimization",
@@ -405,10 +405,10 @@ const de: Translations = {
 
   services: {
     eyebrow: "Was wir tun",
-    headlineMain: "SEO, Google Ads, Social Media, Websites.",
+    headlineMain: "Online-Marketing-Agentur für SEO, Google Ads, Social Media, Websites.",
     headlineSub: "Ein Team. Mehr Anfragen.",
     intro:
-      "Als Full-Service-Agentur arbeiten wir eng verzahnt. Wachstum lebt nicht in Silos. Klicken Sie durch — oder lehnen Sie sich zurück.",
+      "Als Online-Marketing-Agentur und Full-Service-Agentur arbeiten wir eng verzahnt. Wachstum lebt nicht in Silos. Klicken Sie durch — oder lehnen Sie sich zurück.",
     items: [
       {
         key: "seo",
@@ -654,7 +654,7 @@ const de: Translations = {
       eyebrow: "NEO THE AGENCY · Über uns",
       headlinePre: "Eine Berliner Agentur,",
       headlineSoft: "die das Handwerk wieder ernst nimmt.",
-      sub: "NEO THE AGENCY ist ein internationales Team aus Spezialisten, die Performance Marketing als Handwerk verstehen — nicht als Excel-Sport. Unser Versprechen: messbare Ergebnisse in 90 Tagen.",
+      sub: "NEO THE AGENCY ist ein internationales Team aus Spezialisten, die Performance Marketing als Handwerk verstehen — nicht als Excel-Sport. Unser Versprechen: messbare Ergebnisse in 90 Tagen. Sie sprechen direkt mit den Spezialisten, die Ihre Kampagnen, Inhalte und Websites umsetzen, ohne Account-Manager dazwischen. Gearbeitet wird in 90-Tage-Sprints mit klaren Zielen.",
       locations: "Berlin-Schöneberg",
     },
     pillars: [
@@ -1016,7 +1016,7 @@ const de: Translations = {
         eyebrow: "Google-Ads-Agentur · für Inhaber & Mittelstand",
         headlineTop: "ROI.",
         headlineBottom: "Nicht Reichweite.",
-        sub: "Als Google-Ads-Agentur bauen wir Kampagnen, die Anfragen drucken, nicht Klicks abrechnen. Eng gefasst, conversion-getrackt, wöchentlich auf Verschwendung getrimmt. Festpreis, kein Lock-in.",
+        sub: "Als Google-Ads-Agentur bauen wir Kampagnen, die Anfragen drucken, nicht Klicks abrechnen. Eng gefasst, conversion-getrackt, wöchentlich auf Verschwendung getrimmt. Festpreis, kein Lock-in. Wir prüfen jede Woche, welche Suchbegriffe Geld kosten und welche Anfragen bringen. Dazu gehören Search Ads, Performance Max, Conversion-Tracking und Landingpages, die aus Klicks Gespräche machen.",
         primaryCta: "Kostenloses Ads-Teardown",
         secondaryCta: "Erstgespräch buchen",
         chips: ["Search Ads", "Performance Max", "Conversion-Tracking", "Landingpage-Tuning"],
@@ -1024,7 +1024,7 @@ const de: Translations = {
       },
       whatItIs: {
         eyebrow: "Was wir tun",
-        headlineMain: "Bezahlter Traffic,",
+        headlineMain: "Google-Ads-Agentur: Bezahlter Traffic,",
         headlineSub: "der sich rechnet.",
         paragraphs: [
           "Google Ads ist kein Auktions-Glücksspiel. Es ist diszipliniertes Bieten auf kommerzielle Suchabsicht — kombiniert mit Landingpages, die das, was wir kaufen, auch in Anfragen verwandeln.",
@@ -1240,7 +1240,7 @@ const de: Translations = {
         eyebrow: "Social-Media-Agentur · für Inhaber & Mittelstand",
         headlineTop: "Anfragen.",
         headlineBottom: "Nicht Follower.",
-        sub: "Als Social-Media-Agentur liefern wir Short-Form-Video, Paid Social und Kreativ-Content, der gebuchte Termine bringt — nicht Likes. Persönlich betreut, content-fokussiert, ohne Buzzword-Bingo.",
+        sub: "Als Social-Media-Agentur liefern wir Short-Form-Video, Paid Social und Kreativ-Content, der gebuchte Termine bringt — nicht Likes. Persönlich betreut, content-fokussiert, ohne Buzzword-Bingo. Wir kombinieren organischen Content mit eng gefasstem Paid Social und verfolgen jede Anfrage bis zur Plattform zurück. Jeden Monat bekommen Sie eine Klartext-Notiz dazu.",
         primaryCta: "Content-Sample anfragen",
         secondaryCta: "Erstgespräch buchen",
         chips: ["Short-Form-Video", "Paid Social", "Kreativ-Production", "Posting-Plan"],
@@ -1248,7 +1248,7 @@ const de: Translations = {
       },
       whatItIs: {
         eyebrow: "Was wir tun",
-        headlineMain: "Content,",
+        headlineMain: "Social-Media-Agentur: Content,",
         headlineSub: "der konvertiert.",
         paragraphs: [
           "Social Media ist kein Beauty-Contest. Es ist ein Anfragen-Kanal — wenn die Inhalte zur richtigen Zielgruppe in der richtigen Suchabsicht laufen, ergeben sich gebuchte Termine, nicht Vanity-Likes.",
@@ -1464,7 +1464,7 @@ const de: Translations = {
         eyebrow: "Webdesign-Agentur · für Inhaber & Mittelstand",
         headlineTop: "Ihre Site,",
         headlineBottom: "als Asset.",
-        sub: "Als Webdesign-Agentur bauen wir moderne, mobile-first Websites, die schnell laden, gut aussehen und Besucher zu Anfragen machen. Auf Plattformen, die Sie selbst pflegen können.",
+        sub: "Als Webdesign-Agentur bauen wir moderne, mobile-first Websites, die schnell laden, gut aussehen und Besucher zu Anfragen machen. Auf Plattformen, die Sie selbst pflegen können. Dazu gehören gute Core Web Vitals und eine Conversion-Architektur, die auf echtem Nutzerverhalten beruht. So müssen Sie nicht für jeden Komma-Fix bei uns anfragen.",
         primaryCta: "Speed- & Conversion-Report",
         secondaryCta: "Erstgespräch buchen",
         chips: ["Mobile-First", "Core Web Vitals", "Conversion-Architektur", "Selbst editierbar"],
@@ -1472,8 +1472,8 @@ const de: Translations = {
       },
       whatItIs: {
         eyebrow: "Was wir tun",
-        headlineMain: "Websites,",
-        headlineSub: "die druckbar liefern.",
+        headlineMain: "Webdesign-Agentur: Websites,",
+        headlineSub: "die liefern.",
         paragraphs: [
           "Eine Website ist kein Visitenkarten-PDF online. Sie ist Ihr aktivster Verkäufer — 24/7, ohne Krankheitstage. Wenn sie schlecht ist, kostet sie täglich Geld. Wenn sie gut ist, druckt sie Anfragen.",
           "Bei NEO als Webdesign-Agentur heißt das: Mobile-First-Design, Core Web Vitals unter 2,5 s LCP, Conversion-Architektur basierend auf echtem Nutzerverhalten. Plus: alle Inhalte selbst editierbar — Sie sind nicht für jeden Komma-Fix abhängig.",

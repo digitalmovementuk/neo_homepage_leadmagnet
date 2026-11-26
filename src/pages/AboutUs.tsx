@@ -98,6 +98,8 @@ function AboutHero() {
       >
         <img
           src={HERO_IMAGE}
+          width={1600}
+          height={1066}
           alt=""
           className="h-full w-full object-cover"
           loading="eager"
@@ -223,12 +225,12 @@ function Pillars() {
             >
               {isEN ? (
                 <>
-                  Three statements.{" "}
+                  NEO THE AGENCY: Three statements.{" "}
                   <span className="text-ink/55">One way of working.</span>
                 </>
               ) : (
                 <>
-                  Drei Sätze.{" "}
+                  NEO THE AGENCY: Drei Sätze.{" "}
                   <span className="text-ink/55">Eine Arbeitsweise.</span>
                 </>
               )}
@@ -238,7 +240,7 @@ function Pillars() {
             <p className="mt-5 mx-auto max-w-[58ch] text-[15px] leading-relaxed text-ink-soft sm:text-[16.5px]">
               {isEN
                 ? "Every promise we make to clients lines up against these. They sit on the studio wall, and they sit in every brief we accept — or decline."
-                : "Jedes Versprechen an unsere Kunden misst sich daran. Sie hängen im Studio und stehen in jedem Briefing, das wir annehmen — oder ablehnen."}
+                : "Bei NEO THE AGENCY misst sich jedes Versprechen an unsere Kunden daran. Sie hängen im Studio und stehen in jedem Briefing, das wir annehmen — oder ablehnen."}
             </p>
           </Reveal>
         </div>
@@ -469,6 +471,8 @@ function FounderBio() {
               <div className="relative aspect-[4/5] overflow-hidden rounded-[28px] bg-surface-2 shadow-[0_36px_90px_-36px_rgba(38,39,47,0.32)] sm:rounded-[36px]">
                 <motion.img
                   src={FOUNDER_IMAGE}
+                  width={426}
+                  height={426}
                   alt={`${t.founder.signatureBlock}`}
                   style={{ y: imgY }}
                   className="absolute inset-0 h-[112%] w-full object-cover"
@@ -586,6 +590,8 @@ function Studio() {
       >
         <img
           src={STUDIO_IMAGE}
+          width={1600}
+          height={1068}
           alt=""
           className="h-full w-full object-cover"
           loading="lazy"
@@ -738,6 +744,8 @@ function TeamCard({
       <div className="relative aspect-[4/5] overflow-hidden bg-surface-2">
         <motion.img
           src={member.image}
+          width={800}
+          height={1200}
           alt={`${member.name}, ${member.role}`}
           style={{ y: portraitY }}
           className="absolute inset-0 h-[112%] w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"

@@ -37,6 +37,8 @@ export function FounderNote() {
               <div className="relative aspect-[4/5] rounded-[28px] sm:rounded-[36px] overflow-hidden bg-surface-2 shadow-[0_30px_80px_-30px_rgba(38,39,47,0.25)]">
                 <motion.img
                   src={`${import.meta.env.BASE_URL}brand/raoul-founder.png`}
+                  width={426}
+                  height={426}
                   alt={t.founder.signatureBlock}
                   style={{ y: portraitY }}
                   className="absolute inset-0 h-[112%] w-full object-cover"

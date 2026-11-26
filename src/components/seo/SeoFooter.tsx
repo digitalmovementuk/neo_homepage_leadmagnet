@@ -112,7 +112,7 @@ export function SeoFooter() {
         <PlatformReviewLinks forceDe />
 
         <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-ink/10 pt-6 text-[13px] text-ink-muted sm:mt-12 sm:flex-row">
-          <p className="text-center sm:text-left">{footer.copyright}</p>
+          <p className="text-center sm:text-left">{footer.copyright} · Stand: 26.11.2026</p>
           <div className="flex items-center gap-6">
             <Link to="/impressum" className="inline-flex min-h-[44px] items-center transition-colors hover:text-ink">
               {footer.impressum}

@@ -1,9 +1,11 @@
 /**
- * Strukturierte Daten (JSON-LD) für Leistungsseiten, Über uns und Rechtsseiten · v1.1 (26.11.2026)
+ * Strukturierte Daten (JSON-LD) für Leistungsseiten, Über uns und Rechtsseiten · v1.2 (26.11.2026)
  * Eine Quelle für Browser (useDocumentHead) und Build (scripts/prerender-seo.mjs),
  * damit das Roh-HTML und die fertige Seite dieselben Daten tragen.
  *
  * Changelog
+ *   v1.2 (26.11.2026) dateModified auf jeder WebPage; FAQPage aus den sichtbaren FAQ der Leistungsseiten;
+ *        Über uns als ["WebPage","AboutPage"].
  *   v1.1 (26.11.2026) SERVICE_PATHS + ABOUT_PATH: flache Adressen je Fokus-Suchbegriff (/google-ads-agentur/ usw.).
  *   v1.0 (26.11.2026) Erste Fassung: Service + BreadcrumbList + WebPage; AboutPage; WebPage für Rechtsseiten;
  *        servicePageJsonLd/aboutPageJsonLd mit Fachbegriffen statt Werbe-Überschriften.
@@ -26,7 +28,7 @@ function breadcrumb(url: string, name: string, isEN: boolean): Ld {
   };
 }
 
-function webPage(type: string, url: string, name: string, description: string, isEN: boolean): Ld {
+function webPage(type: string | string[], url: string, name: string, description: string, isEN: boolean): Ld {
   return {
     "@type": type,
     "@id": `${url}#webpage`,
@@ -37,6 +39,7 @@ function webPage(type: string, url: string, name: string, description: string, i
     isPartOf: { "@id": WEBSITE_ID },
     about: { "@id": ORG_ID },
     breadcrumb: { "@id": `${url}#breadcrumb` },
+    dateModified: "2026-11-26",
   };
 }
 
@@ -47,8 +50,9 @@ export function serviceJsonLd(args: {
   title: string;
   description: string;
   isEN: boolean;
+  faq?: { q: string; a: string }[];
 }): Ld {
-  const { url, name, serviceType, title, description, isEN } = args;
+  const { url, name, serviceType, title, description, isEN, faq } = args;
   return {
     "@context": "https://schema.org",
     "@graph": [
@@ -68,12 +72,19 @@ export function serviceJsonLd(args: {
       },
       webPage("WebPage", url, title, description, isEN),
       breadcrumb(url, serviceType, isEN),
+      ...(faq && faq.length
+        ? [{
+            "@type": "FAQPage",
+            "@id": `${url}#faq`,
+            mainEntity: faq.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+          }]
+        : []),
     ],
   };
 }
 
 export function simplePageJsonLd(args: {
-  type: "AboutPage" | "WebPage";
+  type: string | string[];
   url: string;
   crumb: string;
   title: string;
@@ -104,16 +115,16 @@ export const SERVICE_PATHS: Record<string, string> = {
 export const ABOUT_PATH = "/neo-the-agency/";
 
 /** JSON-LD für die Leistungsseiten: dieselbe Funktion nutzt der Browser und der Build. */
-export function servicePageJsonLd(slug: string, title: string, description: string, isEN: boolean): Ld {
+export function servicePageJsonLd(slug: string, title: string, description: string, isEN: boolean, faq?: { q: string; a: string }[]): Ld {
   const names = SERVICE_NAMES[slug] ?? { de: [title, title], en: [title, title] };
   const [name, serviceType] = isEN ? names.en : names.de;
-  return serviceJsonLd({ url: `${SITE_ORIGIN}${SERVICE_PATHS[slug] ?? `/${slug}/`}`, name, serviceType, title, description, isEN });
+  return serviceJsonLd({ url: `${SITE_ORIGIN}${SERVICE_PATHS[slug] ?? `/${slug}/`}`, name, serviceType, title, description, isEN, faq });
 }
 
 /** JSON-LD für die Über-uns-Seite (eine Adresse für beide Sprachen). */
 export function aboutPageJsonLd(title: string, description: string, isEN: boolean): Ld {
   return simplePageJsonLd({
-    type: "AboutPage",
+    type: ["WebPage", "AboutPage"],
     url: `${SITE_ORIGIN}${ABOUT_PATH}`,
     crumb: isEN ? "About" : "Über uns",
     title,
