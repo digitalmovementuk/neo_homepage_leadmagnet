@@ -363,6 +363,14 @@ const HeroSlideView = ({
               <motion.div
                 initial={false}
                 animate={{ opacity: isActive ? 1 : 0.3, y: 0 }}
+                transition={{ duration: 0.6, delay: isActive ? 0.5 : 0 }}
+              >
+                <CoFounders />
+              </motion.div>
+
+              <motion.div
+                initial={false}
+                animate={{ opacity: isActive ? 1 : 0.3, y: 0 }}
                 transition={{ duration: 0.6, delay: isActive ? 0.55 : 0 }}
                 className="mt-5 flex w-full flex-col items-center gap-2.5 md:hidden"
               >
@@ -407,6 +415,46 @@ const HeroSlideView = ({
     </article>
   );
 };
+
+/** Co-Founders — two small overlapping real portraits with a thin brand-gradient ring. */
+const FOUNDERS = [
+  { src: "brand/founders/johnny-kaluc-120.webp", name: "Johnny Kaluc" },
+  { src: "brand/founders/raoul-mueller-120.webp", name: "Raoul Müller" },
+];
+
+function CoFounders() {
+  return (
+    <div className="mt-3 flex items-center gap-2.5 sm:mt-5">
+      <div className="flex -space-x-2.5">
+        {FOUNDERS.map((f, i) => (
+          <span
+            key={f.name}
+            className="relative block h-8 w-8 rounded-full bg-brand-gradient p-[1.5px] shadow-[0_4px_14px_rgba(0,0,0,0.35)] sm:h-9 sm:w-9"
+            style={{ zIndex: FOUNDERS.length - i }}
+          >
+            <img
+              src={`${import.meta.env.BASE_URL}${f.src}`}
+              alt={f.name}
+              width={36}
+              height={36}
+              loading="eager"
+              decoding="async"
+              className="h-full w-full rounded-full border border-black/60 object-cover"
+            />
+          </span>
+        ))}
+      </div>
+      <p className="text-left leading-tight">
+        <span className="block text-[10px] font-semibold uppercase tracking-[0.2em] text-white/60 sm:text-[10.5px]">
+          Co-Founders
+        </span>
+        <span className="block text-[12.5px] font-medium text-white/85 sm:text-[13px]">
+          Johnny Kaluc &amp; Raoul Müller
+        </span>
+      </p>
+    </div>
+  );
+}
 
 function SlideVideo({
   file,
