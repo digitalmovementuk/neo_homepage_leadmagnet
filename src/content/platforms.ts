@@ -1,10 +1,13 @@
 /**
- * Bewertungs- und Profilplattformen + Social-Profile von NEO THE AGENCY · v1.8 (25.11.2026)
+ * Bewertungs- und Profilplattformen + Social-Profile von NEO THE AGENCY · v1.9 (26.11.2026)
  * Eine Quelle für: Vertrauensleiste im ersten Bildschirm, Bewertungsblock im Fußbereich
  * und Organization.sameAs im strukturierten Datensatz (JSON-LD).
  * Nur geprüfte Adressen. Keine Sterne, Punktzahlen oder Bewertungsanzahlen (es gibt noch keine echten Bewertungen).
  *
  * Changelog
+ * - v1.9 (26.11.2026): Clutch-Profil öffentlich (Clutch-Mail „Your Profile is Published“, in Chrome geprüft:
+ *   clutch.co/profile/neo-agency-0 = NEO THE AGENCY, Berlin). Hero-Band verlinkt jetzt auf das Profil, Fußbereich
+ *   bleibt beim Bewertungsformular, Clutch steht jetzt in sameAs.
  * - v1.8 (25.11.2026): DesignRush ergänzt (Profil designrush.com/agency/profile/neo-the-agency jetzt öffentlich, in Chrome
  *   geprüft: NEO THE AGENCY, Kolonnenstraße 8, 10827 Berlin, neotheagency.de). Hero-Band, Fußbereich und sameAs.
  *   Bewertungslink = Profilseite (dort „Submit a review“; dessen Ziel /submit/review/neo-the-agency zeigt am 25.11. noch 404).
@@ -179,11 +182,9 @@ export const PLATFORMS: Platform[] = [
   {
     key: "clutch",
     name: "Clutch",
-    profileUrl: "https://review.clutch.co/review?provider_id=2778599",
+    profileUrl: "https://clutch.co/profile/neo-agency-0",
     reviewUrl: "https://review.clutch.co/review?provider_id=2778599",
     hasReviewForm: true,
-    /** Noch keine öffentliche Profilseite, nur das Bewertungsformular: darum nicht in sameAs. */
-    inSameAs: false,
     logo: "logos/platforms/clutch.svg",
     logoWhite: "logos/platforms/clutch-white.svg",
     width: 406,
