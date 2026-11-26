@@ -14,6 +14,7 @@
  * dist/index.html (Startseite) wird nur gelesen, nie verändert.
  *
  * Changelog
+ *   v1.4 (26.11.2026) /datenschutz: Titel „Datenschutzerklärung · NEO THE AGENCY" (passt zur Überschrift; vorher „Datenschutz · NEO THE AGENCY").
  *   v1.3 (24.11.2026) /services/google-ads, /services/social-media, /services/websites und /uber-uns bekommen
  *        eigenes statisches HTML mit eigener Canonical, og:url, Titel, Beschreibung, og:/twitter:-Titel und -Beschreibung
  *        (Werte aus translations.de über routeHeads). Sichtbar unverändert.
@@ -129,7 +130,7 @@ try {
   const origin = new URL(h.canonical).origin;
   for (const page of [
     { path: "/impressum", title: "Impressum · NEO THE AGENCY" },
-    { path: "/datenschutz", title: "Datenschutz · NEO THE AGENCY" },
+    { path: "/datenschutz", title: "Datenschutzerklärung · NEO THE AGENCY" },
   ]) {
     let legal = homeShell;
     const url = origin + page.path;

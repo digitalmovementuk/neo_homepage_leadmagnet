@@ -5,7 +5,7 @@ export function Datenschutz() {
     <LegalPage
       eyebrow="Rechtliches"
       title="Datenschutzerklärung"
-      docTitle="Datenschutz · NEO THE AGENCY"
+      docTitle="Datenschutzerklärung · NEO THE AGENCY"
       canonical="https://www.neotheagency.de/datenschutz"
     >
       <LegalSection title="1. Verantwortlicher">
