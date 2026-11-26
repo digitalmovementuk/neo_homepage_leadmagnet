@@ -607,17 +607,18 @@ const de: Translations = {
       {
         title: "Leistungen",
         links: [
-          { label: "SEO", href: "#services" },
-          { label: "Google Ads", href: "#services" },
-          { label: "Social Media", href: "#services" },
-          { label: "Websites", href: "#services" },
+          { label: "SEO", href: "/seo-agentur/" },
+          { label: "Google Ads", href: "/google-ads-agentur/" },
+          { label: "Social Media", href: "/social-media-agentur/" },
+          { label: "Websites", href: "/webdesign-agentur/" },
         ],
       },
       {
         title: "Agentur",
         links: [
-          { label: "Kundenprojekte", href: "#cases" },
-          { label: "Kontakt", href: "#contact" },
+          { label: "Über uns", href: "/neo-the-agency/" },
+          { label: "Kundenprojekte", href: "/#cases" },
+          { label: "Kontakt", href: "/#contact" },
         ],
       },
     ],
@@ -2000,17 +2001,18 @@ const en: Translations = {
       {
         title: "Services",
         links: [
-          { label: "SEO", href: "#services" },
-          { label: "Google Ads", href: "#services" },
-          { label: "Social Media", href: "#services" },
-          { label: "Websites", href: "#services" },
+          { label: "SEO", href: "/seo-agentur/" },
+          { label: "Google Ads", href: "/google-ads-agentur/" },
+          { label: "Social Media", href: "/social-media-agentur/" },
+          { label: "Websites", href: "/webdesign-agentur/" },
         ],
       },
       {
         title: "Agency",
         links: [
-          { label: "Case studies", href: "#cases" },
-          { label: "Contact", href: "#contact" },
+          { label: "About us", href: "/neo-the-agency/" },
+          { label: "Case studies", href: "/#cases" },
+          { label: "Contact", href: "/#contact" },
         ],
       },
     ],

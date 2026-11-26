@@ -71,12 +71,12 @@ export const seoDe = {
     servicesLabel: "Leistungen",
     services: [
       { label: "SEO", to: SEO_PATH, hash: "" },
-      { label: "Google Ads", to: "/", hash: "#services" },
-      { label: "Websites", to: "/", hash: "#services" },
-      { label: "Social Media", to: "/", hash: "#services" },
+      { label: "Google Ads", to: "/google-ads-agentur/", hash: "" },
+      { label: "Websites", to: "/webdesign-agentur/", hash: "" },
+      { label: "Social Media", to: "/social-media-agentur/", hash: "" },
     ],
     links: [
-      { label: "Über uns", to: "/", hash: "#founder" },
+      { label: "Über uns", to: "/neo-the-agency/", hash: "" },
       { label: "Kundenprojekte", to: "/", hash: "#cases" },
       { label: "Kontakt", to: SEO_PATH, hash: `#${anchors.finalCta}` },
     ],

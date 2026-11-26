@@ -47,9 +47,15 @@ export function Footer() {
               <ul className="space-y-2.5">
                 {section.links.map((l) => (
                   <li key={l.label}>
-                    <a href={l.href} className={linkCls}>
-                      {l.label}
-                    </a>
+                    {l.href.startsWith("/") && !l.href.includes("#") ? (
+                      <Link to={l.href} className={linkCls}>
+                        {l.label}
+                      </Link>
+                    ) : (
+                      <a href={l.href} className={linkCls}>
+                        {l.label}
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>
