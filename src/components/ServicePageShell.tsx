@@ -150,6 +150,11 @@ function Hero({
             } as Record<string, string>)}
           />
         )}
+        {/* QA 26.11.2026: phone-only tint so white hero copy stays legible over bright video frames. */}
+        <div
+          className="absolute inset-0 pointer-events-none md:hidden"
+          style={{ background: "rgba(15,8,32,0.58)" }}
+        />
         <div
           className="absolute inset-x-0 top-0 h-32 pointer-events-none"
           style={{
