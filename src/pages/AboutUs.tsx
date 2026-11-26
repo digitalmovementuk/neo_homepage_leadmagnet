@@ -455,7 +455,7 @@ function FounderBio() {
       className="surface-light-2 relative overflow-hidden pt-16 sm:pt-20 md:pt-24 pb-16 sm:pb-20 md:pb-24"
     >
       <div className="container-v3 relative">
-        <div className="grid items-start gap-10 sm:gap-12 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-16">
+        <div className="grid items-start gap-10 sm:gap-12 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)] lg:gap-12">
           <Reveal>
             <div className="relative mx-auto w-full max-w-[460px] lg:mx-0 lg:max-w-none">
               <div className="relative aspect-[4/5] overflow-hidden rounded-[28px] bg-surface-2 shadow-[0_36px_90px_-36px_rgba(38,39,47,0.32)] sm:rounded-[36px]">
