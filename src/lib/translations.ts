@@ -320,7 +320,7 @@ const de: Translations = {
 
   testimonials: {
     eyebrow: "Stimmen unserer Kunden",
-    headline: "In ihren eigenen Worten.",
+    headline: "Was unsere Kunden über NEO sagen.",
     description:
       "Fünf Inhaber erzählen, was sich in den ersten 90 Tagen mit NEO messbar verändert hat.",
     prevLabel: "Vorherige Stimme",
@@ -405,8 +405,8 @@ const de: Translations = {
 
   services: {
     eyebrow: "Was wir tun",
-    headlineMain: "Vier Disziplinen.",
-    headlineSub: "Eine Pipeline.",
+    headlineMain: "SEO, Google Ads, Social Media, Websites.",
+    headlineSub: "Ein Team. Mehr Anfragen.",
     intro:
       "Eng verzahnt. Wachstum lebt nicht in Silos. Klicken Sie durch — oder lehnen Sie sich zurück.",
     items: [
@@ -466,8 +466,8 @@ const de: Translations = {
   },
 
   cases: {
-    eyebrow: "Kundenprojekte",
-    headlineMain: "Echte Marken.",
+    eyebrow: "Referenzen",
+    headlineMain: "Echte Kundenprojekte.",
     headlineSub: "Echte Zahlen.",
     intro:
       "Eine Auswahl. Alle Kunden seit fünf Jahren am Tisch. Oder gar nicht erst angefangen.",
@@ -477,7 +477,7 @@ const de: Translations = {
 
   comparison: {
     eyebrow: "NEO vs. Andere",
-    headlineMain: "Was wir anders machen.",
+    headlineMain: "Was NEO anders macht.",
     headlineSub: "Sechs Punkte.",
     intro:
       "Damit Sie wissen, worauf Sie sich einlassen. Bevor Sie sich einlassen.",
@@ -518,8 +518,8 @@ const de: Translations = {
 
   process: {
     eyebrow: "Der 90-Tage-Sprint",
-    headlineMain: "Vier Meilensteine.",
-    headlineSub: "Keine Überraschungen.",
+    headlineMain: "Google Seite 1.",
+    headlineSub: "In 90 Tagen. Vier Meilensteine.",
     intro:
       "Was an Tag 1, 30, 60, 90 passiert. Wir sagen es. Wir halten uns dran. Jeden Monat: die Mathe.",
     steps: [
@@ -556,7 +556,7 @@ const de: Translations = {
 
   metrics: {
     eyebrow: "Zahlen",
-    headlineMain: "Was wirklich zählt.",
+    headlineMain: "Ergebnisse, die zählen.",
     headlineSub: "Anfragen. Nicht Klicks.",
     intro: "Vier Zahlen aus laufenden Kunden. Gemessen. Nicht behauptet.",
     items: [
@@ -568,8 +568,8 @@ const de: Translations = {
 
   founder: {
     eyebrow: "Eine Notiz vom Gründer",
-    headlinePre: "Sie reden mit der Person,",
-    headlineSoft: "die auch liefert.",
+    headlinePre: "Sie sprechen mit dem Gründer,",
+    headlineSoft: "der auch liefert.",
     paragraphs: [
       "Ich habe NEO gegründet, weil ich es leid war. Gute Firmen zahlen Tausende pro Monat. Bekommen Eitelkeitsmetriken. Keine Anfragen im Posteingang. Das ändert sich hier.",
       "Bei NEO: kein Account-Manager mit Excel. Sie kriegen mich am Hörer. Festpreis. Kein Lock-in. Ein 90-Tage-Sprint mit meinem Namen drauf.",
@@ -581,8 +581,8 @@ const de: Translations = {
 
   contact: {
     eyebrow: "Schreiben Sie uns",
-    headlinePre: "Lassen Sie uns",
-    headlineSoft: "starten.",
+    headlinePre: "Lassen Sie uns reden.",
+    headlineSoft: "Kostenlos.",
     intro:
       "Kostenloses Erstgespräch. Werktags antworte ich in 24 h. Persönlich.",
     form: {
