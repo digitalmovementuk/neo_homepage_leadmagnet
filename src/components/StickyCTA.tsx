@@ -10,29 +10,29 @@ import { useT } from "../lib/i18n";
  * a plum-tinted ring pulse on both the bar and its inner CTA (synced 2.4s
  * beat). Only blends in once the user has scrolled the hero out of view —
  * the hero already has its own "Start" CTA, so showing this bar over the
- * hero would be redundant. It fades in after the Snapshot section and only
+ * hero would be redundant. It fades in once the hero has scrolled away and only
  * fades out once the footer is fully visible.
  */
 export function StickyCTA() {
   const t = useT();
   const [show, setShow] = useState(false);
 
-  // The bar appears after the long Snapshot section has fully passed. It
+  // The bar appears once the hero (#top) has fully passed. It
   // hides as soon as the #contact section enters the viewport — that
   // section already has its own primary CTA, so the floating bar would
   // duplicate the ask.
   useEffect(() => {
-    const snapshot = document.getElementById("snapshot");
+    const hero = document.getElementById("top");
     const contact = document.getElementById("contact");
-    if (!snapshot || !contact) return;
+    if (!hero || !contact) return;
     const onScroll = () => {
       const vh = window.innerHeight;
-      const snapshotRect = snapshot.getBoundingClientRect();
+      const heroRect = hero.getBoundingClientRect();
       const contactRect = contact.getBoundingClientRect();
       const navClearance = Math.min(96, vh * 0.14);
-      const afterSnapshot = snapshotRect.bottom <= navClearance;
+      const afterHero = heroRect.bottom <= navClearance;
       const contactVisible = contactRect.top < vh && contactRect.bottom > 0;
-      setShow(afterSnapshot && !contactVisible);
+      setShow(afterHero && !contactVisible);
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });

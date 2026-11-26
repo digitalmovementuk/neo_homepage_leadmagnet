@@ -31,11 +31,6 @@ export type Translations = {
     pauseLabel: string;
     playLabel: string;
   };
-  snapshot: {
-    title: string;
-    tagline: string;
-    items: { index: string; label: string; headline: string; detail: string }[];
-  };
   testimonials: {
     eyebrow: string;
     headline: string;
@@ -322,30 +317,6 @@ const de: Translations = {
     playLabel: "Hero-Video starten",
   },
 
-  snapshot: {
-    title: "Snapshot",
-    tagline: "30 Sekunden. Was, für wen, was Sie bekommen.",
-    items: [
-      {
-        index: "01",
-        label: "Was",
-        headline: "Mehr Anfragen.",
-        detail: "Performance Marketing & SEO. Messbar. Im Umsatz.",
-      },
-      {
-        index: "02",
-        label: "Für wen",
-        headline: "Inhaber & Mittelstand.",
-        detail: "Beratung. Handwerk. Dienstleister. B2B.",
-      },
-      {
-        index: "03",
-        label: "Was Sie bekommen",
-        headline: "Premium-Website. SEO-Pages.",
-        detail: "Eine Website, die liefert. Service-Pages, die ranken. Ab Tag 1.",
-      },
-    ],
-  },
 
   testimonials: {
     eyebrow: "Stimmen unserer Kunden",
@@ -1739,30 +1710,6 @@ const en: Translations = {
     playLabel: "Play hero video",
   },
 
-  snapshot: {
-    title: "Snapshot",
-    tagline: "30 seconds. What, for whom, what you get.",
-    items: [
-      {
-        index: "01",
-        label: "What",
-        headline: "More enquiries.",
-        detail: "Performance marketing & SEO. Measurable. In revenue.",
-      },
-      {
-        index: "02",
-        label: "For whom",
-        headline: "For owners & SMEs.",
-        detail: "Consultancies. Trades. Services. B2B.",
-      },
-      {
-        index: "03",
-        label: "What you get",
-        headline: "Premium website. SEO pages.",
-        detail: "A website that ships. Service pages that rank. From day one.",
-      },
-    ],
-  },
 
   testimonials: {
     eyebrow: "Voices of our clients",

@@ -1,5 +1,4 @@
 import { Hero } from "../components/Hero";
-import { AgencySnapshot } from "../components/AgencySnapshot";
 import { ServicesCarousel } from "../components/ServicesCarousel";
 import { ProcessTimeline } from "../components/ProcessTimeline";
 import { Metrics } from "../components/Metrics";
@@ -13,7 +12,6 @@ export function HomePage() {
   return (
     <>
       <Hero />
-      <AgencySnapshot />
       <ServicesCarousel />
       <ProcessTimeline />
       <Metrics />
