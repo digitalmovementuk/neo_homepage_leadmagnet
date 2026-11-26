@@ -82,7 +82,7 @@ export function PlatformTrustStrip({ tone = "dark", forceDe, pill, align = "resp
                   alt={en ? p.altEn : p.altDe}
                   width={p.width}
                   height={p.height}
-                  loading="lazy"
+                  loading="eager"
                   decoding="async"
                   className={`w-auto ${STRIP_H[p.key] ?? "h-[14px] sm:h-[17px]"}`}
                 />

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import { services as servicesFallback } from "../content";
 import { Reveal } from "../lib/Reveal";
+import { useLazyVideoSrc } from "../lib/useLazyVideoSrc";
 import { useT, useLang } from "../lib/i18n";
 
 const SERVICE_ROUTE_MAP: Record<string, string> = {
@@ -300,6 +301,7 @@ function ServiceVideo({ file }: { file: string }) {
     io.observe(v);
     return () => io.disconnect();
   }, [file]);
+  const src = useLazyVideoSrc(ref, `${import.meta.env.BASE_URL}${file}`);
   return (
     <video
       ref={ref}
@@ -307,13 +309,13 @@ function ServiceVideo({ file }: { file: string }) {
       loop
       muted
       playsInline
-      preload="metadata"
+      preload={src ? "metadata" : "none"}
       // @ts-expect-error fetchpriority is missing from React types
       fetchpriority="low"
       // object-cover fills both axes; the extra scale crops the brand padding
       // around the centred logo so the animation reads boldly to the edges.
       className="absolute inset-0 h-full w-full object-cover scale-[1.18] origin-center"
-      src={`${import.meta.env.BASE_URL}${file}`}
+      src={src}
       aria-hidden
       {...({ "webkit-playsinline": "true", "x5-playsinline": "true" } as Record<string, string>)}
     />

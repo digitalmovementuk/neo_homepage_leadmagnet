@@ -1,5 +1,7 @@
 /**
- * Bewertungsblock im Fußbereich · v1.4 (25.11.2026)
+ * Bewertungsblock im Fußbereich · v1.5 (26.11.2026)
+ * v1.5: Logos laden sofort (loading="eager"), nicht erst beim Scrollen; vorher standen sie
+ *   hinter allen Videos in der Warteschlange und fehlten auf langsamen Verbindungen.
  * v1.4: Clutch dazu (neun Karten, ab sm drei Spalten = drei volle Reihen; mobil steht die neunte Karte mittig).
  * v1.3: Tupalo und Facebook dazu (acht Karten, ab sm vier Spalten, Kartentext in einer Zeile); Facebook steht nur hier, nicht im Hero.
  * v1.2: nur Plattformen mit eigener Bewertungsseite (hasReviewForm); jede Karte öffnet die Seite zum Bewerten.
@@ -134,7 +136,7 @@ export function PlatformReviewLinks({ forceDe }: { forceDe?: boolean }) {
                     alt={en ? p.altEn : p.altDe}
                     width={p.width}
                     height={p.height}
-                    loading="lazy"
+                    loading="eager"
                     decoding="async"
                     className={`w-auto ${CARD_H[p.key] ?? "h-[20px]"}`}
                   />

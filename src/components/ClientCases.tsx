@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion
 import { caseStudies, caseStudiesDe } from "../content";
 import type { CaseStudy } from "../content";
 import { Reveal } from "../lib/Reveal";
+import { useLazyVideoSrc } from "../lib/useLazyVideoSrc";
 import { useT, useLang } from "../lib/i18n";
 
 // A faint colour wash over each video so cards retain brand variety
@@ -385,20 +386,25 @@ function StoryVideo({
   file: string;
   videoRef: (el: HTMLVideoElement | null) => void;
 }) {
+  const own = useRef<HTMLVideoElement | null>(null);
+  const src = useLazyVideoSrc(own, `${import.meta.env.BASE_URL}${file}`);
   return (
     <video
-      ref={videoRef}
+      ref={(el) => {
+        own.current = el;
+        videoRef(el);
+      }}
       autoPlay
       loop
       muted
       playsInline
-      preload="metadata"
+      preload={src ? "metadata" : "none"}
       // @ts-expect-error fetchpriority is missing from React types
       fetchpriority="low"
       // pointer-events-none — keeps the video purely visual so iOS can't
       // intercept taps; the slide-local "Next" button beneath catches them.
       className="absolute inset-0 h-full w-full object-cover pointer-events-none"
-      src={`${import.meta.env.BASE_URL}${file}`}
+      src={src}
       aria-hidden
       {...({ "webkit-playsinline": "true", "x5-playsinline": "true" } as Record<string, string>)}
     />
@@ -427,6 +433,7 @@ function CaseVideo({ file, poster }: { file: string; poster?: string }) {
     io.observe(v);
     return () => io.disconnect();
   }, [file]);
+  const src = useLazyVideoSrc(ref, `${import.meta.env.BASE_URL}${file}`);
   return (
     <video
       ref={ref}
@@ -434,7 +441,7 @@ function CaseVideo({ file, poster }: { file: string; poster?: string }) {
       loop
       muted
       playsInline
-      preload="metadata"
+      preload={src ? "metadata" : "none"}
       poster={poster}
       // @ts-expect-error fetchpriority is missing from React types
       fetchpriority="low"
@@ -442,7 +449,7 @@ function CaseVideo({ file, poster }: { file: string; poster?: string }) {
       // can't intercept taps (which would toggle native playback / restart
       // the loop). All taps reach the slide's "Next case" button beneath.
       className="absolute inset-0 h-full w-full object-cover pointer-events-none"
-      src={`${import.meta.env.BASE_URL}${file}`}
+      src={src}
       aria-hidden
       {...({ "webkit-playsinline": "true", "x5-playsinline": "true" } as Record<string, string>)}
     />

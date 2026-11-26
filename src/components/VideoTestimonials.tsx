@@ -8,6 +8,7 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 import { useT } from "../lib/i18n";
+import { useLazyVideoSrc } from "../lib/useLazyVideoSrc";
 
 /**
  * VideoTestimonials — premium video-Stimmen direkt nach der Mikro-Sektion.
@@ -100,6 +101,7 @@ function TestimonialCard({ t, i, total, labels, unmutedId, onUnmute }: CardProps
   const toggleMute = () => onUnmute(isUnmuted ? null : t.name);
 
   const base = import.meta.env.BASE_URL;
+  const videoSrc = useLazyVideoSrc(videoRef, t.videoSrc ? `${base}${t.videoSrc}#t=0.1` : undefined);
 
   return (
     <motion.li
@@ -130,14 +132,14 @@ function TestimonialCard({ t, i, total, labels, unmutedId, onUnmute }: CardProps
 
         <video
           ref={videoRef}
-          src={t.videoSrc ? `${base}${t.videoSrc}#t=0.1` : undefined}
+          src={videoSrc}
           poster={t.posterSrc ? `${base}${t.posterSrc}` : undefined}
           className="absolute inset-0 w-full h-full object-cover"
           autoPlay
           loop
           muted
           playsInline
-          preload="metadata"
+          preload={videoSrc ? "metadata" : "none"}
         />
 
         <div
