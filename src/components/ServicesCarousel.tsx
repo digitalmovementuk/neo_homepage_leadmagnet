@@ -104,7 +104,7 @@ export function ServicesCarousel() {
       className="surface-light relative flex flex-col pt-16 sm:pt-20 md:pt-24 pb-16 sm:pb-20 md:pb-24 md:min-h-[680px]"
     >
       <div className="container-v3 shrink-0">
-        <div className="grid lg:grid-cols-[1.6fr_1fr] gap-4 lg:gap-10 items-end text-center lg:text-left">
+        <div className="grid lg:grid-cols-[3fr_1fr] gap-4 lg:gap-10 items-end text-center lg:text-left">
           <div>
             <Reveal>
               <p className="eyebrow text-ink-muted">{t.services.eyebrow}</p>

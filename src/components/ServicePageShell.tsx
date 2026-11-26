@@ -362,7 +362,7 @@ function Outcomes({ page }: { page: ServicePage[keyof ServicePage] }) {
       style={{ background: "var(--surface-light-2)" }}
     >
       <div className="container-v3">
-        <div className="grid lg:grid-cols-[1.2fr_1fr] gap-6 lg:gap-12 items-end text-center lg:text-left">
+        <div className="grid lg:grid-cols-[1.6fr_1fr] gap-6 lg:gap-10 items-end text-center lg:text-left">
           <div>
             <Reveal>
               <p className="eyebrow text-ink-muted">{page.outcomes.eyebrow}</p>
@@ -555,7 +555,7 @@ function Deliverables({ page }: { page: ServicePage[keyof ServicePage] }) {
       style={{ background: "#0a0a0c" }}
     >
       <div className="container-v3">
-        <div className="grid lg:grid-cols-[1.2fr_1fr] gap-6 lg:gap-12 items-end text-center lg:text-left">
+        <div className="grid lg:grid-cols-[1.6fr_1fr] gap-6 lg:gap-10 items-end text-center lg:text-left">
           <div>
             <Reveal>
               <p className="eyebrow text-white/55">
@@ -648,7 +648,7 @@ function ProcessTimelineService({
       style={{ background: "var(--surface-light-2)" }}
     >
       <div className="container-v3">
-        <div className="grid lg:grid-cols-[1.2fr_1fr] gap-6 lg:gap-12 items-end text-center lg:text-left">
+        <div className="grid lg:grid-cols-[1.6fr_1fr] gap-6 lg:gap-10 items-end text-center lg:text-left">
           <div>
             <Reveal>
               <p className="eyebrow text-ink-muted">
@@ -731,7 +731,7 @@ function Stack({ page }: { page: ServicePage[keyof ServicePage] }) {
       className="surface-light relative pt-16 sm:pt-20 md:pt-24 pb-16 sm:pb-20 md:pb-24"
     >
       <div className="container-v3">
-        <div className="max-w-[680px]">
+        <div className="max-w-[880px]">
           <Reveal>
             <p className="eyebrow text-ink-muted">{page.stack.eyebrow}</p>
           </Reveal>
@@ -744,7 +744,7 @@ function Stack({ page }: { page: ServicePage[keyof ServicePage] }) {
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
-            <p className="mt-6 text-[16px] sm:text-[17px] text-ink-soft leading-relaxed">
+            <p className="mt-6 max-w-[680px] text-[16px] sm:text-[17px] text-ink-soft leading-relaxed">
               {page.stack.intro}
             </p>
           </Reveal>
@@ -799,7 +799,7 @@ function FAQ({ page }: { page: ServicePage[keyof ServicePage] }) {
       style={{ background: "var(--surface-light-2)" }}
     >
       <div className="container-v3">
-        <div className="grid lg:grid-cols-[0.9fr_1.4fr] gap-10 lg:gap-16 items-start">
+        <div className="grid lg:grid-cols-[1.1fr_1.4fr] gap-10 lg:gap-12 items-start">
           <div>
             <Reveal>
               <p className="eyebrow text-ink-muted">{page.faq.eyebrow}</p>
