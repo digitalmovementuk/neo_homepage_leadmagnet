@@ -1,0 +1,507 @@
+{
+ "375": {
+  "fold": {
+   "bandTop": 714,
+   "bandBottom": 743,
+   "vh": 812,
+   "sideScroll": false
+  },
+  "vidsAtLoad": [
+   "hero.mp4",
+   "seo-logo.mp4",
+   "website-logo.mp4"
+  ],
+  "totalVideoRequests": 17,
+  "logoWaitMs": 1,
+  "logosOk": 10,
+  "logos": [
+   {
+    "s": "trustpilot.svg",
+    "ok": true,
+    "w": 82
+   },
+   {
+    "s": "provenexpert.svg",
+    "ok": true,
+    "w": 96
+   },
+   {
+    "s": "sortlist.svg",
+    "ok": true,
+    "w": 78
+   },
+   {
+    "s": "hotfrog.svg",
+    "ok": true,
+    "w": 80
+   },
+   {
+    "s": "showmelocal.svg",
+    "ok": true,
+    "w": 98
+   },
+   {
+    "s": "tupalo.svg",
+    "ok": true,
+    "w": 72
+   },
+   {
+    "s": "11880.svg",
+    "ok": true,
+    "w": 62
+   },
+   {
+    "s": "clutch.svg",
+    "ok": true,
+    "w": 67
+   },
+   {
+    "s": "designrush.svg",
+    "ok": true,
+    "w": 77
+   },
+   {
+    "s": "facebook.svg",
+    "ok": true,
+    "w": 101
+   }
+  ],
+  "play": {
+   "section0": [
+    {
+     "f": "hero.mp4#t=1.2",
+     "rs": 1,
+     "playing": true
+    }
+   ],
+   "section2": [
+    {
+     "f": "seo-logo.mp4",
+     "rs": 0,
+     "playing": false
+    },
+    {
+     "f": "google-ads-logo.mp4",
+     "rs": 0,
+     "playing": false
+    },
+    {
+     "f": "socials-logo.mp4",
+     "rs": 0,
+     "playing": false
+    }
+   ],
+   "section5": [
+    {
+     "f": "finance-skyline.mp4",
+     "rs": 0,
+     "playing": false
+    },
+    {
+     "f": "roofing.mp4",
+     "rs": 0,
+     "playing": false
+    }
+   ],
+   "section6": [
+    {
+     "f": "azura.mp4#t=0.1",
+     "rs": 0,
+     "playing": false
+    },
+    {
+     "f": "address.mp4#t=0.1",
+     "rs": 0,
+     "playing": false
+    }
+   ]
+  },
+  "sideScrollPx": 0,
+  "loadToFooterS": 8
+ },
+ "1440": {
+  "fold": {
+   "bandTop": 768,
+   "bandBottom": 805,
+   "vh": 900,
+   "sideScroll": false
+  },
+  "vidsAtLoad": [
+   "hero.mp4",
+   "seo-logo.mp4",
+   "website-logo.mp4"
+  ],
+  "totalVideoRequests": 17,
+  "logoWaitMs": 1,
+  "logosOk": 10,
+  "logos": [
+   {
+    "s": "trustpilot.svg",
+    "ok": true,
+    "w": 82
+   },
+   {
+    "s": "provenexpert.svg",
+    "ok": true,
+    "w": 96
+   },
+   {
+    "s": "sortlist.svg",
+    "ok": true,
+    "w": 78
+   },
+   {
+    "s": "hotfrog.svg",
+    "ok": true,
+    "w": 80
+   },
+   {
+    "s": "showmelocal.svg",
+    "ok": true,
+    "w": 98
+   },
+   {
+    "s": "tupalo.svg",
+    "ok": true,
+    "w": 72
+   },
+   {
+    "s": "11880.svg",
+    "ok": true,
+    "w": 62
+   },
+   {
+    "s": "clutch.svg",
+    "ok": true,
+    "w": 67
+   },
+   {
+    "s": "designrush.svg",
+    "ok": true,
+    "w": 77
+   },
+   {
+    "s": "facebook.svg",
+    "ok": true,
+    "w": 101
+   }
+  ],
+  "play": {
+   "section0": [
+    {
+     "f": "hero.mp4#t=1.2",
+     "rs": 0,
+     "playing": false
+    },
+    {
+     "f": "seo-logo.mp4",
+     "rs": 4,
+     "playing": true
+    }
+   ],
+   "section2": [
+    {
+     "f": "seo-logo.mp4",
+     "rs": 0,
+     "playing": false
+    },
+    {
+     "f": "google-ads-logo.mp4",
+     "rs": 0,
+     "playing": false
+    },
+    {
+     "f": "socials-logo.mp4",
+     "rs": 0,
+     "playing": false
+    }
+   ],
+   "section5": [
+    {
+     "f": "roofing.mp4",
+     "rs": 0,
+     "playing": false
+    },
+    {
+     "f": "cleaning.mp4",
+     "rs": 0,
+     "playing": false
+    }
+   ],
+   "section6": [
+    {
+     "f": "azura.mp4#t=0.1",
+     "rs": 0,
+     "playing": false
+    },
+    {
+     "f": "address.mp4#t=0.1",
+     "rs": 0,
+     "playing": false
+    },
+    {
+     "f": "cunos.mp4#t=0.1",
+     "rs": 0,
+     "playing": false
+    },
+    {
+     "f": "pentadoc.mp4#t=0.1",
+     "rs": 0,
+     "playing": false
+    }
+   ]
+  },
+  "sideScrollPx": 0,
+  "loadToFooterS": 9
+ },
+ "1440-slow3g": {
+  "fold": {
+   "bandTop": 768,
+   "bandBottom": 805,
+   "vh": 900,
+   "sideScroll": false
+  },
+  "vidsAtLoad": [
+   "hero.mp4",
+   "seo-logo.mp4",
+   "website-logo.mp4"
+  ],
+  "totalVideoRequests": 17,
+  "logoWaitMs": 1,
+  "logosOk": 10,
+  "logos": [
+   {
+    "s": "trustpilot.svg",
+    "ok": true,
+    "w": 82
+   },
+   {
+    "s": "provenexpert.svg",
+    "ok": true,
+    "w": 96
+   },
+   {
+    "s": "sortlist.svg",
+    "ok": true,
+    "w": 78
+   },
+   {
+    "s": "hotfrog.svg",
+    "ok": true,
+    "w": 80
+   },
+   {
+    "s": "showmelocal.svg",
+    "ok": true,
+    "w": 98
+   },
+   {
+    "s": "tupalo.svg",
+    "ok": true,
+    "w": 72
+   },
+   {
+    "s": "11880.svg",
+    "ok": true,
+    "w": 62
+   },
+   {
+    "s": "clutch.svg",
+    "ok": true,
+    "w": 67
+   },
+   {
+    "s": "designrush.svg",
+    "ok": true,
+    "w": 77
+   },
+   {
+    "s": "facebook.svg",
+    "ok": true,
+    "w": 101
+   }
+  ],
+  "play": {
+   "section0": [
+    {
+     "f": "hero.mp4#t=1.2",
+     "rs": 1,
+     "playing": true
+    },
+    {
+     "f": "seo-logo.mp4",
+     "rs": 0,
+     "playing": false
+    }
+   ],
+   "section2": [
+    {
+     "f": "google-ads-logo.mp4",
+     "rs": 0,
+     "playing": false
+    },
+    {
+     "f": "socials-logo.mp4",
+     "rs": 0,
+     "playing": false
+    },
+    {
+     "f": "website-logo.mp4",
+     "rs": 0,
+     "playing": false
+    }
+   ],
+   "section5": [
+    {
+     "f": "roofing.mp4",
+     "rs": 0,
+     "playing": false
+    },
+    {
+     "f": "cleaning.mp4",
+     "rs": 0,
+     "playing": false
+    }
+   ],
+   "section6": [
+    {
+     "f": "azura.mp4#t=0.1",
+     "rs": 0,
+     "playing": false
+    },
+    {
+     "f": "address.mp4#t=0.1",
+     "rs": 0,
+     "playing": false
+    },
+    {
+     "f": "cunos.mp4#t=0.1",
+     "rs": 0,
+     "playing": false
+    },
+    {
+     "f": "pentadoc.mp4#t=0.1",
+     "rs": 0,
+     "playing": false
+    }
+   ]
+  },
+  "sideScrollPx": 0,
+  "loadToFooterS": 28
+ },
+ "375-slow3g": {
+  "fold": {
+   "bandTop": 714,
+   "bandBottom": 743,
+   "vh": 812,
+   "sideScroll": false
+  },
+  "vidsAtLoad": [
+   "hero.mp4",
+   "seo-logo.mp4",
+   "website-logo.mp4"
+  ],
+  "totalVideoRequests": 17,
+  "logoWaitMs": 1,
+  "logosOk": 10,
+  "logos": [
+   {
+    "s": "trustpilot.svg",
+    "ok": true,
+    "w": 82
+   },
+   {
+    "s": "provenexpert.svg",
+    "ok": true,
+    "w": 96
+   },
+   {
+    "s": "sortlist.svg",
+    "ok": true,
+    "w": 78
+   },
+   {
+    "s": "hotfrog.svg",
+    "ok": true,
+    "w": 80
+   },
+   {
+    "s": "showmelocal.svg",
+    "ok": true,
+    "w": 98
+   },
+   {
+    "s": "tupalo.svg",
+    "ok": true,
+    "w": 72
+   },
+   {
+    "s": "11880.svg",
+    "ok": true,
+    "w": 62
+   },
+   {
+    "s": "clutch.svg",
+    "ok": true,
+    "w": 67
+   },
+   {
+    "s": "designrush.svg",
+    "ok": true,
+    "w": 77
+   },
+   {
+    "s": "facebook.svg",
+    "ok": true,
+    "w": 101
+   }
+  ],
+  "play": {
+   "section0": [
+    {
+     "f": "hero.mp4#t=1.2",
+     "rs": 1,
+     "playing": true
+    }
+   ],
+   "section2": [
+    {
+     "f": "google-ads-logo.mp4",
+     "rs": 0,
+     "playing": false
+    },
+    {
+     "f": "socials-logo.mp4",
+     "rs": 0,
+     "playing": false
+    },
+    {
+     "f": "website-logo.mp4",
+     "rs": 0,
+     "playing": false
+    }
+   ],
+   "section5": [
+    {
+     "f": "cleaning.mp4",
+     "rs": 0,
+     "playing": false
+    }
+   ],
+   "section6": [
+    {
+     "f": "azura.mp4#t=0.1",
+     "rs": 0,
+     "playing": false
+    },
+    {
+     "f": "address.mp4#t=0.1",
+     "rs": 0,
+     "playing": false
+    }
+   ]
+  },
+  "sideScrollPx": 0,
+  "loadToFooterS": 27
+ }
+}

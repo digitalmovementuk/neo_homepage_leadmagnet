@@ -1,5 +1,7 @@
 /**
- * Bewertungsblock im Fußbereich · v1.5 (26.11.2026)
+ * Bewertungsblock im Fußbereich · v1.6 (26.11.2026)
+ * v1.6: zehn Karten ohne Einzelkarte: mobil und Tablet zwei Spalten (letzte Reihe DesignRush | Facebook),
+ *   ab lg Text mittig oben und darunter zwei volle Reihen à fünf Karten (neben dem Text war nur Platz für drei).
  * v1.5: Logos laden sofort (loading="eager"), nicht erst beim Scrollen; vorher standen sie
  *   hinter allen Videos in der Warteschlange und fehlten auf langsamen Verbindungen.
  * v1.4: Clutch dazu (neun Karten, ab sm drei Spalten = drei volle Reihen; mobil steht die neunte Karte mittig).
@@ -78,8 +80,8 @@ export function PlatformReviewLinks({ forceDe }: { forceDe?: boolean }) {
       aria-labelledby="bewerten-titel"
       className="mt-14 sm:mt-16 border-t border-ink/10 pt-10 sm:pt-12"
     >
-      <div className="flex flex-col items-center gap-8 lg:flex-row lg:items-start lg:justify-between lg:gap-12">
-        <div className="max-w-[360px] text-center lg:text-left">
+      <div className="flex flex-col items-center gap-8 lg:gap-10">
+        <div className="max-w-[360px] text-center lg:max-w-[560px]">
           <h2 id="bewerten-titel" className="text-[12px] font-bold uppercase tracking-[0.20em] text-ink-muted">
             {en ? "Review us" : "Bewerten Sie uns"}
           </h2>
@@ -88,7 +90,7 @@ export function PlatformReviewLinks({ forceDe }: { forceDe?: boolean }) {
               ? "Worked with us? A short, honest review on one of these platforms helps other businesses decide."
               : "Sie haben mit uns gearbeitet? Eine kurze, ehrliche Bewertung auf einer dieser Plattformen hilft anderen Unternehmen bei der Entscheidung."}
           </p>
-          <ul className="mt-5 flex items-center justify-center gap-2 lg:justify-start">
+          <ul className="mt-5 flex items-center justify-center gap-2">
             {SOCIALS.map((s) => (
               <li key={s.key}>
                 <a
@@ -116,9 +118,9 @@ export function PlatformReviewLinks({ forceDe }: { forceDe?: boolean }) {
           </ul>
         </div>
 
-        <ul className="grid w-full max-w-[760px] grid-cols-2 gap-3 sm:grid-cols-3">
+        <ul className="grid w-full max-w-[520px] grid-cols-2 gap-3 lg:max-w-none lg:grid-cols-5">
           {REVIEW_PLATFORMS.map((p) => (
-            <li key={p.key} className="last:col-span-2 last:mx-auto last:w-[calc(50%-6px)] sm:last:col-span-1 sm:last:mx-0 sm:last:w-auto">
+            <li key={p.key}>
               <a
                 href={p.reviewUrl}
                 target="_blank"
