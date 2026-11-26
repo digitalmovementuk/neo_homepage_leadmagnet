@@ -174,7 +174,7 @@ export function Hero() {
       ref={sectionRef}
       id="top"
       data-surface="dark"
-      className="surface-dark relative isolate h-[max(100svh,700px)] min-h-[100svh] w-screen overflow-hidden [--hb:82px] sm:[--hb:97px] md:h-[100svh] md:[--hb:68px]"
+      className="surface-dark relative isolate h-[max(100svh,700px)] min-h-[100svh] w-screen overflow-hidden [--hb:134px] sm:[--hb:163px] md:h-[100svh] md:[--hb:134px]"
       aria-roledescription="carousel"
       aria-label={lang === "en" ? "Hero carousel" : "Hero-Karussell"}
     >

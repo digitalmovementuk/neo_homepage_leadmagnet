@@ -246,8 +246,9 @@ section[id] {
   }
 }
 
-/* Hero-Band „Gesehen auf“ / „As seen on“ (PlatformBadges v2.1, 25.11.2026): endlose Schleife aus zwei gleichen Sätzen,
-   weiche Kanten, Pause bei Maus und Fokus, bei „Bewegung reduzieren“ eine ruhige Reihe. */
+/* Hero-Band „Gesehen auf“ / „As seen on“ (PlatformBadges v2.3, 26.11.2026): zwei gegenläufige Reihen, je eine endlose
+   Schleife aus vier gleichen Sätzen (-50 % = zwei Sätze, darum gleiches Tempo wie vorher bei 55 s), weiche Kanten,
+   Pause bei Maus und Fokus auf dem ganzen Band, bei „Bewegung reduzieren“ zwei ruhige Reihen. */
 .neo-marquee {
   position: relative;
   overflow: hidden;
@@ -277,6 +278,11 @@ section[id] {
 @media (min-width: 640px) {
   .neo-marquee-set { gap: 64px; padding-right: 64px; }
 }
+.neo-marquee--rev .neo-marquee-track {
+  animation-direction: reverse;
+}
+.neo-marquee-group:hover .neo-marquee-track,
+.neo-marquee-group:focus-within .neo-marquee-track,
 .neo-marquee:hover .neo-marquee-track,
 .neo-marquee:focus-within .neo-marquee-track {
   animation-play-state: paused;

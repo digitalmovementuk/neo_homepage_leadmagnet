@@ -1,11 +1,14 @@
 /**
- * Hero-Band „Gesehen auf“ / „As seen on“ · v2.2 (26.11.2026)
+ * Hero-Band „Gesehen auf“ / „As seen on“ · v2.3 (26.11.2026)
  * Langsam laufendes, endloses Logo-Band aller fremden Plattformen mit öffentlichem NEO-Profil
  * (Liste: HERO_PLATFORMS in content/platforms.ts, ohne eigene Social-Profile). Jedes Logo verlinkt das Profil.
  * Keine Sterne, Punktzahlen oder Zahlen. Label: deutsch „Gesehen auf“, englisch „As seen on“.
  * Endlosschleife: zwei gleiche Sätze, der zweite für Screenreader verborgen und nicht per Tab erreichbar.
  * Hält bei Maus darüber und bei Tastaturfokus an. Bei „Bewegung reduzieren“: eine ruhige, umbrechende Reihe.
  * Changelog
+ * - v2.3 (26.11.2026): zwei Bänder übereinander, gegenläufig (oben nach links, unten nach rechts); die Plattformen
+ *   abwechselnd auf beide Reihen verteilt (je 6). Je Reihe vier gleiche Sätze, damit nie eine Lücke entsteht; gleiches
+ *   Tempo wie bisher (gleiche Logos pro Sekunde), gleiche Logo-Größen, weiche Kanten, Pause bei Maus und Fokus.
  * - v2.2 (26.11.2026): GoodFirms im Band (breiter Schriftzug, darum etwas niedriger, optisch gleich groß).
  * - v2.1 (25.11.2026): Label deutsch „Gesehen auf“, englisch „As seen on“ (Raoul 25.11.); Logos rund 22 % größer;
  *   Clutch im Band (verlinkt das Bewertungsformular, es gibt noch keine Profilseite).
@@ -38,10 +41,16 @@ type Props = {
   className?: string;
 };
 
-function LogoSet({ en, hidden }: { en: boolean; hidden?: boolean }) {
+/** Abwechselnd verteilt: Reihe 1 = 1., 3., 5. … Plattform, Reihe 2 = 2., 4., 6. … */
+const ROWS: Platform[][] = [
+  HERO_PLATFORMS.filter((_, i) => i % 2 === 0),
+  HERO_PLATFORMS.filter((_, i) => i % 2 === 1),
+];
+
+function LogoSet({ en, items, hidden }: { en: boolean; items: Platform[]; hidden?: boolean }) {
   return (
     <ul className="neo-marquee-set" aria-hidden={hidden || undefined} data-dup={hidden ? "" : undefined}>
-      {HERO_PLATFORMS.map((p) => (
+      {items.map((p) => (
         <li key={p.key} className="flex shrink-0 items-center">
           <a
             href={p.profileUrl}
@@ -83,11 +92,17 @@ export function PlatformBadges({ forceDe, align = "responsive", className = "" }
       <span className="shrink-0 whitespace-nowrap text-[12px] font-bold uppercase leading-none tracking-[0.2em] text-white sm:text-[13px]">
         {label}
       </span>
-      <div className="neo-marquee w-full min-w-0 flex-1">
-        <div className="neo-marquee-track">
-          <LogoSet en={en} />
-          <LogoSet en={en} hidden />
-        </div>
+      <div className="neo-marquee-group flex w-full min-w-0 flex-1 flex-col gap-1 sm:gap-1.5">
+        {ROWS.map((items, r) => (
+          <div key={r} className={`neo-marquee w-full min-w-0 ${r === 1 ? "neo-marquee--rev" : ""}`}>
+            <div className="neo-marquee-track">
+              <LogoSet en={en} items={items} />
+              <LogoSet en={en} items={items} hidden />
+              <LogoSet en={en} items={items} hidden />
+              <LogoSet en={en} items={items} hidden />
+            </div>
+          </div>
+        ))}
       </div>
     </nav>
   );
