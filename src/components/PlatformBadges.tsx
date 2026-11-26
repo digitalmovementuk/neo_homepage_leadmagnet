@@ -1,11 +1,12 @@
 /**
- * Hero-Band „Gesehen auf“ / „As seen on“ · v2.1 (25.11.2026)
+ * Hero-Band „Gesehen auf“ / „As seen on“ · v2.2 (26.11.2026)
  * Langsam laufendes, endloses Logo-Band aller fremden Plattformen mit öffentlichem NEO-Profil
  * (Liste: HERO_PLATFORMS in content/platforms.ts, ohne eigene Social-Profile). Jedes Logo verlinkt das Profil.
  * Keine Sterne, Punktzahlen oder Zahlen. Label: deutsch „Gesehen auf“, englisch „As seen on“.
  * Endlosschleife: zwei gleiche Sätze, der zweite für Screenreader verborgen und nicht per Tab erreichbar.
  * Hält bei Maus darüber und bei Tastaturfokus an. Bei „Bewegung reduzieren“: eine ruhige, umbrechende Reihe.
  * Changelog
+ * - v2.2 (26.11.2026): GoodFirms im Band (breiter Schriftzug, darum etwas niedriger, optisch gleich groß).
  * - v2.1 (25.11.2026): Label deutsch „Gesehen auf“, englisch „As seen on“ (Raoul 25.11.); Logos rund 22 % größer;
  *   Clutch im Band (verlinkt das Bewertungsformular, es gibt noch keine Profilseite).
  * - v2.0 (25.11.2026): Glas-Kacheln ersetzt durch laufendes Band „As seen on“; Logos rund 40 % größer; Facebook und andere
@@ -25,6 +26,7 @@ const LOGO_H: Partial<Record<Platform["key"], string>> = {
   branchenbuchdeutschland: "h-[38px] sm:h-[51px]",
   clutch: "h-[24px] sm:h-[30px]",
   designrush: "h-[26px] sm:h-[33px]",
+  goodfirms: "h-[21px] sm:h-[27px]",
 };
 const DEFAULT_H = "h-[29px] sm:h-[37px]";
 

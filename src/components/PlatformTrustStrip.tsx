@@ -1,5 +1,6 @@
 /**
- * Vertrauensleiste im ersten Bildschirm · v1.3 (25.11.2026)
+ * Vertrauensleiste im ersten Bildschirm · v1.4 (26.11.2026)
+ * v1.4: GoodFirms ergänzt (breiter Schriftzug, etwas niedriger).
  * v1.3: nur fremde Plattformen (HERO_PLATFORMS), keine eigenen Social-Profile wie Facebook.
  * Offizielle Logos aller Plattformen mit öffentlichem NEO-Profil (Liste: content/platforms.ts), jeweils mit Link zum Profil.
  * Keine Sterne, Punktzahlen oder Zahlen. Feste Höhe, damit nichts springt.
@@ -16,6 +17,7 @@ const STRIP_H: Partial<Record<Platform["key"], string>> = {
   hotfrog: "h-[15px] sm:h-[18px]",
   showmelocal: "h-[13px] sm:h-[16px]",
   branchenbuchdeutschland: "h-[17px] sm:h-[21px]",
+  goodfirms: "h-[11px] sm:h-[13px]",
 };
 import { useLang } from "../lib/i18n";
 

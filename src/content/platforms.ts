@@ -1,10 +1,14 @@
 /**
- * Bewertungs- und Profilplattformen + Social-Profile von NEO THE AGENCY · v1.9 (26.11.2026)
+ * Bewertungs- und Profilplattformen + Social-Profile von NEO THE AGENCY · v2.0 (26.11.2026)
  * Eine Quelle für: Vertrauensleiste im ersten Bildschirm, Bewertungsblock im Fußbereich
  * und Organization.sameAs im strukturierten Datensatz (JSON-LD).
  * Nur geprüfte Adressen. Keine Sterne, Punktzahlen oder Bewertungsanzahlen (es gibt noch keine echten Bewertungen).
  *
  * Changelog
+ * - v2.0 (26.11.2026): GoodFirms ergänzt (Profil goodfirms.co/company/neo-the-agency öffentlich, per Firecrawl geprüft:
+ *   NEO THE AGENCY, Kolonnenstrasse 8, Berlin 10827, Website neotheagency.de). Hero-Band, Fußbereich und sameAs.
+ *   Bewertungslink = GoodFirms-Formular myaccount.goodfirms.co/review/company/add/241949 („Write a Review“ auf dem Profil).
+ *   Logo: offizielle Datei logo.svg von assets.goodfirms.co, weiße Fassung für dunkle Flächen.
  * - v1.9 (26.11.2026): Clutch-Profil öffentlich (Clutch-Mail „Your Profile is Published“, in Chrome geprüft:
  *   clutch.co/profile/neo-agency-0 = NEO THE AGENCY, Berlin). Hero-Band verlinkt jetzt auf das Profil, Fußbereich
  *   bleibt beim Bewertungsformular, Clutch steht jetzt in sameAs.
@@ -40,7 +44,7 @@ export const ORG_ID = "https://www.neotheagency.de/#organization";
 export const PERSON_ID = "https://www.neotheagency.de/#raoul-mueller";
 
 export type Platform = {
-  key: "trustpilot" | "provenexpert" | "sortlist" | "wlw" | "hotfrog" | "showmelocal" | "tupalo" | "11880" | "branchenbuchdeutschland" | "clutch" | "designrush" | "facebook";
+  key: "trustpilot" | "provenexpert" | "sortlist" | "wlw" | "hotfrog" | "showmelocal" | "tupalo" | "11880" | "branchenbuchdeutschland" | "clutch" | "designrush" | "goodfirms" | "facebook";
   name: string;
   profileUrl: string;
   reviewUrl: string;
@@ -204,6 +208,19 @@ export const PLATFORMS: Platform[] = [
     height: 36,
     altDe: "DesignRush Logo",
     altEn: "DesignRush logo",
+  },
+  {
+    key: "goodfirms",
+    name: "GoodFirms",
+    profileUrl: "https://www.goodfirms.co/company/neo-the-agency",
+    reviewUrl: "https://myaccount.goodfirms.co/review/company/add/241949",
+    hasReviewForm: true,
+    logo: "logos/platforms/goodfirms.svg",
+    logoWhite: "logos/platforms/goodfirms-white.svg",
+    width: 302,
+    height: 46,
+    altDe: "GoodFirms Logo",
+    altEn: "GoodFirms logo",
   },
   {
     key: "facebook",

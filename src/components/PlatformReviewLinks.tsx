@@ -1,5 +1,7 @@
 /**
- * Bewertungsblock im Fußbereich · v1.6 (26.11.2026)
+ * Bewertungsblock im Fußbereich · v1.7 (26.11.2026)
+ * v1.7: GoodFirms dazu (elf Karten). Karten laufen als mittig umbrechende Reihe: mobil zwei je Reihe (die elfte
+ *   steht mittig), ab lg vier, ab xl sechs (6 + 5, zweite Reihe mittig).
  * v1.6: zehn Karten ohne Einzelkarte: mobil und Tablet zwei Spalten (letzte Reihe DesignRush | Facebook),
  *   ab lg Text mittig oben und darunter zwei volle Reihen à fünf Karten (neben dem Text war nur Platz für drei).
  * v1.5: Logos laden sofort (loading="eager"), nicht erst beim Scrollen; vorher standen sie
@@ -27,6 +29,7 @@ const CARD_H: Partial<Record<Platform["key"], string>> = {
   facebook: "h-[18px]",
   clutch: "h-[19px]",
   designrush: "h-[18px]",
+  goodfirms: "h-[15px]",
 };
 import { useLang } from "../lib/i18n";
 
@@ -118,9 +121,9 @@ export function PlatformReviewLinks({ forceDe }: { forceDe?: boolean }) {
           </ul>
         </div>
 
-        <ul className="grid w-full max-w-[520px] grid-cols-2 gap-3 lg:max-w-none lg:grid-cols-5">
+        <ul className="flex w-full max-w-[520px] flex-wrap justify-center gap-3 lg:max-w-none">
           {REVIEW_PLATFORMS.map((p) => (
-            <li key={p.key}>
+            <li key={p.key} className="w-[calc((100%-12px)/2)] lg:w-[calc((100%-36px)/4)] xl:w-[calc((100%-60px)/6)]">
               <a
                 href={p.reviewUrl}
                 target="_blank"
