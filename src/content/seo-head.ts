@@ -1,8 +1,9 @@
 /**
  * Kopfbereich und strukturierte Daten der SEO-Seite (/seo-agentur/)
- * v1.7 (26.11.2026)
+ * v1.8 (26.11.2026)
  *
  * Changelog
+ *   v1.8 (26.11.2026) Autor Johannes Kaluc: WebPage.author + eigener Person-Knoten.
  *   v1.7 (26.11.2026) Titel und Meta mit Fokus-Suchbegriff „SEO-Agentur" (QA-Gate 26.11.).
  *   v1.6 (25.11.2026) sameAs aus platforms.ts v1.3: Sortlist mit korrigierter Adresse wieder enthalten.
  *   v1.5 (24.11.2026) Organization.telephone = „+49 160 9689 7003" (wie index.html und Impressum;
@@ -61,6 +62,7 @@ const ID = {
   org: `${SITE_ORIGIN}/#organization`,
   site: `${SITE_ORIGIN}/#website`,
   person: `${SITE_ORIGIN}/#raoul-mueller`,
+  author: `${SITE_ORIGIN}/#johannes-kaluc`,
   page: `${SEO_CANONICAL}#webpage`,
   breadcrumb: `${SEO_CANONICAL}#breadcrumb`,
   service: `${SEO_CANONICAL}#service`,
@@ -133,6 +135,7 @@ export function buildSeoJsonLd(): Record<string, unknown> {
     "@type": "WebPage",
     "@id": ID.page,
     dateModified: "2026-11-26",
+    author: { "@type": "Person", "@id": ID.author, name: "Johannes Kaluc", url: `${SITE_ORIGIN}/neo-the-agency/` },
     url: SEO_CANONICAL,
     name: seoHead.title,
     description: seoHead.description,
@@ -225,8 +228,18 @@ export function buildSeoJsonLd(): Record<string, unknown> {
     })),
   };
 
+  const author = {
+    "@type": "Person",
+    "@id": ID.author,
+    name: "Johannes Kaluc",
+    url: `${SITE_ORIGIN}/neo-the-agency/`,
+    jobTitle: "Co-Founder · Operations & Business Development",
+    image: `${SITE_ORIGIN}/brand/founders/johannes-kaluc-384.webp`,
+    worksFor: { "@id": ID.org },
+  };
+
   return {
     "@context": "https://schema.org",
-    "@graph": [organization, person, website, webpage, heroImage, breadcrumb, service, faqPage],
+    "@graph": [organization, person, author, website, webpage, heroImage, breadcrumb, service, faqPage],
   };
 }

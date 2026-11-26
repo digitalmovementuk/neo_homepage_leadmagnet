@@ -15,6 +15,7 @@
 import { seoDe } from "../content/seo-de";
 import { buildSeoJsonLd, seoHead } from "../content/seo-head";
 import { useDocumentHead } from "../lib/useDocumentHead";
+import { AuthorByline } from "../components/AuthorByline";
 import { AuditForm, Cex, Channels, Hero, Measure, Problem, Proof } from "../components/seo/SectionsA";
 import { Advantage, Approach, Blocks, Fit, Gains, Later, Packages, ShortForm, Timeline } from "../components/seo/SectionsB";
 import { Faq, FinalCta, Numbers, Related, Reviews, Team, Tools, Videos } from "../components/seo/SectionsC";
@@ -59,6 +60,7 @@ export function SeoPage() {
       {showReviews ? <Reviews /> : null}
       {showNumbers ? <Numbers /> : null}
       <Related />
+      <AuthorByline />
       <Faq />
       <Videos />
       <FinalCta />

@@ -15,6 +15,7 @@ import { useDocumentHead } from "../lib/useDocumentHead";
 import { useLeadModal, type LeadModalContent } from "../lib/leadModal";
 import type { ServicePage } from "../lib/translations";
 import { PlatformBadges } from "./PlatformBadges";
+import { AuthorByline } from "./AuthorByline";
 import { servicePageJsonLd, SERVICE_PATHS } from "../content/route-jsonld";
 
 const EASE_OUT = [0.22, 1, 0.36, 1] as const;
@@ -75,6 +76,7 @@ export function ServicePageShell({ slug }: { slug: keyof ServicePage }) {
       <Deliverables page={page} />
       <ProcessTimelineService page={page} />
       <Stack page={page} />
+      <AuthorByline />
       <FAQ page={page} />
       <LeadMagnet page={page} onOpen={openLeadMagnet} />
       <FinalCTA page={page} isEN={isEN} />

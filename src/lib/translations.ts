@@ -77,7 +77,8 @@ export type Translations = {
     headlineMain: string;
     headlineSub: string;
     intro: string;
-    columns: { other: string; neo: string };
+    caption: string;
+    columns: { topic: string; other: string; neo: string };
     rows: { topic: string; other: string; neo: string }[];
   };
   process: {
@@ -147,6 +148,12 @@ export type Translations = {
       paragraphs: string[];
       role: string;
       cv: { year: string; entry: string }[];
+    };
+    how: {
+      eyebrow: string;
+      headline: string;
+      steps: { title: string; body: string }[];
+      closing: string;
     };
     studio: {
       eyebrow: string;
@@ -481,7 +488,8 @@ const de: Translations = {
     headlineSub: "Sechs Punkte.",
     intro:
       "Damit Sie wissen, worauf Sie sich bei Ihrer Online-Marketing-Agentur einlassen. Bevor Sie sich einlassen.",
-    columns: { other: "Andere Agenturen", neo: "NEO THE AGENCY" },
+    caption: "Vergleich: andere Agenturen und NEO THE AGENCY in sechs Punkten",
+    columns: { topic: "Thema", other: "Andere Agenturen", neo: "NEO THE AGENCY" },
     rows: [
       {
         topic: "Vertragslaufzeit",
@@ -648,13 +656,13 @@ const de: Translations = {
     meta: {
       title: "Über NEO THE AGENCY · Die Agentur, die wirklich liefert",
       description:
-        "Über NEO THE AGENCY: wer wir sind, woran wir glauben und das Team hinter den 90-Tage-Sprints. Berliner Agentur für Digitalmarketing, ohne Account-Manager.",
+        "Über NEO THE AGENCY: wer wir sind, woran wir glauben und wie unsere 90-Tage-Sprints laufen. Berliner Agentur für Digitalmarketing, ohne Account-Manager.",
     },
     hero: {
       eyebrow: "NEO THE AGENCY · Über uns",
       headlinePre: "Eine Berliner Agentur,",
       headlineSoft: "die das Handwerk wieder ernst nimmt.",
-      sub: "NEO THE AGENCY ist ein internationales Team aus Spezialisten, die Performance Marketing als Handwerk verstehen — nicht als Excel-Sport. Unser Versprechen: messbare Ergebnisse in 90 Tagen. Sie sprechen direkt mit den Spezialisten, die Ihre Kampagnen, Inhalte und Websites umsetzen, ohne Account-Manager dazwischen. Gearbeitet wird in 90-Tage-Sprints mit klaren Zielen.",
+      sub: "NEO THE AGENCY ist eine Berliner Agentur, die Performance Marketing als Handwerk versteht — nicht als Excel-Sport. Unser Versprechen: messbare Ergebnisse in 90 Tagen. Sie sprechen direkt mit den Spezialisten, die Ihre Kampagnen, Inhalte und Websites umsetzen, ohne Account-Manager dazwischen. Gearbeitet wird in 90-Tage-Sprints mit klaren Zielen.",
       locations: "Berlin-Schöneberg",
     },
     pillars: [
@@ -693,6 +701,18 @@ const de: Translations = {
         { year: "2018 – 2022", entry: "Senior SEO Lead · Internationale Agentur · München" },
         { year: "2014 – 2018", entry: "Performance Marketing Manager · Berlin / London" },
       ],
+    },
+    how: {
+      eyebrow: "Ablauf",
+      headline: "So läuft die Zusammenarbeit",
+      steps: [
+        { title: "Erst zuhören", body: "Im ersten Gespräch klären wir Ihr Ziel. Wir sehen uns Ihre Website, Ihre Konten und Ihre Zahlen an. Danach wissen Sie, was möglich ist und was es kostet." },
+        { title: "90 Tage, ein klares Ziel", body: "Wir planen in Sprints von 90 Tagen. Jeder Sprint hat ein Ziel, das man messen kann. Jeden Monat zeigt Ihnen ein kurzer Bericht, was passiert ist." },
+        { title: "Ein Festpreis", body: "Sie zahlen einen festen Betrag im Monat. Eine Setup-Gebühr gibt es nicht. Ihr Werbebudget läuft über Ihr eigenes Konto." },
+        { title: "Keine Mindestlaufzeit", body: "Nach dem ersten Sprint läuft die Zusammenarbeit monatlich weiter. Sie können pausieren, wann Sie wollen. Konten, Daten und Inhalte gehören immer Ihnen." },
+        { title: "Direkter Draht", body: "Sie haben einen festen Ansprechpartner. Sie sprechen mit den Leuten, die die Arbeit machen. Einen Account-Manager dazwischen gibt es nicht." },
+      ],
+      closing: "Unser Büro ist in Berlin-Schöneberg. Wir arbeiten für Kunden in ganz Deutschland. Workshops vor Ort sind möglich.",
     },
     studio: {
       eyebrow: "Wo wir arbeiten",
@@ -1771,7 +1791,7 @@ const en: Translations = {
   },
 
   principles: {
-    eyebrow: "How we work",
+    eyebrow: "Process",
     headlineMain: "Three principles.",
     headlineSub: "One method.",
     intro:
@@ -1875,7 +1895,8 @@ const en: Translations = {
     headlineMain: "What we do differently.",
     headlineSub: "Six points.",
     intro: "So you know what you're signing up for. Before you sign up.",
-    columns: { other: "Other agencies", neo: "NEO THE AGENCY" },
+    caption: "Comparison: other agencies and NEO THE AGENCY on six points",
+    columns: { topic: "Topic", other: "Other agencies", neo: "NEO THE AGENCY" },
     rows: [
       {
         topic: "Contract length",
@@ -2042,13 +2063,13 @@ const en: Translations = {
     meta: {
       title: "About NEO · The agency that actually delivers",
       description:
-        "Who we are, what we believe, and the team behind the 90-day sprints. A Berlin digital marketing agency, international, no account-manager chain.",
+        "Who we are, what we believe and how our 90-day sprints work. A Berlin digital marketing agency with no account-manager chain in between.",
     },
     hero: {
       eyebrow: "About",
       headlinePre: "A Berlin agency",
       headlineSoft: "taking the craft seriously again.",
-      sub: "We're an international team of specialists who treat performance marketing as a craft — not an Excel sport. Our promise: measurable results in 90 days.",
+      sub: "We're a Berlin agency that treats performance marketing as a craft — not an Excel sport. Our promise: measurable results in 90 days.",
       locations: "Berlin-Schöneberg",
     },
     pillars: [
@@ -2087,6 +2108,18 @@ const en: Translations = {
         { year: "2018 – 2022", entry: "Senior SEO Lead · International agency · Munich" },
         { year: "2014 – 2018", entry: "Performance Marketing Manager · Berlin / London" },
       ],
+    },
+    how: {
+      eyebrow: "Process",
+      headline: "How working with us works",
+      steps: [
+        { title: "We listen first", body: "In the first call we agree on your goal. We look at your website, your accounts and your numbers. Afterwards you know what is possible and what it costs." },
+        { title: "90 days, one clear goal", body: "We plan in 90-day sprints. Every sprint has a goal you can measure. A short monthly report shows you what happened." },
+        { title: "One fixed price", body: "You pay a fixed monthly amount. There is no setup fee. Your ad budget runs through your own account." },
+        { title: "No minimum term", body: "After the first sprint we continue month to month. You can pause whenever you like. Accounts, data and content always belong to you." },
+        { title: "A direct line", body: "You have one fixed contact. You talk to the people who do the work. There is no account manager in between." },
+      ],
+      closing: "Our office is in Berlin-Schöneberg. We work with clients across Germany. On-site workshops are possible.",
     },
     studio: {
       eyebrow: "Where we work",

@@ -13,21 +13,20 @@ import { useDocumentHead } from "../lib/useDocumentHead";
 import { useSeoModal } from "../lib/seoModal";
 import { PlatformTrustStrip } from "../components/PlatformTrustStrip";
 import { aboutPageJsonLd } from "../content/route-jsonld";
+import { AuthorByline } from "../components/AuthorByline";
 
-const STUDIO_IMAGE =
-  "/media/stock/photo-1497366811353-6870744d04b2-2400.jpg";
-const HERO_IMAGE =
-  "/media/stock/photo-1604328698692-f76ea9498e76-2400.jpg";
-const FOUNDER_IMAGE = `${import.meta.env.BASE_URL}brand/raoul-founder.png`;
 
 const EASE_OUT = [0.22, 1, 0.36, 1] as const;
 
 /**
- * AboutUs — full About page.
+ * AboutUs — full About page · v2.1 (26.11.2026)
+ *   Changelog: v2.1 (26.11.2026) Abschnitt „So läuft die Zusammenarbeit“ (fünf Schritte, kurze Sätze).
+ *   Changelog: v2.0 (26.11.2026) Raoul: „Namen und Fotos raus" — Gründer-Block, Team-Raster und
+ *   beide Stockfotos entfernt; Autorenzeile Johannes Kaluc (Person-Datensatz) ergänzt.
  *
- * Layout arc: hero (loft photo + intro) → three pillars (vision / mission /
- * values) → founder (long-form note + CV strip) → studio image with location
- * detail → seven-person team grid → final CTA.
+ * Layout arc: hero (dark surface + intro) → three pillars (vision / mission /
+ * values) → studio block with location detail (gradient, no photo) → author
+ * byline (Johannes Kaluc) → final CTA.
  *
  * Visual language stays in lock-step with the homepage: light-surface
  * editorial, ink type, large balanced headlines with a 55%-tone soft tail,
@@ -58,9 +57,9 @@ export function AboutUs() {
     <>
       <AboutHero />
       <Pillars />
-      <FounderBio />
       <Studio />
-      <TeamGrid />
+      <HowWeWork />
+      <AuthorByline />
       <AboutCTA onOpenSeo={openSeo} />
     </>
   );
@@ -79,8 +78,6 @@ function AboutHero() {
   });
   // Layered parallax — background, mid (overlay accent), and foreground text
   // each drift at a different rate to give the hero genuine depth.
-  const imgY = useTransform(scrollYProgress, [0, 1], ["0%", "22%"]);
-  const imgScale = useTransform(scrollYProgress, [0, 1], [1.04, 1.12]);
   const accentY = useTransform(scrollYProgress, [0, 1], ["0%", "12%"]);
   const textY = useTransform(scrollYProgress, [0, 1], ["0%", "-6%"]);
   const overlayOpacity = useTransform(scrollYProgress, [0, 1], [0.55, 0.82]);
@@ -91,21 +88,8 @@ function AboutHero() {
       data-surface="dark"
       className="surface-dark relative isolate min-h-[78svh] w-full overflow-hidden"
     >
-      <motion.div
-        aria-hidden
-        style={{ y: imgY, scale: imgScale }}
-        className="absolute inset-0 -z-10 h-[120%]"
-      >
-        <img
-          src={HERO_IMAGE}
-          width={1600}
-          height={1066}
-          alt=""
-          className="h-full w-full object-cover"
-          loading="eager"
-          decoding="async"
-        />
-      </motion.div>
+      {/* v2.0: kein Stockfoto mehr, ruhige dunkle Fläche */}
+      <div aria-hidden className="absolute inset-0 -z-10 bg-[#0a0612]" />
       <motion.div
         aria-hidden
         style={{ opacity: overlayOpacity }}
@@ -443,123 +427,6 @@ function PillarScrollCard({
 }
 
 /* ────────────────────────────────────────────────────────────── */
-/*  Founder bio + CV strip                                          */
-/* ────────────────────────────────────────────────────────────── */
-
-function FounderBio() {
-  const t = useT();
-  const { lang } = useLang();
-  const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-  // Subtle vertical drift on the founder image — anchors the eye, adds depth
-  // without disturbing the editorial feel.
-  const imgY = useTransform(scrollYProgress, [0, 1], ["-4%", "8%"]);
-
-  return (
-    <section
-      ref={ref}
-      data-surface="light"
-      className="surface-light-2 relative overflow-hidden pt-16 sm:pt-20 md:pt-24 pb-16 sm:pb-20 md:pb-24"
-    >
-      <div className="container-v3 relative">
-        <div className="grid items-start gap-10 sm:gap-12 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)] lg:gap-12">
-          <Reveal>
-            <div className="relative mx-auto w-full max-w-[460px] lg:mx-0 lg:max-w-none">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-[28px] bg-surface-2 shadow-[0_36px_90px_-36px_rgba(38,39,47,0.32)] sm:rounded-[36px]">
-                <motion.img
-                  src={FOUNDER_IMAGE}
-                  width={426}
-                  height={426}
-                  alt={`${t.founder.signatureBlock}`}
-                  style={{ y: imgY }}
-                  className="absolute inset-0 h-[112%] w-full object-cover"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <div
-                  aria-hidden
-                  className="absolute inset-0 pointer-events-none"
-                  style={{
-                    background:
-                      "linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,0.45) 100%)",
-                  }}
-                />
-                <div className="absolute inset-x-0 bottom-0 p-6 text-white sm:p-7">
-                  <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-white/80">
-                    {t.about.founder.role}
-                  </p>
-                  <p className="mt-1.5 text-[20px] font-semibold tracking-tight sm:text-[22px]">
-                    Raoul Müller
-                  </p>
-                </div>
-              </div>
-              {/* Decorative offset square behind the photo — adds depth */}
-              <span
-                aria-hidden
-                className="pointer-events-none absolute -bottom-4 -right-4 -z-10 h-24 w-24 rounded-2xl bg-[#F05F22]/20 sm:-bottom-5 sm:-right-5 sm:h-32 sm:w-32"
-              />
-            </div>
-          </Reveal>
-
-          <div>
-            <Reveal>
-              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#F05F22]">
-                {t.about.founder.eyebrow}
-              </p>
-            </Reveal>
-            <Reveal delay={0.06}>
-              <h2
-                className="section-h2 mt-5 text-ink"
-              >
-                {t.about.founder.headlinePre}{" "}
-                <span className="text-ink/55">{t.about.founder.headlineSoft}</span>
-              </h2>
-            </Reveal>
-            <div className="mt-7 space-y-5 text-[15px] leading-relaxed text-ink-soft sm:text-[16.5px]">
-              {t.about.founder.paragraphs.map((p, i) => (
-                <Reveal key={i} delay={0.12 + 0.06 * i}>
-                  <p>{p}</p>
-                </Reveal>
-              ))}
-            </div>
-
-            <Reveal delay={0.32}>
-              <p className="mt-10 mb-4 text-[10.5px] font-bold uppercase tracking-[0.24em] text-ink-muted">
-                {lang === "en" ? "Track record" : "Werdegang"}
-              </p>
-            </Reveal>
-            <ul className="grid gap-3.5 border-t border-ink/10 pt-5 md:grid-cols-2">
-              {t.about.founder.cv.map((c, i) => (
-                <motion.li
-                  key={c.year}
-                  initial={{ opacity: 0, x: -12 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, amount: 0.4 }}
-                  transition={{
-                    duration: 0.5,
-                    delay: 0.36 + 0.06 * i,
-                    ease: EASE_OUT,
-                  }}
-                  className="flex gap-4 text-[13.5px] leading-snug"
-                >
-                  <span className="shrink-0 font-mono text-[12px] font-semibold tracking-[0.04em] text-ink-muted">
-                    {c.year}
-                  </span>
-                  <span className="text-ink-soft">{c.entry}</span>
-                </motion.li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ────────────────────────────────────────────────────────────── */
 /*  Studio — full-width loft photo with overlaid copy                */
 /* ────────────────────────────────────────────────────────────── */
 
@@ -570,9 +437,6 @@ function Studio() {
     target: ref,
     offset: ["start end", "end start"],
   });
-  // Stronger parallax on the loft image with a slight scale shift for depth.
-  const imgY = useTransform(scrollYProgress, [0, 1], ["-8%", "12%"]);
-  const imgScale = useTransform(scrollYProgress, [0, 1], [1.06, 1.12]);
   // Light secondary parallax on the dark gradient panel — keeps the text
   // anchor moving slightly slower than the photo behind it.
   const panelY = useTransform(scrollYProgress, [0, 1], ["0%", "-4%"]);
@@ -583,21 +447,8 @@ function Studio() {
       data-surface="dark"
       className="surface-dark relative isolate overflow-hidden"
     >
-      <motion.div
-        aria-hidden
-        style={{ y: imgY, scale: imgScale }}
-        className="absolute inset-0 -z-10 h-[120%]"
-      >
-        <img
-          src={STUDIO_IMAGE}
-          width={1600}
-          height={1068}
-          alt=""
-          className="h-full w-full object-cover"
-          loading="lazy"
-          decoding="async"
-        />
-      </motion.div>
+      {/* v2.0: kein Stockfoto mehr, dunkle Fläche mit Farbverlauf */}
+      <div aria-hidden className="absolute inset-0 -z-10" style={{ background: "radial-gradient(120% 90% at 85% 20%, rgba(240,95,34,0.22) 0%, rgba(10,6,18,0) 55%), #0a0612" }} />
       <div aria-hidden className="absolute inset-0 -z-10 bg-[#0a0612]/55" />
       {/* Vertical gradient on mobile (bottom-fade), horizontal on desktop. */}
       <div
@@ -666,123 +517,35 @@ function Studio() {
 }
 
 /* ────────────────────────────────────────────────────────────── */
-/*  Team grid                                                        */
+/*  How we work — five short steps (v2.1)                           */
 /* ────────────────────────────────────────────────────────────── */
 
-function TeamGrid() {
+function HowWeWork() {
   const t = useT();
+  const h = t.about.how;
   return (
-    <section
-      data-surface="light"
-      className="surface-light relative pt-20 sm:pt-24 md:pt-28 pb-16 sm:pb-20 md:pb-24"
-    >
+    <section className="py-16 sm:py-20">
       <div className="container-v3">
-        <div className="grid items-end gap-6 lg:grid-cols-[1.15fr_1fr] lg:gap-12 text-center lg:text-left">
-          <div>
-            <Reveal>
-              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-ink-muted">
-                {t.about.team.eyebrow}
-              </p>
-            </Reveal>
-            <Reveal delay={0.06}>
-              <h2
-                className="section-h2 mt-5 mx-auto lg:mx-0 text-ink"
-              >
-                {t.about.team.headlinePre}{" "}
-                <span className="text-ink/55">{t.about.team.headlineSoft}</span>
-              </h2>
-            </Reveal>
-          </div>
-          <Reveal delay={0.12}>
-            <p className="text-[15px] sm:text-[17px] text-ink-soft leading-relaxed max-w-[480px] mx-auto lg:mx-0 lg:justify-self-end">
-              {t.about.team.intro}
-            </p>
-          </Reveal>
-        </div>
-
-        <ul className="mt-12 grid gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {t.about.team.members.map((m, i) => (
-            <TeamCard key={m.name} member={m} index={i} />
+        <Reveal>
+          <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-ink-soft sm:text-[12px]">
+            {h.eyebrow}
+          </p>
+        </Reveal>
+        <Reveal delay={0.06}>
+          <h2 className="section-h2 mt-5 text-ink">{h.headline}</h2>
+        </Reveal>
+        <ol className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {h.steps.map((s, i) => (
+            <li key={s.title} className="rounded-2xl border border-black/10 bg-white p-6">
+              <span className="text-[13px] font-bold text-[#F05F22]">{String(i + 1).padStart(2, "0")}</span>
+              <h3 className="mt-2 text-[18px] font-semibold leading-snug text-ink">{s.title}</h3>
+              <p className="mt-2 text-[15px] leading-relaxed text-ink-soft">{s.body}</p>
+            </li>
           ))}
-        </ul>
+        </ol>
+        <p className="mt-8 max-w-[62ch] text-[15.5px] leading-relaxed text-ink-soft">{h.closing}</p>
       </div>
     </section>
-  );
-}
-
-function TeamCard({
-  member,
-  index,
-}: {
-  member: {
-    name: string;
-    role: string;
-    kicker: string;
-    bio: string;
-    image: string;
-  };
-  index: number;
-}) {
-  const ref = useRef<HTMLLIElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-  // Subtle within-frame parallax: the portrait drifts vertically as the
-  // card scrolls past, giving each tile depth without distorting the face.
-  const portraitY = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"]);
-
-  return (
-    <motion.li
-      ref={ref}
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.55, delay: 0.04 * index, ease: EASE_OUT }}
-      viewport={{ once: true, amount: 0.2 }}
-      className="group relative overflow-hidden rounded-[22px] border border-ink/8 bg-white shadow-[0_18px_48px_-30px_rgba(38,39,47,0.22)] transition-[transform,box-shadow] duration-500 hover:-translate-y-1 hover:shadow-[0_28px_70px_-30px_rgba(38,39,47,0.28)]"
-    >
-      <div className="relative aspect-[4/5] overflow-hidden bg-surface-2">
-        <motion.img
-          src={member.image}
-          width={800}
-          height={1200}
-          alt={`${member.name}, ${member.role}`}
-          style={{ y: portraitY }}
-          className="absolute inset-0 h-[112%] w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
-          loading="lazy"
-          decoding="async"
-        />
-        <div
-          aria-hidden
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(0,0,0,0.45) 85%, rgba(0,0,0,0.65) 100%)",
-          }}
-        />
-        <span className="absolute left-4 top-4 rounded-full bg-white/85 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.20em] text-ink shadow-sm backdrop-blur-md">
-          {member.kicker}
-        </span>
-        {/* Name overlay revealed on hover for a richer feel without crowding */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 p-4 text-white opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-          <p className="text-[10.5px] font-bold uppercase tracking-[0.20em] text-white/85">
-            {member.role}
-          </p>
-        </div>
-      </div>
-
-      <div className="p-5 sm:p-6">
-        <h3 className="text-[17px] font-semibold tracking-tight text-ink sm:text-[18px]">
-          {member.name}
-        </h3>
-        <p className="mt-1 text-[12px] font-bold uppercase tracking-[0.16em] text-[#F05F22] sm:text-[12.5px]">
-          {member.role}
-        </p>
-        <p className="mt-3 text-[13.5px] leading-relaxed text-ink-soft sm:text-[14px]">
-          {member.bio}
-        </p>
-      </div>
-    </motion.li>
   );
 }
 

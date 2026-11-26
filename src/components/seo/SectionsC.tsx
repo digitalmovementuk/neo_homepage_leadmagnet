@@ -1,8 +1,9 @@
 /**
- * SEO-Seite · Abschnitte 18 bis 25 · v2.0 (19.11.2026)
+ * SEO-Seite · Abschnitte 18 bis 25 · v2.1 (26.11.2026)
  *   18 Wer für Sie arbeitet · 19 Werkzeuge · 20 Kundenstimmen (Platzhalter)
  *   21 Zahlen (Platzhalter) · 22 Weitere Leistungen · 23 FAQ · 24 Videos · 25 Abschluss
  * Alle sichtbaren Texte kommen aus content/seo-de.ts.
+ * v2.1: Handy-Bildgrößen (srcSet/sizes) für Teamfoto und Themenkarten.
  * v2.0: Flächen, Karten, Abstände und Schaltflächen wie auf der Live-Seite /services/seo.
  * v1.1: Einblenden über SeoReveal (max. 0,6 s, QA F6).
  */
@@ -48,6 +49,8 @@ export function Team() {
                   <div className="grid aspect-[4/3] w-full place-items-center bg-surface-2 p-5">
                     <img
                       src={asset(person.photo.src)}
+                      srcSet={person.photo.src.endsWith("raoul-founder-426.png") ? `${asset("brand/raoul-founder-240.webp")} 240w, ${asset("brand/raoul-founder-426.webp")} 426w` : undefined}
+                      sizes="(max-width: 640px) 200px, 260px"
                       alt={person.alt}
                       width={person.photo.width}
                       height={person.photo.height}
@@ -204,6 +207,8 @@ export function Related() {
               >
                 <img
                   src={asset(card.image.src)}
+                  srcSet={`${asset(card.image.src.replace(/\.jpg$/, "-640.jpg"))} 640w, ${asset(card.image.src)} 1200w`}
+                  sizes="(max-width: 640px) 82vw, (max-width: 1024px) 46vw, 400px"
                   alt={card.alt}
                   width={card.image.width}
                   height={card.image.height}

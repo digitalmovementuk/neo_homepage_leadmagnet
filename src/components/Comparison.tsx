@@ -5,7 +5,9 @@ import { Reveal } from "../lib/Reveal";
 import { useT } from "../lib/i18n";
 
 /**
- * Comparison — "Andere Agenturen vs. NEO". Two-column side-by-side table
+ * Comparison · v2.0 (26.11.2026) — "Andere Agenturen vs. NEO" als echte HTML-Tabelle.
+ *   Changelog: v2.0 (26.11.2026) Karten durch <table> ersetzt (Vergleichstabelle für Suche/KI), am Telefon gestapelt.
+ * Earlier: two-column side-by-side table
  * that directly addresses agency PTSD: contract length, reporting, point
  * of contact, pricing transparency, goal, lock-in. Copy via i18n (DE/EN).
  *
@@ -89,93 +91,57 @@ export function Comparison() {
           </Reveal>
         </div>
 
-        <div className="mt-12 sm:mt-16 grid md:grid-cols-2 gap-4 sm:gap-5">
-          {/* Andere Agenturen */}
-          <motion.div
-            initial={{ opacity: 0, y: 28 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6, ease: EASE_OUT }}
-            className="rounded-[28px] sm:rounded-[36px] border border-ink/10 bg-white p-7 sm:p-9 shadow-card"
-          >
-            <p className="eyebrow text-ink-muted">{t.comparison.columns.other}</p>
-            <ul className="mt-6 space-y-4">
-              {ROWS.map((r, i) => (
-                <motion.li
-                  key={r.label}
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, amount: 0.4 }}
-                  transition={{
-                    duration: 0.45,
-                    delay: 0.18 + 0.06 * i,
-                    ease: EASE_OUT,
-                  }}
-                  className="flex items-start gap-3"
-                >
-                  <span className="mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-ink/8 text-ink-faint">
-                    <X size={11} strokeWidth={3} />
-                  </span>
-                  <div className="leading-snug">
-                    <p className="text-[10.5px] font-bold uppercase tracking-[0.16em] text-ink-muted">
-                      {r.label}
-                    </p>
-                    <p className="mt-1 text-[14px] sm:text-[15px] text-ink-soft">{r.them}</p>
-                  </div>
-                </motion.li>
+        {/* v2.0 (26.11.2026): echte Vergleichstabelle (table/thead/tbody) statt zwei Karten.
+            Ab sm drei Spalten; am Telefon stapelt jede Zeile Thema, Andere, NEO. */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.6, ease: EASE_OUT }}
+          className="mt-12 sm:mt-16 rounded-[28px] sm:rounded-[36px] border border-ink/10 bg-white shadow-card overflow-hidden"
+        >
+          <table className="w-full border-collapse text-left">
+            <caption className="sr-only">{t.comparison.caption}</caption>
+            <thead className="hidden sm:table-header-group">
+              <tr className="border-b border-ink/10">
+                <th scope="col" className="px-6 lg:px-9 py-5 eyebrow text-ink-muted w-[24%]">{t.comparison.columns.topic}</th>
+                <th scope="col" className="px-6 lg:px-9 py-5 eyebrow text-ink-muted w-[38%]">{t.comparison.columns.other}</th>
+                <th scope="col" className="px-6 lg:px-9 py-5 eyebrow w-[38%]" style={{ color: "#C2410C" }}>{t.comparison.columns.neo}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {ROWS.map((r) => (
+                <tr key={r.label} className="grid grid-cols-2 sm:table-row border-b border-ink/10 last:border-b-0">
+                  <th scope="row" className="col-span-2 px-5 sm:px-6 lg:px-9 pt-5 sm:py-5 text-[10.5px] sm:text-[11px] font-bold uppercase tracking-[0.16em] text-ink-muted align-top">
+                    {r.label}
+                  </th>
+                  <td className="px-5 sm:px-6 lg:px-9 pt-2 pb-5 sm:py-5 align-top">
+                    <span className="flex items-start gap-2.5">
+                      <span className="mt-[3px] grid h-5 w-5 shrink-0 place-items-center rounded-full bg-ink/8 text-ink-faint" aria-hidden>
+                        <X size={11} strokeWidth={3} />
+                      </span>
+                      <span className="text-[14px] sm:text-[15px] leading-snug text-ink-soft">
+                        <span className="sm:hidden block text-[10px] font-bold uppercase tracking-[0.14em] text-ink-muted mb-0.5">{t.comparison.columns.other}</span>
+                        {r.them}
+                      </span>
+                    </span>
+                  </td>
+                  <td className="px-5 sm:px-6 lg:px-9 pt-2 pb-5 sm:py-5 align-top">
+                    <span className="flex items-start gap-2.5">
+                      <span className="mt-[3px] grid h-5 w-5 shrink-0 place-items-center rounded-full text-white" style={{ background: "#F05F22" }} aria-hidden>
+                        <Check size={11} strokeWidth={3} />
+                      </span>
+                      <span className="text-[14px] sm:text-[15px] leading-snug font-semibold text-ink">
+                        <span className="sm:hidden block text-[10px] font-bold uppercase tracking-[0.14em] mb-0.5" style={{ color: "#C2410C" }}>NEO</span>
+                        {r.us}
+                      </span>
+                    </span>
+                  </td>
+                </tr>
               ))}
-            </ul>
-          </motion.div>
-
-          {/* NEO */}
-          <motion.div
-            initial={{ opacity: 0, y: 28 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6, delay: 0.08, ease: EASE_OUT }}
-            className="relative rounded-[28px] sm:rounded-[36px] border-2 bg-white p-7 sm:p-9 shadow-[0_30px_80px_-30px_rgba(240,95,34,0.35)]"
-            style={{ borderColor: "#F05F22" }}
-          >
-            <span
-              className="absolute -top-3 left-7 sm:left-9 inline-flex items-center gap-1.5 rounded-full text-white text-[10.5px] font-bold uppercase tracking-[0.18em] px-3 py-1.5"
-              style={{ background: "#D9127F" }}
-            >
-              NEO
-            </span>
-            <p className="eyebrow text-ink mt-2">{t.comparison.columns.neo}</p>
-            <ul className="mt-6 space-y-4">
-              {ROWS.map((r, i) => (
-                <motion.li
-                  key={r.label}
-                  initial={{ opacity: 0, x: 10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, amount: 0.4 }}
-                  transition={{
-                    duration: 0.45,
-                    delay: 0.24 + 0.06 * i,
-                    ease: EASE_OUT,
-                  }}
-                  className="flex items-start gap-3"
-                >
-                  <span
-                    className="mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full text-white"
-                    style={{ background: "#F05F22" }}
-                  >
-                    <Check size={11} strokeWidth={3} />
-                  </span>
-                  <div className="leading-snug">
-                    <p className="text-[10.5px] font-bold uppercase tracking-[0.16em] text-ink-muted">
-                      {r.label}
-                    </p>
-                    <p className="mt-1 text-[14px] sm:text-[15px] font-semibold text-ink">
-                      {r.us}
-                    </p>
-                  </div>
-                </motion.li>
-              ))}
-            </ul>
-          </motion.div>
-        </div>
+            </tbody>
+          </table>
+        </motion.div>
       </div>
     </section>
   );

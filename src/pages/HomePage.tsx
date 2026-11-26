@@ -7,6 +7,8 @@ import { VideoTestimonials } from "../components/VideoTestimonials";
 import { Comparison } from "../components/Comparison";
 import { FounderNote } from "../components/FounderNote";
 import { Contact } from "../components/Contact";
+import { HomeFaq } from "../components/HomeFaq";
+import { AuthorByline } from "../components/AuthorByline";
 
 export function HomePage() {
   return (
@@ -19,6 +21,8 @@ export function HomePage() {
       <VideoTestimonials />
       <Comparison />
       <FounderNote />
+      <HomeFaq />
+      <AuthorByline />
       <Contact />
     </>
   );

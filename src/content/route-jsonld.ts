@@ -1,9 +1,11 @@
 /**
- * Strukturierte Daten (JSON-LD) für Leistungsseiten, Über uns und Rechtsseiten · v1.2 (26.11.2026)
+ * Strukturierte Daten (JSON-LD) für Leistungsseiten, Über uns und Rechtsseiten · v1.3 (26.11.2026)
  * Eine Quelle für Browser (useDocumentHead) und Build (scripts/prerender-seo.mjs),
  * damit das Roh-HTML und die fertige Seite dieselben Daten tragen.
  *
  * Changelog
+ *   v1.3 (26.11.2026) Autor Johannes Kaluc: author auf jeder WebPage, Person-Knoten im Graphen der
+ *        Leistungsseiten und von Über uns (sichtbare Autorenzeile auf denselben Seiten).
  *   v1.2 (26.11.2026) dateModified auf jeder WebPage; FAQPage aus den sichtbaren FAQ der Leistungsseiten;
  *        Über uns als ["WebPage","AboutPage"].
  *   v1.1 (26.11.2026) SERVICE_PATHS + ABOUT_PATH: flache Adressen je Fokus-Suchbegriff (/google-ads-agentur/ usw.).
@@ -16,6 +18,17 @@ export const SITE_ORIGIN = "https://www.neotheagency.de";
 const WEBSITE_ID = `${SITE_ORIGIN}/#website`;
 
 type Ld = Record<string, unknown>;
+
+const AUTHOR_ID = `${SITE_ORIGIN}/#johannes-kaluc`;
+const authorPerson: Ld = {
+  "@type": "Person",
+  "@id": AUTHOR_ID,
+  name: "Johannes Kaluc",
+  url: `${SITE_ORIGIN}/neo-the-agency/`,
+  jobTitle: "Co-Founder · Operations & Business Development",
+  image: `${SITE_ORIGIN}/brand/founders/johannes-kaluc-384.webp`,
+  worksFor: { "@id": ORG_ID },
+};
 
 function breadcrumb(url: string, name: string, isEN: boolean): Ld {
   return {
@@ -39,6 +52,7 @@ function webPage(type: string | string[], url: string, name: string, description
     isPartOf: { "@id": WEBSITE_ID },
     about: { "@id": ORG_ID },
     breadcrumb: { "@id": `${url}#breadcrumb` },
+    author: { "@type": "Person", "@id": AUTHOR_ID, name: "Johannes Kaluc", url: `${SITE_ORIGIN}/neo-the-agency/` },
     dateModified: "2026-11-26",
   };
 }
@@ -72,6 +86,7 @@ export function serviceJsonLd(args: {
       },
       webPage("WebPage", url, title, description, isEN),
       breadcrumb(url, serviceType, isEN),
+      authorPerson,
       ...(faq && faq.length
         ? [{
             "@type": "FAQPage",
@@ -123,7 +138,7 @@ export function servicePageJsonLd(slug: string, title: string, description: stri
 
 /** JSON-LD für die Über-uns-Seite (eine Adresse für beide Sprachen). */
 export function aboutPageJsonLd(title: string, description: string, isEN: boolean): Ld {
-  return simplePageJsonLd({
+  const ld = simplePageJsonLd({
     type: ["WebPage", "AboutPage"],
     url: `${SITE_ORIGIN}${ABOUT_PATH}`,
     crumb: isEN ? "About" : "Über uns",
@@ -131,4 +146,6 @@ export function aboutPageJsonLd(title: string, description: string, isEN: boolea
     description,
     isEN,
   });
+  (ld["@graph"] as Ld[]).push(authorPerson);
+  return ld;
 }
