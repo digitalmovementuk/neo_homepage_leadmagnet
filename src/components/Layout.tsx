@@ -6,6 +6,8 @@ import { Footer } from "./Footer";
 import { StickyCTA } from "./StickyCTA";
 import { LeadCaptureModal } from "./LeadCaptureModal";
 import { SeoAnalyserModal } from "./SeoAnalyserModal";
+import { ContactPersons, toneForPath } from "./ContactPersons";
+import { useLang } from "../lib/i18n";
 
 /**
  * Shared chrome around every route — Nav, Footer, sticky CTA and lead-modal
@@ -18,6 +20,7 @@ import { SeoAnalyserModal } from "./SeoAnalyserModal";
 export function Layout() {
   useLenis();
   const { pathname, hash } = useLocation();
+  const { lang } = useLang();
 
   // On route change without a hash → jump to top.
   // With a hash (e.g. /#contact) → wait one tick for the new page to mount,
@@ -45,6 +48,11 @@ export function Layout() {
       <Nav />
       <main id="main">
         <Outlet />
+        <ContactPersons
+          tone={toneForPath(pathname)}
+          lang={lang === "en" ? "en" : "de"}
+          ctaHref={pathname === "/" ? "#contact" : "/#contact"}
+        />
       </main>
       <Footer />
       <StickyCTA />

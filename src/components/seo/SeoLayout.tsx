@@ -11,6 +11,7 @@ import { seoDe } from "../../content/seo-de";
 import { SeoHeader } from "./SeoHeader";
 import { SeoFooter } from "./SeoFooter";
 import { SeoStickyBar } from "./SeoStickyBar";
+import { ContactPersons } from "../ContactPersons";
 import "./seo.css";
 
 export function SeoLayout() {
@@ -42,6 +43,7 @@ export function SeoLayout() {
       <SeoHeader />
       <main id="main">
         <Outlet />
+        <ContactPersons tone="light" lang="de" ctaHref="#erstgespraech" />
       </main>
       <SeoFooter />
       <SeoStickyBar />
