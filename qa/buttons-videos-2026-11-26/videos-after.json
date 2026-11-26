@@ -1,0 +1,454 @@
+{
+ "375": {
+  "total": 22,
+  "rows": [
+   {
+    "i": 0,
+    "section": "top",
+    "src": "hero.mp4#t=1.2",
+    "visible": true,
+    "w": 375,
+    "paused": false,
+    "readyState": 4,
+    "t": 5.86
+   },
+   {
+    "i": 1,
+    "section": "top",
+    "src": "seo-logo.mp4",
+    "visible": true,
+    "w": 375,
+    "paused": false,
+    "readyState": 4,
+    "t": 0.47
+   },
+   {
+    "i": 2,
+    "section": "top",
+    "src": "website-logo.mp4",
+    "visible": true,
+    "w": 375,
+    "paused": false,
+    "readyState": 4,
+    "t": 0.48
+   },
+   {
+    "i": 3,
+    "section": "services",
+    "src": "seo-logo.mp4",
+    "visible": true,
+    "w": 395,
+    "paused": false,
+    "readyState": 4,
+    "t": 5.15
+   },
+   {
+    "i": 4,
+    "section": "services",
+    "src": "google-ads-logo.mp4",
+    "visible": true,
+    "w": 395,
+    "paused": false,
+    "readyState": 4,
+    "t": 3.71
+   },
+   {
+    "i": 5,
+    "section": "services",
+    "src": "socials-logo.mp4",
+    "visible": true,
+    "w": 395,
+    "paused": false,
+    "readyState": 4,
+    "t": 5.09
+   },
+   {
+    "i": 6,
+    "section": "services",
+    "src": "website-logo.mp4",
+    "visible": true,
+    "w": 395,
+    "paused": false,
+    "readyState": 4,
+    "t": 4.09
+   },
+   {
+    "i": 7,
+    "section": "cases",
+    "src": "",
+    "visible": false,
+    "w": 0,
+    "paused": true,
+    "readyState": 0,
+    "t": 0
+   },
+   {
+    "i": 8,
+    "section": "cases",
+    "src": "",
+    "visible": false,
+    "w": 0,
+    "paused": true,
+    "readyState": 0,
+    "t": 0
+   },
+   {
+    "i": 9,
+    "section": "cases",
+    "src": "",
+    "visible": false,
+    "w": 0,
+    "paused": true,
+    "readyState": 0,
+    "t": 0
+   },
+   {
+    "i": 10,
+    "section": "cases",
+    "src": "",
+    "visible": false,
+    "w": 0,
+    "paused": true,
+    "readyState": 0,
+    "t": 0
+   },
+   {
+    "i": 11,
+    "section": "cases",
+    "src": "",
+    "visible": false,
+    "w": 0,
+    "paused": true,
+    "readyState": 0,
+    "t": 0
+   },
+   {
+    "i": 12,
+    "section": "cases",
+    "src": "finance-skyline.mp4",
+    "visible": true,
+    "w": 375,
+    "paused": false,
+    "readyState": 4,
+    "t": 4.04
+   },
+   {
+    "i": 13,
+    "section": "cases",
+    "src": "roofing.mp4",
+    "visible": true,
+    "w": 375,
+    "paused": false,
+    "readyState": 4,
+    "t": 0.48
+   },
+   {
+    "i": 14,
+    "section": "cases",
+    "src": "cleaning.mp4",
+    "visible": true,
+    "w": 375,
+    "paused": false,
+    "readyState": 4,
+    "t": 0.54
+   },
+   {
+    "i": 15,
+    "section": "cases",
+    "src": "logistics.mp4",
+    "visible": true,
+    "w": 375,
+    "paused": false,
+    "readyState": 4,
+    "t": 0.52
+   },
+   {
+    "i": 16,
+    "section": "cases",
+    "src": "digital.mp4",
+    "visible": true,
+    "w": 375,
+    "paused": false,
+    "readyState": 4,
+    "t": 0.56
+   },
+   {
+    "i": 17,
+    "section": "testimonials",
+    "src": "azura.mp4#t=0.1",
+    "visible": true,
+    "w": 319,
+    "paused": false,
+    "readyState": 4,
+    "t": 0.59
+   },
+   {
+    "i": 18,
+    "section": "testimonials",
+    "src": "address.mp4#t=0.1",
+    "visible": true,
+    "w": 319,
+    "paused": false,
+    "readyState": 4,
+    "t": 20.52
+   },
+   {
+    "i": 19,
+    "section": "testimonials",
+    "src": "cunos.mp4#t=0.1",
+    "visible": true,
+    "w": 319,
+    "paused": false,
+    "readyState": 4,
+    "t": 14.61
+   },
+   {
+    "i": 20,
+    "section": "testimonials",
+    "src": "pentadoc.mp4#t=0.1",
+    "visible": true,
+    "w": 319,
+    "paused": false,
+    "readyState": 4,
+    "t": 1.7
+   },
+   {
+    "i": 21,
+    "section": "testimonials",
+    "src": "cx.mp4#t=0.1",
+    "visible": true,
+    "w": 319,
+    "paused": false,
+    "readyState": 4,
+    "t": 11.92
+   }
+  ],
+  "scrollHeight": 12780
+ },
+ "1440": {
+  "total": 22,
+  "rows": [
+   {
+    "i": 0,
+    "section": "top",
+    "src": "hero.mp4#t=1.2",
+    "visible": true,
+    "w": 1440,
+    "paused": false,
+    "readyState": 4,
+    "t": 5.54
+   },
+   {
+    "i": 1,
+    "section": "top",
+    "src": "seo-logo.mp4",
+    "visible": true,
+    "w": 1440,
+    "paused": false,
+    "readyState": 4,
+    "t": 0.44
+   },
+   {
+    "i": 2,
+    "section": "top",
+    "src": "website-logo.mp4",
+    "visible": true,
+    "w": 1440,
+    "paused": false,
+    "readyState": 4,
+    "t": 0.46
+   },
+   {
+    "i": 3,
+    "section": "services",
+    "src": "seo-logo.mp4",
+    "visible": true,
+    "w": 1378,
+    "paused": false,
+    "readyState": 4,
+    "t": 0.96
+   },
+   {
+    "i": 4,
+    "section": "services",
+    "src": "google-ads-logo.mp4",
+    "visible": true,
+    "w": 1378,
+    "paused": false,
+    "readyState": 4,
+    "t": 1.45
+   },
+   {
+    "i": 5,
+    "section": "services",
+    "src": "socials-logo.mp4",
+    "visible": true,
+    "w": 1378,
+    "paused": false,
+    "readyState": 4,
+    "t": 0.97
+   },
+   {
+    "i": 6,
+    "section": "services",
+    "src": "website-logo.mp4",
+    "visible": true,
+    "w": 1378,
+    "paused": false,
+    "readyState": 4,
+    "t": 0.98
+   },
+   {
+    "i": 7,
+    "section": "cases",
+    "src": "finance-skyline.mp4",
+    "visible": true,
+    "w": 569,
+    "paused": false,
+    "readyState": 4,
+    "t": 0.93
+   },
+   {
+    "i": 8,
+    "section": "cases",
+    "src": "roofing.mp4",
+    "visible": true,
+    "w": 597,
+    "paused": false,
+    "readyState": 4,
+    "t": 1.69
+   },
+   {
+    "i": 9,
+    "section": "cases",
+    "src": "cleaning.mp4",
+    "visible": true,
+    "w": 569,
+    "paused": false,
+    "readyState": 4,
+    "t": 1.68
+   },
+   {
+    "i": 10,
+    "section": "cases",
+    "src": "logistics.mp4",
+    "visible": true,
+    "w": 597,
+    "paused": false,
+    "readyState": 4,
+    "t": 1.16
+   },
+   {
+    "i": 11,
+    "section": "cases",
+    "src": "digital.mp4",
+    "visible": true,
+    "w": 569,
+    "paused": false,
+    "readyState": 4,
+    "t": 1.45
+   },
+   {
+    "i": 12,
+    "section": "cases",
+    "src": "",
+    "visible": false,
+    "w": 0,
+    "paused": false,
+    "readyState": 0,
+    "t": 0
+   },
+   {
+    "i": 13,
+    "section": "cases",
+    "src": "",
+    "visible": false,
+    "w": 0,
+    "paused": true,
+    "readyState": 0,
+    "t": 0
+   },
+   {
+    "i": 14,
+    "section": "cases",
+    "src": "",
+    "visible": false,
+    "w": 0,
+    "paused": true,
+    "readyState": 0,
+    "t": 0
+   },
+   {
+    "i": 15,
+    "section": "cases",
+    "src": "",
+    "visible": false,
+    "w": 0,
+    "paused": true,
+    "readyState": 0,
+    "t": 0
+   },
+   {
+    "i": 16,
+    "section": "cases",
+    "src": "",
+    "visible": false,
+    "w": 0,
+    "paused": true,
+    "readyState": 0,
+    "t": 0
+   },
+   {
+    "i": 17,
+    "section": "testimonials",
+    "src": "azura.mp4#t=0.1",
+    "visible": true,
+    "w": 360,
+    "paused": false,
+    "readyState": 4,
+    "t": 0.54
+   },
+   {
+    "i": 18,
+    "section": "testimonials",
+    "src": "address.mp4#t=0.1",
+    "visible": true,
+    "w": 360,
+    "paused": false,
+    "readyState": 4,
+    "t": 1.05
+   },
+   {
+    "i": 19,
+    "section": "testimonials",
+    "src": "cunos.mp4#t=0.1",
+    "visible": true,
+    "w": 360,
+    "paused": false,
+    "readyState": 4,
+    "t": 1.55
+   },
+   {
+    "i": 20,
+    "section": "testimonials",
+    "src": "pentadoc.mp4#t=0.1",
+    "visible": true,
+    "w": 360,
+    "paused": false,
+    "readyState": 4,
+    "t": 2.07
+   },
+   {
+    "i": 21,
+    "section": "testimonials",
+    "src": "cx.mp4#t=0.1",
+    "visible": true,
+    "w": 360,
+    "paused": false,
+    "readyState": 4,
+    "t": 0.92
+   }
+  ],
+  "scrollHeight": 11849
+ }
+}

@@ -1,0 +1,13 @@
+import { webkit, devices } from 'playwright';
+const OUT = process.argv[2];
+const b = await webkit.launch();
+const ctx = await b.newContext({ ...devices['iPhone 13'], viewport: { width: 375, height: 812 } });
+const p = await ctx.newPage();
+await p.goto('https://www.neotheagency.de/seo-agentur/?v=' + Date.now(), { waitUntil: 'networkidle' });
+await p.waitForTimeout(3000);
+await p.screenshot({ path: `${OUT}/bands-live-375-seo.png` });
+await p.evaluate(() => window.scrollBy(0, 420)); await p.waitForTimeout(2000);
+await p.screenshot({ path: `${OUT}/bands-live-375-seo-scrolled.png` });
+const info = await p.evaluate(() => ({ sw: document.documentElement.scrollWidth, iw: innerWidth, wide: [...document.querySelectorAll('body *')].filter(e => { const r = e.getBoundingClientRect(); return r.right > innerWidth + 2 && getComputedStyle(e).position !== 'absolute' && !e.closest('.neo-marquee'); }).slice(0,8).map(e => e.tagName + '.' + (e.className||'').toString().slice(0,60) + ' r=' + Math.round(e.getBoundingClientRect().right)) }));
+console.log(JSON.stringify(info, null, 1));
+await b.close();

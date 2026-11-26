@@ -1,0 +1,166 @@
+{
+ "375": {
+  "pinkButtons": 9,
+  "orangeButtons": 0,
+  "hero": [
+   {
+    "img": "goodfirms-white.svg",
+    "loaded": true,
+    "h": 21
+   },
+   {
+    "img": "goodfirms-white.svg",
+    "loaded": true,
+    "h": 21
+   }
+  ],
+  "foot": [
+   {
+    "img": "goodfirms.svg",
+    "loaded": true,
+    "label": "NEO THE AGENCY auf GoodFirms bewerten (öffnet in neuem Tab)"
+   }
+  ],
+  "sameAs": true,
+  "cards": [
+   [
+    20,
+    11939,
+    162
+   ],
+   [
+    194,
+    11939,
+    162
+   ],
+   [
+    20,
+    12055,
+    162
+   ],
+   [
+    194,
+    12055,
+    162
+   ],
+   [
+    20,
+    12171,
+    162
+   ],
+   [
+    194,
+    12171,
+    162
+   ],
+   [
+    20,
+    12287,
+    162
+   ],
+   [
+    194,
+    12287,
+    162
+   ],
+   [
+    20,
+    12403,
+    162
+   ],
+   [
+    194,
+    12403,
+    162
+   ],
+   [
+    107,
+    12519,
+    162
+   ]
+  ],
+  "hscroll": false
+ },
+ "1440": {
+  "pinkButtons": 9,
+  "orangeButtons": 0,
+  "hero": [
+   {
+    "img": "goodfirms-white.svg",
+    "loaded": true,
+    "h": 27
+   },
+   {
+    "img": "goodfirms-white.svg",
+    "loaded": true,
+    "h": 27
+   }
+  ],
+  "foot": [
+   {
+    "img": "goodfirms.svg",
+    "loaded": true,
+    "label": "NEO THE AGENCY auf GoodFirms bewerten (öffnet in neuem Tab)"
+   }
+  ],
+  "sameAs": true,
+  "cards": [
+   [
+    136,
+    11498,
+    185
+   ],
+   [
+    333,
+    11498,
+    185
+   ],
+   [
+    529,
+    11498,
+    185
+   ],
+   [
+    726,
+    11498,
+    185
+   ],
+   [
+    923,
+    11498,
+    185
+   ],
+   [
+    1119,
+    11498,
+    185
+   ],
+   [
+    234,
+    11614,
+    185
+   ],
+   [
+    431,
+    11614,
+    185
+   ],
+   [
+    628,
+    11614,
+    185
+   ],
+   [
+    824,
+    11614,
+    185
+   ],
+   [
+    1021,
+    11614,
+    185
+   ]
+  ],
+  "hscroll": false
+ }
+}
