@@ -634,6 +634,7 @@ const de: Translations = {
     legal: [
       { label: "Impressum", href: "/impressum/" },
       { label: "Datenschutz", href: "/datenschutz/" },
+      { label: "Sitemap", href: "/sitemap/" },
     ],
   },
 
@@ -2041,6 +2042,7 @@ const en: Translations = {
     legal: [
       { label: "Impressum", href: "/impressum/" },
       { label: "Datenschutz", href: "/datenschutz/" },
+      { label: "Sitemap", href: "/sitemap/" },
     ],
   },
 

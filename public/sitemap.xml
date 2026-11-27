@@ -49,6 +49,12 @@
     <priority>0.2</priority>
   </url>
   <url>
+    <loc>https://www.neotheagency.de/sitemap/</loc>
+    <lastmod>2026-11-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  <url>
     <loc>https://www.neotheagency.de/en/</loc>
     <lastmod>2026-11-27</lastmod>
     <changefreq>monthly</changefreq>

@@ -21,6 +21,7 @@ const ServiceWebsites = lazy(() =>
 const AboutUs = lazy(() => import("./pages/AboutUs").then((m) => ({ default: m.AboutUs })));
 const Impressum = lazy(() => import("./pages/Impressum").then((m) => ({ default: m.Impressum })));
 const Datenschutz = lazy(() => import("./pages/Datenschutz").then((m) => ({ default: m.Datenschutz })));
+const Sitemap = lazy(() => import("./pages/Sitemap").then((m) => ({ default: m.Sitemap })));
 const NotFound = lazy(() => import("./pages/NotFound").then((m) => ({ default: m.NotFound })));
 
 export const BASE = (import.meta.env.BASE_URL ?? "/").replace(/\/$/, "");
@@ -57,6 +58,7 @@ export function AppRoutes() {
           <Route path="seo-agentur/*" element={<ToGerman />} />
           <Route path="impressum/*" element={<ToGerman />} />
           <Route path="datenschutz/*" element={<ToGerman />} />
+          <Route path="sitemap/*" element={<ToGerman />} />
         </>
       ) : (
         <Route element={<SeoLayout />}>
@@ -80,6 +82,7 @@ export function AppRoutes() {
         <Route path="services/websites" element={<Navigate to="/webdesign-agentur/" replace />} />
         <Route path="impressum" element={suspended(Impressum)} />
         <Route path="datenschutz" element={suspended(Datenschutz)} />
+        <Route path="sitemap" element={suspended(Sitemap)} />
         <Route path="*" element={suspended(NotFound)} />
       </Route>
     </Routes>

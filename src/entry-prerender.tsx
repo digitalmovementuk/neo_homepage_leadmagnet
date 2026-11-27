@@ -1,9 +1,10 @@
 /**
- * Prerender-Einstieg für alle indexierbaren Seiten · v1.6 (27.11.2026)
+ * Prerender-Einstieg für alle indexierbaren Seiten · v1.7 (27.11.2026)
  * Wird nur von scripts/prerender-seo.mjs beim Build genutzt (Vite SSR-Build),
  * nie im Browser. Rendert dieselbe Route wie die App, mit StaticRouter.
  *
  * Changelog
+ *   v1.7 (27.11.2026) legalHeads + /sitemap/ (HTML-Sitemap, Beschreibung und WebPage-JSON-LD).
  *   v1.6 (27.11.2026) Englische Fassung unter /en/: renderPage(location, lang), enRouteHeads + enHomeHead
  *        (Startseite, drei Leistungen, Über uns). Deutsch bleibt Standard ohne Präfix.
  *   v1.5 (26.11.2026) Pfade aus SERVICE_PATHS / ABOUT_PATH (flache Adressen je Fokus-Suchbegriff).
@@ -101,6 +102,12 @@ export const legalHeads = [
     "Datenschutzerklärung",
     "Datenschutzerklärung · NEO THE AGENCY",
     "Datenschutzerklärung von NEO THE AGENCY: welche Daten diese Website verarbeitet, wofür, wie lange und welche Rechte Sie haben.",
+  ),
+  legal(
+    "/sitemap/",
+    "Sitemap",
+    "Sitemap · NEO THE AGENCY",
+    "Sitemap von NEO THE AGENCY: alle Seiten auf einen Blick, von SEO, Google Ads, Social Media und Webdesign bis Impressum und Datenschutz.",
   ),
 ];
 

@@ -1,5 +1,5 @@
 /**
- * Prerender aller Seiten zu statischem HTML · v1.8 (27.11.2026)
+ * Prerender aller Seiten zu statischem HTML · v1.9 (27.11.2026)
  *
  * Läuft NACH `vite build`. Leichtester Weg ohne neues Paket:
  *   1. Vite baut src/entry-prerender.tsx einmal für Node (SSR) in einen
@@ -15,6 +15,7 @@
  *      404 kommen fertig gerendert (Inhalt in #root, eigenes JSON-LD).
  *
  * Changelog
+ *   v1.9 (27.11.2026) HTML-Sitemap /sitemap/ vorgerendert (gleicher Weg wie die Rechtsseiten).
  *   v1.8 (27.11.2026) Deutsch = Standard, Englisch unter /en/ (Startseite, drei Leistungen, Über uns) mit lang="en",
  *        og:locale en_GB und eigenem JSON-LD. hreflang de/en/x-default (x-default = Deutsch) auf allen Seitenpaaren,
  *        de/x-default auf den rein deutschen Seiten.
@@ -60,7 +61,7 @@ try {
   if (!entryFile) throw new Error("prerender-seo: SSR-Ausgabe fehlt");
   const mod = await import(pathToFileURL(path.join(ssrOut, entryFile)).href);
   const { renderSeoPage, renderPage, seoHead, buildSeoJsonLd, SEO_PATH, routeHeads, enRouteHeads, enHomeHead, legalHeads } = mod;
-  if (!Array.isArray(legalHeads) || legalHeads.length !== 2) throw new Error("prerender-seo: legalHeads fehlt");
+  if (!Array.isArray(legalHeads) || legalHeads.length !== 3) throw new Error("prerender-seo: legalHeads fehlt");
   if (!Array.isArray(routeHeads) || routeHeads.length !== 4) throw new Error("prerender-seo: routeHeads fehlt");
   if (!Array.isArray(enRouteHeads) || enRouteHeads.length !== 4) throw new Error("prerender-seo: enRouteHeads fehlt");
   if (!enHomeHead?.title) throw new Error("prerender-seo: enHomeHead fehlt");
@@ -188,6 +189,7 @@ try {
   for (const page of [
     { path: "/impressum", title: "Impressum · NEO THE AGENCY" },
     { path: "/datenschutz", title: "Datenschutzerklärung · NEO THE AGENCY" },
+    { path: "/sitemap/", title: "Sitemap · NEO THE AGENCY" },
   ]) {
     let legal = homeShell;
     const url = origin + page.path;
@@ -204,7 +206,7 @@ try {
     legal = swapMeta(legal, "name", "twitter:title", page.title, page.path);
     legal = swapMeta(legal, "name", "twitter:description", lh.description, page.path);
     legal = addLd(stripHomeOnly(legal, page.path), lh.jsonLd);
-    legal = addChunk(legal, page.path === "/impressum" ? /^Impressum-.*\.js$/ : /^Datenschutz-.*\.js$/);
+    legal = addChunk(legal, { "/impressum": /^Impressum-.*\.js$/, "/datenschutz": /^Datenschutz-.*\.js$/, "/sitemap/": /^Sitemap-.*\.js$/ }[page.path]);
     legal = addHreflang(inject(legal, await renderPage(page.path), page.path), page.path, null);
     await writePage(page.path, legal, "(eigene Canonical, vorgerendert)");
   }

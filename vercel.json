@@ -92,6 +92,16 @@
       "permanent": true
     },
     {
+      "source": "/en/sitemap",
+      "destination": "/sitemap/",
+      "permanent": true
+    },
+    {
+      "source": "/en/sitemap/",
+      "destination": "/sitemap/",
+      "permanent": true
+    },
+    {
       "source": "/en/impressum",
       "destination": "/impressum",
       "permanent": true
