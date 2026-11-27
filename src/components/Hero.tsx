@@ -419,7 +419,7 @@ const HeroSlideView = ({
 
 /** Co-Founders — two small overlapping real portraits with a thin brand-gradient ring. */
 const FOUNDERS = [
-  { src: "brand/founders/johnny-kaluc-120.webp", name: "Johnny Kaluc" },
+  { src: "brand/founders/johnny-kaluc-120.webp", name: "Johannes Kaluc" },
   { src: "brand/founders/raoul-mueller-120.webp", name: "Raoul Müller" },
 ];
 
@@ -450,7 +450,7 @@ function CoFounders() {
           Co-Founders
         </span>
         <span className="block text-[12.5px] font-medium text-white/85 sm:text-[13px]">
-          Johnny Kaluc &amp; Raoul Müller
+          Johannes Kaluc &amp; Raoul Müller
         </span>
       </p>
     </div>
