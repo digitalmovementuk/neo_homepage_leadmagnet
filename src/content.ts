@@ -385,8 +385,8 @@ export const faqs = [
     a: "Manche Kunden sehen Ranking-Bewegung in der ersten Woche. Echtes Lead-Wachstum zeigt sich meist zwischen Woche 2 und 6. Was Sie konkret erwarten können, sagen wir Ihnen nach dem Audit — ohne Schönreden.",
   },
   {
-    q: "Gibt es Verträge oder Lock-Ins?",
-    a: "Wir arbeiten Monat für Monat nach einer kurzen Mindestlaufzeit für den ordentlichen Setup. Wenn wir nicht liefern, können Sie gehen. Wir verdienen lieber den nächsten Monat, als Sie darin festzuhalten.",
+    q: "Wann stellen Sie die Rechnung?",
+    a: "Website und SEO-Seiten liefern wir zuerst, die Rechnung kommt danach. Sie prüfen die Qualität vorab – maximale Sicherheit und Transparenz.",
   },
   {
     q: "Was steckt im kostenlosen Erstgespräch?",

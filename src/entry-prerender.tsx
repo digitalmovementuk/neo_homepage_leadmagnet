@@ -1,9 +1,11 @@
 /**
- * Prerender-Einstieg für alle indexierbaren Seiten · v1.5 (26.11.2026)
+ * Prerender-Einstieg für alle indexierbaren Seiten · v1.6 (27.11.2026)
  * Wird nur von scripts/prerender-seo.mjs beim Build genutzt (Vite SSR-Build),
  * nie im Browser. Rendert dieselbe Route wie die App, mit StaticRouter.
  *
  * Changelog
+ *   v1.6 (27.11.2026) Englische Fassung unter /en/: renderPage(location, lang), enRouteHeads + enHomeHead
+ *        (Startseite, drei Leistungen, Über uns). Deutsch bleibt Standard ohne Präfix.
  *   v1.5 (26.11.2026) Pfade aus SERVICE_PATHS / ABOUT_PATH (flache Adressen je Fokus-Suchbegriff).
  *   v1.4 (26.11.2026) renderPage(location): jede Route (Startseite, Leistungen, Über uns, Rechtsseiten,
  *        404-Seite) wird fertig gerendert, damit Suchmaschinen den Inhalt ohne JavaScript sehen.
@@ -27,24 +29,59 @@ import { SeoModalProvider } from "./lib/seoModal";
 import { buildSeoJsonLd, seoHead } from "./content/seo-head";
 import { seoDe } from "./content/seo-de";
 import { translations } from "./lib/translations";
-import { SITE_ORIGIN, aboutPageJsonLd, servicePageJsonLd, SERVICE_PATHS, ABOUT_PATH, simplePageJsonLd } from "./content/route-jsonld";
+import { SITE_ORIGIN, aboutPageJsonLd, servicePageJsonLd, SERVICE_PATHS, ABOUT_PATH, EN_PREFIX, simplePageJsonLd } from "./content/route-jsonld";
+import type { Lang } from "./lib/translations";
 
 export { buildSeoJsonLd, seoHead };
 export const SEO_PATH = seoDe.path;
 
 /** Eigener Kopfbereich (Adresse, Titel, Beschreibung, JSON-LD) für Seiten, die sonst die Startseiten-Hülle bekämen. */
-const de = translations.de;
 type RouteHead = { path: string; title: string; description: string; chunk: RegExp; jsonLd: Record<string, unknown> };
-const svc = (key: "googleAds" | "socialMedia" | "websites", chunk: RegExp): RouteHead => {
-  const p = de.servicePages[key];
-  return { path: SERVICE_PATHS[p.slug], ...p.meta, chunk, jsonLd: servicePageJsonLd(p.slug, p.meta.title, p.meta.description, false, p.faq.items) };
+const headsFor = (lang: Lang): RouteHead[] => {
+  const t = translations[lang];
+  const isEN = lang === "en";
+  const prefix = isEN ? EN_PREFIX : "";
+  const svc = (key: "googleAds" | "socialMedia" | "websites", chunk: RegExp): RouteHead => {
+    const p = t.servicePages[key];
+    return { path: `${prefix}${SERVICE_PATHS[p.slug]}`, ...p.meta, chunk, jsonLd: servicePageJsonLd(p.slug, p.meta.title, p.meta.description, isEN, p.faq.items) };
+  };
+  return [
+    svc("googleAds", /^google-ads-.*\.js$/),
+    svc("socialMedia", /^social-media-.*\.js$/),
+    svc("websites", /^websites-.*\.js$/),
+    { path: `${prefix}${ABOUT_PATH}`, ...t.about.meta, chunk: /^AboutUs-.*\.js$/, jsonLd: aboutPageJsonLd(t.about.meta.title, t.about.meta.description, isEN) },
+  ];
 };
-export const routeHeads: RouteHead[] = [
-  svc("googleAds", /^google-ads-.*\.js$/),
-  svc("socialMedia", /^social-media-.*\.js$/),
-  svc("websites", /^websites-.*\.js$/),
-  { path: ABOUT_PATH, ...de.about.meta, chunk: /^AboutUs-.*\.js$/, jsonLd: aboutPageJsonLd(de.about.meta.title, de.about.meta.description, false) },
-];
+export const routeHeads: RouteHead[] = headsFor("de");
+/** Englische Gegenstücke unter /en/... (gleiche Reihenfolge wie routeHeads). */
+export const enRouteHeads: RouteHead[] = headsFor("en");
+
+/** Englische Startseite /en/: Titel, Beschreibung und WebPage-JSON-LD (Deutsch steht in index.html). */
+const enHomeTitle = "Online Marketing Agency for Owners & SMEs | NEO THE AGENCY";
+const enHomeDescription =
+  "Online marketing agency for owner-led businesses and SMEs: SEO, GEO, Google Ads, Social Ads, website development and CRM from one team. Delivery first, invoice after. Start with a free audit.";
+export const enHomeHead = {
+  path: `${EN_PREFIX}/`,
+  title: enHomeTitle,
+  description: enHomeDescription,
+  jsonLd: {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": `${SITE_ORIGIN}${EN_PREFIX}/#webpage`,
+        url: `${SITE_ORIGIN}${EN_PREFIX}/`,
+        name: enHomeTitle,
+        description: enHomeDescription,
+        inLanguage: "en-GB",
+        isPartOf: { "@id": `${SITE_ORIGIN}/#website` },
+        about: { "@id": `${SITE_ORIGIN}/#organization` },
+        dateModified: "2026-11-27",
+        author: { "@type": "Person", "@id": `${SITE_ORIGIN}/#johannes-kaluc`, name: "Johannes Kaluc", url: `${SITE_ORIGIN}${EN_PREFIX}${ABOUT_PATH}` },
+      },
+    ],
+  } as Record<string, unknown>,
+};
 
 /** Rechtsseiten: Beschreibung und WebPage-JSON-LD (Titel setzt das Prerender-Skript). */
 const legal = (path: string, crumb: string, title: string, description: string) => ({
@@ -68,13 +105,13 @@ export const legalHeads = [
 ];
 
 /** Rendert eine Route vollständig (wartet auf lazy geladene Teile) und gibt das HTML für #root zurück. */
-export async function renderPage(location: string): Promise<string> {
+export async function renderPage(location: string, lang: Lang = "de"): Promise<string> {
   const { prelude } = await prerenderToNodeStream(
     <StrictMode>
-      <LanguageProvider>
+      <LanguageProvider initialLang={lang}>
         <LeadModalProvider>
           <SeoModalProvider>
-            <StaticRouter basename={BASE} location={location}>
+            <StaticRouter basename={lang === "en" ? `${BASE}${EN_PREFIX}` : BASE} location={location}>
               <AppRoutes />
             </StaticRouter>
           </SeoModalProvider>

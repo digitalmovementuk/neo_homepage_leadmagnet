@@ -10,13 +10,13 @@ import {
   Sparkles,
 } from "lucide-react";
 import { Reveal } from "../lib/Reveal";
-import { useT, useLang } from "../lib/i18n";
+import { useT, useLang, localizeHref, useLocalHref } from "../lib/i18n";
 import { useDocumentHead } from "../lib/useDocumentHead";
 import { useLeadModal, type LeadModalContent } from "../lib/leadModal";
 import type { ServicePage } from "../lib/translations";
 import { PlatformBadges } from "./PlatformBadges";
 import { AuthorByline } from "./AuthorByline";
-import { servicePageJsonLd, SERVICE_PATHS } from "../content/route-jsonld";
+import { servicePageJsonLd, SERVICE_PATHS, EN_PREFIX } from "../content/route-jsonld";
 
 const EASE_OUT = [0.22, 1, 0.36, 1] as const;
 const SITE_ORIGIN = "https://www.neotheagency.de";
@@ -48,7 +48,7 @@ export function ServicePageShell({ slug }: { slug: keyof ServicePage }) {
   const { openWith } = useLeadModal();
 
   const path = SERVICE_PATHS[page.slug] ?? `/${page.slug}/`;
-  const canonical = `${SITE_ORIGIN}${SITE_BASE}${path}`;
+  const canonical = `${SITE_ORIGIN}${SITE_BASE}${isEN ? EN_PREFIX : ""}${path}`;
 
   // Strukturierte Daten aus einer Quelle mit dem Build (Service + WebPage + Brotkrumen), 26.11.2026.
   const jsonLd = useMemo(
@@ -96,6 +96,7 @@ function Hero({
   const reduce = useReducedMotion();
   const videoRef = useRef<HTMLVideoElement>(null);
   const base = import.meta.env.BASE_URL;
+  const localHref = useLocalHref();
 
   // iOS-hardened autoplay (same pattern as homepage Hero).
   useEffect(() => {
@@ -255,7 +256,7 @@ function Hero({
                   {page.hero.primaryCta} <ArrowRight size={14} />
                 </button>
                 <a
-                  href="/#contact"
+                  href={localHref("/#contact")}
                   className="text-[13px] text-white/75 hover:text-white underline-offset-4 hover:underline transition-colors"
                 >
                   {page.hero.secondaryCta}
@@ -278,7 +279,7 @@ function Hero({
                 {page.hero.primaryCta} <ArrowRight size={13} />
               </button>
               <a
-                href="/#contact"
+                href={localHref("/#contact")}
                 className="text-white/65 hover:text-white text-[13px] sm:text-[14px] font-medium leading-tight whitespace-nowrap md:text-right transition-colors"
               >
                 {page.hero.secondaryCta}{" "}
@@ -1007,7 +1008,7 @@ function FinalCTA({
         <Reveal delay={0.15}>
           <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-4">
             <a
-              href="/#contact"
+              href={localizeHref("/#contact", isEN ? "en" : "de")}
               className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-pink bg-brand-button hover:brightness-[0.92] text-white font-semibold text-[15px] sm:text-[16px] px-7 py-3.5 transition-colors"
             >
               {page.finalCta.primary} <ArrowRight size={16} />

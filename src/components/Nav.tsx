@@ -3,7 +3,7 @@ import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion";
 import { Menu, X, ArrowRight, ChevronDown, ArrowUpRight } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { business } from "../content";
-import { useT } from "../lib/i18n";
+import { useT, useLocalHref, LangLink } from "../lib/i18n";
 import { LanguagePicker } from "./LanguagePicker";
 
 const SERVICE_ROUTES = [
@@ -26,6 +26,7 @@ type Surface = "dark" | "light";
  */
 export function Nav() {
   const t = useT();
+  const localHref = useLocalHref();
   const location = useLocation();
   const [surface, setSurface] = useState<Surface>("dark");
   const [scrolled, setScrolled] = useState(false);
@@ -231,7 +232,7 @@ export function Nav() {
                               const sp = t.servicePages[r.slug];
                               return (
                                 <li key={r.slug}>
-                                  <Link
+                                  <LangLink
                                     to={r.path}
                                     onClick={() => setServicesOpen(false)}
                                     className={`flex items-start gap-3 px-4 py-3 transition-colors ${
@@ -263,7 +264,7 @@ export function Nav() {
                                         {sp.hero.eyebrow}
                                       </span>
                                     </span>
-                                  </Link>
+                                  </LangLink>
                                 </li>
                               );
                             })}
@@ -273,7 +274,7 @@ export function Nav() {
                               }`}
                             >
                               <a
-                                href={l.href}
+                                href={localHref(l.href)}
                                 onClick={() => setServicesOpen(false)}
                                 className={`flex items-center justify-between px-1 py-2 text-[12px] font-bold uppercase tracking-[0.18em] ${
                                   onDark
@@ -405,7 +406,7 @@ export function Nav() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.05 * i + 0.36 }}
                       >
-                        <Link
+                        <LangLink
                           to={r.path}
                           onClick={() => setOpen(false)}
                           className="flex items-center justify-between py-2.5 text-[15px] text-white/85 hover:text-white"
@@ -414,7 +415,7 @@ export function Nav() {
                             {sp.hero.headlineTop} {sp.hero.headlineBottom}
                           </span>
                           <ArrowUpRight size={14} className="text-white/45" />
-                        </Link>
+                        </LangLink>
                       </motion.li>
                     );
                   })}

@@ -1,8 +1,9 @@
-import { lazy, Suspense, type ComponentType, type ReactElement } from "react";
-import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
+import { lazy, Suspense, useEffect, type ComponentType, type ReactElement } from "react";
+import { BrowserRouter, Navigate, Routes, Route, useLocation } from "react-router-dom";
 import { Layout } from "./components/Layout";
 import { HomePage } from "./pages/HomePage";
 import { SeoLayout } from "./components/seo/SeoLayout";
+import { useLang, langFromPath } from "./lib/i18n";
 
 // Service-page routes are lazy-loaded — they aren't on the homepage critical
 // path so they shouldn't bloat the initial JS bundle.
@@ -24,6 +25,15 @@ const NotFound = lazy(() => import("./pages/NotFound").then((m) => ({ default: m
 
 export const BASE = (import.meta.env.BASE_URL ?? "/").replace(/\/$/, "");
 
+/** Englische Adresse einer Seite, die es nur auf Deutsch gibt: auf die deutsche Adresse wechseln (Server: 308, vercel.json). */
+function ToGerman() {
+  const { pathname, search, hash } = useLocation();
+  useEffect(() => {
+    window.location.replace(`${BASE}${pathname}${search}${hash}`);
+  }, [pathname, search, hash]);
+  return <RouteFallback />;
+}
+
 function RouteFallback() {
   return <div className="min-h-screen bg-surface-1" aria-hidden />;
 }
@@ -38,11 +48,21 @@ function suspended(Component: ComponentType): ReactElement {
 
 /** Alle Routen ohne Router-Hülle, damit der Prerender (src/entry-prerender.tsx) sie mit StaticRouter nutzen kann. */
 export function AppRoutes() {
+  const { lang } = useLang();
+  const isEN = lang === "en";
   return (
     <Routes>
-      <Route element={<SeoLayout />}>
-        <Route path="seo-agentur" element={suspended(SeoPage)} />
-      </Route>
+      {isEN ? (
+        <>
+          <Route path="seo-agentur/*" element={<ToGerman />} />
+          <Route path="impressum/*" element={<ToGerman />} />
+          <Route path="datenschutz/*" element={<ToGerman />} />
+        </>
+      ) : (
+        <Route element={<SeoLayout />}>
+          <Route path="seo-agentur" element={suspended(SeoPage)} />
+        </Route>
+      )}
       {/* Alte Adressen leiten auf /seo-agentur/ um (Server: echte 301/308, siehe vercel.json). */}
       <Route path="leistungen/seo" element={<Navigate to="/seo-agentur/" replace />} />
       <Route path="services/seo" element={<Navigate to="/seo-agentur/" replace />} />
@@ -66,9 +86,15 @@ export function AppRoutes() {
   );
 }
 
+/** /en/... = englische Fassung: eigener basename, damit alle Router-Links in der Sprache bleiben. */
+export function routerBasename(lang: "de" | "en"): string {
+  return lang === "en" ? `${BASE}/en` : BASE || "/";
+}
+
 export default function App() {
+  const lang = langFromPath(window.location.pathname.slice(BASE.length) || "/");
   return (
-    <BrowserRouter basename={BASE}>
+    <BrowserRouter basename={routerBasename(lang)}>
       <AppRoutes />
     </BrowserRouter>
   );

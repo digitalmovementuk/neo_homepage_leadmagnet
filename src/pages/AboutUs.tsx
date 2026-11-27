@@ -50,7 +50,7 @@ export function AboutUs() {
     canonical:
       lang === "de"
         ? "https://www.neotheagency.de/neo-the-agency/"
-        : "https://www.neotheagency.de/neo-the-agency/",
+        : "https://www.neotheagency.de/en/neo-the-agency/",
   });
 
   return (

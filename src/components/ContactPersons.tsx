@@ -11,7 +11,8 @@
  * `data-surface` steuert dabei weiter die Logofarbe in der Kopfzeile.
  */
 import { ArrowRight, Phone } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { LangLink } from "../lib/i18n";
 import { business } from "../content";
 import { Reveal } from "../lib/Reveal";
 
@@ -92,9 +93,9 @@ export function ContactPersons({
       {c.cta} <ArrowRight size={15} strokeWidth={2.2} />
     </a>
   ) : (
-    <Link to={ctaHref} className={`${ctaCls} whitespace-nowrap`}>
+    <LangLink to={ctaHref} className={`${ctaCls} whitespace-nowrap`}>
       {c.cta} <ArrowRight size={15} strokeWidth={2.2} />
-    </Link>
+    </LangLink>
   );
 
   return (

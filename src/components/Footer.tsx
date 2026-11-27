@@ -1,7 +1,6 @@
 import { Phone, MapPin, ArrowUpRight } from "lucide-react";
-import { Link } from "react-router-dom";
 import { business } from "../content";
-import { useT, useLang } from "../lib/i18n";
+import { useT, useLang, localizeHref, LangLink } from "../lib/i18n";
 import { PlatformReviewLinks } from "./PlatformReviewLinks";
 
 
@@ -32,7 +31,7 @@ export function Footer() {
           </div>
 
           <a
-            href="/#contact"
+            href={localizeHref("/#contact", lang)}
             className="inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-[0.18em] text-ink hover:text-ink-soft transition-colors"
           >
             {isEN ? "Start a project" : "Projekt starten"}{" "}
@@ -48,11 +47,11 @@ export function Footer() {
                 {section.links.map((l) => (
                   <li key={l.label}>
                     {l.href.startsWith("/") && !l.href.includes("#") ? (
-                      <Link to={l.href} className={linkCls}>
+                      <LangLink to={l.href} className={linkCls}>
                         {l.label}
-                      </Link>
+                      </LangLink>
                     ) : (
-                      <a href={l.href} className={linkCls}>
+                      <a href={localizeHref(l.href, lang)} className={linkCls}>
                         {l.label}
                       </a>
                     )}
@@ -121,9 +120,9 @@ export function Footer() {
           </p>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
             {t.footer.legal.map((l) => (
-              <Link key={l.label} to={l.href} className="hover:text-ink">
+              <LangLink key={l.label} to={l.href} className="hover:text-ink">
                 {l.label}
-              </Link>
+              </LangLink>
             ))}
             <span className="text-ink-faint">·</span>
             <span>{isEN ? "Germany" : "Deutschland"}</span>

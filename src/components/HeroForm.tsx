@@ -10,9 +10,8 @@
  */
 import { useEffect, useRef, useState } from "react";
 import type { FormEvent } from "react";
-import { Link } from "react-router-dom";
 import { business } from "../content";
-import { useLang } from "../lib/i18n";
+import { useLang, LangLink } from "../lib/i18n";
 import "./hero-form.css";
 
 type Status = "form" | "sent" | "blocked";
@@ -314,7 +313,7 @@ export function HeroForm() {
               />
               <span>
                 {L.consentA}
-                <Link to="/datenschutz">{L.consentLink}</Link>
+                <LangLink to="/datenschutz">{L.consentLink}</LangLink>
                 {L.consentB}
               </span>
             </label>

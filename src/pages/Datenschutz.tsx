@@ -42,12 +42,10 @@ export function Datenschutz() {
         </p>
       </LegalSection>
 
-      <LegalSection title="4. Lokale Speicherung der Spracheinstellung">
+      <LegalSection title="4. Spracheinstellung">
         <p>
-          Wählen Sie Deutsch oder Englisch, speichern wir diese Auswahl im lokalen Speicher Ihres
-          Browsers (localStorage). Die Angabe verlässt Ihr Gerät nicht und dient nur dazu, die Seite in
-          Ihrer Sprache anzuzeigen (§ 25 Abs. 2 Nr. 2 TDDDG). Sie können sie jederzeit in Ihrem Browser
-          löschen.
+          Die Seite ist auf Deutsch. Die englische Fassung hat eigene Adressen unter /en/. Wählen Sie
+          eine Sprache, wechseln wir nur die Adresse. Dafür speichern wir nichts in Ihrem Browser.
         </p>
       </LegalSection>
 

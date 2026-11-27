@@ -1,14 +1,17 @@
 import { StrictMode } from "react";
 import { createRoot, hydrateRoot } from "react-dom/client";
-import App from "./App";
-import { LanguageProvider } from "./lib/i18n";
+import App, { BASE } from "./App";
+import { LanguageProvider, langFromPath } from "./lib/i18n";
 import { LeadModalProvider } from "./lib/leadModal";
 import { SeoModalProvider } from "./lib/seoModal";
 import "./index.css";
 
+// Sprache aus der Adresse: /en/... = Englisch, sonst Deutsch (passt zum vorgerenderten HTML).
+const initialLang = langFromPath(window.location.pathname.slice(BASE.length) || "/");
+
 const tree = (
   <StrictMode>
-    <LanguageProvider>
+    <LanguageProvider initialLang={initialLang}>
       <LeadModalProvider>
         <SeoModalProvider>
           <App />

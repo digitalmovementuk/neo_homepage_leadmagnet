@@ -1,9 +1,11 @@
 /**
- * Strukturierte Daten (JSON-LD) für Leistungsseiten, Über uns und Rechtsseiten · v1.3 (26.11.2026)
+ * Strukturierte Daten (JSON-LD) für Leistungsseiten, Über uns und Rechtsseiten · v1.4 (27.11.2026)
  * Eine Quelle für Browser (useDocumentHead) und Build (scripts/prerender-seo.mjs),
  * damit das Roh-HTML und die fertige Seite dieselben Daten tragen.
  *
  * Changelog
+ *   v1.4 (27.11.2026) Englische Fassung unter /en/: isEN setzt /en vor alle Adressen, Brotkrumen-Start /en/,
+ *        inLanguage en-GB.
  *   v1.3 (26.11.2026) Autor Johannes Kaluc: author auf jeder WebPage, Person-Knoten im Graphen der
  *        Leistungsseiten und von Über uns (sichtbare Autorenzeile auf denselben Seiten).
  *   v1.2 (26.11.2026) dateModified auf jeder WebPage; FAQPage aus den sichtbaren FAQ der Leistungsseiten;
@@ -35,7 +37,7 @@ function breadcrumb(url: string, name: string, isEN: boolean): Ld {
     "@type": "BreadcrumbList",
     "@id": `${url}#breadcrumb`,
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: isEN ? "Home" : "Startseite", item: `${SITE_ORIGIN}/` },
+      { "@type": "ListItem", position: 1, name: isEN ? "Home" : "Startseite", item: `${SITE_ORIGIN}${isEN ? "/en/" : "/"}` },
       { "@type": "ListItem", position: 2, name, item: url },
     ],
   };
@@ -48,7 +50,7 @@ function webPage(type: string | string[], url: string, name: string, description
     url,
     name,
     description,
-    inLanguage: isEN ? "en" : "de-DE",
+    inLanguage: isEN ? "en-GB" : "de-DE",
     isPartOf: { "@id": WEBSITE_ID },
     about: { "@id": ORG_ID },
     breadcrumb: { "@id": `${url}#breadcrumb` },
@@ -128,19 +130,21 @@ export const SERVICE_PATHS: Record<string, string> = {
 };
 /** Über-uns-Seite unter dem Markennamen (26.11.2026); /uber-uns und /about leiten weiter. */
 export const ABOUT_PATH = "/neo-the-agency/";
+/** Englische Fassung liegt unter /en/... (27.11.2026); Deutsch ist die Standardsprache ohne Präfix. */
+export const EN_PREFIX = "/en";
 
 /** JSON-LD für die Leistungsseiten: dieselbe Funktion nutzt der Browser und der Build. */
 export function servicePageJsonLd(slug: string, title: string, description: string, isEN: boolean, faq?: { q: string; a: string }[]): Ld {
   const names = SERVICE_NAMES[slug] ?? { de: [title, title], en: [title, title] };
   const [name, serviceType] = isEN ? names.en : names.de;
-  return serviceJsonLd({ url: `${SITE_ORIGIN}${SERVICE_PATHS[slug] ?? `/${slug}/`}`, name, serviceType, title, description, isEN, faq });
+  return serviceJsonLd({ url: `${SITE_ORIGIN}${isEN ? EN_PREFIX : ""}${SERVICE_PATHS[slug] ?? `/${slug}/`}`, name, serviceType, title, description, isEN, faq });
 }
 
-/** JSON-LD für die Über-uns-Seite (eine Adresse für beide Sprachen). */
+/** JSON-LD für die Über-uns-Seite (DE unter /neo-the-agency/, EN unter /en/neo-the-agency/). */
 export function aboutPageJsonLd(title: string, description: string, isEN: boolean): Ld {
   const ld = simplePageJsonLd({
     type: ["WebPage", "AboutPage"],
-    url: `${SITE_ORIGIN}${ABOUT_PATH}`,
+    url: `${SITE_ORIGIN}${isEN ? EN_PREFIX : ""}${ABOUT_PATH}`,
     crumb: isEN ? "About" : "Über uns",
     title,
     description,

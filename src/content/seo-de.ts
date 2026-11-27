@@ -1,8 +1,10 @@
 /**
  * NEO the Agency · SEO-Leistungsseite (/seo-agentur/)
- * Inhaltsmodul v1.2 (26.11.2026)
+ * Inhaltsmodul v1.3 (27.11.2026)
  *
  * Changelog
+ *   v1.3 (27.11.2026) Paket „Fundament“ ab 799 € (Mindestpreis); Laufzeit-Frage durch
+ *        „Wann kommt die Rechnung?“ ersetzt, Platzhalter entfernt.
  *   v1.2 (26.11.2026) QA-Gate: Fokus-Suchbegriff „SEO-Agentur" und die Neben-Suchbegriffe
  *        „Local-SEO-Agentur" und „B2B-SEO-Agentur" in Problem-, Ablauf-, Lokal-, Passt-es- und
  *        Team-Text. Ab jetzt ist qa/qa-gate-2026-11-26/wp-handoff.json die Textquelle für WordPress;
@@ -18,7 +20,7 @@
  * - Texte in eckigen Klammern ([Zitat folgt]) sind offene Platzhalter. Die
  *   Seite zeichnet sie automatisch als leere, gestrichelte Felder.
  * - href: null bedeutet: Zielseite gibt es noch nicht, es wird kein Link gebaut.
- * -   ist ein geschütztes Leerzeichen (490 €, 24 h, 5,0 ★).
+ * -   ist ein geschütztes Leerzeichen (799 €, 24 h, 5,0 ★).
  * - Alt-Texte beschreiben das Bild, das wirklich gezeigt wird.
  *
  * Changelog
@@ -450,9 +452,9 @@ export const seoDe = {
         key: "fundament",
         name: "Fundament",
         line: "Für Unternehmen, die bei Google erstmals gezielt gefunden werden wollen.",
-        // Zusammen gelesen: „Ab 490 € pro Monat zzgl. MwSt.“
+        // Zusammen gelesen: „Ab 799 € pro Monat zzgl. MwSt.“
         pricePrefix: "Ab",
-        price: "490 €",
+        price: "799 €",
         priceSuffix: "pro Monat zzgl. MwSt.",
         text: "",
         points: [
@@ -669,8 +671,8 @@ export const seoDe = {
         a: "Die Website ohne Aufpreis, die Keyword-Seiten Ihres Pakets, On-Page- und Off-Page-SEO und jeden Monat ein Bericht auf einer Seite. Was genau dazugehört, steht nach dem Audit schriftlich in Ihrem Angebot.",
       },
       {
-        q: "Gibt es eine Mindestlaufzeit?",
-        a: "Bis zur Einreichung bei Google können Sie ohne Angabe von Gründen kündigen, ohne Frist und ohne Kosten. Die Vertragslaufzeit beginnt erst mit der Einreichung. [Laufzeit nach Vertrag bestätigen]",
+        q: "Wann kommt die Rechnung?",
+        a: "Website und SEO-Seiten liefern wir zuerst, die Rechnung kommt danach. Sie prüfen die Qualität vorab – maximale Sicherheit und Transparenz. Bis zur Einreichung bei Google können Sie ohne Angabe von Gründen kündigen, ohne Frist und ohne Kosten.",
       },
       {
         q: "Wer macht die eigentliche Arbeit?",
@@ -690,7 +692,7 @@ export const seoDe = {
       },
       {
         q: "Kostet die Website extra?",
-        a: "Nein. In allen drei Paketen erhalten Sie eine komplette Website ohne Aufpreis. Sie zahlen nur für die SEO-Leistung. Im Paket „Fundament“ sind das 20 Keyword-Seiten, also SEO-Landingpages zu Ihren Suchbegriffen, inklusive On-Page- und Off-Page-SEO, ab 490 € pro Monat zzgl. MwSt. Für die Pakete „Wachstum“ und „Marktführer“ legen wir Umfang und Preis nach dem kostenlosen Audit fest. Einen Einheitspreis gibt es nicht. Der Monatsbetrag richtet sich nach dem vereinbarten Umfang.",
+        a: "Nein. In allen drei Paketen erhalten Sie eine komplette Website ohne Aufpreis. Sie zahlen nur für die SEO-Leistung. Im Paket „Fundament“ sind das 20 Keyword-Seiten, also SEO-Landingpages zu Ihren Suchbegriffen, inklusive On-Page- und Off-Page-SEO, ab 799 € pro Monat zzgl. MwSt. Für die Pakete „Wachstum“ und „Marktführer“ legen wir Umfang und Preis nach dem kostenlosen Audit fest. Einen Einheitspreis gibt es nicht. Der Monatsbetrag richtet sich nach dem vereinbarten Umfang.",
       },
       {
         q: "Wann bekomme ich die erste Rechnung?",

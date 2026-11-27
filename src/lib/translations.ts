@@ -313,9 +313,9 @@ const de: Translations = {
     headlineBottom: "Über Google, KI-Suche und eine Website, die liefert.",
     sub: "Als Online-Marketing-Agentur machen wir Sie sichtbar in jeder relevanten Stadt. In jedem Stadtteil. Damit Anfragen reinkommen — nicht Hoffnungen. Ein Team kümmert sich um SEO, Google Ads, Social Media und Ihre Website. Sie bekommen einen festen Ansprechpartner, einen Festpreis und jeden Monat einen Bericht, der zeigt, was sich bewegt hat.",
     services: [
-      "Search Engine Optimization",
-      "AI Search Optimization",
-      "High-End Website Development",
+      "Suchmaschinenoptimierung (SEO)",
+      "KI-Suche (GEO)",
+      "Website-Entwicklung",
     ],
     priceLine: "Kostenloses Erstgespräch",
     priceLineSub: "Antwort in 24 h",
@@ -374,7 +374,7 @@ const de: Translations = {
     headline: "Commitment.",
     paragraphs: [
       "Ein Ziel verbindet alle Projekte: Ihr Umsatz wächst. Erfolg messen wir daran. Nicht an unserer Kreativität.",
-      "NEO THE AGENCY ist High-End Performance Marketing. Erfolge sind messbar. Wir liefern Anfragen — keine Tabellen.",
+      "NEO THE AGENCY steht für messbares Performance Marketing. Wir liefern Anfragen — keine Tabellen.",
       "Hintergrund: Strategieberatung, Unternehmensberatung, Projektmanagement. Sie bekommen das Komplettpaket — Strategie, Projektsteuerung, Handwerk.",
     ],
     closing: "Customer Excellence ist der Kompass. Drei Prinzipien zeigen, wie das in der Praxis aussieht.",
@@ -404,7 +404,7 @@ const de: Translations = {
       {
         title: "Fairer Preis",
         body:
-          "Festpreis vom ersten Tag. Kein Setup-Trick. Keine Mindestlaufzeit. Keine versteckten Stunden. Was Sie sehen, kriegen Sie.",
+          "Festpreis vom ersten Tag. Kein Setup-Trick. Keine versteckten Stunden. Website und SEO-Seiten liefern wir zuerst, die Rechnung kommt danach.",
         kicker: "Prinzip",
       },
     ],
@@ -557,7 +557,7 @@ const de: Translations = {
         eta: "Tag 90",
         title: "8× Pipeline",
         body:
-          "Gemessene Steigerung qualifizierter Anfragen. Ab hier monatliche Optimierung. Keine Überraschungen. Keine Mindestlaufzeit.",
+          "Gemessene Steigerung qualifizierter Anfragen. Ab hier monatliche Optimierung. Keine Überraschungen.",
       },
     ],
   },
@@ -610,7 +610,7 @@ const de: Translations = {
 
   footer: {
     blurb:
-      "NEO THE AGENCY ist High-End Performance Marketing. Wir machen Websites zu Assets. Wir liefern qualifizierte Anfragen.",
+      "NEO THE AGENCY steht für messbares Performance Marketing. Wir machen Websites zu Assets und liefern qualifizierte Anfragen.",
     sections: [
       {
         title: "Leistungen",
@@ -656,13 +656,13 @@ const de: Translations = {
     meta: {
       title: "Über NEO THE AGENCY · Die Agentur, die wirklich liefert",
       description:
-        "Über NEO THE AGENCY: wer wir sind, woran wir glauben und wie unsere 90-Tage-Sprints laufen. Berliner Agentur für Digitalmarketing, ohne Account-Manager.",
+        "Über NEO THE AGENCY: wer wir sind, woran wir glauben und wie unsere 90-Tage-Sprints laufen. Agentur für Digitalmarketing mit Sitz in Berlin, bundesweit tätig, ohne Account-Manager.",
     },
     hero: {
       eyebrow: "NEO THE AGENCY · Über uns",
-      headlinePre: "Eine Berliner Agentur,",
+      headlinePre: "Eine Agentur aus Berlin,",
       headlineSoft: "die das Handwerk wieder ernst nimmt.",
-      sub: "NEO THE AGENCY ist eine Berliner Agentur, die Performance Marketing als Handwerk versteht — nicht als Excel-Sport. Unser Versprechen: messbare Ergebnisse in 90 Tagen. Sie sprechen direkt mit den Spezialisten, die Ihre Kampagnen, Inhalte und Websites umsetzen, ohne Account-Manager dazwischen. Gearbeitet wird in 90-Tage-Sprints mit klaren Zielen.",
+      sub: "NEO THE AGENCY ist eine Agentur mit Sitz in Berlin, bundesweit tätig, die Performance Marketing als Handwerk versteht — nicht als Excel-Sport. Unser Versprechen: messbare Ergebnisse in 90 Tagen. Sie sprechen direkt mit den Spezialisten, die Ihre Kampagnen, Inhalte und Websites umsetzen, ohne Account-Manager dazwischen. Gearbeitet wird in 90-Tage-Sprints mit klaren Zielen.",
       locations: "Berlin-Schöneberg",
     },
     pillars: [
@@ -676,7 +676,7 @@ const de: Translations = {
         label: "Mission",
         headline:
           "Performance Marketing entmystifizieren und in echte Anfragen umwandeln.",
-        body: "Schluss mit Eitelkeitsmetriken, Reporting-Theater und Account-Manager-Ketten. Wir liefern technische SEO, AI-Search-Optimierung und High-End-Websites zu einem Festpreis — und stehen mit unserem Namen dafür gerade.",
+        body: "Schluss mit Eitelkeitsmetriken, Reporting-Theater und Account-Manager-Ketten. Wir liefern technische SEO, AI-Search-Optimierung und Websites, die verkaufen, zu einem Festpreis — und stehen mit unserem Namen dafür gerade.",
       },
       {
         label: "Werte",
@@ -709,7 +709,7 @@ const de: Translations = {
         { title: "Erst zuhören", body: "Im ersten Gespräch klären wir Ihr Ziel. Wir sehen uns Ihre Website, Ihre Konten und Ihre Zahlen an. Danach wissen Sie, was möglich ist und was es kostet." },
         { title: "90 Tage, ein klares Ziel", body: "Wir planen in Sprints von 90 Tagen. Jeder Sprint hat ein Ziel, das man messen kann. Jeden Monat zeigt Ihnen ein kurzer Bericht, was passiert ist." },
         { title: "Ein Festpreis", body: "Sie zahlen einen festen Betrag im Monat. Eine Setup-Gebühr gibt es nicht. Ihr Werbebudget läuft über Ihr eigenes Konto." },
-        { title: "Keine Mindestlaufzeit", body: "Nach dem ersten Sprint läuft die Zusammenarbeit monatlich weiter. Sie können pausieren, wann Sie wollen. Konten, Daten und Inhalte gehören immer Ihnen." },
+        { title: "Erst Lieferung, dann Rechnung", body: "Website und SEO-Seiten liefern wir zuerst, die Rechnung kommt danach. Sie prüfen die Qualität vorab – maximale Sicherheit und Transparenz. Konten, Daten und Inhalte gehören immer Ihnen." },
         { title: "Direkter Draht", body: "Sie haben einen festen Ansprechpartner. Sie sprechen mit den Leuten, die die Arbeit machen. Einen Account-Manager dazwischen gibt es nicht." },
       ],
       closing: "Unser Büro ist in Berlin-Schöneberg. Wir arbeiten für Kunden in ganz Deutschland. Workshops vor Ort sind möglich.",
@@ -962,7 +962,7 @@ const de: Translations = {
           { eta: "Tag 1", title: "Audit & Kickoff", body: "Audit-Report im Posteingang. 60-Min-Strategy-Call. Sie verstehen, wo Sie stehen." },
           { eta: "Tag 30", title: "Fundament steht", body: "Technisches SEO sauber. Erste Content-Pages live. Tracking läuft, Daten fließen." },
           { eta: "Tag 60", title: "Erste Page-1-Keywords", body: "Erste kommerzielle Keywords ranken auf Seite 1. Pipeline beginnt sich zu füllen." },
-          { eta: "Tag 90", title: "8× Pipeline (Median)", body: "Messbare Steigerung qualifizierter Anfragen. Ab hier monatlich, ohne Mindestlaufzeit." },
+          { eta: "Tag 90", title: "8× Pipeline (Median)", body: "Messbare Steigerung qualifizierter Anfragen. Ab hier monatliche Optimierung." },
         ],
       },
       stack: {
@@ -988,11 +988,11 @@ const de: Translations = {
         items: [
           { q: "Wie schnell sehe ich erste Ergebnisse?", a: "Ranking-Bewegung in den ersten 2–4 Wochen, erste Page-1-Keywords nach 60–90 Tagen. Echte Anfragen-Steigerung typischerweise ab Monat 3. Was Sie konkret erwarten können, sagen wir Ihnen nach dem Audit — ohne Schönreden." },
           { q: "Was ist im Festpreis enthalten?", a: "Alles, was unter ‚Was Sie bekommen‘ steht. Keine Add-ons, keine Setup-Fee, keine Mehrkosten für ‚mehr Content‘ oder ‚mehr Links‘. Wenn Sie skalieren wollen, sprechen wir — sonst bleibt der Preis stabil." },
-          { q: "Gibt es eine Mindestlaufzeit?", a: "Nein. Wir arbeiten Monat für Monat nach dem 90-Tage-Sprint. Wenn wir nicht liefern, können Sie gehen. Wir verdienen lieber den nächsten Monat, als Sie darin festzuhalten." },
-          { q: "Wer macht die eigentliche Arbeit?", a: "Der Gründer (ich, Raoul) plus zwei Senior-SEO-Spezialisten. Kein Account-Manager-Pingpong, keine Junior, die hinter Ihrem Rücken einarbeitet. Wer Sie im Erstgespräch trifft, liefert auch." },
+          { q: "Was kostet die Zusammenarbeit?", a: "Der Mindestpreis liegt bei 799 € pro Monat. Den genauen Festpreis nennen wir nach dem kostenlosen Audit. Website und SEO-Seiten liefern wir zuerst, die Rechnung kommt danach." },
+          { q: "Wer macht die eigentliche Arbeit?", a: "Der Gründer (ich, Raoul Müller) plus zwei Senior-SEO-Spezialisten. Kein Account-Manager-Pingpong, keine Junior, die hinter Ihrem Rücken einarbeitet. Wer Sie im Erstgespräch trifft, liefert auch." },
           { q: "Wie passt SEO zu Google Ads?", a: "Sehr gut — wir betreiben oft beides parallel. SEO baut langfristige Sichtbarkeit, Ads kaufen kurzfristig Traffic. Wenn beides sauber aufgesetzt ist, ergibt das eine Pipeline, die nicht aufhört zu wachsen." },
           { q: "Können Sie für meine Branche Ergebnisse garantieren?", a: "Ranking-Garantien sind unseriös — wir geben keine. Was wir tun: Wir nehmen keine Kunden an, bei denen wir nicht überzeugt sind, dass es funktioniert. Wenn das Audit zeigt, dass SEO der falsche Hebel ist, sagen wir Ihnen das." },
-          { q: "Was passiert nach den 90 Tagen?", a: "Sie entscheiden. Die meisten Kunden bleiben monatlich, weil das Wachstum erst dann skaliert. Manche pausieren, kommen später wieder. Sie behalten alle Zugänge, alle Daten, alle Inhalte — auch wenn Sie morgen aufhören." },
+          { q: "Was passiert nach den 90 Tagen?", a: "Sie entscheiden. Die meisten Kunden bleiben monatlich, weil das Wachstum erst dann skaliert. Sie behalten alle Zugänge, alle Daten, alle Inhalte — auch wenn Sie morgen aufhören." },
         ],
       },
       leadMagnet: {
@@ -1030,7 +1030,7 @@ const de: Translations = {
       meta: {
         title: "Google-Ads-Agentur: Betreuung zum Festpreis | NEO THE AGENCY",
         description:
-          "Google-Ads-Agentur für Inhaber und Mittelstand: Search Ads, Performance Max und sauberes Conversion-Tracking. Zum Festpreis, ohne Mindestlaufzeit.",
+          "Google-Ads-Agentur für Inhaber und Mittelstand: Search Ads, Performance Max und sauberes Conversion-Tracking. Zum Festpreis, Start mit kostenlosem Audit.",
       },
       hero: {
         eyebrow: "Google-Ads-Agentur · für Inhaber & Mittelstand",
@@ -1216,7 +1216,7 @@ const de: Translations = {
           { q: "Was, wenn ROAS unter Ziel bleibt?", a: "Wir treffen uns wöchentlich und passen an. Wenn nach 60 Tagen klar ist, dass das Marktpotenzial nicht reicht, sagen wir Ihnen das ehrlich — und beenden den Sprint, statt Ihr Geld zu verbrennen." },
           { q: "Wer schreibt die Anzeigen?", a: "Wir. Inklusive A/B-Test-Varianten und Asset-Production für Performance Max. Sie freigeben, wir schalten." },
           { q: "Was ist mit Performance Max — funktioniert das?", a: "Ja, wenn man weiß, was man tut. Eng gefasste Asset-Groups, Negativ-Keywords auf Account-Ebene, Conversion-Tracking sauber. Sonst frisst PMax Budget und liefert Vanity-Conversions." },
-          { q: "Was passiert nach den 90 Tagen?", a: "Monatlich weiter, ohne Mindestlaufzeit. Sie können jederzeit pausieren, alle Konten und Daten gehören Ihnen." },
+          { q: "Was passiert nach den 90 Tagen?", a: "Die Zusammenarbeit läuft monatlich weiter, mit neuen Zielen für den nächsten Sprint. Alle Konten und Daten gehören Ihnen." },
         ],
       },
       leadMagnet: {
@@ -1440,7 +1440,7 @@ const de: Translations = {
           { q: "Wer produziert die Videos?", a: "Wir. Inklusive Skripte, Drehbuch, Schnitt, Hooks. Sie freigeben, wir veröffentlichen. Bei Founder-Content brauchen wir 2 h pro Monat von Ihnen." },
           { q: "Wie schnell sehe ich Anfragen?", a: "Organisch dauert 60–90 Tage bis erste tracked Conversions. Paid Social oft innerhalb der ersten 2–3 Wochen, wenn das Setup sauber ist." },
           { q: "Was ist mit Creators und Influencer-Marketing?", a: "Wenn relevant, ja — aber als Add-on, nicht Default. Inhabergeführte Marken bauen meistens am besten über eigene Founder-Content. Creators kommen, wenn das Volumen es rechtfertigt." },
-          { q: "Was passiert nach den 90 Tagen?", a: "Monatlich weiter, ohne Mindestlaufzeit. Sie behalten alle Konten, alle Inhalte, alle Daten — wenn Sie aufhören, geht nichts verloren." },
+          { q: "Was passiert nach den 90 Tagen?", a: "Die Zusammenarbeit läuft monatlich weiter, mit neuen Zielen für den nächsten Sprint. Sie behalten alle Konten, alle Inhalte, alle Daten — wenn Sie aufhören, geht nichts verloren." },
         ],
       },
       leadMagnet: {
@@ -1715,14 +1715,14 @@ const en: Translations = {
   },
 
   hero: {
-    eyebrow: "High-end performance marketing",
+    eyebrow: "Online marketing agency · Performance marketing agency",
     headlineTop: "New sales opportunities every week.",
     headlineBottom: "Through Google, AI search, and a website that ships results.",
     sub: "Visible in every relevant city. In every district. So enquiries roll in — not hope.",
     services: [
       "Search Engine Optimisation",
-      "AI Search Optimisation",
-      "High-End Website Development",
+      "AI Search Optimisation (GEO)",
+      "Website Development",
     ],
     priceLine: "Free consultation",
     priceLineSub: "Reply within 24 h",
@@ -1781,7 +1781,7 @@ const en: Translations = {
     headline: "Commitment.",
     paragraphs: [
       "One goal ties every project together: your revenue grows. That's how we measure success. Not by our creativity.",
-      "NEO THE AGENCY is high-end performance marketing. Results are measurable. We deliver enquiries — not spreadsheets.",
+      "NEO THE AGENCY stands for performance marketing you can measure. We deliver enquiries — not spreadsheets.",
       "Background: strategy consulting, management consulting, project management. You get the full package — strategy, project ownership, craft.",
     ],
     closing:
@@ -1812,7 +1812,7 @@ const en: Translations = {
       {
         title: "Fair price",
         body:
-          "Fixed price from day one. No setup surprise, no minimum term, no hidden hours. You know exactly what you get.",
+          "Fixed price from day one. No setup surprise, no hidden hours. We deliver the website and SEO pages first; the invoice comes after.",
         kicker: "Principle",
       },
     ],
@@ -1964,7 +1964,7 @@ const en: Translations = {
         eta: "Day 90",
         title: "8× pipeline",
         body:
-          "Measured uplift in qualified enquiries. From here on, monthly optimisation. No surprises. No minimum term.",
+          "Measured uplift in qualified enquiries. From here on, monthly optimisation. No surprises.",
       },
     ],
   },
@@ -2017,7 +2017,7 @@ const en: Translations = {
 
   footer: {
     blurb:
-      "NEO THE AGENCY is a high-end performance marketing agency. We turn websites into assets and deliver qualified enquiries.",
+      "NEO THE AGENCY is a performance marketing agency based in Berlin, working across Germany. We turn websites into assets and deliver qualified enquiries.",
     sections: [
       {
         title: "Services",
@@ -2067,9 +2067,9 @@ const en: Translations = {
     },
     hero: {
       eyebrow: "About",
-      headlinePre: "A Berlin agency",
+      headlinePre: "An agency from Berlin",
       headlineSoft: "taking the craft seriously again.",
-      sub: "We're a Berlin agency that treats performance marketing as a craft — not an Excel sport. Our promise: measurable results in 90 days.",
+      sub: "We're an agency based in Berlin, working across Germany, that treats performance marketing as a craft — not an Excel sport. Our promise: measurable results in 90 days.",
       locations: "Berlin-Schöneberg",
     },
     pillars: [
@@ -2083,7 +2083,7 @@ const en: Translations = {
         label: "Mission",
         headline:
           "Strip the mystery out of performance marketing and turn it into real enquiries.",
-        body: "Enough vanity metrics, reporting theatre and account-manager chains. We deliver technical SEO, AI-search optimisation and high-end websites at a fixed price — and we put our names to the result.",
+        body: "Enough vanity metrics, reporting theatre and account-manager chains. We deliver technical SEO, AI-search optimisation and websites that sell, at a fixed price — and we put our names to the result.",
       },
       {
         label: "Values",
@@ -2116,7 +2116,7 @@ const en: Translations = {
         { title: "We listen first", body: "In the first call we agree on your goal. We look at your website, your accounts and your numbers. Afterwards you know what is possible and what it costs." },
         { title: "90 days, one clear goal", body: "We plan in 90-day sprints. Every sprint has a goal you can measure. A short monthly report shows you what happened." },
         { title: "One fixed price", body: "You pay a fixed monthly amount. There is no setup fee. Your ad budget runs through your own account." },
-        { title: "No minimum term", body: "After the first sprint we continue month to month. You can pause whenever you like. Accounts, data and content always belong to you." },
+        { title: "Delivery first, invoice after", body: "We deliver the website and SEO pages first; the invoice comes after. You check the quality up front – maximum security and transparency. Accounts, data and content always belong to you." },
         { title: "A direct line", body: "You have one fixed contact. You talk to the people who do the work. There is no account manager in between." },
       ],
       closing: "Our office is in Berlin-Schöneberg. We work with clients across Germany. On-site workshops are possible.",
@@ -2369,7 +2369,7 @@ const en: Translations = {
           { eta: "Day 1", title: "Audit & kick-off", body: "Audit report in your inbox. 60-min strategy call. You understand where you stand." },
           { eta: "Day 30", title: "Foundation in place", body: "Technical SEO clean. First content pages live. Tracking running, data flowing." },
           { eta: "Day 60", title: "First page-one keywords", body: "First commercial keywords rank on page one. Pipeline starts filling." },
-          { eta: "Day 90", title: "8× pipeline (median)", body: "Measurable uplift in qualified enquiries. From here on, monthly, no minimum term." },
+          { eta: "Day 90", title: "8× pipeline (median)", body: "Measurable uplift in qualified enquiries. From here on, monthly optimisation." },
         ],
       },
       stack: {
@@ -2395,7 +2395,7 @@ const en: Translations = {
         items: [
           { q: "How fast will I see results?", a: "Ranking movement in the first 2–4 weeks, first page-one keywords by 60–90 days. Real enquiry uplift typically from month 3. What you can specifically expect, we'll tell you after the audit — without spin." },
           { q: "What's included in the fixed price?", a: "Everything under \"What you get.\" No add-ons, no setup fee, no upcharges for \"more content\" or \"more links.\" If you want to scale, we'll talk — otherwise the price stays stable." },
-          { q: "Is there a minimum term?", a: "No. We work month-to-month after the 90-day sprint. If we don't deliver, you can leave. We'd rather earn next month than trap you in this one." },
+          { q: "What does it cost?", a: "The minimum price is €799 per month. We quote the exact fixed price after the free audit. We deliver the website and SEO pages first; the invoice comes after." },
           { q: "Who actually does the work?", a: "The founder (me, Raoul) plus two senior SEO specialists. No account-manager ping-pong, no juniors learning on your behalf. The person you meet in the consultation does the work." },
           { q: "How does SEO sit alongside Google Ads?", a: "Very well — we often run both in parallel. SEO builds long-term visibility; Ads buy short-term traffic. When both are clean, you get a pipeline that doesn't stop growing." },
           { q: "Can you guarantee results in my industry?", a: "Ranking guarantees are dishonest — we don't give them. What we do: we don't take on clients we don't believe will work. If the audit shows SEO is the wrong lever, we'll tell you that." },
@@ -2623,7 +2623,7 @@ const en: Translations = {
           { q: "What if ROAS stays below target?", a: "We meet weekly and adjust. If after 60 days it's clear the market potential isn't enough, we'll tell you honestly — and end the sprint instead of burning your budget." },
           { q: "Who writes the ads?", a: "We do. Including A/B test variants and asset production for Performance Max. You approve, we ship." },
           { q: "What about Performance Max — does it work?", a: "Yes, when you know what you're doing. Tightly scoped asset groups, account-level negative keywords, clean conversion tracking. Otherwise PMax eats budget and delivers vanity conversions." },
-          { q: "What happens after the 90 days?", a: "Monthly continuation, no minimum term. You can pause anytime. All accounts and data are yours." },
+          { q: "What happens after the 90 days?", a: "We continue month by month, with new goals for the next sprint. All accounts and data are yours." },
         ],
       },
       leadMagnet: {
@@ -2847,7 +2847,7 @@ const en: Translations = {
           { q: "Who produces the videos?", a: "We do. Including scripts, storyboard, edit, hooks. You approve, we publish. For founder content we need 2 h per month from you." },
           { q: "How fast will I see enquiries?", a: "Organic takes 60–90 days for first tracked conversions. Paid social often within 2–3 weeks if setup is clean." },
           { q: "What about creators and influencer marketing?", a: "When relevant, yes — but as an add-on, not default. Founder-led brands typically build best on their own founder content. Creators come when volume justifies it." },
-          { q: "What happens after the 90 days?", a: "Monthly continuation, no minimum term. You keep all accounts, all content, all data — if you stop, nothing is lost." },
+          { q: "What happens after the 90 days?", a: "We continue month by month, with new goals for the next sprint. You keep all accounts, all content, all data — if you stop, nothing is lost." },
         ],
       },
       leadMagnet: {

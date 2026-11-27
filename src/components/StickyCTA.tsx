@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { useT } from "../lib/i18n";
+import { useT, useLocalHref } from "../lib/i18n";
 
 /**
  * Bottom-centred sticky CTA bar.
@@ -15,6 +15,7 @@ import { useT } from "../lib/i18n";
  */
 export function StickyCTA() {
   const t = useT();
+  const localHref = useLocalHref();
   const [show, setShow] = useState(false);
 
   // The bar appears once the hero (#top) has fully passed. It
@@ -62,7 +63,7 @@ export function StickyCTA() {
           <span className="hidden sm:inline text-ink-muted font-medium">· {t.hero.priceLineSub}</span>
         </p>
         <a
-          href="/#contact"
+          href={localHref("/#contact")}
           tabIndex={show ? 0 : -1}
           className="relative inline-flex items-center justify-center gap-1.5 sm:gap-2 rounded-full bg-brand-pink bg-brand-button hover:brightness-[0.92] text-white font-semibold text-[13.5px] sm:text-[15px] px-5 sm:px-7 py-2.5 sm:py-3.5 transition-colors animate-pulse-plum whitespace-nowrap"
         >

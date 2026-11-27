@@ -4,7 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 import { services as servicesFallback } from "../content";
 import { Reveal } from "../lib/Reveal";
 import { useLazyVideoSrc } from "../lib/useLazyVideoSrc";
-import { useT, useLang } from "../lib/i18n";
+import { useT, useLang, LangLink } from "../lib/i18n";
 
 const SERVICE_ROUTE_MAP: Record<string, string> = {
   seo: "/seo-agentur/",
@@ -260,12 +260,12 @@ const ServiceSlide = ({
             </h3>
           </div>
           {route && (
-            <Link
+            <LangLink
               to={route}
               className="self-start inline-flex items-center gap-2 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md text-white text-[12.5px] font-semibold uppercase tracking-[0.16em] px-4 py-2 border border-white/15 transition-colors"
             >
               {learnMoreLabel} <ArrowUpRight size={13} strokeWidth={2.4} />
-            </Link>
+            </LangLink>
           )}
         </div>
       </div>

@@ -80,6 +80,36 @@
       "source": "/about/",
       "destination": "/neo-the-agency/",
       "permanent": true
+    },
+    {
+      "source": "/en/seo-agentur",
+      "destination": "/seo-agentur/",
+      "permanent": true
+    },
+    {
+      "source": "/en/seo-agentur/",
+      "destination": "/seo-agentur/",
+      "permanent": true
+    },
+    {
+      "source": "/en/impressum",
+      "destination": "/impressum",
+      "permanent": true
+    },
+    {
+      "source": "/en/impressum/",
+      "destination": "/impressum",
+      "permanent": true
+    },
+    {
+      "source": "/en/datenschutz",
+      "destination": "/datenschutz",
+      "permanent": true
+    },
+    {
+      "source": "/en/datenschutz/",
+      "destination": "/datenschutz",
+      "permanent": true
     }
   ],
   "headers": [

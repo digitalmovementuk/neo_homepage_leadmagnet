@@ -1,8 +1,8 @@
 # NEO THE AGENCY
 
-> NEO THE AGENCY ist eine Berliner Agentur für digitales Marketing. Für Inhaber und mittelständische Unternehmen übernehmen wir SEO, Optimierung für KI-Antworten, Google Ads, Social Media und Websites. Was Ihr Projekt kostet, sagen wir Ihnen nach einer kurzen Analyse, bevor Sie etwas unterschreiben. Es gibt keine Mindestlaufzeit, und alles, was wir für Sie aufbauen, gehört Ihnen vom ersten Tag an. Unser Angebot richtet sich ausschließlich an Unternehmen.
+> NEO THE AGENCY ist eine Agentur für digitales Marketing mit Sitz in Berlin, bundesweit tätig. Wir maximieren Ihre Sichtbarkeit für alle Fokus-Keywords und Standorte und bauen dafür so viele Seiten wie möglich. Dafür kombinieren wir SEO, GEO, Google Ads, Social Ads, Website-Entwicklung und CRM. Website und SEO-Seiten liefern wir zuerst, die Rechnung kommt danach: maximale Sicherheit und Transparenz, Sie prüfen die Qualität vorab. Als ehemalige Berater der Boston Consulting Group richten wir jedes Projekt an Ihren Unternehmenszielen aus. Start mit kostenlosem Audit, Mindestpreis 799 € pro Monat. Unser Angebot richtet sich ausschließlich an Unternehmen.
 
-Version 1.4 (26.11.2026). Changelog: v1.4 (26.11.2026) neues Logo und Markenbild (Logo, Favicon, Vorschaubild) ergänzt. v1.3 (25.11.2026) ShowMeLocal, Tupalo und 11880 in den Profilen ergänzt. v1.2 (25.11.2026) Sortlist mit korrigierter Adresse wieder in den Profilen. v1.1 (24.11.2026) Profile mit eigener Canonical-Adresse, LinkedIn-Unternehmensseite ergänzt, Sortlist entfernt (Profil nicht erreichbar), Datenschutz ergänzt. v1.0 (24.11.2026) erste Fassung mit Kontakt, Hauptseiten und offiziellen Profilen.
+Version 1.5 (27.11.2026). Changelog: v1.5 (27.11.2026) Kurzbeschreibung aus dem Mastertext (Leistungen, kostenloser Audit, Mindestpreis 799 €, erst Lieferung dann Rechnung), englische Fassung unter /en/. v1.4 (26.11.2026) neues Logo und Markenbild (Logo, Favicon, Vorschaubild) ergänzt. v1.3 (25.11.2026) ShowMeLocal, Tupalo und 11880 in den Profilen ergänzt. v1.2 (25.11.2026) Sortlist mit korrigierter Adresse wieder in den Profilen. v1.1 (24.11.2026) Profile mit eigener Canonical-Adresse, LinkedIn-Unternehmensseite ergänzt, Sortlist entfernt (Profil nicht erreichbar), Datenschutz ergänzt. v1.0 (24.11.2026) erste Fassung mit Kontakt, Hauptseiten und offiziellen Profilen.
 
 ## Kontakt
 
@@ -18,7 +18,7 @@ Version 1.4 (26.11.2026). Changelog: v1.4 (26.11.2026) neues Logo und Markenbild
 ## Hauptseiten
 
 - [Startseite](https://www.neotheagency.de/): Überblick über alle Leistungen
-- [SEO-Agentur](https://www.neotheagency.de/seo-agentur/): SEO und Optimierung für KI-Antworten
+- [SEO-Agentur](https://www.neotheagency.de/seo-agentur/): SEO und GEO (Sichtbarkeit in KI-Suchen)
 - [Google Ads](https://www.neotheagency.de/google-ads-agentur/): Google-Ads-Kampagnen
 - [Social Media](https://www.neotheagency.de/social-media-agentur/): Social-Media-Marketing
 - [Websites](https://www.neotheagency.de/webdesign-agentur/): Websites für Unternehmen

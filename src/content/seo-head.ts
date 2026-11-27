@@ -1,8 +1,9 @@
 /**
  * Kopfbereich und strukturierte Daten der SEO-Seite (/seo-agentur/)
- * v1.8 (26.11.2026)
+ * v1.9 (27.11.2026)
  *
  * Changelog
+ *   v1.9 (27.11.2026) Angebotspreis Fundament 799 € (Mindestpreis).
  *   v1.8 (26.11.2026) Autor Johannes Kaluc: WebPage.author + eigener Person-Knoten.
  *   v1.7 (26.11.2026) Titel und Meta mit Fokus-Suchbegriff „SEO-Agentur" (QA-Gate 26.11.).
  *   v1.6 (25.11.2026) sameAs aus platforms.ts v1.3: Sortlist mit korrigierter Adresse wieder enthalten.
@@ -199,7 +200,7 @@ export function buildSeoJsonLd(): Record<string, unknown> {
               },
               priceSpecification: {
                 "@type": "UnitPriceSpecification",
-                price: 490,
+                price: 799,
                 priceCurrency: "EUR",
                 unitCode: "MON",
                 valueAddedTaxIncluded: false,

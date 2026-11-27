@@ -1,5 +1,5 @@
 /**
- * Prerender aller Seiten zu statischem HTML · v1.7 (26.11.2026)
+ * Prerender aller Seiten zu statischem HTML · v1.8 (27.11.2026)
  *
  * Läuft NACH `vite build`. Leichtester Weg ohne neues Paket:
  *   1. Vite baut src/entry-prerender.tsx einmal für Node (SSR) in einen
@@ -15,6 +15,9 @@
  *      404 kommen fertig gerendert (Inhalt in #root, eigenes JSON-LD).
  *
  * Changelog
+ *   v1.8 (27.11.2026) Deutsch = Standard, Englisch unter /en/ (Startseite, drei Leistungen, Über uns) mit lang="en",
+ *        og:locale en_GB und eigenem JSON-LD. hreflang de/en/x-default (x-default = Deutsch) auf allen Seitenpaaren,
+ *        de/x-default auf den rein deutschen Seiten.
  *   v1.7 (26.11.2026) Startseiten-WebPage (data-home-only) wird auf allen anderen Seiten entfernt.
  *   v1.6 (26.11.2026) Flache Adressen je Fokus-Suchbegriff: /google-ads-agentur/, /social-media-agentur/,
  *        /webdesign-agentur/, /neo-the-agency/ (alte Adressen leiten per 301 weiter, vercel.json);
@@ -56,9 +59,11 @@ try {
   const entryFile = (await readdir(ssrOut)).find((f) => /^entry-prerender\.(m?js)$/.test(f));
   if (!entryFile) throw new Error("prerender-seo: SSR-Ausgabe fehlt");
   const mod = await import(pathToFileURL(path.join(ssrOut, entryFile)).href);
-  const { renderSeoPage, renderPage, seoHead, buildSeoJsonLd, SEO_PATH, routeHeads, legalHeads } = mod;
+  const { renderSeoPage, renderPage, seoHead, buildSeoJsonLd, SEO_PATH, routeHeads, enRouteHeads, enHomeHead, legalHeads } = mod;
   if (!Array.isArray(legalHeads) || legalHeads.length !== 2) throw new Error("prerender-seo: legalHeads fehlt");
   if (!Array.isArray(routeHeads) || routeHeads.length !== 4) throw new Error("prerender-seo: routeHeads fehlt");
+  if (!Array.isArray(enRouteHeads) || enRouteHeads.length !== 4) throw new Error("prerender-seo: enRouteHeads fehlt");
+  if (!enHomeHead?.title) throw new Error("prerender-seo: enHomeHead fehlt");
 
   const appHtml = await renderSeoPage();
   if (!appHtml.includes('id="top-titel"')) throw new Error("prerender-seo: H1 fehlt im gerenderten HTML");
@@ -89,6 +94,15 @@ try {
   };
   const addLd = (src, data) =>
     src.replace("</head>", `    <script type="application/ld+json" data-route-jsonld="true">${JSON.stringify(data).replace(/</g, "\\u003c")}</script>\n  </head>`);
+  // hreflang: Deutsch ist Standard (x-default). enPath = null für rein deutsche Seiten.
+  const ORIGIN = "https://www.neotheagency.de";
+  const addHreflang = (src, dePath, enPath) => {
+    const tags = [`<link rel="alternate" hreflang="de" href="${esc(ORIGIN + dePath)}" />`];
+    if (enPath) tags.push(`<link rel="alternate" hreflang="en" href="${esc(ORIGIN + enPath)}" />`);
+    tags.push(`<link rel="alternate" hreflang="x-default" href="${esc(ORIGIN + dePath)}" />`);
+    if (enPath) tags.push('<meta property="og:locale:alternate" content="en_GB" />');
+    return src.replace("</head>", `    ${tags.join("\n    ")}\n  </head>`);
+  };
   const writePage = async (route, content, note) => {
     const dir = path.join(dist, ...route.split("/").filter(Boolean));
     await mkdir(dir, { recursive: true });
@@ -156,7 +170,7 @@ try {
   // Platzhalterbild der Startseite (LCP-Hülle) gehört nicht auf diese Seite.
   must(html, shellRe, "LCP-Hülle");
   html = html.replace(shellRe, "");
-  html = inject(html, appHtml, SEO_PATH);
+  html = addHreflang(inject(html, appHtml, SEO_PATH), SEO_PATH, null);
 
   const outDir = path.join(dist, ...SEO_PATH.split("/").filter(Boolean));
   await mkdir(outDir, { recursive: true });
@@ -191,7 +205,7 @@ try {
     legal = swapMeta(legal, "name", "twitter:description", lh.description, page.path);
     legal = addLd(stripHomeOnly(legal, page.path), lh.jsonLd);
     legal = addChunk(legal, page.path === "/impressum" ? /^Impressum-.*\.js$/ : /^Datenschutz-.*\.js$/);
-    legal = inject(legal, await renderPage(page.path), page.path);
+    legal = addHreflang(inject(legal, await renderPage(page.path), page.path), page.path, null);
     await writePage(page.path, legal, "(eigene Canonical, vorgerendert)");
   }
 
@@ -212,7 +226,51 @@ try {
     pageHtml = swapMeta(pageHtml, "name", "twitter:description", page.description, page.path);
     pageHtml = addChunk(addLd(stripHomeOnly(pageHtml, page.path), page.jsonLd), page.chunk);
     pageHtml = inject(pageHtml, await renderPage(page.path), page.path);
+    pageHtml = addHreflang(pageHtml, page.path, `/en${page.path}`);
     await writePage(page.path, pageHtml, "(eigener Kopfbereich, vorgerendert)");
+  }
+
+  // Englische Fassung unter /en/: gleiche Hülle, aber lang="en", og:locale en_GB, eigener Kopfbereich und JSON-LD.
+  const toEnglish = (src, page, label) => {
+    let out = src.replace(/<html lang="[^"]*">/, '<html lang="en">');
+    const url = origin + page.path;
+    must(out, /<link rel="canonical" href="[^"]*"\s*\/?>/, `canonical (${label})`);
+    out = out.replace(/<link rel="canonical" href="[^"]*"\s*\/?>/, `<link rel="canonical" href="${esc(url)}" />`);
+    out = out.replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(page.title)}</title>`);
+    out = swapMeta(out, "property", "og:url", url, label);
+    out = swapMeta(out, "property", "og:locale", "en_GB", label);
+    out = swapMeta(out, "name", "description", page.description, label);
+    out = swapMeta(out, "property", "og:title", page.title, label);
+    out = swapMeta(out, "property", "og:description", page.description, label);
+    out = swapMeta(out, "name", "twitter:title", page.title, label);
+    out = swapMeta(out, "name", "twitter:description", page.description, label);
+    return out;
+  };
+  const enHreflang = (src, enPath, dePath) => {
+    const tags = [
+      `<link rel="alternate" hreflang="de" href="${esc(ORIGIN + dePath)}" />`,
+      `<link rel="alternate" hreflang="en" href="${esc(ORIGIN + enPath)}" />`,
+      `<link rel="alternate" hreflang="x-default" href="${esc(ORIGIN + dePath)}" />`,
+      '<meta property="og:locale:alternate" content="de_DE" />',
+    ];
+    return src.replace("</head>", `    ${tags.join("\n    ")}\n  </head>`);
+  };
+  for (const [i, page] of enRouteHeads.entries()) {
+    const dePath = routeHeads[i].path;
+    let enHtml = toEnglish(homeShell, page, page.path);
+    enHtml = addChunk(addLd(stripHomeOnly(enHtml, page.path), page.jsonLd), page.chunk);
+    enHtml = inject(enHtml, await renderPage(page.path, "en"), page.path);
+    if (!/<h1[\s>]/.test(enHtml)) throw new Error(`prerender-seo: H1 fehlt (${page.path})`);
+    await writePage(page.path, enHreflang(enHtml, page.path, dePath), "(Englisch, vorgerendert)");
+  }
+  {
+    // Englische Startseite: LCP-Hülle bleibt, deutsche WebPage raus, englische rein.
+    let enHome = toEnglish(homeShell, enHomeHead, "/en/");
+    must(enHome, homeOnlyLdRe, "Startseiten-WebPage (/en/)");
+    enHome = addLd(enHome.replace(homeOnlyLdRe, ""), enHomeHead.jsonLd);
+    const body = await renderPage("/en/", "en");
+    if (!/<h1[\s>]/.test(body)) throw new Error("prerender-seo: H1 fehlt auf /en/");
+    await writePage("/en/", enHreflang(inject(enHome, body, "/en/"), "/en/", "/"), "(Englisch, vorgerendert)");
   }
 
   // 404: echte Fehlerseite mit Navigation, noindex, ohne Canonical. Vercel liefert sie mit Status 404.
@@ -229,7 +287,7 @@ try {
   // Startseite zuletzt: erst jetzt dist/index.html überschreiben, alle anderen Seiten nutzen die leere Hülle.
   const homeBody = await renderPage("/");
   if (!/<h1[\s>]/.test(homeBody)) throw new Error("prerender-seo: H1 fehlt auf der Startseite");
-  await writeFile(path.join(dist, "index.html"), inject(homeShell, homeBody, "/"));
+  await writeFile(path.join(dist, "index.html"), addHreflang(inject(homeShell, homeBody, "/"), "/", "/en/"));
   console.log(`prerender-seo: / (vorgerendert, ${(Buffer.byteLength(homeBody) / 1024).toFixed(1)} kB Inhalt)`);
 
   // Alte Adressen: kleine Weiterleitungsseite, falls der Server keine 301 sendet.
